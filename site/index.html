@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#152c22">
+    <title>잎새 너머 · 배포 테스트</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">LEAVES BEYOND · DEPLOYMENT CHECK</p>
+      <h1>잎새 너머</h1>
+      <p class="intro">작은 숲으로 향하는 첫 연결.</p>
+      <section class="panel" aria-labelledby="check-title">
+        <div class="panel-heading">
+          <h2 id="check-title">배포 연결 확인</h2>
+          <span class="badge">환경 테스트</span>
+        </div>
+        <p>이 페이지는 게임 제작 전 자동 배포를 확인하는 테스트 페이지입니다.</p>
+        <ul class="checks">
+          <li><span>화면과 스크립트</span><strong id="script-status">확인 중</strong></li>
+          <li><span>배포 정보</span><strong id="manifest-status" aria-live="polite">확인 중</strong></li>
+          <li><span>브라우저 저장</span><strong id="storage-status" aria-live="polite">검사 전</strong></li>
+        </ul>
+        <button type="button" id="check-storage">브라우저 저장 확인</button>
+        <p class="note">이 검사는 임시 데이터를 저장한 뒤 삭제합니다. 온라인 서버와 계정 저장은 별도 기능입니다.</p>
+        <dl>
+          <div><dt>배포 버전</dt><dd id="commit">—</dd></div>
+          <div><dt>빌드 시각</dt><dd id="built-at">—</dd></div>
+        </dl>
+        <noscript><p class="error">검사를 진행하려면 JavaScript를 허용해 주세요.</p></noscript>
+      </section>
+      <footer>숲의 모험은 다음 제작 단계에서 시작됩니다.</footer>
+    </main>
+  </body>
+</html>

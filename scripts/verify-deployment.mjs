@@ -1,0 +1,37 @@
+import { setTimeout as delay } from 'node:timers/promises';
+
+const { PAGE_URL, GITHUB_SHA } = process.env;
+if (!PAGE_URL || !/^[0-9a-f]{40}$/.test(GITHUB_SHA || '')) {
+  throw new Error('PAGE_URL and the full GITHUB_SHA are required');
+}
+const base = new URL(PAGE_URL.endsWith('/') ? PAGE_URL : PAGE_URL + '/');
+if (base.protocol !== 'https:') throw new Error('Deployment verification requires HTTPS');
+
+let lastError;
+for (let attempt = 1; attempt <= 12; attempt++) {
+  try {
+    const url = new URL('deployment.json', base);
+    url.searchParams.set('revision', GITHUB_SHA);
+    const response = await fetch(url, { signal: AbortSignal.timeout(10000), cache: 'no-store' });
+    if (!response.ok) throw new Error(`Deployment metadata: HTTP ${response.status}`);
+    const manifest = await response.json();
+    if (manifest.kind !== 'pages-smoke' || manifest.commit !== GITHUB_SHA) {
+      throw new Error('The published commit does not match this workflow run');
+    }
+    for (const file of ['', 'styles.css', 'app.js']) {
+      const asset = await fetch(new URL(file, base), { signal: AbortSignal.timeout(10000) });
+      if (!asset.ok) throw new Error(`${file || 'index.html'}: HTTP ${asset.status}`);
+      const content = await asset.text();
+      if (file === '' && !content.includes('잎새 너머')) throw new Error('Unexpected page content');
+      if (file === 'styles.css' && !content.includes('--smoke-style: ready')) throw new Error('Unexpected stylesheet');
+      if (file === 'app.js' && !content.includes('deployment.json')) throw new Error('Unexpected script');
+    }
+    console.log(`Verified public deployment of ${GITHUB_SHA} at ${base}`);
+    process.exit(0);
+  } catch (error) {
+    lastError = error;
+    console.log(`Verification attempt ${attempt}/12: ${error.message}`);
+    if (attempt < 12) await delay(5000);
+  }
+}
+throw lastError;

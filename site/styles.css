@@ -1,0 +1,27 @@
+:root { color-scheme: dark; --smoke-style: ready; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #101e18; color: #ebf3e7; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; background: radial-gradient(ellipse at 50% 0%, #30513b 0%, transparent 65%); }
+main { width: min(660px, 100%); margin: auto; padding: 76px 24px 36px; }
+.eyebrow { color: #b8cc91; font-size: 11px; letter-spacing: .18em; line-height: 1.8; }
+h1 { font-size: clamp(42px, 9vw, 64px); letter-spacing: -.05em; margin: 12px 0; }
+.intro { color: #c5d5bd; margin: 0 0 40px; }
+.panel { background: #16291fe8; border: 1px solid #426047; border-radius: 16px; padding: 28px; box-shadow: 0 16px 48px #0003; }
+.panel-heading { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+h2 { margin: 0; font-size: 20px; }
+.badge { color: #d6e6b0; border: 1px solid #536845; border-radius: 5px; font-size: 11px; padding: 5px 8px; }
+.panel > p { color: #bfceba; font-size: 14px; line-height: 1.8; }
+.checks { list-style: none; padding: 0; margin: 24px 0; }
+.checks li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #34503b; font-size: 14px; }
+strong { color: #cedaba; text-align: right; }
+[data-state="ok"] { color: #b9e88b; }
+[data-state="error"], .error { color: #ffb9a8; }
+button { width: 100%; padding: 14px 18px; border: 0; border-radius: 7px; background: #d2e6ab; color: #1b2b1d; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+button:hover { background: #e0efc5; }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.panel .note { font-size: 12px; color: #a7b9a2; }
+dl { margin: 24px 0 0; border-top: 1px solid #34503b; padding-top: 16px; }
+dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 12px; line-height: 2; }
+dt { color: #a7b9a2; }
+dd { margin: 0; overflow-wrap: anywhere; }
+footer { text-align: center; color: #99b092; font-size: 12px; line-height: 1.8; padding: 24px 0; }
+@media (max-width: 480px) { main { padding: 40px 16px 20px; } .panel { padding: 22px 18px; } }
