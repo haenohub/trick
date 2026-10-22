@@ -1,7 +1,8 @@
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS } from "./data.js";
 import { decorations, hash, seeded } from "./core.js";
 const IMAGES = new Map();
-const ART_REVISION = document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
+const ART_REVISION =
+  document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
 const load = (name) =>
   new Promise((resolve) => {
     const i = new Image();
@@ -225,8 +226,16 @@ export class Renderer {
       c.fillStyle = "#c2e2d337";
       c.fillRect(s.x + Math.sin(time * 1.2 + i) * 8 - 8, s.y, 14, 1);
     }
+    this.hitboxes = [];
     for (const portal of PORTALS(map.id)) {
       const s = this.worldToScreen(portal.x, portal.y);
+      this.hitboxes.push({
+        kind: "portal",
+        id: portal.to,
+        x: s.x,
+        y: s.y - 22,
+        r: 32,
+      });
       this.ellipse(
         s.x,
         s.y,
@@ -320,7 +329,6 @@ export class Renderer {
       objects.push({ kind: "peer", ...peer, depth: peer.x + peer.y });
     objects.push({ kind: "player", ...p, depth: p.x + p.y });
     objects.sort((a, b) => a.depth - b.depth);
-    this.hitboxes = [];
     for (const o of objects) {
       const s = this.worldToScreen(o.x, o.y);
       if (s.x < -160 || s.x > w + 160 || s.y < -80 || s.y > h + 180) continue;

@@ -26,7 +26,7 @@ const cssFile = new URL("styles.css", output);
 await writeFile(cssFile, (await readFile(cssFile, "utf8")).replace(/(\.\/assets\/[a-z0-9/-]+\.png)/gi, `$1?v=${revision}`));
 const manifest = {
   kind: "leaftale",
-  version: "0.2.0",
+  version: "0.2.1",
   commit: process.env.GITHUB_SHA || "local",
   builtAt: new Date().toISOString(),
 };

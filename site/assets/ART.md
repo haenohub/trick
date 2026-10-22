@@ -1,11 +1,7 @@
-# Original project artwork
+# Artwork replacement status
 
-- `title-forest.png`: original fantasy forest title background generated for LeafTale during development. Included directly; it is not an asset from an existing game.
-- `m1.png` through `m40.png`: original species-specific pixel atlases drawn by `scripts/generate-art.py` using geometric pixel primitives, fixed pivots and an articulated pose sequence. There are unique carried objects/body features in addition to palettes.
-- `warden.png`, `mage.png`, `ranger.png`, `herbalist.png`: original character atlases.
-- Environment sprites: original tree, palm, house, bush, rock and crystal pixel drawings.
-- `items.png`: 42 original item icons, indexed by `manifest.json`.
+These are the currently shipped legacy assets. They do not meet the user's revised quality requirement and have NOT yet been replaced.
 
-Atlas layout: 64×64 frame, 24 columns, four direction rows (south, east, north, west). Columns: idle 0–3, walk 4–9, attack 10–15, hurt 16–17, death 18–23. Walk includes alternating feet/limbs and body bounce. Attack includes anticipation, strike and recovery. Species accessories follow the same body pivot.
+Replacement maps, actors, items and effects must be made through the image generation tool. The old procedural drawing generator has been removed. See the root `ART_REWORK.md` and `art/image-requests.json` for pending image requests and the confirmed tool failure.
 
-Regenerate pixel assets with Python 3 + Pillow: `npm run art`. It reads the project's content data. The generated files are checked in; running the game/build does not require Python, Pillow, image-generation access or third-party art services.
+The existing forest title artwork was generated with the image generation tool. The existing in-game pixel atlases and scenery were procedurally drawn in the previous implementation; they are retained temporarily to keep the game functional.

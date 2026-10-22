@@ -47,9 +47,6 @@ let world = null,
   panel = null,
   filter = "all",
   iconIds = {},
-  keys = new Set(),
-  lastMovement = "",
-  lastMoveSent = 0,
   lastSave = 0,
   lastHud = 0,
   lastFrame = performance.now(),
@@ -153,13 +150,13 @@ function start(saved = null) {
   $("lobby").hidden = true;
   $("hud").hidden = false;
   target = null;
-  keys.clear();
   buildSkillbar();
   closePanel();
   hud();
   canvas.focus();
   save();
-  if (!saved) toast("WASD 이동 · Space 공격 · E 이야기 / 채집 · H 도움말");
+  if (!saved)
+    toast("바닥 클릭 이동 · 몬스터 클릭 공격 · E 상호작용 · H 도움말");
 }
 function send(action, quiet = false) {
   if (!running) return false;
@@ -346,7 +343,6 @@ function openPanel(name) {
   previousPanelFocus = document.activeElement;
   panel = name;
   filter = name === "codex" ? "0" : name === "craft" ? "equipment" : "all";
-  keys.clear();
   if (running) send({ type: "move", x: 0, y: 0 }, true);
   $("panel-backdrop").hidden = false;
   $("menu-panel").hidden = false;
@@ -385,8 +381,8 @@ function renderPanel() {
   if (panel === "help") {
     title = "숲길 안내서";
     html = `<p class="panel-intro">작은 발걸음으로 숲을 탐험하세요. 마을의 숲길지기에게 이야기를 듣고, 길 끝의 빛나는 표식으로 다음 맵에 갈 수 있습니다.</p><div class="help-grid">${[
-      ["WASD / 방향키", "이동"],
-      ["바닥 클릭", "그곳으로 이동"],
+      ["바닥 클릭 / 터치", "목적지로 이동"],
+      ["이동 표식 클릭", "다음 맵으로 이동"],
       ["몬스터 클릭 / Space / J", "기본 공격"],
       ["1 · 2 · 3 · 4", "직업 스킬"],
       ["E / Shift + E", "대화 · 이동 · 잎 따기 / 포기 수확"],
@@ -602,7 +598,6 @@ function connect(url) {
           online = true;
           running = true;
           closePanel();
-          lastMovement = "";
           toast("함께 걷는 숲에 도착했습니다.");
         } else if (msg.type === "state") {
           state = msg.state;
@@ -805,13 +800,22 @@ $("continue-game").onclick = () => {
   if (p) start(p);
 };
 canvas.addEventListener("pointerdown", (e) => {
-  if (!running || panel) return;
+  if (!running || panel || (e.pointerType === "mouse" && e.button !== 0))
+    return;
   const r = canvas.getBoundingClientRect(),
     x = e.clientX - r.left,
     y = e.clientY - r.top,
     hit = renderer.hit(x, y);
   canvas.focus();
-  if (hit?.kind === "monster") {
+  if (hit?.kind === "portal") {
+    const portal = PORTALS(state.player.map).find((p) => p.to === hit.id);
+    if (distance(portal, state.player) < 2.5)
+      send({ type: "travel", map: portal.to });
+    else {
+      pendingInteraction = { kind: "portal", id: portal.to };
+      send({ type: "moveTo", x: portal.x, y: portal.y }, true);
+    }
+  } else if (hit?.kind === "monster") {
     target = hit.id;
     send({ type: "attack", target }, true);
   } else if (hit?.kind === "npc") {
@@ -875,23 +879,8 @@ window.addEventListener("keydown", (e) => {
   if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName) || !running)
     return;
   const k = e.key.toLowerCase();
-  if (
-    [
-      "w",
-      "a",
-      "s",
-      "d",
-      "arrowup",
-      "arrowleft",
-      "arrowdown",
-      "arrowright",
-      " ",
-      "tab",
-    ].includes(k)
-  )
-    e.preventDefault();
+  if ([" ", "tab"].includes(k)) e.preventDefault();
   if (panel) return;
-  keys.add(k);
   if (e.repeat) return;
   if (k === " " || k === "j") send({ type: "attack", target }, true);
   if (["1", "2", "3", "4"].includes(k))
@@ -918,44 +907,14 @@ window.addEventListener("keydown", (e) => {
   }
   if (k === "enter") $("chat-toggle").click();
 });
-window.addEventListener("keyup", (e) => keys.delete(e.key.toLowerCase()));
 window.addEventListener("blur", () => {
-  keys.clear();
   if (running) send({ type: "move", x: 0, y: 0 }, true);
 });
-for (const b of document.querySelectorAll("[data-dir]")) {
-  const map = { up: "w", down: "s", left: "a", right: "d" },
-    key = map[b.dataset.dir];
-  b.onpointerdown = (e) => {
-    e.preventDefault();
-    b.setPointerCapture(e.pointerId);
-    keys.add(key);
-  };
-  b.onpointerup = b.onpointercancel = () => keys.delete(key);
-}
 window.addEventListener("pagehide", () => save());
 function frame(now) {
   const dt = Math.min(0.05, (now - lastFrame) / 1000);
   lastFrame = now;
   if (running && state) {
-    let sx = 0,
-      sy = 0;
-    if (!panel) {
-      if (keys.has("w") || keys.has("arrowup")) sy--;
-      if (keys.has("s") || keys.has("arrowdown")) sy++;
-      if (keys.has("a") || keys.has("arrowleft")) sx--;
-      if (keys.has("d") || keys.has("arrowright")) sx++;
-    }
-    const move = { x: sx + sy, y: sy - sx },
-      signature = move.x + "," + move.y;
-    if (
-      signature !== lastMovement ||
-      (online && (move.x || move.y) && now - lastMoveSent > 180)
-    ) {
-      send({ type: "move", ...move }, true);
-      lastMovement = signature;
-      lastMoveSent = now;
-    }
     if (!online) {
       world.step(dt);
       state = world.snapshot("local");
@@ -964,9 +923,15 @@ function frame(now) {
       const n =
         pendingInteraction.kind === "npc"
           ? NPCS.find((n) => n.id === pendingInteraction.id)
-          : state.herbs.find((h) => h.id === pendingInteraction.id);
+          : pendingInteraction.kind === "portal"
+            ? PORTALS(state.player.map).find(
+                (p) => p.to === pendingInteraction.id,
+              )
+            : state.herbs.find((h) => h.id === pendingInteraction.id);
       if (n && distance(n, state.player) < 1.9) {
         if (pendingInteraction.kind === "npc") openPanel("npc:" + n.id);
+        else if (pendingInteraction.kind === "portal")
+          send({ type: "travel", map: n.to });
         else send({ type: "interact", herb: n.id }, true);
         pendingInteraction = null;
       }
@@ -985,7 +950,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.2.0",
+  version: "0.2.1",
 };
 try {
   const response = await fetch("./assets/manifest.json");

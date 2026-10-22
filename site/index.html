@@ -25,7 +25,7 @@
     <div id="game-shell">
       <canvas
         id="world"
-        aria-label="리프테일 게임 화면. WASD 또는 방향키로 이동, Space로 공격, E로 상호작용합니다."
+        aria-label="리프테일 게임 화면. 바닥을 클릭하여 이동하고, 몬스터를 클릭해 공격합니다."
         tabindex="0"
       ></canvas>
       <header class="topbar">
@@ -104,12 +104,6 @@
           id="event-log"
           aria-label="최근 모험 기록"
         ></section>
-        <div id="mobile-pad" aria-label="터치 이동">
-          <button data-dir="up" aria-label="위로">▲</button
-          ><button data-dir="left" aria-label="왼쪽">◀</button
-          ><button data-dir="down" aria-label="아래로">▼</button
-          ><button data-dir="right" aria-label="오른쪽">▶</button>
-        </div>
         <div class="bottom-dock">
           <div class="dock-side">
             <button data-panel="inventory" title="가방 [I]">

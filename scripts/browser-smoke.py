@@ -33,8 +33,11 @@ with sync_playwright() as p:
  page.locator('#start-game').click();page.wait_for_timeout(150)
  initial=page.evaluate('__leaftale.snapshot().player.x')
  page.keyboard.down('d');page.wait_for_timeout(300);page.keyboard.up('d')
- assert page.evaluate('__leaftale.snapshot().player.x')>initial
- print('PASS: fresh character, rendering, keyboard movement')
+ assert abs(page.evaluate('__leaftale.snapshot().player.x')-initial)<.01
+ box=page.locator('#world').bounding_box()
+ page.mouse.click(box['x']+box['width']/2+96,box['y']+box['height']*.53+48)
+ page.wait_for_function('(x)=>__leaftale.snapshot().player.x > x+1',arg=initial)
+ print('PASS: click-to-move works; WASD does not move the character')
  page.keyboard.press('i');page.get_by_role('heading',name='여행자의 가방').wait_for();assert page.locator('.item-card').count()>0
  page.keyboard.press('Escape');assert page.locator('#menu-panel').is_hidden()
  page.keyboard.press('b');page.locator('[data-filter=alchemy]').click();page.locator('[data-action=craft][data-item=salve]').click();assert page.evaluate('__leaftale.snapshot().player.inventory.salve')==6
@@ -46,10 +49,11 @@ with sync_playwright() as p:
  page.keyboard.press('Escape')
  print('PASS: inventory, alchemy, planting and both regional drop tables')
  # Real movement to a portal then E: no direct state mutation in this transition.
- fixture(page,map_id='village',at_portal=True)
- page.keyboard.press('e')
+ fixture(page,map_id='village')
+ box=page.locator('#world').bounding_box()
+ page.mouse.click(box['x']+box['width']/2+352,box['y']+box['height']*.53+176-22)
  page.wait_for_function("__leaftale.snapshot().player.map === 'sprout'")
- print('PASS: portal interaction changes map')
+ print('PASS: clicking a portal walks to it and changes map without keyboard input')
  # Exercise every class's actual UI skills against real spawned enemies.
  for cls in ['warden','mage','ranger','herbalist']:
   fixture(page,cls,'sprout',30,True)
@@ -84,11 +88,14 @@ with sync_playwright() as p:
  assert mp.evaluate('document.documentElement.scrollWidth <= innerWidth')
  mp.screenshot(path='/tmp/leaftale-mobile-title.png',full_page=True)
  mp.locator('#start-game').click();mp.wait_for_timeout(250)
- assert mp.locator('#mobile-pad').is_visible()
+ assert mp.locator('#mobile-pad').count()==0
+ mx=mp.evaluate('__leaftale.snapshot().player.x');box=mp.locator('#world').bounding_box()
+ mp.touchscreen.tap(box['width']/2+64,box['height']*.53+32)
+ mp.wait_for_function('(x)=>__leaftale.snapshot().player.x > x+.5',arg=mx)
  assert mp.evaluate('document.documentElement.scrollWidth <= innerWidth')
  mp.screenshot(path='/tmp/leaftale-mobile-game.png',full_page=True)
  mp.locator('[data-panel=inventory]').click();assert mp.locator('#menu-panel').is_visible()
  mp.screenshot(path='/tmp/leaftale-mobile-bag.png',full_page=True)
  assert not errors,errors
- print('PASS: mobile layout, touch controls, menus and zero browser runtime errors')
+ print('PASS: mobile layout, tap-to-move, menus and zero browser runtime errors')
  browser.close()
