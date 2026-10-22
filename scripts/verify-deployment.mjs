@@ -22,7 +22,7 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       const asset = await fetch(new URL(file, base), { signal: AbortSignal.timeout(10000) });
       if (!asset.ok) throw new Error(`${file || 'index.html'}: HTTP ${asset.status}`);
       const content = await asset.text();
-      if (file === '' && !content.includes('잎새 너머')) throw new Error('Unexpected page content');
+      if (file === '' && !content.includes('리프테일')) throw new Error('Unexpected page content');
       if (file === 'styles.css' && !content.includes('--smoke-style: ready')) throw new Error('Unexpected stylesheet');
       if (file === 'app.js' && !content.includes('deployment.json')) throw new Error('Unexpected script');
     }

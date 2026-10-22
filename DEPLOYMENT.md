@@ -1,6 +1,6 @@
 # GitHub Pages deployment test
 
-This is a static deployment smoke test for 잎새 너머. It does not implement the game or an online game server.
+This is a static deployment smoke test for 리프테일. It does not implement the game or an online game server.
 
 ## Local verification
 

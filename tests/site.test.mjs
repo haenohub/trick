@@ -28,7 +28,7 @@ test('page and relative assets work beneath the GitHub project path', async () =
     const page = await fetch(base);
     assert.equal(page.status, 200);
     const html = await page.text();
-    assert.match(html, /잎새 너머/);
+    assert.match(html, /리프테일/);
     const assets = [...html.matchAll(/(?:href|src)="(\.\/[^\"]+)"/g)].map(match => match[1]);
     assert.deepEqual(assets.sort(), ['./app.js', './styles.css']);
     for (const asset of [...assets, './deployment.json']) {
