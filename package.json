@@ -1,12 +1,20 @@
 {
-  "name": "leaves-beyond-deployment-smoke",
-  "version": "0.1.0",
+  "name": "leaftale",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24 <25" },
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test",
-    "verify:deploy": "node scripts/verify-deployment.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "verify:deploy": "node scripts/verify-deployment.mjs",
+    "start": "node server/index.mjs",
+    "serve": "python3 -m http.server 8080 --directory dist",
+    "art": "python3 scripts/generate-art.py"
+  },
+  "dependencies": {
+    "ws": "8.22.0"
   }
 }
