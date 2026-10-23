@@ -72,6 +72,8 @@ python3 scripts/browser-smoke.py http://127.0.0.1:8080/
 
 ## 파일 구조
 
+독립 HTML 몬스터 도감은 [`site/bestiary.html`](site/bestiary.html)입니다. 40종의 서사·서식지·능력치·확정 보상·드롭 확률/수량과 아이템 설명을 검색하고 지역·사냥터·분류로 필터링할 수 있습니다. HTML 저장 및 필터 결과 전체 인쇄를 지원합니다. 다운로드한 파일의 텍스트 데이터는 오프라인으로 열리며, 이미지는 공개 에셋을 불러옵니다. `npm run build` 때 게임 데이터에서 자동으로 다시 생성됩니다. 화면 수정은 `templates/bestiary.html`, 데이터 연결은 `scripts/build-bestiary.mjs`에서 합니다.
+
 - `site/data.js`: 맵·직업·몬스터·아이템·퀘스트 데이터.
 - `site/core.js`: 브라우저와 서버가 공유하는 전투/성장/경제 판정.
 - `site/renderer.js`: 쿼터뷰 렌더링과 스프라이트 애니메이션.

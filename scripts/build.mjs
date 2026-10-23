@@ -1,6 +1,8 @@
 import { cp, mkdir, rm, writeFile, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { buildBestiary } from "./build-bestiary.mjs";
 
+await buildBestiary();
 const output = new URL("../dist/", import.meta.url);
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });

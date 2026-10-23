@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#203f35" />
+    <meta
+      name="description"
+      content="리프테일 지역 1·2 몬스터 40종의 이야기, 서식지, 능력치와 아이템별 드롭 확률을 확인하세요."
+    />
+    <title>몬스터 도감 · 리프테일</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #253e33;
+        --muted: #68796a;
+        --line: #dce1d3;
+        --green: #315746;
+        --paper: #fbfaf4;
+        --gold: #ad8849;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Noto Sans KR",
+          sans-serif;
+        background: #f1f2e9;
+        color: var(--ink);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button,
+      a,
+      input,
+      select,
+      summary {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button,
+      select,
+      summary {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        color: inherit;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #b38c45;
+        outline-offset: 4px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .wrap {
+        width: min(1240px, calc(100% - 64px));
+        margin: auto;
+      }
+      .topbar {
+        background: #203f35;
+        color: #f2efdc;
+        border-bottom: 1px solid #ffffff20;
+      }
+      .topbar .wrap {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand {
+        font-size: 22px;
+        letter-spacing: -1px;
+        font-weight: 750;
+      }
+      .brand small {
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #b0c5b2;
+        margin-left: 18px;
+      }
+      .top-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        font-size: 13px;
+      }
+      .top-links button {
+        background: transparent;
+        border: 1px solid #8da69366;
+        color: #f1eedb;
+        padding: 10px 16px;
+        border-radius: 5px;
+      }
+      .top-links a {
+        color: #c9d6c9;
+      }
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: #203f35;
+        color: #f7f4e4;
+      }
+      .hero-image {
+        position: absolute;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 48%;
+        opacity: 0.28;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          90deg,
+          #203f35 0%,
+          #203f35e8 35%,
+          #203f3555 100%
+        );
+      }
+      .hero .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        padding-top: 52px;
+        padding-bottom: 50px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: #b9ce9d;
+        margin: 0 0 14px;
+      }
+      h1 {
+        font-family: Georgia, "Noto Serif KR", serif;
+        font-size: 44px;
+        font-weight: 600;
+        letter-spacing: -2px;
+        margin: 0 0 16px;
+      }
+      .intro {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #c8d5c7;
+        margin: 0;
+        max-width: 550px;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 34px;
+        border-left: 1px solid #ffffff24;
+        padding-left: 38px;
+        flex-shrink: 0;
+      }
+      .hero-stat strong {
+        display: block;
+        font-family: Georgia, serif;
+        font-size: 38px;
+        font-weight: 400;
+        color: #e6dbb2;
+      }
+      .hero-stat span {
+        display: block;
+        font-size: 11px;
+        color: #bfd0bd;
+        margin-top: 7px;
+      }
+      .breadcrumb {
+        padding: 22px 0;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        color: var(--muted);
+      }
+      .breadcrumb span {
+        color: #a8b2a2;
+        margin: 0 10px;
+      }
+      .catalogue {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 34px;
+        align-items: start;
+        padding-bottom: 60px;
+      }
+      .sidebar {
+        position: sticky;
+        top: 24px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 23px 18px;
+      }
+      .filter-title {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #8a957e;
+        font-weight: 650;
+        margin: 0 0 15px;
+      }
+      .region-options {
+        display: grid;
+        gap: 7px;
+      }
+      .region-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        border: 0;
+        border-radius: 5px;
+        padding: 12px 11px;
+        font-size: 13px;
+        background: transparent;
+      }
+      .region-button:hover {
+        background: #edf0e5;
+      }
+      .region-button[aria-pressed="true"] {
+        background: #315746;
+        color: #faf8eb;
+      }
+      .region-button span {
+        font-size: 11px;
+        opacity: 0.65;
+      }
+      .filter-group {
+        border-top: 1px solid var(--line);
+        padding-top: 21px;
+        margin-top: 21px;
+      }
+      .filter-group label {
+        font-size: 12px;
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 650;
+      }
+      .filter-group select {
+        width: 100%;
+        padding: 10px 8px;
+        background: #fffef8;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--ink);
+        font-size: 12px;
+      }
+      .rank-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .rank-button {
+        background: #fffef8;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 7px 9px;
+        font-size: 11px;
+      }
+      .rank-button[aria-pressed="true"] {
+        border-color: #42674c;
+        background: #e5ebdd;
+        color: #294e37;
+      }
+      .reset {
+        font-size: 12px;
+        border: 0;
+        background: transparent;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        margin-top: 24px;
+        color: var(--muted);
+        padding: 0;
+      }
+      .field-note {
+        font-size: 11px;
+        line-height: 1.8;
+        color: #819075;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        margin: 22px 0 0;
+      }
+      .field-note b {
+        color: #52674a;
+        font-weight: 600;
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .search-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+      }
+      .search-wrap:before {
+        content: "⌕";
+        position: absolute;
+        left: 15px;
+        top: 9px;
+        font-size: 24px;
+        color: #7c8d74;
+        pointer-events: none;
+      }
+      #search {
+        width: 100%;
+        padding: 14px 40px;
+        background: #fffef9;
+        border: 1px solid #d3dccb;
+        border-radius: 6px;
+        font-size: 13px;
+        color: var(--ink);
+      }
+      #clear-search {
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        border: 0;
+        background: transparent;
+        color: #76836c;
+        font-size: 20px;
+        line-height: 24px;
+        padding: 0 5px;
+      }
+      .sort {
+        height: 46px;
+        padding: 0 12px;
+        border: 1px solid #d3dccb;
+        border-radius: 6px;
+        background: #fffef9;
+        color: #63715c;
+        font-size: 12px;
+        max-width: 130px;
+      }
+      .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .results-header h2 {
+        font-size: 17px;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .results-header h2 span {
+        font-weight: 400;
+        color: #8a957c;
+        font-size: 12px;
+        margin-left: 9px;
+      }
+      .page-range {
+        font-size: 11px;
+        color: #8b967f;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .monster-card {
+        min-width: 0;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        overflow: hidden;
+        scroll-margin-top: 24px;
+        box-shadow: 0 3px 12px #253e3304;
+      }
+      .monster-card[data-type="boss"] {
+        border-color: #cbb582;
+      }
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 17px 21px 0;
+        gap: 12px;
+      }
+      .entry-id {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: #98a18a;
+        font-variant-numeric: tabular-nums;
+      }
+      .badges {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .badge {
+        font-size: 10px;
+        line-height: 1.6;
+        border-radius: 4px;
+        padding: 2px 7px;
+        background: #e9eddf;
+        color: #61714d;
+      }
+      .badge.level {
+        background: #e3eadd;
+        color: #395c3a;
+      }
+      .badge.boss {
+        background: #efe4cc;
+        color: #94651e;
+      }
+      .badge.rare {
+        background: #e8e4f1;
+        color: #726292;
+      }
+      .badge.elite {
+        background: #eee1d3;
+        color: #97674b;
+      }
+      .card-body {
+        padding: 0 21px 18px;
+      }
+      .identity {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        min-height: 137px;
+      }
+      .art-space {
+        position: relative;
+        flex: 0 0 120px;
+        height: 125px;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(
+          ellipse at 50% 75%,
+          #e1e9d4 0%,
+          #f7f7ee00 68%
+        );
+        border-radius: 50%;
+      }
+      .art-space canvas {
+        width: 116px;
+        height: 116px;
+        max-width: 100%;
+        position: relative;
+      }
+      .art-error {
+        font-size: 10px;
+        color: #8b967f;
+        position: absolute;
+        inset: auto 0 8px;
+        text-align: center;
+      }
+      .identity h3 {
+        font-size: 20px;
+        letter-spacing: -0.8px;
+        margin: 4px 0 9px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .habitat {
+        font-size: 11px;
+        color: #76876a;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .habitat strong {
+        display: block;
+        font-weight: 500;
+        color: #586e4d;
+      }
+      .lore {
+        font-size: 13px;
+        line-height: 1.85;
+        margin: 0 0 18px;
+        color: #68775f;
+        min-height: 49px;
+        word-break: keep-all;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid #e5e8dc;
+        border-bottom: 1px solid #e5e8dc;
+        padding: 12px 0;
+        margin-bottom: 13px;
+        gap: 8px;
+      }
+      .stat small {
+        display: block;
+        color: #96a087;
+        font-size: 9px;
+        margin-bottom: 5px;
+      }
+      .stat b {
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        font-weight: 650;
+      }
+      .stat:last-child b {
+        font-size: 11px;
+      }
+      .rewards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 11px;
+        color: #7f8a70;
+        margin-bottom: 18px;
+      }
+      .rewards strong {
+        color: #5a704c;
+        font-weight: 600;
+      }
+      .rewards .gold strong {
+        color: #9d7e3f;
+      }
+      .drop-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .drop-heading h4 {
+        font-size: 12px;
+        margin: 0;
+        font-weight: 650;
+      }
+      .drop-heading span {
+        font-size: 9px;
+        color: #9da58f;
+      }
+      .drop-table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 11px;
+        table-layout: fixed;
+      }
+      .drop-table th {
+        text-align: left;
+        font-size: 9px;
+        font-weight: 500;
+        color: #929c85;
+        padding: 8px 0;
+        border-top: 1px solid #e0e5d7;
+        border-bottom: 1px solid #e0e5d7;
+      }
+      .drop-table th:first-child {
+        width: 58%;
+      }
+      .drop-table th:nth-child(2) {
+        width: 18%;
+      }
+      .drop-table th:last-child,
+      .drop-table td:last-child {
+        text-align: right;
+      }
+      .drop-table td {
+        vertical-align: top;
+        padding: 9px 0;
+        border-bottom: 1px solid #e9ecdf;
+        color: #7e8b71;
+        line-height: 1.6;
+      }
+      .drop-table tr:last-child td {
+        border-bottom: 0;
+      }
+      .drop-table .chance {
+        font-variant-numeric: tabular-nums;
+        color: #3c6345;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .drop-item {
+        padding-right: 10px;
+      }
+      .drop-item summary {
+        color: #5b7150;
+        font-weight: 500;
+        list-style: none;
+        overflow-wrap: anywhere;
+      }
+      .drop-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .drop-item summary:after {
+        content: " +";
+        color: #a5ae98;
+        font-weight: 400;
+      }
+      .drop-item[open] summary:after {
+        content: " −";
+      }
+      .drop-item p {
+        font-size: 10px;
+        line-height: 1.8;
+        margin: 8px 0 1px;
+        color: #89947b;
+      }
+      .item-kind {
+        font-size: 9px;
+        color: #9aa48b;
+        margin-top: 3px;
+      }
+      .empty {
+        padding: 70px 24px;
+        text-align: center;
+        background: var(--paper);
+        border: 1px dashed #ced7c3;
+        border-radius: 8px;
+      }
+      .empty h3 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+      .empty p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .empty button {
+        padding: 10px 16px;
+        background: #315746;
+        border: 0;
+        border-radius: 4px;
+        color: #f8f7ec;
+        margin-top: 10px;
+      }
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 28px;
+      }
+      .pagination button {
+        background: #fafaf3;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        min-width: 34px;
+        height: 34px;
+        font-size: 12px;
+        padding: 0 10px;
+      }
+      .pagination button[aria-current="page"] {
+        background: #315746;
+        border-color: #315746;
+        color: white;
+      }
+      .pagination button:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      .probability-note {
+        font-size: 11px;
+        color: #87937b;
+        line-height: 1.9;
+        margin: 24px 0 0;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+      }
+      .footer {
+        border-top: 1px solid #d8dfcf;
+        padding: 23px 0 28px;
+        color: #8e9b81;
+        font-size: 10px;
+      }
+      .footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        line-height: 1.8;
+      }
+      .footer b {
+        font-weight: 500;
+        color: #617553;
+      }
+      .skip {
+        position: fixed;
+        left: 10px;
+        top: -60px;
+        background: white;
+        padding: 12px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 10px;
+      }
+      .noscript {
+        padding: 30px;
+        text-align: center;
+      }
+      #result-label {
+        font-size: 17px;
+        color: var(--ink);
+        font-weight: 700;
+        margin: 0;
+      }
+      @media (min-width: 1600px) {
+        .wrap {
+          width: min(1410px, calc(100% - 96px));
+        }
+        .cards {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .catalogue {
+          gap: 30px;
+          grid-template-columns: 210px minmax(0, 1fr);
+        }
+        .identity {
+          gap: 6px;
+        }
+        .identity h3 {
+          font-size: 18px;
+        }
+        .art-space {
+          flex-basis: 100px;
+        }
+        .art-space canvas {
+          width: 100px;
+          height: 110px;
+        }
+        .card-body {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+      }
+      @media (max-width: 1000px) {
+        .wrap {
+          width: calc(100% - 40px);
+        }
+        .hero-stats {
+          gap: 22px;
+          padding-left: 24px;
+        }
+        .hero-stat strong {
+          font-size: 30px;
+        }
+        .catalogue {
+          grid-template-columns: 180px minmax(0, 1fr);
+          gap: 22px;
+        }
+        .sidebar {
+          padding: 19px 12px;
+        }
+        .identity {
+          gap: 7px;
+        }
+        .art-space {
+          flex-basis: 90px;
+          height: 110px;
+        }
+        .art-space canvas {
+          width: 90px;
+          height: 102px;
+        }
+        .identity h3 {
+          font-size: 17px;
+        }
+        .card-body {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .card-top {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .toolbar {
+          flex-wrap: wrap;
+        }
+        .search-wrap {
+          flex-basis: 200px;
+        }
+        .sort {
+          max-width: 120px;
+        }
+        .cards {
+          gap: 14px;
+        }
+        .drop-table th:first-child {
+          width: 55%;
+        }
+        .drop-table th:nth-child(2) {
+          width: 20%;
+        }
+      }
+      @media (max-width: 760px) {
+        .topbar .wrap {
+          height: 64px;
+        }
+        .brand {
+          font-size: 20px;
+        }
+        .brand small {
+          display: none;
+        }
+        .top-links {
+          gap: 13px;
+          font-size: 11px;
+        }
+        .top-links button {
+          padding: 8px 10px;
+          font-size: 11px;
+        }
+        .hero .wrap {
+          padding-top: 34px;
+          padding-bottom: 32px;
+          display: block;
+        }
+        h1 {
+          font-size: 34px;
+          letter-spacing: -1.5px;
+        }
+        .intro {
+          font-size: 12px;
+        }
+        .hero-stats {
+          border: 0;
+          padding: 0;
+          margin-top: 26px;
+          gap: 40px;
+        }
+        .hero-stat strong {
+          font-size: 27px;
+        }
+        .hero-stat span {
+          font-size: 10px;
+        }
+        .breadcrumb {
+          padding: 18px 0;
+        }
+        .catalogue {
+          display: block;
+        }
+        .sidebar {
+          position: static;
+          padding: 17px;
+          margin-bottom: 20px;
+        }
+        .filter-title,
+        .field-note {
+          display: none;
+        }
+        .region-options {
+          display: flex;
+          gap: 4px;
+        }
+        .region-button {
+          padding: 10px;
+          font-size: 12px;
+          flex: 1;
+          gap: 6px;
+          justify-content: center;
+        }
+        .filter-group {
+          padding: 0;
+          margin: 14px 0 0;
+          border: 0;
+        }
+        .filter-group label {
+          font-size: 10px;
+          margin-bottom: 7px;
+        }
+        .sidebar .filter-group:first-of-type {
+          display: block;
+        }
+        .filters-inline {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: 16px;
+        }
+        .rank-options {
+          gap: 4px;
+        }
+        .rank-button {
+          font-size: 10px;
+          padding: 8px 7px;
+        }
+        .reset {
+          margin-top: 15px;
+          font-size: 11px;
+        }
+        .toolbar {
+          flex-wrap: nowrap;
+        }
+        .search-wrap {
+          flex-basis: auto;
+        }
+        #search {
+          font-size: 12px;
+          padding-left: 35px;
+        }
+        .sort {
+          font-size: 11px;
+          padding: 0 7px;
+          width: 107px;
+        }
+        .results-header h2 {
+          font-size: 16px;
+        }
+        .cards {
+          gap: 15px;
+        }
+        .identity {
+          min-height: 118px;
+        }
+        .art-space {
+          flex-basis: 82px;
+        }
+        .art-space canvas {
+          width: 82px;
+        }
+        .identity h3 {
+          font-size: 16px;
+        }
+        .card-top {
+          padding: 14px 14px 0;
+        }
+        .card-body {
+          padding: 0 14px 15px;
+        }
+        .lore {
+          font-size: 12px;
+          min-height: 65px;
+        }
+        .drop-table {
+          font-size: 10px;
+        }
+        .stats {
+          gap: 4px;
+        }
+        .stat b {
+          font-size: 12px;
+        }
+        .rewards {
+          font-size: 10px;
+        }
+        .entry-id {
+          font-size: 9px;
+        }
+        .badge {
+          font-size: 9px;
+          padding: 2px 5px;
+        }
+      }
+      @media (max-width: 500px) {
+        .wrap {
+          width: calc(100% - 32px);
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .identity {
+          min-height: 132px;
+          gap: 16px;
+        }
+        .art-space {
+          flex-basis: 112px;
+        }
+        .art-space canvas {
+          width: 110px;
+          height: 116px;
+        }
+        .identity h3 {
+          font-size: 21px;
+        }
+        .card-top {
+          padding: 18px 21px 0;
+        }
+        .card-body {
+          padding: 0 21px 18px;
+        }
+        .lore {
+          font-size: 13px;
+          min-height: 0;
+        }
+        .stats {
+          padding: 13px 0;
+          gap: 10px;
+        }
+        .stat b {
+          font-size: 14px;
+        }
+        .stat small {
+          font-size: 10px;
+        }
+        .drop-table {
+          font-size: 12px;
+        }
+        .drop-table th {
+          font-size: 10px;
+        }
+        .rewards {
+          font-size: 11px;
+        }
+        .drop-heading h4 {
+          font-size: 13px;
+        }
+        .entry-id {
+          font-size: 10px;
+        }
+        .badge {
+          font-size: 10px;
+        }
+        .filters-inline {
+          grid-template-columns: 1fr;
+        }
+        .rank-options {
+          gap: 6px;
+        }
+        .rank-button {
+          padding: 7px 12px;
+          font-size: 11px;
+        }
+        .region-button {
+          font-size: 11px;
+          padding: 10px 6px;
+        }
+        .region-button span {
+          font-size: 10px;
+        }
+        .top-links {
+          gap: 12px;
+        }
+        .top-links button {
+          font-size: 10px;
+        }
+        .page-range {
+          font-size: 10px;
+        }
+        .results-header h2 span {
+          font-size: 11px;
+        }
+        .footer .wrap {
+          display: block;
+        }
+        .footer span {
+          display: block;
+          margin-top: 8px;
+        }
+      }
+      @media print {
+        body {
+          background: white;
+          color: #172e23;
+        }
+        .wrap {
+          width: 100%;
+        }
+        .topbar,
+        .hero-image,
+        .hero:after,
+        .breadcrumb,
+        .sidebar,
+        .toolbar,
+        .pagination,
+        .top-links,
+        .skip {
+          display: none !important;
+        }
+        .hero {
+          background: white;
+          color: #172e23;
+        }
+        .hero .wrap {
+          padding: 10px 0 22px;
+        }
+        .hero .intro {
+          color: #4e6555;
+        }
+        .hero-stats {
+          display: none;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        .catalogue {
+          display: block;
+          padding: 0;
+        }
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+        .monster-card {
+          break-inside: avoid;
+          box-shadow: none;
+        }
+        .lore {
+          min-height: 0;
+        }
+        .drop-item summary:after {
+          display: none;
+        }
+        .results-header {
+          margin: 8px 0 16px;
+        }
+        .results-header h2 {
+          font-size: 14px;
+        }
+        .page-range {
+          display: none;
+        }
+        .card-body {
+          padding: 0 14px 14px;
+        }
+        .card-top {
+          padding: 12px 14px 0;
+        }
+        .identity {
+          min-height: 110px;
+        }
+        .identity h3 {
+          font-size: 17px;
+        }
+        .art-space {
+          flex-basis: 90px;
+          height: 105px;
+        }
+        .art-space canvas {
+          width: 90px;
+          height: 100px;
+        }
+        .footer {
+          margin-top: 20px;
+        }
+        .probability-note {
+          color: #4e6555;
+        }
+        .empty {
+          border: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#catalogue">몬스터 목록으로 건너뛰기</a>
+    <header class="topbar">
+      <div class="wrap">
+        <a class="brand" id="brand-link" href="./"
+          >리프테일 <small>LEAFTALE</small></a
+        >
+        <nav class="top-links" aria-label="문서 메뉴">
+          <a id="play-link" href="./">게임으로 돌아가기 ↗</a
+          ><button type="button" id="download">HTML 저장 ↓</button
+          ><button type="button" id="print">인쇄</button>
+        </nav>
+      </div>
+    </header>
+    <section class="hero" aria-labelledby="page-title">
+      <img class="hero-image" data-asset="assets/title-forest.png" alt="" />
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">THE LEAFTALE FIELD GUIDE · VOL. 01–02</p>
+          <h1 id="page-title">숲과 바다의 몬스터 도감</h1>
+          <p class="intro">
+            콩잎 아래의 작은 풀벌레부터, 푸른 바다의 오래된 수호자까지.<br />리프테일에
+            사는 생명들의 이야기와 그들이 남기는 물건을 기록했습니다.
+          </p>
+        </div>
+        <div class="hero-stats" aria-label="도감 규모">
+          <div class="hero-stat">
+            <strong id="total-count">40</strong><span>기록된 몬스터</span>
+          </div>
+          <div class="hero-stat">
+            <strong id="map-count">8</strong><span>사냥터</span>
+          </div>
+          <div class="hero-stat">
+            <strong id="boss-count">2</strong><span>지역 수호자</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="wrap">
+      <div class="breadcrumb">
+        리프테일 <span>/</span> 모험 기록 <span>/</span> 몬스터 도감
+      </div>
+      <main class="catalogue" id="catalogue">
+        <aside class="sidebar" aria-label="도감 필터">
+          <p class="filter-title">EXPLORE THE WORLD</p>
+          <div
+            class="region-options"
+            id="region-options"
+            role="group"
+            aria-label="지역 선택"
+          ></div>
+          <div class="filters-inline">
+            <div class="filter-group">
+              <label for="map-filter">서식지</label
+              ><select id="map-filter">
+                <option value="all">모든 사냥터</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>몬스터 분류</label>
+              <div
+                class="rank-options"
+                id="rank-options"
+                role="group"
+                aria-label="몬스터 분류"
+              ></div>
+            </div>
+          </div>
+          <button class="reset" id="reset" type="button">필터 초기화 ↺</button>
+          <p class="field-note">
+            <b>작은 기록자의 메모</b><br />아이템 이름으로 검색하면 그 아이템을
+            남기는 몬스터를 찾을 수 있어요. 아이템 이름을 누르면 물건에 깃든
+            이야기도 펼쳐집니다.
+          </p>
+        </aside>
+        <section aria-labelledby="results-title">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <input
+                id="search"
+                type="search"
+                aria-label="몬스터·아이템·이야기 검색"
+                placeholder="몬스터, 드롭 아이템, 이야기 검색"
+                autocomplete="off"
+              /><button
+                id="clear-search"
+                type="button"
+                aria-label="검색어 지우기"
+                hidden
+              >
+                ×
+              </button>
+            </div>
+            <select class="sort" id="sort" aria-label="정렬">
+              <option value="level-asc">레벨 낮은 순</option>
+              <option value="level-desc">레벨 높은 순</option>
+              <option value="name">이름 가나다순</option>
+            </select>
+          </div>
+          <div class="results-header">
+            <h2 id="results-title">
+              <span id="result-label">전체 몬스터</span
+              ><span id="result-count" role="status" aria-live="polite"></span>
+            </h2>
+            <span class="page-range" id="page-range"></span>
+          </div>
+          <div class="cards" id="cards"></div>
+          <div class="empty" id="empty" hidden>
+            <h3>아직 기록을 찾지 못했어요.</h3>
+            <p>검색어를 바꾸거나 지역·서식지 필터를 풀어 보세요.</p>
+            <button type="button" id="empty-reset">전체 도감 보기</button>
+          </div>
+          <nav
+            class="pagination"
+            id="pagination"
+            aria-label="도감 페이지"
+          ></nav>
+          <p class="probability-note">
+            <b>드롭 확률을 읽는 법</b> · 표의 확률은 몬스터 한 마리를 처치할 때
+            아이템별로 따로 판정됩니다. 여러 아이템이 함께 나오거나 아무것도
+            나오지 않을 수 있으므로 확률의 합은 100%가 아닙니다. 수량은 해당
+            아이템이 나왔을 때의 범위이며, 경험치와 골드는 확정 보상입니다.
+          </p>
+        </section>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="wrap">
+        <div>
+          <b>LEAFTALE · 리프테일</b> &nbsp; 숲의 작은 이야기를 모으는 곳
+        </div>
+        <span id="version-note"></span>
+      </div>
+    </footer>
+    <noscript
+      ><p class="noscript">
+        검색과 도감 표시를 위해 브라우저의 JavaScript를 켜 주세요.
+      </p></noscript
+    >
+    <script id="bestiary-data" type="application/json">
+      {"version":"0.3.0","regions":[{"id":"forest","name":"햇살잎 숲","subtitle":"작은 씨앗이 부르는 모험","level":"1–12","color":"#9fbf77","story":"겨울이 오지 않는데도 작은 동물들이 식량을 모으고 있습니다. 길을 막은 뿌리 너머에서 그 이유를 찾아보세요."},{"id":"coast","name":"은물결 해안림","subtitle":"숲과 바다가 숨을 나누는 곳","level":"13–27","color":"#83c8cb","story":"바다까지 뻗은 뿌리가 물길을 가로막았습니다. 파도 속에서 숲의 오래된 숨결이 깨어납니다."}],"maps":[{"id":"sprout","name":"새싹 울타리","region":0,"level":1,"biome":"meadow","description":"밭과 숲이 만나는 볕 좋은 울타리. 풀잎 아래에서 작은 소동이 일어납니다."},{"id":"acorn","name":"도토리 샛길","region":0,"level":3,"biome":"forest","description":"도토리껍질이 흩어진 샛길. 낙엽 뒤에서 무언가 바쁘게 움직입니다."},{"id":"brook","name":"이슬개울","region":0,"level":5,"biome":"brook","description":"징검돌 위로 햇살이 부서지는 얕은 개울. 물가의 발자국을 따라가 보세요."},{"id":"stump","name":"오래된 그루터기","region":0,"level":8,"biome":"deepforest","description":"한때 숲을 내려다보던 나무. 남은 생명은 아직 작은 이웃들을 지킵니다."},{"id":"saltwood","name":"소금바람 숲","region":1,"level":13,"biome":"saltforest","description":"바닷바람에 잎 끝이 은빛으로 물들었습니다. 멀리서 파도 소리가 들립니다."},{"id":"glassbeach","name":"유리열매 모래밭","region":1,"level":16,"biome":"beach","description":"투명한 열매와 조개가 반짝이는 바다. 발밑의 작은 집게를 조심하세요."},{"id":"tideroot","name":"밀물뿌리 습지","region":1,"level":20,"biome":"marsh","description":"물 위로 솟은 뿌리가 길을 잇습니다. 밀물이 오기 전에 흐름을 읽어야 합니다."},{"id":"seacave","name":"푸른숨 해식동굴","region":1,"level":24,"biome":"cave","description":"천장의 고대 뿌리 사이로 바다가 숨 쉽니다. 가장 깊은 곳에 긴 그림자가 머뭅니다."}],"types":{"normal":"일반","elite":"정예","rare":"희귀","boss":"지역 보스"},"monsters":[{"id":"m1","index":0,"name":"콩잎폴짝","shape":"bug","lore":"콩잎을 등에 붙인 풀벌레. 농부의 씨앗을 자기 겨울 식량으로 착각합니다.","map":"sprout","region":0,"type":"normal","level":1,"color":"#a5c969","hp":37,"attack":6,"defense":0,"speed":1.2,"ranged":false,"xp":28,"drops":[{"item":"fiber","chance":0.32,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.08,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"spear1","chance":0.012,"min":1,"max":1,"name":"연습용 버들창","lore":"휘어지는 창대 덕분에 잘 부러지지 않습니다. 첫 흠집은 숲길 견습생이 자랐다는 표시입니다.","itemType":"equipment","slot":"weapon"}],"gold":7,"image":{"file":"assets/creatures/group-0.png","sx":0,"sy":0,"sw":155,"sh":159}},{"id":"m2","index":1,"name":"솜털씨앗쥐","shape":"mouse","lore":"씨앗을 볼 가득 모으는 들쥐. 놀라면 먹이부터 떨어뜨립니다.","map":"sprout","region":0,"type":"normal","level":2,"color":"#cfad81","hp":50,"attack":8,"defense":1,"speed":1.2,"ranged":false,"xp":38,"drops":[{"item":"fiber","chance":0.39,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.095,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"staff1","chance":0.016,"min":1,"max":1,"name":"말린잎 지팡이","lore":"삐뚤게 새긴 잎맥에는 작은 빛을 모으던 견습생의 시간이 남아 있습니다.","itemType":"equipment","slot":"weapon"}],"gold":9,"image":{"file":"assets/creatures/group-0.png","sx":0,"sy":318,"sw":157,"sh":160}},{"id":"m3","index":2,"name":"흙묻은 새순이","shape":"sprout","lore":"풀리지 않은 뿌리 때문에 흙을 끌고 다니는 어린 식물 생명체입니다.","map":"sprout","region":0,"type":"normal","level":3,"color":"#8fba6f","hp":63,"attack":10,"defense":1,"speed":1.2,"ranged":false,"xp":48,"drops":[{"item":"fiber","chance":0.46,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.11,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"bow1","chance":0.02,"min":1,"max":1,"name":"묶은가지 사냥활","lore":"가는 가지를 끈으로 묶었습니다. 당기는 힘보다 놓는 순간의 자세를 가르칩니다.","itemType":"equipment","slot":"weapon"}],"gold":10,"image":{"file":"assets/creatures/group-0.png","sx":0,"sy":627,"sw":157,"sh":165}},{"id":"m4","index":3,"name":"밤송이등 벌레","shape":"beetle","lore":"빈 밤송이를 갑옷처럼 썼습니다. 웅크릴 때는 등을 두드리지 마세요.","map":"sprout","region":0,"type":"elite","level":3,"color":"#ac8959","hp":139,"attack":12,"defense":1,"speed":1.2,"ranged":false,"xp":120,"drops":[{"item":"fiber","chance":0.71,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.125,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"wand1","chance":0.045,"min":1,"max":1,"name":"새순 가지봉","lore":"손잡이의 작은 잎은 주인이 쉬지 않으면 함께 시들어 휴식을 재촉합니다.","itemType":"equipment","slot":"weapon"}],"gold":10,"image":{"file":"assets/creatures/group-0.png","sx":0,"sy":950,"sw":157,"sh":143}},{"id":"m5","index":4,"name":"리본꼬리 족제비","shape":"weasel","lore":"마을의 천 조각으로 꼬리를 꾸몄습니다. 화려한 꼬리보다 발을 보세요.","map":"sprout","region":0,"type":"rare","level":4,"color":"#ce9d8b","hp":228,"attack":12,"defense":2,"speed":1.2,"ranged":false,"xp":174,"drops":[{"item":"fiber","chance":0.5,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.14,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"spear1","chance":0.08,"min":1,"max":1,"name":"연습용 버들창","lore":"휘어지는 창대 덕분에 잘 부러지지 않습니다. 첫 흠집은 숲길 견습생이 자랐다는 표시입니다.","itemType":"equipment","slot":"weapon"}],"gold":12,"image":{"file":"assets/creatures/group-1.png","sx":0,"sy":0,"sw":159,"sh":170}},{"id":"m6","index":5,"name":"도토리투구 다람쥐","shape":"squirrel","lore":"지나치게 큰 도토리 투구를 썼습니다. 앞이 잘 안 보여 곧장 달립니다.","map":"acorn","region":0,"type":"normal","level":3,"color":"#bca070","hp":63,"attack":10,"defense":1,"speed":1.2,"ranged":false,"xp":48,"drops":[{"item":"fiber","chance":0.39,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.08,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"staff1","chance":0.02,"min":1,"max":1,"name":"말린잎 지팡이","lore":"삐뚤게 새긴 잎맥에는 작은 빛을 모으던 견습생의 시간이 남아 있습니다.","itemType":"equipment","slot":"weapon"}],"gold":10,"image":{"file":"assets/creatures/group-1.png","sx":0,"sy":329,"sw":158,"sh":169}},{"id":"m7","index":6,"name":"낙엽귀 토끼","shape":"rabbit","lore":"마른 잎 같은 귀로 몸을 숨깁니다. 뛰기 직전 귀가 먼저 들립니다.","map":"acorn","region":0,"type":"normal","level":4,"color":"#baac7e","hp":76,"attack":12,"defense":2,"speed":1.9,"ranged":false,"xp":58,"drops":[{"item":"fiber","chance":0.46,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.095,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"bow1","chance":0.012,"min":1,"max":1,"name":"묶은가지 사냥활","lore":"가는 가지를 끈으로 묶었습니다. 당기는 힘보다 놓는 순간의 자세를 가르칩니다.","itemType":"equipment","slot":"weapon"}],"gold":12,"image":{"file":"assets/creatures/group-1.png","sx":0,"sy":655,"sw":155,"sh":174}},{"id":"m8","index":7,"name":"솔방울구름 애벌레","shape":"caterpillar","lore":"등의 솜털로 구름처럼 보이는 애벌레. 솔방울을 굴려 길을 막습니다.","map":"acorn","region":0,"type":"normal","level":5,"color":"#a3bba1","hp":89,"attack":15,"defense":3,"speed":1.2,"ranged":true,"xp":68,"drops":[{"item":"fiber","chance":0.53,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.11,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"wand1","chance":0.016,"min":1,"max":1,"name":"새순 가지봉","lore":"손잡이의 작은 잎은 주인이 쉬지 않으면 함께 시들어 휴식을 재촉합니다.","itemType":"equipment","slot":"weapon"}],"gold":14,"image":{"file":"assets/creatures/group-1.png","sx":0,"sy":983,"sw":159,"sh":136}},{"id":"m9","index":8,"name":"옹이주먹 꼬마목인","shape":"treant","lore":"울타리 말뚝에 깃든 목인. 아직도 자기 밭을 지킨다고 믿습니다.","map":"acorn","region":0,"type":"elite","level":5,"color":"#9f9166","hp":196,"attack":17,"defense":3,"speed":1.2,"ranged":false,"xp":170,"drops":[{"item":"fiber","chance":0.5,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.125,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"spear1","chance":0.045,"min":1,"max":1,"name":"연습용 버들창","lore":"휘어지는 창대 덕분에 잘 부러지지 않습니다. 첫 흠집은 숲길 견습생이 자랐다는 표시입니다.","itemType":"equipment","slot":"weapon"}],"gold":14,"image":{"file":"assets/creatures/group-2.png","sx":0,"sy":0,"sw":157,"sh":171}},{"id":"m10","index":9,"name":"세 도토리의 파수꾼","shape":"squirrel","lore":"도토리 세 알을 지키는 늙은 다람쥐. 먹이가 없어져도 자리를 떠나지 않습니다.","map":"acorn","region":0,"type":"rare","level":6,"color":"#cbac68","hp":306,"attack":17,"defense":3,"speed":1.2,"ranged":false,"xp":234,"drops":[{"item":"fiber","chance":0.5700000000000001,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.14,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"staff1","chance":0.08,"min":1,"max":1,"name":"말린잎 지팡이","lore":"삐뚤게 새긴 잎맥에는 작은 빛을 모으던 견습생의 시간이 남아 있습니다.","itemType":"equipment","slot":"weapon"}],"gold":16,"image":{"file":"assets/creatures/group-2.png","sx":0,"sy":335,"sw":159,"sh":168}},{"id":"m11","index":10,"name":"이슬배 물방개","shape":"bug","lore":"등의 물방울로 몸집을 부풀립니다. 방울이 터지면 잠시 작아집니다.","map":"brook","region":0,"type":"normal","level":5,"color":"#78bfc0","hp":89,"attack":15,"defense":3,"speed":1.2,"ranged":false,"xp":68,"drops":[{"item":"fiber","chance":0.46,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.08,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"bow1","chance":0.016,"min":1,"max":1,"name":"묶은가지 사냥활","lore":"가는 가지를 끈으로 묶었습니다. 당기는 힘보다 놓는 순간의 자세를 가르칩니다.","itemType":"equipment","slot":"weapon"}],"gold":14,"image":{"file":"assets/creatures/group-2.png","sx":0,"sy":659,"sw":159,"sh":145}},{"id":"m12","index":11,"name":"갈대발 개구리","shape":"frog","lore":"갈대 사이에서 다리가 길어진 개구리. 그림자가 떨어질 곳을 알려줍니다.","map":"brook","region":0,"type":"normal","level":6,"color":"#8abf82","hp":102,"attack":17,"defense":3,"speed":1.2,"ranged":false,"xp":78,"drops":[{"item":"fiber","chance":0.53,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.095,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"wand1","chance":0.02,"min":1,"max":1,"name":"새순 가지봉","lore":"손잡이의 작은 잎은 주인이 쉬지 않으면 함께 시들어 휴식을 재촉합니다.","itemType":"equipment","slot":"weapon"}],"gold":16,"image":{"file":"assets/creatures/group-2.png","sx":0,"sy":941,"sw":162,"sh":152}},{"id":"m13","index":12,"name":"물잠자리 유충","shape":"caterpillar","lore":"개울 바닥에서 물줄기를 쏩니다. 젖은 흙 위에서는 느리게 움직입니다.","map":"brook","region":0,"type":"normal","level":7,"color":"#a4c6b1","hp":115,"attack":19,"defense":4,"speed":1.2,"ranged":true,"xp":88,"drops":[{"item":"fiber","chance":0.32,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.11,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"spear1","chance":0.012,"min":1,"max":1,"name":"연습용 버들창","lore":"휘어지는 창대 덕분에 잘 부러지지 않습니다. 첫 흠집은 숲길 견습생이 자랐다는 표시입니다.","itemType":"equipment","slot":"weapon"}],"gold":18,"image":{"file":"assets/creatures/group-3.png","sx":0,"sy":0,"sw":157,"sh":201}},{"id":"m14","index":13,"name":"돌껍질 가재","shape":"crab","lore":"징검돌을 등에 붙였습니다. 집게를 높이 들면 내려찍기를 준비합니다.","map":"brook","region":0,"type":"elite","level":7,"color":"#91a6a4","hp":253,"attack":22,"defense":4,"speed":1.2,"ranged":false,"xp":220,"drops":[{"item":"fiber","chance":0.5700000000000001,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.125,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"staff1","chance":0.045,"min":1,"max":1,"name":"말린잎 지팡이","lore":"삐뚤게 새긴 잎맥에는 작은 빛을 모으던 견습생의 시간이 남아 있습니다.","itemType":"equipment","slot":"weapon"}],"gold":18,"image":{"file":"assets/creatures/group-3.png","sx":0,"sy":355,"sw":157,"sh":164}},{"id":"m15","index":14,"name":"잠꾸러기 수달 영감","shape":"otter","lore":"개울을 막고 자는 늙은 수달. 잠자리를 지키다 싸움 중에도 꾸벅 졸곤 합니다.","map":"brook","region":0,"type":"rare","level":8,"color":"#bfa88c","hp":384,"attack":21,"defense":5,"speed":1.2,"ranged":false,"xp":294,"drops":[{"item":"fiber","chance":0.64,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.14,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"bow1","chance":0.08,"min":1,"max":1,"name":"묶은가지 사냥활","lore":"가는 가지를 끈으로 묶었습니다. 당기는 힘보다 놓는 순간의 자세를 가르칩니다.","itemType":"equipment","slot":"weapon"}],"gold":19,"image":{"file":"assets/creatures/group-3.png","sx":0,"sy":676,"sw":166,"sh":147}},{"id":"m16","index":15,"name":"나무부스러기 진드기","shape":"bug","lore":"썩은 나무의 작은 분해자. 넘치는 먹이를 따라 그루터기 밖으로 나왔습니다.","map":"stump","region":0,"type":"normal","level":8,"color":"#957d65","hp":128,"attack":21,"defense":5,"speed":1.2,"ranged":false,"xp":98,"drops":[{"item":"fiber","chance":0.53,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.08,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"wand1","chance":0.012,"min":1,"max":1,"name":"새순 가지봉","lore":"손잡이의 작은 잎은 주인이 쉬지 않으면 함께 시들어 휴식을 재촉합니다.","itemType":"equipment","slot":"weapon"}],"gold":19,"image":{"file":"assets/creatures/group-3.png","sx":0,"sy":954,"sw":156,"sh":133}},{"id":"m17","index":16,"name":"버섯모자 달팽이","shape":"snail","lore":"등의 버섯 덕분에 늘 그늘이 있습니다. 지나간 자리에는 반짝이는 흔적이 남습니다.","map":"stump","region":0,"type":"normal","level":9,"color":"#c99f9c","hp":141,"attack":23,"defense":5,"speed":0.65,"ranged":false,"xp":108,"drops":[{"item":"fiber","chance":0.32,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.24,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.095,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"spear1","chance":0.016,"min":1,"max":1,"name":"연습용 버들창","lore":"휘어지는 창대 덕분에 잘 부러지지 않습니다. 첫 흠집은 숲길 견습생이 자랐다는 표시입니다.","itemType":"equipment","slot":"weapon"}],"gold":21,"image":{"file":"assets/creatures/group-4.png","sx":0,"sy":0,"sw":157,"sh":167}},{"id":"m18","index":17,"name":"수액방울 딱정벌레","shape":"beetle","lore":"수액을 나르다 등이 끈적해졌습니다. 달콤한 냄새가 길게 이어집니다.","map":"stump","region":0,"type":"normal","level":10,"color":"#bfa24e","hp":154,"attack":25,"defense":6,"speed":1.2,"ranged":false,"xp":118,"drops":[{"item":"fiber","chance":0.39,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.3,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.11,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"staff1","chance":0.02,"min":1,"max":1,"name":"말린잎 지팡이","lore":"삐뚤게 새긴 잎맥에는 작은 빛을 모으던 견습생의 시간이 남아 있습니다.","itemType":"equipment","slot":"weapon"}],"gold":23,"image":{"file":"assets/creatures/group-4.png","sx":0,"sy":320,"sw":157,"sh":149}},{"id":"m19","index":18,"name":"뒤틀린 뿌리멧돼지","shape":"boar","lore":"급성장한 뿌리가 굴을 막았습니다. 성난 돌진 끝에는 큰 빈틈이 생깁니다.","map":"stump","region":0,"type":"elite","level":10,"color":"#a48a72","hp":339,"attack":30,"defense":6,"speed":1.2,"ranged":false,"xp":295,"drops":[{"item":"fiber","chance":0.64,"min":1,"max":2,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.18,"min":1,"max":1,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.125,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"bow1","chance":0.045,"min":1,"max":1,"name":"묶은가지 사냥활","lore":"가는 가지를 끈으로 묶었습니다. 당기는 힘보다 놓는 순간의 자세를 가르칩니다.","itemType":"equipment","slot":"weapon"}],"gold":23,"image":{"file":"assets/creatures/group-4.png","sx":0,"sy":627,"sw":170,"sh":168}},{"id":"m20","index":19,"name":"그루터기 할아범","shape":"ancient","lore":"잘린 나무의 남은 생명이 이웃들을 지키는 수호자로 깨어났습니다.","map":"stump","region":0,"type":"boss","level":11,"color":"#8b9d64","hp":1837,"attack":43,"defense":7,"speed":0.8,"ranged":false,"xp":1664,"drops":[{"item":"fiber","chance":0.71,"min":1,"max":8,"name":"버들섬유","lore":"어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.","itemType":"material","slot":null},{"item":"ironstone","chance":0.6599999999999999,"min":1,"max":6,"name":"개울철석","lore":"물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.","itemType":"material","slot":null},{"item":"softleaf","chance":0.14,"min":1,"max":1,"name":"보들잎","lore":"다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.","itemType":"material","slot":null},{"item":"wand1","chance":0.18,"min":1,"max":1,"name":"새순 가지봉","lore":"손잡이의 작은 잎은 주인이 쉬지 않으면 함께 시들어 휴식을 재촉합니다.","itemType":"equipment","slot":"weapon"}],"gold":170,"image":{"file":"assets/creatures/group-4.png","sx":0,"sy":950,"sw":166,"sh":143}},{"id":"m21","index":20,"name":"소금털 들토끼","shape":"rabbit","lore":"바닷바람에 털끝이 희게 굳었습니다. 몸을 털면 소금가루가 날립니다.","map":"saltwood","region":1,"type":"normal","level":13,"color":"#cad2bd","hp":193,"attack":31,"defense":8,"speed":1.9,"ranged":false,"xp":148,"drops":[{"item":"seawood","chance":0.32,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.08,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"spear2","chance":0.02,"min":1,"max":1,"name":"조개날 물푸레창","lore":"해안 경비대가 조개의 층 구조를 본떠 만들었습니다. 가벼운 날이 힘을 고르게 받습니다.","itemType":"equipment","slot":"weapon"}],"gold":28,"image":{"file":"assets/creatures/group-5.png","sx":0,"sy":0,"sw":160,"sh":168}},{"id":"m22","index":21,"name":"은잎도마뱀","shape":"lizard","lore":"은빛 잎 아래 위장합니다. 공격하기 직전 꼬리 끝이 햇빛을 반사합니다.","map":"saltwood","region":1,"type":"normal","level":14,"color":"#9bbcb6","hp":206,"attack":33,"defense":9,"speed":1.2,"ranged":false,"xp":158,"drops":[{"item":"seawood","chance":0.39,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.095,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"staff2","chance":0.012,"min":1,"max":1,"name":"은물결 가지봉","lore":"바다 바람을 견딘 가지는 마력의 흔들림도 잘 버팁니다. 소금빛은 지워지지 않습니다.","itemType":"equipment","slot":"weapon"}],"gold":30,"image":{"file":"assets/creatures/group-5.png","sx":0,"sy":335,"sw":161,"sh":163}},{"id":"m23","index":22,"name":"조개집 소라게","shape":"hermit","lore":"숲으로 떠밀려온 조개껍질이 새집이 되었습니다. 빈 집처럼 멈춰 기다립니다.","map":"saltwood","region":1,"type":"normal","level":15,"color":"#cfc2a0","hp":219,"attack":36,"defense":9,"speed":1.2,"ranged":false,"xp":168,"drops":[{"item":"seawood","chance":0.46,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.11,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"bow2","chance":0.016,"min":1,"max":1,"name":"소금바람 굽이활","lore":"바다를 향해 휜 나무로 만들었습니다. 습한 날에도 탄성이 일정합니다.","itemType":"equipment","slot":"weapon"}],"gold":32,"image":{"file":"assets/creatures/group-5.png","sx":0,"sy":649,"sw":158,"sh":146}},{"id":"m24","index":23,"name":"바람깃 왜가리","shape":"bird","lore":"먹이터가 막혀 숲에 왔습니다. 긴 부리로 찌른 뒤 천천히 몸을 돌립니다.","map":"saltwood","region":1,"type":"elite","level":15,"color":"#c3c5a9","hp":482,"attack":43,"defense":9,"speed":1.2,"ranged":true,"xp":420,"drops":[{"item":"seawood","chance":0.71,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.125,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"wand2","chance":0.045,"min":1,"max":1,"name":"해풍꽃 약초봉","lore":"소금기에도 향을 잃지 않는 꽃을 감쌌습니다. 돌아온 이에게 먼저 쥐여주던 도구입니다.","itemType":"equipment","slot":"weapon"}],"gold":32,"image":{"file":"assets/creatures/group-5.png","sx":0,"sy":923,"sw":144,"sh":158}},{"id":"m25","index":24,"name":"소금숲 은여우","shape":"fox","lore":"흰 잎 사이를 순찰하는 여우. 바람 방향을 따라 적의 옆으로 돌아갑니다.","map":"saltwood","region":1,"type":"rare","level":16,"color":"#d6ded5","hp":696,"attack":38,"defense":10,"speed":1.9,"ranged":false,"xp":534,"drops":[{"item":"seawood","chance":0.5,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.14,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"spear2","chance":0.08,"min":1,"max":1,"name":"조개날 물푸레창","lore":"해안 경비대가 조개의 층 구조를 본떠 만들었습니다. 가벼운 날이 힘을 고르게 받습니다.","itemType":"equipment","slot":"weapon"}],"gold":34,"image":{"file":"assets/creatures/group-6.png","sx":0,"sy":0,"sw":157,"sh":167}},{"id":"m26","index":25,"name":"유리열매 딱정벌레","shape":"beetle","lore":"투명한 열매껍질을 먹어 등이 반짝입니다. 햇빛을 모았다가 내보냅니다.","map":"glassbeach","region":1,"type":"normal","level":16,"color":"#a7d4c2","hp":232,"attack":38,"defense":10,"speed":1.2,"ranged":false,"xp":178,"drops":[{"item":"seawood","chance":0.39,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.08,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"staff2","chance":0.016,"min":1,"max":1,"name":"은물결 가지봉","lore":"바다 바람을 견딘 가지는 마력의 흔들림도 잘 버팁니다. 소금빛은 지워지지 않습니다.","itemType":"equipment","slot":"weapon"}],"gold":34,"image":{"file":"assets/creatures/group-6.png","sx":0,"sy":329,"sw":157,"sh":157}},{"id":"m27","index":26,"name":"모래주머니 게","shape":"crab","lore":"단단한 모래주머니로 상대를 밀어냅니다. 젖은 주머니는 유난히 무겁습니다.","map":"glassbeach","region":1,"type":"normal","level":17,"color":"#cdb587","hp":245,"attack":40,"defense":11,"speed":1.2,"ranged":false,"xp":188,"drops":[{"item":"seawood","chance":0.46,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.095,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"bow2","chance":0.02,"min":1,"max":1,"name":"소금바람 굽이활","lore":"바다를 향해 휜 나무로 만들었습니다. 습한 날에도 탄성이 일정합니다.","itemType":"equipment","slot":"weapon"}],"gold":36,"image":{"file":"assets/creatures/group-6.png","sx":0,"sy":641,"sw":167,"sh":155}},{"id":"m28","index":27,"name":"파도거품 해파리","shape":"jelly","lore":"모래와 얕은 물 사이에 떠 있습니다. 부풀어 오른 거품은 곧 터집니다.","map":"glassbeach","region":1,"type":"normal","level":18,"color":"#abdfe0","hp":258,"attack":42,"defense":11,"speed":1.2,"ranged":true,"xp":198,"drops":[{"item":"seawood","chance":0.53,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.11,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"wand2","chance":0.012,"min":1,"max":1,"name":"해풍꽃 약초봉","lore":"소금기에도 향을 잃지 않는 꽃을 감쌌습니다. 돌아온 이에게 먼저 쥐여주던 도구입니다.","itemType":"equipment","slot":"weapon"}],"gold":37,"image":{"file":"assets/creatures/group-6.png","sx":0,"sy":932,"sw":152,"sh":150}},{"id":"m29","index":28,"name":"조개칼 사마귀","shape":"mantis","lore":"앞다리에 조개 조각을 붙였습니다. 연속 공격 후에는 날을 정리합니다.","map":"glassbeach","region":1,"type":"elite","level":18,"color":"#bfc8a6","hp":568,"attack":50,"defense":11,"speed":1.2,"ranged":false,"xp":495,"drops":[{"item":"seawood","chance":0.5,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.125,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"spear2","chance":0.045,"min":1,"max":1,"name":"조개날 물푸레창","lore":"해안 경비대가 조개의 층 구조를 본떠 만들었습니다. 가벼운 날이 힘을 고르게 받습니다.","itemType":"equipment","slot":"weapon"}],"gold":37,"image":{"file":"assets/creatures/group-7.png","sx":0,"sy":0,"sw":157,"sh":167}},{"id":"m30","index":29,"name":"열매도둑 푸른원숭이","shape":"monkey","lore":"숲과 해변을 오가며 열매를 훔칩니다. 자기 먹이를 빼앗기는 것은 참지 못합니다.","map":"glassbeach","region":1,"type":"rare","level":19,"color":"#79acbd","hp":813,"attack":44,"defense":12,"speed":1.2,"ranged":false,"xp":624,"drops":[{"item":"seawood","chance":0.5700000000000001,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.14,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"staff2","chance":0.08,"min":1,"max":1,"name":"은물결 가지봉","lore":"바다 바람을 견딘 가지는 마력의 흔들림도 잘 버팁니다. 소금빛은 지워지지 않습니다.","itemType":"equipment","slot":"weapon"}],"gold":39,"image":{"file":"assets/creatures/group-7.png","sx":0,"sy":338,"sw":157,"sh":152}},{"id":"m31","index":30,"name":"물뿌리 지렁이","shape":"worm","lore":"물속 뿌리 사이를 파고듭니다. 솟은 흙줄기가 이동 경로를 드러냅니다.","map":"tideroot","region":1,"type":"normal","level":20,"color":"#9eae9e","hp":284,"attack":46,"defense":13,"speed":1.2,"ranged":false,"xp":218,"drops":[{"item":"seawood","chance":0.46,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.08,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"bow2","chance":0.012,"min":1,"max":1,"name":"소금바람 굽이활","lore":"바다를 향해 휜 나무로 만들었습니다. 습한 날에도 탄성이 일정합니다.","itemType":"equipment","slot":"weapon"}],"gold":41,"image":{"file":"assets/creatures/group-7.png","sx":0,"sy":645,"sw":152,"sh":148}},{"id":"m32","index":31,"name":"진주눈 망둑어","shape":"fish","lore":"얕은 물을 뛰는 물고기. 반짝이는 눈으로 바라본 뒤 물을 뿜습니다.","map":"tideroot","region":1,"type":"normal","level":21,"color":"#adc6b3","hp":297,"attack":48,"defense":13,"speed":1.2,"ranged":false,"xp":228,"drops":[{"item":"seawood","chance":0.53,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.095,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"wand2","chance":0.016,"min":1,"max":1,"name":"해풍꽃 약초봉","lore":"소금기에도 향을 잃지 않는 꽃을 감쌌습니다. 돌아온 이에게 먼저 쥐여주던 도구입니다.","itemType":"equipment","slot":"weapon"}],"gold":43,"image":{"file":"assets/creatures/group-7.png","sx":0,"sy":951,"sw":156,"sh":141}},{"id":"m33","index":32,"name":"이끼등 악어붙이","shape":"croc","lore":"등의 이끼 때문에 떠 있는 나무처럼 보입니다. 물가에서 느긋하게 기다립니다.","map":"tideroot","region":1,"type":"normal","level":22,"color":"#809c87","hp":310,"attack":50,"defense":14,"speed":1.2,"ranged":false,"xp":238,"drops":[{"item":"seawood","chance":0.32,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.11,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"spear2","chance":0.02,"min":1,"max":1,"name":"조개날 물푸레창","lore":"해안 경비대가 조개의 층 구조를 본떠 만들었습니다. 가벼운 날이 힘을 고르게 받습니다.","itemType":"equipment","slot":"weapon"}],"gold":45,"image":{"file":"assets/creatures/group-8.png","sx":0,"sy":0,"sw":157,"sh":167}},{"id":"m34","index":33,"name":"갈대가면 목령","shape":"treant","lore":"버려진 갈대 인형에 숲이 깃들었습니다. 묶인 발 대신 뿌리를 뻗습니다.","map":"tideroot","region":1,"type":"elite","level":22,"color":"#aeab75","hp":682,"attack":60,"defense":14,"speed":1.2,"ranged":false,"xp":595,"drops":[{"item":"seawood","chance":0.5700000000000001,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.125,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"staff2","chance":0.045,"min":1,"max":1,"name":"은물결 가지봉","lore":"바다 바람을 견딘 가지는 마력의 흔들림도 잘 버팁니다. 소금빛은 지워지지 않습니다.","itemType":"equipment","slot":"weapon"}],"gold":45,"image":{"file":"assets/creatures/group-8.png","sx":0,"sy":318,"sw":157,"sh":184}},{"id":"m35","index":34,"name":"밀물의 흰사슴","shape":"deer","lore":"물에 잠긴 길을 기억하는 사슴. 발밑의 물결이 오래된 길을 보여줍니다.","map":"tideroot","region":1,"type":"rare","level":23,"color":"#d2ded4","hp":969,"attack":52,"defense":14,"speed":1.2,"ranged":false,"xp":744,"drops":[{"item":"seawood","chance":0.64,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.14,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"bow2","chance":0.08,"min":1,"max":1,"name":"소금바람 굽이활","lore":"바다를 향해 휜 나무로 만들었습니다. 습한 날에도 탄성이 일정합니다.","itemType":"equipment","slot":"weapon"}],"gold":46,"image":{"file":"assets/creatures/group-8.png","sx":0,"sy":677,"sw":158,"sh":175}},{"id":"m36","index":35,"name":"푸른등 동굴새우","shape":"shrimp","lore":"등의 빛으로 동료를 찾습니다. 빠르게 깜빡이면 함께 달려들 준비입니다.","map":"seacave","region":1,"type":"normal","level":24,"color":"#81bac7","hp":336,"attack":54,"defense":15,"speed":1.2,"ranged":false,"xp":258,"drops":[{"item":"seawood","chance":0.53,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.08,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"wand2","chance":0.02,"min":1,"max":1,"name":"해풍꽃 약초봉","lore":"소금기에도 향을 잃지 않는 꽃을 감쌌습니다. 돌아온 이에게 먼저 쥐여주던 도구입니다.","itemType":"equipment","slot":"weapon"}],"gold":48,"image":{"file":"assets/creatures/group-8.png","sx":0,"sy":1022,"sw":160,"sh":110}},{"id":"m37","index":36,"name":"소금결정 박쥐","shape":"bat","lore":"날개 끝에 소금 결정이 자랐습니다. 날갯짓할 때 작은 빛이 떨어집니다.","map":"seacave","region":1,"type":"normal","level":25,"color":"#a5b8c2","hp":349,"attack":57,"defense":16,"speed":1.2,"ranged":true,"xp":268,"drops":[{"item":"seawood","chance":0.32,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.18,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.095,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"spear2","chance":0.012,"min":1,"max":1,"name":"조개날 물푸레창","lore":"해안 경비대가 조개의 층 구조를 본떠 만들었습니다. 가벼운 날이 힘을 고르게 받습니다.","itemType":"equipment","slot":"weapon"}],"gold":50,"image":{"file":"assets/creatures/group-9.png","sx":0,"sy":0,"sw":157,"sh":168}},{"id":"m38","index":37,"name":"해초머리 말미잘","shape":"anemone","lore":"해초처럼 바위에서 흔들립니다. 먹잇감이 가까워져야 촉수를 펼칩니다.","map":"seacave","region":1,"type":"normal","level":26,"color":"#92bfa2","hp":362,"attack":59,"defense":16,"speed":1.2,"ranged":true,"xp":278,"drops":[{"item":"seawood","chance":0.39,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.24,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.11,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"staff2","chance":0.016,"min":1,"max":1,"name":"은물결 가지봉","lore":"바다 바람을 견딘 가지는 마력의 흔들림도 잘 버팁니다. 소금빛은 지워지지 않습니다.","itemType":"equipment","slot":"weapon"}],"gold":52,"image":{"file":"assets/creatures/group-9.png","sx":0,"sy":318,"sw":157,"sh":170}},{"id":"m39","index":38,"name":"산호갑각 수문게","shape":"crab","lore":"막힌 물길 앞에서 수백 번 탈피한 게. 한 집게로 막고 다른 집게로 땅을 가릅니다.","map":"seacave","region":1,"type":"elite","level":26,"color":"#c6938c","hp":796,"attack":70,"defense":16,"speed":1.2,"ranged":false,"xp":695,"drops":[{"item":"seawood","chance":0.64,"min":1,"max":2,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.3,"min":1,"max":1,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.125,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"bow2","chance":0.045,"min":1,"max":1,"name":"소금바람 굽이활","lore":"바다를 향해 휜 나무로 만들었습니다. 습한 날에도 탄성이 일정합니다.","itemType":"equipment","slot":"weapon"}],"gold":52,"image":{"file":"assets/creatures/group-9.png","sx":0,"sy":658,"sw":161,"sh":154}},{"id":"m40","index":39,"name":"푸른숨 뿌리해룡","shape":"dragon","lore":"바닷속 뿌리와 자란 고대 해룡. 본래 바다와 숲의 물을 순환시키던 생명체입니다.","map":"seacave","region":1,"type":"boss","level":27,"color":"#79bfc5","hp":4125,"attack":97,"defense":17,"speed":0.8,"ranged":true,"xp":3744,"drops":[{"item":"seawood","chance":0.71,"min":1,"max":8,"name":"해풍목","lore":"바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.","itemType":"material","slot":null},{"item":"shellore","chance":0.6,"min":1,"max":6,"name":"조개광석","lore":"조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.","itemType":"material","slot":null},{"item":"saltflower","chance":0.14,"min":1,"max":1,"name":"소금꽃","lore":"바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.","itemType":"material","slot":null},{"item":"wand2","chance":0.18,"min":1,"max":1,"name":"해풍꽃 약초봉","lore":"소금기에도 향을 잃지 않는 꽃을 감쌌습니다. 돌아온 이에게 먼저 쥐여주던 도구입니다.","itemType":"equipment","slot":"weapon"}],"gold":410,"image":{"file":"assets/creatures/group-9.png","sx":0,"sy":961,"sw":154,"sh":138}}]}
+    </script>
+    <script>
+      (() => {
+        "use strict";
+        const data = JSON.parse(
+            document.getElementById("bestiary-data").textContent,
+          ),
+          $ = (id) => document.getElementById(id);
+        const esc = (value) =>
+          String(value ?? "").replace(
+            /[&<>"']/g,
+            (c) =>
+              ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;",
+              })[c],
+          );
+        const assetBase =
+          location.protocol === "file:"
+            ? "https://haenohub.github.io/trick/"
+            : new URL(".", location.href).href;
+        const fmt = (n) => Number(n).toLocaleString("ko-KR"),
+          percent = (n) => `${Math.round(n * 10000) / 100}%`;
+        const pageSize = 8,
+          images = new Map(),
+          loadedImages = new Map();
+        let region = "all",
+          map = "all",
+          rank = "all",
+          query = "",
+          sort = "level-asc",
+          page = 1,
+          filtered = [];
+        const mapOf = (id) => data.maps.find((m) => m.id === id),
+          typeOf = (d) =>
+            d.slot
+              ? "장비"
+              : d.itemType === "consumable"
+                ? "소비 아이템"
+                : "제작 재료";
+        document.querySelectorAll("[data-asset]").forEach((img) => {
+          img.src = new URL(img.dataset.asset, assetBase).href;
+        });
+        $("brand-link").href = assetBase;
+        $("play-link").href = assetBase;
+        $("total-count").textContent = fmt(data.monsters.length);
+        $("map-count").textContent = fmt(data.maps.length);
+        $("boss-count").textContent = fmt(
+          data.monsters.filter((m) => m.type === "boss").length,
+        );
+        $("version-note").textContent =
+          `지역 1–2 · v${data.version} 게임 데이터 기준 · 이미지 불러오기는 인터넷 연결 필요`;
+        $("region-options").innerHTML = [
+          ["all", "모든 지역", data.monsters.length],
+          ...data.regions.map((r, i) => [
+            String(i),
+            r.name,
+            data.monsters.filter((m) => m.region === i).length,
+          ]),
+        ]
+          .map(
+            ([id, name, count]) =>
+              `<button type="button" class="region-button" data-region="${id}" aria-pressed="${id === region}">${esc(name)}<span>${count}</span></button>`,
+          )
+          .join("");
+        $("rank-options").innerHTML = [
+          ["all", "전체"],
+          ...Object.entries(data.types).map(([id, name]) => [
+            id,
+            id === "boss" ? "보스" : name,
+          ]),
+        ]
+          .map(
+            ([id, name]) =>
+              `<button type="button" class="rank-button" data-rank="${id}" aria-pressed="${id === rank}">${esc(name)}</button>`,
+          )
+          .join("");
+        function updateMaps() {
+          const maps = data.maps.filter(
+            (m) => region === "all" || m.region === Number(region),
+          );
+          $("map-filter").innerHTML =
+            '<option value="all">모든 사냥터</option>' +
+            maps
+              .map((m) => `<option value="${m.id}">${esc(m.name)}</option>`)
+              .join("");
+          $("map-filter").value = map;
+        }
+        function card(m) {
+          const habitat = mapOf(m.map);
+          return `<article class="monster-card" id="${m.id}" data-id="${m.id}" data-type="${m.type}"><div class="card-top"><span class="entry-id">NO. ${String(m.index + 1).padStart(3, "0")}</span><div class="badges"><span class="badge ${m.type}">${esc(data.types[m.type])}</span><span class="badge level">Lv.${m.level}</span></div></div><div class="card-body"><div class="identity"><div class="art-space"><canvas width="232" height="232" data-monster="${m.id}" role="img" aria-label="${esc(m.name)}"></canvas><span class="art-error" hidden>이미지를 불러오지 못했어요</span></div><div><p class="habitat">${esc(data.regions[m.region].name)}<strong>${esc(habitat.name)}</strong></p><h3>${esc(m.name)}</h3></div></div><p class="lore">${esc(m.lore)}</p><div class="stats"><div class="stat"><small>체력</small><b>${fmt(m.hp)}</b></div><div class="stat"><small>공격력</small><b>${fmt(m.attack)}</b></div><div class="stat"><small>방어력</small><b>${fmt(m.defense)}</b></div><div class="stat"><small>공격 방식</small><b>${m.ranged ? "원거리" : "근접"}</b></div></div><div class="rewards"><span>처치 경험치 <strong>${fmt(m.xp)} EXP</strong></span><span class="gold">확정 골드 <strong>${fmt(m.gold)} G</strong></span></div><div class="drop-heading"><h4>드롭 테이블</h4><span>아이템 이름을 누르면 이야기 열기</span></div><table class="drop-table"><caption hidden>${esc(m.name)}의 아이템별 드롭 확률과 수량</caption><thead><tr><th scope="col">아이템</th><th scope="col">수량</th><th scope="col">확률</th></tr></thead><tbody>${m.drops.map((d) => `<tr data-item="${d.item}"><td><details class="drop-item"><summary>${esc(d.name)}</summary><p>${esc(d.lore)}</p><div class="item-kind">${typeOf(d)}</div></details></td><td>×${d.min}${d.max !== d.min ? "–" + d.max : ""}</td><td class="chance">${percent(d.chance)}</td></tr>`).join("")}</tbody></table></div></article>`;
+        }
+        function getImage(file) {
+          if (!images.has(file))
+            images.set(
+              file,
+              new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => {
+                  loadedImages.set(file, image);
+                  resolve(image);
+                };
+                image.onerror = () => reject(Error(file));
+                image.src = new URL(file, assetBase).href;
+              }),
+            );
+          return images.get(file);
+        }
+        async function paint(canvas) {
+          const m = data.monsters.find((m) => m.id === canvas.dataset.monster);
+          try {
+            const image =
+              loadedImages.get(m.image.file) || (await getImage(m.image.file));
+            if (!canvas.isConnected) return;
+            const { sx, sy, sw, sh } = m.image,
+              c = canvas.getContext("2d"),
+              scale = Math.min(220 / sw, 210 / sh);
+            c.clearRect(0, 0, 232, 232);
+            c.imageSmoothingEnabled = true;
+            c.imageSmoothingQuality = "high";
+            c.drawImage(
+              image,
+              sx,
+              sy,
+              sw,
+              sh,
+              (232 - sw * scale) / 2,
+              222 - sh * scale,
+              sw * scale,
+              sh * scale,
+            );
+            canvas.dataset.loaded = "true";
+          } catch {
+            if (canvas.isConnected) canvas.nextElementSibling.hidden = false;
+          }
+        }
+        const observer =
+          "IntersectionObserver" in window
+            ? new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      paint(entry.target);
+                      observer.unobserve(entry.target);
+                    }
+                  });
+                },
+                { rootMargin: "250px" },
+              )
+            : null;
+        function paintCards() {
+          document
+            .querySelectorAll("canvas[data-monster]")
+            .forEach((canvas) =>
+              observer ? observer.observe(canvas) : paint(canvas),
+            );
+        }
+        function render(scroll = false) {
+          observer?.disconnect();
+          const needle = query
+            .trim()
+            .normalize("NFKC")
+            .toLocaleLowerCase("ko-KR");
+          filtered = data.monsters.filter(
+            (m) =>
+              (region === "all" || m.region === Number(region)) &&
+              (map === "all" || m.map === map) &&
+              (rank === "all" || m.type === rank) &&
+              (!needle ||
+                [
+                  m.name,
+                  m.id,
+                  m.lore,
+                  mapOf(m.map).name,
+                  data.regions[m.region].name,
+                  ...m.drops.map((d) => d.name),
+                ]
+                  .join(" ")
+                  .normalize("NFKC")
+                  .toLocaleLowerCase("ko-KR")
+                  .includes(needle)),
+          );
+          filtered.sort(
+            sort === "name"
+              ? (a, b) => a.name.localeCompare(b.name, "ko")
+              : sort === "level-desc"
+                ? (a, b) => b.level - a.level || b.index - a.index
+                : (a, b) => a.level - b.level || a.index - b.index,
+          );
+          const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+          page = Math.min(page, pages);
+          const start = (page - 1) * pageSize;
+          $("cards").innerHTML = filtered
+            .slice(start, start + pageSize)
+            .map(card)
+            .join("");
+          $("result-label").textContent =
+            region === "all"
+              ? "전체 몬스터"
+              : data.regions[Number(region)].name;
+          $("result-count").textContent = `${filtered.length}종`;
+          $("page-range").textContent = filtered.length
+            ? `${start + 1}–${Math.min(start + pageSize, filtered.length)} / ${filtered.length}`
+            : "0 / 0";
+          $("empty").hidden = filtered.length > 0;
+          $("clear-search").hidden = !query;
+          $("pagination").hidden = pages <= 1;
+          $("pagination").innerHTML =
+            `<button type="button" data-page="${page - 1}" ${page === 1 ? "disabled" : ""} aria-label="이전 페이지">←</button>` +
+            Array.from(
+              { length: pages },
+              (_, i) =>
+                `<button type="button" data-page="${i + 1}" ${page === i + 1 ? 'aria-current="page"' : ""} aria-label="${i + 1}페이지">${i + 1}</button>`,
+            ).join("") +
+            `<button type="button" data-page="${page + 1}" ${page === pages ? "disabled" : ""} aria-label="다음 페이지">→</button>`;
+          document
+            .querySelectorAll("[data-region]")
+            .forEach((b) =>
+              b.setAttribute("aria-pressed", b.dataset.region === region),
+            );
+          document
+            .querySelectorAll("[data-rank]")
+            .forEach((b) =>
+              b.setAttribute("aria-pressed", b.dataset.rank === rank),
+            );
+          paintCards();
+          if (scroll)
+            $("catalogue").scrollIntoView({
+              behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+              block: "start",
+            });
+        }
+        function reset() {
+          region = map = rank = "all";
+          query = "";
+          sort = "level-asc";
+          page = 1;
+          $("search").value = "";
+          $("sort").value = sort;
+          updateMaps();
+          render();
+        }
+        $("region-options").addEventListener("click", (e) => {
+          const b = e.target.closest("[data-region]");
+          if (!b) return;
+          region = b.dataset.region;
+          map = "all";
+          page = 1;
+          updateMaps();
+          render();
+        });
+        $("rank-options").addEventListener("click", (e) => {
+          const b = e.target.closest("[data-rank]");
+          if (!b) return;
+          rank = b.dataset.rank;
+          page = 1;
+          render();
+        });
+        $("map-filter").addEventListener("change", (e) => {
+          map = e.target.value;
+          page = 1;
+          render();
+        });
+        $("search").addEventListener("input", (e) => {
+          query = e.target.value;
+          page = 1;
+          render();
+        });
+        $("clear-search").addEventListener("click", () => {
+          query = "";
+          $("search").value = "";
+          page = 1;
+          render();
+          $("search").focus();
+        });
+        $("sort").addEventListener("change", (e) => {
+          sort = e.target.value;
+          page = 1;
+          render();
+        });
+        $("reset").addEventListener("click", reset);
+        $("empty-reset").addEventListener("click", reset);
+        $("pagination").addEventListener("click", (e) => {
+          const b = e.target.closest("[data-page]");
+          if (!b || b.disabled) return;
+          page = Number(b.dataset.page);
+          render(true);
+          $('pagination [aria-current="page"]')?.focus({ preventScroll: true });
+        });
+        $("print").addEventListener("click", async () => {
+          const button = $("print");
+          button.disabled = true;
+          button.textContent = "준비 중…";
+          await Promise.allSettled(
+            [...new Set(filtered.map((m) => m.image.file))].map(getImage),
+          );
+          button.disabled = false;
+          button.textContent = "인쇄";
+          window.print();
+        });
+        window.addEventListener("beforeprint", () => {
+          observer?.disconnect();
+          $("cards").innerHTML = filtered.map(card).join("");
+          document.querySelectorAll("canvas[data-monster]").forEach(paint);
+        });
+        window.addEventListener("afterprint", () => render());
+        $("download").addEventListener("click", () => {
+          const blob = new Blob(
+              ["<!doctype html>\n" + document.documentElement.outerHTML],
+              { type: "text/html;charset=utf-8" },
+            ),
+            url = URL.createObjectURL(blob),
+            a = document.createElement("a");
+          a.href = url;
+          a.download = "리프테일-몬스터-도감.html";
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(url), 10000);
+        });
+        updateMaps();
+        render();
+      })();
+    </script>
+  </body>
+</html>

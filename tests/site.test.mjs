@@ -31,6 +31,48 @@ test("all items have lore and every recipe resolves to existing materials", () =
     }
   }
 });
+test("standalone HTML bestiary preserves every real loot probability and story", async () => {
+  const html = await readFile(
+    new URL("../dist/bestiary.html", import.meta.url),
+    "utf8",
+  );
+  const match = html.match(
+    /<script id="bestiary-data" type="application\/json">\s*([\s\S]*?)<\/script>/,
+  );
+  assert.ok(match, "embedded data works without fetching modules");
+  const data = JSON.parse(match[1]);
+  assert.equal(data.monsters.length, MONSTERS.length);
+  assert.equal(data.maps.length, MAPS.filter((m) => !m.town).length);
+  for (const monster of MONSTERS) {
+    const entry = data.monsters.find((m) => m.id === monster.id);
+    assert.equal(entry.name, monster.name);
+    assert.equal(entry.lore, monster.lore);
+    assert.equal(entry.map, monster.map);
+    assert.equal(entry.hp, monster.hp);
+    assert.equal(
+      entry.gold,
+      Math.round(monster.level * (monster.type === "boss" ? 15 : 1.8) + 5),
+    );
+    assert.deepEqual(
+      entry.drops.map(({ item, chance, min, max }) => ({
+        item,
+        chance,
+        min,
+        max,
+      })),
+      monster.drops,
+    );
+    for (const drop of entry.drops) {
+      assert.equal(drop.name, ITEMS[drop.item].name);
+      assert.equal(drop.lore, ITEMS[drop.item].lore);
+    }
+    assert.ok(entry.image.sw > 0 && entry.image.sh > 0);
+    assert.equal(
+      entry.image.file,
+      `assets/creatures/group-${Math.floor(monster.index / 4)}.png`,
+    );
+  }
+});
 test("public build includes the game and no backend code or private persistence", async () => {
   const files = await readdir(new URL("../dist/", import.meta.url));
   assert.ok(!files.includes("server"));

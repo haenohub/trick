@@ -26,6 +26,7 @@ for (let attempt = 1; attempt <= 12; attempt++) {
     for (const file of [
       "",
       "styles.css",
+      "bestiary.html",
       "app.js",
       "data.js",
       "core.js",
@@ -52,6 +53,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
         throw new Error("Unexpected stylesheet");
       if (file === "app.js" && !content.includes("loadArt"))
         throw new Error("Unexpected script");
+      if (file === "bestiary.html" && !content.includes('id="bestiary-data"'))
+        throw new Error("Missing bestiary data");
     }
     console.log(`Verified public deployment of ${GITHUB_SHA} at ${base}`);
     process.exit(0);
