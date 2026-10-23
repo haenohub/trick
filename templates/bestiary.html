@@ -1310,6 +1310,7 @@
         <div>
           <b>LEAFTALE · 리프테일</b> &nbsp; 숲의 작은 이야기를 모으는 곳
         </div>
+        <a href="./directions.html">캐릭터·몬스터 8방향 보기 ↗</a>
         <span id="version-note"></span>
       </div>
     </footer>
@@ -1428,7 +1429,9 @@
                   resolve(image);
                 };
                 image.onerror = () => reject(Error(file));
-                image.src = new URL(file, assetBase).href;
+                const url = new URL(file, assetBase);
+                url.searchParams.set("v", data.version);
+                image.src = url.href;
               }),
             );
           return images.get(file);

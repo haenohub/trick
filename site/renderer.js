@@ -1,5 +1,6 @@
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
+import { direction, SOUTH } from "./directions.js";
 const IMAGES = new Map();
 let ART = null;
 const REVISION =
@@ -61,11 +62,11 @@ function preview(canvas, file, cols, rows, col, row, face = false) {
 }
 export function drawCharacterPreview(canvas, id, face = false) {
   const l = ART.characterLayouts[id];
-  preview(canvas, "characters/" + id, l.cols, l.rows, 0, 0, face);
+  preview(canvas, "characters/" + id, l.cols, l.rows, 0, SOUTH, face);
 }
 export function drawMonsterPreview(canvas, id) {
   const m = ART.monsters[id];
-  preview(canvas, m.file, m.cols, m.rows, 0, 0);
+  preview(canvas, m.file, m.cols, m.rows, 0, SOUTH);
 }
 export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
 export class Renderer {
@@ -256,25 +257,20 @@ export class Renderer {
       rows,
       row,
       frames,
-      mirror = false,
       nativeSize = 48;
     if (/^m\d+$/.test(name)) {
       const layout = ART.monsters[name];
       if (!layout) return;
       ({ file, cols, rows } = layout);
       nativeSize = layout.size;
-      row = dir === 2 || dir === 3 ? 1 : 0;
-      mirror = dir === 0 || dir === 2;
+      row = dir;
       frames = layout.animations[anim] || layout.animations.idle;
     } else if (name.startsWith("npc:")) {
-      const n = NPCS.findIndex((n) => n.id === name.slice(4));
-      if (n < 0) return;
-      const layout = ART.npcLayout;
-      file = "npcs";
-      cols = layout.cols;
-      rows = layout.rows;
-      row = n;
-      frames = [Math.floor(time * 1.5) % 2];
+      const layout = ART.npcLayouts[name.slice(4)];
+      if (!layout) return;
+      ({ file, cols, rows } = layout);
+      row = dir;
+      frames = layout.animations[anim] || layout.animations.idle;
       nativeSize = layout.size;
     } else {
       const layout = ART.characterLayouts[name];
@@ -306,7 +302,7 @@ export class Renderer {
       height,
       height,
       1 - 2 / nativeSize,
-      mirror,
+      false,
     );
     if (anim === "death") c.restore();
   }
@@ -495,7 +491,11 @@ export class Renderer {
         s.x,
         s.y - jump,
         o.anim || "idle",
-        o.dir || 0,
+        o.kind === "npc"
+          ? Math.hypot(p.x - o.x, p.y - o.y) < 6
+            ? direction(p.x - o.x, p.y - o.y)
+            : SOUTH
+          : (o.dir ?? SOUTH),
         time,
         o.animAt || 0,
         height,

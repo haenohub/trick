@@ -27,6 +27,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "",
       "styles.css",
       "bestiary.html",
+      "directions.html",
+      "directions.js",
       "app.js",
       "data.js",
       "core.js",
@@ -34,6 +36,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "assets/manifest.json",
       "art-layout.js",
       "assets/creatures/m40.png",
+      "assets/npcs/guide.png",
+      "assets/directions/warden/N.png",
       "assets/maps/seacave.png",
     ]) {
       const asset = await fetch(new URL(file, base), {
@@ -55,6 +59,11 @@ for (let attempt = 1; attempt <= 12; attempt++) {
         throw new Error("Unexpected script");
       if (file === "bestiary.html" && !content.includes('id="bestiary-data"'))
         throw new Error("Missing bestiary data");
+      if (
+        file === "directions.html" &&
+        !content.includes('id="direction-data"')
+      )
+        throw new Error("Missing eight-direction atelier data");
     }
     console.log(`Verified public deployment of ${GITHUB_SHA} at ${base}`);
     process.exit(0);

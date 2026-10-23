@@ -1,8 +1,10 @@
 import { cp, mkdir, rm, writeFile, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { buildBestiary } from "./build-bestiary.mjs";
+import { buildDirections } from "./build-directions.mjs";
 
 await buildBestiary();
+await buildDirections();
 const output = new URL("../dist/", import.meta.url);
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
@@ -27,6 +29,7 @@ for (const name of [
   "data.js",
   "art-layout.js",
   "trophies.js",
+  "directions.js",
 ]) {
   const file = new URL(name, output);
   let text = await readFile(file, "utf8");
@@ -51,7 +54,7 @@ await writeFile(
 );
 const manifest = {
   kind: "leaftale",
-  version: "0.4.0",
+  version: "0.5.0",
   commit: process.env.GITHUB_SHA || "local",
   builtAt: new Date().toISOString(),
 };

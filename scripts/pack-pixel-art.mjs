@@ -689,6 +689,8 @@ export async function packPixelArt({
   return { manifest, assets };
 }
 
+export { decode, entityFrames, rgba, blit, png };
+
 if (
   process.argv[1] &&
   new URL(import.meta.url).pathname === resolve(process.argv[1])

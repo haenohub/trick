@@ -1,4 +1,5 @@
 import { isWalkable, NAVIGATION } from "./art-layout.js";
+import { direction, facesTarget, SOUTH } from "./directions.js";
 import {
   CLASSES,
   MAPS,
@@ -309,10 +310,6 @@ export function findRoute(map, from, to) {
   }
   return route;
 }
-function direction(dx, dy) {
-  if (Math.abs(dx) > Math.abs(dy)) return dx > 0 ? 1 : 3;
-  return dy > 0 ? 0 : 2;
-}
 function segmentDistance(p, a, b) {
   const dx = b.x - a.x,
     dy = b.y - a.y,
@@ -346,7 +343,7 @@ export class World {
       potionReady: 0,
       anim: "idle",
       animAt: 0,
-      dir: 0,
+      dir: SOUTH,
       shield: 0,
       shieldUntil: 0,
       lastHit: -100,
@@ -394,7 +391,7 @@ export class World {
           homeY: y,
           hp: def.hp,
           maxHp: def.hp,
-          dir: 0,
+          dir: SOUTH,
           anim: "idle",
           animAt: 0,
           nextAttack: 1 + rng() * 2,
@@ -731,10 +728,7 @@ export class World {
     const armored =
       ["beetle", "hermit", "crab"].includes(def.shape) &&
       m.windup &&
-      ((m.dir === 0 && p.y > m.y) ||
-        (m.dir === 1 && p.x > m.x) ||
-        (m.dir === 2 && p.y < m.y) ||
-        (m.dir === 3 && p.x < m.x));
+      facesTarget(m, p);
     const n = Math.max(
       1,
       Math.round(

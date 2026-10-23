@@ -1,6 +1,6 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
 import { TROPHIES } from "./trophies.js";
-export const VERSION = "0.4.0";
+export const VERSION = "0.5.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [

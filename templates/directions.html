@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#183c32" />
+    <title>리프테일 · 8방향 아틀리에</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #e9edda;
+        --muted: #9cae9e;
+        --line: #ffffff18;
+        --gold: #d9bc78;
+        --panel: #192d27;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #101e1a;
+        color: var(--ink);
+        font:
+          15px/1.6 system-ui,
+          sans-serif;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button,
+      a,
+      select {
+        touch-action: manipulation;
+      }
+      a {
+        color: var(--gold);
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        padding: 24px max(24px, calc((100vw - 1440px) / 2));
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header a {
+        text-decoration: none;
+      }
+      header small {
+        display: block;
+        color: var(--muted);
+        letter-spacing: 0.18em;
+        font-size: 10px;
+      }
+      h1 {
+        font-size: 21px;
+        margin: 0;
+        font-weight: 600;
+      }
+      header nav {
+        display: flex;
+        gap: 18px;
+        font-size: 13px;
+      }
+      .wrap {
+        max-width: 1440px;
+        margin: auto;
+        padding: 32px 24px;
+      }
+      .intro {
+        max-width: 780px;
+        margin-bottom: 28px;
+      }
+      .eyebrow {
+        color: var(--gold);
+        letter-spacing: 0.15em;
+        font-size: 11px;
+      }
+      .intro h2 {
+        font-size: 30px;
+        margin: 6px 0 12px;
+        letter-spacing: -0.04em;
+      }
+      .intro p {
+        color: var(--muted);
+        margin: 0;
+      }
+      .workspace {
+        display: grid;
+        grid-template-columns: 264px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+      aside,
+      .studio {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--panel);
+      }
+      aside {
+        padding: 16px;
+        position: sticky;
+        top: 16px;
+      }
+      input,
+      select {
+        border: 1px solid #ffffff25;
+        background: #11241e;
+        color: var(--ink);
+        border-radius: 8px;
+        padding: 9px;
+        min-width: 0;
+      }
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      button {
+        border: 1px solid #ffffff25;
+        border-radius: 8px;
+        background: #223d32;
+        color: var(--ink);
+        cursor: pointer;
+        padding: 8px 12px;
+      }
+      button:hover,
+      button[aria-pressed="true"],
+      button[aria-current="true"] {
+        border-color: var(--gold);
+        background: #3e4933;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+      }
+      .filters {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .filters button {
+        padding: 5px 9px;
+        font-size: 12px;
+      }
+      #actor-list {
+        display: grid;
+        gap: 5px;
+        max-height: 560px;
+        overflow: auto;
+      }
+      #actor-list button {
+        text-align: left;
+        background: transparent;
+        padding: 9px 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      #actor-list small {
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .count {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 12px 0 0;
+      }
+      .studio {
+        padding: 24px;
+        min-width: 0;
+      }
+      .actor-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+      }
+      .actor-heading h2 {
+        margin: 0;
+        font-size: 25px;
+      }
+      .badge {
+        font-size: 11px;
+        color: var(--gold);
+        border: 1px solid #d9bc7840;
+        padding: 4px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      #description {
+        color: var(--muted);
+        min-height: 44px;
+        margin: 8px 0 16px;
+      }
+      .stage {
+        display: grid;
+        place-items: center;
+        position: relative;
+        min-height: 290px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: radial-gradient(ellipse at center, #314c3d, #172b23);
+        overflow: hidden;
+      }
+      .stage:before {
+        content: "LEAFTALE / EIGHT VIEWS";
+        position: absolute;
+        top: 14px;
+        left: 16px;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        color: #a4b7a156;
+      }
+      canvas {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+      #hero {
+        display: block;
+      }
+      .stage-label {
+        position: absolute;
+        bottom: 12px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        margin: 16px 0;
+        flex-wrap: wrap;
+      }
+      .controls label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .views {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .view {
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 4px;
+        min-width: 0;
+        background: #10241e;
+      }
+      .view button {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        width: 100%;
+        height: 130px;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+      }
+      .view button[aria-pressed="true"] {
+        background: #d9bc7815;
+        outline: 1px solid #d9bc7855;
+      }
+      .view span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .view a {
+        font-size: 10px;
+        text-decoration: none;
+      }
+      .downloads {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        font-size: 12px;
+        flex-wrap: wrap;
+      }
+      .note {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 20px 0 0;
+      }
+      #status {
+        font-size: 12px;
+        color: var(--gold);
+        min-height: 20px;
+      }
+      footer {
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 24px;
+      }
+      @media (min-width: 1250px) {
+        .views {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        .view button {
+          height: 132px;
+        }
+        .studio {
+          padding: 28px;
+        }
+      }
+      @media (max-width: 760px) {
+        header {
+          padding: 18px;
+          align-items: start;
+        }
+        header nav {
+          gap: 12px;
+          font-size: 12px;
+        }
+        .wrap {
+          padding: 22px 14px;
+        }
+        .intro h2 {
+          font-size: 25px;
+        }
+        .workspace {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        aside {
+          position: static;
+          padding: 12px;
+        }
+        #actor-list {
+          max-height: 152px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        #actor-list button {
+          font-size: 12px;
+          padding: 7px;
+        }
+        #actor-list small {
+          font-size: 9px;
+        }
+        .studio {
+          padding: 14px;
+        }
+        .actor-heading h2 {
+          font-size: 21px;
+        }
+        .views {
+          gap: 6px;
+        }
+        .view button {
+          height: 130px;
+        }
+        .view span {
+          font-size: 10px;
+        }
+        .stage {
+          min-height: 275px;
+        }
+      }
+      @media (max-width: 390px) {
+        .views {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        header nav {
+          flex-direction: column;
+          gap: 0;
+        }
+        .badge {
+          font-size: 9px;
+          padding: 3px 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <small>LEAFTALE ART ATELIER</small>
+        <h1>리프테일 · 8방향 아틀리에</h1>
+      </div>
+      <nav>
+        <a href="./">게임으로 ↗</a><a href="./bestiary.html">몬스터 도감 ↗</a>
+      </nav>
+    </header>
+    <main class="wrap">
+      <section class="intro">
+        <span class="eyebrow">ONE DESIGN, EIGHT PERSPECTIVES</span>
+        <h2>작은 도트에도, 돌아볼 수 있는 모습.</h2>
+        <p>
+          플레이어 4종, 마을 주민 8명, 몬스터 40종. 입체 구조를 기준으로 그린
+          정면과 뒷면, 그리고 여섯 각도를 살펴보세요. 아래 작은 이미지를 누르면
+          그 방향의 동작을 크게 볼 수 있습니다.
+        </p>
+      </section>
+      <div class="workspace">
+        <aside aria-label="캐릭터 선택">
+          <input
+            id="search"
+            type="search"
+            placeholder="이름 검색"
+            aria-label="캐릭터와 몬스터 이름 검색"
+          />
+          <div class="filters" aria-label="종류">
+            <button data-kind="all" aria-pressed="true">전체</button
+            ><button data-kind="character" aria-pressed="false">직업</button
+            ><button data-kind="npc" aria-pressed="false">주민</button
+            ><button data-kind="monster" aria-pressed="false">몬스터</button>
+          </div>
+          <div id="actor-list"></div>
+          <p class="count" id="count"></p>
+        </aside>
+        <section class="studio" aria-label="방향별 모습">
+          <div class="actor-heading">
+            <h2 id="actor-name"></h2>
+            <span class="badge" id="size"></span>
+          </div>
+          <p id="description"></p>
+          <div class="stage">
+            <canvas
+              id="hero"
+              width="256"
+              height="256"
+              role="img"
+              aria-label="선택한 방향의 애니메이션"
+            ></canvas
+            ><span class="stage-label" id="facing-label"></span>
+          </div>
+          <div class="controls">
+            <button id="previous" aria-label="이전 방향">↶</button
+            ><label for="animation">동작</label
+            ><select id="animation">
+              <option value="idle">대기</option>
+              <option value="walk">걷기</option>
+              <option value="attack">공격</option>
+              <option value="hurt">피격</option>
+              <option value="death">쓰러짐</option></select
+            ><button id="play" aria-pressed="true">일시 정지</button
+            ><button id="next" aria-label="다음 방향">↷</button>
+          </div>
+          <p id="status" role="status"></p>
+          <div class="views" id="views"></div>
+          <div class="downloads">
+            <a id="atlas-download" download>전체 모션 시트 PNG ↓</a
+            ><a id="view-download" download>선택한 방향 PNG ↓</a>
+          </div>
+          <p class="note">
+            32·48·64px 원본을 정수 배율로 표시합니다. 여덟 방향은 각각 생성한
+            원화이며, 게임에서도 이동·공격 방향에 따라 같은 시트를 사용합니다.
+          </p>
+        </section>
+      </div>
+      <footer id="version"></footer>
+    </main>
+    <script id="direction-data" type="application/json">
+      <!-- DIRECTION_DATA -->
+    </script>
+    <script>
+      const DATA = JSON.parse(
+        document.querySelector("#direction-data").textContent,
+      );
+      const $ = (s) => document.querySelector(s),
+        directions = DATA.directions;
+      let selected = DATA.actors[0],
+        heading = 4,
+        kind = "all",
+        playing = true,
+        sheet = null,
+        epoch = performance.now(),
+        ticket = 0;
+      const cache = new Map();
+      function load(path) {
+        if (!cache.has(path))
+          cache.set(
+            path,
+            new Promise((resolve, reject) => {
+              const image = new Image();
+              image.onload = () => resolve(image);
+              image.onerror = () =>
+                reject(Error("이미지를 불러올 수 없습니다."));
+              image.src = "./assets/" + path + ".png?v=" + DATA.version;
+            }),
+          );
+        return cache.get(path);
+      }
+      function list() {
+        const query = $("#search").value.trim().toLowerCase();
+        const actors = DATA.actors.filter(
+          (a) =>
+            (kind === "all" || a.kind === kind) &&
+            a.name.toLowerCase().includes(query),
+        );
+        $("#actor-list").replaceChildren(
+          ...actors.map((a) => {
+            const button = document.createElement("button");
+            button.textContent = a.name;
+            button.setAttribute("aria-current", String(a.id === selected.id));
+            button.dataset.actor = a.id;
+            const size = document.createElement("small");
+            size.textContent = a.layout.size + "px";
+            button.append(size);
+            button.onclick = () => choose(a);
+            return button;
+          }),
+        );
+        $("#count").textContent =
+          actors.length + " / " + DATA.actors.length + "종";
+      }
+      function sizeViews() {
+        for (const canvas of document.querySelectorAll(".views canvas")) {
+          const size = selected.layout.size,
+            scale = Math.max(
+              1,
+              Math.min(
+                2,
+                Math.floor((canvas.parentElement.clientWidth - 4) / size),
+              ),
+            );
+          canvas.style.width = canvas.style.height = size * scale + "px";
+        }
+      }
+      window.addEventListener("resize", sizeViews);
+      function facing(row) {
+        heading = (row + 8) % 8;
+        $("#facing-label").textContent =
+          directions[heading].label + " · " + directions[heading].id;
+        $("#hero").setAttribute(
+          "aria-label",
+          selected.name + " " + directions[heading].label + " 모습",
+        );
+        for (const b of document.querySelectorAll("[data-heading]"))
+          b.setAttribute(
+            "aria-pressed",
+            String(+b.dataset.heading === heading),
+          );
+        const url =
+          "./assets/" + selected.layout.views[directions[heading].id] + ".png";
+        $("#view-download").href = url;
+        $("#view-download").download =
+          selected.id + "-" + directions[heading].id + ".png";
+        epoch = performance.now();
+      }
+      async function choose(actor) {
+        selected = actor;
+        const current = ++ticket;
+        sheet = null;
+        epoch = performance.now();
+        list();
+        $("#actor-name").textContent = actor.name;
+        $("#description").textContent = actor.description;
+        $("#size").textContent =
+          actor.layout.size + " × " + actor.layout.size + " · 8방향";
+        $("#status").textContent = "모습을 불러오는 중…";
+        $("#views").replaceChildren(
+          ...directions.map((d, row) => {
+            const box = document.createElement("div");
+            box.className = "view";
+            const button = document.createElement("button");
+            button.dataset.heading = row;
+            button.setAttribute("aria-label", actor.name + " " + d.label);
+            button.onclick = () => facing(row);
+            const canvas = document.createElement("canvas");
+            canvas.width = canvas.height = actor.layout.size;
+            canvas.style.width = canvas.style.height =
+              actor.layout.size * 2 + "px";
+            canvas.dataset.row = row;
+            button.append(canvas);
+            const label = document.createElement("span");
+            label.textContent = d.label + " · " + d.id;
+            const link = document.createElement("a");
+            link.href = "./assets/" + actor.layout.views[d.id] + ".png";
+            link.download = actor.id + "-" + d.id + ".png";
+            link.textContent = "PNG ↓";
+            box.append(button, label, link);
+            return box;
+          }),
+        );
+        $("#atlas-download").href = "./assets/" + actor.layout.file + ".png";
+        $("#atlas-download").download = actor.id + "-8-directions.png";
+        facing(heading);
+        sizeViews();
+        try {
+          const image = await load(actor.layout.file);
+          if (current !== ticket) return;
+          sheet = image;
+          $("#status").textContent =
+            "8방향 · 방향마다 걷기 4프레임 / 공격 2프레임 / 피격 / 쓰러짐";
+        } catch (e) {
+          if (current === ticket) $("#status").textContent = e.message;
+        }
+      }
+      function draw(canvas, row, frame, scale = 1) {
+        const size = selected.layout.size,
+          c = canvas.getContext("2d");
+        c.imageSmoothingEnabled = false;
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        const side = size * scale;
+        c.drawImage(
+          sheet,
+          frame * size,
+          row * size,
+          size,
+          size,
+          Math.floor((canvas.width - side) / 2),
+          canvas.height - side,
+          side,
+          side,
+        );
+      }
+      function render(now) {
+        if (sheet) {
+          const frames = selected.layout.animations[$("#animation").value];
+          const frame =
+            frames[
+              playing ? Math.floor((now - epoch) / 150) % frames.length : 0
+            ];
+          draw($("#hero"), heading, frame, 4);
+          for (const canvas of document.querySelectorAll(".views canvas"))
+            draw(canvas, +canvas.dataset.row, frame);
+        }
+        requestAnimationFrame(render);
+      }
+      for (const button of document.querySelectorAll("[data-kind]"))
+        button.onclick = () => {
+          kind = button.dataset.kind;
+          for (const b of document.querySelectorAll("[data-kind]"))
+            b.setAttribute("aria-pressed", String(b === button));
+          list();
+        };
+      $("#search").oninput = list;
+      $("#previous").onclick = () => facing(heading - 1);
+      $("#next").onclick = () => facing(heading + 1);
+      $("#animation").onchange = () => {
+        epoch = performance.now();
+      };
+      $("#play").onclick = () => {
+        playing = !playing;
+        $("#play").setAttribute("aria-pressed", String(playing));
+        $("#play").textContent = playing ? "일시 정지" : "재생";
+        epoch = performance.now();
+      };
+      $("#version").textContent =
+        "LEAFTALE v" +
+        DATA.version +
+        " · 52종 × 8방향 · 이미지 생성 원화 / 네이티브 도트";
+      window.__directions = {
+        data: DATA,
+        get selected() {
+          return selected.id;
+        },
+        get heading() {
+          return heading;
+        },
+      };
+      choose(selected);
+      requestAnimationFrame(render);
+    </script>
+  </body>
+</html>

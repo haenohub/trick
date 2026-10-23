@@ -121,11 +121,11 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 3);
+  assert.equal(art.version, 4);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 2);
-  assert.equal(art.files.length, 62);
-  assert.equal(records.assets.length, 102);
+  assert.equal(art.files.length, 69);
+  assert.equal(records.assets.length, 525);
   assert.equal(art.palette.length, 32);
   const palette = new Set(art.palette.map((c) => c.slice(1).toLowerCase()));
   for (const record of records.assets) {
@@ -188,7 +188,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
         art.characterLayouts[c].rows,
         art.characterLayouts[c].size,
       ],
-      [8, 4, 48],
+      [8, 8, 48],
     );
   }
   assert.equal(Object.keys(art.items).length, 82);
