@@ -33,7 +33,7 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "renderer.js",
       "assets/manifest.json",
       "art-layout.js",
-      "assets/creatures/group-9.png",
+      "assets/creatures/m40.png",
       "assets/maps/seacave.png",
     ]) {
       const asset = await fetch(new URL(file, base), {

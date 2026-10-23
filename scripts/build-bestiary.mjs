@@ -18,12 +18,9 @@ export async function buildBestiary() {
     ),
   );
   const monsters = MONSTERS.map((m) => {
-    const group = Math.floor(m.index / 4),
-      file = `creatures/group-${group}`;
-    const layout = art.creatureLayouts[group];
-    const row = layout.speciesRows?.[m.index % 4]?.[0] ?? (m.index % 4) * 2;
-    const bounds = art.frameBounds[file];
-    const rect = bounds.rects[row][0];
+    const sprite = art.monsters[m.id];
+    const file = sprite.portrait;
+    const rect = { sx: 0, sy: 0, sw: sprite.size, sh: sprite.size };
     return {
       ...m,
       gold: Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5),

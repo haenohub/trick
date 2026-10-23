@@ -1,5 +1,6 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
-export const VERSION = "0.3.0";
+import { TROPHIES } from "./trophies.js";
+export const VERSION = "0.4.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -561,6 +562,7 @@ export const MONSTERS = monsterRows.map(([name, shape, lore], i) => {
   return {
     id: "m" + (i + 1),
     index: i,
+    spriteSize: TROPHIES[i].spriteSize,
     name,
     shape,
     lore,
@@ -598,6 +600,7 @@ export const MONSTERS = monsterRows.map(([name, shape, lore], i) => {
         (boss ? 13 : type === "elite" ? 2.5 : type === "rare" ? 3 : 1),
     ),
     drops: [
+      { item: TROPHIES[i].id, chance: TROPHIES[i].chance, min: 1, max: 1 },
       {
         item: material,
         chance: Math.min(
@@ -917,6 +920,14 @@ CLASSES.forEach((c, ci) =>
     ),
   ),
 );
+for (const trophy of TROPHIES) {
+  const monster = MONSTERS.find((m) => m.id === trophy.monster);
+  item(trophy.id, trophy.name, "trophy", trophy.lore, {
+    monster: trophy.monster,
+    price: 8 + monster.level * 4 + (monster.type === "boss" ? 140 : 0),
+    color: monster.color,
+  });
+}
 export const RECIPES = Object.values(ITEMS).filter((i) => i.recipe);
 export const QUESTS = [
   {

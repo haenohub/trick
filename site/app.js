@@ -224,9 +224,7 @@ function itemIcon(id) {
     : atlasIcon("items", 8, 8, iconIds[id] || 0);
 }
 function abilityIcon(index) {
-  return index >= 58
-    ? atlasIcon("items", 6, 8, 42 + index - 58)
-    : atlasIcon("items", 8, 8, index);
+  return atlasIcon("items", 8, 8, index);
 }
 function skillName(slot) {
   return slot === 3
@@ -379,7 +377,7 @@ function itemCard(i, p) {
       (!i.classId || i.classId === p.classId) &&
       i.level <= p.level &&
       (!i.branch || i.branch === p.branch);
-  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${i.attack || i.defense ? `<div class="item-stats">${i.attack ? "공격 +" + i.attack : ""} ${i.defense ? "방어 +" + i.defense : ""}</div>` : ""}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} G</button>` : ""}</div></article>`;
+  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${i.attack || i.defense ? `<div class="item-stats">${i.attack ? "공격 +" + i.attack : ""} ${i.defense ? "방어 +" + i.defense : ""}</div>` : ""}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} G</button>` : ""}</div></article>`;
 }
 function tabs(names) {
   return `<div class="tabs">${names.map(([id, label]) => `<button data-filter="${id}" class="${filter === id ? "active" : ""}">${label}</button>`).join("")}</div>`;
@@ -422,6 +420,7 @@ function renderPanel() {
         ["equipment", "장비"],
         ["consumable", "소비"],
         ["material", "재료"],
+        ["trophy", "전리품"],
       ],
     )}<div class="card-grid">${
       Object.entries(p.inventory)
@@ -787,7 +786,7 @@ function showLobby() {
       `${saved.name} · Lv.${saved.level} 이어서 →`;
   $("class-select").innerHTML = CLASSES.map(
     (c) =>
-      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}"><canvas class="class-preview" data-class-preview="${c.id}" width="64" height="106" aria-hidden="true"></canvas><strong>${c.name}</strong><small>${c.role}</small></button>`,
+      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}"><canvas class="class-preview" data-class-preview="${c.id}" width="48" height="48" aria-hidden="true"></canvas><strong>${c.name}</strong><small>${c.role}</small></button>`,
   ).join("");
   for (const node of $("class-select").querySelectorAll("[data-class-preview]"))
     drawCharacterPreview(node, node.dataset.classPreview);
@@ -967,7 +966,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.3.0",
+  version: "0.4.0",
 };
 try {
   const response = await fetch("./assets/manifest.json");

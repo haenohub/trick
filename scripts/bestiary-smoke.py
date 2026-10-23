@@ -16,9 +16,9 @@ with sync_playwright() as p:
     page.screenshot(path="/tmp/leaftale-bestiary-desktop.png", full_page=True)
     page.locator("#search").fill("콩잎폴짝")
     assert page.locator(".monster-card").count() == 1
-    assert page.locator(".chance").all_inner_texts() == ["32%", "18%", "8%", "1.2%"]
+    assert page.locator(".chance").all_inner_texts() == ["38%", "32%", "18%", "8%", "1.2%"]
     page.locator(".drop-item summary").first.click()
-    assert "어린 가지" in page.locator(".drop-item[open]").inner_text()
+    assert "콩잎" in page.locator(".drop-item[open]").inner_text()
     page.locator("#search").fill("버들섬유")
     assert page.locator("#result-count").inner_text() == "20종"
     page.locator("#reset").click()
@@ -29,7 +29,7 @@ with sync_playwright() as p:
     assert page.locator("#result-count").inner_text() == "5종"
     page.locator('[data-rank="boss"]').click()
     assert page.locator(".monster-card").get_attribute("data-id") == "m40"
-    assert page.locator(".chance").all_inner_texts() == ["71%", "60%", "14%", "18%"]
+    assert page.locator(".chance").all_inner_texts() == ["100%", "71%", "60%", "14%", "18%"]
     page.locator("#reset").click()
     page.locator("#sort").select_option("level-desc")
     assert page.locator(".monster-card").first.get_attribute("data-id") == "m40"
@@ -40,7 +40,7 @@ with sync_playwright() as p:
     page.locator("#empty-reset").click()
     page.evaluate("dispatchEvent(new Event('beforeprint'))")
     assert page.locator(".monster-card").count() == 40
-    assert page.locator(".drop-table tbody tr").count() == 160
+    assert page.locator(".drop-table tbody tr").count() == 200
     page.evaluate("dispatchEvent(new Event('afterprint'))")
     assert page.locator(".monster-card").count() == 8
     with page.expect_download() as download:
@@ -59,14 +59,14 @@ with sync_playwright() as p:
     assert file_page.locator("#result-count").inner_text() == "40종"
     file_page.locator("#search").fill("푸른숨 뿌리해룡")
     assert file_page.locator(".monster-card").count() == 1
-    assert file_page.locator(".chance").all_inner_texts() == ["71%", "60%", "14%", "18%"]
+    assert file_page.locator(".chance").all_inner_texts() == ["100%", "71%", "60%", "14%", "18%"]
     for width in [390, 768, 320]:
         mobile = browser.new_page(viewport={"width": width, "height": 844}, is_mobile=True, has_touch=True)
         mobile.on("pageerror", lambda e: errors.append(str(e)))
         mobile.goto(BASE)
         assert mobile.evaluate("document.documentElement.scrollWidth <= innerWidth"), width
         mobile.locator("#search").fill("콩잎폴짝")
-        assert mobile.locator(".chance").all_inner_texts() == ["32%", "18%", "8%", "1.2%"]
+        assert mobile.locator(".chance").all_inner_texts() == ["38%", "32%", "18%", "8%", "1.2%"]
         if width == 390:
             mobile.wait_for_function("document.querySelector('canvas[data-monster]').dataset.loaded === 'true'")
             mobile.screenshot(path="/tmp/leaftale-bestiary-mobile.png", full_page=True)

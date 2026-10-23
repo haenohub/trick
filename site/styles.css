@@ -1720,3 +1720,28 @@ kbd {
     white-space: nowrap;
   }
 }
+
+/* All game imagery uses the same native pixel grid, with nearest-neighbor display. */
+#world,
+.portrait,
+.class-preview,
+.monster-preview,
+.item-icon,
+#minimap,
+#lobby {
+  image-rendering: pixelated;
+}
+.class-preview {
+  width: 96px;
+  height: 96px;
+}
+.menu-panel,
+.create-card {
+  border-image-slice: 16 fill;
+}
+@media (max-width: 600px) {
+  .class-preview {
+    width: 48px;
+    height: 48px;
+  }
+}

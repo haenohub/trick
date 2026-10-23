@@ -1,6 +1,8 @@
 import { test } from "node:test";
+import { createHash } from "node:crypto";
+import { rgbaPixels } from "./png.mjs";
 import assert from "node:assert/strict";
-import { readFile, readdir, stat } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { MONSTERS, ITEMS, MAPS } from "../site/data.js";
 
 test("two complete regions contain ten maps, forty documented enemies and valid individual loot", () => {
@@ -11,7 +13,7 @@ test("two complete regions contain ten maps, forty documented enemies and valid 
   for (const m of MONSTERS) {
     assert.ok(m.lore.length > 20);
     assert.ok(MAPS.some((map) => map.id === m.map));
-    assert.equal(m.drops.length, 4);
+    assert.equal(m.drops.length, 5);
     for (const d of m.drops) {
       assert.ok(ITEMS[d.item]);
       assert.ok(d.chance > 0 && d.chance <= 1);
@@ -22,7 +24,7 @@ test("two complete regions contain ten maps, forty documented enemies and valid 
   assert.ok(MONSTERS[39].hp > MONSTERS[19].hp * 2);
 });
 test("all items have lore and every recipe resolves to existing materials", () => {
-  assert.equal(Object.keys(ITEMS).length, 42);
+  assert.equal(Object.keys(ITEMS).length, 82);
   for (const i of Object.values(ITEMS)) {
     assert.ok(i.lore.length > 20, i.id);
     for (const [id, n] of Object.entries(i.recipe || {})) {
@@ -67,10 +69,7 @@ test("standalone HTML bestiary preserves every real loot probability and story",
       assert.equal(drop.lore, ITEMS[drop.item].lore);
     }
     assert.ok(entry.image.sw > 0 && entry.image.sh > 0);
-    assert.equal(
-      entry.image.file,
-      `assets/creatures/group-${Math.floor(monster.index / 4)}.png`,
-    );
+    assert.equal(entry.image.file, `assets/portraits/${monster.id}.png`);
   }
 });
 test("public build includes the game and no backend code or private persistence", async () => {
@@ -103,89 +102,117 @@ test("public build includes the game and no backend code or private persistence"
     "utf8",
   );
   assert.match(entry, /from "\.\/core.js\?v=/);
-  const hero = await stat(
+  const hero = await readFile(
     new URL("../dist/assets/title-forest.png", import.meta.url),
   );
-  assert.ok(hero.size > 100000);
+  assert.equal(hero.readUInt32BE(16), 480);
+  assert.equal(hero.readUInt32BE(20), 320);
 });
-test("image-generated assets cover every map, creature, class and equipment item", async () => {
+test("native pixel assets have the required grids, shared palette and binary alpha", async () => {
   const art = JSON.parse(
     await readFile(
       new URL("../dist/assets/manifest.json", import.meta.url),
       "utf8",
     ),
   );
-  assert.equal(art.provenance, "image_gen");
-  assert.equal(art.files.length, 29);
-  assert.equal(new Set(art.files).size, art.files.length);
-  for (const name of art.files) {
-    const png = await readFile(
-      new URL(`../dist/assets/${name}.png`, import.meta.url),
-    );
-    assert.equal(png.subarray(1, 4).toString(), "PNG", name);
-    assert.ok(png.readUInt32BE(16) >= 1000, name);
-    assert.ok(png.readUInt32BE(20) >= 1000, name);
-    assert.ok(png.length > 100000, name);
-    const bounds = art.frameBounds?.[name];
-    if (bounds) {
-      for (const [axis, limit] of [
-        ["x", png.readUInt32BE(16)],
-        ["y", png.readUInt32BE(20)],
-      ]) {
-        const values = bounds[axis];
-        if (!values) continue;
-        assert.equal(values[0], 0, name);
-        assert.equal(values.at(-1), limit, name);
-        for (let i = 1; i < values.length; i++)
-          assert.ok(values[i] > values[i - 1], name);
-      }
-      for (const row of bounds.rects || [])
-        for (const rect of row) {
-          assert.ok(rect.sw > 0 && rect.sh > 0, name);
-          assert.ok(rect.sx >= 0 && rect.sy >= 0, name);
-          assert.ok(rect.sx + rect.sw <= png.readUInt32BE(16), name);
-          assert.ok(rect.sy + rect.sh <= png.readUInt32BE(20), name);
-        }
-    }
-  }
-  for (const m of MAPS) assert.ok(art.files.includes("maps/" + m.id));
-  for (const id of Object.keys(ITEMS))
-    assert.ok(Number.isInteger(art.items[id]));
-  for (const m of MONSTERS) {
-    const i = Number(m.id.slice(1)) - 1,
-      layout = art.creatureLayouts[Math.floor(i / 4)];
-    assert.ok(art.files.includes("creatures/group-" + Math.floor(i / 4)));
-    assert.ok(layout.cols >= 8 && layout.rows >= 8);
-    for (const row of layout.speciesRows?.[i % 4] || [
-      (i % 4) * 2,
-      (i % 4) * 2 + 1,
-    ])
-      assert.ok(row < layout.rows);
-  }
-  for (const c of ["warden", "mage", "ranger", "herbalist"]) {
-    assert.ok(art.files.includes("characters/" + c));
-    assert.ok(art.characterLayouts[c].cols >= 9);
-    assert.ok(art.characterLayouts[c].rows >= 4);
-    for (const frames of Object.values(
-      art.characterLayouts[c].animations || {},
-    ))
-      for (const frame of frames)
-        assert.ok(frame >= 0 && frame < art.characterLayouts[c].cols, c);
-  }
-  assert.equal(Object.keys(art.itemOverrides).length, 8);
-  for (const id of Object.keys(art.itemOverrides)) assert.ok(ITEMS[id], id);
   const records = JSON.parse(
     await readFile(
       new URL("../art/generated-assets.json", import.meta.url),
       "utf8",
     ),
   );
-  for (const file of art.files)
-    assert.ok(
-      records.assets.some(
-        (a) =>
-          a.target === "site/assets/" + file + ".png" && a.tool === "image_gen",
-      ),
-      file,
+  assert.equal(art.version, 3);
+  assert.equal(art.provenance, "image_gen");
+  assert.equal(art.pixelScale, 2);
+  assert.equal(art.files.length, 62);
+  assert.equal(records.assets.length, 102);
+  assert.equal(art.palette.length, 32);
+  const palette = new Set(art.palette.map((c) => c.slice(1).toLowerCase()));
+  for (const record of records.assets) {
+    const png = await readFile(new URL("../" + record.target, import.meta.url));
+    assert.equal(
+      createHash("sha256").update(png).digest("hex"),
+      record.sha256,
+      record.id,
     );
+    const { width, height, pixels } = rgbaPixels(png);
+    assert.equal(width, record.width, record.id);
+    assert.equal(height, record.height, record.id);
+    for (let i = 0; i < pixels.length; i += 4) {
+      assert.ok(
+        pixels[i + 3] === 0 || pixels[i + 3] === 255,
+        record.id + " has fractional alpha",
+      );
+      if (pixels[i + 3])
+        assert.ok(
+          palette.has(pixels.subarray(i, i + 3).toString("hex")),
+          record.id + " color outside shared palette",
+        );
+    }
+  }
+  for (const m of MONSTERS) {
+    const l = art.monsters[m.id];
+    assert.equal(l.size, m.spriteSize);
+    assert.ok([32, 48, 64].includes(l.size));
+    const portrait = await readFile(
+      new URL("../dist/assets/" + l.portrait + ".png", import.meta.url),
+    );
+    assert.equal(portrait.readUInt32BE(16), l.size, m.id);
+    assert.equal(portrait.readUInt32BE(20), l.size, m.id);
+    const { width, pixels } = rgbaPixels(
+      await readFile(
+        new URL("../dist/assets/" + l.file + ".png", import.meta.url),
+      ),
+    );
+    assert.equal(width, l.size * 8, m.id);
+    const hashes = l.animations.walk.map((frame) => {
+      const data = Buffer.concat(
+        Array.from({ length: l.size }, (_, y) =>
+          pixels.subarray(
+            (y * width + frame * l.size) * 4,
+            (y * width + (frame + 1) * l.size) * 4,
+          ),
+        ),
+      );
+      return createHash("sha256").update(data).digest("hex");
+    });
+    assert.ok(
+      new Set(hashes).size >= 2,
+      m.id + " needs distinct native walking frames",
+    );
+  }
+  for (const c of ["warden", "mage", "ranger", "herbalist"]) {
+    assert.deepEqual(
+      [
+        art.characterLayouts[c].cols,
+        art.characterLayouts[c].rows,
+        art.characterLayouts[c].size,
+      ],
+      [8, 4, 48],
+    );
+  }
+  assert.equal(Object.keys(art.items).length, 82);
+  assert.equal(Object.keys(art.itemOverrides).length, 40);
+  for (const size of [32, 48, 64]) {
+    const file = art.effects.variants[size];
+    const png = await readFile(
+      new URL(`../dist/assets/${file}.png`, import.meta.url),
+    );
+    assert.equal(png.readUInt32BE(16), size * 8);
+    assert.equal(png.readUInt32BE(20), size * 8);
+  }
+});
+
+test("every monster has its own usable miscellaneous trophy with a unique story", () => {
+  const ids = new Set();
+  for (const monster of MONSTERS) {
+    const drops = monster.drops.filter((d) => ITEMS[d.item].type === "trophy");
+    assert.equal(drops.length, 1, monster.id);
+    const trophy = ITEMS[drops[0].item];
+    assert.equal(trophy.monster, monster.id);
+    assert.ok(trophy.lore.length > 20);
+    assert.ok(trophy.price > 0);
+    ids.add(trophy.id);
+  }
+  assert.equal(ids.size, 40);
 });

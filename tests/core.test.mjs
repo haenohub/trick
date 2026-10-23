@@ -59,13 +59,17 @@ test("combat awards XP, quest progress and real loot exactly once per death", ()
   assert.equal(p.xp, d.xp);
   w.step(0.05);
   assert.ok(p.inventory.fiber > before);
+  assert.equal(p.inventory.trophy1, 1);
   assert.equal(w.act("local", { type: "attack", target: m.uid }), false);
   assert.equal(p.kills, 1);
 });
 test("loot chances are independent and match tables across all forty species", () => {
   for (const m of MONSTERS) {
     assert.equal(rollDrops(m, () => 0).length, m.drops.length);
-    assert.equal(rollDrops(m, () => 0.999999).length, 0);
+    assert.equal(
+      rollDrops(m, () => 0.999999).length,
+      m.drops.filter((d) => d.chance === 1).length,
+    );
   }
   let x = 19;
   const rng = () => {

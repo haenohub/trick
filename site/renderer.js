@@ -28,23 +28,12 @@ export async function loadArt(progress = () => {}) {
     }),
   );
 }
-// Measured UV boundaries keep uneven generated rows from leaking into neighbors.
+// Native assets use equal, integer pixel cells.
 function sourceRect(file, cols, rows, col, row) {
   const image = IMAGES.get(file),
-    bounds = ART.frameBounds?.[file];
-  if (bounds?.rects?.[row]?.[col]) return bounds.rects[row][col];
-  const sx =
-    bounds?.xByRow?.[row]?.[col] ??
-    bounds?.x?.[col] ??
-    Math.round((col * image.width) / cols);
-  const sy = bounds?.y?.[row] ?? Math.round((row * image.height) / rows);
-  const ex =
-    bounds?.xByRow?.[row]?.[col + 1] ??
-    bounds?.x?.[col + 1] ??
-    Math.round(((col + 1) * image.width) / cols);
-  const ey =
-    bounds?.y?.[row + 1] ?? Math.round(((row + 1) * image.height) / rows);
-  return { sx, sy, sw: ex - sx, sh: ey - sy };
+    sw = image.width / cols,
+    sh = image.height / rows;
+  return { sx: col * sw, sy: row * sh, sw, sh };
 }
 function preview(canvas, file, cols, rows, col, row, face = false) {
   const image = IMAGES.get(file);
@@ -57,6 +46,7 @@ function preview(canvas, file, cols, rows, col, row, face = false) {
   const c = canvas.getContext("2d"),
     scale = Math.min(canvas.width / sw, canvas.height / sh);
   c.clearRect(0, 0, canvas.width, canvas.height);
+  c.imageSmoothingEnabled = false;
   c.drawImage(
     image,
     sx,
@@ -74,23 +64,17 @@ export function drawCharacterPreview(canvas, id, face = false) {
   preview(canvas, "characters/" + id, l.cols, l.rows, 0, 0, face);
 }
 export function drawMonsterPreview(canvas, id) {
-  const i = Number(id.slice(1)) - 1,
-    l = ART.creatureLayouts[Math.floor(i / 4)],
-    row = l.speciesRows?.[i % 4]?.[0] ?? (i % 4) * 2;
-  preview(
-    canvas,
-    "creatures/group-" + Math.floor(i / 4),
-    l.cols,
-    l.rows,
-    0,
-    row,
-  );
+  const m = ART.monsters[id];
+  preview(canvas, m.file, m.cols, m.rows, 0, 0);
 }
 export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
 export class Renderer {
   constructor(canvas, minimap) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext("2d", { alpha: false });
+    this.scene = document.createElement("canvas");
+    this.ctx = this.scene.getContext("2d", { alpha: false });
+    this.display = canvas.getContext("2d", { alpha: false });
+    this.labels = [];
     this.minimap = minimap;
     this.camera = { x: 0, y: 448 };
     this.hitboxes = [];
@@ -106,6 +90,12 @@ export class Renderer {
     ) {
       this.canvas.width = Math.round(r.width * d);
       this.canvas.height = Math.round(r.height * d);
+    }
+    const sw = Math.ceil(r.width / 2),
+      sh = Math.ceil(r.height / 2);
+    if (this.scene.width !== sw || this.scene.height !== sh) {
+      this.scene.width = sw;
+      this.scene.height = sh;
     }
     this.dpr = d;
     this.size = { width: r.width, height: r.height };
@@ -123,15 +113,35 @@ export class Renderer {
     return { x: xx / 64 + yy / 32, y: yy / 32 - xx / 64 };
   }
   text(text, x, y, color = "#fff5da", size = 12, align = "center") {
-    const c = this.ctx;
-    c.font = `600 ${size}px system-ui,sans-serif`;
-    c.textAlign = align;
-    c.textBaseline = "middle";
-    c.lineWidth = 3;
-    c.strokeStyle = "#243c32db";
-    c.strokeText(text, Math.round(x), Math.round(y));
-    c.fillStyle = color;
-    c.fillText(text, Math.round(x), Math.round(y));
+    this.labels.push({ text, x, y, color, size, align });
+  }
+  present() {
+    const c = this.display,
+      { width, height } = this.size;
+    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    c.imageSmoothingEnabled = false;
+    c.drawImage(
+      this.scene,
+      0,
+      0,
+      this.scene.width,
+      this.scene.height,
+      0,
+      0,
+      this.scene.width * 2,
+      this.scene.height * 2,
+    );
+    for (const label of this.labels) {
+      const { text, x, y, color, size, align } = label;
+      c.font = `600 ${size}px system-ui,sans-serif`;
+      c.textAlign = align;
+      c.textBaseline = "middle";
+      c.lineWidth = 3;
+      c.strokeStyle = "#243c32db";
+      c.strokeText(text, Math.round(x), Math.round(y));
+      c.fillStyle = color;
+      c.fillText(text, Math.round(x), Math.round(y));
+    }
   }
   cell(
     file,
@@ -166,11 +176,7 @@ export class Renderer {
     );
     c.restore();
   }
-  icon(index, x, y, size = 30) {
-    if (index >= 58) {
-      this.cell("items", 6, 8, index - 58, 7, x, y, size, size, 0.5);
-      return;
-    }
+  icon(index, x, y, size = 32) {
     this.cell(
       "items",
       8,
@@ -224,8 +230,14 @@ export class Renderer {
       x = 0;
       y = 0;
     }
+    const native =
+      Math.max(width, height) <= 96
+        ? 32
+        : Math.max(width, height) <= 144
+          ? 48
+          : 64;
     this.cell(
-      "effects",
+      ART.effects.variants[native],
       8,
       8,
       Math.min(7, Math.max(0, frame)),
@@ -238,84 +250,51 @@ export class Renderer {
     );
     c.restore();
   }
-  sprite(name, x, y, anim, dir, time, start, height = 100) {
+  sprite(name, x, y, anim, dir, time, start, height = 96) {
     let file,
       cols,
       rows,
       row,
       frames,
       mirror = false,
-      anchor = 0.94;
+      nativeSize = 48;
     if (/^m\d+$/.test(name)) {
-      const index = Number(name.slice(1)) - 1;
-      if (!Number.isInteger(index) || index < 0) return;
-      file = `creatures/group-${Math.floor(index / 4)}`;
-      const layout = ART.creatureLayouts?.[Math.floor(index / 4)] || {
-        cols: 8,
-        rows: 8,
-      };
-      cols = layout.cols;
-      rows = layout.rows;
-      row =
-        layout.speciesRows?.[index % 4]?.[dir === 2 || dir === 3 ? 1 : 0] ??
-        (index % 4) * 2 + (dir === 2 || dir === 3 ? 1 : 0);
-      mirror = dir === 0 || dir === 3;
-      frames =
-        anim === "walk"
-          ? [0, 1, 2, 3, 4]
-          : anim === "attack"
-            ? [5, 6]
-            : anim === "hurt"
-              ? [6]
-              : anim === "death"
-                ? [7]
-                : [0];
+      const layout = ART.monsters[name];
+      if (!layout) return;
+      ({ file, cols, rows } = layout);
+      nativeSize = layout.size;
+      row = dir === 2 || dir === 3 ? 1 : 0;
+      mirror = dir === 0 || dir === 2;
+      frames = layout.animations[anim] || layout.animations.idle;
     } else if (name.startsWith("npc:")) {
       const n = NPCS.findIndex((n) => n.id === name.slice(4));
       if (n < 0) return;
-      const layout = ART.npcLayout || { cols: 8, rows: 4, framesPerNpc: 4 };
+      const layout = ART.npcLayout;
       file = "npcs";
       cols = layout.cols;
       rows = layout.rows;
-      const base = n * layout.framesPerNpc,
-        local = Math.floor(time * 1.5) % Math.min(2, layout.framesPerNpc);
-      const index = base + local;
-      row = Math.floor(index / cols);
-      frames = [index % cols];
+      row = n;
+      frames = [Math.floor(time * 1.5) % 2];
+      nativeSize = layout.size;
     } else {
-      file = `characters/${name}`;
-      const layout = ART.characterLayouts?.[name] || { cols: 10, rows: 6 };
+      const layout = ART.characterLayouts[name];
+      if (!layout) return;
+      file = "characters/" + name;
       cols = layout.cols;
       rows = layout.rows;
-      row = { 0: 0, 1: 2, 2: 3, 3: 2 }[dir] || 0;
-      mirror = dir === 1;
-      frames =
-        anim === "walk"
-          ? [0, 1, 2, 3, 4]
-          : anim === "attack"
-            ? [5, 6, 7]
-            : anim === "hurt"
-              ? [8]
-              : anim === "death"
-                ? [9]
-                : [0];
-      frames = layout.animations?.[anim] || frames;
+      row = dir;
+      frames = layout.animations[anim] || layout.animations.idle;
+      nativeSize = layout.size;
     }
-    const image = IMAGES.get(file);
-    if (!image) return;
-    const c = this.ctx,
-      age = Math.max(0, time - start);
+    const age = Math.max(0, time - start),
+      c = this.ctx;
+    const index = ["attack", "hurt", "death"].includes(anim)
+      ? Math.min(frames.length - 1, Math.floor(age * 10))
+      : Math.floor(time * (anim === "walk" ? 8 : 1.5)) % frames.length;
     if (anim === "death") {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
     }
-    const index =
-      anim === "attack" || anim === "hurt" || anim === "death"
-        ? Math.min(frames.length - 1, Math.floor(age * 11))
-        : Math.floor(time * (anim === "walk" ? 9 : 1.5)) % frames.length;
-    const { sw, sh } = sourceRect(file, cols, rows, frames[index], row);
-    const width = (height * sw) / sh;
-    const breath = anim === "idle" ? Math.sin(time * 2) * 0.35 : 0;
     this.cell(
       file,
       cols,
@@ -323,10 +302,10 @@ export class Renderer {
       frames[index],
       row,
       x,
-      y + breath,
-      width,
+      y,
       height,
-      anchor,
+      height,
+      1 - 2 / nativeSize,
       mirror,
     );
     if (anim === "death") c.restore();
@@ -339,9 +318,9 @@ export class Renderer {
       time = state.time,
       map = MAPS.find((m) => m.id === p.map),
       bg = IMAGES.get(`maps/${p.map}`);
-    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    c.imageSmoothingEnabled = true;
-    c.imageSmoothingQuality = "high";
+    this.labels = [];
+    c.setTransform(0.5, 0, 0, 0.5, 0, 0);
+    c.imageSmoothingEnabled = false;
     const desired = project(p.x, p.y),
       cx = Math.max(-960 + w / 2, Math.min(960 - w / 2, desired.x)),
       cy = Math.max(-160 + h * 0.53, Math.min(1120 - h * 0.47, desired.y));
@@ -486,17 +465,7 @@ export class Renderer {
       const monster = o.kind === "monster",
         def = monster ? MONSTERS.find((m) => m.id === o.def) : null,
         boss = def?.type === "boss",
-        height = monster
-          ? boss
-            ? 172
-            : def.type === "elite"
-              ? 100
-              : def.type === "rare"
-                ? 108
-                : 76
-          : o.kind === "npc"
-            ? 110
-            : 116;
+        height = monster ? def.spriteSize * 2 : 96;
       const name = monster
         ? o.def
         : o.kind === "npc"
@@ -539,7 +508,7 @@ export class Renderer {
           id: o.uid,
           x: s.x,
           y: s.y - height * 0.4,
-          r: boss ? 65 : 34,
+          r: def.spriteSize - 4,
         });
         if (o.hp < o.maxHp || o.uid === target || boss) {
           const bw = boss ? 100 : 50;
@@ -564,8 +533,8 @@ export class Renderer {
         if (o.markedUntil > time)
           this.text("⌖", s.x, s.y - height * 0.88 - 25, "#fff0b4", 20);
       } else if (o.kind === "npc") {
-        this.text(o.name, s.x, s.y - 111, "#fff1c0", 11);
-        this.text(o.role, s.x, s.y - 124, "#def0cb", 9);
+        this.text(o.name, s.x, s.y - height - 5, "#fff1c0", 11);
+        this.text(o.role, s.x, s.y - height - 18, "#def0cb", 9);
         this.hitboxes.push({
           kind: "npc",
           id: o.id,
@@ -627,6 +596,7 @@ export class Renderer {
         );
     }
     this.drawMinimap(state);
+    this.present();
   }
   drawMinimap(state) {
     const c = this.minimap.getContext("2d"),
@@ -634,6 +604,7 @@ export class Renderer {
       h = this.minimap.height,
       bg = IMAGES.get("maps/" + state.player.map);
     c.clearRect(0, 0, w, h);
+    c.imageSmoothingEnabled = false;
     if (bg) c.drawImage(bg, 0, 0, w, h);
     const p = worldToImage(state.player.x, state.player.y);
     c.strokeStyle = "#fff0af";

@@ -26,6 +26,7 @@ for (const name of [
   "core.js",
   "data.js",
   "art-layout.js",
+  "trophies.js",
 ]) {
   const file = new URL(name, output);
   let text = await readFile(file, "utf8");
@@ -50,7 +51,7 @@ await writeFile(
 );
 const manifest = {
   kind: "leaftale",
-  version: "0.3.0",
+  version: "0.4.0",
   commit: process.env.GITHUB_SHA || "local",
   builtAt: new Date().toISOString(),
 };
