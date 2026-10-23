@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   World,
+  blocked,
   createPlayer,
   hydrateSave,
   serialize,
@@ -11,7 +12,16 @@ import {
   recordEvent,
   questProgress,
 } from "../site/core.js";
-import { CLASSES, MONSTERS, ITEMS, QUESTS } from "../site/data.js";
+import {
+  CLASSES,
+  MONSTERS,
+  ITEMS,
+  QUESTS,
+  PORTALS,
+  MAPS,
+  NPCS,
+} from "../site/data.js";
+import { imageToWorld } from "../site/art-layout.js";
 const setup = (cls = "warden", map = "village", level = 1) => {
   const raw = createPlayer(cls, "테스트");
   raw.map = map;
@@ -23,14 +33,15 @@ const setup = (cls = "warden", map = "village", level = 1) => {
     p = w.addPlayer(raw);
   return { w, p };
 };
-test("click movement routes around a house and reaches the requested point", () => {
+test("click movement routes around the generated village fountain", () => {
   const { w, p } = setup();
-  p.x = 14;
-  p.y = 8;
-  assert.ok(w.act("local", { type: "moveTo", x: 20, y: 8 }));
+  const start = imageToWorld(0.39, 0.3),
+    end = imageToWorld(0.65, 0.3);
+  Object.assign(p, start);
+  assert.ok(w.act("local", { type: "moveTo", ...end }));
   assert.ok(p.route.length > 1);
-  for (let i = 0; i < 100; i++) w.step(0.1);
-  assert.ok(Math.hypot(p.x - 20, p.y - 8) < 0.3);
+  for (let i = 0; i < 150; i++) w.step(0.1);
+  assert.ok(Math.hypot(p.x - end.x, p.y - end.y) < 0.35);
 });
 test("combat awards XP, quest progress and real loot exactly once per death", () => {
   const { w, p } = setup("warden", "sprout");
@@ -107,8 +118,10 @@ test("every class can gather and garden; waiting cannot kill a planted herb", ()
 });
 test("progression unlocks the coast through the first boss and validates portal proximity", () => {
   const { w, p } = setup("warden", "stump");
-  p.x = 25;
-  p.y = 14;
+  Object.assign(
+    p,
+    PORTALS("stump").find((port) => port.to === "shelltown"),
+  );
   assert.equal(w.act("local", { type: "travel", map: "shelltown" }), false);
   p.defeatedBosses.push("m20");
   assert.equal(w.act("local", { type: "travel", map: "shelltown" }), true);
@@ -211,4 +224,20 @@ test("server actions reject teleport, invented rewards and incompatible equipmen
   w.act("local", { type: "move", x: 999, y: 0 });
   w.step(0.1);
   assert.ok(Math.abs(p.x - x) <= stats(p).speed * 0.1 + 0.001);
+});
+
+test("all map exits, NPC feet and creature spawns sit on generated walkable floor", () => {
+  const w = new World({ seed: 42 });
+  for (const map of MAPS) {
+    for (const port of PORTALS(map.id))
+      assert.equal(blocked(map.id, port.x, port.y), false, map.id + " exit");
+    for (const npc of NPCS.filter((n) => n.map === map.id))
+      assert.equal(blocked(map.id, npc.x, npc.y), false, npc.id);
+    for (const entity of [...w.map(map.id).mobs, ...w.map(map.id).herbs])
+      assert.equal(
+        blocked(map.id, entity.x, entity.y),
+        false,
+        map.id + " spawn",
+      );
+  }
 });

@@ -1,3 +1,4 @@
+import { isWalkable, NAVIGATION } from "./art-layout.js";
 import {
   CLASSES,
   MAPS,
@@ -242,61 +243,8 @@ export function questProgress(p) {
   const q = QUESTS[p.quest.index];
   return q ? Math.min(q.count, p.quest.counts[q.id] || 0) : 0;
 }
-const decorCache = new Map();
-export function decorations(mapId) {
-  if (decorCache.has(mapId)) return decorCache.get(mapId);
-  const map = MAPS.find((m) => m.id === mapId),
-    rng = seeded(hash(mapId)),
-    items = [];
-  const n = map.town ? 37 : 90;
-  for (let i = 0; i < n; i++) {
-    const x = 1 + rng() * 28,
-      y = 1 + rng() * 28;
-    if (
-      Math.abs(y - 14) < 2.1 ||
-      Math.abs(x - 14) < 1.6 ||
-      distance({ x, y }, { x: 14, y: 14 }) < 4.5 ||
-      distance({ x, y }, { x: 21, y: 21 }) < 2
-    )
-      continue;
-    if (map.town && x > 6 && x < 22 && y > 6 && y < 21) continue;
-    if (["beach", "coasttown", "cave"].includes(map.biome) && x > 21) continue;
-    const kind =
-      map.biome === "cave"
-        ? i % 3 === 0
-          ? "crystal"
-          : "rock"
-        : i % 7 === 0
-          ? "rock"
-          : i % 5 === 0
-            ? "bush"
-            : map.region === 1
-              ? "palm"
-              : "tree";
-    items.push({ x, y, kind, variant: i % 3 });
-  }
-  if (map.town)
-    items.push(
-      { x: 8, y: 8, kind: "house", variant: 0 },
-      { x: 17, y: 8, kind: "house", variant: 1 },
-      { x: 7, y: 18, kind: "house", variant: 2 },
-      { x: 19, y: 18, kind: "house", variant: 0 },
-    );
-  decorCache.set(mapId, items);
-  return items;
-}
 export function blocked(map, x, y) {
-  return (
-    x < 1.6 ||
-    y < 1.6 ||
-    x > 28.4 ||
-    y > 28.4 ||
-    decorations(map).some(
-      (d) =>
-        ["tree", "palm", "rock", "house", "crystal"].includes(d.kind) &&
-        Math.hypot(d.x - x, d.y - y) < (d.kind === "house" ? 1.3 : 0.48),
-    )
-  );
+  return x < 1.6 || y < 1.6 || x > 28.4 || y > 28.4 || !isWalkable(map, x, y);
 }
 export function findRoute(map, from, to) {
   const clear = (a, b) => {
@@ -407,6 +355,10 @@ export class World {
       poisonTick: 0,
       regenUntil: 0,
     };
+    if (blocked(p.map, p.x, p.y)) {
+      p.x = 14;
+      p.y = 14;
+    }
     this.players.set(id, p);
     this.map(p.map);
     this.log(p, "벨로아 대수림에 오신 것을 환영합니다.", "story");
@@ -431,8 +383,7 @@ export class World {
             break;
         }
         if (def.type === "boss") {
-          x = 21;
-          y = 21;
+          ({ x, y } = NAVIGATION[id].boss || { x: 18, y: 18 });
         }
         mobs.push({
           uid: `${def.id}-${j}`,
@@ -1063,8 +1014,9 @@ export class World {
     const prev = MAPS.findIndex((m) => m.id === p.map),
       ni = MAPS.findIndex((m) => m.id === dest);
     p.map = dest;
-    p.x = fast ? 14 : ni > prev ? 5.5 : 23.5;
-    p.y = 14;
+    const entry = ni > prev ? NAVIGATION[dest].west : NAVIGATION[dest].east;
+    p.x = fast ? 14 : entry.x + (14 - entry.x) * 0.12;
+    p.y = fast ? 14 : entry.y + (14 - entry.y) * 0.12;
     p.move = { x: 0, y: 0 };
     p.moveTarget = null;
     p.route = [];

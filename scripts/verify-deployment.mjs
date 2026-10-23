@@ -31,7 +31,9 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "core.js",
       "renderer.js",
       "assets/manifest.json",
-      "assets/m40.png",
+      "art-layout.js",
+      "assets/creatures/group-9.png",
+      "assets/maps/seacave.png",
     ]) {
       const asset = await fetch(new URL(file, base), {
         signal: AbortSignal.timeout(10000),

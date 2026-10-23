@@ -1,0 +1,266 @@
+{
+  "generatedAt": "2026-10-23",
+  "assets": [
+    {
+      "id": "map-village",
+      "target": "site/assets/maps/village.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 잎담 마을: 나무가 천천히 지붕으로 자라는 작은 마을. 모험가의 첫 발걸음을 기다립니다.. Ornate small cottages and market stalls around the periphery, with a large open walkable central square. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-21e2f043-7014-4dba-85c9-37741ddd3b86.png",
+      "tool": "image_gen",
+      "sha256": "82ba7c32517d477e4059dd89fe35be59a12eb215bbaa53b26cc07d0076a2225d"
+    },
+    {
+      "id": "map-sprout",
+      "target": "site/assets/maps/sprout.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 새싹 울타리: 밭과 숲이 만나는 볕 좋은 울타리. 풀잎 아래에서 작은 소동이 일어납니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-1d6d0830-bed0-48ee-89a2-78d73b26aa06.png",
+      "tool": "image_gen",
+      "sha256": "3690693e01f0f909e05e25a0e338055018b8931496c7daa5c7fa106e09c2f725"
+    },
+    {
+      "id": "map-acorn",
+      "target": "site/assets/maps/acorn.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 도토리 샛길: 도토리껍질이 흩어진 샛길. 낙엽 뒤에서 무언가 바쁘게 움직입니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-707d58e4-f368-477a-8094-1c9a78b91481.png",
+      "tool": "image_gen",
+      "sha256": "aa70a5a3d3d37512ee991e40111a62465d5027f0a2c407f7461fb5d3e54c2b61"
+    },
+    {
+      "id": "map-brook",
+      "target": "site/assets/maps/brook.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 이슬개울: 징검돌 위로 햇살이 부서지는 얕은 개울. 물가의 발자국을 따라가 보세요.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-280c5873-b16f-4d78-8611-4a33f3dedf74.png",
+      "tool": "image_gen",
+      "sha256": "fa95c6c747a68980d4791c351d881fd3f4fd63b3cee5f56cab773652f15135bf"
+    },
+    {
+      "id": "map-stump",
+      "target": "site/assets/maps/stump.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 오래된 그루터기: 한때 숲을 내려다보던 나무. 남은 생명은 아직 작은 이웃들을 지킵니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-897063e5-3a1b-42f2-a9f2-11e134c1fbb8.png",
+      "tool": "image_gen",
+      "sha256": "3b6dac6df9c07ddfa61988badd62f471843efaad1b2f96763924c09649c9b234"
+    },
+    {
+      "id": "map-shelltown",
+      "target": "site/assets/maps/shelltown.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 조개등 마을: 조개 지붕과 마른 나무의 마을. 창마다 돌아오는 이를 위한 불빛이 있습니다.. Ornate small cottages and market stalls around the periphery, with a large open walkable central square. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-7a36435d-cb1f-414f-812f-7ff38d78ea98.png",
+      "tool": "image_gen",
+      "sha256": "5b1fa524de17a2ee3dac073deae6da11100ad28e8c8cfc352b6dcc2078aada70"
+    },
+    {
+      "id": "map-saltwood",
+      "target": "site/assets/maps/saltwood.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 소금바람 숲: 바닷바람에 잎 끝이 은빛으로 물들었습니다. 멀리서 파도 소리가 들립니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-a12a2173-c606-4647-ab74-f6657fcb17a9.png",
+      "tool": "image_gen",
+      "sha256": "63195d80cec0994ff34d3b1f332541cb26563a38a17611a40baba95d6da8c763"
+    },
+    {
+      "id": "map-glassbeach",
+      "target": "site/assets/maps/glassbeach.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 유리열매 모래밭: 투명한 열매와 조개가 반짝이는 바다. 발밑의 작은 집게를 조심하세요.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-e847330a-a958-43a9-ad20-b031ad7edd7f.png",
+      "tool": "image_gen",
+      "sha256": "7c51f5cade5aa5d96dae5dd72bfa4fa22937bc9448511987ed53c20f062d2ed5"
+    },
+    {
+      "id": "map-tideroot",
+      "target": "site/assets/maps/tideroot.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 밀물뿌리 습지: 물 위로 솟은 뿌리가 길을 잇습니다. 밀물이 오기 전에 흐름을 읽어야 합니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-6b61ee9d-060a-40b1-be3e-920af7154d3d.png",
+      "tool": "image_gen",
+      "sha256": "bb4278df44daa22f5360326ab4ef054325250d00081ee27c92f4ba7680d7ee44"
+    },
+    {
+      "id": "map-seacave",
+      "target": "site/assets/maps/seacave.png",
+      "transparent_background": false,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Full playable map background, landscape1536x1024, elevated orthographic 3/4 game camera, no horizon. Terrain fills the entire image. 푸른숨 해식동굴: 천장의 고대 뿌리 사이로 바다가 숨 쉽니다. 가장 깊은 곳에 긴 그림자가 머뭅니다.. Large organically shaped open walkable floor with environment details around its edges. Central60% remains traversable. Paths open at the middle of left and right edges. No characters or enemies. Rich decorated foliage, tiny flowers, stones and carefully shaded objects, fully finished art.",
+      "source": "/workspace/generated_images/exec-557f9871-9a38-4262-b29b-ff68ec54bde2.png",
+      "tool": "image_gen",
+      "sha256": "3b9f32d9edfe496802f691cb1c607550cbeb1280b9018afe020ce5072223ce8d"
+    },
+    {
+      "id": "character-warden",
+      "target": "site/assets/characters/warden.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact square1024x1024 transparent animation atlas, 8columns x8rows,64 equal128x128 cells, no borders or labels. ONE consistent original cute three-head-tall 수림창사 wielding spear; 숲길을 열고 동료를 지키는 창사. 긴 창끝으로 거리를 지배합니다.. Feet pivot(64,110), same scale and anatomy every cell. Four direction groups16frames each, each occupies2rows: south,east,north,west. Within each group:2breathing idle,6alternating-foot walk,6attack anticipation/strike/recovery,1hurt,1fallen. Fine shaded character detail, cloth/hair follow-through, consistent volume, no environment.",
+      "source": "/workspace/generated_images/exec-10a5c442-5d9e-42d3-aad5-5f6c28f62585.png",
+      "tool": "image_gen",
+      "sha256": "0a18d4c124b8df9bb5af2db7c9b243906686ab0b6b701788838a6ce479ec6784"
+    },
+    {
+      "id": "character-mage",
+      "target": "site/assets/characters/mage.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact square1024x1024 transparent animation atlas, 8columns x8rows,64 equal128x128 cells, no borders or labels. ONE consistent original cute three-head-tall 별잎술사 wielding staff; 잎맥에 고인 빛을 읽어 주문을 엮습니다. 여러 적을 다루는 마법사입니다.. Feet pivot(64,110), same scale and anatomy every cell. Four direction groups16frames each, each occupies2rows: south,east,north,west. Within each group:2breathing idle,6alternating-foot walk,6attack anticipation/strike/recovery,1hurt,1fallen. Fine shaded character detail, cloth/hair follow-through, consistent volume, no environment.",
+      "source": "/workspace/generated_images/exec-566b3312-1659-43ec-af77-81e99d0aabfe.png",
+      "tool": "image_gen",
+      "sha256": "f61023bfbcc2935e2c0bb8b808eacf02067b714059bc294b9e2987d55acf87da"
+    },
+    {
+      "id": "character-ranger",
+      "target": "site/assets/characters/ranger.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact square1024x1024 transparent animation atlas, 8columns x8rows,64 equal128x128 cells, no borders or labels. ONE consistent original cute three-head-tall 숲그늘궁수 wielding bow; 바람과 발자국을 읽는 궁수. 멀리서 약점을 노리고 가볍게 움직입니다.. Feet pivot(64,110), same scale and anatomy every cell. Four direction groups16frames each, each occupies2rows: south,east,north,west. Within each group:2breathing idle,6alternating-foot walk,6attack anticipation/strike/recovery,1hurt,1fallen. Fine shaded character detail, cloth/hair follow-through, consistent volume, no environment.",
+      "source": "/workspace/generated_images/exec-c9ec06da-dcda-4019-bc38-0bd0cc5adb74.png",
+      "refinement": "Replaced retained spear with archer bow and quiver",
+      "tool": "image_gen",
+      "sha256": "4713abb056c3d99a2a8aea5c2d5eaf66b2516c5a23b3dfb9c091c632401ce07a"
+    },
+    {
+      "id": "character-herbalist",
+      "target": "site/assets/characters/herbalist.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact square1024x1024 transparent animation atlas, 8columns x8rows,64 equal128x128 cells, no borders or labels. ONE consistent original cute three-head-tall 약초술사 wielding wand; 작은 풀에도 살아갈 힘이 있습니다. 스스로 회복하며 적을 약화합니다.. Feet pivot(64,110), same scale and anatomy every cell. Four direction groups16frames each, each occupies2rows: south,east,north,west. Within each group:2breathing idle,6alternating-foot walk,6attack anticipation/strike/recovery,1hurt,1fallen. Fine shaded character detail, cloth/hair follow-through, consistent volume, no environment.",
+      "source": "/workspace/generated_images/exec-99a48046-7b62-4fc1-83bd-44edf1ddb134.png",
+      "tool": "image_gen",
+      "sha256": "f4e62b8eb18492646539165bd3573cd7bda7f47a83d9678c0c762150189c141c"
+    },
+    {
+      "id": "monsters-0",
+      "target": "site/assets/creatures/group-0.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 콩잎폴짝, bug, 콩잎을 등에 붙인 풀벌레. 농부의 씨앗을 자기 겨울 식량으로 착각합니다.; Creature2: 솜털씨앗쥐, mouse, 씨앗을 볼 가득 모으는 들쥐. 놀라면 먹이부터 떨어뜨립니다.; Creature3: 흙묻은 새순이, sprout, 풀리지 않은 뿌리 때문에 흙을 끌고 다니는 어린 식물 생명체입니다.; Creature4: 밤송이등 벌레, beetle, 빈 밤송이를 갑옷처럼 썼습니다. 웅크릴 때는 등을 두드리지 마세요.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-19ffbe7f-352a-473b-88f1-2c1148a622ba.png",
+      "tool": "image_gen",
+      "sha256": "493d7d40f0161bae826fea7ddaed4a468e2cdef0f47c20d31e1e921adb2fe9a3"
+    },
+    {
+      "id": "monsters-1",
+      "target": "site/assets/creatures/group-1.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 리본꼬리 족제비, weasel, 마을의 천 조각으로 꼬리를 꾸몄습니다. 화려한 꼬리보다 발을 보세요.; Creature2: 도토리투구 다람쥐, squirrel, 지나치게 큰 도토리 투구를 썼습니다. 앞이 잘 안 보여 곧장 달립니다.; Creature3: 낙엽귀 토끼, rabbit, 마른 잎 같은 귀로 몸을 숨깁니다. 뛰기 직전 귀가 먼저 들립니다.; Creature4: 솔방울구름 애벌레, caterpillar, 등의 솜털로 구름처럼 보이는 애벌레. 솔방울을 굴려 길을 막습니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-1f9d415f-6e63-4971-b120-99db0615e71d.png",
+      "tool": "image_gen",
+      "sha256": "084dd53a820984b40babac626cfc18cf88a039c2c51054e684886307688f0967"
+    },
+    {
+      "id": "monsters-2",
+      "target": "site/assets/creatures/group-2.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 옹이주먹 꼬마목인, treant, 울타리 말뚝에 깃든 목인. 아직도 자기 밭을 지킨다고 믿습니다.; Creature2: 세 도토리의 파수꾼, squirrel, 도토리 세 알을 지키는 늙은 다람쥐. 먹이가 없어져도 자리를 떠나지 않습니다.; Creature3: 이슬배 물방개, bug, 등의 물방울로 몸집을 부풀립니다. 방울이 터지면 잠시 작아집니다.; Creature4: 갈대발 개구리, frog, 갈대 사이에서 다리가 길어진 개구리. 그림자가 떨어질 곳을 알려줍니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-97d5924f-6125-46ff-97a9-acce39d38799.png",
+      "tool": "image_gen",
+      "sha256": "e90830321cccf93ff77b1d4585b0ddbf0d8603583679e92f61489f005edd3e17"
+    },
+    {
+      "id": "monsters-3",
+      "target": "site/assets/creatures/group-3.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 물잠자리 유충, caterpillar, 개울 바닥에서 물줄기를 쏩니다. 젖은 흙 위에서는 느리게 움직입니다.; Creature2: 돌껍질 가재, crab, 징검돌을 등에 붙였습니다. 집게를 높이 들면 내려찍기를 준비합니다.; Creature3: 잠꾸러기 수달 영감, otter, 개울을 막고 자는 늙은 수달. 잠자리를 지키다 싸움 중에도 꾸벅 졸곤 합니다.; Creature4: 나무부스러기 진드기, bug, 썩은 나무의 작은 분해자. 넘치는 먹이를 따라 그루터기 밖으로 나왔습니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-ce453025-3469-4f28-abfd-6a00f5927ba3.png",
+      "tool": "image_gen",
+      "sha256": "6dd06b27bde8fece576a907a1c647c736c9cdffe0c5e43243941dc22585ece63"
+    },
+    {
+      "id": "monsters-4",
+      "target": "site/assets/creatures/group-4.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 버섯모자 달팽이, snail, 등의 버섯 덕분에 늘 그늘이 있습니다. 지나간 자리에는 반짝이는 흔적이 남습니다.; Creature2: 수액방울 딱정벌레, beetle, 수액을 나르다 등이 끈적해졌습니다. 달콤한 냄새가 길게 이어집니다.; Creature3: 뒤틀린 뿌리멧돼지, boar, 급성장한 뿌리가 굴을 막았습니다. 성난 돌진 끝에는 큰 빈틈이 생깁니다.; Creature4: 그루터기 할아범, ancient, 잘린 나무의 남은 생명이 이웃들을 지키는 수호자로 깨어났습니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-2969d68a-7931-4408-8ded-2477d569d430.png",
+      "tool": "image_gen",
+      "sha256": "6579b06c14d05d1c7b23843fcf77c1d207772c912399a46d6ab9abcb5b0b9979"
+    },
+    {
+      "id": "monsters-5",
+      "target": "site/assets/creatures/group-5.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 소금털 들토끼, rabbit, 바닷바람에 털끝이 희게 굳었습니다. 몸을 털면 소금가루가 날립니다.; Creature2: 은잎도마뱀, lizard, 은빛 잎 아래 위장합니다. 공격하기 직전 꼬리 끝이 햇빛을 반사합니다.; Creature3: 조개집 소라게, hermit, 숲으로 떠밀려온 조개껍질이 새집이 되었습니다. 빈 집처럼 멈춰 기다립니다.; Creature4: 바람깃 왜가리, bird, 먹이터가 막혀 숲에 왔습니다. 긴 부리로 찌른 뒤 천천히 몸을 돌립니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-0c5e32dc-e242-401c-96e5-b66bddd756d6.png",
+      "tool": "image_gen",
+      "sha256": "c5679cdbf56896310a1070dc5f6487c1972c5a6aa74c795a56185ef92130c97c"
+    },
+    {
+      "id": "monsters-6",
+      "target": "site/assets/creatures/group-6.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 소금숲 은여우, fox, 흰 잎 사이를 순찰하는 여우. 바람 방향을 따라 적의 옆으로 돌아갑니다.; Creature2: 유리열매 딱정벌레, beetle, 투명한 열매껍질을 먹어 등이 반짝입니다. 햇빛을 모았다가 내보냅니다.; Creature3: 모래주머니 게, crab, 단단한 모래주머니로 상대를 밀어냅니다. 젖은 주머니는 유난히 무겁습니다.; Creature4: 파도거품 해파리, jelly, 모래와 얕은 물 사이에 떠 있습니다. 부풀어 오른 거품은 곧 터집니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-24ce0291-4bb4-4c96-b765-8fe4fc9dcd5d.png",
+      "tool": "image_gen",
+      "sha256": "4a718022dc2eb519e780426752e70f3d7459013d5f3b751840edd22a565cb1b5"
+    },
+    {
+      "id": "monsters-7",
+      "target": "site/assets/creatures/group-7.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 조개칼 사마귀, mantis, 앞다리에 조개 조각을 붙였습니다. 연속 공격 후에는 날을 정리합니다.; Creature2: 열매도둑 푸른원숭이, monkey, 숲과 해변을 오가며 열매를 훔칩니다. 자기 먹이를 빼앗기는 것은 참지 못합니다.; Creature3: 물뿌리 지렁이, worm, 물속 뿌리 사이를 파고듭니다. 솟은 흙줄기가 이동 경로를 드러냅니다.; Creature4: 진주눈 망둑어, fish, 얕은 물을 뛰는 물고기. 반짝이는 눈으로 바라본 뒤 물을 뿜습니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-a7876e14-5550-463a-91ba-8cb3d46e7d10.png",
+      "tool": "image_gen",
+      "sha256": "d8a30d8d79fab5d3cc71dd8b42cad27a6d83a0766fef8593ba2a50bcc8224c48"
+    },
+    {
+      "id": "monsters-8",
+      "target": "site/assets/creatures/group-8.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 이끼등 악어붙이, croc, 등의 이끼 때문에 떠 있는 나무처럼 보입니다. 물가에서 느긋하게 기다립니다.; Creature2: 갈대가면 목령, treant, 버려진 갈대 인형에 숲이 깃들었습니다. 묶인 발 대신 뿌리를 뻗습니다.; Creature3: 밀물의 흰사슴, deer, 물에 잠긴 길을 기억하는 사슴. 발밑의 물결이 오래된 길을 보여줍니다.; Creature4: 푸른등 동굴새우, shrimp, 등의 빛으로 동료를 찾습니다. 빠르게 깜빡이면 함께 달려들 준비입니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-d6a90fac-373a-46f0-8792-fca64be59892.png",
+      "tool": "image_gen",
+      "sha256": "3ea3c7ec70dccb05d68572663c3f6479583c38f005e90d796a2b6ba9e699a9ed"
+    },
+    {
+      "id": "monsters-9",
+      "target": "site/assets/creatures/group-9.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Square1024x1024 transparent game animation atlas, EXACT8columns x8rows,64 equal128x128 cells. Four distinct creatures, each occupies TWO consecutive rows=16frames: Creature1: 소금결정 박쥐, bat, 날개 끝에 소금 결정이 자랐습니다. 날갯짓할 때 작은 빛이 떨어집니다.; Creature2: 해초머리 말미잘, anemone, 해초처럼 바위에서 흔들립니다. 먹잇감이 가까워져야 촉수를 펼칩니다.; Creature3: 산호갑각 수문게, crab, 막힌 물길 앞에서 수백 번 탈피한 게. 한 집게로 막고 다른 집게로 땅을 가릅니다.; Creature4: 푸른숨 뿌리해룡, dragon, 바닷속 뿌리와 자란 고대 해룡. 본래 바다와 숲의 물을 순환시키던 생명체입니다.. Every group:2idle breathing frames,6natural locomotion frames,6attack anticipation/impact/recovery frames,1recoil,1fallen. Southeast three-quarter view, feet pivot(64,108). Same identity and scale across each creature's frames. Each species must have unique anatomy and accessories, not just a recolor. No labels, no drawn grid, true alpha background.",
+      "source": "/workspace/generated_images/exec-d2768147-9937-43f0-abb6-9ceba9e34464.png",
+      "tool": "image_gen",
+      "sha256": "d0f9d31f83a94515d9ceee6678b64dfc356db5819ed3b0ed5e7364d0db353392"
+    },
+    {
+      "id": "npcs",
+      "target": "site/assets/npcs.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact8column x4row transparent atlas,32 equal cells. Eight distinct detailed original forest/coastal villagers,4consecutive frames each (2breathing,2talking). Each has consistent proportions and feet pivot. Characters: 숲길지기 모아 / 이야기 · 퀘스트; 나무장이 로웬 / 장비 · 제작; 풀향 할머니 / 약초 · 연금술; 행상 피노 / 상점 · 휴식; 물길지기 세린 / 해안 이야기; 조개장이 누루 / 해안 장비 · 제작; 바다풀 약사 린 / 해안 연금술; 은잎의 스승 이안 / 레벨 25 · 2차 전직. Richly shaded clothes and accessories, friendly faces, 3/4 isometric view.",
+      "source": "/workspace/generated_images/exec-395d3604-c37c-4c64-b4c5-1ce4e3829510.png",
+      "refinement": "Eight rows, eight frames per villager",
+      "tool": "image_gen",
+      "sha256": "e88382f669a92533f2d01b85cbcfd0d3fdc76b5d9b738c308101f643d6361b45"
+    },
+    {
+      "id": "icons",
+      "target": "site/assets/items.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Exact8column x8row transparent inventory/ability atlas,64 equal128px cells on1024px square. Detailed dimensional miniature pixel-painted icons, no border or labels. First42 icons row-major exactly: 0:보들잎; 1:이슬박하; 2:버들섬유; 3:개울철석; 4:소금꽃; 5:푸른숨풀; 6:해풍목; 7:조개광석; 8:보들잎 연고; 9:이슬박하 물약; 10:소금꽃 해독제; 11:푸른숨 정수; 12:연습용 버들창; 13:덧댄 숲길 조끼; 14:조개날 물푸레창; 15:해안수비 흉갑; 16:말린잎 지팡이; 17:잎맥 견습 로브; 18:은물결 가지봉; 19:은물결 법의; 20:묶은가지 사냥활; 21:풀그늘 사냥복; 22:소금바람 굽이활; 23:갈대바람 경갑; 24:새순 가지봉; 25:약초주머니 겉옷; 26:해풍꽃 약초봉; 27:해풍꽃 외투; 28:접은잎 두건; 29:조개빛 이마띠; 30:기운 천신; 31:소금길 장화; 32:도토리 약속목걸이; 33:은물결 조개반지; 34:녹각 새싹창; 35:갈고리 가시창; 36:달고리 가지장; 37:별꽃 파종장; 38:흰깃 매눈궁; 39:안개잎 단궁; 40:꽃숨 순환봉; 41:쓴향 가시봉. Following16 icons are the four class's skill emblems (spear/shield/thorn/antler; leaf magic/moon burst/vine/lunar beam; arrow/dodge/target/hawk; healing/blight/garden/flower). Last6: basic attack, healing vial, chat scroll, parchment map, glowing travel rune, gold coin.",
+      "source": "/workspace/generated_images/exec-ea506ba5-549a-41e6-a273-bd9a98eb2130.png",
+      "tool": "image_gen",
+      "sha256": "b926e55eb987535f51f4bdf41e5fbd891c1c1a8aed0565b9cdc97c46deb28ce1"
+    },
+    {
+      "id": "effects",
+      "target": "site/assets/effects.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Transparent1024x1024 visual effects sprite atlas, exact8columns x8rows,64 cells. Each row is ONE8-frame coherent animation. Row1leaf sword sweep;row2lunar magic burst;row3healing blossoms;row4silver arrow trail;row5purple poison plume;row6gold-green protective shield;row7gold pollen sparks;row8soft teal travel rune. Smooth anticipation/expansion/dissipation. No character, no text, crisp elegant detailed effects.",
+      "source": "/workspace/generated_images/exec-78be77a7-2ef2-45f0-9c8d-90de9c202b77.png",
+      "tool": "image_gen",
+      "sha256": "b3c1f37d2be3bc64353f6d2d2ca856ddf1429ef7356ebce70378a3ae4390dfc6"
+    },
+    {
+      "id": "interface",
+      "target": "site/assets/interface.png",
+      "transparent_background": true,
+      "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Beautiful original forest RPG user-interface ornamental frame asset, square1024px transparent background. An empty dark moss-green parchment panel with very detailed carved wooden corners and tiny gold leaf inlays, wide quiet center, all decorations at the edges so it supports nine-slice scaling. No text, no icons, no buttons, no characters.",
+      "source": "/workspace/generated_images/exec-31800738-042c-4d1b-b255-5f3c049be3b4.png",
+      "tool": "image_gen",
+      "sha256": "a4fceb3447c5d206b4ff472eeeb8f5b9ee98e0cc66da1b2fba6a806ab3b3fbd9"
+    },
+    {
+      "id": "branch-weapons",
+      "target": "site/assets/branch-weapons.png",
+      "source": "/workspace/generated_images/exec-a5ca87d4-e49d-4565-b724-be0aabfb05c7.png",
+      "tool": "image_gen",
+      "sha256": "ed2cafdbb6b918ad040ff77d623b8a3acce8e5f950e093378b8b268ccd5a656a"
+    }
+  ]
+}

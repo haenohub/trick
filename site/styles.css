@@ -191,7 +191,7 @@ kbd {
   width: 54px;
   height: 61px;
   flex-shrink: 0;
-  background-image: url("./assets/warden.png");
+  background-image: url("./assets/characters/warden.png");
   background-size: 1536px 256px;
   image-rendering: pixelated;
   border: 1px solid #b4c49838;
@@ -1652,5 +1652,71 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+  }
+}
+
+/* Original image-generated atlases: native layout dimensions are intentional. */
+.portrait {
+  background-size: 540px 540px;
+  background-position: 0 -12px;
+  image-rendering: auto;
+}
+.class-preview {
+  height: 100px;
+  background-size: 640px 640px;
+  image-rendering: auto;
+}
+.monster-preview {
+  width: 64px;
+  background-size: 512px 512px;
+  image-rendering: auto;
+}
+.item-icon {
+  image-rendering: auto;
+  background-repeat: no-repeat;
+}
+.glyph .item-icon,
+.skill-glyph .item-icon {
+  display: block;
+  margin: auto;
+}
+.menu-panel,
+.create-card {
+  border: 14px solid transparent;
+  border-image-source: url("./assets/interface.png");
+  border-image-slice: 145 fill;
+  border-image-width: 22px;
+  border-image-repeat: stretch;
+}
+#world {
+  image-rendering: auto;
+}
+
+.portrait,
+.class-preview,
+.monster-preview {
+  background-image: none;
+}
+@media (max-width: 600px) {
+  .create-card {
+    width: 100%;
+    min-width: 0;
+    padding: 15px 10px;
+    border-width: 8px;
+  }
+  #class-select {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .class-choice {
+    min-width: 0;
+  }
+  .class-preview {
+    width: 52px;
+    height: 92px;
+  }
+  .class-choice small {
+    font-size: 5px;
+    white-space: nowrap;
   }
 }

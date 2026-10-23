@@ -61,8 +61,8 @@ await writeFile(
   "art/image-requests.json",
   JSON.stringify(
     {
-      status: "blocked-by-image-tool",
-      error: "HTTP400 Unknown parameter: reasoning",
+      status: "specification",
+      productionRecord: "art/generated-assets.json",
       requirements:
         "All replacement artwork must be generated through image generation. No procedural/raster-drawing fallback.",
       requests,

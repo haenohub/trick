@@ -1,33 +1,89 @@
-import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS } from "./data.js";
-import { decorations, hash, seeded } from "./core.js";
+import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
+import { worldToImage } from "./art-layout.js";
 const IMAGES = new Map();
-const ART_REVISION =
+let ART = null;
+const REVISION =
   document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
-const load = (name) =>
-  new Promise((resolve) => {
-    const i = new Image();
-    i.onload = () => {
-      IMAGES.set(name, i);
+function load(file) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => {
+      IMAGES.set(file, image);
       resolve();
     };
-    i.onerror = () => resolve();
-    i.src = `./assets/${name}.png?v=${ART_REVISION}`;
+    image.onerror = () =>
+      reject(new Error(`필수 아트를 불러오지 못했습니다: ${file}`));
+    image.src = `./assets/${file}.png?v=${REVISION}`;
   });
+}
 export async function loadArt(progress = () => {}) {
-  const names = [
-    ...MONSTERS.map((m) => m.id),
-    ...CLASSES.map((c) => c.id),
-    "items",
-    ...["tree", "palm", "house", "bush", "rock", "crystal"].flatMap((k) =>
-      [0, 1, 2].map((v) => k + v),
-    ),
-  ];
+  const response = await fetch("./assets/manifest.json", { cache: "no-store" });
+  if (!response.ok) throw new Error("Art manifest unavailable");
+  ART = await response.json();
   let done = 0;
   await Promise.all(
-    names.map(async (n) => {
-      await load(n);
-      progress(++done / names.length);
+    ART.files.map(async (file) => {
+      await load(file);
+      progress(++done / ART.files.length);
     }),
+  );
+}
+// Measured UV boundaries keep uneven generated rows from leaking into neighbors.
+function sourceRect(file, cols, rows, col, row) {
+  const image = IMAGES.get(file),
+    bounds = ART.frameBounds?.[file];
+  if (bounds?.rects?.[row]?.[col]) return bounds.rects[row][col];
+  const sx =
+    bounds?.xByRow?.[row]?.[col] ??
+    bounds?.x?.[col] ??
+    Math.round((col * image.width) / cols);
+  const sy = bounds?.y?.[row] ?? Math.round((row * image.height) / rows);
+  const ex =
+    bounds?.xByRow?.[row]?.[col + 1] ??
+    bounds?.x?.[col + 1] ??
+    Math.round(((col + 1) * image.width) / cols);
+  const ey =
+    bounds?.y?.[row + 1] ?? Math.round(((row + 1) * image.height) / rows);
+  return { sx, sy, sw: ex - sx, sh: ey - sy };
+}
+function preview(canvas, file, cols, rows, col, row, face = false) {
+  const image = IMAGES.get(file);
+  if (!image) return;
+  let { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row);
+  if (face) {
+    sy += sh * 0.3;
+    sh *= 0.6;
+  }
+  const c = canvas.getContext("2d"),
+    scale = Math.min(canvas.width / sw, canvas.height / sh);
+  c.clearRect(0, 0, canvas.width, canvas.height);
+  c.drawImage(
+    image,
+    sx,
+    sy,
+    sw,
+    sh,
+    (canvas.width - sw * scale) / 2,
+    canvas.height - sh * scale,
+    sw * scale,
+    sh * scale,
+  );
+}
+export function drawCharacterPreview(canvas, id, face = false) {
+  const l = ART.characterLayouts[id];
+  preview(canvas, "characters/" + id, l.cols, l.rows, 0, 0, face);
+}
+export function drawMonsterPreview(canvas, id) {
+  const i = Number(id.slice(1)) - 1,
+    l = ART.creatureLayouts[Math.floor(i / 4)],
+    row = l.speciesRows?.[i % 4]?.[0] ?? (i % 4) * 2;
+  preview(
+    canvas,
+    "creatures/group-" + Math.floor(i / 4),
+    l.cols,
+    l.rows,
+    0,
+    row,
   );
 }
 export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
@@ -37,29 +93,28 @@ export class Renderer {
     this.ctx = canvas.getContext("2d", { alpha: false });
     this.minimap = minimap;
     this.camera = { x: 0, y: 448 };
-    this.mapCache = new Map();
     this.hitboxes = [];
-    this.mouse = { x: 0, y: 0 };
     this.size = { width: 1000, height: 700 };
+    this.destination = null;
   }
   resize() {
     const r = this.canvas.getBoundingClientRect(),
-      dpr = Math.min(devicePixelRatio || 1, 2);
+      d = Math.min(devicePixelRatio || 1, 2);
     if (
-      this.canvas.width !== Math.round(r.width * dpr) ||
-      this.canvas.height !== Math.round(r.height * dpr)
+      this.canvas.width !== Math.round(r.width * d) ||
+      this.canvas.height !== Math.round(r.height * d)
     ) {
-      this.canvas.width = Math.round(r.width * dpr);
-      this.canvas.height = Math.round(r.height * dpr);
+      this.canvas.width = Math.round(r.width * d);
+      this.canvas.height = Math.round(r.height * d);
     }
-    this.dpr = dpr;
+    this.dpr = d;
     this.size = { width: r.width, height: r.height };
   }
   worldToScreen(x, y) {
-    const p = project(x, y);
+    const s = project(x, y);
     return {
-      x: p.x - this.camera.x + this.size.width / 2,
-      y: p.y - this.camera.y + this.size.height * 0.53,
+      x: s.x - this.camera.x + this.size.width / 2,
+      y: s.y - this.camera.y + this.size.height * 0.53,
     };
   }
   screenToWorld(x, y) {
@@ -67,228 +122,302 @@ export class Renderer {
       yy = y + this.camera.y - this.size.height * 0.53;
     return { x: xx / 64 + yy / 32, y: yy / 32 - xx / 64 };
   }
-  ground(map) {
-    if (this.mapCache.has(map.id)) return this.mapCache.get(map.id);
-    const c = document.createElement("canvas");
-    c.width = 2048;
-    c.height = 1152;
-    const d = c.getContext("2d");
-    d.imageSmoothingEnabled = false;
-    const rng = seeded(hash(map.id)),
-      water = [],
-      grass = map.region
-        ? ["#849d76", "#8ba47e", "#819873"]
-        : ["#739469", "#78996b", "#7e9f71"],
-      sand = ["#c1b78c", "#c9bf97", "#c6bc91"];
-    for (let x = 0; x < 30; x++)
-      for (let y = 0; y < 30; y++) {
-        const p = project(x, y);
-        p.x += 1024;
-        p.y += 96;
-        const path =
-          Math.abs(y - 14) < 1.1 ||
-          Math.abs(x - 14) < 1.1 ||
-          (map.town && Math.hypot(x - 14, y - 14) < 5.5);
-        let wet =
-          map.biome === "brook" &&
-          Math.abs(x - y - 5 - Math.sin(y * 0.4) * 2) < 1.8;
-        if (["beach", "coasttown", "saltforest"].includes(map.biome))
-          wet = x > 23 + Math.sin(y * 0.4) * 1.2;
-        if (map.biome === "marsh") wet = !path && (x + y) % 6 < 3;
-        if (map.biome === "cave") wet = x > 22 || y > 25;
-        let color = grass[Math.floor(rng() * 3)];
-        if (
-          map.region &&
-          (["beach", "coasttown"].includes(map.biome) || x > 20)
-        )
-          color = sand[Math.floor(rng() * 3)];
-        if (map.biome === "cave")
-          color = ["#647c79", "#6c827e", "#708681"][Math.floor(rng() * 3)];
-        if (map.biome === "deepforest")
-          color = ["#64805d", "#6b8860", "#708c65"][Math.floor(rng() * 3)];
-        if (wet)
-          color = ["#6caaa9", "#75b3b0", "#7fbbb6"][Math.floor(rng() * 3)];
-        if (path)
-          color = wet
-            ? "#b09970"
-            : map.town
-              ? "#b2b190"
-              : ["#aaac80", "#b0b386", "#a7ab7c"][Math.floor(rng() * 3)];
-        d.fillStyle = color;
-        d.beginPath();
-        d.moveTo(p.x, p.y - 16);
-        d.lineTo(p.x + 32, p.y);
-        d.lineTo(p.x, p.y + 16);
-        d.lineTo(p.x - 32, p.y);
-        d.closePath();
-        d.fill();
-        for (let n = 0; n < 3; n++) {
-          const xx = p.x + (rng() - 0.5) * 35,
-            yy = p.y + (rng() - 0.5) * 13;
-          d.fillStyle = wet
-            ? "#97ccc0"
-            : path
-              ? "#989d75"
-              : rng() > 0.88
-                ? "#e0dbad"
-                : "#91ad79";
-          d.fillRect(Math.round(xx), Math.round(yy), wet ? 8 : 2, wet ? 1 : 2);
-          if (!path && !wet && rng() > 0.75) {
-            d.fillStyle = "#587f54";
-            d.fillRect(Math.round(xx), Math.round(yy) - 2, 1, 3);
-          }
-        }
-        if (wet && !path) water.push({ x, y });
-      }
-    const value = { canvas: c, water };
-    this.mapCache.set(map.id, value);
-    return value;
-  }
-  text(text, x, y, color = "#f6f0d8", size = 12, align = "center") {
+  text(text, x, y, color = "#fff5da", size = 12, align = "center") {
     const c = this.ctx;
-    c.font = `${size <= 11 ? "500" : "600"} ${size}px system-ui, sans-serif`;
+    c.font = `600 ${size}px system-ui,sans-serif`;
     c.textAlign = align;
     c.textBaseline = "middle";
     c.lineWidth = 3;
-    c.strokeStyle = "#253c32dd";
+    c.strokeStyle = "#243c32db";
     c.strokeText(text, Math.round(x), Math.round(y));
     c.fillStyle = color;
     c.fillText(text, Math.round(x), Math.round(y));
   }
-  ellipse(x, y, rx, ry, fill, stroke = null) {
-    const c = this.ctx;
-    c.beginPath();
-    c.ellipse(x, y, Math.max(0.1, rx), Math.max(0.1, ry), 0, 0, Math.PI * 2);
-    if (fill) {
-      c.fillStyle = fill;
-      c.fill();
-    }
-    if (stroke) {
-      c.strokeStyle = stroke;
-      c.lineWidth = 2;
-      c.stroke();
-    }
-  }
-  sprite(name, x, y, anim = "idle", dir = 0, time = 0, start = 0, size = 80) {
-    const image = IMAGES.get(name);
+  cell(
+    file,
+    cols,
+    rows,
+    col,
+    row,
+    x,
+    y,
+    width,
+    height,
+    anchor = 0.5,
+    mirror = false,
+  ) {
+    const image = IMAGES.get(file);
     if (!image) return;
-    let frame = 0;
-    if (anim === "walk") frame = 4 + (Math.floor(time * 10) % 6);
-    else if (anim === "attack")
-      frame = 10 + Math.min(5, Math.floor(Math.max(0, time - start) * 13));
-    else if (anim === "hurt")
-      frame = 16 + Math.min(1, Math.floor(Math.max(0, time - start) * 8));
-    else if (anim === "death")
-      frame = 18 + Math.min(5, Math.floor(Math.max(0, time - start) * 8));
-    else frame = Math.floor(time * 4) % 4;
-    this.ctx.drawImage(
+    const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
+      c = this.ctx;
+    c.save();
+    c.translate(Math.round(x), Math.round(y));
+    if (mirror) c.scale(-1, 1);
+    c.drawImage(
       image,
-      frame * 64,
-      (dir || 0) * 64,
-      64,
-      64,
-      Math.round(x - size / 2),
-      Math.round(y - size * 0.87),
-      size,
-      size,
+      sx,
+      sy,
+      sw,
+      sh,
+      -width / 2,
+      -height * anchor,
+      width,
+      height,
     );
+    c.restore();
+  }
+  icon(index, x, y, size = 30) {
+    if (index >= 58) {
+      this.cell("items", 6, 8, index - 58, 7, x, y, size, size, 0.5);
+      return;
+    }
+    this.cell(
+      "items",
+      8,
+      8,
+      index % 8,
+      Math.floor(index / 8),
+      x,
+      y,
+      size,
+      size,
+      0.5,
+    );
+  }
+  item(id, x, y, size = 30) {
+    const special = ART.itemOverrides?.[id];
+    if (special) {
+      this.cell(
+        special.file,
+        special.cols,
+        special.rows,
+        special.index % special.cols,
+        Math.floor(special.index / special.cols),
+        x,
+        y,
+        size,
+        size,
+        0.5,
+      );
+      return;
+    }
+    this.icon(ART.items[id] || 0, x, y, size);
+  }
+  fx(
+    row,
+    frame,
+    x,
+    y,
+    width = 80,
+    height = width,
+    opacity = 1,
+    tint = null,
+    angle = 0,
+  ) {
+    const c = this.ctx;
+    c.save();
+    c.globalAlpha = opacity;
+    if (tint) c.filter = tint;
+    if (angle) {
+      c.translate(x, y);
+      c.rotate(angle);
+      x = 0;
+      y = 0;
+    }
+    this.cell(
+      "effects",
+      8,
+      8,
+      Math.min(7, Math.max(0, frame)),
+      row,
+      x,
+      y,
+      width,
+      height,
+      0.65,
+    );
+    c.restore();
+  }
+  sprite(name, x, y, anim, dir, time, start, height = 100) {
+    let file,
+      cols,
+      rows,
+      row,
+      frames,
+      mirror = false,
+      anchor = 0.94;
+    if (/^m\d+$/.test(name)) {
+      const index = Number(name.slice(1)) - 1;
+      if (!Number.isInteger(index) || index < 0) return;
+      file = `creatures/group-${Math.floor(index / 4)}`;
+      const layout = ART.creatureLayouts?.[Math.floor(index / 4)] || {
+        cols: 8,
+        rows: 8,
+      };
+      cols = layout.cols;
+      rows = layout.rows;
+      row =
+        layout.speciesRows?.[index % 4]?.[dir === 2 || dir === 3 ? 1 : 0] ??
+        (index % 4) * 2 + (dir === 2 || dir === 3 ? 1 : 0);
+      mirror = dir === 0 || dir === 3;
+      frames =
+        anim === "walk"
+          ? [0, 1, 2, 3, 4]
+          : anim === "attack"
+            ? [5, 6]
+            : anim === "hurt"
+              ? [6]
+              : anim === "death"
+                ? [7]
+                : [0];
+    } else if (name.startsWith("npc:")) {
+      const n = NPCS.findIndex((n) => n.id === name.slice(4));
+      if (n < 0) return;
+      const layout = ART.npcLayout || { cols: 8, rows: 4, framesPerNpc: 4 };
+      file = "npcs";
+      cols = layout.cols;
+      rows = layout.rows;
+      const base = n * layout.framesPerNpc,
+        local = Math.floor(time * 1.5) % Math.min(2, layout.framesPerNpc);
+      const index = base + local;
+      row = Math.floor(index / cols);
+      frames = [index % cols];
+    } else {
+      file = `characters/${name}`;
+      const layout = ART.characterLayouts?.[name] || { cols: 10, rows: 6 };
+      cols = layout.cols;
+      rows = layout.rows;
+      row = { 0: 0, 1: 2, 2: 3, 3: 2 }[dir] || 0;
+      mirror = dir === 1;
+      frames =
+        anim === "walk"
+          ? [0, 1, 2, 3, 4]
+          : anim === "attack"
+            ? [5, 6, 7]
+            : anim === "hurt"
+              ? [8]
+              : anim === "death"
+                ? [9]
+                : [0];
+      frames = layout.animations?.[anim] || frames;
+    }
+    const image = IMAGES.get(file);
+    if (!image) return;
+    const c = this.ctx,
+      age = Math.max(0, time - start);
+    if (anim === "death") {
+      c.save();
+      c.globalAlpha = Math.max(0, 1 - age / 0.85);
+    }
+    const index =
+      anim === "attack" || anim === "hurt" || anim === "death"
+        ? Math.min(frames.length - 1, Math.floor(age * 11))
+        : Math.floor(time * (anim === "walk" ? 9 : 1.5)) % frames.length;
+    const { sw, sh } = sourceRect(file, cols, rows, frames[index], row);
+    const width = (height * sw) / sh;
+    const breath = anim === "idle" ? Math.sin(time * 2) * 0.35 : 0;
+    this.cell(
+      file,
+      cols,
+      rows,
+      frames[index],
+      row,
+      x,
+      y + breath,
+      width,
+      height,
+      anchor,
+      mirror,
+    );
+    if (anim === "death") c.restore();
   }
   render(state, target, dt = 1 / 60) {
     this.resize();
     const c = this.ctx,
-      { width: w, height: h } = this.size;
-    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    c.imageSmoothingEnabled = false;
-    const map = MAPS.find((m) => m.id === state.player.map),
+      { width: w, height: h } = this.size,
       p = state.player,
-      cam = project(p.x, p.y),
-      ground = this.ground(map),
-      time = state.time;
-    if (this.lastMap !== map.id) {
-      this.camera = { ...cam };
-      this.lastMap = map.id;
+      time = state.time,
+      map = MAPS.find((m) => m.id === p.map),
+      bg = IMAGES.get(`maps/${p.map}`);
+    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    c.imageSmoothingEnabled = true;
+    c.imageSmoothingQuality = "high";
+    const desired = project(p.x, p.y),
+      cx = Math.max(-960 + w / 2, Math.min(960 - w / 2, desired.x)),
+      cy = Math.max(-160 + h * 0.53, Math.min(1120 - h * 0.47, desired.y));
+    if (this.lastMap !== p.map) {
+      this.camera = { x: cx, y: cy };
+      this.lastMap = p.map;
+      this.destination = null;
     } else {
-      const t = 1 - Math.exp(-dt * 7);
-      this.camera.x += (cam.x - this.camera.x) * t;
-      this.camera.y += (cam.y - this.camera.y) * t;
+      const t = 1 - Math.exp(-dt * 9);
+      this.camera.x += (cx - this.camera.x) * t;
+      this.camera.y += (cy - this.camera.y) * t;
     }
-    c.fillStyle = map.region ? "#78948a" : "#526e52";
-    c.fillRect(0, 0, w, h);
     const zero = this.worldToScreen(0, 0);
-    c.drawImage(
-      ground.canvas,
-      Math.round(zero.x - 1024),
-      Math.round(zero.y - 96),
-    );
-    for (let i = 0; i < ground.water.length; i += 3) {
-      const a = ground.water[i],
-        s = this.worldToScreen(a.x, a.y);
-      c.fillStyle = "#c2e2d337";
-      c.fillRect(s.x + Math.sin(time * 1.2 + i) * 8 - 8, s.y, 14, 1);
-    }
+    c.fillStyle = "#203c2f";
+    c.fillRect(0, 0, w, h);
+    if (bg) c.drawImage(bg, zero.x - 960, zero.y - 160, 1920, 1280);
     this.hitboxes = [];
-    for (const portal of PORTALS(map.id)) {
-      const s = this.worldToScreen(portal.x, portal.y);
+    for (const port of PORTALS(p.map)) {
+      const s = this.worldToScreen(port.x, port.y);
+      this.fx(7, Math.floor(time * 7) % 8, s.x, s.y + 12, 100, 95, 0.85);
+      this.text(port.label, s.x, s.y - 65, "#fff1c5", 12);
+      this.text("클릭하여 이동", s.x, s.y + 29, "#ffefc9", 9);
       this.hitboxes.push({
         kind: "portal",
-        id: portal.to,
+        id: port.to,
         x: s.x,
-        y: s.y - 22,
-        r: 32,
+        y: s.y - 20,
+        r: 40,
       });
-      this.ellipse(
-        s.x,
-        s.y,
-        29 + Math.sin(time * 2) * 2,
-        13,
-        "#d6dca448",
-        "#f4e1a38a",
+    }
+    if (this.destination && time - this.destination.at < 1.5) {
+      const d = this.worldToScreen(this.destination.x, this.destination.y);
+      this.fx(
+        7,
+        Math.floor((time - this.destination.at) * 8) % 8,
+        d.x,
+        d.y + 8,
+        40,
+        32,
+        0.8,
       );
-      this.text(
-        portal.to === MAPS[MAPS.indexOf(map) + 1]?.id ? "↗" : "↙",
-        s.x,
-        s.y - 20,
-        "#ffecb1",
-        24,
-      );
-      this.text(portal.label, s.x, s.y - 46, "#fff1cc", 11);
-      if (Math.hypot(p.x - portal.x, p.y - portal.y) < 2.5)
-        this.text("[E] 이동", s.x, s.y + 22, "#fff4c8", 11);
     }
     for (const m of state.mobs) {
       if (!m.windup || m.hp <= 0) continue;
       const a = m.windup,
         s = this.worldToScreen(a.x, a.y),
-        progress = Math.min(1, (time - a.start) / (a.at - a.start));
+        t = Math.min(1, (time - a.start) / (a.at - a.start));
       if (a.style === "line") {
-        const end = this.worldToScreen(a.tx, a.ty);
-        c.strokeStyle = "#ad5b454d";
-        c.lineWidth = 42;
-        c.beginPath();
-        c.moveTo(s.x, s.y);
-        c.lineTo(end.x, end.y);
-        c.stroke();
-        c.strokeStyle = "#e9b18c";
-        c.lineWidth = 2;
-        c.stroke();
+        const e = this.worldToScreen(a.tx, a.ty),
+          length = Math.hypot(e.x - s.x, e.y - s.y);
+        this.fx(
+          3,
+          Math.min(7, Math.floor(t * 8)),
+          (s.x + e.x) / 2,
+          (s.y + e.y) / 2,
+          length + 35,
+          42,
+          0.65,
+          "sepia(1) saturate(4) hue-rotate(315deg)",
+          Math.atan2(e.y - s.y, e.x - s.x),
+        );
       } else {
-        this.ellipse(
+        this.fx(
+          5,
+          Math.min(7, Math.floor(t * 7)),
           s.x,
-          s.y,
-          a.radius * 32,
-          a.radius * 16,
-          "#bd654537",
-          "#ecab7cbb",
+          s.y + 12,
+          a.radius * 75,
+          a.radius * 45,
+          0.7,
+          "sepia(1) saturate(4) hue-rotate(315deg)",
         );
-        this.ellipse(
-          s.x,
-          s.y,
-          a.radius * 32 * progress,
-          a.radius * 16 * progress,
-          "#edb77b33",
-        );
-        if (a.style === "ring")
-          this.ellipse(s.x, s.y, 40, 20, "#acd6a5bb", "#d0e6bc");
+        if (a.style === "ring") {
+          this.fx(7, 3, s.x, s.y + 8, 72, 50, 0.8);
+          this.text("안쪽 안전", s.x, s.y + 17, "#efffd5", 10);
+        }
       }
     }
     for (const e of state.effects.filter((e) =>
@@ -297,290 +426,230 @@ export class Renderer {
       ),
     )) {
       const s = this.worldToScreen(e.x, e.y),
-        r = (e.radius || 2) * 28;
-      this.ellipse(
+        age = e.until - time;
+      const row = {
+        garden: 2,
+        vine: 0,
+        shield: 5,
+        magic: 1,
+        poison: 4,
+        slash: 0,
+        slow: 2,
+      }[e.kind];
+      this.fx(
+        row,
+        Math.floor(time * 12) % 8,
         s.x,
-        s.y,
-        r,
-        r * 0.5,
-        e.kind === "slow"
-          ? "#d0e5cf4d"
-          : e.kind === "poison"
-            ? "#af9ac93d"
-            : e.kind === "magic"
-              ? "#d9bbdf44"
-              : "#b2dca144",
-        "#d4e4b78c",
+        s.y + 8,
+        (e.radius || 2) * 55,
+        (e.radius || 2) * 45,
+        Math.min(0.85, age),
       );
     }
-    const objects = [];
-    for (const d of decorations(map.id))
-      objects.push({ ...d, scenery: d.kind, kind: "decor", depth: d.x + d.y });
-    for (const herb of state.herbs)
-      objects.push({ kind: "herb", ...herb, depth: herb.x + herb.y });
-    for (const n of NPCS.filter((n) => n.map === map.id))
-      objects.push({ ...n, npcKind: n.kind, kind: "npc", depth: n.x + n.y });
-    for (const m of state.mobs)
-      if (m.hp > 0 || time - m.animAt < 0.8)
-        objects.push({ kind: "monster", ...m, depth: m.x + m.y });
-    for (const drop of state.drops)
-      objects.push({ kind: "drop", ...drop, depth: drop.x + drop.y });
-    for (const peer of state.peers)
-      objects.push({ kind: "peer", ...peer, depth: peer.x + peer.y });
-    objects.push({ kind: "player", ...p, depth: p.x + p.y });
-    objects.sort((a, b) => a.depth - b.depth);
+    const objects = [
+      ...state.herbs.map((h) => ({ ...h, kind: "herb" })),
+      ...state.drops.map((d) => ({ ...d, kind: "drop" })),
+      ...NPCS.filter((n) => n.map === p.map).map((n) => ({
+        ...n,
+        kind: "npc",
+      })),
+      ...state.mobs
+        .filter((m) => m.hp > 0 || time - m.animAt < 0.85)
+        .map((m) => ({ ...m, kind: "monster" })),
+      ...state.peers.map((peer) => ({ ...peer, kind: "peer" })),
+      { ...p, kind: "player" },
+    ].sort((a, b) => a.x + a.y - (b.x + b.y));
     for (const o of objects) {
       const s = this.worldToScreen(o.x, o.y);
-      if (s.x < -160 || s.x > w + 160 || s.y < -80 || s.y > h + 180) continue;
-      if (o.kind === "decor") {
-        const art = IMAGES.get((o.scenery || "tree") + (o.variant || 0));
-        const playerScreen = this.worldToScreen(p.x, p.y),
-          occlude =
-            s.y > playerScreen.y &&
-            s.y - playerScreen.y < 130 &&
-            Math.abs(s.x - playerScreen.x) < 54;
-        c.globalAlpha = occlude ? 0.4 : 1;
-        if (art)
-          c.drawImage(
-            art,
-            Math.round(s.x - 64),
-            Math.round(s.y - 146),
-            128,
-            160,
-          );
-        c.globalAlpha = 1;
-      } else if (o.kind === "herb") {
-        const ready = o.ready;
-        this.ellipse(s.x, s.y, 12, 5, "#3e69433a");
-        c.globalAlpha = ready ? 1 : 0.35;
-        c.fillStyle =
-          o.item === "mint" || o.item === "breathgrass" ? "#8ed4c5" : "#a7c578";
-        for (let k = 0; k < 4; k++) {
-          c.fillRect(s.x - 7 + k * 4, s.y - 12 - (k % 2) * 5, 3, 12);
-          c.fillStyle = k % 2 ? "#dce5aa" : "#8daf6b";
-        }
-        if (o.item === "saltflower") {
-          c.fillStyle = "#f4cbcf";
-          c.fillRect(s.x - 4, s.y - 19, 10, 5);
-        }
-        if (ready) {
-          c.fillStyle = "#e7edb7";
-          c.fillRect(
-            s.x + Math.sin(time * 2 + o.x) * 5,
-            s.y - 24 + Math.sin(time * 3) * 2,
-            2,
-            2,
-          );
-        }
-        c.globalAlpha = 1;
+      if (s.x < -200 || s.x > w + 200 || s.y < -100 || s.y > h + 200) continue;
+      if (o.kind === "herb") {
+        c.save();
+        c.globalAlpha = o.ready ? 1 : 0.3;
+        this.item(o.item, s.x, s.y - 12, 34);
+        c.restore();
+        if (o.ready)
+          this.fx(6, Math.floor(time * 6) % 8, s.x, s.y, 32, 32, 0.55);
         this.hitboxes.push({
           kind: "herb",
           id: o.id,
           x: s.x,
           y: s.y - 12,
-          r: 20,
+          r: 22,
         });
-      } else if (o.kind === "drop") {
-        this.ellipse(s.x, s.y, 10, 4, "#e9cc7e45");
-        c.fillStyle = "#f1d68b";
-        c.fillRect(s.x - 3, s.y - 9 + Math.sin(time * 4) * 2, 6, 6);
-      } else {
-        const monster = o.kind === "monster",
-          def = monster ? MONSTERS.find((m) => m.id === o.def) : null,
-          boss = def?.type === "boss";
-        let image = monster
-          ? o.def
-          : o.classId ||
-            {
-              quest: "warden",
-              craft: "warden",
-              alchemy: "herbalist",
-              shop: "ranger",
-              class: "mage",
-            }[o.kind === "npc" ? o.kind : ""] ||
-            "herbalist";
-        if (o.kind === "npc")
-          image = {
-            guide: "ranger",
-            smith: "warden",
-            healer: "herbalist",
-            merchant: "ranger",
-            coastguide: "mage",
-            coastsmith: "warden",
-            coasthealer: "herbalist",
-            mentor: "mage",
-          }[o.id];
-        const size = boss
-          ? 152
-          : def?.type === "elite"
-            ? 100
-            : def?.type === "rare"
-              ? 104
-              : monster
-                ? 76
-                : 86;
-        this.ellipse(
-          s.x,
-          s.y,
-          monster ? (boss ? 45 : 21) : 18,
-          monster ? (boss ? 19 : 9) : 8,
-          "#26453532",
-        );
-        if (monster && o.uid === target)
-          this.ellipse(
-            s.x,
-            s.y,
-            boss ? 45 : 24,
-            boss ? 20 : 11,
-            null,
-            "#f1deb1",
-          );
-        if (monster && o.markedUntil > time)
-          this.text("⌖", s.x, s.y - size * 0.85, "#ffdf9f", 20);
-        const jump = o.windup?.jump
-          ? Math.sin(
-              Math.min(
-                1,
-                (time - o.windup.start) / (o.windup.at - o.windup.start),
-              ) * Math.PI,
-            ) * 24
-          : 0;
-        this.sprite(
-          image,
-          s.x,
-          s.y - jump,
-          o.anim || "idle",
-          o.dir || 0,
-          time,
-          o.animAt || 0,
-          size,
-        );
-        if (o.kind === "player" && o.shield > 0)
-          this.ellipse(s.x, s.y - 30, 32, 43, null, "#d9e8bb99");
-        if (monster) {
-          if (o.hp > 0) {
-            this.hitboxes.push({
-              kind: "monster",
-              id: o.uid,
-              x: s.x,
-              y: s.y - size * 0.4,
-              r: boss ? 62 : 30,
-            });
-            if (o.hp < o.maxHp || o.uid === target || boss) {
-              const bw = boss ? 96 : 50;
-              c.fillStyle = "#243c32";
-              c.fillRect(s.x - bw / 2, s.y - size * 0.82, bw, 5);
-              c.fillStyle = boss ? "#d7a977" : "#d2bd8a";
-              c.fillRect(
-                s.x - bw / 2 + 1,
-                s.y - size * 0.82 + 1,
-                ((bw - 2) * o.hp) / o.maxHp,
-                3,
-              );
-            }
-            if (o.uid === target || boss)
-              this.text(
-                def.name,
-                s.x,
-                s.y - size * 0.82 - 12,
-                boss ? "#f6dbac" : "#f1ebd4",
-                boss ? 12 : 10,
-              );
-          }
-        } else if (o.kind === "npc") {
-          this.text(o.name, s.x, s.y - 69, "#f6e4ae", 11);
-          this.text(o.role, s.x, s.y - 83, "#d6e5bc", 9);
-          this.hitboxes.push({
-            kind: "npc",
-            id: o.id,
-            x: s.x,
-            y: s.y - 30,
-            r: 30,
-          });
-          if (Math.hypot(p.x - o.x, p.y - o.y) < 2.6)
-            this.text("[E] 이야기", s.x, s.y + 19, "#fff0b8", 11);
-        } else
-          this.text(
-            o.name,
-            s.x,
-            s.y - 72,
-            o.kind === "player" ? "#fff4cf" : "#c9e1d5",
-            11,
-          );
+        continue;
       }
+      if (o.kind === "drop") {
+        this.fx(6, Math.floor(time * 7) % 8, s.x, s.y, 35, 25, 0.8);
+        this.item(o.item, s.x, s.y - 10 + Math.sin(time * 3) * 2, 28);
+        continue;
+      }
+      const monster = o.kind === "monster",
+        def = monster ? MONSTERS.find((m) => m.id === o.def) : null,
+        boss = def?.type === "boss",
+        height = monster
+          ? boss
+            ? 172
+            : def.type === "elite"
+              ? 100
+              : def.type === "rare"
+                ? 108
+                : 76
+          : o.kind === "npc"
+            ? 110
+            : 116;
+      const name = monster
+        ? o.def
+        : o.kind === "npc"
+          ? "npc:" + o.id
+          : o.classId;
+      if (monster && o.uid === target)
+        this.fx(
+          7,
+          3,
+          s.x,
+          s.y + 10,
+          boss ? 115 : 68,
+          boss ? 70 : 45,
+          0.7,
+          "sepia(.8)",
+        );
+      const jump = o.windup?.jump
+        ? Math.sin(
+            Math.min(
+              1,
+              (time - o.windup.start) / (o.windup.at - o.windup.start),
+            ) * Math.PI,
+          ) * 22
+        : 0;
+      this.sprite(
+        name,
+        s.x,
+        s.y - jump,
+        o.anim || "idle",
+        o.dir || 0,
+        time,
+        o.animAt || 0,
+        height,
+      );
+      if (o.kind === "player" && o.shield > 0)
+        this.fx(5, 3, s.x, s.y + 12, 105, 110, 0.65);
+      if (monster && o.hp > 0) {
+        this.hitboxes.push({
+          kind: "monster",
+          id: o.uid,
+          x: s.x,
+          y: s.y - height * 0.4,
+          r: boss ? 65 : 34,
+        });
+        if (o.hp < o.maxHp || o.uid === target || boss) {
+          const bw = boss ? 100 : 50;
+          c.fillStyle = "#293d2fdc";
+          c.fillRect(s.x - bw / 2, s.y - height * 0.9, bw, 5);
+          c.fillStyle = boss ? "#e2b582" : "#d7c88d";
+          c.fillRect(
+            s.x - bw / 2 + 1,
+            s.y - height * 0.9 + 1,
+            ((bw - 2) * o.hp) / o.maxHp,
+            3,
+          );
+        }
+        if (o.uid === target || boss)
+          this.text(
+            def.name,
+            s.x,
+            s.y - height * 0.9 - 12,
+            boss ? "#ffe2b4" : "#fff0cf",
+            boss ? 12 : 10,
+          );
+        if (o.markedUntil > time)
+          this.text("⌖", s.x, s.y - height * 0.88 - 25, "#fff0b4", 20);
+      } else if (o.kind === "npc") {
+        this.text(o.name, s.x, s.y - 111, "#fff1c0", 11);
+        this.text(o.role, s.x, s.y - 124, "#def0cb", 9);
+        this.hitboxes.push({
+          kind: "npc",
+          id: o.id,
+          x: s.x,
+          y: s.y - 45,
+          r: 34,
+        });
+      } else if (o.kind !== "monster")
+        this.text(
+          o.name,
+          s.x,
+          s.y - height - 6,
+          o.kind === "player" ? "#fff4d3" : "#d6eed8",
+          11,
+        );
     }
     for (const e of state.effects) {
       const s = this.worldToScreen(e.x, e.y),
-        age = e.until - time;
+        remaining = e.until - time;
       if (e.text)
         this.text(
           e.text,
           s.x,
-          s.y - 45 - (1 - age) * 22,
-          e.color || "#f7e6af",
-          e.crit ? 21 : e.kind === "level" ? 23 : 16,
+          s.y - 60 - (1 - remaining) * 23,
+          e.color || "#fff1c8",
+          e.crit ? 22 : e.kind === "level" ? 24 : 16,
         );
       if (["projectile", "beam"].includes(e.kind)) {
-        const end = this.worldToScreen(e.tx, e.ty);
-        c.strokeStyle = e.color || "#f3e6b8";
-        c.lineWidth = e.kind === "beam" ? 4 : 2;
-        c.beginPath();
-        c.moveTo(s.x, s.y - 30);
-        c.lineTo(end.x, end.y - 30);
-        c.stroke();
+        const end = this.worldToScreen(e.tx, e.ty),
+          dx = end.x - s.x,
+          dy = end.y - s.y;
+        this.fx(
+          e.kind === "beam" ? 1 : 3,
+          Math.floor(time * 16) % 8,
+          (s.x + end.x) / 2,
+          (s.y + end.y) / 2 - 35,
+          Math.max(50, Math.hypot(dx, dy)),
+          e.kind === "beam" ? 54 : 28,
+          0.9,
+          null,
+          Math.atan2(dy, dx),
+        );
       }
-    }
-    // Warm drifting motes are deterministic and never obscure attack tells.
-    for (let i = 0; i < 24; i++) {
-      const x = (i * 149 + Math.sin(time * 0.2 + i) * 26 + w) % w,
-        y = (i * 87 - time * (3 + (i % 3)) + h * 4) % h;
-      c.fillStyle = i % 3 ? "#edf0b12a" : "#f6e5a45c";
-      c.fillRect(x, y, 2, 2);
+      if (["hit", "burst", "heal", "level", "enemy"].includes(e.kind))
+        this.fx(
+          e.kind === "heal"
+            ? 2
+            : e.kind === "level"
+              ? 6
+              : e.kind === "burst"
+                ? 1
+                : 0,
+          Math.floor((1 - remaining) * 9) % 8,
+          s.x,
+          s.y - 25,
+          e.kind === "level" ? 130 : 75,
+          80,
+          0.85,
+        );
     }
     this.drawMinimap(state);
   }
   drawMinimap(state) {
     const c = this.minimap.getContext("2d"),
       w = this.minimap.width,
-      h = this.minimap.height;
+      h = this.minimap.height,
+      bg = IMAGES.get("maps/" + state.player.map);
     c.clearRect(0, 0, w, h);
-    c.fillStyle = "#193629";
-    c.fillRect(0, 0, w, h);
-    const pt = (x, y) => ({
-      x: 8 + (x / 30) * (w - 16),
-      y: 8 + (y / 30) * (h - 16),
-    });
-    c.strokeStyle = "#647a51";
-    c.lineWidth = 7;
-    const a = pt(1, 14),
-      b = pt(29, 14);
-    c.beginPath();
-    c.moveTo(a.x, a.y);
-    c.lineTo(b.x, b.y);
-    c.stroke();
-    for (const m of state.mobs.filter((m) => m.hp > 0)) {
-      const p = pt(m.x, m.y);
-      c.fillStyle =
-        MONSTERS.find((d) => d.id === m.def).type === "boss"
-          ? "#e8b681"
-          : "#a79770";
-      c.fillRect(p.x - 1, p.y - 1, 3, 3);
+    if (bg) c.drawImage(bg, 0, 0, w, h);
+    const p = worldToImage(state.player.x, state.player.y);
+    c.strokeStyle = "#fff0af";
+    c.lineWidth = 2;
+    c.strokeRect(
+      ((this.camera.x - this.size.width / 2 + 960) / 1920) * w,
+      ((this.camera.y - this.size.height * 0.53 + 160) / 1280) * h,
+      (this.size.width / 1920) * w,
+      (this.size.height / 1280) * h,
+    );
+    const image = IMAGES.get("items");
+    if (image) {
+      const cw = image.width / 8,
+        ch = image.height / 8;
+      c.drawImage(image, 0, 0, cw, ch, p.u * w - 5, p.v * h - 5, 10, 10);
     }
-    for (const n of NPCS.filter((n) => n.map === state.player.map)) {
-      const p = pt(n.x, n.y);
-      c.fillStyle = "#dfcf9c";
-      c.fillRect(p.x - 2, p.y - 2, 4, 4);
-    }
-    for (const port of PORTALS(state.player.map)) {
-      const p = pt(port.x, port.y);
-      c.strokeStyle = "#f5d890";
-      c.strokeRect(p.x - 3, p.y - 3, 6, 6);
-    }
-    const p = pt(state.player.x, state.player.y);
-    c.fillStyle = "#e8f1cf";
-    c.beginPath();
-    c.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
-    c.fill();
   }
   hit(x, y) {
     return this.hitboxes

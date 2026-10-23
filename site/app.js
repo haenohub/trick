@@ -23,7 +23,12 @@ import {
   xpNeeded,
   distance,
 } from "./core.js";
-import { Renderer, loadArt } from "./renderer.js";
+import {
+  Renderer,
+  loadArt,
+  drawCharacterPreview,
+  drawMonsterPreview,
+} from "./renderer.js";
 const $ = (id) => document.getElementById(id),
   esc = (s) =>
     String(s ?? "").replace(
@@ -37,6 +42,8 @@ const $ = (id) => document.getElementById(id),
           "'": "&#39;",
         })[c],
     );
+const ART_REVISION =
+  document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
 const canvas = $("world"),
   renderer = new Renderer(canvas, $("minimap"));
 let world = null,
@@ -47,6 +54,7 @@ let world = null,
   panel = null,
   filter = "all",
   iconIds = {},
+  artMeta = {},
   lastSave = 0,
   lastHud = 0,
   lastFrame = performance.now(),
@@ -58,12 +66,6 @@ let world = null,
   audio = null,
   lastSoundEffect = 0,
   previousPanelFocus = null;
-const skillGlyphs = {
-  warden: ["╱", "◇", "✺", "♜"],
-  mage: ["✧", "◉", "❧", "☾"],
-  ranger: ["➶", "»", "⌖", "➷"],
-  herbalist: ["✿", "❋", "❧", "❀"],
-};
 const skillDescriptions = {
   warden: [
     "앞의 적을 찔러 210% 피해를 줍니다.",
@@ -212,9 +214,19 @@ function displayClass() {
   const c = cls();
   return c.branches.find((b) => b.id === state?.player.branch)?.name || c.name;
 }
+function atlasIcon(file, cols, rows, index) {
+  return `<span class="item-icon" style="background-image:url('./assets/${file}.png?v=${ART_REVISION}');background-size:${cols * 32}px ${rows * 32}px;background-position:-${(index % cols) * 32}px -${Math.floor(index / cols) * 32}px" aria-hidden="true"></span>`;
+}
 function itemIcon(id) {
-  const n = iconIds[id] || 0;
-  return `<span class="item-icon" style="background-position:-${(n % 8) * 32}px -${Math.floor(n / 8) * 32}px" aria-hidden="true"></span>`;
+  const special = artMeta.itemOverrides?.[id];
+  return special
+    ? atlasIcon(special.file, special.cols, special.rows, special.index)
+    : atlasIcon("items", 8, 8, iconIds[id] || 0);
+}
+function abilityIcon(index) {
+  return index >= 58
+    ? atlasIcon("items", 6, 8, 42 + index - 58)
+    : atlasIcon("items", 8, 8, index);
 }
 function skillName(slot) {
   return slot === 3
@@ -225,14 +237,14 @@ function skillName(slot) {
 function buildSkillbar() {
   if (!state) return;
   $("skillbar").innerHTML =
-    `<button class="skill basic" data-action="attack" title="기본 공격 [Space / J]"><kbd>SPC</kbd><span class="glyph">➶</span><span class="skill-name">기본 공격</span></button>` +
+    `<button class="skill basic" data-action="attack" title="기본 공격 [Space / J]"><kbd>SPC</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
     [0, 1, 2, 3]
       .map(
         (n) =>
-          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${n + 1}]"><kbd>${n + 1}</kbd><span class="glyph">${skillGlyphs[cls().id][n]}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
+          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${n + 1}]"><kbd>${n + 1}</kbd><span class="glyph">${abilityIcon(artMeta.skillIcons[cls().id][n])}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
       )
       .join("") +
-    `<button class="skill potion" data-action="potion" title="보들잎 연고 [Q]"><kbd>Q</kbd><span class="glyph">♧</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
+    `<button class="skill potion" data-action="potion" title="보들잎 연고 [Q]"><kbd>Q</kbd><span class="glyph">${abilityIcon(59)}</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
 }
 function hud() {
   if (!state) return;
@@ -243,7 +255,7 @@ function hud() {
   $("player-name").textContent = p.name;
   $("player-level").textContent = `Lv.${p.level}`;
   $("player-class").textContent = displayClass();
-  $("portrait").style.backgroundImage = `url('./assets/${p.classId}.png')`;
+  drawCharacterPreview($("portrait"), p.classId, true);
   $("hp-fill").style.width = `${(p.hp / s.maxHp) * 100}%`;
   $("hp-text").textContent = `${Math.ceil(p.hp)} / ${s.maxHp}`;
   $("focus-fill").style.width = `${p.focus}%`;
@@ -495,12 +507,12 @@ function renderPanel() {
     )
       .map(
         (m) =>
-          `<article class="content-card"><span class="monster-preview" style="background-image:url('./assets/${m.id}.png')"></span><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${m.xp} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 골드</p>${m.drops.map((d) => `<div class="drop-row"><span>${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(d.chance * 1000) / 10}%</b></div>`).join("")}</details></article>`,
+          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${m.xp} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 골드</p>${m.drops.map((d) => `<div class="drop-row"><span>${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(d.chance * 1000) / 10}%</b></div>`).join("")}</details></article>`,
       )
       .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${skillGlyphs[c.id][n]}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -528,6 +540,8 @@ function renderPanel() {
   }
   $("panel-title").textContent = title;
   body.innerHTML = html;
+  for (const node of body.querySelectorAll("[data-monster-preview]"))
+    drawMonsterPreview(node, node.dataset.monsterPreview);
   const importer = $("import-file");
   if (importer) importer.addEventListener("change", importSave);
 }
@@ -773,8 +787,10 @@ function showLobby() {
       `${saved.name} · Lv.${saved.level} 이어서 →`;
   $("class-select").innerHTML = CLASSES.map(
     (c) =>
-      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}"><span class="class-preview" style="background-image:url('./assets/${c.id}.png')"></span><strong>${c.name}</strong><small>${c.role}</small></button>`,
+      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}"><canvas class="class-preview" data-class-preview="${c.id}" width="64" height="106" aria-hidden="true"></canvas><strong>${c.name}</strong><small>${c.role}</small></button>`,
   ).join("");
+  for (const node of $("class-select").querySelectorAll("[data-class-preview]"))
+    drawCharacterPreview(node, node.dataset.classPreview);
   $("class-description").textContent = CLASSES.find(
     (c) => c.id === selectedClass,
   ).description;
@@ -843,7 +859,8 @@ canvas.addEventListener("pointerdown", (e) => {
   } else {
     pendingInteraction = null;
     const pos = renderer.screenToWorld(x, y);
-    send({ type: "moveTo", ...pos }, true);
+    if (send({ type: "moveTo", ...pos }, true))
+      renderer.destination = { ...pos, at: state.time };
   }
 });
 canvas.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -950,12 +967,24 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.2.1",
+  version: "0.3.0",
 };
 try {
   const response = await fetch("./assets/manifest.json");
   if (!response.ok) throw Error("asset manifest");
-  iconIds = (await response.json()).items;
+  artMeta = await response.json();
+  iconIds = artMeta.items;
+  for (const [panelName, index] of Object.entries({
+    inventory: 2,
+    craft: 3,
+    map: 61,
+    skills: 44,
+  })) {
+    const node = document.querySelector(
+      `.dock-side [data-panel="${panelName}"] > span`,
+    );
+    if (node) node.innerHTML = abilityIcon(index);
+  }
   await loadArt((p) => {
     $("loading-progress").style.width = `${Math.round(p * 100)}%`;
     $("loading-text").textContent =

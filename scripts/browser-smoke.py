@@ -17,7 +17,7 @@ def fixture(page,cls='warden',map_id='village',level=30,near_mob=False,at_portal
  const p=createPlayer(cls,'검증 모험가');p.level=level;p.gold=20000;
  p.map=map;p.defeatedBosses=['m20'];p.visited=['village','sprout','acorn','brook','stump','shelltown','saltwood','glassbeach','tideroot','seacave'];
  for(const id of ['fiber','ironstone','softleaf','mint','seawood','shellore','saltflower','breathgrass'])p.inventory[id]=100;
- p.hp=stats(p).maxHp;if(portal){p.x=24.5;p.y=14;}
+ p.hp=stats(p).maxHp;if(portal){const {PORTALS}=await import('./data.js');Object.assign(p,PORTALS(map).at(-1));}
  if(near){const world=new World(),q=world.addPlayer(p),m=world.map(map).mobs.find(m=>m.hp>0);p.x=m.x-.9;p.y=m.y;}
  localStorage.setItem('leaftale:save:v1',JSON.stringify(p));
  }''',{'cls':cls,'map':map_id,'level':level,'near':near_mob,'portal':at_portal})
@@ -51,7 +51,7 @@ with sync_playwright() as p:
  # Real movement to a portal then E: no direct state mutation in this transition.
  fixture(page,map_id='village')
  box=page.locator('#world').bounding_box()
- page.mouse.click(box['x']+box['width']/2+352,box['y']+box['height']*.53+176-22)
+ page.mouse.click(box['x']+box['width']/2+422.4,box['y']+box['height']*.53+32-20)
  page.wait_for_function("__leaftale.snapshot().player.map === 'sprout'")
  print('PASS: clicking a portal walks to it and changes map without keyboard input')
  # Exercise every class's actual UI skills against real spawned enemies.
@@ -86,6 +86,8 @@ with sync_playwright() as p:
  mobile=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,device_scale_factor=1)
  mp=mobile.new_page();mp.on('pageerror',lambda e:errors.append(str(e)));ready(mp)
  assert mp.evaluate('document.documentElement.scrollWidth <= innerWidth')
+ for choice in mp.locator('.class-choice').all():
+  rect=choice.bounding_box();assert rect['x']>=0 and rect['x']+rect['width']<=390
  mp.screenshot(path='/tmp/leaftale-mobile-title.png',full_page=True)
  mp.locator('#start-game').click();mp.wait_for_timeout(250)
  assert mp.locator('#mobile-pad').count()==0

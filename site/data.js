@@ -1,4 +1,5 @@
-export const VERSION = "0.2.1";
+import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
+export const VERSION = "0.3.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -295,6 +296,7 @@ export const NPCS = [
     text: "네 발걸음에는 이제 너만의 길이 보이는구나. 어떤 숲길을 지킬지 골라 보렴.",
   },
 ];
+for (const npc of NPCS) Object.assign(npc, NPC_POSITIONS[npc.id] || {});
 const monsterRows = [
   [
     "콩잎폴짝",
@@ -1042,15 +1044,13 @@ export const PORTALS = (mapId) => {
   const exits = [];
   if (index > 0)
     exits.push({
-      x: 4,
-      y: 14,
+      ...NAVIGATION[mapId].west,
       to: MAPS[index - 1].id,
       label: MAPS[index - 1].name,
     });
   if (index < MAPS.length - 1)
     exits.push({
-      x: 25,
-      y: 14,
+      ...NAVIGATION[mapId].east,
       to: MAPS[index + 1].id,
       label: MAPS[index + 1].name,
     });

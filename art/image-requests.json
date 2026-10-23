@@ -1,6 +1,5 @@
 {
-  "status": "blocked-by-image-tool",
-  "error": "HTTP400 Unknown parameter: reasoning",
+  "status": "generated-and-integrated",
   "requirements": "All replacement artwork must be generated through image generation. No procedural/raster-drawing fallback.",
   "requests": [
     {
@@ -171,5 +170,6 @@
       "transparent_background": true,
       "prompt": "Original production artwork for LeafTale. Match the rich miniature visual density of a finely shaded late-2000s Korean 2D isometric fantasy online RPG: delicate pixel clusters, believable textured materials, organic detailed silhouettes and lush colors. Not basic geometric drawings or flat vector icons. No copied game assets, no text, no labels, no UI. Beautiful original forest RPG user-interface ornamental frame asset, square1024px transparent background. An empty dark moss-green parchment panel with very detailed carved wooden corners and tiny gold leaf inlays, wide quiet center, all decorations at the edges so it supports nine-slice scaling. No text, no icons, no buttons, no characters."
     }
-  ]
+  ],
+  "productionRecord": "art/generated-assets.json"
 }

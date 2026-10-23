@@ -1,7 +1,5 @@
-# Artwork replacement status
+# Original image-generated artwork
 
-These are the currently shipped legacy assets. They do not meet the user's revised quality requirement and have NOT yet been replaced.
+All current world art is produced through the image generation tool: ten map paintings, four character animation atlases, ten atlases covering forty creatures, eight NPCs, equipment and ability icons, eight effects, and a forest interface frame. The title forest was also image-generated.
 
-Replacement maps, actors, items and effects must be made through the image generation tool. The old procedural drawing generator has been removed. See the root `ART_REWORK.md` and `art/image-requests.json` for pending image requests and the confirmed tool failure.
-
-The existing forest title artwork was generated with the image generation tool. The existing in-game pixel atlases and scenery were procedurally drawn in the previous implementation; they are retained temporarily to keep the game functional.
+`manifest.json` lists required files and inspected atlas layouts. `../../art/generated-assets.json` records source generation paths, request specifications, refinements and SHA-256 checksums. See `../../ART_REWORK.md` for animation mapping and limitations. Superseded procedural artwork has been removed. No raster drawing generator is used.
