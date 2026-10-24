@@ -154,7 +154,8 @@ export class Renderer {
     c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     for (const label of this.labels) {
       const { text, x, y, color, size, align } = label;
-      c.font = `600 ${size}px system-ui,sans-serif`;
+      // Two typographic points equal 8/3 CSS pixels, independent of world zoom.
+      c.font = `600 ${size + 8 / 3}px system-ui,sans-serif`;
       c.textAlign = align;
       c.textBaseline = "middle";
       c.lineWidth = 3;

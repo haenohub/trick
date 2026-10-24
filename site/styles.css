@@ -1,4 +1,6 @@
 :root {
+  --font-increase: 2pt;
+  font-size: calc(100% + var(--font-increase));
   color-scheme: dark;
   --ink: #f0ecd8;
   --muted: #b6c6ad;
@@ -77,7 +79,7 @@ a {
 }
 kbd {
   font-family: inherit;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   font-weight: 500;
   color: #bcc7ac;
   border: 1px solid #9cac7d40;
@@ -126,16 +128,16 @@ kbd {
   align-items: center;
   gap: 10px;
   color: #d5dca8;
-  font-size: 29px;
+  font-size: calc(29px + var(--font-increase));
 }
 .wordmark strong {
   font-family: Georgia, "Noto Serif KR", serif;
-  font-size: 24px;
+  font-size: calc(24px + var(--font-increase));
   color: #eee8c8;
   letter-spacing: -1px;
 }
 .wordmark > span {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   letter-spacing: 2px;
   color: #a4b894;
   border-left: 1px solid #aabb8538;
@@ -143,7 +145,7 @@ kbd {
   margin-left: 4px;
 }
 .chapter-pill {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   letter-spacing: 2px;
   color: #b4c2a4;
 }
@@ -158,7 +160,7 @@ kbd {
   gap: 5px;
 }
 .topbar nav button {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   background: transparent;
   border-color: transparent;
   padding: 7px 11px;
@@ -210,25 +212,25 @@ kbd {
   gap: 5px;
 }
 .name-line strong {
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 .name-line span {
-  font: 10px Georgia;
+  font: calc(10px + var(--font-increase)) Georgia;
   color: #e5d29d;
   white-space: nowrap;
 }
 .player-info small {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #b7c7a7;
   display: block;
   margin: 2px 0 7px;
 }
 .meter {
   position: relative;
-  height: 11px;
+  height: calc(11px + var(--font-increase));
   background: #10271dc4;
   border: 1px solid #c2cf9d23;
   overflow: hidden;
@@ -246,9 +248,9 @@ kbd {
   position: absolute;
   inset: 0;
   text-align: center;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   font-weight: 500;
-  line-height: 9px;
+  line-height: calc(9px + var(--font-increase));
   text-shadow: 0 1px #263d2e;
 }
 .health > span {
@@ -261,11 +263,11 @@ kbd {
   position: absolute;
   right: -8px;
   bottom: -8px;
-  font-size: 17px;
+  font-size: calc(17px + var(--font-increase));
   padding: 0;
   width: 24px;
   height: 24px;
-  line-height: 20px;
+  line-height: calc(20px + var(--font-increase));
   color: #e0d4a5;
   background: #3e5740;
 }
@@ -281,7 +283,7 @@ kbd {
   justify-content: space-between;
   align-items: center;
   color: #a6bd97;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   letter-spacing: 0.3px;
 }
 .small-heading button,
@@ -289,17 +291,17 @@ kbd {
   border: 0;
   background: transparent;
   padding: 0 3px;
-  font-size: 15px;
+  font-size: calc(15px + var(--font-increase));
 }
 .quest-card h2 {
-  font-size: 13px;
+  font-size: calc(13px + var(--font-increase));
   font-weight: 600;
   line-height: 1.5;
   color: #eadbb1;
   margin: 9px 0 6px;
 }
 .quest-card p {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   line-height: 1.85;
   color: #c4d0b5;
   margin: 0;
@@ -309,12 +311,12 @@ kbd {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #d5dfb3;
 }
 .quest-bottom button {
   padding: 4px 9px;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   background: #899e64;
   color: #12291e;
 }
@@ -329,10 +331,10 @@ kbd {
   display: flex;
   justify-content: space-between;
   color: #c0d2ab;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
 }
 .map-card h2 {
-  font-size: 14px;
+  font-size: calc(14px + var(--font-increase));
   margin: 2px 0 10px;
   color: #f1e9ca;
 }
@@ -347,7 +349,7 @@ kbd {
 .map-foot {
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #b5c6a8;
   margin-top: 8px;
 }
@@ -362,12 +364,12 @@ kbd {
 }
 .target-card small {
   display: block;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #dec394;
   margin-bottom: 3px;
 }
 .target-card strong {
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
 }
 .target-card .meter {
   height: 5px;
@@ -381,7 +383,7 @@ kbd {
   bottom: 144px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   line-height: 1.8;
   background: #183629e8;
   border: 1px solid #c1c69370;
@@ -395,7 +397,7 @@ kbd {
   left: 25px;
   bottom: 131px;
   width: 330px;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   line-height: 1.85;
   text-shadow: 0 1px 3px #10261d;
   mask-image: linear-gradient(transparent, #000 25%);
@@ -438,13 +440,13 @@ kbd {
   padding: 5px 0;
   background: transparent;
   border: 0;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #b8c8ac;
   position: relative;
 }
 .dock-side button > span {
   display: block;
-  font-size: 22px;
+  font-size: calc(22px + var(--font-increase));
   color: #e3dab1;
   margin-bottom: 2px;
 }
@@ -452,7 +454,7 @@ kbd {
   position: absolute;
   top: 1px;
   right: -1px;
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   border: 0;
   padding: 0;
   color: #a1b28d;
@@ -473,14 +475,14 @@ kbd {
   overflow: hidden;
 }
 .skill .glyph {
-  font-size: 22px;
+  font-size: calc(22px + var(--font-increase));
   color: #e9e2bb;
-  line-height: 28px;
+  line-height: calc(28px + var(--font-increase));
   display: block;
   text-shadow: 0 2px #24392c;
 }
 .skill .skill-name {
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   display: block;
   white-space: nowrap;
 }
@@ -489,7 +491,7 @@ kbd {
   left: 2px;
   top: 2px;
   background: #193329cc;
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   padding: 0 3px;
   min-width: 0;
 }
@@ -500,7 +502,7 @@ kbd {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: calc(18px + var(--font-increase));
   color: #f2e5bd;
   pointer-events: none;
 }
@@ -508,7 +510,7 @@ kbd {
   position: absolute;
   right: 3px;
   top: 2px;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #f0dfaf;
 }
 .skill.is-locked {
@@ -539,7 +541,7 @@ kbd {
   left: 50%;
   bottom: 7px;
   transform: translateX(-50%);
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   color: #e3e7cd;
   font-weight: 400;
   text-shadow: 0 1px 2px #1a3227;
@@ -556,13 +558,13 @@ kbd {
   gap: 12px;
   justify-content: space-between;
   padding: 0 18px;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #a5bc98;
 }
 .statusbar button {
   border: 0;
   background: none;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   padding: 1px 3px;
 }
 #chat-box {
@@ -574,7 +576,7 @@ kbd {
   z-index: 10;
 }
 #chat-lines {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   line-height: 1.7;
   max-height: 160px;
   overflow: auto;
@@ -587,11 +589,11 @@ kbd {
 #chat-input {
   width: 100%;
   min-width: 0;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   padding: 8px;
 }
 #chat-form button {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
 }
 #mobile-pad {
   display: none;
@@ -625,13 +627,13 @@ kbd {
   padding: 45px 6.5% 20px;
 }
 .eyebrow {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   letter-spacing: 3px;
   color: #d3d7ad;
 }
 .lobby-content > h1 {
   font-family: Georgia, "Noto Serif KR", serif;
-  font-size: clamp(52px, 7vw, 86px);
+  font-size: calc(clamp(52px, 7vw, 86px) + var(--font-increase));
   font-weight: 700;
   letter-spacing: -4px;
   color: #f1eccf;
@@ -639,7 +641,7 @@ kbd {
   text-shadow: 0 3px 30px #133323;
 }
 .lobby-tagline {
-  font-size: 17px;
+  font-size: calc(17px + var(--font-increase));
   line-height: 1.9;
   font-weight: 300;
   color: #e4e6ce;
@@ -649,7 +651,7 @@ kbd {
   display: flex;
   gap: 13px;
   align-items: center;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #cfdbb8;
   margin: 19px 0 24px;
 }
@@ -673,18 +675,18 @@ kbd {
   align-items: center;
 }
 .create-heading small {
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   letter-spacing: 1.5px;
   color: #b4c89c;
 }
 .create-heading h2 {
-  font-size: 16px;
+  font-size: calc(16px + var(--font-increase));
   margin: 6px 0 17px;
   font-weight: 500;
   color: #f0e7c6;
 }
 .create-heading > span {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #adbf9b;
 }
 #class-select {
@@ -711,7 +713,7 @@ kbd {
   position: absolute;
   right: 5px;
   top: 3px;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #e8d8a6;
 }
 .class-preview {
@@ -723,16 +725,16 @@ kbd {
   display: block;
 }
 .class-choice strong {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   font-weight: 500;
 }
 .class-choice small {
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   color: #b5c6a6;
   margin-top: 4px;
 }
 #class-description {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #c3d0b4;
   line-height: 1.8;
   min-height: 43px;
@@ -745,14 +747,14 @@ kbd {
   margin-bottom: 13px;
 }
 .name-input label {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   white-space: nowrap;
   color: #becea9;
 }
 .name-input input {
   width: 100%;
   padding: 8px 11px;
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
 }
 .start-actions {
   display: flex;
@@ -761,7 +763,7 @@ kbd {
 .start-actions button {
   flex: 1;
   padding: 12px;
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
 }
 .primary {
   background: #c4ce96;
@@ -777,7 +779,7 @@ kbd {
   float: right;
 }
 .save-note {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #9eb594;
   line-height: 1.7;
   margin: 12px 0 0;
@@ -786,7 +788,7 @@ kbd {
   display: flex;
   gap: 20px;
   align-items: center;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #c8d6b6;
   margin-top: 18px;
 }
@@ -794,7 +796,7 @@ kbd {
   background: none;
   border: 0;
   color: #d9ddb9;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   padding: 0;
 }
 #panel-backdrop {
@@ -828,25 +830,25 @@ kbd {
   flex-shrink: 0;
 }
 .menu-panel > header small {
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   letter-spacing: 2px;
   color: #aebd94;
 }
 .menu-panel > header h2 {
-  font-size: 22px;
+  font-size: calc(22px + var(--font-increase));
   letter-spacing: -0.7px;
   font-weight: 500;
   color: #ede4be;
   margin: 5px 0 0;
 }
 .menu-panel > header button {
-  font-size: 16px;
+  font-size: calc(16px + var(--font-increase));
   border: 0;
   background: transparent;
   padding: 6px;
 }
 .menu-panel > header kbd {
-  font-size: 7px;
+  font-size: calc(7px + var(--font-increase));
   margin-left: 7px;
 }
 #panel-body {
@@ -857,14 +859,14 @@ kbd {
   scrollbar-width: thin;
 }
 .panel-intro {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   color: #c5d0b5;
   line-height: 1.9;
   margin: 0 0 18px;
 }
 .panel-section {
   margin: 20px 0 12px;
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   color: #dfd7ae;
   font-weight: 500;
 }
@@ -875,7 +877,7 @@ kbd {
   margin-bottom: 16px;
 }
 .tag {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   border: 1px solid #aaba8550;
   background: #b9c58e0c;
   color: #cad7ad;
@@ -910,7 +912,7 @@ kbd {
 }
 .item-heading h3,
 .content-card h3 {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   line-height: 1.6;
   margin: 0;
   color: #e8e2bf;
@@ -918,19 +920,19 @@ kbd {
 }
 .item-heading small {
   display: block;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #a9bf99;
   margin-top: 3px;
 }
 .item-card p,
 .content-card p {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   line-height: 1.9;
   color: #b5c7aa;
   margin: 10px 0;
 }
 .item-stats {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #d0dba9;
   margin: 7px 0;
 }
@@ -943,17 +945,17 @@ kbd {
 }
 .actions button,
 .small-button {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   padding: 6px 9px;
 }
 .equipped {
   color: #d5dfa0;
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
 }
 .recipe-line {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   color: #bccfa8;
   line-height: 1.8;
 }
@@ -967,7 +969,7 @@ kbd {
   margin-bottom: 16px;
 }
 .tabs button {
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   padding: 7px 11px;
   background: transparent;
 }
@@ -980,12 +982,12 @@ kbd {
   margin-bottom: 25px;
 }
 .map-region > h3 {
-  font-size: 16px;
+  font-size: calc(16px + var(--font-increase));
   color: #e3dab1;
   margin: 0 0 5px;
 }
 .map-region > .panel-intro {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   margin-bottom: 13px;
 }
 .map-list {
@@ -1008,18 +1010,18 @@ kbd {
   background: #465d3e;
 }
 .map-row h4 {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   font-weight: 500;
   margin: 0 0 3px;
 }
 .map-row p {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #b5c6a4;
   line-height: 1.6;
   margin: 0;
 }
 .map-row small {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #d0d8ae;
   white-space: nowrap;
 }
@@ -1037,7 +1039,7 @@ kbd {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
   line-height: 1.85;
   color: #c6d3b3;
 }
@@ -1063,7 +1065,7 @@ kbd {
   opacity: 0.62;
 }
 .quest-card-list .quest-index {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   color: #aac393;
   margin-bottom: 4px;
 }
@@ -1084,23 +1086,23 @@ kbd {
   border-radius: 5px;
   display: grid;
   place-items: center;
-  font-size: 22px;
+  font-size: calc(22px + var(--font-increase));
   color: #eee0ae;
   flex-shrink: 0;
 }
 .skill-row h3 {
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   margin: 0 0 5px;
   color: #e8deb9;
 }
 .skill-row p {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   margin: 0;
   color: #b8ccab;
   line-height: 1.8;
 }
 .skill-row small {
-  font-size: 8px;
+  font-size: calc(8px + var(--font-increase));
   display: block;
   color: #96b18d;
   margin-top: 4px;
@@ -1111,7 +1113,7 @@ kbd {
   gap: 9px;
 }
 .help-row {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   line-height: 1.9;
   border-bottom: 1px solid #a1b58028;
   padding: 9px 0;
@@ -1123,22 +1125,22 @@ kbd {
   border-bottom: 1px solid #8ba87533;
 }
 .setting-row h3 {
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   color: #e6d9b2;
   margin: 0 0 8px;
 }
 .setting-row p {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #b1c4a5;
   line-height: 1.8;
 }
 .setting-row input {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   width: 100%;
   margin-bottom: 8px;
 }
 .setting-row button {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
 }
 .setting-row.danger button {
   color: #e0b09a;
@@ -1146,7 +1148,7 @@ kbd {
 .npc-dialog {
   border-left: 2px solid #b9c98d;
   padding-left: 16px;
-  font-size: 13px;
+  font-size: calc(13px + var(--font-increase));
   line-height: 1.9;
   color: #e0e3c7;
   margin: 0 0 20px;
@@ -1163,7 +1165,7 @@ kbd {
   color: #f1e5bd;
   padding: 12px 22px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   box-shadow: 0 6px 30px #152c2344;
   pointer-events: none;
 }
@@ -1179,18 +1181,18 @@ kbd {
 }
 #loading h1 {
   font:
-    42px Georgia,
+    calc(42px + var(--font-increase)) Georgia,
     serif;
   letter-spacing: -2px;
   color: #e5e4be;
   margin: 15px 0;
 }
 #loading p {
-  font-size: 11px;
+  font-size: calc(11px + var(--font-increase));
   color: #b6cda4;
 }
 .loading-leaf {
-  font-size: 45px;
+  font-size: calc(45px + var(--font-increase));
   color: #c6d997;
 }
 .load-track {
@@ -1214,7 +1216,7 @@ kbd {
     margin-top: 35px;
   }
   .lobby-content > h1 {
-    font-size: 96px;
+    font-size: calc(96px + var(--font-increase));
   }
 }
 @media (max-width: 900px) {
@@ -1233,7 +1235,7 @@ kbd {
     top: 56px;
   }
   .wordmark strong {
-    font-size: 21px;
+    font-size: calc(21px + var(--font-increase));
   }
   .wordmark > span {
     display: none;
@@ -1267,10 +1269,10 @@ kbd {
     height: 90px;
   }
   .map-card h2 {
-    font-size: 12px;
+    font-size: calc(12px + var(--font-increase));
   }
   .map-foot {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
   }
   .bottom-dock {
     gap: 5px;
@@ -1289,7 +1291,7 @@ kbd {
   .event-log {
     left: 16px;
     width: 260px;
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
     bottom: 124px;
   }
   .target-card {
@@ -1300,10 +1302,10 @@ kbd {
     padding: 33px 6% 20px;
   }
   .lobby-content > h1 {
-    font-size: 62px;
+    font-size: calc(62px + var(--font-increase));
   }
   .lobby-tagline {
-    font-size: 15px;
+    font-size: calc(15px + var(--font-increase));
   }
   .lobby-caption {
     margin: 15px 0 20px;
@@ -1328,17 +1330,17 @@ kbd {
     padding: 0 12px;
   }
   .wordmark {
-    font-size: 23px;
+    font-size: calc(23px + var(--font-increase));
     gap: 5px;
   }
   .wordmark strong {
-    font-size: 19px;
+    font-size: calc(19px + var(--font-increase));
   }
   .topbar nav {
     gap: 0;
   }
   .topbar nav button {
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
     padding: 6px;
   }
   .topbar nav button:nth-child(2) {
@@ -1355,26 +1357,26 @@ kbd {
     padding: 25px 20px 20px;
   }
   .eyebrow {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
     letter-spacing: 2px;
   }
   .lobby-content > h1 {
-    font-size: 54px;
+    font-size: calc(54px + var(--font-increase));
     margin: 8px 0 12px;
   }
   .lobby-tagline {
-    font-size: 13px;
+    font-size: calc(13px + var(--font-increase));
     line-height: 1.7;
   }
   .lobby-caption {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
     margin: 14px 0 18px;
   }
   .create-card {
     padding: 17px 15px;
   }
   .create-heading h2 {
-    font-size: 14px;
+    font-size: calc(14px + var(--font-increase));
   }
   .create-heading > span {
     display: none;
@@ -1389,24 +1391,24 @@ kbd {
     width: 60px;
   }
   .class-choice strong {
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
   }
   .class-choice small {
-    font-size: 6px;
+    font-size: calc(6px + var(--font-increase));
   }
   #class-description {
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
     min-height: 40px;
   }
   .lobby-footer {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
     line-height: 1.7;
     justify-content: space-between;
     gap: 10px;
   }
   .lobby-footer button {
     white-space: nowrap;
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
   }
   .player-card {
     left: 9px;
@@ -1421,21 +1423,21 @@ kbd {
     background-position: -11px -6px;
   }
   .name-line strong {
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
   }
   .name-line span {
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
   }
   .player-info small {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
     margin-bottom: 4px;
   }
   .meter {
-    height: 10px;
+    height: calc(10px + var(--font-increase));
   }
   .meter b {
-    font-size: 7px;
-    line-height: 8px;
+    font-size: calc(7px + var(--font-increase));
+    line-height: calc(8px + var(--font-increase));
   }
   .map-card {
     right: 9px;
@@ -1444,18 +1446,18 @@ kbd {
     padding: 7px;
   }
   .map-card h2 {
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
     margin-bottom: 6px;
   }
   .map-heading {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
   }
   #minimap {
     width: 112px;
     height: 72px;
   }
   .map-foot {
-    font-size: 6px;
+    font-size: calc(6px + var(--font-increase));
     gap: 5px;
   }
   .quest-card {
@@ -1465,22 +1467,22 @@ kbd {
     padding: 10px;
   }
   .quest-card h2 {
-    font-size: 11px;
+    font-size: calc(11px + var(--font-increase));
     margin: 5px 0;
   }
   .quest-card p {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
     line-height: 1.7;
   }
   .small-heading {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
   }
   .quest-bottom {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
     margin-top: 5px;
   }
   .quest-bottom button {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
   }
   .bottom-dock {
     bottom: 32px;
@@ -1493,11 +1495,11 @@ kbd {
   }
   .dock-side button {
     width: 29px;
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
     height: 42px;
   }
   .dock-side button > span {
-    font-size: 17px;
+    font-size: calc(17px + var(--font-increase));
   }
   .dock-side button:nth-child(2) {
     display: none;
@@ -1513,17 +1515,17 @@ kbd {
     height: 44px;
   }
   .skill .glyph {
-    font-size: 19px;
-    line-height: 25px;
+    font-size: calc(19px + var(--font-increase));
+    line-height: calc(25px + var(--font-increase));
   }
   .skill .skill-name {
-    font-size: 6px;
+    font-size: calc(6px + var(--font-increase));
   }
   .event-log {
     left: 12px;
     bottom: 113px;
     width: 230px;
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
     max-height: 55px;
     overflow: hidden;
   }
@@ -1536,20 +1538,20 @@ kbd {
     padding: 7px;
   }
   .target-card strong {
-    font-size: 9px;
+    font-size: calc(9px + var(--font-increase));
   }
   .target-card small {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
   }
   #interact-prompt {
     bottom: 105px;
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
     padding: 6px 12px;
     max-width: 80%;
     white-space: nowrap;
   }
   .statusbar {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
     padding: 0 9px;
   }
   .menu-panel {
@@ -1560,7 +1562,7 @@ kbd {
     padding: 15px 17px;
   }
   .menu-panel > header h2 {
-    font-size: 19px;
+    font-size: calc(19px + var(--font-increase));
   }
   #panel-body {
     padding: 16px;
@@ -1576,28 +1578,28 @@ kbd {
     gap: 5px;
   }
   .item-heading h3 {
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
   }
   .item-heading small {
-    font-size: 7px;
+    font-size: calc(7px + var(--font-increase));
   }
   .item-card p,
   .content-card p {
-    font-size: 8px;
+    font-size: calc(8px + var(--font-increase));
   }
   .item-icon {
     width: 28px;
     flex-shrink: 0;
   }
   .panel-intro {
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
   }
   .help-grid {
     grid-template-columns: 1fr;
   }
   #toast {
     top: 60px;
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
     padding: 10px 14px;
     width: max-content;
     max-width: 90%;
@@ -1606,7 +1608,7 @@ kbd {
     top: 49px;
   }
   .statusbar #save-status {
-    font-size: 6px;
+    font-size: calc(6px + var(--font-increase));
   }
 }
 @media (pointer: coarse) {
@@ -1623,7 +1625,7 @@ kbd {
   #mobile-pad button {
     padding: 0;
     background: #294d37b8;
-    font-size: 14px;
+    font-size: calc(14px + var(--font-increase));
     touch-action: none;
   }
   #mobile-pad button[data-dir="up"] {
@@ -1716,7 +1718,7 @@ kbd {
     height: 92px;
   }
   .class-choice small {
-    font-size: 5px;
+    font-size: calc(5px + var(--font-increase));
     white-space: nowrap;
   }
 }
@@ -1799,7 +1801,7 @@ body {
 }
 .leaf-wallet {
   color: #f3e6a5;
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   font-weight: 700;
   text-align: right;
   padding: 6px 10px;
@@ -1811,7 +1813,7 @@ body {
   gap: 7px;
   margin-top: 5px;
   padding: 5px 9px;
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   color: #f8f4d8;
   background: #163e2de8;
   border: 1px solid #b2ce8666;
@@ -1870,7 +1872,7 @@ body {
     max-width: 58%;
   }
   .loot-receipt {
-    font-size: 12px;
+    font-size: calc(12px + var(--font-increase));
     padding: 3px 6px;
   }
 }
@@ -1915,7 +1917,7 @@ body {
 .player-info #combat-trait {
   color: #e6dfac;
   margin: 2px 0 3px;
-  font-size: 9px;
+  font-size: calc(9px + var(--font-increase));
 }
 .boss-banner {
   position: absolute;
@@ -1930,14 +1932,14 @@ body {
   background: #2b3548ed;
 }
 .boss-banner strong {
-  font-size: 12px;
+  font-size: calc(12px + var(--font-increase));
   color: #ffe0ad;
 }
 .boss-banner small {
   display: block;
   line-height: 1.5;
   margin-top: 6px;
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #f3ddc0;
 }
 .boss-banner .meter {
@@ -1945,7 +1947,7 @@ body {
   margin-top: 7px;
 }
 .exploration-progress {
-  font-size: 10px;
+  font-size: calc(10px + var(--font-increase));
   color: #e1e5bb;
   margin-top: 6px;
 }
@@ -1967,7 +1969,7 @@ body {
     transform: none;
   }
   .boss-banner small {
-    font-size: 10px;
+    font-size: calc(10px + var(--font-increase));
   }
   #hud .player-card {
     left: 10px;
@@ -2012,4 +2014,38 @@ body {
     top: auto;
     bottom: 160px;
   }
+}
+
+/* Labels may wrap so the larger type stays inside compact action buttons. */
+.skill {
+  height: 61px;
+}
+.skill .skill-name {
+  white-space: normal;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.class-choice small {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.quest-card {
+  top: 155px;
+}
+@media (max-width: 600px) {
+  .skill {
+    height: 58px;
+  }
+  #hud .quest-card {
+    top: 132px;
+  }
+  .boss-banner {
+    top: 220px;
+  }
+  #interact-prompt {
+    white-space: normal;
+  }
+}
+.exploration-entry small {
+  font-size: calc(13.333333px + var(--font-increase));
 }
