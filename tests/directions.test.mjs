@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { direction, facesTarget, SOUTH } from "../site/directions.js";
+import { NAVIGATION } from "../site/world-layout.js";
 import { World, createPlayer } from "../site/core.js";
 
 const headings = [
@@ -35,17 +36,17 @@ test("authoritative movement and attacks publish eight directions to clients", (
     p = w.addPlayer(createPlayer());
   assert.equal(p.dir, SOUTH);
   headings.forEach(([dx, dy], row) => {
-    const x = 14,
-      y = 14;
+    const { x, y } = NAVIGATION.village.worldAt(7, 7);
     Object.assign(p, { x, y });
     w.moveEntity(p, p.map, dx, dy, 0.05, 1);
+    assert.ok(Math.hypot(p.x - x, p.y - y) > 0);
     assert.equal(p.dir, row);
     assert.equal(w.snapshot(p.id).player.dir, row);
   });
   p.map = "sprout";
   const target = w.map(p.map).mobs[0];
   for (const [row, [dx, dy]] of headings.entries()) {
-    Object.assign(p, { x: 14, y: 14, attackReady: 0 });
+    Object.assign(p, { ...NAVIGATION.sprout.spawn, attackReady: 0 });
     Object.assign(target, { x: p.x + dx * 0.5, y: p.y + dy * 0.5, hp: 10000 });
     assert.ok(w.attack(p, target.uid));
     assert.equal(p.dir, row);

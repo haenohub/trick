@@ -479,7 +479,7 @@ function renderPanel() {
           )
             .map(
               (m) =>
-                `<button class="map-row ${p.map === m.id ? "current" : ""}" data-action="travel" data-map="${m.id}" data-fast="${m.town ? "true" : "false"}" ${p.map === m.id ? "disabled" : ""}><div><h4>${m.town ? "⌂" : "◇"} ${m.name} ${p.map === m.id ? "· 현재 위치" : ""}</h4><p>${m.description}</p></div><small>${m.town ? (p.visited.includes(m.id) ? "마을 귀환" : "미방문") : `Lv.${m.level}–${m.level + 3}`}</small></button>`,
+                `<button class="map-row ${p.map === m.id ? "current" : ""}" data-action="travel" data-map="${m.id}" data-fast="${m.town ? "true" : "false"}" ${p.map === m.id ? "disabled" : ""}><div><h4>${m.town ? "⌂" : "◇"} ${m.name} ${p.map === m.id ? "· 현재 위치" : ""}</h4><p>${m.description}</p><small>${m.shape}</small></div><small>${m.town ? (p.visited.includes(m.id) ? "마을 귀환" : "미방문") : `Lv.${m.level}–${m.level + 3}`}</small></button>`,
             )
             .join("")}</div></section>`,
       ).join("") +
@@ -966,7 +966,14 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.6.0",
+  version: "0.7.0",
+  view: () => ({
+    zoom: renderer.zoom,
+    camera: { ...renderer.camera },
+    size: { ...renderer.size },
+  }),
+  worldToScreen: (x, y) => renderer.worldToScreen(x, y),
+  screenToWorld: (x, y) => renderer.screenToWorld(x, y),
 };
 try {
   const response = await fetch("./assets/manifest.json");

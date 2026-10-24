@@ -17,7 +17,7 @@ def fixture(page,cls='warden',map_id='village',level=30,near_mob=False,at_portal
  const p=createPlayer(cls,'검증 모험가');p.level=level;p.gold=20000;
  p.map=map;p.defeatedBosses=['m20'];p.visited=['village','sprout','acorn','brook','stump','shelltown','saltwood','glassbeach','tideroot','seacave'];
  for(const id of ['fiber','ironstone','softleaf','mint','seawood','shellore','saltflower','breathgrass'])p.inventory[id]=100;
- p.hp=stats(p).maxHp;if(portal){const {PORTALS}=await import('./data.js');Object.assign(p,PORTALS(map).at(-1));}
+ p.hp=stats(p).maxHp;if(portal){const {NAVIGATION}=await import('./world-layout.js');Object.assign(p,NAVIGATION[map].eastLanding);}
  if(near){const world=new World(),q=world.addPlayer(p),m=world.map(map).mobs.find(m=>m.hp>0);p.x=m.x-.9;p.y=m.y;}
  localStorage.setItem('leaftale:save:v1',JSON.stringify(p));
  }''',{'cls':cls,'map':map_id,'level':level,'near':near_mob,'portal':at_portal})
@@ -35,7 +35,7 @@ with sync_playwright() as p:
  page.keyboard.down('d');page.wait_for_timeout(300);page.keyboard.up('d')
  assert abs(page.evaluate('__leaftale.snapshot().player.x')-initial)<.01
  box=page.locator('#world').bounding_box()
- page.mouse.click(box['x']+box['width']/2+96,box['y']+box['height']*.53+48)
+ point=page.evaluate('()=>{const p=__leaftale.snapshot().player;return __leaftale.worldToScreen(p.x+2,p.y)}');page.mouse.click(box['x']+point['x'],box['y']+point['y'])
  page.wait_for_function('(x)=>__leaftale.snapshot().player.x > x+1',arg=initial)
  print('PASS: click-to-move works; WASD does not move the character')
  page.keyboard.press('i');page.get_by_role('heading',name='여행자의 가방').wait_for();assert page.locator('.item-card').count()>0
@@ -49,9 +49,9 @@ with sync_playwright() as p:
  page.keyboard.press('Escape')
  print('PASS: inventory, alchemy, planting and both regional drop tables')
  # Real movement to a portal then E: no direct state mutation in this transition.
- fixture(page,map_id='village')
+ fixture(page,map_id='village',at_portal=True)
  box=page.locator('#world').bounding_box()
- page.mouse.click(box['x']+box['width']/2+422.4,box['y']+box['height']*.53+32-20)
+ point=page.evaluate("async()=>{const {PORTALS}=await import('./data.js');const p=PORTALS('village').at(-1);return __leaftale.worldToScreen(p.x,p.y)}");page.mouse.click(box['x']+point['x'],box['y']+point['y']-20)
  page.wait_for_function("__leaftale.snapshot().player.map === 'sprout'")
  print('PASS: clicking a portal walks to it and changes map without keyboard input')
  # Exercise every class's actual UI skills against real spawned enemies.
@@ -92,7 +92,7 @@ with sync_playwright() as p:
  mp.locator('#start-game').click();mp.wait_for_timeout(250)
  assert mp.locator('#mobile-pad').count()==0
  mx=mp.evaluate('__leaftale.snapshot().player.x');box=mp.locator('#world').bounding_box()
- mp.touchscreen.tap(box['width']/2+64,box['height']*.53+32)
+ point=mp.evaluate('()=>{const p=__leaftale.snapshot().player;return __leaftale.worldToScreen(p.x+2,p.y)}');mp.touchscreen.tap(box['x']+point['x'],box['y']+point['y'])
  mp.wait_for_function('(x)=>__leaftale.snapshot().player.x > x+.5',arg=mx)
  assert mp.evaluate('document.documentElement.scrollWidth <= innerWidth')
  mp.screenshot(path='/tmp/leaftale-mobile-game.png',full_page=True)

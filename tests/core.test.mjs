@@ -21,7 +21,7 @@ import {
   MAPS,
   NPCS,
 } from "../site/data.js";
-import { imageToWorld } from "../site/art-layout.js";
+import { NAVIGATION } from "../site/art-layout.js";
 const setup = (cls = "warden", map = "village", level = 1) => {
   const raw = createPlayer(cls, "테스트");
   raw.map = map;
@@ -35,12 +35,12 @@ const setup = (cls = "warden", map = "village", level = 1) => {
 };
 test("click movement routes around the generated village fountain", () => {
   const { w, p } = setup();
-  const start = imageToWorld(0.39, 0.3),
-    end = imageToWorld(0.65, 0.3);
+  const start = NAVIGATION.village.worldAt(6, 5),
+    end = NAVIGATION.village.worldAt(8, 5);
   Object.assign(p, start);
   assert.ok(w.act("local", { type: "moveTo", ...end }));
   assert.ok(p.route.length > 1);
-  for (let i = 0; i < 150; i++) w.step(0.1);
+  for (let i = 0; i < 500; i++) w.step(0.1);
   assert.ok(Math.hypot(p.x - end.x, p.y - end.y) < 0.35);
 });
 test("combat awards XP, quest progress and real loot exactly once per death", () => {
@@ -150,11 +150,10 @@ test("all eight specializations have working skills, resource costs and cooldown
         false,
       );
       p.map = "sprout";
-      p.x = 14;
-      p.y = 14;
+      Object.assign(p, NAVIGATION.sprout.spawn);
       const m = w.map("sprout").mobs[0];
-      m.x = 14.6;
-      m.y = 14;
+      m.x = p.x + 0.6;
+      m.y = p.y;
       m.hp = 1e5;
       assert.ok(
         w.act("local", { type: "skill", slot: 3, target: m.uid }),
@@ -174,12 +173,15 @@ test("telegraphed attacks can be dodged instead of applying unavoidable damage",
   for (const other of w.map("sprout").mobs) if (other !== m) other.hp = 0;
   m.x = p.x + 0.6;
   m.y = p.y;
+  m.homeX = m.x;
+  m.homeY = m.y;
   m.nextAttack = 0;
   w.step(0.05);
   assert.ok(m.windup);
   const hp = p.hp;
-  p.x = 5;
-  p.y = 14;
+  const escape = { x: p.x + 3, y: p.y + 3 };
+  assert.equal(blocked(p.map, escape.x, escape.y), false);
+  assert.ok(w.act(p.id, { type: "moveTo", ...escape }));
   for (let i = 0; i < 15; i++) w.step(0.1);
   assert.equal(p.hp, hp);
 });

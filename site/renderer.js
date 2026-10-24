@@ -1,6 +1,7 @@
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
 import { direction, SOUTH } from "./directions.js";
+import { NAVIGATION, TILE, WORLD_ZOOM } from "./world-layout.js";
 const IMAGES = new Map();
 let ART = null;
 const REVISION =
@@ -83,6 +84,7 @@ export class Renderer {
     this.hitboxes = [];
     this.size = { width: 1000, height: 700 };
     this.destination = null;
+    this.zoom = WORLD_ZOOM;
   }
   resize() {
     const r = this.canvas.getBoundingClientRect(),
@@ -106,13 +108,13 @@ export class Renderer {
   worldToScreen(x, y) {
     const s = project(x, y);
     return {
-      x: s.x - this.camera.x + this.size.width / 2,
-      y: s.y - this.camera.y + this.size.height * 0.53,
+      x: (s.x - this.camera.x) * this.zoom + this.size.width / 2,
+      y: (s.y - this.camera.y) * this.zoom + this.size.height * 0.53,
     };
   }
   screenToWorld(x, y) {
-    const xx = x + this.camera.x - this.size.width / 2,
-      yy = y + this.camera.y - this.size.height * 0.53;
+    const xx = (x - this.size.width / 2) / this.zoom + this.camera.x,
+      yy = (y - this.size.height * 0.53) / this.zoom + this.camera.y;
     return { x: xx / 64 + yy / 32, y: yy / 32 - xx / 64 };
   }
   text(text, x, y, color = "#fff5da", size = 12, align = "center") {
@@ -163,12 +165,13 @@ export class Renderer {
     if (!image) return;
     const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
       c = this.ctx;
-    // One source pixel always occupies the same two screen pixels as terrain.
+    // One source pixel uses the same 2x base scale and world zoom as terrain.
     // World item/effect requests choose an atlas; they never stretch its cells.
     width = sw * ART.pixelScale;
     height = sh * ART.pixelScale;
     c.save();
     c.translate(Math.round(x), Math.round(y));
+    c.scale(this.zoom, this.zoom);
     if (mirror) c.scale(-1, 1);
     c.drawImage(
       image,
@@ -257,7 +260,7 @@ export class Renderer {
         const span = Math.max(0, width - 64);
         const count = Math.max(2, Math.ceil(span / 40) + 1);
         for (let i = 0; i < count; i++)
-          draw(x - span / 2 + (span * i) / (count - 1), y);
+          draw(x + (-span / 2 + (span * i) / (count - 1)) * this.zoom, y);
       } else {
         const rx = Math.max(0, width / 2 - 32),
           ry = Math.max(0, height / 2 - 32);
@@ -267,7 +270,10 @@ export class Renderer {
         );
         for (let i = 0; i < count; i++) {
           const a = (i * Math.PI * 2) / count;
-          draw(x + Math.cos(a) * rx, y + Math.sin(a) * ry);
+          draw(
+            x + Math.cos(a) * rx * this.zoom,
+            y + Math.sin(a) * ry * this.zoom,
+          );
         }
         if (row !== 5) draw(x, y);
       }
@@ -356,26 +362,47 @@ export class Renderer {
       p = state.player,
       time = state.time,
       map = MAPS.find((m) => m.id === p.map),
-      bg = IMAGES.get(`maps/${p.map}`);
+      nav = NAVIGATION[p.map];
     this.labels = [];
     c.setTransform(0.5, 0, 0, 0.5, 0, 0);
     c.imageSmoothingEnabled = false;
     const desired = project(p.x, p.y),
-      cx = Math.max(-960 + w / 2, Math.min(960 - w / 2, desired.x)),
-      cy = Math.max(-160 + h * 0.53, Math.min(1120 - h * 0.47, desired.y));
+      cx = Math.max(
+        -nav.width + w / (2 * this.zoom),
+        Math.min(nav.width - w / (2 * this.zoom), desired.x),
+      ),
+      cy = Math.max(
+        (h * 0.53) / this.zoom,
+        Math.min(nav.height * 2 - (h * 0.47) / this.zoom, desired.y),
+      );
     if (this.lastMap !== p.map) {
       this.camera = { x: cx, y: cy };
       this.lastMap = p.map;
       this.destination = null;
     } else {
-      const t = 1 - Math.exp(-dt * 9);
+      const t = 1 - Math.exp(-Math.min(dt, 0.1) * 7);
       this.camera.x += (cx - this.camera.x) * t;
       this.camera.y += (cy - this.camera.y) * t;
     }
     const zero = this.worldToScreen(0, 0);
     c.fillStyle = "#203c2f";
     c.fillRect(0, 0, w, h);
-    if (bg) c.drawImage(bg, zero.x - 960, zero.y - 160, 1920, 1280);
+    this.drawTerrain(nav, zero);
+    for (const prop of nav.props.filter((o) => o.walkThrough)) {
+      const s = this.worldToScreen(prop.x, prop.y);
+      this.cell(
+        "world/props",
+        4,
+        4,
+        prop.index % 4,
+        Math.floor(prop.index / 4),
+        s.x,
+        s.y,
+        512,
+        512,
+        1 - 2 / 256,
+      );
+    }
     this.hitboxes = [];
     for (const port of PORTALS(p.map)) {
       const s = this.worldToScreen(port.x, port.y);
@@ -415,7 +442,7 @@ export class Renderer {
           Math.min(7, Math.floor(t * 8)),
           (s.x + e.x) / 2,
           (s.y + e.y) / 2,
-          length + 35,
+          length / this.zoom + 35,
           42,
           0.65,
           "sepia(1) saturate(4) hue-rotate(315deg)",
@@ -465,6 +492,9 @@ export class Renderer {
       );
     }
     const objects = [
+      ...nav.props
+        .filter((o) => !o.walkThrough)
+        .map((o) => ({ ...o, kind: "prop" })),
       ...state.herbs.map((h) => ({ ...h, kind: "herb" })),
       ...state.drops.map((d) => ({ ...d, kind: "drop" })),
       ...NPCS.filter((n) => n.map === p.map).map((n) => ({
@@ -479,7 +509,29 @@ export class Renderer {
     ].sort((a, b) => a.x + a.y - (b.x + b.y));
     for (const o of objects) {
       const s = this.worldToScreen(o.x, o.y);
-      if (s.x < -200 || s.x > w + 200 || s.y < -100 || s.y > h + 200) continue;
+      const margin = o.kind === "prop" ? 450 : 200;
+      if (
+        s.x < -margin ||
+        s.x > w + margin ||
+        s.y < -margin ||
+        s.y > h + margin
+      )
+        continue;
+      if (o.kind === "prop") {
+        this.cell(
+          "world/props",
+          4,
+          4,
+          o.index % 4,
+          Math.floor(o.index / 4),
+          s.x,
+          s.y,
+          512,
+          512,
+          1 - 2 / 256,
+        );
+        continue;
+      }
       if (o.kind === "herb") {
         c.save();
         c.globalAlpha = o.ready ? 1 : 0.3;
@@ -504,7 +556,7 @@ export class Renderer {
       const monster = o.kind === "monster",
         def = monster ? MONSTERS.find((m) => m.id === o.def) : null,
         boss = def?.type === "boss",
-        height = monster ? def.spriteSize * 2 : 96;
+        height = (monster ? def.spriteSize * 2 : 96) * this.zoom;
       const name = monster
         ? o.def
         : o.kind === "npc"
@@ -527,7 +579,9 @@ export class Renderer {
               1,
               (time - o.windup.start) / (o.windup.at - o.windup.start),
             ) * Math.PI,
-          ) * 22
+          ) *
+          22 *
+          this.zoom
         : 0;
       this.sprite(
         name,
@@ -551,7 +605,7 @@ export class Renderer {
           id: o.uid,
           x: s.x,
           y: s.y - height * 0.4,
-          r: def.spriteSize - 4,
+          r: Math.max(14, (def.spriteSize - 4) * this.zoom),
         });
         if (o.hp < o.maxHp || o.uid === target || boss) {
           const bw = boss ? 100 : 50;
@@ -614,7 +668,7 @@ export class Renderer {
           Math.floor(time * 16) % 8,
           (s.x + end.x) / 2,
           (s.y + end.y) / 2 - 35,
-          Math.max(50, Math.hypot(dx, dy)),
+          Math.max(50, Math.hypot(dx, dy) / this.zoom),
           e.kind === "beam" ? 54 : 28,
           0.9,
           null,
@@ -641,28 +695,102 @@ export class Renderer {
     this.drawMinimap(state);
     this.present();
   }
+  drawTerrain(nav, zero) {
+    const image = IMAGES.get(ART.world.tiles[nav.id].file),
+      c = this.ctx;
+    const left =
+      (this.camera.x - this.size.width / (2 * this.zoom) + nav.width) / 2;
+    const top = (this.camera.y - (this.size.height * 0.53) / this.zoom) / 2;
+    const right = left + this.size.width / (2 * this.zoom),
+      bottom = top + this.size.height / (2 * this.zoom);
+    for (
+      let r = Math.max(0, Math.floor(top / TILE));
+      r < Math.min(nav.rows, Math.ceil(bottom / TILE));
+      r++
+    )
+      for (
+        let col = Math.max(0, Math.floor(left / TILE));
+        col < Math.min(nav.cols, Math.ceil(right / TILE));
+        col++
+      ) {
+        const tile = nav.tiles[r][col];
+        const x0 =
+          Math.floor(
+            (zero.x + (col * TILE - nav.width / 2) * 2 * this.zoom) / 2,
+          ) * 2;
+        const y0 = Math.floor((zero.y + r * TILE * 2 * this.zoom) / 2) * 2;
+        const x1 =
+          Math.floor(
+            (zero.x + ((col + 1) * TILE - nav.width / 2) * 2 * this.zoom) / 2,
+          ) * 2;
+        const y1 =
+          Math.floor((zero.y + (r + 1) * TILE * 2 * this.zoom) / 2) * 2;
+        c.drawImage(
+          image,
+          (tile % 4) * TILE,
+          Math.floor(tile / 4) * TILE,
+          TILE,
+          TILE,
+          x0,
+          y0,
+          x1 - x0,
+          y1 - y0,
+        );
+      }
+  }
   drawMinimap(state) {
     const c = this.minimap.getContext("2d"),
       w = this.minimap.width,
-      h = this.minimap.height,
+      h = this.minimap.height;
+    const nav = NAVIGATION[state.player.map],
       bg = IMAGES.get("maps/" + state.player.map);
     c.clearRect(0, 0, w, h);
     c.imageSmoothingEnabled = false;
-    if (bg) c.drawImage(bg, 0, 0, w, h);
-    const p = worldToImage(state.player.x, state.player.y);
+    c.fillStyle = "#1e3d35";
+    c.fillRect(0, 0, w, h);
+    const scale = Math.min(w / nav.width, h / nav.height),
+      mw = nav.width * scale,
+      mh = nav.height * scale,
+      ox = (w - mw) / 2,
+      oy = (h - mh) / 2;
+    if (bg) c.drawImage(bg, ox, oy, mw, mh);
+    const p = worldToImage(state.player.x, state.player.y, state.player.map);
     c.strokeStyle = "#fff0af";
-    c.lineWidth = 2;
+    c.lineWidth = 1.5;
     c.strokeRect(
-      ((this.camera.x - this.size.width / 2 + 960) / 1920) * w,
-      ((this.camera.y - this.size.height * 0.53 + 160) / 1280) * h,
-      (this.size.width / 1920) * w,
-      (this.size.height / 1280) * h,
+      ox +
+        ((this.camera.x - this.size.width / (2 * this.zoom) + nav.width) / 2) *
+          scale,
+      oy +
+        ((this.camera.y - (this.size.height * 0.53) / this.zoom) / 2) * scale,
+      (this.size.width / (2 * this.zoom)) * scale,
+      (this.size.height / (2 * this.zoom)) * scale,
     );
-    const image = IMAGES.get("items");
-    if (image) {
-      const cw = image.width / 8,
-        ch = image.height / 8;
-      c.drawImage(image, 0, 0, cw, ch, p.u * w - 5, p.v * h - 5, 10, 10);
+    const icons = IMAGES.get("items");
+    const mark = (x, y, index, size) => {
+      const pos = worldToImage(x, y, state.player.map);
+      c.drawImage(
+        icons,
+        (index % 8) * 16,
+        Math.floor(index / 8) * 16,
+        16,
+        16,
+        ox + pos.u * mw - size / 2,
+        oy + pos.v * mh - size / 2,
+        size,
+        size,
+      );
+    };
+    if (icons) {
+      for (const npc of NPCS.filter((n) => n.map === state.player.map))
+        mark(
+          npc.x,
+          npc.y,
+          npc.kind === "craft" ? 12 : npc.kind === "alchemy" ? 9 : 63,
+          8,
+        );
+      for (const port of PORTALS(state.player.map)) mark(port.x, port.y, 62, 7);
+      mark(state.player.x, state.player.y, 0, 10);
     }
   }
   hit(x, y) {

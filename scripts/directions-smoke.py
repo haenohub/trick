@@ -50,11 +50,11 @@ with sync_playwright() as pw:
  # Recreate a fresh save for each route, then use only actual floor clicks.
  page.goto(BASE);page.locator('#loading').wait_for(state='hidden')
  for row in range(8):
-  page.evaluate("""async()=>{const {createPlayer}=await import('./core.js');const p=createPlayer();p.x=14;p.y=14;localStorage.setItem('leaftale:save:v1',JSON.stringify(p));}""")
+  page.evaluate("""async()=>{const {createPlayer}=await import('./core.js');const p=createPlayer();const {NAVIGATION}=await import('./world-layout.js');Object.assign(p,NAVIGATION.village.worldAt(7,7));localStorage.setItem('leaftale:save:v1',JSON.stringify(p));}""")
   page.reload();page.locator('#loading').wait_for(state='hidden');page.locator('#continue-game').click();page.wait_for_timeout(120)
   box=page.locator('#world').bounding_box()
   angle=row*math.pi/4
-  page.mouse.click(box['x']+box['width']/2+math.sin(angle)*48,box['y']+box['height']*.53-math.cos(angle)*48)
+  point=page.evaluate('()=>{const p=__leaftale.snapshot().player;return __leaftale.worldToScreen(p.x,p.y)}');page.mouse.click(box['x']+point['x']+math.sin(angle)*48,box['y']+point['y']-math.cos(angle)*48)
   page.wait_for_function('(row)=>__leaftale.snapshot().player.dir===row',arg=row,timeout=2500)
  print('PASS: eight real floor clicks face N/NE/E/SE/S/SW/W/NW')
  assert not errors,errors

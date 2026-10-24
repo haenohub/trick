@@ -11,8 +11,8 @@ with sync_playwright() as pw:
  assert len(calls)>=10
  for call in calls:assert call['dw']==call['sw']*2 and call['dh']==call['sh']*2,call
  line=[call for call in calls if call['cy']==0]
- assert len(line)>1 and max(c['cx'] for c in line)-min(c['cx'] for c in line)+64==300
- print('PASS: monsters, player, NPC, items, trophies and effects all render one source pixel as two screen pixels, including old fractional requests')
+ assert len(line)>1 and abs(max(c['cx'] for c in line)-min(c['cx'] for c in line)+64*.7-300*.7)<=2
+ print('PASS: monsters, player, NPC, items, trophies and effects all render one source pixel as a shared 2x base scale at 70% world zoom')
  page.locator('#start-game').click();page.keyboard.press('k')
  for region in ['0','1']:
   page.locator('[data-filter="'+region+'"]').click()

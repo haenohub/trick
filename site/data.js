@@ -1,6 +1,6 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
 import { TROPHIES } from "./trophies.js";
-export const VERSION = "0.6.0";
+export const VERSION = "0.7.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -214,7 +214,12 @@ export const MAPS = [
     description:
       "천장의 고대 뿌리 사이로 바다가 숨 쉽니다. 가장 깊은 곳에 긴 그림자가 머뭅니다.",
   },
-];
+].map((m) => ({
+  ...m,
+  shape: NAVIGATION[m.id].shape,
+  areaScale: NAVIGATION[m.id].areaScale,
+  walkableScale: NAVIGATION[m.id].walkableScale,
+}));
 export const NPCS = [
   {
     id: "guide",

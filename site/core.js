@@ -1,5 +1,6 @@
 import { isWalkable, NAVIGATION } from "./art-layout.js";
 import { direction, facesTarget, SOUTH } from "./directions.js";
+import { LAYOUT_VERSION, habitatPoint, herbPoints } from "./world-layout.js";
 import {
   CLASSES,
   MAPS,
@@ -72,8 +73,9 @@ export function createPlayer(classId = "warden", name = "새잎 모험가") {
       charm: "charm1",
     },
     map: "village",
-    x: 14,
-    y: 14,
+    x: NAVIGATION.village.spawn.x,
+    y: NAVIGATION.village.spawn.y,
+    layoutVersion: LAYOUT_VERSION,
     visited: ["village"],
     defeatedBosses: [],
     discovered: [],
@@ -147,8 +149,13 @@ export function hydrateSave(raw) {
     !p.defeatedBosses.includes("m20")
   )
     p.map = "village";
-  p.x = clamp(Number(raw.x) || 14, 2, 28);
-  p.y = clamp(Number(raw.y) || 14, 2, 28);
+  if (
+    raw.layoutVersion === LAYOUT_VERSION &&
+    !blocked(p.map, Number(raw.x), Number(raw.y))
+  ) {
+    p.x = Number(raw.x);
+    p.y = Number(raw.y);
+  } else Object.assign(p, NAVIGATION[p.map].spawn);
   p.quest = {
     index: clamp(Math.floor(raw.quest?.index || 0), 0, QUESTS.length),
     counts: {},
@@ -177,6 +184,7 @@ export function hydrateSave(raw) {
 }
 export function serialize(p) {
   const keys = [
+    "layoutVersion",
     "version",
     "name",
     "classId",
@@ -245,7 +253,7 @@ export function questProgress(p) {
   return q ? Math.min(q.count, p.quest.counts[q.id] || 0) : 0;
 }
 export function blocked(map, x, y) {
-  return x < 1.6 || y < 1.6 || x > 28.4 || y > 28.4 || !isWalkable(map, x, y);
+  return !isWalkable(map, x, y);
 }
 export function findRoute(map, from, to) {
   const clear = (a, b) => {
@@ -258,17 +266,52 @@ export function findRoute(map, from, to) {
     return true;
   };
   if (clear(from, to)) return [{ ...to }];
-  const start = { x: Math.round(from.x), y: Math.round(from.y) },
-    goal = { x: Math.round(to.x), y: Math.round(to.y) },
+  const candidates = [];
+  for (let dx = -1; dx <= 1; dx++)
+    for (let dy = -1; dy <= 1; dy++) {
+      const p = { x: Math.round(from.x) + dx, y: Math.round(from.y) + dy };
+      if (!blocked(map, p.x, p.y) && clear(from, p)) candidates.push(p);
+    }
+  const start = candidates.sort(
+    (a, b) => distance(a, from) - distance(b, from),
+  )[0];
+  if (!start) return [];
+  const goal = { x: Math.round(to.x), y: Math.round(to.y) },
     key = (p) => p.x + "," + p.y;
   const open = [{ ...start, g: 0, f: distance(start, goal) }],
     best = new Map([[key(start), 0]]),
     parents = new Map(),
     closed = new Set();
   let reached = null;
+  const push = (node) => {
+    open.push(node);
+    let i = open.length - 1;
+    while (i > 0) {
+      const p = (i - 1) >> 1;
+      if (open[p].f <= node.f) break;
+      open[i] = open[p];
+      i = p;
+    }
+    open[i] = node;
+  };
+  const pop = () => {
+    const first = open[0],
+      last = open.pop();
+    if (open.length) {
+      let i = 0;
+      while (i * 2 + 1 < open.length) {
+        let c = i * 2 + 1;
+        if (c + 1 < open.length && open[c + 1].f < open[c].f) c++;
+        if (last.f <= open[c].f) break;
+        open[i] = open[c];
+        i = c;
+      }
+      open[i] = last;
+    }
+    return first;
+  };
   while (open.length) {
-    open.sort((a, b) => a.f - b.f);
-    const a = open.shift(),
+    const a = pop(),
       k = key(a);
     if (closed.has(k)) continue;
     closed.add(k);
@@ -298,7 +341,7 @@ export function findRoute(map, from, to) {
         continue;
       best.set(bk, g);
       parents.set(bk, a);
-      open.push({ ...b, g, f: g + distance(b, goal) });
+      push({ ...b, g, f: g + distance(b, goal) });
     }
   }
   if (!reached) return [];
@@ -308,7 +351,18 @@ export function findRoute(map, from, to) {
     route.unshift({ x: node.x, y: node.y });
     node = parents.get(key(node));
   }
-  return route;
+  route.unshift({ ...start });
+  const smooth = [];
+  let anchor = from,
+    index = 0;
+  while (index < route.length) {
+    let last = route.length - 1;
+    while (last > index && !clear(anchor, route[last])) last--;
+    smooth.push({ ...route[last] });
+    anchor = route[last];
+    index = last + 1;
+  }
+  return smooth;
 }
 function segmentDistance(p, a, b) {
   const dx = b.x - a.x,
@@ -353,8 +407,7 @@ export class World {
       regenUntil: 0,
     };
     if (blocked(p.map, p.x, p.y)) {
-      p.x = 14;
-      p.y = 14;
+      Object.assign(p, NAVIGATION[p.map].spawn);
     }
     this.players.set(id, p);
     this.map(p.map);
@@ -369,18 +422,12 @@ export class World {
       mobs = [],
       herbs = [];
     const definitions = MONSTERS.filter((m) => m.map === id);
-    for (const def of definitions) {
-      const count = def.type === "normal" ? 4 : 1;
+    for (const [habitat, def] of definitions.entries()) {
+      const count = def.type === "normal" ? 8 : 1;
       for (let j = 0; j < count; j++) {
-        let x, y;
-        for (let k = 0; k < 100; k++) {
-          x = 6 + rng() * 18;
-          y = 5 + rng() * 20;
-          if (!blocked(id, x, y) && distance({ x, y }, { x: 14, y: 14 }) > 3)
-            break;
-        }
+        let { x, y } = habitatPoint(id, habitat, j, rng);
         if (def.type === "boss") {
-          ({ x, y } = NAVIGATION[id].boss || { x: 18, y: 18 });
+          ({ x, y } = NAVIGATION[id].boss || NAVIGATION[id].habitats[habitat]);
         }
         mobs.push({
           uid: `${def.id}-${j}`,
@@ -406,13 +453,7 @@ export class World {
       }
     }
     if (!config.town)
-      for (let i = 0; i < 9; i++) {
-        let x = 6 + rng() * 17,
-          y = 6 + rng() * 17;
-        while (blocked(id, x, y)) {
-          x = 6 + rng() * 17;
-          y = 6 + rng() * 17;
-        }
+      for (const [i, { x, y }] of herbPoints(id).entries()) {
         herbs.push({
           id: `herb-${id}-${i}`,
           x,
@@ -465,6 +506,15 @@ export class World {
     dy /= Math.max(1, n);
     const nx = entity.x + dx * speed * dt,
       ny = entity.y + dy * speed * dt;
+    entity.dir = direction(dx, dy);
+    if (
+      !blocked(map, nx, ny) &&
+      !blocked(map, (entity.x + nx) / 2, (entity.y + ny) / 2)
+    ) {
+      entity.x = nx;
+      entity.y = ny;
+      return true;
+    }
     let moved = false;
     if (!blocked(map, nx, entity.y)) {
       entity.x = nx;
@@ -499,6 +549,7 @@ export class World {
         if (!Number.isFinite(x) || !Number.isFinite(y) || blocked(p.map, x, y))
           return false;
         p.route = findRoute(p.map, p, { x, y });
+        if (!p.route.length) return false;
         p.moveTarget = { x, y };
         p.move = { x: 0, y: 0 };
         p.queuedAttack = null;
@@ -1008,9 +1059,12 @@ export class World {
     const prev = MAPS.findIndex((m) => m.id === p.map),
       ni = MAPS.findIndex((m) => m.id === dest);
     p.map = dest;
-    const entry = ni > prev ? NAVIGATION[dest].west : NAVIGATION[dest].east;
-    p.x = fast ? 14 : entry.x + (14 - entry.x) * 0.12;
-    p.y = fast ? 14 : entry.y + (14 - entry.y) * 0.12;
+    const entry = fast
+      ? NAVIGATION[dest].spawn
+      : ni > prev
+        ? NAVIGATION[dest].westLanding
+        : NAVIGATION[dest].eastLanding;
+    Object.assign(p, entry);
     p.move = { x: 0, y: 0 };
     p.moveTarget = null;
     p.route = [];
@@ -1041,8 +1095,7 @@ export class World {
         (m) => m.town && m.region === MAPS.find((m) => m.id === p.map).region,
       );
       p.map = town.id;
-      p.x = 14;
-      p.y = 14;
+      Object.assign(p, NAVIGATION[p.map].spawn);
       p.hp = Math.ceil(stats(p).maxHp * 0.65);
       p.focus = 70;
       p.moveTarget = null;
@@ -1076,10 +1129,10 @@ export class World {
       let dx = p.move.x,
         dy = p.move.y;
       if (p.moveTarget) {
-        if (p.route?.length && distance(p, p.route[0]) < 0.25) p.route.shift();
+        if (p.route?.length && distance(p, p.route[0]) < 0.001) p.route.shift();
         const point = p.route?.[0] || p.moveTarget,
           d = distance(p, point);
-        if (d < 0.18) p.moveTarget = null;
+        if (d < 0.001) p.moveTarget = null;
         else {
           dx = (point.x - p.x) / d;
           dy = (point.y - p.y) / d;
@@ -1092,10 +1145,18 @@ export class World {
         inSlime ||
         (map.config.biome === "marsh" &&
           Math.sin(this.time / 12) > 0 &&
-          Math.abs(p.y - 14) > 2)
+          !NAVIGATION[p.map].props.some(
+            (o) => o.walkThrough && distance(p, o) < 3,
+          ))
           ? 0.75
           : 1;
-      const moving = this.moveEntity(p, p.map, dx, dy, dt, s.speed * tideSlow);
+      const moveSpeed = p.moveTarget
+        ? Math.min(
+            s.speed * tideSlow,
+            distance(p, p.route?.[0] || p.moveTarget) / Math.max(dt, 0.001),
+          )
+        : s.speed * tideSlow;
+      const moving = this.moveEntity(p, p.map, dx, dy, dt, moveSpeed);
       if (this.time - p.animAt > 0.5 || !["attack", "hurt"].includes(p.anim))
         p.anim = moving ? "walk" : "idle";
       if (p.queuedAttack) {

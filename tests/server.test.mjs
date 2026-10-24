@@ -6,6 +6,7 @@ import { join } from "node:path";
 import { once } from "node:events";
 import { setTimeout as delay } from "node:timers/promises";
 import { WebSocket } from "ws";
+import { NAVIGATION } from "../site/world-layout.js";
 import { startServer } from "../server/index.mjs";
 async function client(port, token) {
   const ws = new WebSocket(`ws://127.0.0.1:${port}/ws`),
@@ -74,7 +75,7 @@ test("two real WebSocket clients share a map, chat, reject invented rewards and 
     );
     await delay(150);
     const latest = a.messages.filter((m) => m.type === "state").at(-1);
-    assert.equal(latest.state.player.x, 14);
+    assert.equal(latest.state.player.x, NAVIGATION.village.spawn.x);
     await app.close();
     app = null;
     app = await startServer({ port: 0, host: "127.0.0.1", dataDir: dir });

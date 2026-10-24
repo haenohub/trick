@@ -1,0 +1,17 @@
+{
+  "version": "0.6.0",
+  "width": 960,
+  "height": 640,
+  "walkablePixels": {
+    "village": 130496,
+    "sprout": 114464,
+    "acorn": 95392,
+    "brook": 80960,
+    "stump": 98480,
+    "shelltown": 103728,
+    "saltwood": 105024,
+    "glassbeach": 75712,
+    "tideroot": 94352,
+    "seacave": 85456
+  }
+}

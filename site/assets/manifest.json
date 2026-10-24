@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "provenance": "image_gen",
   "pixelScale": 2,
   "palette": [
@@ -327,7 +327,18 @@
     "npcs/coastguide",
     "npcs/coastsmith",
     "npcs/coasthealer",
-    "npcs/mentor"
+    "npcs/mentor",
+    "world/tiles-village",
+    "world/tiles-sprout",
+    "world/tiles-acorn",
+    "world/tiles-brook",
+    "world/tiles-stump",
+    "world/tiles-shelltown",
+    "world/tiles-saltwood",
+    "world/tiles-glassbeach",
+    "world/tiles-tideroot",
+    "world/tiles-seacave",
+    "world/props"
   ],
   "monsters": {
     "m1": {
@@ -2682,5 +2693,148 @@
     "displayUnit": 2,
     "outline": "selective-local-color",
     "forcedOutline": false
+  },
+  "world": {
+    "tiles": {
+      "village": {
+        "file": "world/tiles-village",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "sprout": {
+        "file": "world/tiles-sprout",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "acorn": {
+        "file": "world/tiles-acorn",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "brook": {
+        "file": "world/tiles-brook",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "stump": {
+        "file": "world/tiles-stump",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "shelltown": {
+        "file": "world/tiles-shelltown",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "saltwood": {
+        "file": "world/tiles-saltwood",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "glassbeach": {
+        "file": "world/tiles-glassbeach",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "tideroot": {
+        "file": "world/tiles-tideroot",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      },
+      "seacave": {
+        "file": "world/tiles-seacave",
+        "size": 112,
+        "cols": 4,
+        "rows": 4
+      }
+    },
+    "props": {
+      "file": "world/props",
+      "cols": 4,
+      "rows": 4,
+      "size": 256
+    },
+    "tileSize": 112,
+    "maps": {
+      "village": {
+        "width": 2352,
+        "height": 1344,
+        "areaScale": 5.145,
+        "walkableScale": 7.401667484060814,
+        "shape": "분수 광장과 네 갈래 생활길"
+      },
+      "sprout": {
+        "width": 3360,
+        "height": 1120,
+        "areaScale": 6.125,
+        "walkableScale": 9.315068493150685,
+        "shape": "길게 뻗은 밭둑길과 세 쉼터"
+      },
+      "acorn": {
+        "width": 2016,
+        "height": 2240,
+        "areaScale": 7.35,
+        "walkableScale": 5.654478362965448,
+        "shape": "남북으로 이어지는 계단형 샛길"
+      },
+      "brook": {
+        "width": 2912,
+        "height": 1568,
+        "areaScale": 7.431666666666667,
+        "walkableScale": 5.732806324110672,
+        "shape": "징검다리 세 곳을 잇는 지그재그 강변길"
+      },
+      "stump": {
+        "width": 2016,
+        "height": 2016,
+        "areaScale": 6.615,
+        "walkableScale": 6.7509341998375305,
+        "shape": "뿌리 고리길과 안쪽 수호자 터"
+      },
+      "shelltown": {
+        "width": 2464,
+        "height": 1344,
+        "areaScale": 5.39,
+        "walkableScale": 5.200061699830325,
+        "shape": "조개 광장과 반달형 선착장 길"
+      },
+      "saltwood": {
+        "width": 3136,
+        "height": 1344,
+        "areaScale": 6.86,
+        "walkableScale": 6.569165143205362,
+        "shape": "바람을 가르는 두 갈래 순환길"
+      },
+      "glassbeach": {
+        "width": 3360,
+        "height": 1120,
+        "areaScale": 6.125,
+        "walkableScale": 6.792899408284024,
+        "shape": "만을 따라 휘어진 모래 해변"
+      },
+      "tideroot": {
+        "width": 2688,
+        "height": 1680,
+        "areaScale": 7.35,
+        "walkableScale": 5.450907240969984,
+        "shape": "섬 다섯 곳을 잇는 굽은 나무길"
+      },
+      "seacave": {
+        "width": 2464,
+        "height": 1792,
+        "areaScale": 7.1866666666666665,
+        "walkableScale": 6.89908256880734,
+        "shape": "수정 굴방과 깊은 해룡의 방"
+      }
+    }
   }
 }

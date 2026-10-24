@@ -10,7 +10,10 @@ test("all assets originate from the video-reference repaint, with selective colo
     await readFile("art/generated-assets.json", "utf8"),
   );
   assert.equal(repaint.sources.length, 67);
-  const sources = new Set(repaint.sources.map((s) => s.source));
+  const world = JSON.parse(await readFile("art/world-sources.json", "utf8"));
+  const sources = new Set(
+    [...repaint.sources, ...world.sources].map((s) => s.source),
+  );
   for (const a of records.assets)
     assert.ok(sources.has(a.source), a.id + " was not repainted");
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));

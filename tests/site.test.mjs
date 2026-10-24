@@ -121,11 +121,11 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 5);
+  assert.equal(art.version, 6);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 2);
-  assert.equal(art.files.length, 69);
-  assert.equal(records.assets.length, 525);
+  assert.equal(art.files.length, 80);
+  assert.equal(records.assets.length, 536);
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
     nativeUnit: 1,

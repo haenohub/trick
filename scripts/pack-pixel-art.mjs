@@ -687,7 +687,7 @@ export async function packPixelArt({
   return { manifest, assets };
 }
 
-export { decode, entityFrames, rgba, blit, png };
+export { decode, entityFrames, rgba, blit, png, sample, cell };
 
 if (
   process.argv[1] &&
