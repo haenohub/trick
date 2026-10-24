@@ -2,7 +2,14 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { resolve } from "node:path";
-import { decode, entityFrames, rgba, blit, png } from "./pack-pixel-art.mjs";
+import {
+  decode,
+  entityFrames,
+  rgba,
+  blit,
+  png,
+  PALETTE,
+} from "./pack-pixel-art.mjs";
 import { DIRECTIONS, SOUTH } from "../site/directions.js";
 
 export async function packDirections({
@@ -38,7 +45,16 @@ export async function packDirections({
       ...extra,
     });
   }
-  manifest.version = 4;
+  manifest.version = 5;
+  manifest.palette = PALETTE.map(
+    (c) => "#" + c.map((n) => n.toString(16).padStart(2, "0")).join(""),
+  );
+  manifest.pixelGrid = {
+    nativeUnit: 1,
+    displayUnit: 2,
+    outline: "selective-local-color",
+    forcedOutline: false,
+  };
   manifest.directionOrder = DIRECTIONS.map((d) => d.id);
   manifest.defaultDirection = SOUTH;
   manifest.npcLayouts ||= {};
@@ -46,13 +62,22 @@ export async function packDirections({
     if (only && !only.includes(entry.id)) continue;
     console.log("Packing eight headings: " + entry.id);
     const size = entry.size;
-    const frames = entityFrames(
+    const sourceFrames = entityFrames(
       decode(entry.source),
       8,
-      8,
-      [0, 1, 2, 3, 4, 5, 6, 7],
+      entry.sourceRows || 8,
+      Array.from({ length: entry.sourceRows || 8 }, (_, row) => row),
       size,
+      { walkRows: entry.layout === "directions-across" ? 3 : null },
     );
+    // Some artists lay headings across columns. Reusing the neutral passing
+    // pose closes the left/right stride without synthesizing any new artwork.
+    const frames =
+      entry.layout === "directions-across"
+        ? Array.from({ length: 8 }, (_, dir) =>
+            entry.poseRows.map((row) => sourceFrames[row * 8 + dir]),
+          ).flat()
+        : sourceFrames;
     const file =
       (entry.kind === "monster"
         ? "creatures/"

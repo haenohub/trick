@@ -1722,6 +1722,25 @@ kbd {
 }
 
 /* All game imagery uses the same native pixel grid, with nearest-neighbor display. */
+.item-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  flex-shrink: 0;
+}
+.codex-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.codex-grid .monster-preview {
+  float: none;
+  margin: 0 auto 12px;
+}
+.drop-row > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
 #world,
 .portrait,
 .class-preview,

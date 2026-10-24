@@ -2,6 +2,7 @@ import { cp, mkdir, rm, writeFile, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { buildBestiary } from "./build-bestiary.mjs";
 import { buildDirections } from "./build-directions.mjs";
+import { VERSION } from "../site/data.js";
 
 await buildBestiary();
 await buildDirections();
@@ -22,6 +23,17 @@ html = html
   .replace("./styles.css", `./styles.css?v=${revision}`)
   .replace("./app.js", `./app.js?v=${revision}`);
 await writeFile(htmlFile, html);
+for (const name of ["index.html", "bestiary.html", "directions.html"]) {
+  const file = new URL(name, output);
+  const page = (await readFile(file, "utf8"))
+    .replaceAll(
+      'href="./directions.html"',
+      `href="./directions.html?v=${VERSION}"`,
+    )
+    .replaceAll('href="./bestiary.html"', `href="./bestiary.html?v=${VERSION}"`)
+    .replaceAll('href="./"', `href="./?v=${VERSION}"`);
+  await writeFile(file, page);
+}
 for (const name of [
   "app.js",
   "renderer.js",
@@ -54,7 +66,7 @@ await writeFile(
 );
 const manifest = {
   kind: "leaftale",
-  version: "0.5.0",
+  version: VERSION,
   commit: process.env.GITHUB_SHA || "local",
   builtAt: new Date().toISOString(),
 };

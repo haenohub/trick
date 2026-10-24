@@ -66,6 +66,8 @@ export function drawCharacterPreview(canvas, id, face = false) {
 }
 export function drawMonsterPreview(canvas, id) {
   const m = ART.monsters[id];
+  canvas.width = canvas.height = m.size * ART.pixelScale;
+  canvas.style.width = canvas.style.height = canvas.width + "px";
   preview(canvas, m.file, m.cols, m.rows, 0, SOUTH);
 }
 export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
@@ -161,6 +163,10 @@ export class Renderer {
     if (!image) return;
     const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
       c = this.ctx;
+    // One source pixel always occupies the same two screen pixels as terrain.
+    // World item/effect requests choose an atlas; they never stretch its cells.
+    width = sw * ART.pixelScale;
+    height = sh * ART.pixelScale;
     c.save();
     c.translate(Math.round(x), Math.round(y));
     if (mirror) c.scale(-1, 1);
@@ -230,6 +236,43 @@ export class Renderer {
       c.rotate(angle);
       x = 0;
       y = 0;
+    }
+    // Keep long attack warnings and area boundaries at their real extents,
+    // using native effect cells along the path instead of stretching pixels.
+    if (width > 128 || height > 128 || (width > 64 && width > height * 2)) {
+      const draw = (dx, dy) =>
+        this.cell(
+          ART.effects.variants[32],
+          8,
+          8,
+          Math.min(7, Math.max(0, frame)),
+          row,
+          dx,
+          dy,
+          64,
+          64,
+          0.5,
+        );
+      if (height < 64) {
+        const span = Math.max(0, width - 64);
+        const count = Math.max(2, Math.ceil(span / 40) + 1);
+        for (let i = 0; i < count; i++)
+          draw(x - span / 2 + (span * i) / (count - 1), y);
+      } else {
+        const rx = Math.max(0, width / 2 - 32),
+          ry = Math.max(0, height / 2 - 32);
+        const count = Math.min(
+          32,
+          Math.max(8, Math.ceil((Math.PI * (width + height)) / 96)),
+        );
+        for (let i = 0; i < count; i++) {
+          const a = (i * Math.PI * 2) / count;
+          draw(x + Math.cos(a) * rx, y + Math.sin(a) * ry);
+        }
+        if (row !== 5) draw(x, y);
+      }
+      c.restore();
+      return;
     }
     const native =
       Math.max(width, height) <= 96

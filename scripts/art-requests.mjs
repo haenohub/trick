@@ -28,7 +28,7 @@ await writeFile(
       status: "generated-and-integrated-eight-direction-native-pixels",
       productionRecord: "art/generated-assets.json",
       requirements:
-        "All artwork originates from image_gen, packed onto exact native grids. All 52 actors have eight independently generated 3D-informed headings N,NE,E,SE,S,SW,W,NW and eight animation columns. Monster sizes 32,48,64; shared palette; no mirroring, synthetic rotation or procedural drawing fallback.",
+        "All artwork is regenerated from the uploaded animation style reference, with fine pastel shading and thin local-color contours. No forced dark outline. Shared adaptive palette up to 256 colors. One native pixel occupies two screen pixels throughout the world. All 52 actors have eight independently generated 3D-informed headings N,NE,E,SE,S,SW,W,NW and eight animation columns. Monster sizes 32,48,64; shared palette; no mirroring, synthetic rotation or procedural drawing fallback.",
       requests,
     },
     null,

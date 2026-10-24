@@ -496,17 +496,17 @@ function renderPanel() {
     ).join("")}`;
   } else if (panel === "codex") {
     title = "숲의 생명 도감";
-    html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 골드와 경험치는 처치 시 확정 지급됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / 40</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
+    html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 골드와 경험치는 처치 시 확정 지급됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / 40</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
       [
         ["0", "햇살잎 숲 · 20종"],
         ["1", "은물결 해안림 · 20종"],
       ],
-    )}<div class="card-grid">${MONSTERS.filter(
+    )}<div class="card-grid codex-grid">${MONSTERS.filter(
       (m) => m.region === Number(filter),
     )
       .map(
         (m) =>
-          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${m.xp} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 골드</p>${m.drops.map((d) => `<div class="drop-row"><span>${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(d.chance * 1000) / 10}%</b></div>`).join("")}</details></article>`,
+          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${m.xp} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 골드</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(d.chance * 1000) / 10}%</b></div>`).join("")}</details></article>`,
       )
       .join("")}</div>`;
   } else if (panel === "skills") {
@@ -966,7 +966,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.5.0",
+  version: "0.6.0",
 };
 try {
   const response = await fetch("./assets/manifest.json");

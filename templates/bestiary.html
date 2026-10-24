@@ -593,6 +593,13 @@
         font-weight: 700;
         white-space: nowrap;
       }
+      .loot-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 6px;
+        vertical-align: middle;
+        image-rendering: pixelated;
+      }
       .drop-item {
         padding-right: 10px;
       }
@@ -1416,7 +1423,7 @@
         }
         function card(m) {
           const habitat = mapOf(m.map);
-          return `<article class="monster-card" id="${m.id}" data-id="${m.id}" data-type="${m.type}"><div class="card-top"><span class="entry-id">NO. ${String(m.index + 1).padStart(3, "0")}</span><div class="badges"><span class="badge ${m.type}">${esc(data.types[m.type])}</span><span class="badge">${m.spriteSize}×${m.spriteSize}</span><span class="badge level">Lv.${m.level}</span></div></div><div class="card-body"><div class="identity"><div class="art-space"><canvas width="256" height="256" data-monster="${m.id}" role="img" aria-label="${esc(m.name)}"></canvas><span class="art-error" hidden>이미지를 불러오지 못했어요</span></div><div><p class="habitat">${esc(data.regions[m.region].name)}<strong>${esc(habitat.name)}</strong></p><h3>${esc(m.name)}</h3></div></div><p class="lore">${esc(m.lore)}</p><div class="stats"><div class="stat"><small>체력</small><b>${fmt(m.hp)}</b></div><div class="stat"><small>공격력</small><b>${fmt(m.attack)}</b></div><div class="stat"><small>방어력</small><b>${fmt(m.defense)}</b></div><div class="stat"><small>공격 방식</small><b>${m.ranged ? "원거리" : "근접"}</b></div></div><div class="rewards"><span>처치 경험치 <strong>${fmt(m.xp)} EXP</strong></span><span class="gold">확정 골드 <strong>${fmt(m.gold)} G</strong></span></div><div class="drop-heading"><h4>드롭 테이블</h4><span>아이템 이름을 누르면 이야기 열기</span></div><table class="drop-table"><caption hidden>${esc(m.name)}의 아이템별 드롭 확률과 수량</caption><thead><tr><th scope="col">아이템</th><th scope="col">수량</th><th scope="col">확률</th></tr></thead><tbody>${m.drops.map((d) => `<tr data-item="${d.item}"><td><details class="drop-item"><summary>${esc(d.name)}</summary><p>${esc(d.lore)}</p><div class="item-kind">${typeOf(d)}</div></details></td><td>×${d.min}${d.max !== d.min ? "–" + d.max : ""}</td><td class="chance">${percent(d.chance)}</td></tr>`).join("")}</tbody></table></div></article>`;
+          return `<article class="monster-card" id="${m.id}" data-id="${m.id}" data-type="${m.type}"><div class="card-top"><span class="entry-id">NO. ${String(m.index + 1).padStart(3, "0")}</span><div class="badges"><span class="badge ${m.type}">${esc(data.types[m.type])}</span><span class="badge">${m.spriteSize}×${m.spriteSize}</span><span class="badge level">Lv.${m.level}</span></div></div><div class="card-body"><div class="identity"><div class="art-space"><canvas width="256" height="256" data-monster="${m.id}" role="img" aria-label="${esc(m.name)}"></canvas><span class="art-error" hidden>이미지를 불러오지 못했어요</span></div><div><p class="habitat">${esc(data.regions[m.region].name)}<strong>${esc(habitat.name)}</strong></p><h3>${esc(m.name)}</h3></div></div><p class="lore">${esc(m.lore)}</p><div class="stats"><div class="stat"><small>체력</small><b>${fmt(m.hp)}</b></div><div class="stat"><small>공격력</small><b>${fmt(m.attack)}</b></div><div class="stat"><small>방어력</small><b>${fmt(m.defense)}</b></div><div class="stat"><small>공격 방식</small><b>${m.ranged ? "원거리" : "근접"}</b></div></div><div class="rewards"><span>처치 경험치 <strong>${fmt(m.xp)} EXP</strong></span><span class="gold">확정 골드 <strong>${fmt(m.gold)} G</strong></span></div><div class="drop-heading"><h4>드롭 테이블</h4><span>아이템 이름을 누르면 이야기 열기</span></div><table class="drop-table"><caption hidden>${esc(m.name)}의 아이템별 드롭 확률과 수량</caption><thead><tr><th scope="col">아이템</th><th scope="col">수량</th><th scope="col">확률</th></tr></thead><tbody>${m.drops.map((d) => `<tr data-item="${d.item}"><td><details class="drop-item"><summary><canvas class="loot-icon" width="32" height="32" data-drop="${d.item}" aria-hidden="true"></canvas>${esc(d.name)}</summary><p>${esc(d.lore)}</p><div class="item-kind">${typeOf(d)}</div></details></td><td>×${d.min}${d.max !== d.min ? "–" + d.max : ""}</td><td class="chance">${percent(d.chance)}</td></tr>`).join("")}</tbody></table></div></article>`;
         }
         function getImage(file) {
           if (!images.has(file))
@@ -1478,7 +1485,38 @@
                 { rootMargin: "250px" },
               )
             : null;
+        const dropsById = new Map(
+          data.monsters.flatMap((m) => m.drops).map((d) => [d.item, d]),
+        );
+        async function paintItem(canvas) {
+          const drop = dropsById.get(canvas.dataset.drop),
+            icon = drop.image;
+          try {
+            const image =
+              loadedImages.get(icon.file) || (await getImage(icon.file));
+            if (!canvas.isConnected) return;
+            const c = canvas.getContext("2d"),
+              size = icon.size;
+            c.imageSmoothingEnabled = false;
+            c.clearRect(0, 0, 32, 32);
+            c.drawImage(
+              image,
+              (icon.index % icon.cols) * size,
+              Math.floor(icon.index / icon.cols) * size,
+              size,
+              size,
+              0,
+              0,
+              size * 2,
+              size * 2,
+            );
+            canvas.dataset.loaded = "true";
+          } catch {
+            /* Text and probabilities remain available offline. */
+          }
+        }
         function paintCards() {
+          document.querySelectorAll("canvas[data-drop]").forEach(paintItem);
           document
             .querySelectorAll("canvas[data-monster]")
             .forEach((canvas) =>
@@ -1624,7 +1662,14 @@
           button.disabled = true;
           button.textContent = "준비 중…";
           await Promise.allSettled(
-            [...new Set(filtered.map((m) => m.image.file))].map(getImage),
+            [
+              ...new Set(
+                filtered.flatMap((m) => [
+                  m.image.file,
+                  ...m.drops.map((d) => d.image.file),
+                ]),
+              ),
+            ].map(getImage),
           );
           button.disabled = false;
           button.textContent = "인쇄";
@@ -1634,6 +1679,7 @@
           observer?.disconnect();
           $("cards").innerHTML = filtered.map(card).join("");
           document.querySelectorAll("canvas[data-monster]").forEach(paint);
+          document.querySelectorAll("canvas[data-drop]").forEach(paintItem);
         });
         window.addEventListener("afterprint", () => render());
         $("download").addEventListener("click", () => {

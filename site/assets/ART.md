@@ -1,9 +1,9 @@
-# Native pixel artwork
+# Fine pixel artwork · LeafTale v0.6.0
 
-LeafTale v0.5.0 uses 52 newly image-generated, 3D-informed eight-direction actor sheets: four player classes, eight NPCs and forty monsters. Each actor has 8×8 native cells: eight headings (N, NE, E, SE, S, SW, W, NW) and eight animation poses. These are pixel-art turnarounds based on consistent volumes and occlusion; no mesh files are claimed. All directions originate from generated artwork, without runtime mirroring or synthetic rotations.
+All 67 active source artworks were regenerated using extracted frames of the user's monster animation as the style reference. The new art uses delicate local-color contours and softly shaded pastel pixels. Packing preserves those contours: it never paints a dark border or forces dark areas into navy. A shared adaptive palette of up to 256 colors replaces the former 32-color limit.
 
-Monster cells and portraits are exactly 32×32, 48×48 or 64×64. Player/NPC cells are 48×48; item and trophy icons 16×16; effect cells 32×32 / 48×48 / 64×64; maps 960×640. Artwork uses a shared 32-color palette, binary alpha and integer-scaled nearest-neighbor display.
+In the game world one native pixel maps to two screen pixels for terrain, actors, items and effects. Native cells remain 32/48/64px for monsters, 48px for players/NPCs, 16px for items and 32/48/64px for effects. Maps are 960×640, title 480×320 and frame 128×128. Fractional item/effect scaling is removed. Bestiary item icons use the same 2x display.
 
-The 525 committed PNGs include 416 individual directional views. Only 69 runtime atlases/backgrounds load at game startup. `../directions.html` previews all 52 actors, eight directions and animations, with individual PNG downloads.
+The 525 PNGs include 52 eight-direction animated atlases, 416 individual directional views and forty front portraits. Headings: N, NE, E, SE, S, SW, W, NW. Each has walking four frames, attack two, hurt and defeat. Only 69 runtime atlases/backgrounds load at startup. The 2D turnaround artwork is informed by 3D volume; no mesh files are claimed.
 
-See `manifest.json` for layouts, `../../art/directional-sources.json` and `../../art/pixel-sources.json` for generation prompts and source paths, `../../art/generated-assets.json` for provenance/checksums, and `../../ART_REWORK.md` for the packing workflow. Originals are retained in the generation workspace. Normal builds require neither generation tools nor ImageMagick.
+See `manifest.json` for layouts, `../../art/refinement-sources.json` for current prompts/source paths, `../../art/shared-palette.json` for the palette, `../../art/generated-assets.json` for checksums and `../../art/style-audit.json` for contour measurements. Normal builds use committed PNGs and need no generation tools or ImageMagick.

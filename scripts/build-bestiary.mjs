@@ -27,6 +27,19 @@ export async function buildBestiary() {
       image: { file: `assets/${file}.png`, ...rect },
       drops: m.drops.map((d) => ({
         ...d,
+        image: art.itemOverrides[d.item]
+          ? {
+              ...art.itemOverrides[d.item],
+              file: `assets/${art.itemOverrides[d.item].file}.png`,
+              size: 16,
+            }
+          : {
+              file: "assets/items.png",
+              cols: 8,
+              rows: 8,
+              index: art.items[d.item],
+              size: 16,
+            },
         name: ITEMS[d.item].name,
         lore: ITEMS[d.item].lore,
         itemType: ITEMS[d.item].type,

@@ -2,12 +2,13 @@
 // Source artwork is cropped, aligned, sampled onto native pixel grids and indexed
 // to one shared palette. Committed native PNGs are used by the normal build.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { existsSync, readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { resolve, dirname } from "node:path";
 import { MONSTERS, MAPS, CLASSES, ITEMS } from "../site/data.js";
 
-export const PALETTE = [
+const legacyPalette = [
   "222034",
   "45283c",
   "663931",
@@ -40,7 +41,15 @@ export const PALETTE = [
   "8f974a",
   "8a6f30",
   "000000",
-].map((hex) => [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)));
+];
+const paletteFile = new URL("../art/shared-palette.json", import.meta.url);
+export const PALETTE = (
+  existsSync(paletteFile)
+    ? JSON.parse(readFileSync(paletteFile, "utf8")).colors
+    : legacyPalette
+).map((hex) =>
+  [0, 2, 4].map((i) => parseInt(hex.replace(/^#/, "").slice(i, i + 2), 16)),
+);
 const quantized = new Map();
 function color(r, g, b) {
   const key =
@@ -86,7 +95,7 @@ function decode(path) {
     throw Error("Unexpected decoded pixel count: " + path);
   return { width, height, data };
 }
-function sample(source, rect, width, height, opaque = false, outline = false) {
+function sample(source, rect, width, height, opaque = false) {
   const out = rgba(width, height),
     { sx, sy, sw, sh } = rect;
   for (let y = 0; y < height; y++)
@@ -99,8 +108,7 @@ function sample(source, rect, width, height, opaque = false, outline = false) {
         r = 0,
         g = 0,
         b = 0,
-        area = 0,
-        ink = 0;
+        area = 0;
       for (let yy = Math.floor(y0); yy < Math.ceil(y1); yy++)
         for (let xx = Math.floor(x0); xx < Math.ceil(x1); xx++) {
           if (xx < 0 || yy < 0 || xx >= source.width || yy >= source.height)
@@ -116,54 +124,15 @@ function sample(source, rect, width, height, opaque = false, outline = false) {
           r += source.data[at] * a * weight;
           g += source.data[at + 1] * a * weight;
           b += source.data[at + 2] * a * weight;
-          if (
-            a > 0.8 &&
-            Math.max(
-              source.data[at],
-              source.data[at + 1],
-              source.data[at + 2],
-            ) < 85
-          )
-            ink += a * weight;
         }
       if (!area || (!opaque && alpha / area < 0.42) || alpha < 0.001) continue;
       const at = (y * width + x) * 4,
-        c =
-          outline && ink / alpha > 0.12
-            ? PALETTE[0]
-            : color(r / alpha, g / alpha, b / alpha);
+        c = color(r / alpha, g / alpha, b / alpha);
       out.data[at] = c[0];
       out.data[at + 1] = c[1];
       out.data[at + 2] = c[2];
       out.data[at + 3] = 255;
     }
-  if (outline) {
-    const original = Buffer.from(out.data);
-    for (let y = 0; y < height; y++)
-      for (let x = 0; x < width; x++) {
-        const at = (y * width + x) * 4;
-        if (!original[at + 3]) continue;
-        if (
-          [
-            [1, 0],
-            [-1, 0],
-            [0, 1],
-            [0, -1],
-          ].some(
-            ([dx, dy]) =>
-              x + dx < 0 ||
-              y + dy < 0 ||
-              x + dx >= width ||
-              y + dy >= height ||
-              !original[((y + dy) * width + x + dx) * 4 + 3],
-          )
-        ) {
-          out.data[at] = PALETTE[0][0];
-          out.data[at + 1] = PALETTE[0][1];
-          out.data[at + 2] = PALETTE[0][2];
-        }
-      }
-  }
   return out;
 }
 function blit(source, target, x, y) {
@@ -383,14 +352,23 @@ function foreground(source, rect) {
     sh: Math.max(...keep.map((c) => c.maxY)) - sy + 1,
   };
 }
-function entityFrames(source, cols, rows, rowIndices, size) {
+function entityFrames(
+  source,
+  cols,
+  rows,
+  rowIndices,
+  size,
+  { walkRows = null } = {},
+) {
   const rects = rowIndices.flatMap((row) =>
     Array.from({ length: cols }, (_, col) =>
       foreground(source, cell(source, cols, rows, col, row)),
     ),
   );
   const walkExtents = rects
-    .filter((_, i) => i % cols < 4)
+    .filter((_, i) =>
+      walkRows ? Math.floor(i / cols) < walkRows : i % cols < 4,
+    )
     .map((r) => Math.max(r.sw, r.sh))
     .sort((a, b) => a - b);
   const scale = (size - 4) / walkExtents[Math.floor(walkExtents.length / 2)];
@@ -400,7 +378,7 @@ function entityFrames(source, cols, rows, rowIndices, size) {
       w = Math.max(1, Math.round(rect.sw * fit)),
       h = Math.max(1, Math.round(rect.sh * fit));
     blit(
-      sample(source, rect, w, h, false, true),
+      sample(source, rect, w, h),
       frame,
       Math.floor((size - w) / 2),
       size - 2 - h,
@@ -408,6 +386,26 @@ function entityFrames(source, cols, rows, rowIndices, size) {
     return frame;
   });
   return frames;
+}
+// Effects have detached particles and sometimes touching low-alpha glows.
+// Their authored equal cells are authoritative; global subject tracking would
+// merge neighboring bursts and lose frames. Keep each frame inside its cell.
+function effectBounds(source, rect) {
+  let minX = rect.sx + rect.sw,
+    minY = rect.sy + rect.sh,
+    maxX = -1,
+    maxY = -1;
+  for (let y = rect.sy; y < rect.sy + rect.sh; y++)
+    for (let x = rect.sx; x < rect.sx + rect.sw; x++) {
+      if (source.data[(y * source.width + x) * 4 + 3] < 140) continue;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    }
+  return maxX < 0
+    ? rect
+    : { sx: minX, sy: minY, sw: maxX - minX + 1, sh: maxY - minY + 1 };
 }
 async function png(image, path) {
   await mkdir(dirname(path), { recursive: true });
@@ -523,7 +521,7 @@ export async function packPixelArt({
             w = Math.max(1, Math.round(rect.sw * scale)),
             h = Math.max(1, Math.round(rect.sh * scale));
           blit(
-            sample(source, rect, w, h, false, true),
+            sample(source, rect, w, h),
             atlas,
             col * 16 + Math.floor((16 - w) / 2),
             row * 16 + Math.floor((16 - h) / 2),
@@ -535,7 +533,7 @@ export async function packPixelArt({
       const atlas = rgba(512, 512);
       for (let row = 0; row < 8; row++) {
         const rects = Array.from({ length: 8 }, (_, col) =>
-          foreground(source, cell(source, 8, 8, col, row)),
+          effectBounds(source, cell(source, 8, 8, col, row)),
         );
         const scale = 56 / Math.max(...rects.map((r) => Math.max(r.sw, r.sh)));
         for (let col = 0; col < 8; col++) {

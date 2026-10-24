@@ -121,12 +121,18 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 4);
+  assert.equal(art.version, 5);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 2);
   assert.equal(art.files.length, 69);
   assert.equal(records.assets.length, 525);
-  assert.equal(art.palette.length, 32);
+  assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
+  assert.deepEqual(art.pixelGrid, {
+    nativeUnit: 1,
+    displayUnit: 2,
+    outline: "selective-local-color",
+    forcedOutline: false,
+  });
   const palette = new Set(art.palette.map((c) => c.slice(1).toLowerCase()));
   for (const record of records.assets) {
     const png = await readFile(new URL("../" + record.target, import.meta.url));
