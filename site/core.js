@@ -12,6 +12,7 @@ import {
   xpReward,
   dropChance,
   PICKUP_RANGE,
+  NEARBY_PICKUP_RANGE,
   PICKUP_DURATION,
 } from "./balance.js";
 import { isWalkable, NAVIGATION } from "./art-layout.js";
@@ -705,6 +706,20 @@ export class World {
         return this.openChest(p, action.chest);
       case "pickup":
         return this.pickup(p, action.drop);
+      case "pickupNearest": {
+        const drop = map.drops
+          .filter(
+            (d) =>
+              d.owner === p.id &&
+              !d.collected &&
+              !d.pickupEnds &&
+              d.until > this.time &&
+              distance(p, d) <= NEARBY_PICKUP_RANGE &&
+              this.sight(p.map, p, d),
+          )
+          .sort((a, b) => distance(p, a) - distance(p, b) || a.id - b.id)[0];
+        return !!drop && this.pickup(p, drop.id);
+      }
       case "attack":
         return this.attack(p, action.target);
       case "skill":

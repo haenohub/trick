@@ -14,7 +14,7 @@ with sync_playwright() as pw:
  assert page.evaluate('__leaftale.view().zoom')==1/1.2
  assert page.evaluate('__leaftale.snapshot().player.stats.speed')==16.5
  before=page.evaluate('__leaftale.snapshot().player.gold')
- page.keyboard.press('Tab');page.keyboard.press('1');page.wait_for_function('__leaftale.snapshot().drops.some(d=>d.kind==="currency")')
+ page.keyboard.press('Tab');page.keyboard.press('q');page.wait_for_function('__leaftale.snapshot().drops.some(d=>d.kind==="currency")')
  assert page.evaluate('__leaftale.snapshot().player.gold')==before
  page.screenshot(path='/tmp/leaftale-playtest-ground.png')
  d=page.evaluate('__leaftale.snapshot().drops.find(d=>d.kind==="currency")');point=page.evaluate('d=>__leaftale.worldToScreen(d.x,d.y)',d);box=page.locator('#world').bounding_box()

@@ -36,6 +36,7 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "combat.js",
       "exploration.js",
       "audio.js",
+      "controls.js",
       "assets/currency-leaf.png",
       "renderer.js",
       "assets/manifest.json",

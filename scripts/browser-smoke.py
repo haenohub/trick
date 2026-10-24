@@ -38,7 +38,7 @@ with sync_playwright() as p:
  point=page.evaluate('()=>{const p=__leaftale.snapshot().player;return __leaftale.worldToScreen(p.x+2,p.y)}');page.mouse.click(box['x']+point['x'],box['y']+point['y'])
  page.wait_for_function('(x)=>__leaftale.snapshot().player.x > x+1',arg=initial)
  print('PASS: click-to-move works; WASD does not move the character')
- page.keyboard.press('i');page.get_by_role('heading',name='여행자의 가방').wait_for();assert page.locator('.item-card').count()>0
+ page.keyboard.press('i');page.get_by_role('heading',name='여행자의 가방').wait_for();assert page.locator('.inventory-slot').count()>0
  page.keyboard.press('Escape');assert page.locator('#menu-panel').is_hidden()
  page.keyboard.press('b');page.locator('[data-filter=alchemy]').click();page.locator('[data-action=craft][data-item=salve]').click();assert page.evaluate('__leaftale.snapshot().player.inventory.salve')==6
  page.locator('[data-filter=garden]').click();page.locator('[data-action=plant][data-item=mint]').first.click();assert page.evaluate('__leaftale.snapshot().player.garden[0].item')=='mint'
@@ -57,7 +57,7 @@ with sync_playwright() as p:
  # Exercise every class's actual UI skills against real spawned enemies.
  for cls in ['warden','mage','ranger','herbalist']:
   fixture(page,cls,'sprout',30,True)
-  page.keyboard.press('Tab');page.keyboard.press('1');page.wait_for_timeout(250)
+  page.keyboard.press('Tab');page.keyboard.press('q');page.wait_for_timeout(250)
   snap=page.evaluate('__leaftale.snapshot()')
   assert snap['player']['cooldowns'][0]>0,cls
   if cls!='herbalist':assert snap['player']['kills']>=1,cls

@@ -6,11 +6,13 @@
     <meta name="theme-color" content="#203f35" />
     <meta
       name="description"
-      content="리프테일 지역 1·2 몬스터 60종의 이야기, 서식지, 능력치와 아이템별 드롭 확률을 확인하세요."
+      content="리프테일 지역 1·2 몬스터 60종과 아이템 102종의 이야기, 제작법, 획득처와 드롭 확률을 확인하세요."
     />
-    <title>몬스터 도감 · 리프테일</title>
+    <title>리프테일 도감 · 몬스터와 아이템</title>
     <style>
       :root {
+        --font-increase: 2pt;
+        font-size: calc(100% + var(--font-increase));
         color-scheme: light;
         --ink: #253e33;
         --muted: #68796a;
@@ -84,12 +86,12 @@
         gap: 20px;
       }
       .brand {
-        font-size: 22px;
+        font-size: calc(22px + var(--font-increase));
         letter-spacing: -1px;
         font-weight: 750;
       }
       .brand small {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         font-weight: 400;
         letter-spacing: 3px;
         color: #b0c5b2;
@@ -99,7 +101,7 @@
         display: flex;
         gap: 24px;
         align-items: center;
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
       }
       .top-links button {
         background: transparent;
@@ -148,20 +150,20 @@
         padding-bottom: 50px;
       }
       .eyebrow {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         letter-spacing: 3px;
         color: #b9ce9d;
         margin: 0 0 14px;
       }
       h1 {
         font-family: Georgia, "Noto Serif KR", serif;
-        font-size: 44px;
+        font-size: calc(44px + var(--font-increase));
         font-weight: 600;
         letter-spacing: -2px;
         margin: 0 0 16px;
       }
       .intro {
-        font-size: 14px;
+        font-size: calc(14px + var(--font-increase));
         line-height: 1.9;
         color: #c8d5c7;
         margin: 0;
@@ -177,19 +179,19 @@
       .hero-stat strong {
         display: block;
         font-family: Georgia, serif;
-        font-size: 38px;
+        font-size: calc(38px + var(--font-increase));
         font-weight: 400;
         color: #e6dbb2;
       }
       .hero-stat span {
         display: block;
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         color: #bfd0bd;
         margin-top: 7px;
       }
       .breadcrumb {
         padding: 22px 0;
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         letter-spacing: 0.5px;
         color: var(--muted);
       }
@@ -213,7 +215,7 @@
         padding: 23px 18px;
       }
       .filter-title {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         letter-spacing: 2px;
         color: #8a957e;
         font-weight: 650;
@@ -231,7 +233,7 @@
         border: 0;
         border-radius: 5px;
         padding: 12px 11px;
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
         background: transparent;
       }
       .region-button:hover {
@@ -242,7 +244,7 @@
         color: #faf8eb;
       }
       .region-button span {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         opacity: 0.65;
       }
       .filter-group {
@@ -251,7 +253,7 @@
         margin-top: 21px;
       }
       .filter-group label {
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         display: block;
         margin-bottom: 10px;
         font-weight: 650;
@@ -263,7 +265,7 @@
         border: 1px solid var(--line);
         border-radius: 4px;
         color: var(--ink);
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
       }
       .rank-options {
         display: flex;
@@ -275,7 +277,7 @@
         border: 1px solid var(--line);
         border-radius: 4px;
         padding: 7px 9px;
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
       }
       .rank-button[aria-pressed="true"] {
         border-color: #42674c;
@@ -283,7 +285,7 @@
         color: #294e37;
       }
       .reset {
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         border: 0;
         background: transparent;
         text-decoration: underline;
@@ -293,7 +295,7 @@
         padding: 0;
       }
       .field-note {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         line-height: 1.8;
         color: #819075;
         border-top: 1px solid var(--line);
@@ -320,7 +322,7 @@
         position: absolute;
         left: 15px;
         top: 9px;
-        font-size: 24px;
+        font-size: calc(24px + var(--font-increase));
         color: #7c8d74;
         pointer-events: none;
       }
@@ -330,7 +332,7 @@
         background: #fffef9;
         border: 1px solid #d3dccb;
         border-radius: 6px;
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
         color: var(--ink);
       }
       #clear-search {
@@ -340,7 +342,7 @@
         border: 0;
         background: transparent;
         color: #76836c;
-        font-size: 20px;
+        font-size: calc(20px + var(--font-increase));
         line-height: 24px;
         padding: 0 5px;
       }
@@ -351,7 +353,7 @@
         border-radius: 6px;
         background: #fffef9;
         color: #63715c;
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         max-width: 130px;
       }
       .results-header {
@@ -362,7 +364,7 @@
         margin-bottom: 20px;
       }
       .results-header h2 {
-        font-size: 17px;
+        font-size: calc(17px + var(--font-increase));
         margin: 0;
         font-weight: 700;
         letter-spacing: -0.5px;
@@ -370,11 +372,11 @@
       .results-header h2 span {
         font-weight: 400;
         color: #8a957c;
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         margin-left: 9px;
       }
       .page-range {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         color: #8b967f;
       }
       .cards {
@@ -402,7 +404,7 @@
         gap: 12px;
       }
       .entry-id {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         letter-spacing: 1.5px;
         color: #98a18a;
         font-variant-numeric: tabular-nums;
@@ -413,7 +415,7 @@
         align-items: center;
       }
       .badge {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         line-height: 1.6;
         border-radius: 4px;
         padding: 2px 7px;
@@ -465,21 +467,21 @@
         position: relative;
       }
       .art-error {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         color: #8b967f;
         position: absolute;
         inset: auto 0 8px;
         text-align: center;
       }
       .identity h3 {
-        font-size: 20px;
+        font-size: calc(20px + var(--font-increase));
         letter-spacing: -0.8px;
         margin: 4px 0 9px;
         line-height: 1.4;
         overflow-wrap: anywhere;
       }
       .habitat {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         color: #76876a;
         line-height: 1.8;
         margin: 0;
@@ -490,7 +492,7 @@
         color: #586e4d;
       }
       .lore {
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
         line-height: 1.85;
         margin: 0 0 18px;
         color: #68775f;
@@ -509,23 +511,23 @@
       .stat small {
         display: block;
         color: #96a087;
-        font-size: 9px;
+        font-size: calc(9px + var(--font-increase));
         margin-bottom: 5px;
       }
       .stat b {
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
         font-variant-numeric: tabular-nums;
         font-weight: 650;
       }
       .stat:last-child b {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
       }
       .rewards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 8px;
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         color: #7f8a70;
         margin-bottom: 18px;
       }
@@ -544,23 +546,23 @@
         margin-bottom: 10px;
       }
       .drop-heading h4 {
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         margin: 0;
         font-weight: 650;
       }
       .drop-heading span {
-        font-size: 9px;
+        font-size: calc(9px + var(--font-increase));
         color: #9da58f;
       }
       .drop-table {
         border-collapse: collapse;
         width: 100%;
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         table-layout: fixed;
       }
       .drop-table th {
         text-align: left;
-        font-size: 9px;
+        font-size: calc(9px + var(--font-increase));
         font-weight: 500;
         color: #929c85;
         padding: 8px 0;
@@ -621,13 +623,13 @@
         content: " −";
       }
       .drop-item p {
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
         line-height: 1.8;
         margin: 8px 0 1px;
         color: #89947b;
       }
       .item-kind {
-        font-size: 9px;
+        font-size: calc(9px + var(--font-increase));
         color: #9aa48b;
         margin-top: 3px;
       }
@@ -639,11 +641,11 @@
         border-radius: 8px;
       }
       .empty h3 {
-        font-size: 18px;
+        font-size: calc(18px + var(--font-increase));
         margin: 0 0 12px;
       }
       .empty p {
-        font-size: 13px;
+        font-size: calc(13px + var(--font-increase));
         color: var(--muted);
         line-height: 1.8;
       }
@@ -670,7 +672,7 @@
         border-radius: 4px;
         min-width: 34px;
         height: 34px;
-        font-size: 12px;
+        font-size: calc(12px + var(--font-increase));
         padding: 0 10px;
       }
       .pagination button[aria-current="page"] {
@@ -683,7 +685,7 @@
         cursor: default;
       }
       .probability-note {
-        font-size: 11px;
+        font-size: calc(11px + var(--font-increase));
         color: #87937b;
         line-height: 1.9;
         margin: 24px 0 0;
@@ -694,7 +696,7 @@
         border-top: 1px solid #d8dfcf;
         padding: 23px 0 28px;
         color: #8e9b81;
-        font-size: 10px;
+        font-size: calc(10px + var(--font-increase));
       }
       .footer .wrap {
         display: flex;
@@ -722,7 +724,7 @@
         text-align: center;
       }
       #result-label {
-        font-size: 17px;
+        font-size: calc(17px + var(--font-increase));
         color: var(--ink);
         font-weight: 700;
         margin: 0;
@@ -742,7 +744,7 @@
           gap: 6px;
         }
         .identity h3 {
-          font-size: 18px;
+          font-size: calc(18px + var(--font-increase));
         }
         .art-space {
           flex-basis: 100px;
@@ -765,7 +767,7 @@
           padding-left: 24px;
         }
         .hero-stat strong {
-          font-size: 30px;
+          font-size: calc(30px + var(--font-increase));
         }
         .catalogue {
           grid-template-columns: 180px minmax(0, 1fr);
@@ -786,7 +788,7 @@
           height: 102px;
         }
         .identity h3 {
-          font-size: 17px;
+          font-size: calc(17px + var(--font-increase));
         }
         .card-body {
           padding-left: 16px;
@@ -820,18 +822,18 @@
           height: 64px;
         }
         .brand {
-          font-size: 20px;
+          font-size: calc(20px + var(--font-increase));
         }
         .brand small {
           display: none;
         }
         .top-links {
           gap: 13px;
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .top-links button {
           padding: 8px 10px;
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .hero .wrap {
           padding-top: 34px;
@@ -839,11 +841,11 @@
           display: block;
         }
         h1 {
-          font-size: 34px;
+          font-size: calc(34px + var(--font-increase));
           letter-spacing: -1.5px;
         }
         .intro {
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
         }
         .hero-stats {
           border: 0;
@@ -852,10 +854,10 @@
           gap: 40px;
         }
         .hero-stat strong {
-          font-size: 27px;
+          font-size: calc(27px + var(--font-increase));
         }
         .hero-stat span {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .breadcrumb {
           padding: 18px 0;
@@ -878,7 +880,7 @@
         }
         .region-button {
           padding: 10px;
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
           flex: 1;
           gap: 6px;
           justify-content: center;
@@ -889,7 +891,7 @@
           border: 0;
         }
         .filter-group label {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
           margin-bottom: 7px;
         }
         .sidebar .filter-group:first-of-type {
@@ -904,12 +906,12 @@
           gap: 4px;
         }
         .rank-button {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
           padding: 8px 7px;
         }
         .reset {
           margin-top: 15px;
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .toolbar {
           flex-wrap: nowrap;
@@ -918,16 +920,16 @@
           flex-basis: auto;
         }
         #search {
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
           padding-left: 35px;
         }
         .sort {
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
           padding: 0 7px;
           width: 107px;
         }
         .results-header h2 {
-          font-size: 16px;
+          font-size: calc(16px + var(--font-increase));
         }
         .cards {
           gap: 15px;
@@ -942,7 +944,7 @@
           width: 82px;
         }
         .identity h3 {
-          font-size: 16px;
+          font-size: calc(16px + var(--font-increase));
         }
         .card-top {
           padding: 14px 14px 0;
@@ -951,26 +953,26 @@
           padding: 0 14px 15px;
         }
         .lore {
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
           min-height: 65px;
         }
         .drop-table {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .stats {
           gap: 4px;
         }
         .stat b {
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
         }
         .rewards {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .entry-id {
-          font-size: 9px;
+          font-size: calc(9px + var(--font-increase));
         }
         .badge {
-          font-size: 9px;
+          font-size: calc(9px + var(--font-increase));
           padding: 2px 5px;
         }
       }
@@ -993,7 +995,7 @@
           height: 116px;
         }
         .identity h3 {
-          font-size: 21px;
+          font-size: calc(21px + var(--font-increase));
         }
         .card-top {
           padding: 18px 21px 0;
@@ -1002,7 +1004,7 @@
           padding: 0 21px 18px;
         }
         .lore {
-          font-size: 13px;
+          font-size: calc(13px + var(--font-increase));
           min-height: 0;
         }
         .stats {
@@ -1010,28 +1012,28 @@
           gap: 10px;
         }
         .stat b {
-          font-size: 14px;
+          font-size: calc(14px + var(--font-increase));
         }
         .stat small {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .drop-table {
-          font-size: 12px;
+          font-size: calc(12px + var(--font-increase));
         }
         .drop-table th {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .rewards {
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .drop-heading h4 {
-          font-size: 13px;
+          font-size: calc(13px + var(--font-increase));
         }
         .entry-id {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .badge {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .filters-inline {
           grid-template-columns: 1fr;
@@ -1041,26 +1043,26 @@
         }
         .rank-button {
           padding: 7px 12px;
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .region-button {
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
           padding: 10px 6px;
         }
         .region-button span {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .top-links {
           gap: 12px;
         }
         .top-links button {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .page-range {
-          font-size: 10px;
+          font-size: calc(10px + var(--font-increase));
         }
         .results-header h2 span {
-          font-size: 11px;
+          font-size: calc(11px + var(--font-increase));
         }
         .footer .wrap {
           display: block;
@@ -1125,7 +1127,7 @@
           display: none;
         }
         h1 {
-          font-size: 28px;
+          font-size: calc(28px + var(--font-increase));
         }
         .catalogue {
           display: block;
@@ -1150,7 +1152,7 @@
           margin: 8px 0 16px;
         }
         .results-header h2 {
-          font-size: 14px;
+          font-size: calc(14px + var(--font-increase));
         }
         .page-range {
           display: none;
@@ -1165,7 +1167,7 @@
           min-height: 110px;
         }
         .identity h3 {
-          font-size: 17px;
+          font-size: calc(17px + var(--font-increase));
         }
         .art-space {
           flex-basis: 90px;
@@ -1185,10 +1187,133 @@
           border: 0;
         }
       }
+
+      .catalogue-modes {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .catalogue-modes button {
+        padding: 12px 20px;
+        border: 1px solid #b7c6ac;
+        border-radius: 6px;
+        background: #fbfaf4;
+        font-size: calc(14px + var(--font-increase));
+      }
+      .catalogue-modes button[aria-pressed="true"] {
+        background: #315746;
+        color: #fff6d9;
+      }
+      body[data-catalogue-mode="items"] #region-options,
+      body[data-catalogue-mode="items"] .filters-inline {
+        display: none;
+      }
+      .item-guide-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        min-width: 0;
+        break-inside: avoid;
+      }
+      .item-guide-card h3 {
+        font-size: calc(18px + var(--font-increase));
+        margin: 0 0 6px;
+      }
+      .item-guide-card h4 {
+        font-size: calc(12px + var(--font-increase));
+        margin: 20px 0 9px;
+      }
+      .item-guide-heading {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin: 18px 0;
+      }
+      .item-guide-heading small,
+      .item-monster-sources small {
+        font-size: calc(10px + var(--font-increase));
+        color: var(--muted);
+      }
+      .item-guide-card .lore {
+        min-height: 0;
+      }
+      .item-metrics {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: calc(12px + var(--font-increase));
+        font-weight: 600;
+        color: var(--green);
+      }
+      .source-note,
+      .item-monster-sources {
+        font-size: calc(11px + var(--font-increase));
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+      }
+      .item-monster-sources {
+        padding-left: 18px;
+      }
+      .recipe-items {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .item-link {
+        padding: 5px 8px;
+        border: 1px solid #b2c2ab;
+        border-radius: 4px;
+        background: #eef0e1;
+        font-size: calc(10px + var(--font-increase));
+      }
+      #item-filters select {
+        width: 100%;
+        min-width: 0;
+      }
+      @media (max-width: 600px) {
+        .topbar .wrap {
+          height: auto;
+          min-height: 76px;
+          padding: 12px 0;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .top-links {
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .top-links button {
+          padding: 7px 10px;
+        }
+        .drop-table {
+          table-layout: fixed;
+        }
+        .drop-item summary {
+          white-space: normal;
+          overflow-wrap: anywhere;
+        }
+        .hero-stats {
+          gap: 10px;
+        }
+        .hero-stat {
+          min-width: 0;
+        }
+      }
+      @media print {
+        .catalogue-modes {
+          display: none;
+        }
+        .item-guide-card {
+          break-inside: avoid;
+          box-shadow: none;
+          border-color: #c1cab7;
+        }
+      }
     </style>
   </head>
   <body>
-    <a class="skip" href="#catalogue">몬스터 목록으로 건너뛰기</a>
+    <a class="skip" href="#catalogue">도감 목록으로 건너뛰기</a>
     <header class="topbar">
       <div class="wrap">
         <a class="brand" id="brand-link" href="./"
@@ -1206,10 +1331,11 @@
       <div class="wrap">
         <div>
           <p class="eyebrow">THE LEAFTALE FIELD GUIDE · VOL. 01–02</p>
-          <h1 id="page-title">숲과 바다의 몬스터 도감</h1>
+          <h1 id="page-title">리프테일 도감</h1>
           <p class="intro">
             콩잎 아래의 작은 풀벌레부터, 푸른 바다의 오래된 수호자까지.<br />리프테일에
-            사는 생명들의 이야기와 그들이 남기는 물건을 기록했습니다.
+            사는 생명들과 장비·약초·전리품의 이야기, 제작법과 획득처를
+            기록했습니다.
           </p>
         </div>
         <div class="hero-stats" aria-label="도감 규모">
@@ -1227,7 +1353,14 @@
     </section>
     <div class="wrap">
       <div class="breadcrumb">
-        리프테일 <span>/</span> 모험 기록 <span>/</span> 몬스터 도감
+        리프테일 <span>/</span> 모험 기록 <span>/</span> 리프테일 도감
+      </div>
+      <div class="catalogue-modes" role="group" aria-label="도감 선택">
+        <button data-catalogue="monsters" aria-pressed="true">
+          몬스터 도감 · 60종</button
+        ><button data-catalogue="items" aria-pressed="false">
+          아이템 도감 · 102종
+        </button>
       </div>
       <main class="catalogue" id="catalogue">
         <aside class="sidebar" aria-label="도감 필터">
@@ -1253,6 +1386,28 @@
                 role="group"
                 aria-label="몬스터 분류"
               ></div>
+            </div>
+          </div>
+          <div id="item-filters" hidden>
+            <div class="filter-group">
+              <label for="item-type">아이템 분류</label
+              ><select id="item-type">
+                <option value="all">모든 아이템</option>
+                <option value="equipment">장비</option>
+                <option value="consumable">소비 아이템</option>
+                <option value="material">제작 재료</option>
+                <option value="trophy">고유 전리품</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="item-class">사용 직업</label
+              ><select id="item-class">
+                <option value="all">모든 직업</option>
+                <option value="warden">수림창사</option>
+                <option value="mage">별잎술사</option>
+                <option value="ranger">숲그늘궁수</option>
+                <option value="herbalist">약초술사</option>
+              </select>
             </div>
           </div>
           <button class="reset" id="reset" type="button">필터 초기화 ↺</button>
@@ -1365,7 +1520,10 @@
           query = "",
           sort = "level-asc",
           page = 1,
-          filtered = [];
+          filtered = [],
+          catalogue = location.hash === "#items" ? "items" : "monsters",
+          itemType = "all",
+          itemClass = "all";
         const mapOf = (id) => data.maps.find((m) => m.id === id),
           typeOf = (d) =>
             d.slot
@@ -1425,7 +1583,22 @@
         }
         function card(m) {
           const habitat = mapOf(m.map);
-          return `<article class="monster-card" id="${m.id}" data-id="${m.id}" data-type="${m.type}"><div class="card-top"><span class="entry-id">NO. ${String(m.index + 1).padStart(3, "0")}</span><div class="badges"><span class="badge ${m.type}">${esc(data.types[m.type])}</span><span class="badge">${m.spriteSize}×${m.spriteSize}</span><span class="badge level">Lv.${m.level}</span></div></div><div class="card-body"><div class="identity"><div class="art-space"><canvas width="256" height="256" data-monster="${m.id}" role="img" aria-label="${esc(m.name)}"></canvas><span class="art-error" hidden>이미지를 불러오지 못했어요</span></div><div><p class="habitat">${esc(data.regions[m.region].name)}<strong>${esc(habitat.name)}</strong></p><h3>${esc(m.name)}</h3></div></div><p class="lore">${esc(m.lore)}</p><div class="stats"><div class="stat"><small>체력</small><b>${fmt(m.hp)}</b></div><div class="stat"><small>공격력</small><b>${fmt(m.attack)}</b></div><div class="stat"><small>방어력</small><b>${fmt(m.defense)}</b></div><div class="stat"><small>공격 방식</small><b>${m.ranged ? "원거리" : "근접"}</b></div></div><div class="rewards"><span>처치 경험치 <strong>${fmt(m.xp)} EXP</strong></span><span class="gold">바닥에 떨어지는 리프 <strong>${fmt(m.gold)} 리프</strong></span></div><div class="drop-heading"><h4>드롭 테이블</h4><span>아이템 이름을 누르면 이야기 열기</span></div><table class="drop-table"><caption hidden>${esc(m.name)}의 아이템별 드롭 확률과 수량</caption><thead><tr><th scope="col">아이템</th><th scope="col">수량</th><th scope="col">확률</th></tr></thead><tbody>${m.drops.map((d) => `<tr data-item="${d.item}"><td><details class="drop-item"><summary><canvas class="loot-icon" width="32" height="32" data-drop="${d.item}" aria-hidden="true"></canvas>${esc(d.name)}</summary><p>${esc(d.lore)}</p><div class="item-kind">${typeOf(d)}</div></details></td><td>×${d.min}${d.max !== d.min ? "–" + d.max : ""}</td><td class="chance">${percent(d.chance)}</td></tr>`).join("")}</tbody></table></div></article>`;
+          return `<article class="monster-card" id="${m.id}" data-id="${m.id}" data-type="${m.type}"><div class="card-top"><span class="entry-id">NO. ${String(m.index + 1).padStart(3, "0")}</span><div class="badges"><span class="badge ${m.type}">${esc(data.types[m.type])}</span><span class="badge">${m.spriteSize}×${m.spriteSize}</span><span class="badge level">Lv.${m.level}</span></div></div><div class="card-body"><div class="identity"><div class="art-space"><canvas width="256" height="256" data-monster="${m.id}" role="img" aria-label="${esc(m.name)}"></canvas><span class="art-error" hidden>이미지를 불러오지 못했어요</span></div><div><p class="habitat">${esc(data.regions[m.region].name)}<strong>${esc(habitat.name)}</strong></p><h3>${esc(m.name)}</h3></div></div><p class="lore">${esc(m.lore)}</p><div class="stats"><div class="stat"><small>체력</small><b>${fmt(m.hp)}</b></div><div class="stat"><small>공격력</small><b>${fmt(m.attack)}</b></div><div class="stat"><small>방어력</small><b>${fmt(m.defense)}</b></div><div class="stat"><small>공격 방식</small><b>${m.ranged ? "원거리" : "근접"}</b></div></div><div class="rewards"><span>처치 경험치 <strong>${fmt(m.xp)} EXP</strong></span><span class="gold">바닥에 떨어지는 리프 <strong>${fmt(m.gold)} 리프</strong></span></div><div class="drop-heading"><h4>드롭 테이블</h4><span>아이템 이름을 누르면 이야기 열기</span></div><table class="drop-table"><caption hidden>${esc(m.name)}의 아이템별 드롭 확률과 수량</caption><thead><tr><th scope="col">아이템</th><th scope="col">수량</th><th scope="col">확률</th></tr></thead><tbody>${m.drops.map((d) => `<tr data-item="${d.item}"><td><details class="drop-item"><summary><canvas class="loot-icon" width="32" height="32" data-drop="${d.item}" aria-hidden="true"></canvas>${esc(d.name)}</summary><p>${esc(d.lore)}</p><div class="item-kind">${typeOf(d)}</div><button class="item-link" data-item-link="${d.item}">아이템 도감에서 보기</button></details></td><td>×${d.min}${d.max !== d.min ? "–" + d.max : ""}</td><td class="chance">${percent(d.chance)}</td></tr>`).join("")}</tbody></table></div></article>`;
+        }
+        function itemCard(item) {
+          const source = item.sources,
+            parts = [];
+          if (source.shop)
+            parts.push("마을 상점에서 " + fmt(item.price) + " 리프로 구입");
+          if (source.starting.length)
+            parts.push("시작 보급품: " + source.starting.join(", "));
+          if (source.herbs.length)
+            parts.push("약초 채집 · 화단 재배: " + source.herbs.join(", "));
+          if (source.quest) parts.push("이야기 보상");
+          if (source.chests.length)
+            parts.push("보물함: " + source.chests.join(", "));
+          if (item.ingredients.length) parts.push("마을에서 제작 · 연금술");
+          return `<article class="item-guide-card" id="item-${item.id}" data-item-id="${item.id}"><div class="card-top"><span class="entry-id">ITEM ${String(item.index + 1).padStart(3, "0")}</span><span class="badge">${esc(item.typeName)}</span></div><div class="card-body"><div class="item-guide-heading"><canvas class="loot-icon" width="32" height="32" data-drop="${item.id}" aria-label="${esc(item.name)}"></canvas><div><h3>${esc(item.name)}</h3><small>${esc(item.slotName)}${item.level ? " · Lv." + item.level : ""} · ${esc(item.className)} ${esc(item.branchName)}</small></div></div><p class="lore">${esc(item.lore)}</p><div class="item-metrics">${item.attack ? "<span>공격 +" + item.attack + "</span>" : ""}${item.defense ? "<span>방어 +" + item.defense + "</span>" : ""}<span>판매 ${fmt(item.sellPrice)} 리프</span></div><h4>획득 방법</h4>${parts.map((part) => '<p class="source-note">' + esc(part) + "</p>").join("")}${source.monsters.length ? `<ul class="item-monster-sources">${source.monsters.map((m) => `<li>${esc(m.name)} <small>${esc(m.mapName)}</small> · <b class="item-drop-chance">${percent(m.chance)}</b> · ×${m.min}${m.max !== m.min ? "–" + m.max : ""}</li>`).join("")}</ul>` : ""}${item.ingredients.length ? '<h4>제작 재료</h4><div class="recipe-items">' + item.ingredients.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)} ×${i.count}</button>`).join("") + "</div>" : ""}${item.usedBy.length ? '<h4>이 재료로 만들 수 있어요</h4><div class="recipe-items">' + item.usedBy.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)}</button>`).join("") + "</div>" : ""}</div></article>`;
         }
         function getImage(file) {
           if (!images.has(file))
@@ -1488,7 +1661,10 @@
               )
             : null;
         const dropsById = new Map(
-          data.monsters.flatMap((m) => m.drops).map((d) => [d.item, d]),
+          [
+            ...data.monsters.flatMap((m) => m.drops),
+            ...data.items.map((i) => ({ ...i, item: i.id })),
+          ].map((d) => [d.item, d]),
         );
         async function paintItem(canvas) {
           const drop = dropsById.get(canvas.dataset.drop),
@@ -1531,43 +1707,80 @@
             .trim()
             .normalize("NFKC")
             .toLocaleLowerCase("ko-KR");
-          filtered = data.monsters.filter(
-            (m) =>
-              (region === "all" || m.region === Number(region)) &&
-              (map === "all" || m.map === map) &&
-              (rank === "all" || m.type === rank) &&
-              (!needle ||
-                [
-                  m.name,
-                  m.id,
-                  m.lore,
-                  mapOf(m.map).name,
-                  data.regions[m.region].name,
-                  ...m.drops.map((d) => d.name),
-                ]
-                  .join(" ")
-                  .normalize("NFKC")
-                  .toLocaleLowerCase("ko-KR")
-                  .includes(needle)),
-          );
+          document.body.dataset.catalogueMode = catalogue;
+          $("search").placeholder =
+            catalogue === "items"
+              ? "아이템, 획득 몬스터, 제작 재료 검색"
+              : "몬스터, 드롭 아이템, 이야기 검색";
+          $("item-filters").hidden = catalogue !== "items";
+          document
+            .querySelectorAll("[data-catalogue]")
+            .forEach((b) =>
+              b.setAttribute("aria-pressed", b.dataset.catalogue === catalogue),
+            );
+          const itemNeedle = (item) =>
+            [
+              item.name,
+              item.id,
+              item.lore,
+              item.className,
+              item.slotName,
+              ...item.sources.monsters.map((m) => m.name),
+              ...item.ingredients.map((i) => i.name),
+            ]
+              .join(" ")
+              .normalize("NFKC")
+              .toLocaleLowerCase("ko-KR");
+          filtered =
+            catalogue === "items"
+              ? data.items.filter(
+                  (i) =>
+                    (itemType === "all" || i.type === itemType) &&
+                    (itemClass === "all" ||
+                      !i.classId ||
+                      i.classId === itemClass) &&
+                    (!needle || itemNeedle(i).includes(needle)),
+                )
+              : data.monsters.filter(
+                  (m) =>
+                    (region === "all" || m.region === Number(region)) &&
+                    (map === "all" || m.map === map) &&
+                    (rank === "all" || m.type === rank) &&
+                    (!needle ||
+                      [
+                        m.name,
+                        m.id,
+                        m.lore,
+                        mapOf(m.map).name,
+                        data.regions[m.region].name,
+                        ...m.drops.map((d) => d.name),
+                      ]
+                        .join(" ")
+                        .normalize("NFKC")
+                        .toLocaleLowerCase("ko-KR")
+                        .includes(needle)),
+                );
           filtered.sort(
             sort === "name"
               ? (a, b) => a.name.localeCompare(b.name, "ko")
               : sort === "level-desc"
-                ? (a, b) => b.level - a.level || b.index - a.index
-                : (a, b) => a.level - b.level || a.index - b.index,
+                ? (a, b) => (b.level || 0) - (a.level || 0) || b.index - a.index
+                : (a, b) =>
+                    (a.level || 0) - (b.level || 0) || a.index - b.index,
           );
           const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
           page = Math.min(page, pages);
           const start = (page - 1) * pageSize;
           $("cards").innerHTML = filtered
             .slice(start, start + pageSize)
-            .map(card)
+            .map(catalogue === "items" ? itemCard : card)
             .join("");
           $("result-label").textContent =
-            region === "all"
-              ? "전체 몬스터"
-              : data.regions[Number(region)].name;
+            catalogue === "items"
+              ? "전체 아이템"
+              : region === "all"
+                ? "전체 몬스터"
+                : data.regions[Number(region)].name;
           $("result-count").textContent = `${filtered.length}종`;
           $("page-range").textContent = filtered.length
             ? `${start + 1}–${Math.min(start + pageSize, filtered.length)} / ${filtered.length}`
@@ -1603,7 +1816,8 @@
             });
         }
         function reset() {
-          region = map = rank = "all";
+          region = map = rank = itemType = itemClass = "all";
+          $("item-type").value = $("item-class").value = "all";
           query = "";
           sort = "level-asc";
           page = 1;
@@ -1668,7 +1882,8 @@
               ...new Set(
                 filtered.flatMap((m) => [
                   m.image.file,
-                  ...m.drops.map((d) => d.image.file),
+                  ...(m.drops || []).map((d) => d.image.file),
+                  ...(m.ingredients || []).map((i) => i.image.file),
                 ]),
               ),
             ].map(getImage),
@@ -1679,7 +1894,9 @@
         });
         window.addEventListener("beforeprint", () => {
           observer?.disconnect();
-          $("cards").innerHTML = filtered.map(card).join("");
+          $("cards").innerHTML = filtered
+            .map(catalogue === "items" ? itemCard : card)
+            .join("");
           document.querySelectorAll("canvas[data-monster]").forEach(paint);
           document.querySelectorAll("canvas[data-drop]").forEach(paintItem);
         });
@@ -1692,9 +1909,45 @@
             url = URL.createObjectURL(blob),
             a = document.createElement("a");
           a.href = url;
-          a.download = "리프테일-몬스터-도감.html";
+          a.download = "리프테일-도감.html";
           a.click();
           setTimeout(() => URL.revokeObjectURL(url), 10000);
+        });
+        document.querySelectorAll("[data-catalogue]").forEach((b) =>
+          b.addEventListener("click", () => {
+            catalogue = b.dataset.catalogue;
+            location.hash = catalogue;
+            reset();
+          }),
+        );
+        $("item-type").addEventListener("change", (e) => {
+          itemType = e.target.value;
+          page = 1;
+          render();
+        });
+        $("item-class").addEventListener("change", (e) => {
+          itemClass = e.target.value;
+          page = 1;
+          render();
+        });
+        document.addEventListener("click", (e) => {
+          const b = e.target.closest("[data-item-link]");
+          if (!b) return;
+          catalogue = "items";
+          location.hash = "items";
+          itemType = itemClass = "all";
+          $("item-type").value = $("item-class").value = "all";
+          query = data.items.find((i) => i.id === b.dataset.itemLink).name;
+          $("search").value = query;
+          page = 1;
+          render(true);
+        });
+        window.addEventListener("hashchange", () => {
+          const mode = location.hash === "#items" ? "items" : "monsters";
+          if (mode !== catalogue) {
+            catalogue = mode;
+            reset();
+          }
         });
         updateMaps();
         render();

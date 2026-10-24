@@ -137,17 +137,17 @@
         <div class="bottom-dock">
           <div class="dock-side">
             <button data-panel="inventory" title="가방 [I]">
-              <span>▧</span>가방 <kbd>I</kbd></button
+              <span>▧</span>가방 <kbd data-keybind="inventory">I</kbd></button
             ><button data-panel="craft" title="제작 [B]">
-              <span>⚒</span>제작 <kbd>B</kbd>
+              <span>⚒</span>제작 <kbd data-keybind="craft">B</kbd>
             </button>
           </div>
           <div class="skillbar" id="skillbar"></div>
           <div class="dock-side">
             <button data-panel="map" title="지도 [M]">
-              <span>◇</span>지도 <kbd>M</kbd></button
+              <span>◇</span>지도 <kbd data-keybind="map">M</kbd></button
             ><button data-panel="skills" title="직업 [C]">
-              <span>✧</span>직업 <kbd>C</kbd>
+              <span>✧</span>직업 <kbd data-keybind="skills">C</kbd>
             </button>
           </div>
         </div>
@@ -175,13 +175,15 @@
       <section id="lobby" hidden>
         <div class="lobby-shade"></div>
         <div class="lobby-content">
-          <p class="eyebrow">A LITTLE JOURNEY BEYOND THE LEAVES</p>
-          <h1>리프테일</h1>
-          <p class="lobby-tagline">
-            바람이 부르는 쪽으로,<br />우리의 작은 모험이 시작돼요.
-          </p>
-          <div class="lobby-caption">
-            <span>❧ 햇살잎 숲</span><i></i><span>은물결 해안림 ≈</span>
+          <div class="lobby-intro">
+            <p class="eyebrow">A LITTLE JOURNEY BEYOND THE LEAVES</p>
+            <h1>리프테일</h1>
+            <p class="lobby-tagline">
+              바람이 부르는 쪽으로,<br />우리의 작은 모험이 시작돼요.
+            </p>
+            <div class="lobby-caption">
+              <span>❧ 햇살잎 숲</span><i></i><span>은물결 해안림 ≈</span>
+            </div>
           </div>
           <div class="create-card">
             <div class="create-heading">
@@ -216,7 +218,8 @@
             <span>숲에서 바다까지, 두 개의 이야기를 만나보세요.</span
             ><a href="./directions.html" target="_blank" rel="noopener"
               >8방향 아틀리에 ↗</a
-            ><button id="lobby-help">조작 안내 ↗</button>
+            ><button id="lobby-help">조작 안내 ↗</button
+            ><button data-panel="bindings">P · 단축키 설정</button>
           </footer>
         </div>
       </section>
@@ -240,6 +243,7 @@
         </header>
         <div id="panel-body"></div>
       </section>
+      <div id="item-tooltip" role="tooltip" hidden></div>
       <div id="toast" role="status" hidden></div>
     </div>
   </body>

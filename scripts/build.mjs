@@ -47,6 +47,7 @@ for (const name of [
   "balance.js",
   "combat.js",
   "audio.js",
+  "controls.js",
   "exploration.js",
 ]) {
   const file = new URL(name, output);

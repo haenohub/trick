@@ -1,3 +1,5 @@
+import { createPlayer } from "../site/core.js";
+import { CHESTS } from "../site/exploration.js";
 import { xpReward, dropChance, TEST_BALANCE } from "../site/balance.js";
 import { readFile, writeFile } from "node:fs/promises";
 import {
@@ -7,6 +9,8 @@ import {
   ITEMS,
   TYPE_NAMES,
   VERSION,
+  CLASSES,
+  SLOT_NAMES,
 } from "../site/data.js";
 
 // Bake the live game data into a single HTML document, including frame UVs.
@@ -50,6 +54,77 @@ export async function buildBestiary() {
       })),
     };
   });
+  const iconFor = (id) =>
+    art.itemOverrides[id]
+      ? {
+          ...art.itemOverrides[id],
+          file: `assets/${art.itemOverrides[id].file}.png`,
+          size: 16,
+        }
+      : {
+          file: "assets/items.png",
+          cols: 8,
+          rows: 8,
+          index: art.items[id],
+          size: 16,
+        };
+  const itemTypes = {
+    equipment: "장비",
+    consumable: "소비 아이템",
+    material: "제작 재료",
+    trophy: "고유 전리품",
+  };
+  const items = Object.values(ITEMS).map((item, index) => ({
+    ...item,
+    index,
+    image: iconFor(item.id),
+    typeName: itemTypes[item.type],
+    slotName: SLOT_NAMES[item.slot] || "",
+    className: CLASSES.find((c) => c.id === item.classId)?.name || "모든 직업",
+    branchName:
+      CLASSES.flatMap((c) => c.branches).find((b) => b.id === item.branch)
+        ?.name || "",
+    sellPrice: Math.max(1, Math.floor(item.price * 0.25)),
+    ingredients: Object.entries(item.recipe || {}).map(([id, count]) => ({
+      id,
+      name: ITEMS[id].name,
+      count,
+      image: iconFor(id),
+    })),
+    usedBy: Object.values(ITEMS)
+      .filter((i) => i.recipe?.[item.id])
+      .map((i) => ({ id: i.id, name: i.name })),
+    sources: {
+      monsters: monsters.flatMap((m) =>
+        m.drops
+          .filter((d) => d.item === item.id)
+          .map((d) => ({
+            id: m.id,
+            name: m.name,
+            map: m.map,
+            mapName: MAPS.find((a) => a.id === m.map).name,
+            chance: d.chance,
+            min: d.min,
+            max: d.max,
+          })),
+      ),
+      shop: item.type === "consumable",
+      starting: CLASSES.filter(
+        (c) => createPlayer(c.id).inventory[item.id],
+      ).map((c) => c.name),
+      herbs: ["softleaf", "mint", "saltflower", "breathgrass"].includes(item.id)
+        ? MAPS.filter(
+            (m) =>
+              !m.town &&
+              m.region === (["softleaf", "mint"].includes(item.id) ? 0 : 1),
+          ).map((m) => m.name)
+        : [],
+      chests: CHESTS.filter((c) =>
+        c.rewards.some((r) => r.item === item.id),
+      ).map((c) => c.name),
+      quest: ["salve", "fiber", "seawood"].includes(item.id),
+    },
+  }));
   const data = JSON.stringify({
     version: VERSION,
     testBalance: TEST_BALANCE,
@@ -57,6 +132,8 @@ export async function buildBestiary() {
     maps: MAPS.filter((m) => !m.town),
     types: TYPE_NAMES,
     monsters,
+    items,
+    itemTypes,
   }).replace(/</g, "\\u003c");
   const template = await readFile(
     new URL("../templates/bestiary.html", import.meta.url),

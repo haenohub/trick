@@ -46,6 +46,33 @@ test("standalone HTML bestiary preserves every real loot probability and story",
   const data = JSON.parse(match[1]);
   assert.equal(data.monsters.length, MONSTERS.length);
   assert.equal(data.maps.length, MAPS.filter((m) => !m.town).length);
+  assert.equal(data.items.length, Object.keys(ITEMS).length);
+  for (const item of Object.values(ITEMS)) {
+    const entry = data.items.find((i) => i.id === item.id);
+    assert.equal(entry.name, item.name);
+    assert.equal(entry.lore, item.lore);
+    assert.deepEqual(entry.recipe, item.recipe);
+    assert.ok(entry.image.file && Number.isInteger(entry.image.index));
+    const expected = MONSTERS.flatMap((m) =>
+      m.drops
+        .filter((d) => d.item === item.id)
+        .map((d) => ({
+          id: m.id,
+          chance: dropChance(d.chance),
+          min: d.min,
+          max: d.max,
+        })),
+    );
+    assert.deepEqual(
+      entry.sources.monsters.map(({ id, chance, min, max }) => ({
+        id,
+        chance,
+        min,
+        max,
+      })),
+      expected,
+    );
+  }
   for (const monster of MONSTERS) {
     const entry = data.monsters.find((m) => m.id === monster.id);
     assert.equal(entry.name, monster.name);

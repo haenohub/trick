@@ -1,7 +1,22 @@
+import {
+  CONTROL_ACTIONS,
+  DEFAULT_BINDINGS,
+  CONTROLS_KEY,
+  KEYBOARD_ROWS,
+  keyLabel,
+  restoreBindings,
+  rebind,
+  actionForEvent,
+} from "./controls.js";
 import { CLASS_TACTICS } from "./combat.js";
 import { DISCOVERIES, CHESTS } from "./exploration.js";
 import { CombatAudio } from "./audio.js";
-import { xpReward, dropChance, PICKUP_RANGE } from "./balance.js";
+import {
+  xpReward,
+  dropChance,
+  PICKUP_RANGE,
+  NEARBY_PICKUP_RANGE,
+} from "./balance.js";
 import {
   CLASSES,
   REGIONS,
@@ -69,7 +84,99 @@ let world = null,
   sound = false,
   audio = null,
   lastSoundEffect = 0,
-  previousPanelFocus = null;
+  previousPanelFocus = null,
+  codexMode = "monsters",
+  rebindAction = null,
+  bindingMessage = "",
+  tooltipItem = null,
+  tooltipTimer = null,
+  inventorySignature = "";
+let bindings;
+try {
+  bindings = restoreBindings(JSON.parse(localStorage.getItem(CONTROLS_KEY)));
+} catch {
+  bindings = { ...DEFAULT_BINDINGS };
+}
+const bindingLabel = (id) => keyLabel(bindings[id]);
+function persistBindings() {
+  writeSetting(CONTROLS_KEY, JSON.stringify(bindings));
+  refreshBindingLabels();
+  buildSkillbar();
+}
+function refreshBindingLabels() {
+  for (const node of document.querySelectorAll("[data-keybind]"))
+    node.textContent = bindingLabel(node.dataset.keybind);
+  for (const button of document.querySelectorAll("[data-panel]"))
+    if (bindings[button.dataset.panel])
+      button.title =
+        CONTROL_ACTIONS.find((a) => a.id === button.dataset.panel).label +
+        " [" +
+        bindingLabel(button.dataset.panel) +
+        "]";
+}
+function keyboardPanel() {
+  const selected = CONTROL_ACTIONS.find((a) => a.id === rebindAction);
+  return `<p class="panel-intro">키에 표시된 기능을 누른 뒤 원하는 새 키를 누르세요. P는 이 창 열기·닫기, Esc는 창 닫기입니다. Shift + ${bindingLabel("interact")}로 약초 포기를 수확합니다.</p><p id="binding-status" class="binding-status" role="status">${esc(bindingMessage || (selected ? selected.label + "의 새 키를 누르세요. Esc로 취소합니다." : "변경한 단축키는 이 브라우저에 저장됩니다."))}</p><div class="keyboard-scroll"><div class="keyboard-layout">${KEYBOARD_ROWS.map(
+    (row) =>
+      `<div class="keyboard-row">${row
+        .map((code) => {
+          const action = CONTROL_ACTIONS.find((a) => bindings[a.id] === code),
+            fixed =
+              code === "KeyJ" &&
+              bindings.attack === "Space" &&
+              !Object.values(bindings).includes("KeyJ")
+                ? "공격 보조"
+                : code === "KeyP"
+                  ? "단축키 설정"
+                  : code === "Escape"
+                    ? "닫기"
+                    : code === "Enter"
+                      ? "채팅"
+                      : "";
+          return `<button class="keycap ${code === "Space" ? "key-space" : ""} ${action ? "assigned" : ""} ${action?.id === rebindAction ? "listening" : ""}" ${action ? `data-rebind="${action.id}" aria-label="${action.label} 단축키 변경"` : "disabled"}><b>${keyLabel(code)}</b><small>${esc(action?.label || fixed)}</small></button>`;
+        })
+        .join("")}</div>`,
+  ).join(
+    "",
+  )}</div></div><div class="binding-list">${CONTROL_ACTIONS.map((a) => `<button data-rebind="${a.id}" class="binding-row"><span>${a.label}</span><kbd>${bindingLabel(a.id)}</kbd></button>`).join("")}</div><button data-reset-bindings>기본 단축키로 복원</button>`;
+}
+function hideItemTooltip() {
+  clearTimeout(tooltipTimer);
+  tooltipItem = null;
+  $("item-tooltip").hidden = true;
+}
+function showItemTooltip(slot) {
+  const id = slot.dataset.inventoryItem;
+  if (!state?.player.inventory[id]) return;
+  clearTimeout(tooltipTimer);
+  tooltipItem = id;
+  const tip = $("item-tooltip");
+  tip.innerHTML = itemCard(ITEMS[id], state.player);
+  tip.hidden = false;
+  const r = slot.getBoundingClientRect(),
+    w = tip.getBoundingClientRect().width,
+    h = tip.getBoundingClientRect().height;
+  const left =
+    r.right + w + 12 <= innerWidth ? r.right + 8 : Math.max(8, r.left - w - 8);
+  tip.style.left = Math.min(left, innerWidth - w - 8) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top, innerHeight - h - 8)) + "px";
+}
+function inventorySlot(item, p) {
+  const equipped = Object.values(p.equipment).includes(item.id);
+  return `<button class="inventory-slot ${equipped ? "is-equipped" : ""}" data-inventory-item="${item.id}" aria-label="${esc(item.name)} · ${p.inventory[item.id]}개${equipped ? " · 장착 중" : ""}" aria-describedby="item-tooltip">${itemIcon(item.id)}<span class="slot-count">${p.inventory[item.id]}</span>${equipped ? '<span class="slot-equipped" aria-hidden="true">◆</span>' : ""}</button>`;
+}
+function codexItemCard(item) {
+  const sources = MONSTERS.filter((m) =>
+    m.drops.some((d) => d.item === item.id),
+  );
+  return `<article class="content-card item-entry"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${item.attack || item.defense ? `<p>공격 +${item.attack || 0} · 방어 +${item.defense || 0}</p>` : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
+    item.recipe
+      ? `<p>제작 재료: ${Object.entries(item.recipe)
+          .map(([id, n]) => ITEMS[id].name + " ×" + n)
+          .join(" · ")}</p>`
+      : ""
+  }</article>`;
+}
 const skillDescriptions = {
   warden: [
     "앞의 적과 뒤쪽 적을 관통해 210% 피해를 줍니다. 반격 1회마다 35%가 추가됩니다.",
@@ -144,7 +251,9 @@ function start(saved = null) {
   canvas.focus();
   save();
   if (!saved)
-    toast("바닥 클릭 이동 · 몬스터 클릭 공격 · E 상호작용 · H 도움말");
+    toast(
+      `바닥 클릭 이동 · 몬스터 클릭 공격 · ${bindingLabel("interact")} 상호작용 · ${bindingLabel("pickup")} 줍기 · P 단축키`,
+    );
 }
 function send(action, quiet = false) {
   if (!running) return false;
@@ -222,14 +331,14 @@ function skillName(slot) {
 function buildSkillbar() {
   if (!state) return;
   $("skillbar").innerHTML =
-    `<button class="skill basic" data-action="attack" title="기본 공격 [Space / J]"><kbd>SPC</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
+    `<button class="skill basic" data-action="attack" title="기본 공격 [${bindingLabel("attack")}]"><kbd>${bindingLabel("attack")}</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
     [0, 1, 2, 3]
       .map(
         (n) =>
-          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${n + 1}]"><kbd>${n + 1}</kbd><span class="glyph">${abilityIcon(artMeta.skillIcons[cls().id][n])}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
+          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${bindingLabel("skill" + n)}]"><kbd>${bindingLabel("skill" + n)}</kbd><span class="glyph">${abilityIcon(artMeta.skillIcons[cls().id][n])}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
       )
       .join("") +
-    `<button class="skill potion" data-action="potion" title="보들잎 연고 [Q]"><kbd>Q</kbd><span class="glyph">${abilityIcon(59)}</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
+    `<button class="skill potion" data-action="potion" title="보들잎 연고 [${bindingLabel("potion")}]"><kbd>${bindingLabel("potion")}</kbd><span class="glyph">${abilityIcon(59)}</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
 }
 function hud() {
   if (!state) return;
@@ -338,23 +447,33 @@ function hud() {
   $("event-log").innerHTML = events
     .map((e) => `<div class="${esc(e.type)}">${esc(e.text)}</div>`)
     .join("");
+  if (
+    panel === "inventory" &&
+    inventorySignature !== JSON.stringify([p.inventory, p.equipment])
+  )
+    renderPanel();
+  const nearDrop = state.drops.find(
+    (d) => !d.pickupEnds && distance(d, p) <= NEARBY_PICKUP_RANGE,
+  );
   const nearChest = (state.chests || []).find(
     (c) => !c.opened && distance(c, p) < 2.6,
   );
   const nearNpc = NPCS.find((n) => n.map === p.map && distance(n, p) < 2.6),
     nearPortal = PORTALS(p.map).find((a) => distance(a, p) < 2.5),
     nearHerb = state.herbs.find((a) => a.ready && distance(a, p) < 2);
-  const prompt = nearNpc
-    ? `[E] ${nearNpc.name}와 이야기`
-    : nearChest
-      ? nearChest.locked
-        ? "수호자를 진정시키면 보물함이 열립니다."
-        : "[E] 숨은 보물함 열기"
-      : nearPortal
-        ? `[E] ${nearPortal.label} 이동`
-        : nearHerb
-          ? `[E] ${ITEMS[nearHerb.item].name} 잎 따기 · [Shift+E] 포기 수확`
-          : null;
+  const prompt = nearDrop
+    ? `[${bindingLabel("pickup")}] 가까운 전리품 하나 줍기`
+    : nearNpc
+      ? `[${bindingLabel("interact")}] ${nearNpc.name}와 이야기`
+      : nearChest
+        ? nearChest.locked
+          ? "수호자를 진정시키면 보물함이 열립니다."
+          : `[${bindingLabel("interact")}] 숨은 보물함 열기`
+        : nearPortal
+          ? `[${bindingLabel("interact")}] ${nearPortal.label} 이동`
+          : nearHerb
+            ? `[${bindingLabel("interact")}] ${ITEMS[nearHerb.item].name} 잎 따기 · [Shift+${bindingLabel("interact")}] 포기 수확`
+            : null;
   $("interact-prompt").hidden = !prompt;
   if (prompt) $("interact-prompt").textContent = prompt;
   $("connection-label").textContent = online
@@ -409,9 +528,20 @@ function openPanel(name) {
     closePanel();
     return;
   }
+  hideItemTooltip();
+  rebindAction = null;
+  bindingMessage = "";
   previousPanelFocus = document.activeElement;
   panel = name;
-  filter = name === "codex" ? "0" : name === "craft" ? "equipment" : "all";
+  $("menu-panel").dataset.panel = name;
+  filter =
+    name === "codex"
+      ? codexMode === "items"
+        ? "all"
+        : "0"
+      : name === "craft"
+        ? "equipment"
+        : "all";
   if (running) send({ type: "move", x: 0, y: 0 }, true);
   $("panel-backdrop").hidden = false;
   $("menu-panel").hidden = false;
@@ -419,6 +549,8 @@ function openPanel(name) {
   $("close-panel").focus();
 }
 function closePanel() {
+  hideItemTooltip();
+  rebindAction = null;
   panel = null;
   $("menu-panel").hidden = true;
   $("panel-backdrop").hidden = true;
@@ -445,20 +577,38 @@ function renderPanel() {
   const p = state?.player,
     c = cls(),
     body = $("panel-body");
+  hideItemTooltip();
   let title = "",
     html = "";
-  if (panel === "help") {
+  if (panel === "bindings") {
+    title = "단축키 설정";
+    html = keyboardPanel();
+  } else if (panel === "help") {
     title = "숲길 안내서";
     html = `<p class="panel-intro">작은 발걸음으로 숲을 탐험하세요. 마을의 숲길지기에게 이야기를 듣고, 길 끝의 빛나는 표식으로 다음 맵에 갈 수 있습니다.</p><div class="help-grid">${[
       ["바닥 클릭 / 터치", "목적지로 이동"],
       ["이동 표식 클릭", "다음 맵으로 이동"],
-      ["몬스터 클릭 / Space / J", "기본 공격"],
-      ["1 · 2 · 3 · 4", "직업 스킬"],
-      ["E / Shift + E", "대화 · 보물함 · 이동 · 잎 따기 / 포기 수확"],
-      ["Q", "보들잎 연고"],
-      ["Tab", "가까운 적 선택"],
-      ["I · B · M · C", "가방 · 제작 · 지도 · 직업"],
-      ["L · K · H", "이야기 · 도감 · 도움말"],
+      ["몬스터 클릭 / " + bindingLabel("attack"), "기본 공격"],
+      [
+        [0, 1, 2, 3].map((n) => bindingLabel("skill" + n)).join(" · "),
+        "직업 스킬",
+      ],
+      [
+        bindingLabel("interact") + " / Shift + " + bindingLabel("interact"),
+        "대화 · 보물함 · 이동 · 잎 따기 / 포기 수확",
+      ],
+      [bindingLabel("potion"), "보들잎 연고"],
+      [bindingLabel("pickup"), "가까운 전리품 하나 줍기"],
+      ["P", "전체 단축키 확인 · 변경"],
+      [bindingLabel("target"), "가까운 적 선택"],
+      [
+        ["inventory", "craft", "map", "skills"].map(bindingLabel).join(" · "),
+        "가방 · 제작 · 지도 · 직업",
+      ],
+      [
+        ["journal", "codex", "help"].map(bindingLabel).join(" · "),
+        "이야기 · 도감 · 도움말",
+      ],
       ["Esc", "창 닫기"],
     ]
       .map(
@@ -467,7 +617,7 @@ function renderPanel() {
       )
       .join(
         "",
-      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 E → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">숨은 숲길</h3><p class="panel-intro">길가의 반짝이는 기록을 조사하면 샛길의 단서를 얻습니다. 보물함은 클릭하거나 가까이에서 E로 열고, 떨어진 보물을 클릭해 가져가세요. 지도(M)에 발견 기록이 남습니다. 보스 맵의 보물함은 수호자를 진정시킨 뒤 열립니다.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 레벨 25에는 조개등 마을의 은잎의 스승에게 2차 전직을 선택하세요.</p>`;
+      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 ${bindingLabel("interact")} → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">숨은 숲길</h3><p class="panel-intro">길가의 반짝이는 기록을 조사하면 샛길의 단서를 얻습니다. 보물함은 클릭하거나 가까이에서 ${bindingLabel("interact")}로 열고, 떨어진 보물을 클릭해 가져가세요. 지도(M)에 발견 기록이 남습니다. 보스 맵의 보물함은 수호자를 진정시킨 뒤 열립니다.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 레벨 25에는 조개등 마을의 은잎의 스승에게 2차 전직을 선택하세요.</p>`;
   } else if (!p) {
     title = "잠시만요";
     html = '<p class="panel-intro">모험을 시작한 뒤 이용할 수 있습니다.</p>';
@@ -481,12 +631,12 @@ function renderPanel() {
         ["material", "재료"],
         ["trophy", "전리품"],
       ],
-    )}<div class="card-grid">${
+    )}<div class="inventory-grid">${
       Object.entries(p.inventory)
         .filter(
           ([id, n]) => n > 0 && (filter === "all" || ITEMS[id].type === filter),
         )
-        .map(([id]) => itemCard(ITEMS[id], p))
+        .map(([id]) => inventorySlot(ITEMS[id], p))
         .join("") || '<p class="panel-intro">아직 가방이 비어 있습니다.</p>'
     }</div>`;
   } else if (panel === "craft") {
@@ -530,7 +680,7 @@ function renderPanel() {
   } else if (panel === "map") {
     title = "잎새 너머의 지도";
     html =
-      '<p class="panel-intro">길 끝의 빛나는 표식에서 E를 눌러 다음 맵으로 이동합니다. 방문한 마을에는 전투가 끝난 뒤 빠르게 돌아갈 수 있습니다.</p>' +
+      `<p class="panel-intro">길 끝의 빛나는 표식에서 ${bindingLabel("interact")}를 눌러 다음 맵으로 이동합니다. 방문한 마을에는 전투가 끝난 뒤 빠르게 돌아갈 수 있습니다.</p>` +
       REGIONS.map(
         (r, ri) =>
           `<section class="map-region"><h3>0${ri + 1}. ${r.name}</h3><p class="panel-intro">${r.story}</p><div class="map-list">${MAPS.filter(
@@ -562,20 +712,39 @@ function renderPanel() {
       },
     ).join("")}`;
   } else if (panel === "codex") {
-    title = "숲의 생명 도감";
-    html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 경험치는 처치 시 획득하며, 리프와 아이템은 바닥에 떨어집니다. 클릭하면 플레이어에게 날아와 획득됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / ${MONSTERS.length}</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
-      [
-        ["0", "햇살잎 숲 · 30종"],
-        ["1", "은물결 해안림 · 30종"],
-      ],
-    )}<div class="card-grid codex-grid">${MONSTERS.filter(
-      (m) => m.region === Number(filter),
-    )
-      .map(
-        (m) =>
-          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${xpReward(m.xp)} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 리프</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(dropChance(d.chance) * 1000) / 10}%</b></div>`).join("")}</details></article>`,
-      )
-      .join("")}</div>`;
+    title = "리프테일 도감";
+    const catalogueTabs = `<div class="tabs catalogue-tabs"><button data-catalogue="monsters" aria-pressed="${codexMode === "monsters"}">몬스터 ${MONSTERS.length}</button><button data-catalogue="items" aria-pressed="${codexMode === "items"}">아이템 ${Object.keys(ITEMS).length}</button></div>`;
+    if (codexMode === "items") {
+      html =
+        catalogueTabs +
+        `<p class="panel-intro"><a href="./bestiary.html?v=${ART_REVISION}#items" target="_blank" rel="noopener">리프테일 아이템 도감 전체 보기 ↗</a></p>` +
+        tabs([
+          ["all", "전체"],
+          ["equipment", "장비"],
+          ["consumable", "소비"],
+          ["material", "재료"],
+          ["trophy", "전리품"],
+        ]) +
+        `<div class="card-grid">${Object.values(ITEMS)
+          .filter((i) => filter === "all" || i.type === filter)
+          .map(codexItemCard)
+          .join("")}</div>`;
+    } else
+      html =
+        catalogueTabs +
+        `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 경험치는 처치 시 획득하며, 리프와 아이템은 바닥에 떨어집니다. 클릭하면 플레이어에게 날아와 획득됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">리프테일 도감 전체 보기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / ${MONSTERS.length}</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
+          [
+            ["0", "햇살잎 숲 · 30종"],
+            ["1", "은물결 해안림 · 30종"],
+          ],
+        )}<div class="card-grid codex-grid">${MONSTERS.filter(
+          (m) => m.region === Number(filter),
+        )
+          .map(
+            (m) =>
+              `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${xpReward(m.xp)} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 리프</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(dropChance(d.chance) * 1000) / 10}%</b></div>`).join("")}</details></article>`,
+          )
+          .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
     html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
@@ -593,7 +762,7 @@ function renderPanel() {
       .join("")}</div>`;
   } else if (panel === "settings") {
     title = "모험의 작은 설정";
-    html = `<section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
+    html = `<section class="setting-row"><h3>단축키</h3><p>P 키로 전체 조작을 확인하고 원하는 키로 바꿀 수 있습니다.</p><button data-open="bindings">키보드 단축키 설정</button></section><section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
   }
   if (panel === "craft" && filter === "garden") {
     html =
@@ -604,6 +773,8 @@ function renderPanel() {
       ]) +
       `<p class="panel-intro">마을에 맡겨 둔 작은 개인 화단입니다. 약초 하나를 심으면 2분 뒤 세 개를 수확합니다. 자리를 비워도 시들지 않습니다. 현재 ${p.herbXp} 약초 경험치.</p><div class="card-grid">${p.garden.map((g, n) => `<article class="content-card"><h3>작은 화단 ${n + 1}</h3>${g ? `<p>${ITEMS[g.item].name} · ${g.readyAt <= Date.now() ? "수확할 수 있어요." : Math.ceil((g.readyAt - Date.now()) / 1000) + "초 뒤에 다 자랍니다."}</p><div class="actions"><button data-action="harvest" data-slot="${n}" ${g.readyAt > Date.now() || !MAPS.find((m) => m.id === p.map).town ? "disabled" : ""}>수확하기</button><button data-filter="garden">성장 확인</button></div>` : `<p>약초가 자랄 작은 자리가 비어 있습니다.</p><div class="actions">${["softleaf", "mint", "saltflower", "breathgrass"].map((id) => `<button data-action="plant" data-item="${id}" data-slot="${n}" ${!p.inventory[id] || !MAPS.find((m) => m.id === p.map).town ? "disabled" : ""}>${ITEMS[id].name} 심기</button>`).join("")}</div>`}</article>`).join("")}</div>`;
   }
+  if (panel === "inventory")
+    inventorySignature = JSON.stringify([p.inventory, p.equipment]);
   $("panel-title").textContent = title;
   body.innerHTML = html;
   for (const node of body.querySelectorAll("[data-monster-preview]"))
@@ -770,7 +941,35 @@ function special(action) {
     showLobby();
   }
 }
-$("panel-body").addEventListener("click", (e) => {
+function panelClick(e) {
+  const keyButton = e.target.closest("[data-rebind]");
+  if (keyButton) {
+    rebindAction = keyButton.dataset.rebind;
+    bindingMessage = "";
+    renderPanel();
+    return;
+  }
+  if (e.target.closest("[data-reset-bindings]")) {
+    bindings = { ...DEFAULT_BINDINGS };
+    rebindAction = null;
+    bindingMessage = "기본 단축키로 복원했습니다.";
+    persistBindings();
+    renderPanel();
+    return;
+  }
+  const catalogue = e.target.closest("[data-catalogue]");
+  if (catalogue) {
+    codexMode = catalogue.dataset.catalogue;
+    filter = codexMode === "items" ? "all" : "0";
+    renderPanel();
+    return;
+  }
+  const slot = e.target.closest("[data-inventory-item]");
+  if (slot) {
+    showItemTooltip(slot);
+    return;
+  }
+
   const b = e.target.closest("button");
   if (!b || b.disabled) return;
   if (b.dataset.filter) {
@@ -800,7 +999,10 @@ $("panel-body").addEventListener("click", (e) => {
       fast: b.dataset.fast === "true",
       branch: b.dataset.branch,
     });
-});
+}
+$("panel-body").addEventListener("click", panelClick);
+$("item-tooltip").addEventListener("click", panelClick);
+
 $("skillbar").addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (b)
@@ -964,6 +1166,31 @@ canvas.addEventListener("pointerdown", (e) => {
 });
 canvas.addEventListener("contextmenu", (e) => e.preventDefault());
 window.addEventListener("keydown", (e) => {
+  const typing = e.target.closest?.(
+    'input,textarea,select,[contenteditable="true"]',
+  );
+  if (rebindAction && panel === "bindings") {
+    e.preventDefault();
+    if (e.repeat) return;
+    if (e.code === "Escape") {
+      rebindAction = null;
+      bindingMessage = "키 변경을 취소했습니다.";
+      renderPanel();
+      return;
+    }
+    const result = rebind(bindings, rebindAction, e.code);
+    if (result.ok) {
+      bindings = result.bindings;
+      bindingMessage =
+        CONTROL_ACTIONS.find((a) => a.id === rebindAction).label +
+        " → " +
+        keyLabel(e.code);
+      rebindAction = null;
+      persistBindings();
+    } else bindingMessage = result.message;
+    renderPanel();
+    return;
+  }
   if (e.key === "Escape") {
     if (panel) {
       closePanel();
@@ -974,46 +1201,57 @@ window.addEventListener("keydown", (e) => {
     }
     return;
   }
-  if (panel && e.key === "Tab") {
-    const focusable = [
-      ...$("menu-panel").querySelectorAll(
-        "button:not(:disabled), input:not([hidden]), select, summary, a[href]",
-      ),
-    ];
-    if (focusable.length) {
-      const i = focusable.indexOf(document.activeElement),
-        next = e.shiftKey
-          ? i <= 0
-            ? focusable.length - 1
-            : i - 1
-          : (i + 1) % focusable.length;
-      focusable[next].focus();
-      e.preventDefault();
+  if (typing) return;
+  const action = actionForEvent(e, bindings);
+  const panelActions = [
+    "inventory",
+    "craft",
+    "map",
+    "skills",
+    "journal",
+    "codex",
+    "help",
+    "settings",
+    "bindings",
+  ];
+  if (panelActions.includes(action) && (running || action === "bindings")) {
+    e.preventDefault();
+    if (!e.repeat) openPanel(action);
+    return;
+  }
+  if (panel) {
+    if (e.key === "Tab") {
+      const nodes = [
+        ...$("menu-panel").querySelectorAll(
+          "button:not(:disabled),input:not([hidden]),select,summary,a[href]",
+        ),
+        ...(!$("item-tooltip").hidden
+          ? $("item-tooltip").querySelectorAll("button:not(:disabled)")
+          : []),
+      ].filter((n) => n.getClientRects().length);
+      if (nodes.length) {
+        const i = nodes.indexOf(document.activeElement),
+          j = e.shiftKey
+            ? i <= 0
+              ? nodes.length - 1
+              : i - 1
+            : (i + 1) % nodes.length;
+        nodes[j].focus();
+        e.preventDefault();
+      }
     }
     return;
   }
-  if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName) || !running)
-    return;
-  const k = e.key.toLowerCase();
-  if ([" ", "tab"].includes(k)) e.preventDefault();
-  if (panel) return;
-  if (e.repeat) return;
-  if (k === " " || k === "j") send({ type: "attack", target }, true);
-  if (["1", "2", "3", "4"].includes(k))
-    send({ type: "skill", slot: Number(k) - 1, target }, true);
-  if (k === "q") send({ type: "potion", item: "salve" });
-  if (k === "e") interact(e.shiftKey);
-  const panels = {
-    i: "inventory",
-    b: "craft",
-    m: "map",
-    c: "skills",
-    l: "journal",
-    k: "codex",
-    h: "help",
-  };
-  if (panels[k]) openPanel(panels[k]);
-  if (k === "tab") {
+  if (!running || e.repeat) return;
+  if (action) e.preventDefault();
+  if (action?.startsWith("skill"))
+    send({ type: "skill", slot: Number(action.slice(5)), target }, true);
+  if (action === "attack") send({ type: "attack", target }, true);
+  if (action === "pickup" && !send({ type: "pickupNearest" }, true))
+    toast("가까운 바닥 전리품이 없습니다.");
+  if (action === "potion") send({ type: "potion", item: "salve" });
+  if (action === "interact") interact(e.shiftKey);
+  if (action === "target") {
     const mobs = state.mobs
       .filter((m) => m.hp > 0 && distance(m, state.player) < 12)
       .sort((a, b) => distance(a, state.player) - distance(b, state.player));
@@ -1021,8 +1259,38 @@ window.addEventListener("keydown", (e) => {
       target =
         mobs[(mobs.findIndex((m) => m.uid === target) + 1) % mobs.length].uid;
   }
-  if (k === "enter") $("chat-toggle").click();
+  if (e.code === "Enter") $("chat-toggle").click();
 });
+$("panel-body").addEventListener("pointerover", (e) => {
+  const slot = e.target.closest("[data-inventory-item]");
+  if (slot) showItemTooltip(slot);
+});
+$("panel-body").addEventListener("focusin", (e) => {
+  const slot = e.target.closest("[data-inventory-item]");
+  if (slot) showItemTooltip(slot);
+});
+$("panel-body").addEventListener("pointerout", (e) => {
+  if (
+    e.target.closest("[data-inventory-item]") &&
+    !e.relatedTarget?.closest?.("#item-tooltip,[data-inventory-item]")
+  )
+    tooltipTimer = setTimeout(hideItemTooltip, 180);
+});
+$("item-tooltip").addEventListener("pointerenter", () =>
+  clearTimeout(tooltipTimer),
+);
+$("item-tooltip").addEventListener("pointerleave", () => {
+  tooltipTimer = setTimeout(hideItemTooltip, 180);
+});
+$("panel-body").addEventListener("scroll", hideItemTooltip);
+$("panel-body").addEventListener("focusout", (e) => {
+  if (
+    e.target.closest("[data-inventory-item]") &&
+    !e.relatedTarget?.closest?.("#item-tooltip,[data-inventory-item]")
+  )
+    tooltipTimer = setTimeout(hideItemTooltip, 180);
+});
+window.addEventListener("resize", hideItemTooltip);
 window.addEventListener("blur", () => {
   if (running) send({ type: "move", x: 0, y: 0 }, true);
 });
@@ -1078,7 +1346,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.10.2",
+  version: "0.11.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },
@@ -1110,6 +1378,7 @@ try {
   });
   $("loading").hidden = true;
   showLobby();
+  refreshBindingLabels();
   requestAnimationFrame(frame);
 } catch (error) {
   $("loading-text").textContent =
