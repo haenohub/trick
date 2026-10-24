@@ -1,7 +1,8 @@
 // Shared terrain layout: all visible cells use image-generated terrain textures.
 export const TILE = 112;
 export const LAYOUT_VERSION = 2;
-export const WORLD_ZOOM = 1;
+// Show 20% more world in each dimension without scaling any HTML text.
+export const WORLD_ZOOM = 1 / 1.2;
 const baseline = {
   village: 130496,
   sprout: 114464,

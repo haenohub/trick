@@ -1765,7 +1765,7 @@ kbd {
   }
 }
 
-/* A smaller game WINDOW; text and native world sprites keep their own sizes. */
+/* Fill the browser viewport; camera zoom affects only the world canvas. */
 body {
   display: grid;
   place-items: center;
@@ -1774,14 +1774,13 @@ body {
     url("./assets/title-forest.png") center / cover;
 }
 #game-shell {
-  width: 70vw;
-  height: 70vh;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
-  border: 1px solid #d3cba377;
-  border-radius: 8px;
-  box-shadow:
-    0 24px 90px #05130bc9,
-    0 0 0 5px #10291b99;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   container-type: inline-size;
   container-name: game;
 }
@@ -1862,12 +1861,6 @@ body {
   }
   .skill {
     width: 44px;
-  }
-}
-@media (max-width: 900px) {
-  #game-shell {
-    width: calc(100vw - 24px);
-    height: calc(100dvh - 24px);
   }
 }
 @media (max-width: 600px) {
