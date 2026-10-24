@@ -1,3 +1,4 @@
+import { CHESTS } from "../site/exploration.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtemp, rm } from "node:fs/promises";
@@ -33,6 +34,69 @@ async function client(port, token) {
   await wait((m) => m.type === "state");
   return { ws, messages, wait, token: welcome.token };
 }
+test("live server restores uncollected treasure to a new connection without leaving duplicate owners", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "leaftale-treasure-"));
+  let app;
+  const sockets = [];
+  try {
+    app = await startServer({ port: 0, host: "127.0.0.1", dataDir: dir });
+    const a = await client(app.port);
+    sockets.push(a.ws);
+    const state = await a.wait((m) => m.type === "state"),
+      id = state.state.player.id,
+      p = app.world.players.get(id),
+      chest = CHESTS.find((c) => c.map === "sprout");
+    Object.assign(p, { map: "sprout", x: chest.x, y: chest.y });
+    await a.wait(
+      (m) =>
+        m.type === "state" && m.state.chests.some((c) => c.id === chest.id),
+    );
+    a.ws.send(
+      JSON.stringify({
+        type: "action",
+        action: { type: "openChest", chest: chest.id },
+      }),
+    );
+    await a.wait(
+      (m) =>
+        m.type === "state" &&
+        m.state.player.exploration.opened.includes(chest.id),
+    );
+    a.ws.close();
+    await once(a.ws, "close");
+    for (let i = 0; i < 50 && app.world.players.has(id); i++) await delay(20);
+    assert.ok(!app.world.players.has(id));
+    assert.ok(!app.world.map("sprout").drops.some((d) => d.owner === id));
+    const resumed = await client(app.port, a.token);
+    sockets.push(resumed.ws);
+    const restored = (await resumed.wait((m) => m.type === "state")).state;
+    assert.notEqual(restored.player.id, id);
+    assert.equal(
+      restored.drops.filter((d) => d.treasure === chest.id).length,
+      4,
+    );
+    const money = restored.drops.find((d) => d.kind === "currency");
+    resumed.ws.send(
+      JSON.stringify({
+        type: "action",
+        action: { type: "pickup", drop: money.id },
+      }),
+    );
+    const awarded = (
+      await resumed.wait(
+        (m) =>
+          m.type === "state" &&
+          m.state.player.gold === restored.player.gold + money.count,
+      )
+    ).state;
+    assert.equal(awarded.player.exploration.pending[0].rewards.length, 3);
+    assert.equal(awarded.player.lootNotices.at(-1).kind, "currency");
+  } finally {
+    for (const ws of sockets) ws.terminate();
+    if (app) await app.close();
+    await rm(dir, { recursive: true, force: true });
+  }
+});
 test("two real WebSocket clients share a map, chat, reject invented rewards and resume server saves", async () => {
   const dir = await mkdtemp(join(tmpdir(), "leaftale-server-"));
   let app;

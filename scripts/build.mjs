@@ -45,6 +45,9 @@ for (const name of [
   "world-layout.js",
   "verdant.js",
   "balance.js",
+  "combat.js",
+  "audio.js",
+  "exploration.js",
 ]) {
   const file = new URL(name, output);
   let text = await readFile(file, "utf8");

@@ -1918,3 +1918,105 @@ body {
 .focus > span {
   background: linear-gradient(90deg, #4e94bd, #8ad6e3);
 }
+
+.player-info #combat-trait {
+  color: #e6dfac;
+  margin: 2px 0 3px;
+  font-size: 9px;
+}
+.boss-banner {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 300px;
+  padding: 10px 14px;
+  border: 1px solid #d6c69c99;
+  border-radius: 6px;
+  text-align: center;
+  background: #2b3548ed;
+}
+.boss-banner strong {
+  font-size: 12px;
+  color: #ffe0ad;
+}
+.boss-banner small {
+  display: block;
+  line-height: 1.5;
+  margin-top: 6px;
+  font-size: 10px;
+  color: #f3ddc0;
+}
+.boss-banner .meter {
+  height: 7px;
+  margin-top: 7px;
+}
+.exploration-progress {
+  font-size: 10px;
+  color: #e1e5bb;
+  margin-top: 6px;
+}
+.exploration-entry p {
+  line-height: 1.85;
+}
+@container game (max-width: 900px) {
+  .boss-banner {
+    top: 120px;
+    width: 260px;
+  }
+}
+@media (max-width: 600px) {
+  .boss-banner {
+    top: 184px;
+    left: 10px;
+    width: calc(100% - 20px);
+    max-width: none;
+    transform: none;
+  }
+  .boss-banner small {
+    font-size: 10px;
+  }
+  #hud .player-card {
+    left: 10px;
+    top: 10px;
+    width: 212px;
+    padding: 8px;
+    gap: 6px;
+  }
+  .player-card .character-open {
+    padding: 6px;
+  }
+  #hud .map-card {
+    right: 10px;
+    top: 10px;
+    width: 112px;
+    padding: 7px;
+  }
+  #minimap {
+    width: 96px;
+    height: 61px;
+  }
+  .map-card .map-heading span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .map-card h2 {
+    margin: 5px 0;
+  }
+  .map-card .map-foot > span:last-child {
+    display: none;
+  }
+  #hud .quest-card {
+    top: 122px;
+    left: 10px;
+    width: 212px;
+  }
+  .boss-banner:not([hidden]) ~ .quest-card {
+    display: none;
+  }
+  .target-card {
+    top: auto;
+    bottom: 160px;
+  }
+}

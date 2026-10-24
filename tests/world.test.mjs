@@ -131,7 +131,7 @@ test("NPCs face their service buildings, species inhabit separate zones, and por
     for (const [i, d] of defs.entries()) {
       const center = d.type === "boss" ? n.boss : n.habitats[i];
       const group = mobs.filter((m) => m.def === d.id);
-      assert.equal(group.length, d.type === "normal" ? 8 : 1);
+      assert.equal(group.length, d.type === "normal" ? 6 : 1);
       for (const m of group)
         assert.ok(
           Math.hypot(m.x - center.x, m.y - center.y) < 6,

@@ -476,6 +476,66 @@ for (const [id, spec] of Object.entries(specs)) {
       floor = candidate;
     }
   }
+  // Short side passages extend the existing connected floor without moving
+  // services or main routes. All new cells reuse the authored terrain atlas.
+  let secretPassage = null;
+  if (spec.habitats) {
+    const anchors = {
+      sprout: [16, 5],
+      acorn: [9, 9],
+      brook: [12, 8],
+      stump: [9, 14],
+      saltwood: [16, 7],
+      glassbeach: [15, 6],
+      tideroot: [14, 12],
+      seacave: [7, 12],
+    };
+    const [ax, ay] = anchors[id];
+    const candidates = [];
+    for (let r = 2; r < spec.rows - 2; r++)
+      for (let c = 2; c < spec.cols - 2; c++)
+        if (floor[r][c]) {
+          for (const [dx, dy] of [
+            [1, 0],
+            [0, 1],
+            [-1, 0],
+            [0, -1],
+          ]) {
+            const cells = [
+              [c + dx, r + dy],
+              [c + dx * 2, r + dy * 2],
+            ];
+            if (
+              cells.some(
+                ([x, y]) =>
+                  x < 1 ||
+                  y < 1 ||
+                  x >= spec.cols - 1 ||
+                  y >= spec.rows - 1 ||
+                  floor[y][x],
+              )
+            )
+              continue;
+            const [x, y] = cells[1];
+            if (
+              (spec.props || []).some(
+                ([, px, py]) => Math.hypot(px - x, py - y) < 2,
+              )
+            )
+              continue;
+            if (spec.boss && Math.hypot(spec.boss[0] - x, spec.boss[1] - y) < 3)
+              continue;
+            candidates.push({
+              entrance: [c, r],
+              cells,
+              score: Math.hypot(x - ax, y - ay),
+            });
+          }
+        }
+    secretPassage = candidates.sort((a, b) => a.score - b.score)[0];
+    if (!secretPassage) throw Error("No connected side passage: " + id);
+    for (const [x, y] of secretPassage.cells) floor[y][x] = true;
+  }
   const nav = {
     ...spec,
     id,
@@ -490,6 +550,21 @@ for (const [id, spec] of Object.entries(specs)) {
   const at = (c, r) =>
     pixelWorld((c + 0.5) * TILE, (r + 0.5) * TILE, nav.width);
   nav.worldAt = at;
+  nav.secretPassage = secretPassage
+    ? {
+        ...secretPassage,
+        entrance: at(...secretPassage.entrance),
+        finish: at(...secretPassage.cells.at(-1)),
+      }
+    : null;
+  const clueCell = nearestCell(
+    nav,
+    ...spec.route[Math.min(1, spec.route.length - 1)],
+  );
+  nav.landmarks = [
+    at(...clueCell),
+    ...(nav.secretPassage ? [nav.secretPassage.finish] : []),
+  ];
   nav.west = at(...spec.route[0]);
   nav.east = at(...spec.route.at(-1));
   const landing = (end, toward) => {

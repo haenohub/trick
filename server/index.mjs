@@ -213,6 +213,10 @@ export async function startServer({
         const p = world.players.get(c.id);
         if (p)
           sessions[c.token] = { player: serialize(p), lastSeen: Date.now() };
+        // Uncollected treasure is serialized with the player and restored under
+        // the new connection ID. Remove the disconnected owner's old copies.
+        for (const map of world.maps.values())
+          map.drops = map.drops.filter((d) => d.owner !== c.id);
         world.players.delete(c.id);
         activeTokens.delete(c.token);
       }

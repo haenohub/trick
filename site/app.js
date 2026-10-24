@@ -1,3 +1,6 @@
+import { CLASS_TACTICS } from "./combat.js";
+import { DISCOVERIES, CHESTS } from "./exploration.js";
+import { CombatAudio } from "./audio.js";
 import { xpReward, dropChance, PICKUP_RANGE } from "./balance.js";
 import {
   CLASSES,
@@ -69,24 +72,24 @@ let world = null,
   previousPanelFocus = null;
 const skillDescriptions = {
   warden: [
-    "앞의 적을 찔러 210% 피해를 줍니다.",
+    "앞의 적과 뒤쪽 적을 관통해 210% 피해를 줍니다. 반격 1회마다 35%가 추가됩니다.",
     "최대 체력의 28% 보호막을 얻어 7초 동안 몸을 지킵니다.",
-    "창을 크게 휘둘러 근처 적에게 190% 범위 피해를 줍니다.",
+    "주변에 190% 피해를 주고 일반 몬스터의 공격 준비를 끊습니다.",
   ],
   mage: [
-    "발사한 빛으로 적 하나에게 220% 피해를 줍니다.",
-    "목표 주변에 달이슬을 터뜨려 210% 범위 피해를 줍니다.",
+    "220% 피해를 주고 달씨앗을 하나 얻습니다. 최대 3개까지 모읍니다.",
+    "210% 범위 피해. 달씨앗 하나마다 45% 피해와 범위를 더하고 씨앗을 소모합니다.",
     "목표 주변에 135% 피해를 주고 3초 동안 발을 묶습니다.",
   ],
   ranger: [
     "긴 사거리에서 220% 피해를 줍니다.",
-    "위협의 반대 방향으로 빠르게 구릅니다.",
+    "뒤로 굴러 0.45초간 공격을 회피합니다. 4초 안의 다음 공격이 55% 강해집니다.",
     "9초 동안 적이 받는 피해를 30% 늘리고 120% 피해를 줍니다.",
   ],
   herbalist: [
     "자신과 가까운 동료의 체력을 최대 체력의 32%만큼 회복합니다.",
-    "140% 피해를 주고 8초 동안 매초 32%의 독 피해를 줍니다.",
-    "가까운 적에게 120% 피해를 주고 7초 동안 자신을 회복합니다.",
+    "140% 피해와 독 2겹을 남깁니다. 독은 최대 3겹이며 중첩에 따라 주기 피해가 커집니다.",
+    "120% 범위 피해와 7초 정원. 안에 있는 아군을 회복하고 독에 물든 적을 주기적으로 공격합니다.",
   ],
 };
 function toast(text) {
@@ -116,28 +119,10 @@ function save(manual = false) {
     if (manual) toast("저장 공간을 확인하거나 저장 파일을 내보내 주세요.");
   }
 }
-function tone(freq = 440) {
-  if (!sound) return;
-  try {
-    audio ??= new AudioContext();
-    audio.resume();
-    const o = audio.createOscillator(),
-      g = audio.createGain();
-    o.type = "triangle";
-    o.frequency.setValueAtTime(freq, audio.currentTime);
-    o.frequency.exponentialRampToValueAtTime(
-      freq * 0.75,
-      audio.currentTime + 0.1,
-    );
-    g.gain.setValueAtTime(0.025, audio.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 0.15);
-    o.connect(g);
-    g.connect(audio.destination);
-    o.start();
-    o.stop(audio.currentTime + 0.16);
-  } catch {}
-}
 function start(saved = null) {
+  lastSoundEffect = 0;
+  renderer.impactSeen = 0;
+  renderer.impactUntil = 0;
   if (socket) {
     socket.close();
     socket = null;
@@ -199,6 +184,7 @@ function send(action, quiet = false) {
         "dismantle",
         "plant",
         "harvest",
+        "openChest",
       ].includes(action.type)
     ) {
       save();
@@ -254,6 +240,38 @@ function hud() {
   $("player-name").textContent = p.name;
   $("player-level").textContent = `Lv.${p.level}`;
   $("player-class").textContent = displayClass();
+  const traits = {
+    warden: `반격 ${p.guardPower || 0}/3`,
+    mage: `달씨앗 ${p.spellCharge || 0}/3`,
+    ranger: p.evading ? "회피 중" : p.precise ? "정조준 준비" : "바람결 정조준",
+    herbalist: "독 중첩 · 정원 회복",
+  };
+  $("combat-trait").textContent = traits[p.classId];
+  const boss = state.mobs.find(
+    (m) =>
+      m.hp > 0 &&
+      MONSTERS.find((d) => d.id === m.def).type === "boss" &&
+      distance(m, p) < 18,
+  );
+  $("boss-banner").hidden = !boss;
+  if (boss) {
+    $("boss-name").textContent =
+      MONSTERS.find((d) => d.id === boss.def).name +
+      " · " +
+      (boss.phase || 1) +
+      "단계";
+    $("boss-hp").style.width = (boss.hp / boss.maxHp) * 100 + "%";
+    $("boss-action").textContent = boss.windup
+      ? boss.windup.name +
+        " · " +
+        Math.max(0, boss.windup.at - state.time).toFixed(1) +
+        "초"
+      : boss.recoverUntil > state.time
+        ? "공격 후 빈틈 · 지금 반격하세요"
+        : "수호자가 다음 공격을 고릅니다";
+  }
+  $("exploration-progress").textContent =
+    `흔적 ${(state.discoveries || []).filter((d) => d.discovered).length}/${(state.discoveries || []).length} · 보물함 ${p.exploration.opened.filter((id) => CHESTS.find((c) => c.id === id)?.map === p.map).length}/${CHESTS.filter((c) => c.map === p.map).length}`;
   drawCharacterPreview($("portrait"), p.classId, true);
   $("hp-fill").style.width = `${(p.hp / s.maxHp) * 100}%`;
   $("hp-text").textContent = `${Math.ceil(p.hp)} / ${s.maxHp}`;
@@ -295,7 +313,7 @@ function hud() {
   $("potion-cooldown").hidden = p.potionCooldown <= 0;
   $("potion-cooldown").textContent = Math.ceil(p.potionCooldown);
   const mob = state.mobs.find((m) => m.uid === target && m.hp > 0);
-  $("target-card").hidden = !mob;
+  $("target-card").hidden = !mob || !!boss;
   if (mob) {
     const d = MONSTERS.find((d) => d.id === mob.def);
     $("target-name").textContent = d.name;
@@ -320,28 +338,46 @@ function hud() {
   $("event-log").innerHTML = events
     .map((e) => `<div class="${esc(e.type)}">${esc(e.text)}</div>`)
     .join("");
+  const nearChest = (state.chests || []).find(
+    (c) => !c.opened && distance(c, p) < 2.6,
+  );
   const nearNpc = NPCS.find((n) => n.map === p.map && distance(n, p) < 2.6),
     nearPortal = PORTALS(p.map).find((a) => distance(a, p) < 2.5),
     nearHerb = state.herbs.find((a) => a.ready && distance(a, p) < 2);
   const prompt = nearNpc
     ? `[E] ${nearNpc.name}와 이야기`
-    : nearPortal
-      ? `[E] ${nearPortal.label} 이동`
-      : nearHerb
-        ? `[E] ${ITEMS[nearHerb.item].name} 잎 따기 · [Shift+E] 포기 수확`
-        : null;
+    : nearChest
+      ? nearChest.locked
+        ? "수호자를 진정시키면 보물함이 열립니다."
+        : "[E] 숨은 보물함 열기"
+      : nearPortal
+        ? `[E] ${nearPortal.label} 이동`
+        : nearHerb
+          ? `[E] ${ITEMS[nearHerb.item].name} 잎 따기 · [Shift+E] 포기 수확`
+          : null;
   $("interact-prompt").hidden = !prompt;
   if (prompt) $("interact-prompt").textContent = prompt;
   $("connection-label").textContent = online
     ? `함께하는 모험 · 접속자 ${state.peers.length + 1}명`
     : "나의 모험 · 브라우저 저장";
+  let soundBudget = 4;
   for (const e of state.effects)
-    if (
-      e.id > lastSoundEffect &&
-      ["hit", "burst", "level", "heal"].includes(e.kind)
-    ) {
-      tone(e.kind === "level" ? 880 : e.kind === "heal" ? 660 : 330);
-      lastSoundEffect = e.id;
+    if (e.id > lastSoundEffect) {
+      if (
+        sound &&
+        soundBudget > 0 &&
+        (!e.owner || e.owner === p.id) &&
+        distance(e, p) < 20
+      ) {
+        const cue =
+          e.cue || (["heal", "level"].includes(e.kind) ? e.kind : null);
+        if (cue) {
+          audio ??= new CombatAudio();
+          audio.play(cue);
+          soundBudget--;
+        }
+      }
+      lastSoundEffect = Math.max(lastSoundEffect, e.id);
     }
 }
 function interact(whole = false) {
@@ -352,13 +388,21 @@ function interact(whole = false) {
     openPanel("npc:" + n.id);
     return;
   }
+  const chest = (state.chests || []).find(
+    (c) => !c.opened && distance(c, p) < 2.6,
+  );
+  if (chest) {
+    if (chest.locked) toast("이 지역의 수호자를 진정시키면 열립니다.");
+    else send({ type: "openChest", chest: chest.id });
+    return;
+  }
   const port = PORTALS(p.map).find((a) => distance(a, p) < 2.5);
   if (port) {
     send({ type: "travel", map: port.to });
     return;
   }
   if (!send({ type: "interact", harvest: whole ? "whole" : "leaf" }, true))
-    toast("사람, 약초 또는 이동 지점 가까이 다가가 보세요.");
+    toast("사람, 보물함, 약초 또는 이동 지점 가까이 다가가 보세요.");
 }
 function openPanel(name) {
   if (panel === name) {
@@ -410,7 +454,7 @@ function renderPanel() {
       ["이동 표식 클릭", "다음 맵으로 이동"],
       ["몬스터 클릭 / Space / J", "기본 공격"],
       ["1 · 2 · 3 · 4", "직업 스킬"],
-      ["E / Shift + E", "대화 · 이동 · 잎 따기 / 포기 수확"],
+      ["E / Shift + E", "대화 · 보물함 · 이동 · 잎 따기 / 포기 수확"],
       ["Q", "보들잎 연고"],
       ["Tab", "가까운 적 선택"],
       ["I · B · M · C", "가방 · 제작 · 지도 · 직업"],
@@ -423,7 +467,7 @@ function renderPanel() {
       )
       .join(
         "",
-      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 E → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 레벨 25에는 조개등 마을의 은잎의 스승에게 2차 전직을 선택하세요.</p>`;
+      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 E → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">숨은 숲길</h3><p class="panel-intro">길가의 반짝이는 기록을 조사하면 샛길의 단서를 얻습니다. 보물함은 클릭하거나 가까이에서 E로 열고, 떨어진 보물을 클릭해 가져가세요. 지도(M)에 발견 기록이 남습니다. 보스 맵의 보물함은 수호자를 진정시킨 뒤 열립니다.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 레벨 25에는 조개등 마을의 은잎의 스승에게 2차 전직을 선택하세요.</p>`;
   } else if (!p) {
     title = "잠시만요";
     html = '<p class="panel-intro">모험을 시작한 뒤 이용할 수 있습니다.</p>';
@@ -498,6 +542,14 @@ function renderPanel() {
             )
             .join("")}</div></section>`,
       ).join("") +
+      `<h3 class="panel-section">발견한 숲길 · ${p.exploration.discovered.length}/${DISCOVERIES.length}</h3><p class="panel-intro">길가의 기록을 따라 본길 옆 샛길을 찾아보세요. 미니맵에는 조사한 장소와 발견한 보물함이 표시됩니다. 보물함 ${p.exploration.opened.length}/${CHESTS.length}개를 열었습니다.</p><div class="card-grid">${DISCOVERIES.filter(
+        (d) => d.map === p.map || p.exploration.discovered.includes(d.id),
+      )
+        .map(
+          (d) =>
+            `<article class="content-card exploration-entry"><h3>${p.exploration.discovered.includes(d.id) ? esc(d.name) : "아직 읽지 못한 흔적"}</h3><p>${esc(p.exploration.discovered.includes(d.id) ? d.lore : d.hint)}</p><small>${MAPS.find((m) => m.id === d.map).name}</small></article>`,
+        )
+        .join("")}</div>` +
       '<p class="panel-intro">다음 여정: 유리버섯 수림 · 서리뿔 고원 · 월관의 고대숲. 이번 버전은 은물결 해안림까지 플레이할 수 있습니다.</p>';
   } else if (panel === "journal") {
     title = "숲이 남긴 이야기";
@@ -526,7 +578,7 @@ function renderPanel() {
       .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -775,7 +827,11 @@ $("sound-toggle").onclick = () => {
     "aria-label",
     sound ? "소리 끄기" : "소리 켜기",
   );
-  tone(660);
+  if (sound) {
+    audio ??= new CombatAudio();
+    audio.unlock();
+    audio.play("heal");
+  }
   toast(sound ? "숲의 효과음을 켰습니다." : "효과음을 껐습니다.");
 };
 $("chat-toggle").onclick = () => {
@@ -844,6 +900,26 @@ canvas.addEventListener("pointerdown", (e) => {
     else {
       pendingInteraction = { kind: "portal", id: portal.to };
       send({ type: "moveTo", x: portal.x, y: portal.y }, true);
+    }
+  } else if (hit?.kind === "chest") {
+    const chest = state.chests.find((c) => c.id === hit.id);
+    if (!chest) return;
+    if (chest.locked) {
+      toast("이 지역의 수호자를 진정시키면 열립니다.");
+      return;
+    }
+    pendingInteraction = null;
+    if (distance(chest, state.player) < 2.6)
+      send({ type: "openChest", chest: chest.id });
+    else {
+      pendingInteraction = { kind: "chest", id: chest.id };
+      send({ type: "moveTo", x: chest.x, y: chest.y }, true);
+    }
+  } else if (hit?.kind === "discovery") {
+    const site = state.discoveries.find((d) => d.id === hit.id);
+    if (site) {
+      pendingInteraction = null;
+      send({ type: "moveTo", x: site.x, y: site.y }, true);
     }
   } else if (hit?.kind === "drop") {
     pendingInteraction = null;
@@ -967,15 +1043,19 @@ function frame(now) {
             ? PORTALS(state.player.map).find(
                 (p) => p.to === pendingInteraction.id,
               )
-            : pendingInteraction.kind === "drop"
-              ? state.drops.find((d) => d.id === pendingInteraction.id)
-              : state.herbs.find((h) => h.id === pendingInteraction.id);
+            : pendingInteraction.kind === "chest"
+              ? state.chests.find((c) => c.id === pendingInteraction.id)
+              : pendingInteraction.kind === "drop"
+                ? state.drops.find((d) => d.id === pendingInteraction.id)
+                : state.herbs.find((h) => h.id === pendingInteraction.id);
       if (
         n &&
         distance(n, state.player) <
           (pendingInteraction.kind === "drop" ? PICKUP_RANGE : 1.9)
       ) {
-        if (pendingInteraction.kind === "npc") openPanel("npc:" + n.id);
+        if (pendingInteraction.kind === "chest")
+          send({ type: "openChest", chest: n.id }, true);
+        else if (pendingInteraction.kind === "npc") openPanel("npc:" + n.id);
         else if (pendingInteraction.kind === "portal")
           send({ type: "travel", map: n.to });
         else if (pendingInteraction.kind === "drop")
@@ -998,7 +1078,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.9.0",
+  version: "0.10.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

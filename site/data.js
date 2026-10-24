@@ -1,7 +1,7 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
 import { VERDANT } from "./verdant.js";
 import { TROPHIES } from "./trophies.js";
-export const VERSION = "0.9.0";
+export const VERSION = "0.10.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [

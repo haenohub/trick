@@ -1,3 +1,4 @@
+import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
 import { direction, SOUTH } from "./directions.js";
@@ -85,6 +86,10 @@ export class Renderer {
     this.size = { width: 1000, height: 700 };
     this.destination = null;
     this.zoom = WORLD_ZOOM;
+    this.shake = { x: 0, y: 0 };
+    this.impactSeen = 0;
+    this.impactUntil = 0;
+    this.minimapCache = new Map();
   }
   resize() {
     const r = this.canvas.getBoundingClientRect(),
@@ -108,13 +113,23 @@ export class Renderer {
   worldToScreen(x, y) {
     const s = project(x, y);
     return {
-      x: (s.x - this.camera.x) * this.zoom + this.size.width / 2,
-      y: (s.y - this.camera.y) * this.zoom + this.size.height * 0.53,
+      x:
+        (s.x - this.camera.x) * this.zoom +
+        this.size.width / 2 +
+        (this.shake?.x || 0),
+      y:
+        (s.y - this.camera.y) * this.zoom +
+        this.size.height * 0.53 +
+        (this.shake?.y || 0),
     };
   }
   screenToWorld(x, y) {
-    const xx = (x - this.size.width / 2) / this.zoom + this.camera.x,
-      yy = (y - this.size.height * 0.53) / this.zoom + this.camera.y;
+    const xx =
+        (x - (this.shake?.x || 0) - this.size.width / 2) / this.zoom +
+        this.camera.x,
+      yy =
+        (y - (this.shake?.y || 0) - this.size.height * 0.53) / this.zoom +
+        this.camera.y;
     return { x: xx / 64 + yy / 32, y: yy / 32 - xx / 64 };
   }
   text(text, x, y, color = "#fff5da", size = 12, align = "center") {
@@ -384,6 +399,27 @@ export class Renderer {
       map = MAPS.find((m) => m.id === p.map),
       nav = NAVIGATION[p.map];
     this.labels = [];
+    for (const e of state.effects)
+      if (e.id > this.impactSeen) {
+        if (
+          e.impact &&
+          (e.owner === p.id ||
+            (e.kind === "enemy" && Math.hypot(p.x - e.x, p.y - e.y) < 12))
+        ) {
+          this.impactUntil = time + 0.14;
+          this.impactStrength = Math.min(3, e.impact);
+        }
+        this.impactSeen = Math.max(this.impactSeen, e.id);
+      }
+    const shake =
+      Math.max(0, (this.impactUntil - time) / 0.14) *
+      (this.impactStrength || 0);
+    this.shake = matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? { x: 0, y: 0 }
+      : {
+          x: Math.round(Math.sin(time * 92) * shake),
+          y: Math.round(Math.cos(time * 78) * shake * 0.6),
+        };
     c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     c.imageSmoothingEnabled = false;
     const desired = project(p.x, p.y),
@@ -452,38 +488,33 @@ export class Renderer {
     for (const m of state.mobs) {
       if (!m.windup || m.hp <= 0) continue;
       const a = m.windup,
-        s = this.worldToScreen(a.x, a.y),
         t = Math.min(1, (time - a.start) / (a.at - a.start));
-      if (a.style === "line") {
-        const e = this.worldToScreen(a.tx, a.ty),
-          length = Math.hypot(e.x - s.x, e.y - s.y);
-        this.fx(
-          3,
-          Math.min(7, Math.floor(t * 8)),
-          (s.x + e.x) / 2,
-          (s.y + e.y) / 2,
-          length / this.zoom + 35,
-          42,
-          0.65,
-          "sepia(1) saturate(4) hue-rotate(315deg)",
-          Math.atan2(e.y - s.y, e.x - s.x),
-        );
-      } else {
-        this.fx(
-          5,
-          Math.min(7, Math.floor(t * 7)),
-          s.x,
-          s.y + 12,
-          a.radius * 75,
-          a.radius * 45,
-          0.7,
-          "sepia(1) saturate(4) hue-rotate(315deg)",
-        );
-        if (a.style === "ring") {
-          this.fx(7, 3, s.x, s.y + 8, 72, 50, 0.8);
-          this.text("안쪽 안전", s.x, s.y + 17, "#efffd5", 10);
+      for (const zone of attackZones(a)) {
+        const points = zoneOutline(zone);
+        for (const [i, q] of points.entries()) {
+          if (zone.radius < 3 && i % 2) continue;
+          const mark = this.worldToScreen(q.x, q.y);
+          this.fx(
+            7,
+            Math.min(7, Math.floor(t * 5)),
+            mark.x,
+            mark.y,
+            32,
+            32,
+            0.22 + t * 0.3,
+            "sepia(1) saturate(4) hue-rotate(315deg)",
+          );
         }
+        if (zone.style === "ring")
+          for (const q of zoneOutline(zone, true).filter(
+            (_, i) => i % 2 === 0,
+          )) {
+            const mark = this.worldToScreen(q.x, q.y);
+            this.fx(7, 2, mark.x, mark.y, 32, 32, 0.4);
+          }
       }
+      const label = this.worldToScreen(m.x, m.y);
+      this.text(a.name || "공격 준비", label.x, label.y - 105, "#ffe5c4", 11);
     }
     for (const e of state.effects.filter((e) =>
       ["garden", "vine", "shield", "magic", "poison", "slash", "slow"].includes(
@@ -515,6 +546,10 @@ export class Renderer {
       ...nav.props
         .filter((o) => !o.walkThrough)
         .map((o) => ({ ...o, kind: "prop" })),
+      ...(state.chests || []).map((o) => ({ ...o, kind: "chest" })),
+      ...(state.discoveries || [])
+        .filter((o) => o.visible && !o.discovered)
+        .map((o) => ({ ...o, kind: "discovery" })),
       ...state.herbs.map((h) => ({ ...h, kind: "herb" })),
       ...state.drops
         .filter((d) => !d.pickupEnds)
@@ -552,6 +587,47 @@ export class Renderer {
           512,
           1 - 2 / 256,
         );
+        continue;
+      }
+      if (o.kind === "chest") {
+        c.save();
+        c.globalAlpha = o.opened ? 0.35 : 1;
+        this.icon(56, s.x, s.y - 10, 32);
+        c.restore();
+        if (!o.opened)
+          this.fx(6, Math.floor(time * 6) % 8, s.x, s.y - 10, 32, 32, 0.65);
+        this.text(
+          o.opened
+            ? "열어 본 보물함"
+            : o.locked
+              ? "잠긴 보물함"
+              : "숨은 보물함",
+          s.x,
+          s.y - 42,
+          o.locked ? "#d7cabb" : "#fff1ba",
+          10,
+        );
+        if (!o.opened)
+          this.hitboxes.push({
+            kind: "chest",
+            id: o.id,
+            x: s.x,
+            y: s.y - 10,
+            r: 23,
+          });
+        continue;
+      }
+      if (o.kind === "discovery") {
+        this.icon(60, s.x, s.y - 12, 32);
+        this.fx(6, Math.floor(time * 5) % 8, s.x, s.y - 12, 32, 32, 0.5);
+        this.text("길가의 흔적", s.x, s.y - 38, "#e9edbb", 10);
+        this.hitboxes.push({
+          kind: "discovery",
+          id: o.id,
+          x: s.x,
+          y: s.y - 12,
+          r: 21,
+        });
         continue;
       }
       if (o.kind === "herb") {
@@ -637,6 +713,12 @@ export class Renderer {
         o.animAt || 0,
         height,
       );
+      if (monster && o.hitUntil > time)
+        this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);
+      if (monster && o.ai === "return")
+        this.text("귀환 중", s.x, s.y - height - 18, "#cbd8d9", 9);
+      if (monster && o.toxinStacks && o.dotUntil > time)
+        this.text("독 " + o.toxinStacks + "겹", s.x, s.y + 18, "#dab6ef", 9);
       if (o.kind === "player" && o.shield > 0)
         this.fx(5, 3, s.x, s.y + 12, 105, 110, 0.65);
       if (monster && o.hp > 0) {
@@ -735,11 +817,23 @@ export class Renderer {
           Math.atan2(dy, dx),
         );
       }
-      if (["hit", "burst", "heal", "level", "enemy"].includes(e.kind))
+      if (
+        [
+          "hit",
+          "burst",
+          "heal",
+          "level",
+          "enemy",
+          "treasure",
+          "discovery",
+          "phase",
+          "evade",
+        ].includes(e.kind)
+      )
         this.fx(
           e.kind === "heal"
             ? 2
-            : e.kind === "level"
+            : ["level", "discovery", "treasure", "phase"].includes(e.kind)
               ? 6
               : e.kind === "burst"
                 ? 1
@@ -801,8 +895,7 @@ export class Renderer {
     const c = this.minimap.getContext("2d"),
       w = this.minimap.width,
       h = this.minimap.height;
-    const nav = NAVIGATION[state.player.map],
-      bg = IMAGES.get("maps/" + state.player.map);
+    const nav = NAVIGATION[state.player.map];
     c.clearRect(0, 0, w, h);
     c.imageSmoothingEnabled = false;
     c.fillStyle = "#1e3d35";
@@ -812,8 +905,34 @@ export class Renderer {
       mh = nav.height * scale,
       ox = (w - mw) / 2,
       oy = (h - mh) / 2;
-    if (bg) c.drawImage(bg, ox, oy, mw, mh);
-    const p = worldToImage(state.player.x, state.player.y, state.player.map);
+    let terrain = this.minimapCache.get(nav.id);
+    if (!terrain) {
+      terrain = document.createElement("canvas");
+      terrain.width = w;
+      terrain.height = h;
+      const tc = terrain.getContext("2d");
+      tc.imageSmoothingEnabled = false;
+      const atlas = IMAGES.get(ART.world.tiles[nav.id].file);
+      for (let r = 0; r <= nav.rows; r++)
+        for (let col = 0; col <= nav.cols; col++) {
+          const tile = nav.transitions[r][col],
+            x = (col - 0.5) * TILE * scale,
+            y = (r - 0.5) * TILE * scale;
+          tc.drawImage(
+            atlas,
+            (tile % 4) * TILE,
+            Math.floor(tile / 4) * TILE,
+            TILE,
+            TILE,
+            ox + x,
+            oy + y,
+            TILE * scale + 0.5,
+            TILE * scale + 0.5,
+          );
+        }
+      this.minimapCache.set(nav.id, terrain);
+    }
+    c.drawImage(terrain, 0, 0);
     c.strokeStyle = "#fff0af";
     c.lineWidth = 1.5;
     c.strokeRect(
@@ -849,6 +968,10 @@ export class Renderer {
           8,
         );
       for (const port of PORTALS(state.player.map)) mark(port.x, port.y, 62, 7);
+      for (const d of state.discoveries || [])
+        if (d.discovered) mark(d.x, d.y, 60, 7);
+      for (const chest of state.chests || [])
+        if (!chest.opened) mark(chest.x, chest.y, 56, 9);
       mark(state.player.x, state.player.y, 0, 10);
     }
   }

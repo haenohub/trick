@@ -1,4 +1,13 @@
 import {
+  attackZones,
+  zoneHits,
+  clearSight,
+  bossAttack,
+  bossPhase,
+  segmentDistance,
+} from "./combat.js";
+import { DISCOVERIES, CHESTS } from "./exploration.js";
+import {
   TEST_BALANCE,
   xpReward,
   dropChance,
@@ -96,6 +105,7 @@ export function createPlayer(classId = "warden", name = "새잎 모험가") {
     herbXp: 0,
     kills: 0,
     garden: [null, null],
+    exploration: { discovered: [], opened: [], pending: [] },
   };
   p.hp = stats(p).maxHp;
   p.focus = 100;
@@ -190,6 +200,48 @@ export function hydrateSave(raw) {
       ? { item: g.item, readyAt: clamp(g.readyAt, 0, Date.now() + 120000) }
       : null;
   });
+  p.exploration = {
+    discovered: [
+      ...new Set(
+        (Array.isArray(raw.exploration?.discovered)
+          ? raw.exploration.discovered
+          : []
+        ).filter((id) => DISCOVERIES.some((d) => d.id === id)),
+      ),
+    ],
+    opened: [
+      ...new Set(
+        (Array.isArray(raw.exploration?.opened)
+          ? raw.exploration.opened
+          : []
+        ).filter((id) => CHESTS.some((c) => c.id === id)),
+      ),
+    ],
+  };
+  p.exploration.pending = (
+    Array.isArray(raw.exploration?.pending) ? raw.exploration.pending : []
+  )
+    .filter(
+      (v, i, a) =>
+        v &&
+        CHESTS.some((c) => c.id === v.chest) &&
+        p.exploration.opened.includes(v.chest) &&
+        a.findIndex((o) => o?.chest === v.chest) === i,
+    )
+    .map((v) => ({
+      chest: v.chest,
+      rewards: [
+        ...new Set(
+          (Array.isArray(v.rewards) ? v.rewards : []).filter(
+            (i) =>
+              Number.isInteger(i) &&
+              i >= 0 &&
+              i < CHESTS.find((c) => c.id === v.chest).rewards.length,
+          ),
+        ),
+      ],
+    }))
+    .filter((v) => v.rewards.length);
   p.hp = clamp(Number(raw.hp) || stats(p).maxHp, 1, stats(p).maxHp);
   p.focus = clamp(Number(raw.focus) || 100, 0, 100);
   return p;
@@ -219,6 +271,7 @@ export function serialize(p) {
     "hp",
     "focus",
     "garden",
+    "exploration",
   ];
   return structuredClone(Object.fromEntries(keys.map((k) => [k, p[k]])));
 }
@@ -380,16 +433,6 @@ export function findRoute(map, from, to) {
   }
   return smooth;
 }
-function segmentDistance(p, a, b) {
-  const dx = b.x - a.x,
-    dy = b.y - a.y,
-    t = clamp(
-      ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy || 1),
-      0,
-      1,
-    );
-  return Math.hypot(p.x - a.x - t * dx, p.y - a.y - t * dy);
-}
 
 export class World {
   constructor({ seed = 1234 } = {}) {
@@ -422,12 +465,40 @@ export class World {
       poisonUntil: 0,
       poisonTick: 0,
       regenUntil: 0,
+      guardPower: 0,
+      spellCharge: 0,
+      precisionUntil: 0,
+      evadeUntil: 0,
     };
     if (blocked(p.map, p.x, p.y)) {
       Object.assign(p, NAVIGATION[p.map].spawn);
     }
     this.players.set(id, p);
     this.map(p.map);
+    for (const pending of p.exploration.pending) {
+      const chest = CHESTS.find((c) => c.id === pending.chest);
+      this.spawnLoot(
+        p,
+        chest,
+        pending.rewards
+          .filter(
+            (index) =>
+              !this.map(chest.map).drops.some(
+                (d) =>
+                  d.owner === id &&
+                  d.treasure === chest.id &&
+                  d.reward === index &&
+                  d.until > this.time,
+              ),
+          )
+          .map((index) => ({
+            ...chest.rewards[index],
+            treasure: chest.id,
+            reward: index,
+          })),
+        chest.map,
+      );
+    }
     this.log(p, "벨로아 대수림에 오신 것을 환영합니다.", "story");
     return p;
   }
@@ -440,12 +511,23 @@ export class World {
       herbs = [];
     const definitions = MONSTERS.filter((m) => m.map === id);
     for (const [habitat, def] of definitions.entries()) {
-      const count = def.type === "normal" ? 8 : 1;
+      const count = def.type === "normal" ? 6 : 1;
       for (let j = 0; j < count; j++) {
         let { x, y } = habitatPoint(id, habitat, j, rng);
         if (def.type === "boss") {
           ({ x, y } = NAVIGATION[id].boss || NAVIGATION[id].habitats[habitat]);
         }
+        const safe = [
+          NAVIGATION[id].west,
+          NAVIGATION[id].east,
+          NAVIGATION[id].spawn,
+        ];
+        for (
+          let trial = 0;
+          trial < 24 && safe.some((a) => distance(a, { x, y }) < 4);
+          trial++
+        )
+          ({ x, y } = habitatPoint(id, habitat, j, rng));
         mobs.push({
           uid: `${def.id}-${j}`,
           def: def.id,
@@ -466,6 +548,9 @@ export class World {
           dotTick: 0,
           markedUntil: 0,
           wanderAt: 0,
+          ai: "idle",
+          phase: 1,
+          toxinStacks: 0,
         });
       }
     }
@@ -516,7 +601,7 @@ export class World {
   addItem(p, id, n = 1) {
     if (ITEMS[id]) p.inventory[id] = (p.inventory[id] || 0) + n;
   }
-  spawnLoot(p, monster, entries) {
+  spawnLoot(p, monster, entries, mapId = p.map) {
     entries.forEach((entry, i) => {
       let point = { x: monster.x, y: monster.y };
       for (let trial = 0; trial < 16; trial++) {
@@ -524,18 +609,18 @@ export class World {
           radius = 1.4 + (i % 2) * 0.6 + trial * 0.06,
           x = monster.x + Math.cos(angle) * radius,
           y = monster.y + Math.sin(angle) * radius;
-        if (!blocked(p.map, x, y)) {
+        if (!blocked(mapId, x, y)) {
           point = { x, y };
           break;
         }
       }
-      this.map(p.map).drops.push({
+      this.map(mapId).drops.push({
         id: ++this.sequence,
         kind: "item",
         ...entry,
         ...point,
         owner: p.id,
-        until: this.time + 120,
+        until: this.time + (entry.treasure ? 86400 : 120),
         pickupAt: 0,
         pickupEnds: 0,
       });
@@ -616,6 +701,8 @@ export class World {
         p.queuedAttack = null;
         return true;
       }
+      case "openChest":
+        return this.openChest(p, action.chest);
       case "pickup":
         return this.pickup(p, action.drop);
       case "attack":
@@ -799,6 +886,77 @@ export class World {
         return false;
     }
   }
+  sight(map, a, b) {
+    return clearSight(map, a, b, isWalkable);
+  }
+  explore(p) {
+    for (const site of DISCOVERIES)
+      if (
+        site.map === p.map &&
+        !p.exploration.discovered.includes(site.id) &&
+        distance(p, site) < site.radius &&
+        this.sight(p.map, p, site)
+      ) {
+        p.exploration.discovered.push(site.id);
+        this.gain(p, site.xp);
+        this.log(p, site.name + " 발견 · " + site.lore, "story");
+        this.effect(p.map, "discovery", site.x, site.y, {
+          text: site.name + " 발견",
+          owner: p.id,
+          color: "#e8efad",
+          duration: 1.8,
+          cue: "discovery",
+        });
+      }
+  }
+  openChest(p, id) {
+    const chest = CHESTS.find((c) => c.id === id && c.map === p.map);
+    if (
+      !chest ||
+      p.exploration.opened.includes(id) ||
+      !p.exploration.discovered.includes(chest.site) ||
+      distance(p, chest) > 2.6 ||
+      !this.sight(p.map, p, chest)
+    )
+      return false;
+    if (chest.boss && !p.defeatedBosses.includes(chest.boss)) {
+      this.log(p, "이 지역의 수호자를 진정시키면 보물함이 열립니다.", "story");
+      return false;
+    }
+    p.exploration.opened.push(id);
+    p.exploration.pending.push({
+      chest: id,
+      rewards: chest.rewards.map((_, i) => i),
+    });
+    this.spawnLoot(
+      p,
+      chest,
+      chest.rewards.map((r, i) => ({ ...r, treasure: id, reward: i })),
+    );
+    this.log(
+      p,
+      chest.name + "을 열었습니다. 바닥의 보물을 클릭해 가져가세요.",
+      "story",
+    );
+    this.effect(p.map, "treasure", chest.x, chest.y, {
+      text: "숨은 보물 발견",
+      owner: p.id,
+      cue: "treasure",
+      duration: 1.4,
+    });
+    return true;
+  }
+  toxin(p, m, amount = 1, duration = 6) {
+    if (m.hp <= 0) return;
+    m.toxinStacks = Math.min(
+      3,
+      (m.dotUntil > this.time ? m.toxinStacks || 0 : 0) + amount,
+    );
+    m.dotUntil = this.time + duration;
+    m.dotOwner = p.id;
+    m.dotPower = stats(p).attack * (0.18 + m.toxinStacks * 0.12);
+    m.dotTick = this.time + 1;
+  }
   target(p, uid, range = 12) {
     const mobs = this.map(p.map).mobs.filter((m) => m.hp > 0);
     return (
@@ -813,9 +971,11 @@ export class World {
     const t = this.target(p, uid);
     if (!t) return false;
     const s = stats(p);
-    if (distance(p, t) > s.range + 0.2) {
+    if (distance(p, t) > s.range + 0.2 || !this.sight(p.map, p, t)) {
       p.moveTarget = { x: t.x, y: t.y };
       p.route = findRoute(p.map, p, t);
+      if (!p.route.length) return false;
+      p.queuedPathAt = this.time + 0.5;
       p.queuedAttack = t.uid;
       return true;
     }
@@ -826,6 +986,13 @@ export class World {
     p.moveTarget = null;
     p.queuedAttack = null;
     this.damage(p, t, s.attack, "hit");
+    if (p.classId === "mage") p.spellCharge = Math.min(3, p.spellCharge + 1);
+    if (p.classId === "herbalist") this.toxin(p, t, 1, 4);
+    this.effect(p.map, "action", p.x, p.y, {
+      cue: p.classId,
+      owner: p.id,
+      duration: 0.2,
+    });
     if (s.range > 2)
       this.effect(p.map, "projectile", p.x, p.y, {
         tx: t.x,
@@ -836,29 +1003,40 @@ export class World {
     return true;
   }
   damage(p, m, value, kind = "hit") {
-    if (m.hp <= 0) return;
+    if (m.hp <= 0 || m.ai === "return") return;
     const def = MONSTERS.find((d) => d.id === m.def),
       crit = this.rng() < 0.12;
     const armored =
       ["beetle", "hermit", "crab"].includes(def.shape) &&
       m.windup &&
       facesTarget(m, p);
+    const precision =
+      p.classId === "ranger" &&
+      p.precisionUntil > this.time &&
+      kind !== "poison";
+    if (precision) p.precisionUntil = 0;
     const n = Math.max(
       1,
       Math.round(
-        (value - def.defense * 0.4) *
+        (value * (precision ? 1.55 : 1) - def.defense * 0.4) *
           (m.markedUntil > this.time ? 1.3 : 1) *
           (crit ? 1.5 : 1) *
           (armored ? 0.65 : 1),
       ),
     );
     m.hp = Math.max(0, m.hp - n);
+    m.threat = p.id;
+    m.threatUntil = this.time + 4;
+    m.hitUntil = this.time + 0.12;
     m.anim = "hurt";
     m.animAt = this.time;
     if (!p.discovered.includes(def.id)) p.discovered.push(def.id);
     this.effect(p.map, kind, m.x, m.y, {
       text: String(n),
       crit,
+      owner: p.id,
+      impact: crit ? 2 : 1,
+      cue: kind === "poison" ? null : crit ? "critical" : "hit",
       color: crit ? "#ffe7a1" : "#fff1ce",
       duration: 0.85,
     });
@@ -907,6 +1085,11 @@ export class World {
       return false;
     const s = stats(p),
       t = this.target(p, uid, slot === 3 ? 11 : 9);
+    const selfCast =
+      (p.classId === "herbalist" && [0, 2].includes(slot)) ||
+      (slot === 1 && ["warden", "ranger"].includes(p.classId)) ||
+      (slot === 3 && ["antler", "flower", "mist"].includes(p.branch));
+    if (t && !selfCast && !this.sight(p.map, p, t)) return false;
     if (
       !t &&
       !(p.classId === "herbalist" && (slot === 0 || slot === 2)) &&
@@ -916,6 +1099,7 @@ export class World {
       return false;
     if (
       t &&
+      !selfCast &&
       distance(t, p) > s.range + 2 &&
       !(slot === 3 && p.branch === "hawk")
     )
@@ -929,9 +1113,18 @@ export class World {
     if (t) p.dir = direction(t.x - p.x, t.y - p.y);
     const aoe = (center, r, mult, root = 0) => {
       for (const m of this.map(p.map).mobs)
-        if (m.hp > 0 && distance(m, center) <= r) {
+        if (
+          m.hp > 0 &&
+          distance(m, center) <= r &&
+          this.sight(p.map, center, m)
+        ) {
           this.damage(p, m, s.attack * mult, "burst");
-          if (root) m.rootUntil = this.time + root;
+          if (root)
+            m.rootUntil =
+              this.time +
+              (MONSTERS.find((d) => d.id === m.def).type === "boss"
+                ? Math.min(1, root)
+                : root);
         }
     };
     const heal = (amount) => {
@@ -945,7 +1138,26 @@ export class World {
         }
     };
     if (p.classId === "warden") {
-      if (slot === 0 && t) this.damage(p, t, s.attack * 2.1);
+      if (slot === 0 && t) {
+        const dx = t.x - p.x,
+          dy = t.y - p.y,
+          n = Math.hypot(dx, dy) || 1,
+          end = { x: p.x + (dx / n) * 3.6, y: p.y + (dy / n) * 3.6 };
+        const power = 2.1 + p.guardPower * 0.35;
+        p.guardPower = 0;
+        for (const mob of this.map(p.map).mobs)
+          if (
+            mob.hp > 0 &&
+            (mob === t || segmentDistance(mob, p, end) < 0.75) &&
+            this.sight(p.map, p, mob)
+          )
+            this.damage(p, mob, s.attack * power);
+        this.effect(p.map, "beam", p.x, p.y, {
+          tx: end.x,
+          ty: end.y,
+          duration: 0.3,
+        });
+      }
       if (slot === 1) {
         p.shield = s.maxHp * 0.28;
         p.shieldUntil = this.time + 7;
@@ -953,14 +1165,33 @@ export class World {
       }
       if (slot === 2) {
         aoe(p, 3, 1.9);
+        for (const mob of this.map(p.map).mobs)
+          if (
+            mob.hp > 0 &&
+            distance(mob, p) < 3 &&
+            this.sight(p.map, p, mob) &&
+            MONSTERS.find((d) => d.id === mob.def).type !== "boss"
+          ) {
+            mob.windup = null;
+            mob.nextAttack = this.time + 1.2;
+            mob.rootUntil = this.time + 0.6;
+          }
         this.effect(p.map, "slash", p.x, p.y, { radius: 3 });
       }
     }
     if (p.classId === "mage") {
-      if (slot === 0 && t) this.damage(p, t, s.attack * 2.2, "burst");
+      if (slot === 0 && t) {
+        this.damage(p, t, s.attack * 2.2, "burst");
+        p.spellCharge = Math.min(3, p.spellCharge + 1);
+      }
       if (slot === 1 && t) {
-        aoe(t, 2.5, 2.1);
-        this.effect(p.map, "magic", t.x, t.y, { radius: 2.5 });
+        const charge = p.spellCharge;
+        p.spellCharge = 0;
+        aoe(t, 2.5 + charge * 0.3, 2.1 + charge * 0.45);
+        this.effect(p.map, "magic", t.x, t.y, {
+          radius: 2.5 + charge * 0.3,
+          text: charge ? "달씨앗 " + charge + " 공명" : null,
+        });
       }
       if (slot === 2 && t) {
         aoe(t, 3, 1.35, 3);
@@ -973,7 +1204,13 @@ export class World {
         const dx = t ? p.x - t.x : p.move.x || 1,
           dy = t ? p.y - t.y : p.move.y;
         for (let n = 0; n < 8; n++) this.moveEntity(p, p.map, dx, dy, 0.075, 5);
-        this.effect(p.map, "dash", p.x, p.y);
+        p.evadeUntil = this.time + 0.45;
+        p.precisionUntil = this.time + 4;
+        this.effect(p.map, "dash", p.x, p.y, {
+          text: "회피 · 정조준",
+          cue: "dodge",
+          owner: p.id,
+        });
       }
       if (slot === 2 && t) {
         t.markedUntil = this.time + 9;
@@ -985,17 +1222,19 @@ export class World {
       if (slot === 0) heal(s.maxHp * 0.32);
       if (slot === 1 && t) {
         this.damage(p, t, s.attack * 1.4);
-        t.dotUntil = this.time + 8;
-        t.dotPower = s.attack * 0.32;
-        t.dotOwner = p.id;
-        t.dotTick = this.time + 1;
+        this.toxin(p, t, 2, 8);
         this.effect(p.map, "poison", t.x, t.y);
       }
       if (slot === 2) {
-        p.regenUntil = this.time + 7;
         heal(s.maxHp * 0.12);
         aoe(p, 3, 1.2);
-        this.effect(p.map, "garden", p.x, p.y, { radius: 3, duration: 2 });
+        this.effect(p.map, "garden", p.x, p.y, {
+          radius: 3,
+          duration: 7,
+          owner: p.id,
+          tickAt: this.time + 1,
+          power: s.attack,
+        });
       }
     }
     if (slot === 3) {
@@ -1010,19 +1249,20 @@ export class World {
       }
       if (p.branch === "thorn" && t) {
         const d = distance(p, t);
-        if (d > 1.5) {
-          const ratio = (d - 1.2) / d;
-          const x = p.x + (t.x - p.x) * ratio,
-            y = p.y + (t.y - p.y) * ratio;
-          if (!blocked(p.map, x, y)) {
-            p.x = x;
-            p.y = y;
-          }
-        }
+        for (let i = 0; i < 12 && distance(p, t) > 1.2; i++)
+          this.moveEntity(
+            p,
+            p.map,
+            t.x - p.x,
+            t.y - p.y,
+            0.05,
+            Math.min(12, d * 2),
+          );
         this.damage(p, t, s.attack * 4.4);
       }
       if (p.branch === "moon" && t) {
-        this.damage(p, t, s.attack * 5.5, "burst");
+        this.damage(p, t, s.attack * (5.5 + p.spellCharge * 0.5), "burst");
+        p.spellCharge = 0;
         this.effect(p.map, "beam", p.x, p.y, { tx: t.x, ty: t.y, duration: 1 });
       }
       if (p.branch === "bloom" && t) {
@@ -1053,14 +1293,16 @@ export class World {
         aoe(t, 3.5, 3.5);
         for (const m of this.map(p.map).mobs)
           if (m.hp > 0 && distance(m, t) < 4) {
-            m.dotUntil = this.time + 10;
-            m.dotPower = s.attack * 0.5;
-            m.dotOwner = p.id;
-            m.dotTick = this.time + 1;
+            this.toxin(p, m, 3, 10);
           }
         this.effect(p.map, "poison", t.x, t.y, { radius: 3.5 });
       }
     }
+    this.effect(p.map, "action", p.x, p.y, {
+      cue: p.classId,
+      owner: p.id,
+      duration: 0.2,
+    });
     return true;
   }
   potion(p, id) {
@@ -1138,10 +1380,21 @@ export class World {
     this.effect(dest, "arrival", p.x, p.y, { text: next.name, duration: 1.5 });
     return true;
   }
-  hurtPlayer(p, n) {
+  hurtPlayer(p, n, { avoidable = true } = {}) {
+    if (avoidable && p.evadeUntil > this.time) {
+      this.effect(p.map, "evade", p.x, p.y, {
+        text: "회피",
+        owner: p.id,
+        cue: "dodge",
+        duration: 0.5,
+      });
+      return;
+    }
     if (p.shieldUntil <= this.time) p.shield = 0;
     const absorbed = Math.min(n, p.shield);
     p.shield -= absorbed;
+    if (absorbed > 0 && p.classId === "warden")
+      p.guardPower = Math.min(3, p.guardPower + 1);
     n -= absorbed;
     p.hp = Math.max(0, p.hp - n);
     p.lastHit = this.time;
@@ -1150,6 +1403,9 @@ export class World {
     this.effect(p.map, "hurt", p.x, p.y, {
       text: n > 0 ? "-" + n : "방어",
       color: "#f6b4a4",
+      owner: p.id,
+      cue: absorbed > 0 ? "guard" : "hurt",
+      impact: n > 0 ? 2 : 0,
     });
     if (p.hp <= 0) {
       const town = MAPS.find(
@@ -1171,11 +1427,257 @@ export class World {
       );
     }
   }
+  moveMob(m, map, target, dt, speed) {
+    if (m.rootUntil > this.time) return false;
+    if (this.sight(map, m, target))
+      return this.moveEntity(
+        m,
+        map,
+        target.x - m.x,
+        target.y - m.y,
+        dt,
+        Math.min(speed, distance(m, target) / Math.max(dt, 0.001)),
+      );
+    if (
+      this.time >= (m.pathAt || 0) ||
+      !m.pathGoal ||
+      distance(m.pathGoal, target) > 2
+    ) {
+      m.path = findRoute(map, m, target);
+      m.pathGoal = { x: target.x, y: target.y };
+      m.pathAt = this.time + 0.8;
+    }
+    while (m.path?.length && distance(m, m.path[0]) < 0.15) m.path.shift();
+    const next = m.path?.[0];
+    return (
+      !!next &&
+      this.moveEntity(
+        m,
+        map,
+        next.x - m.x,
+        next.y - m.y,
+        dt,
+        Math.min(speed, distance(m, next) / Math.max(dt, 0.001)),
+      )
+    );
+  }
+  updateMob(m, id, players, dt) {
+    const def = MONSTERS.find((d) => d.id === m.def),
+      boss = def.type === "boss";
+    const home = { x: m.homeX, y: m.homeY };
+    if (boss) {
+      const phase = bossPhase(m);
+      if (phase > m.phase) {
+        m.phase = phase;
+        this.effect(id, "phase", m.x, m.y, {
+          text:
+            (phase === 2 ? "수호자의 힘이 깨어납니다" : "마지막 숨결") +
+            " · " +
+            phase +
+            "단계",
+          cue: "phase",
+          duration: 1.6,
+        });
+      }
+    }
+    if (m.windup) {
+      if (this.time < m.windup.at) return;
+      const w = m.windup;
+      m.windup = null;
+      m.anim = "attack";
+      m.animAt = this.time;
+      for (const p of players)
+        if (
+          p.map === id &&
+          attackZones(w).some((zone) => zoneHits(p, zone)) &&
+          this.sight(id, m, p)
+        ) {
+          this.hurtPlayer(
+            p,
+            Math.max(
+              2,
+              Math.round(
+                (def.attack - stats(p).defense * 0.45) * (w.damageScale || 1),
+              ),
+            ),
+          );
+          if (
+            ["bug", "jelly", "mantis", "anemone"].includes(def.shape) &&
+            def.region === 1 &&
+            p.map === id &&
+            p.evadeUntil <= this.time
+          )
+            p.poisonUntil = this.time + 5;
+        }
+      if (w.jump || w.charge) {
+        const dest = w.jump ? w : { x: w.tx, y: w.ty };
+        for (let i = 0; i < 12 && distance(m, dest) > 0.2; i++)
+          this.moveEntity(m, id, dest.x - m.x, dest.y - m.y, 0.05, 6);
+      }
+      for (const [i, zone] of attackZones(w).entries()) {
+        this.effect(id, "enemy", zone.x, zone.y, {
+          radius: zone.radius || 2,
+          duration: 0.45,
+          cue: i === 0 ? (boss ? "slam" : "enemy") : null,
+          impact: boss ? 2 : 0,
+        });
+        if (w.slow)
+          this.effect(id, "slow", zone.x, zone.y, {
+            radius: zone.radius,
+            duration: 4,
+          });
+      }
+      if (def.ranged)
+        this.effect(id, "projectile", m.x, m.y, {
+          tx: w.x,
+          ty: w.y,
+          duration: 0.3,
+        });
+      m.recoverUntil = this.time + (boss ? 0.65 : 0.3);
+      m.nextAttack = this.time + (boss ? 2.2 - (m.phase - 1) * 0.35 : 2.1);
+      return;
+    }
+    if (m.recoverUntil > this.time) {
+      m.anim = "idle";
+      return;
+    }
+    const active = players.filter((p) => p.hp > 0 && p.map === id);
+    const threat = active.find(
+      (p) =>
+        p.id === m.threat && m.threatUntil > this.time && distance(p, m) < 14,
+    );
+    const nearest = active
+      .slice()
+      .sort((a, b) => distance(a, m) - distance(b, m))[0];
+    let target = threat || nearest;
+    const homeDistance = distance(m, home),
+      aggro = boss ? 10 : def.ranged ? 7 : 5.3;
+    if (
+      m.ai === "return" ||
+      homeDistance > 14 ||
+      (m.ai === "chase" && (!target || distance(target, home) > 19))
+    ) {
+      m.ai = "return";
+      m.windup = null;
+      if (homeDistance < 0.4) {
+        m.hp = m.maxHp;
+        m.ai = "idle";
+        m.threat = null;
+        m.threatUntil = 0;
+        m.dotUntil = 0;
+        m.rootUntil = 0;
+        m.toxinStacks = 0;
+        m.markedUntil = 0;
+        m.phase = 1;
+        m.pattern = 0;
+        m.path = [];
+      } else if (this.moveMob(m, id, home, dt, def.speed * 1.3))
+        m.anim = "walk";
+      return;
+    }
+    if (
+      target &&
+      (threat ||
+        m.ai === "chase" ||
+        (distance(m, target) < aggro && this.sight(id, m, target)))
+    ) {
+      if (distance(m, target) > 16) {
+        m.ai = "return";
+        return;
+      }
+      m.ai = "chase";
+      if (!target.discovered.includes(def.id)) target.discovered.push(def.id);
+      const d = distance(m, target),
+        reach = boss ? 9 : def.ranged ? 4.8 : 1.25;
+      const visible = this.sight(id, m, target);
+      if (visible && d <= reach && this.time >= m.nextAttack) {
+        let w;
+        if (boss) w = bossAttack(m, target, this.time);
+        else {
+          w = {
+            x: target.x,
+            y: target.y,
+            radius: 0.95,
+            start: this.time,
+            at: this.time + 0.75,
+            style: "circle",
+            name: def.ranged ? "조준 사격" : "공격 준비",
+          };
+          if (["boar", "squirrel", "weasel", "fox"].includes(def.shape)) {
+            const n = d || 1;
+            w = {
+              ...w,
+              x: m.x,
+              y: m.y,
+              tx: m.x + ((target.x - m.x) / n) * 4,
+              ty: m.y + ((target.y - m.y) / n) * 4,
+              style: "line",
+              width: 0.75,
+              charge: true,
+              at: this.time + 0.95,
+              name: "돌진 준비",
+            };
+          }
+          if (["frog", "monkey"].includes(def.shape))
+            w = {
+              ...w,
+              radius: 1.4,
+              jump: true,
+              at: this.time + 0.95,
+              name: "도약 준비",
+            };
+          if (["jelly", "anemone"].includes(def.shape))
+            w = { ...w, radius: 1.7, name: "독향 확산" };
+        }
+        m.pattern = (m.pattern || 0) + 1;
+        m.windup = w;
+        m.anim = "attack";
+        m.animAt = this.time;
+        m.dir = direction(target.x - m.x, target.y - m.y);
+        if (boss)
+          this.effect(id, "warning", m.x, m.y, {
+            cue: "warning",
+            duration: 0.5,
+          });
+      } else if (def.ranged && d < 2.7 && visible && m.rootUntil <= this.time) {
+        const moved = this.moveEntity(
+          m,
+          id,
+          m.x - target.x,
+          m.y - target.y,
+          dt,
+          def.speed * 0.9,
+        );
+        m.anim = moved ? "walk" : "idle";
+      } else if (d > reach * 0.85 || !visible) {
+        const moved = this.moveMob(m, id, target, dt, def.speed);
+        m.anim = moved ? "walk" : "idle";
+      } else m.anim = "idle";
+      return;
+    }
+    m.ai = "idle";
+    if (homeDistance > 2) {
+      if (this.moveMob(m, id, home, dt, def.speed * 0.8)) m.anim = "walk";
+    } else {
+      if (this.time > m.wanderAt) {
+        m.wanderAt = this.time + 2 + this.rng() * 3;
+        m.wanderX = m.homeX + (this.rng() - 0.5) * 3;
+        m.wanderY = m.homeY + (this.rng() - 0.5) * 3;
+      }
+      const next = { x: m.wanderX ?? m.x, y: m.wanderY ?? m.y };
+      m.anim =
+        distance(m, next) > 0.35 &&
+        this.moveMob(m, id, next, dt, def.speed * 0.4)
+          ? "walk"
+          : "idle";
+    }
+  }
   step(dt) {
     dt = clamp(dt, 0, 0.1);
     this.time += dt;
     this.effects = this.effects.filter((e) => e.until > this.time);
     for (const p of this.players.values()) {
+      this.explore(p);
       const s = stats(p),
         map = this.map(p.map);
       p.focus = Math.min(100, p.focus + dt * 4);
@@ -1185,7 +1687,9 @@ export class World {
         p.hp = Math.min(s.maxHp, p.hp + dt * s.maxHp * 0.03);
       if (p.poisonUntil > this.time && this.time > p.poisonTick) {
         p.poisonTick = this.time + 1;
-        this.hurtPlayer(p, Math.max(1, Math.round(s.maxHp * 0.015)));
+        this.hurtPlayer(p, Math.max(1, Math.round(s.maxHp * 0.015)), {
+          avoidable: false,
+        });
       }
       let dx = p.move.x,
         dy = p.move.y;
@@ -1200,7 +1704,10 @@ export class World {
         }
       }
       const inSlime = this.effects.some(
-        (e) => e.map === p.map && e.kind === "slow" && distance(p, e) < 1.2,
+        (e) =>
+          e.map === p.map &&
+          e.kind === "slow" &&
+          distance(p, e) < (e.radius || 1.2),
       );
       const tideSlow =
         inSlime ||
@@ -1225,9 +1732,47 @@ export class World {
         if (!t || t.hp <= 0) {
           p.queuedAttack = null;
           p.moveTarget = null;
-        } else if (distance(p, t) <= s.range) this.attack(p, t.uid);
-        else p.moveTarget = { x: t.x, y: t.y };
+        } else if (distance(p, t) <= s.range && this.sight(p.map, p, t))
+          this.attack(p, t.uid);
+        else if (this.time >= (p.queuedPathAt || 0)) {
+          p.route = findRoute(p.map, p, t);
+          p.moveTarget = { x: t.x, y: t.y };
+          p.queuedPathAt = this.time + 0.5;
+          if (!p.route.length) {
+            p.queuedAttack = null;
+            p.moveTarget = null;
+          }
+        }
       }
+    }
+    for (const field of this.effects.filter(
+      (e) => e.kind === "garden" && e.tickAt && e.tickAt <= this.time,
+    )) {
+      field.tickAt = this.time + 1;
+      const owner = this.players.get(field.owner);
+      if (!owner || owner.map !== field.map) continue;
+      for (const ally of this.players.values())
+        if (
+          ally.map === field.map &&
+          distance(ally, field) <= field.radius &&
+          this.sight(field.map, field, ally)
+        ) {
+          const heal = stats(ally).maxHp * 0.045;
+          ally.hp = Math.min(stats(ally).maxHp, ally.hp + heal);
+          this.effect(field.map, "heal", ally.x, ally.y, {
+            text: "+" + Math.round(heal),
+            owner: ally.id,
+            duration: 0.5,
+          });
+        }
+      for (const mob of this.map(field.map).mobs)
+        if (
+          mob.hp > 0 &&
+          mob.dotUntil > this.time &&
+          distance(mob, field) <= field.radius &&
+          this.sight(field.map, field, mob)
+        )
+          this.damage(owner, mob, field.power * 0.3, "poison");
     }
     for (const [id, map] of this.maps) {
       const players = [...this.players.values()].filter((p) => p.map === id);
@@ -1252,6 +1797,16 @@ export class World {
           count: d.count,
           at: this.time,
         };
+        if (d.treasure) {
+          const pending = owner.exploration.pending.find(
+            (v) => v.chest === d.treasure,
+          );
+          if (pending)
+            pending.rewards = pending.rewards.filter((i) => i !== d.reward);
+          owner.exploration.pending = owner.exploration.pending.filter(
+            (v) => v.rewards.length,
+          );
+        }
         owner.lootNotices.push(notice);
         owner.lootNotices = owner.lootNotices.slice(-8);
         this.log(
@@ -1275,6 +1830,11 @@ export class World {
             m.windup = null;
             m.dotUntil = 0;
             m.rootUntil = 0;
+            m.toxinStacks = 0;
+            m.ai = "idle";
+            m.phase = 1;
+            m.pattern = 0;
+            m.threat = null;
           }
           continue;
         }
@@ -1284,161 +1844,7 @@ export class World {
           if (owner?.map === id) this.damage(owner, m, m.dotPower, "poison");
           if (m.hp <= 0) continue;
         }
-        if (m.windup) {
-          if (this.time >= m.windup.at) {
-            const w = m.windup;
-            m.windup = null;
-            m.anim = "attack";
-            m.animAt = this.time;
-            for (const p of players) {
-              if (p.map !== id) continue;
-              let hit = false;
-              if (w.style === "line")
-                hit =
-                  segmentDistance(p, { x: w.x, y: w.y }, { x: w.tx, y: w.ty }) <
-                  0.9;
-              else {
-                const d = distance(p, w);
-                hit = d < w.radius && (w.style !== "ring" || d > 1.25);
-              }
-              if (hit) {
-                this.hurtPlayer(
-                  p,
-                  Math.max(2, Math.round(def.attack - stats(p).defense * 0.45)),
-                );
-                if (
-                  ["bug", "jelly", "mantis", "anemone"].includes(def.shape) &&
-                  def.region === 1
-                )
-                  p.poisonUntil = this.time + 5;
-              }
-            }
-            if (w.jump && !blocked(id, w.x, w.y)) {
-              m.x = w.x;
-              m.y = w.y;
-            }
-            if (w.charge) {
-              const n = distance({ x: w.x, y: w.y }, { x: w.tx, y: w.ty }) || 1;
-              for (let i = 0; i < 10; i++)
-                this.moveEntity(
-                  m,
-                  id,
-                  (w.tx - w.x) / n,
-                  (w.ty - w.y) / n,
-                  0.06,
-                  5,
-                );
-            }
-            if (def.ranged)
-              this.effect(id, "projectile", m.x, m.y, {
-                tx: w.x,
-                ty: w.y,
-                color: "#c2e5cf",
-                duration: 0.3,
-              });
-            this.effect(id, "enemy", w.x, w.y, {
-              radius: w.radius || 3,
-              duration: 0.45,
-            });
-            m.nextAttack = this.time + (def.type === "boss" ? 1.8 : 2.1);
-          }
-          continue;
-        }
-        const p = players.sort((a, b) => distance(a, m) - distance(b, m))[0],
-          d = distance(m, p),
-          reach = def.ranged ? 4.2 : 1.15;
-        if (
-          d < (def.type === "boss" ? 8 : 5.3) &&
-          distance(m, { x: m.homeX, y: m.homeY }) < 11
-        ) {
-          if (!p.discovered.includes(def.id)) p.discovered.push(def.id);
-          if (d <= reach && this.time >= m.nextAttack) {
-            const boss = def.type === "boss",
-              pattern = (m.pattern || 0) % 3;
-            m.pattern = (m.pattern || 0) + 1;
-            let w = {
-              x: p.x,
-              y: p.y,
-              radius: boss ? 2.5 : 0.95,
-              at: this.time + (boss ? 1.2 : 0.7),
-              start: this.time,
-              style: "circle",
-            };
-            if (
-              !boss &&
-              ["boar", "squirrel", "weasel", "fox"].includes(def.shape)
-            ) {
-              const dx = p.x - m.x,
-                dy = p.y - m.y,
-                n = Math.hypot(dx, dy) || 1;
-              w = {
-                ...w,
-                x: m.x,
-                y: m.y,
-                tx: m.x + (dx / n) * 4,
-                ty: m.y + (dy / n) * 4,
-                style: "line",
-                charge: true,
-                at: this.time + 0.9,
-              };
-            }
-            if (!boss && ["frog", "monkey"].includes(def.shape))
-              w = { ...w, radius: 1.4, jump: true, at: this.time + 0.9 };
-            if (!boss && ["jelly", "anemone"].includes(def.shape))
-              w = { ...w, radius: 1.7 };
-            if (boss && pattern === 1)
-              w = { ...w, x: m.x, y: m.y, radius: 4, style: "ring" };
-            if (boss && pattern === 2) {
-              const dx = p.x - m.x,
-                dy = p.y - m.y,
-                n = Math.hypot(dx, dy) || 1;
-              w = {
-                ...w,
-                x: m.x,
-                y: m.y,
-                tx: m.x + (dx / n) * 8,
-                ty: m.y + (dy / n) * 8,
-                style: "line",
-              };
-            }
-            m.windup = w;
-            m.anim = "attack";
-            m.animAt = this.time;
-            m.dir = direction(p.x - m.x, p.y - m.y);
-          } else if (d > reach * 0.8 && m.rootUntil < this.time) {
-            this.moveEntity(m, id, p.x - m.x, p.y - m.y, dt, def.speed);
-            m.anim = "walk";
-          }
-        } else if (distance(m, { x: m.homeX, y: m.homeY }) > 2) {
-          this.moveEntity(
-            m,
-            id,
-            m.homeX - m.x,
-            m.homeY - m.y,
-            dt,
-            def.speed * 0.8,
-          );
-          m.anim = "walk";
-        } else {
-          if (this.time > m.wanderAt) {
-            m.wanderAt = this.time + 2 + this.rng() * 3;
-            m.wanderX = m.homeX + (this.rng() - 0.5) * 3;
-            m.wanderY = m.homeY + (this.rng() - 0.5) * 3;
-          }
-          if (
-            distance(m, { x: m.wanderX || m.x, y: m.wanderY || m.y }) > 0.35
-          ) {
-            this.moveEntity(
-              m,
-              id,
-              m.wanderX - m.x,
-              m.wanderY - m.y,
-              dt,
-              def.speed * 0.4,
-            );
-            m.anim = "walk";
-          } else m.anim = "idle";
-        }
+        this.updateMob(m, id, players, dt);
         if (
           def.shape === "snail" &&
           m.anim === "walk" &&
@@ -1470,6 +1876,10 @@ export class World {
         logs: p.logs,
         lootNotices: p.lootNotices,
         poisoned: p.poisonUntil > this.time,
+        guardPower: p.guardPower,
+        spellCharge: p.spellCharge,
+        precise: p.precisionUntil > this.time,
+        evading: p.evadeUntil > this.time,
       },
       peers: [...this.players.values()]
         .filter((a) => a.id !== id && a.map === p.map)
@@ -1487,9 +1897,21 @@ export class World {
           animAt: a.animAt,
           dir: a.dir,
         })),
-      mobs: map.mobs.map((m) => ({ ...m })),
+      mobs: map.mobs.map(({ path, pathAt, pathGoal, ...m }) => ({ ...m })),
       herbs: map.herbs.map((h) => ({ ...h, ready: h.readyAt <= this.time })),
       drops: map.drops.filter((d) => d.owner === id),
+      discoveries: DISCOVERIES.filter((d) => d.map === p.map).map((d) => ({
+        ...d,
+        discovered: p.exploration.discovered.includes(d.id),
+        visible: !d.hidden || p.exploration.discovered.includes(d.id),
+      })),
+      chests: CHESTS.filter(
+        (c) => c.map === p.map && p.exploration.discovered.includes(c.site),
+      ).map((c) => ({
+        ...c,
+        opened: p.exploration.opened.includes(c.id),
+        locked: !!c.boss && !p.defeatedBosses.includes(c.boss),
+      })),
       effects: this.effects.filter((e) => e.map === p.map),
     };
   }

@@ -56,7 +56,7 @@
             <div class="name-line">
               <strong id="player-name"></strong><span id="player-level"></span>
             </div>
-            <small id="player-class"></small>
+            <small id="player-class"></small><small id="combat-trait"></small>
             <div class="meter health">
               <span id="hp-fill"></span><b id="hp-text"></b>
             </div>
@@ -71,6 +71,16 @@
           >
             ＋
           </button>
+        </section>
+        <section
+          id="boss-banner"
+          class="boss-banner glass"
+          hidden
+          aria-label="수호자 전투"
+        >
+          <strong id="boss-name"></strong>
+          <div class="meter enemy"><span id="boss-hp"></span></div>
+          <small id="boss-action"></small>
         </section>
         <section class="quest-card glass">
           <div class="small-heading">
@@ -96,6 +106,7 @@
             height="112"
             aria-label="현재 지역 미니맵"
           ></canvas>
+          <div id="exploration-progress" class="exploration-progress"></div>
           <div class="map-foot">
             <span id="map-level"></span><span id="map-coords"></span>
           </div>
