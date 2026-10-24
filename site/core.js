@@ -1,3 +1,10 @@
+import {
+  TEST_BALANCE,
+  xpReward,
+  dropChance,
+  PICKUP_RANGE,
+  PICKUP_DURATION,
+} from "./balance.js";
 import { isWalkable, NAVIGATION } from "./art-layout.js";
 import { direction, facesTarget, SOUTH } from "./directions.js";
 import {
@@ -43,7 +50,7 @@ export function stats(p) {
     attack: 12 + p.level * 4.5 + gear.reduce((s, i) => s + (i.attack || 0), 0),
     defense: p.level * 0.8 + gear.reduce((s, i) => s + (i.defense || 0), 0),
     range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 7.5 : 6,
-    speed: c.id === "ranger" ? 3.7 : 3.3,
+    speed: (c.id === "ranger" ? 3.7 : 3.3) * TEST_BALANCE.speed,
   };
 }
 export function createPlayer(classId = "warden", name = "새잎 모험가") {
@@ -217,14 +224,14 @@ export function serialize(p) {
 }
 export function rollDrops(monster, rng = Math.random) {
   return monster.drops
-    .filter((d) => rng() < d.chance)
+    .filter((d) => rng() < dropChance(d.chance))
     .map((d) => ({
       item: d.item,
       count: d.min + Math.floor(rng() * (d.max - d.min + 1)),
     }));
 }
 export function grantXp(p, amount) {
-  p.xp += Math.max(0, amount);
+  p.xp += xpReward(amount);
   let levels = 0;
   while (p.level < MAX_LEVEL && p.xp >= xpNeeded(p.level)) {
     p.xp -= xpNeeded(p.level);
@@ -411,6 +418,7 @@ export class World {
       shieldUntil: 0,
       lastHit: -100,
       logs: [],
+      lootNotices: [],
       poisonUntil: 0,
       poisonTick: 0,
       regenUntil: 0,
@@ -508,34 +516,78 @@ export class World {
   addItem(p, id, n = 1) {
     if (ITEMS[id]) p.inventory[id] = (p.inventory[id] || 0) + n;
   }
+  spawnLoot(p, monster, entries) {
+    entries.forEach((entry, i) => {
+      let point = { x: monster.x, y: monster.y };
+      for (let trial = 0; trial < 16; trial++) {
+        const angle = (i / entries.length) * Math.PI * 2 + trial * 0.45,
+          radius = 1.4 + (i % 2) * 0.6 + trial * 0.06,
+          x = monster.x + Math.cos(angle) * radius,
+          y = monster.y + Math.sin(angle) * radius;
+        if (!blocked(p.map, x, y)) {
+          point = { x, y };
+          break;
+        }
+      }
+      this.map(p.map).drops.push({
+        id: ++this.sequence,
+        kind: "item",
+        ...entry,
+        ...point,
+        owner: p.id,
+        until: this.time + 120,
+        pickupAt: 0,
+        pickupEnds: 0,
+      });
+    });
+  }
+  pickup(p, id) {
+    const d = this.map(p.map).drops.find((d) => d.id === Number(id));
+    if (
+      !d ||
+      d.owner !== p.id ||
+      d.until <= this.time ||
+      d.collected ||
+      d.pickupEnds ||
+      distance(p, d) > PICKUP_RANGE
+    )
+      return false;
+    d.pickupAt = this.time;
+    d.pickupEnds = this.time + PICKUP_DURATION;
+    d.until = Math.max(d.until, d.pickupEnds + 1);
+    return true;
+  }
   moveEntity(entity, map, dx, dy, dt, speed) {
     const n = Math.hypot(dx, dy);
     if (n < 0.01) return false;
     dx /= Math.max(1, n);
     dy /= Math.max(1, n);
-    const nx = entity.x + dx * speed * dt,
-      ny = entity.y + dy * speed * dt;
-    entity.dir = direction(dx, dy);
-    if (
-      !blocked(map, nx, ny) &&
-      !blocked(map, (entity.x + nx) / 2, (entity.y + ny) / 2)
-    ) {
-      entity.x = nx;
-      entity.y = ny;
-      return true;
-    }
+    const pieces = Math.max(1, Math.ceil((speed * dt) / 0.2)),
+      sx = (dx * speed * dt) / pieces,
+      sy = (dy * speed * dt) / pieces;
     let moved = false;
-    if (!blocked(map, nx, entity.y)) {
-      entity.x = nx;
-      moved = true;
-    }
-    if (!blocked(map, entity.x, ny)) {
-      entity.y = ny;
-      moved = true;
-    }
     entity.dir = direction(dx, dy);
+    for (let step = 0; step < pieces; step++) {
+      const nx = entity.x + sx,
+        ny = entity.y + sy;
+      if (!blocked(map, nx, ny)) {
+        entity.x = nx;
+        entity.y = ny;
+        moved = true;
+        continue;
+      }
+      if (!blocked(map, nx, entity.y)) {
+        entity.x = nx;
+        moved = true;
+      }
+      if (!blocked(map, entity.x, ny)) {
+        entity.y = ny;
+        moved = true;
+      }
+    }
     return moved;
   }
+
   act(id, action) {
     const p = this.players.get(id);
     if (!p || !action || typeof action.type !== "string") return false;
@@ -564,6 +616,8 @@ export class World {
         p.queuedAttack = null;
         return true;
       }
+      case "pickup":
+        return this.pickup(p, action.drop);
       case "attack":
         return this.attack(p, action.target);
       case "skill":
@@ -709,7 +763,7 @@ export class World {
         );
         this.log(
           p,
-          `「${q.title}」 완료 · ${q.xp} 경험치 · ${q.gold} 골드`,
+          `「${q.title}」 완료 · ${xpReward(q.xp)} 경험치 · ${q.gold} 리프`,
           "story",
         );
         this.effect(p.map, "quest", p.x, p.y, {
@@ -818,7 +872,6 @@ export class World {
       p.kills++;
       this.gain(p, def.xp);
       const gold = Math.round(def.level * (def.type === "boss" ? 15 : 1.8) + 5);
-      p.gold += gold;
       recordEvent(p, "kill", { map: p.map });
       if (def.type === "boss") {
         if (!p.defeatedBosses.includes(def.id)) p.defeatedBosses.push(def.id);
@@ -829,16 +882,15 @@ export class World {
           "story",
         );
       }
-      for (const drop of rollDrops(def, this.rng))
-        this.map(p.map).drops.push({
-          id: ++this.sequence,
-          ...drop,
-          x: m.x + (this.rng() - 0.5) * 0.6,
-          y: m.y + (this.rng() - 0.5) * 0.6,
-          owner: p.id,
-          until: this.time + 90,
-        });
-      this.log(p, `${def.name} · +${def.xp} 경험치 · +${gold} 골드`, "combat");
+      this.spawnLoot(p, m, [
+        ...rollDrops(def, this.rng),
+        { kind: "currency", count: gold },
+      ]);
+      this.log(
+        p,
+        `${def.name} · +${xpReward(def.xp)} 경험치 · 전리품이 떨어졌습니다.`,
+        "combat",
+      );
     }
   }
   skill(p, slot, uid) {
@@ -1176,19 +1228,40 @@ export class World {
         } else if (distance(p, t) <= s.range) this.attack(p, t.uid);
         else p.moveTarget = { x: t.x, y: t.y };
       }
-      for (const drop of map.drops)
-        if (
-          drop.owner === p.id &&
-          drop.until > this.time &&
-          distance(p, drop) < 1.3
-        ) {
-          this.addItem(p, drop.item, drop.count);
-          drop.until = 0;
-          this.log(p, `${ITEMS[drop.item].name} ×${drop.count} 획득`, "loot");
-        }
     }
     for (const [id, map] of this.maps) {
       const players = [...this.players.values()].filter((p) => p.map === id);
+      for (const d of map.drops) {
+        if (!d.pickupEnds || d.collected) continue;
+        const owner = this.players.get(d.owner);
+        if (!owner || owner.map !== id) {
+          d.pickupAt = 0;
+          d.pickupEnds = 0;
+          continue;
+        }
+        if (this.time < d.pickupEnds || d.until <= this.time) continue;
+        d.collected = true;
+        d.until = 0;
+        if (d.kind === "currency")
+          owner.gold = Math.min(1e8, owner.gold + d.count);
+        else this.addItem(owner, d.item, d.count);
+        const notice = {
+          id: ++this.sequence,
+          item: d.item,
+          kind: d.kind || "item",
+          count: d.count,
+          at: this.time,
+        };
+        owner.lootNotices.push(notice);
+        owner.lootNotices = owner.lootNotices.slice(-8);
+        this.log(
+          owner,
+          d.kind === "currency"
+            ? `리프 +${d.count}`
+            : `${ITEMS[d.item].name} ×${d.count} 획득`,
+          "pickup",
+        );
+      }
       map.drops = map.drops.filter((d) => d.until > this.time);
       if (!players.length) continue;
       for (const m of map.mobs) {
@@ -1395,6 +1468,7 @@ export class World {
         cooldowns: p.cooldowns.map((t) => Math.max(0, t - this.time)),
         potionCooldown: Math.max(0, p.potionReady - this.time),
         logs: p.logs,
+        lootNotices: p.lootNotices,
         poisoned: p.poisonUntil > this.time,
       },
       peers: [...this.players.values()]

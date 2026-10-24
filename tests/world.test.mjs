@@ -18,7 +18,7 @@ import {
 import { MAPS, NPCS, MONSTERS, PORTALS } from "../site/data.js";
 
 test("all ten maps expand bounds and usable floor by 5–10x with connected distinct layouts", () => {
-  assert.equal(WORLD_ZOOM, 0.7);
+  assert.equal(WORLD_ZOOM, 1);
   assert.equal(new Set(MAPS.map((m) => m.shape)).size, 10);
   for (const n of Object.values(NAVIGATION)) {
     assert.ok(n.areaScale >= 5 && n.areaScale <= 10, n.id + " bounds");

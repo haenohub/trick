@@ -1,3 +1,4 @@
+import { xpReward, dropChance, TEST_BALANCE } from "../site/balance.js";
 import { readFile, writeFile } from "node:fs/promises";
 import {
   MONSTERS,
@@ -23,10 +24,12 @@ export async function buildBestiary() {
     const rect = { sx: 0, sy: 0, sw: sprite.size, sh: sprite.size };
     return {
       ...m,
+      xp: xpReward(m.xp),
       gold: Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5),
       image: { file: `assets/${file}.png`, direction: "SW", ...rect },
       drops: m.drops.map((d) => ({
         ...d,
+        chance: dropChance(d.chance),
         image: art.itemOverrides[d.item]
           ? {
               ...art.itemOverrides[d.item],
@@ -49,6 +52,7 @@ export async function buildBestiary() {
   });
   const data = JSON.stringify({
     version: VERSION,
+    testBalance: TEST_BALANCE,
     regions: REGIONS,
     maps: MAPS.filter((m) => !m.town),
     types: TYPE_NAMES,

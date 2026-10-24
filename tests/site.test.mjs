@@ -1,3 +1,4 @@
+import { xpReward, dropChance } from "../site/balance.js";
 import { test } from "node:test";
 import { createHash } from "node:crypto";
 import { rgbaPixels } from "./png.mjs";
@@ -51,6 +52,7 @@ test("standalone HTML bestiary preserves every real loot probability and story",
     assert.equal(entry.lore, monster.lore);
     assert.equal(entry.map, monster.map);
     assert.equal(entry.hp, monster.hp);
+    assert.equal(entry.xp, xpReward(monster.xp));
     assert.equal(
       entry.gold,
       Math.round(monster.level * (monster.type === "boss" ? 15 : 1.8) + 5),
@@ -62,7 +64,7 @@ test("standalone HTML bestiary preserves every real loot probability and story",
         min,
         max,
       })),
-      monster.drops,
+      monster.drops.map((d) => ({ ...d, chance: dropChance(d.chance) })),
     );
     for (const drop of entry.drops) {
       assert.equal(drop.name, ITEMS[drop.item].name);
@@ -124,8 +126,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
   assert.equal(art.version, 7);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 2);
-  assert.equal(art.files.length, 101);
-  assert.equal(records.assets.length, 737);
+  assert.equal(art.files.length, 102);
+  assert.equal(records.assets.length, 738);
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
     nativeUnit: 1,

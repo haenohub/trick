@@ -13,7 +13,10 @@ import {
 } from "./pack-pixel-art.mjs";
 import { NAVIGATION, TILE } from "../site/world-layout.js";
 const sources = JSON.parse(
-  await readFile("art/crisp-sources.json", "utf8"),
+  await readFile(
+    process.env.LEAFTALE_ART_SOURCE || "art/crisp-sources.json",
+    "utf8",
+  ),
 ).sources;
 const manifest = JSON.parse(
   await readFile("site/assets/manifest.json", "utf8"),

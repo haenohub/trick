@@ -3,7 +3,10 @@ import { createHash } from "node:crypto";
 import { decode, entityFrames, rgba, blit, png } from "./pack-pixel-art.mjs";
 import { VERDANT } from "../site/verdant.js";
 const source = JSON.parse(
-  await readFile("art/crisp-sources.json", "utf8"),
+  await readFile(
+    process.env.LEAFTALE_ART_SOURCE || "art/crisp-sources.json",
+    "utf8",
+  ),
 ).sources.find((s) => s.id === "verdant-trophies");
 const frames = entityFrames(decode(source.source), 4, 5, [0, 1, 2, 3, 4], 16, {
     sampling: "nearest",

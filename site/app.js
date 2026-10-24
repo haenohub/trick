@@ -1,3 +1,4 @@
+import { xpReward, dropChance, PICKUP_RANGE } from "./balance.js";
 import {
   CLASSES,
   REGIONS,
@@ -180,7 +181,7 @@ function send(action, quiet = false) {
   )
     toast(
       action.type === "craft"
-        ? "마을에서 재료·골드·레벨을 확인해 주세요."
+        ? "마을에서 재료·리프·레벨을 확인해 주세요."
         : action.type === "travel"
           ? "이동 지점에 가까이 가거나, 방문한 마을을 선택해 주세요."
           : "지금은 사용할 수 없습니다. 조건을 확인해 주세요.",
@@ -301,7 +302,21 @@ function hud() {
     $("target-rank").textContent = `Lv.${d.level} · ${TYPE_NAMES[d.type]}`;
     $("target-fill").style.width = `${(mob.hp / mob.maxHp) * 100}%`;
   }
-  const events = p.logs.slice(-4);
+  $("leaf-wallet").textContent = `${p.gold.toLocaleString()} 리프`;
+  const receipts = (p.lootNotices || [])
+      .filter((n) => state.time - n.at < 7)
+      .slice(-4),
+    receiptKey = receipts.map((n) => n.id).join(",");
+  if ($("loot-lines").dataset.receipts !== receiptKey) {
+    $("loot-lines").dataset.receipts = receiptKey;
+    $("loot-lines").innerHTML = receipts
+      .map(
+        (n) =>
+          `<div class="loot-receipt" data-receipt="${n.id}">${n.kind === "currency" ? (artMeta.currency ? atlasIcon(artMeta.currency.file, artMeta.currency.cols, artMeta.currency.rows, 0) : itemIcon("fiber")) : itemIcon(n.item)}<span>${n.kind === "currency" ? "리프" : ITEMS[n.item].name}</span><b>+${n.count.toLocaleString()}</b></div>`,
+      )
+      .join("");
+  }
+  const events = p.logs.filter((e) => e.type !== "pickup").slice(-4);
   $("event-log").innerHTML = events
     .map((e) => `<div class="${esc(e.type)}">${esc(e.text)}</div>`)
     .join("");
@@ -377,7 +392,7 @@ function itemCard(i, p) {
       (!i.classId || i.classId === p.classId) &&
       i.level <= p.level &&
       (!i.branch || i.branch === p.branch);
-  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${i.attack || i.defense ? `<div class="item-stats">${i.attack ? "공격 +" + i.attack : ""} ${i.defense ? "방어 +" + i.defense : ""}</div>` : ""}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} G</button>` : ""}</div></article>`;
+  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${i.attack || i.defense ? `<div class="item-stats">${i.attack ? "공격 +" + i.attack : ""} ${i.defense ? "방어 +" + i.defense : ""}</div>` : ""}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} 리프</button>` : ""}</div></article>`;
 }
 function tabs(names) {
   return `<div class="tabs">${names.map(([id, label]) => `<button data-filter="${id}" class="${filter === id ? "active" : ""}">${label}</button>`).join("")}</div>`;
@@ -414,7 +429,7 @@ function renderPanel() {
     html = '<p class="panel-intro">모험을 시작한 뒤 이용할 수 있습니다.</p>';
   } else if (panel === "inventory") {
     title = "여행자의 가방";
-    html = `<div class="panel-meta"><span class="tag">${p.gold.toLocaleString()} 골드</span><span class="tag">${Object.values(p.inventory).filter((n) => n > 0).length}종 보유</span></div>${tabs(
+    html = `<div class="panel-meta"><span class="tag">${p.gold.toLocaleString()} 리프</span><span class="tag">${Object.values(p.inventory).filter((n) => n > 0).length}종 보유</span></div>${tabs(
       [
         ["all", "전체"],
         ["equipment", "장비"],
@@ -433,7 +448,7 @@ function renderPanel() {
   } else if (panel === "craft") {
     title = "숲의 작업대";
     const town = MAPS.find((m) => m.id === p.map).town;
-    html = `<p class="panel-intro">${town ? "나무와 풀의 성질을 따라 장비와 약을 만듭니다. 기본 제작은 실패하지 않습니다." : "제작은 마을에서 이용할 수 있습니다. 지금은 제작법과 필요한 재료를 살펴보세요."}</p><div class="panel-meta"><span class="tag">장인 숙련 ${Math.floor(p.craftXp / 50) + 1}</span><span class="tag">${p.gold} 골드</span></div>${tabs(
+    html = `<p class="panel-intro">${town ? "나무와 풀의 성질을 따라 장비와 약을 만듭니다. 기본 제작은 실패하지 않습니다." : "제작은 마을에서 이용할 수 있습니다. 지금은 제작법과 필요한 재료를 살펴보세요."}</p><div class="panel-meta"><span class="tag">장인 숙련 ${Math.floor(p.craftXp / 50) + 1}</span><span class="tag">${p.gold} 리프</span></div>${tabs(
       [
         ["equipment", "장비 제작"],
         ["alchemy", "연금술"],
@@ -465,7 +480,7 @@ function renderPanel() {
           )
           .join(
             "",
-          )}<div class="recipe-line"><span>제작 비용</span><span>${cost} 골드</span></div><div class="actions"><button data-action="craft" data-item="${i.id}" ${can ? "" : "disabled"}>${can ? "제작하기" : !town ? "마을에서 제작" : (i.level || 1) > p.level ? "레벨 부족" : i.branch && i.branch !== p.branch ? "전직 필요" : "재료 또는 골드 부족"}</button></div></article>`;
+          )}<div class="recipe-line"><span>제작 비용</span><span>${cost} 리프</span></div><div class="actions"><button data-action="craft" data-item="${i.id}" ${can ? "" : "disabled"}>${can ? "제작하기" : !town ? "마을에서 제작" : (i.level || 1) > p.level ? "레벨 부족" : i.branch && i.branch !== p.branch ? "전직 필요" : "재료 또는 리프 부족"}</button></div></article>`;
       })
       .join("")}</div>`;
   } else if (panel === "map") {
@@ -491,12 +506,12 @@ function renderPanel() {
         const done = i < p.quest.index,
           active = i === p.quest.index,
           progress = p.quest.counts[q.id] || 0;
-        return `<article class="content-card quest-card-list ${done ? "completed" : ""}"><div class="quest-index">${done ? "✓ 마친 이야기" : active ? "❧ 지금의 이야기" : "이어지는 이야기"} · ${String(i + 1).padStart(2, "0")}</div><h3>${q.title}</h3><p>${q.text}</p>${active ? `<div class="progress-track"><span style="width:${(progress / q.count) * 100}%"></span></div><div class="recipe-line"><span>진행 ${progress} / ${q.count}</span><span>${q.xp} 경험치 · ${q.gold} 골드</span></div><div class="actions"><button data-action="claimQuest" ${progress >= q.count ? "" : "disabled"}>이야기 보상 받기</button></div>` : ""}</article>`;
+        return `<article class="content-card quest-card-list ${done ? "completed" : ""}"><div class="quest-index">${done ? "✓ 마친 이야기" : active ? "❧ 지금의 이야기" : "이어지는 이야기"} · ${String(i + 1).padStart(2, "0")}</div><h3>${q.title}</h3><p>${q.text}</p>${active ? `<div class="progress-track"><span style="width:${(progress / q.count) * 100}%"></span></div><div class="recipe-line"><span>진행 ${progress} / ${q.count}</span><span>${xpReward(q.xp)} 경험치 · ${q.gold} 리프</span></div><div class="actions"><button data-action="claimQuest" ${progress >= q.count ? "" : "disabled"}>이야기 보상 받기</button></div>` : ""}</article>`;
       },
     ).join("")}`;
   } else if (panel === "codex") {
     title = "숲의 생명 도감";
-    html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 골드와 경험치는 처치 시 확정 지급됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / 40</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
+    html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 경험치는 처치 시 획득하며, 리프와 아이템은 바닥에 떨어집니다. 클릭하면 플레이어에게 날아와 획득됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / ${MONSTERS.length}</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
       [
         ["0", "햇살잎 숲 · 30종"],
         ["1", "은물결 해안림 · 30종"],
@@ -506,7 +521,7 @@ function renderPanel() {
     )
       .map(
         (m) =>
-          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${m.xp} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 골드</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(d.chance * 1000) / 10}%</b></div>`).join("")}</details></article>`,
+          `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${xpReward(m.xp)} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 리프</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(dropChance(d.chance) * 1000) / 10}%</b></div>`).join("")}</details></article>`,
       )
       .join("")}</div>`;
   } else if (panel === "skills") {
@@ -521,7 +536,7 @@ function renderPanel() {
       .filter((i) => i.type === "consumable")
       .map(
         (i) =>
-          `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.price} 골드 · 보유 ${p.inventory[i.id] || 0}</small></div></div><p>${i.lore}</p><div class="actions"><button data-action="buy" data-item="${i.id}" ${p.gold < i.price ? "disabled" : ""}>구입</button></div></article>`,
+          `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.price} 리프 · 보유 ${p.inventory[i.id] || 0}</small></div></div><p>${i.lore}</p><div class="actions"><button data-action="buy" data-item="${i.id}" ${p.gold < i.price ? "disabled" : ""}>구입</button></div></article>`,
       )
       .join("")}</div>`;
   } else if (panel === "settings") {
@@ -830,6 +845,15 @@ canvas.addEventListener("pointerdown", (e) => {
       pendingInteraction = { kind: "portal", id: portal.to };
       send({ type: "moveTo", x: portal.x, y: portal.y }, true);
     }
+  } else if (hit?.kind === "drop") {
+    pendingInteraction = null;
+    const drop = state.drops.find((d) => d.id === hit.id);
+    if (drop && distance(drop, state.player) <= PICKUP_RANGE)
+      send({ type: "pickup", drop: drop.id }, true);
+    else if (drop) {
+      pendingInteraction = { kind: "drop", id: drop.id };
+      send({ type: "moveTo", x: drop.x, y: drop.y }, true);
+    }
   } else if (hit?.kind === "monster") {
     target = hit.id;
     send({ type: "attack", target }, true);
@@ -943,11 +967,19 @@ function frame(now) {
             ? PORTALS(state.player.map).find(
                 (p) => p.to === pendingInteraction.id,
               )
-            : state.herbs.find((h) => h.id === pendingInteraction.id);
-      if (n && distance(n, state.player) < 1.9) {
+            : pendingInteraction.kind === "drop"
+              ? state.drops.find((d) => d.id === pendingInteraction.id)
+              : state.herbs.find((h) => h.id === pendingInteraction.id);
+      if (
+        n &&
+        distance(n, state.player) <
+          (pendingInteraction.kind === "drop" ? PICKUP_RANGE : 1.9)
+      ) {
         if (pendingInteraction.kind === "npc") openPanel("npc:" + n.id);
         else if (pendingInteraction.kind === "portal")
           send({ type: "travel", map: n.to });
+        else if (pendingInteraction.kind === "drop")
+          send({ type: "pickup", drop: n.id }, true);
         else send({ type: "interact", herb: n.id }, true);
         pendingInteraction = null;
       }
@@ -966,7 +998,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.8.0",
+  version: "0.9.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

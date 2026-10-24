@@ -217,6 +217,28 @@ export class Renderer {
     }
     this.icon(ART.items[id] || 0, x, y, size);
   }
+  lootIcon(drop, x, y, rotation = 0) {
+    const c = this.ctx;
+    c.save();
+    c.translate(x, y);
+    if (rotation) c.rotate(rotation);
+    if (drop.kind === "currency" && ART.currency) {
+      const a = ART.currency;
+      this.cell(
+        a.file,
+        a.cols,
+        a.rows,
+        Math.floor((drop.spinTime || 0) * 8) % a.cols,
+        0,
+        0,
+        0,
+        32,
+        32,
+        0.5,
+      );
+    } else this.item(drop.kind === "currency" ? "fiber" : drop.item, 0, 0, 32);
+    c.restore();
+  }
   fx(
     row,
     frame,
@@ -494,7 +516,9 @@ export class Renderer {
         .filter((o) => !o.walkThrough)
         .map((o) => ({ ...o, kind: "prop" })),
       ...state.herbs.map((h) => ({ ...h, kind: "herb" })),
-      ...state.drops.map((d) => ({ ...d, kind: "drop" })),
+      ...state.drops
+        .filter((d) => !d.pickupEnds)
+        .map((d) => ({ ...d, lootKind: d.kind, kind: "drop" })),
       ...NPCS.filter((n) => n.map === p.map).map((n) => ({
         ...n,
         kind: "npc",
@@ -547,10 +571,28 @@ export class Renderer {
         continue;
       }
       if (o.kind === "drop") {
-        this.fx(6, Math.floor(time * 7) % 8, s.x, s.y, 35, 25, 0.8);
-        this.item(o.item, s.x, s.y - 10 + Math.sin(time * 3) * 2, 28);
+        this.lootIcon(
+          { ...o, kind: o.lootKind, spinTime: time },
+          s.x,
+          s.y - 12,
+        );
+        this.hitboxes.push({
+          kind: "drop",
+          id: o.id,
+          x: s.x,
+          y: s.y - 12,
+          r: 19,
+        });
+        this.text(
+          o.lootKind === "currency" ? `${o.count} 리프` : `×${o.count}`,
+          s.x,
+          s.y + 12,
+          o.lootKind === "currency" ? "#ffe6a1" : "#f8f5d8",
+          10,
+        );
         continue;
       }
+
       const monster = o.kind === "monster",
         def = monster ? MONSTERS.find((m) => m.id === o.def) : null,
         boss = def?.type === "boss",
@@ -645,6 +687,26 @@ export class Renderer {
           o.kind === "player" ? "#fff4d3" : "#d6eed8",
           11,
         );
+    }
+    for (const drop of state.drops.filter((d) => d.pickupEnds)) {
+      const t = Math.max(
+          0,
+          Math.min(
+            1,
+            (time - drop.pickupAt) / (drop.pickupEnds - drop.pickupAt),
+          ),
+        ),
+        ease = 1 - (1 - t) ** 3,
+        start = this.worldToScreen(drop.x, drop.y),
+        end = this.worldToScreen(p.x, p.y),
+        x = start.x + (end.x - start.x) * ease,
+        y =
+          start.y -
+          12 +
+          (end.y - 40 - start.y) * ease -
+          Math.sin(t * Math.PI) * 72;
+      this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
+      if (t < 0.8) this.fx(6, Math.floor(t * 7) % 8, x, y, 32, 32, 0.25);
     }
     for (const e of state.effects) {
       const s = this.worldToScreen(e.x, e.y),

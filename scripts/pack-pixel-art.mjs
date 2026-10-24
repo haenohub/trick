@@ -485,7 +485,8 @@ export async function packPixelArt({
   for (const entry of registry.sources) {
     if (only && !only.includes(entry.id)) continue;
     console.log("Packing " + entry.id);
-    const source = decode(entry.source);
+    const source = decode(entry.source),
+      sampling = entry.sampling || "nearest";
     if (entry.id.startsWith("monsters-")) {
       const group = Number(entry.id.slice(9));
       for (const [local, m] of MONSTERS.slice(

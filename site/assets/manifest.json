@@ -359,7 +359,8 @@
     "creatures/m58",
     "creatures/m59",
     "creatures/m60",
-    "verdant-trophies"
+    "verdant-trophies",
+    "currency-leaf"
   ],
   "monsters": {
     "m1": {
@@ -3818,5 +3819,12 @@
       }
     },
     "autotile": "corner-16"
-  }
+  },
+  "currency": {
+    "file": "currency-leaf",
+    "cols": 1,
+    "rows": 1,
+    "size": 16
+  },
+  "style": "Partial bright storybook actors; existing connected world assets"
 }

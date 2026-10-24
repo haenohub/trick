@@ -42,7 +42,7 @@ await writeFile(
   "art/shared-palette.json",
   JSON.stringify(
     {
-      name: "LeafTale video-reference pastel palette",
+      name: "LeafTale bright storybook shared palette",
       size: colors.length,
       colors,
     },

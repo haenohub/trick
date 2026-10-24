@@ -11,6 +11,12 @@ const world = JSON.parse(
 const crisp = JSON.parse(
   await readFile(new URL("../art/crisp-sources.json", import.meta.url), "utf8"),
 );
+const storybook = JSON.parse(
+  await readFile(
+    new URL("../art/storybook-sources.json", import.meta.url),
+    "utf8",
+  ),
+);
 const records = JSON.parse(
   await readFile(
     new URL("../art/generated-assets.json", import.meta.url),
@@ -21,7 +27,12 @@ const used = new Set(
   records.assets.flatMap((a) => [a.source, ...(a.additionalSources || [])]),
 );
 const unique = new Map(
-  [...refinement.sources, ...world.sources, ...crisp.sources]
+  [
+    ...refinement.sources,
+    ...world.sources,
+    ...crisp.sources,
+    ...storybook.sources,
+  ]
     .filter((s) => used.has(s.source))
     .map((s) => [s.source, s]),
 );
@@ -36,10 +47,16 @@ await writeFile(
   new URL("../art/image-requests.json", import.meta.url),
   JSON.stringify(
     {
-      status: "generated-and-integrated-crisp-corner-world",
+      status: "partial-storybook-generation-quota-reached",
       productionRecord: "art/generated-assets.json",
       requirements:
-        "Artwork preserves the uploaded animation style identity with crisper edge pixels, with sharp discrete shading and thin well-defined local-color contours. No forced dark outline. Shared adaptive palette up to 256 colors. All world assets share a 2x native base scale with 70% camera zoom; UI previews retain 2x scale. Ten unique connected worlds use sixteen corner autotiles per biome with identical matching edge pixels. Twenty new species are plants and inanimate relics. Both bestiaries face southwest. All 72 actors have eight independently generated 3D-informed headings N,NE,E,SE,S,SW,W,NW and eight animation columns. Monster sizes 32,48,64; shared palette; no mirroring, synthetic rotation or procedural drawing fallback.",
+        "Target style from the user screenshot guide: bright cream ground, lime foliage, turquoise water, broad clean volume, thin crisp local-color contours. Shared adaptive palette up to 256 colors. All world assets use a 2x native scale; the physical game window is 70vw by 70vh with original font sizes and outer margins. Ten connected worlds use sixteen corner autotiles each with identical matching edge pixels. All 72 actors have eight independently generated 3D-informed headings N,NE,E,SE,S,SW,W,NW and motion frames. Monster sizes32/48/64, players48,items16,effects32/48/64. Both codices face southwest. A generated gold coin drops on the floor and spins during click pickup. No mirroring, procedural drawing or thick outline fallback.",
+      completedStorybook: storybook.sources.length,
+      pendingStorybook: storybook.pending.map(({ id, prompt }) => ({
+        id,
+        prompt,
+      })),
+      blocker: storybook.generationError,
       requests,
     },
     null,

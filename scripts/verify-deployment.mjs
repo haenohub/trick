@@ -32,6 +32,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "app.js",
       "data.js",
       "core.js",
+      "balance.js",
+      "assets/currency-leaf.png",
       "renderer.js",
       "assets/manifest.json",
       "art-layout.js",

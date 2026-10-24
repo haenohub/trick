@@ -4,19 +4,44 @@ import { readFile } from "node:fs/promises";
 import { rgbaPixels } from "./png.mjs";
 test("all assets originate from generated artwork with clean transparent native sprite margins", async () => {
   const repaint = JSON.parse(
-    await readFile("art/refinement-sources.json", "utf8"),
+    await readFile("art/storybook-sources.json", "utf8"),
   );
   const records = JSON.parse(
     await readFile("art/generated-assets.json", "utf8"),
   );
-  assert.equal(repaint.sources.length, 67);
-  const world = JSON.parse(await readFile("art/world-sources.json", "utf8"));
-  const crisp = JSON.parse(await readFile("art/crisp-sources.json", "utf8"));
+  assert.equal(repaint.sources.length, 20);
+  assert.equal(repaint.pending.length, 70);
+  assert.equal(repaint.generationError.code, "usage_limit_reached");
+  const previous = (
+    await Promise.all(
+      ["refinement", "world", "crisp"].map(async (name) =>
+        JSON.parse(await readFile("art/" + name + "-sources.json", "utf8")),
+      ),
+    )
+  ).flatMap((r) => r.sources);
   const sources = new Set(
-    [...repaint.sources, ...world.sources, ...crisp.sources].map(
-      (s) => s.source,
-    ),
+    [...previous, ...repaint.sources].flatMap((s) => [
+      s.source,
+      ...(s.deathSource ? [s.deathSource] : []),
+    ]),
   );
+  for (const actor of repaint.sources) {
+    const atlas = records.assets.find(
+      (a) =>
+        a.id ===
+        (actor.kind === "character"
+          ? "characters/"
+          : actor.kind === "npc"
+            ? "npcs/"
+            : "creatures/") +
+          actor.id,
+    );
+    assert.equal(
+      atlas.source,
+      actor.source,
+      actor.id + " new artwork was not applied",
+    );
+  }
   for (const a of records.assets)
     assert.ok(sources.has(a.source), a.id + " was not repainted");
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));

@@ -1,3 +1,4 @@
+import { xpReward, dropChance } from "../site/balance.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -57,8 +58,18 @@ test("combat awards XP, quest progress and real loot exactly once per death", ()
   assert.equal(m.hp, 0);
   assert.equal(p.kills, 1);
   assert.equal(questProgress(p), 1);
-  assert.equal(p.xp, d.xp);
-  w.step(0.05);
+  assert.equal(
+    p.xp +
+      Array.from({ length: p.level - 1 }, (_, i) => 60 + (i + 1) * 45).reduce(
+        (a, b) => a + b,
+        0,
+      ),
+    xpReward(d.xp),
+  );
+  assert.equal(p.inventory.fiber, before);
+  for (const drop of w.map(p.map).drops)
+    assert.ok(w.act(p.id, { type: "pickup", drop: drop.id }));
+  for (let i = 0; i < 8; i++) w.step(0.1);
   assert.ok(p.inventory.fiber > before);
   assert.equal(p.inventory.trophy1, 1);
   assert.equal(w.act("local", { type: "attack", target: m.uid }), false);
@@ -69,7 +80,7 @@ test("loot chances are independent and match tables across all sixty species", (
     assert.equal(rollDrops(m, () => 0).length, m.drops.length);
     assert.equal(
       rollDrops(m, () => 0.999999).length,
-      m.drops.filter((d) => d.chance === 1).length,
+      m.drops.filter((d) => dropChance(d.chance) === 1).length,
     );
   }
   let x = 19;
@@ -83,7 +94,7 @@ test("loot chances are independent and match tables across all sixty species", (
       for (const d of rollDrops(m, rng)) count[d.item]++;
     for (const d of m.drops)
       assert.ok(
-        Math.abs(count[d.item] / 5000 - d.chance) < 0.035,
+        Math.abs(count[d.item] / 5000 - dropChance(d.chance)) < 0.035,
         `${m.id} ${d.item}`,
       );
   }
