@@ -135,6 +135,35 @@ function sample(source, rect, width, height, opaque = false) {
     }
   return out;
 }
+// Nearest-neighbor is a technical native-grid sample: authored colors are
+// selected, never averaged across the silhouette into pale fringe colors.
+function sampleNearest(source, rect, width, height, opaque = false) {
+  const out = rgba(width, height);
+  for (let y = 0; y < height; y++)
+    for (let x = 0; x < width; x++) {
+      const sx = Math.min(
+          source.width - 1,
+          Math.floor(rect.sx + ((x + 0.5) * rect.sw) / width),
+        ),
+        sy = Math.min(
+          source.height - 1,
+          Math.floor(rect.sy + ((y + 0.5) * rect.sh) / height),
+        ),
+        at = (sy * source.width + sx) * 4;
+      if (!opaque && source.data[at + 3] < 140) continue;
+      const c = color(
+          source.data[at],
+          source.data[at + 1],
+          source.data[at + 2],
+        ),
+        to = (y * width + x) * 4;
+      out.data[to] = c[0];
+      out.data[to + 1] = c[1];
+      out.data[to + 2] = c[2];
+      out.data[to + 3] = 255;
+    }
+  return out;
+}
 function blit(source, target, x, y) {
   for (let row = 0; row < source.height; row++)
     source.data.copy(
@@ -358,7 +387,7 @@ function entityFrames(
   rows,
   rowIndices,
   size,
-  { walkRows = null } = {},
+  { walkRows = null, sampling = "area" } = {},
 ) {
   const rects = rowIndices.flatMap((row) =>
     Array.from({ length: cols }, (_, col) =>
@@ -378,7 +407,7 @@ function entityFrames(
       w = Math.max(1, Math.round(rect.sw * fit)),
       h = Math.max(1, Math.round(rect.sh * fit));
     blit(
-      sample(source, rect, w, h),
+      (sampling === "nearest" ? sampleNearest : sample)(source, rect, w, h),
       frame,
       Math.floor((size - w) / 2),
       size - 2 - h,
@@ -521,7 +550,12 @@ export async function packPixelArt({
             w = Math.max(1, Math.round(rect.sw * scale)),
             h = Math.max(1, Math.round(rect.sh * scale));
           blit(
-            sample(source, rect, w, h),
+            (sampling === "nearest" ? sampleNearest : sample)(
+              source,
+              rect,
+              w,
+              h,
+            ),
             atlas,
             col * 16 + Math.floor((16 - w) / 2),
             row * 16 + Math.floor((16 - h) / 2),
@@ -541,7 +575,12 @@ export async function packPixelArt({
             w = Math.max(1, Math.round(rect.sw * scale)),
             h = Math.max(1, Math.round(rect.sh * scale));
           blit(
-            sample(source, rect, w, h),
+            (sampling === "nearest" ? sampleNearest : sample)(
+              source,
+              rect,
+              w,
+              h,
+            ),
             atlas,
             col * 64 + Math.floor((64 - w) / 2),
             row * 64 + Math.floor((64 - h) / 2),
@@ -699,3 +738,5 @@ if (
     .split(",");
   await packPixelArt({ only });
 }
+
+export { sampleNearest };

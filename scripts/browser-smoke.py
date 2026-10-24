@@ -43,8 +43,8 @@ with sync_playwright() as p:
  page.keyboard.press('b');page.locator('[data-filter=alchemy]').click();page.locator('[data-action=craft][data-item=salve]').click();assert page.evaluate('__leaftale.snapshot().player.inventory.salve')==6
  page.locator('[data-filter=garden]').click();page.locator('[data-action=plant][data-item=mint]').first.click();assert page.evaluate('__leaftale.snapshot().player.garden[0].item')=='mint'
  page.keyboard.press('Escape')
- page.keyboard.press('k');assert page.locator('.monster-preview').count()==20
- page.locator('[data-filter="1"]').click();assert page.locator('.monster-preview').count()==20
+ page.keyboard.press('k');assert page.locator('.monster-preview').count()==30
+ page.locator('[data-filter="1"]').click();assert page.locator('.monster-preview').count()==30
  page.locator('details').first.locator('summary').click();assert '%' in page.locator('details').first.inner_text()
  page.keyboard.press('Escape')
  print('PASS: inventory, alchemy, planting and both regional drop tables')

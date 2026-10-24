@@ -69,7 +69,7 @@ export function drawMonsterPreview(canvas, id) {
   const m = ART.monsters[id];
   canvas.width = canvas.height = m.size * ART.pixelScale;
   canvas.style.width = canvas.style.height = canvas.width + "px";
-  preview(canvas, m.file, m.cols, m.rows, 0, SOUTH);
+  preview(canvas, m.file, m.cols, m.rows, 0, 5);
 }
 export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
 export class Renderer {
@@ -96,8 +96,8 @@ export class Renderer {
       this.canvas.width = Math.round(r.width * d);
       this.canvas.height = Math.round(r.height * d);
     }
-    const sw = Math.ceil(r.width / 2),
-      sh = Math.ceil(r.height / 2);
+    const sw = this.canvas.width,
+      sh = this.canvas.height;
     if (this.scene.width !== sw || this.scene.height !== sh) {
       this.scene.width = sw;
       this.scene.height = sh;
@@ -123,7 +123,7 @@ export class Renderer {
   present() {
     const c = this.display,
       { width, height } = this.size;
-    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    c.setTransform(1, 0, 0, 1, 0, 0);
     c.imageSmoothingEnabled = false;
     c.drawImage(
       this.scene,
@@ -133,9 +133,10 @@ export class Renderer {
       this.scene.height,
       0,
       0,
-      this.scene.width * 2,
-      this.scene.height * 2,
+      this.canvas.width,
+      this.canvas.height,
     );
+    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     for (const label of this.labels) {
       const { text, x, y, color, size, align } = label;
       c.font = `600 ${size}px system-ui,sans-serif`;
@@ -169,21 +170,18 @@ export class Renderer {
     // World item/effect requests choose an atlas; they never stretch its cells.
     width = sw * ART.pixelScale;
     height = sh * ART.pixelScale;
+    const snap = (v) => Math.round(v * (this.dpr || 1)) / (this.dpr || 1);
+    const left = snap(x - (width * this.zoom) / 2),
+      top = snap(y - height * anchor * this.zoom),
+      right = snap(x + (width * this.zoom) / 2),
+      bottom = snap(y + height * (1 - anchor) * this.zoom);
     c.save();
-    c.translate(Math.round(x), Math.round(y));
-    c.scale(this.zoom, this.zoom);
-    if (mirror) c.scale(-1, 1);
-    c.drawImage(
-      image,
-      sx,
-      sy,
-      sw,
-      sh,
-      -width / 2,
-      -height * anchor,
-      width,
-      height,
-    );
+    c.imageSmoothingEnabled = false;
+    if (mirror) {
+      c.translate(left + right, 0);
+      c.scale(-1, 1);
+    }
+    c.drawImage(image, sx, sy, sw, sh, left, top, right - left, bottom - top);
     c.restore();
   }
   icon(index, x, y, size = 32) {
@@ -364,7 +362,7 @@ export class Renderer {
       map = MAPS.find((m) => m.id === p.map),
       nav = NAVIGATION[p.map];
     this.labels = [];
-    c.setTransform(0.5, 0, 0, 0.5, 0, 0);
+    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     c.imageSmoothingEnabled = false;
     const desired = project(p.x, p.y),
       cx = Math.max(
@@ -703,28 +701,26 @@ export class Renderer {
     const top = (this.camera.y - (this.size.height * 0.53) / this.zoom) / 2;
     const right = left + this.size.width / (2 * this.zoom),
       bottom = top + this.size.height / (2 * this.zoom);
+    const snap = (v) => Math.round(v * this.dpr) / this.dpr;
     for (
-      let r = Math.max(0, Math.floor(top / TILE));
-      r < Math.min(nav.rows, Math.ceil(bottom / TILE));
+      let r = Math.max(0, Math.floor(top / TILE + 0.5));
+      r <= Math.min(nav.rows, Math.ceil(bottom / TILE + 0.5));
       r++
     )
       for (
-        let col = Math.max(0, Math.floor(left / TILE));
-        col < Math.min(nav.cols, Math.ceil(right / TILE));
+        let col = Math.max(0, Math.floor(left / TILE + 0.5));
+        col <= Math.min(nav.cols, Math.ceil(right / TILE + 0.5));
         col++
       ) {
-        const tile = nav.tiles[r][col];
-        const x0 =
-          Math.floor(
-            (zero.x + (col * TILE - nav.width / 2) * 2 * this.zoom) / 2,
-          ) * 2;
-        const y0 = Math.floor((zero.y + r * TILE * 2 * this.zoom) / 2) * 2;
-        const x1 =
-          Math.floor(
-            (zero.x + ((col + 1) * TILE - nav.width / 2) * 2 * this.zoom) / 2,
-          ) * 2;
-        const y1 =
-          Math.floor((zero.y + (r + 1) * TILE * 2 * this.zoom) / 2) * 2;
+        const tile = nav.transitions[r][col],
+          x0 = snap(
+            zero.x + ((col - 0.5) * TILE - nav.width / 2) * 2 * this.zoom,
+          ),
+          y0 = snap(zero.y + (r - 0.5) * TILE * 2 * this.zoom),
+          x1 = snap(
+            zero.x + ((col + 0.5) * TILE - nav.width / 2) * 2 * this.zoom,
+          ),
+          y1 = snap(zero.y + (r + 0.5) * TILE * 2 * this.zoom);
         c.drawImage(
           image,
           (tile % 4) * TILE,
@@ -738,6 +734,7 @@ export class Renderer {
         );
       }
   }
+
   drawMinimap(state) {
     const c = this.minimap.getContext("2d"),
       w = this.minimap.width,

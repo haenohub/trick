@@ -34,6 +34,7 @@ export async function packDirections({
       target: "site/assets/" + file + ".png",
       tool: "image_gen",
       source: entry.source,
+      ...(entry.deathSource ? { additionalSources: [entry.deathSource] } : {}),
       request: entry.id,
       width: image.width,
       height: image.height,
@@ -41,11 +42,11 @@ export async function packDirections({
         .update(await readFile(target))
         .digest("hex"),
       processing:
-        "Eight independently generated headings; native pixel-grid extraction, shared palette, binary alpha; no mirroring or synthetic rotations",
+        "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       ...extra,
     });
   }
-  manifest.version = 5;
+  manifest.version = Math.max(manifest.version, 7);
   manifest.palette = PALETTE.map(
     (c) => "#" + c.map((n) => n.toString(16).padStart(2, "0")).join(""),
   );
@@ -66,9 +67,13 @@ export async function packDirections({
       decode(entry.source),
       8,
       entry.sourceRows || 8,
-      Array.from({ length: entry.sourceRows || 8 }, (_, row) => row),
+      entry.directionRows ||
+        Array.from({ length: entry.sourceRows || 8 }, (_, row) => row),
       size,
-      { walkRows: entry.layout === "directions-across" ? 3 : null },
+      {
+        walkRows: entry.layout === "directions-across" ? 3 : null,
+        sampling: entry.sampling || "nearest",
+      },
     );
     // Some artists lay headings across columns. Reusing the neutral passing
     // pose closes the left/right stride without synthesizing any new artwork.
@@ -78,6 +83,12 @@ export async function packDirections({
             entry.poseRows.map((row) => sourceFrames[row * 8 + dir]),
           ).flat()
         : sourceFrames;
+    if (entry.deathSource) {
+      const death = entityFrames(decode(entry.deathSource), 8, 1, [0], size, {
+        sampling: "nearest",
+      });
+      for (let dir = 0; dir < 8; dir++) frames[dir * 8 + 7] = death[dir];
+    }
     const file =
       (entry.kind === "monster"
         ? "creatures/"
@@ -114,10 +125,11 @@ export async function packDirections({
     };
     if (entry.kind === "monster") {
       layout.portrait = "portraits/" + entry.id;
+      layout.portraitDirection = "SW";
       manifest.monsters[entry.id] = layout;
-      await save(frames[SOUTH * 8], layout.portrait, entry, {
+      await save(frames[5 * 8], layout.portrait, entry, {
         cellSize: size,
-        direction: "S",
+        direction: "SW",
       });
     } else if (entry.kind === "character")
       manifest.characterLayouts[entry.id] = layout;

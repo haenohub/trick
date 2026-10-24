@@ -1,3 +1,4 @@
+import { VERDANT } from "./verdant.js";
 // One creature-specific miscellaneous drop per species, in monster index order.
 const rows = [
   [
@@ -281,6 +282,16 @@ const rows = [
     1,
   ],
 ];
+
+rows.push(
+  ...VERDANT.map((m, i) => [
+    m.trophyName,
+    m.trophyLore,
+    m.trophyArt,
+    m.spriteSize,
+    m.type === "elite" ? 0.27 : 0.36 + (i % 3) * 0.03,
+  ]),
+);
 
 export const TROPHIES = rows.map(
   ([name, lore, visual, spriteSize, chance], index) => ({

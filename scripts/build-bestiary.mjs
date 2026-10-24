@@ -19,12 +19,12 @@ export async function buildBestiary() {
   );
   const monsters = MONSTERS.map((m) => {
     const sprite = art.monsters[m.id];
-    const file = sprite.portrait;
+    const file = sprite.views.SW;
     const rect = { sx: 0, sy: 0, sw: sprite.size, sh: sprite.size };
     return {
       ...m,
       gold: Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5),
-      image: { file: `assets/${file}.png`, ...rect },
+      image: { file: `assets/${file}.png`, direction: "SW", ...rect },
       drops: m.drops.map((d) => ({
         ...d,
         image: art.itemOverrides[d.item]

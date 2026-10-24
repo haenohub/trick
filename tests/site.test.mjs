@@ -5,11 +5,11 @@ import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import { MONSTERS, ITEMS, MAPS } from "../site/data.js";
 
-test("two complete regions contain ten maps, forty documented enemies and valid individual loot", () => {
+test("two complete regions contain ten maps, sixty documented enemies and valid individual loot", () => {
   assert.equal(MAPS.length, 10);
   assert.equal(MAPS.filter((m) => m.town).length, 2);
-  assert.equal(MONSTERS.length, 40);
-  assert.equal(new Set(MONSTERS.map((m) => m.name)).size, 40);
+  assert.equal(MONSTERS.length, 60);
+  assert.equal(new Set(MONSTERS.map((m) => m.name)).size, 60);
   for (const m of MONSTERS) {
     assert.ok(m.lore.length > 20);
     assert.ok(MAPS.some((map) => map.id === m.map));
@@ -24,7 +24,7 @@ test("two complete regions contain ten maps, forty documented enemies and valid 
   assert.ok(MONSTERS[39].hp > MONSTERS[19].hp * 2);
 });
 test("all items have lore and every recipe resolves to existing materials", () => {
-  assert.equal(Object.keys(ITEMS).length, 82);
+  assert.equal(Object.keys(ITEMS).length, 102);
   for (const i of Object.values(ITEMS)) {
     assert.ok(i.lore.length > 20, i.id);
     for (const [id, n] of Object.entries(i.recipe || {})) {
@@ -69,7 +69,7 @@ test("standalone HTML bestiary preserves every real loot probability and story",
       assert.equal(drop.lore, ITEMS[drop.item].lore);
     }
     assert.ok(entry.image.sw > 0 && entry.image.sh > 0);
-    assert.equal(entry.image.file, `assets/portraits/${monster.id}.png`);
+    assert.equal(entry.image.file, `assets/directions/${monster.id}/SW.png`);
   }
 });
 test("public build includes the game and no backend code or private persistence", async () => {
@@ -121,11 +121,11 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 6);
+  assert.equal(art.version, 7);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 2);
-  assert.equal(art.files.length, 80);
-  assert.equal(records.assets.length, 536);
+  assert.equal(art.files.length, 101);
+  assert.equal(records.assets.length, 737);
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
     nativeUnit: 1,
@@ -197,8 +197,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
       [8, 8, 48],
     );
   }
-  assert.equal(Object.keys(art.items).length, 82);
-  assert.equal(Object.keys(art.itemOverrides).length, 40);
+  assert.equal(Object.keys(art.items).length, 102);
+  assert.equal(Object.keys(art.itemOverrides).length, 60);
   for (const size of [32, 48, 64]) {
     const file = art.effects.variants[size];
     const png = await readFile(
@@ -220,5 +220,5 @@ test("every monster has its own usable miscellaneous trophy with a unique story"
     assert.ok(trophy.price > 0);
     ids.add(trophy.id);
   }
-  assert.equal(ids.size, 40);
+  assert.equal(ids.size, 60);
 });

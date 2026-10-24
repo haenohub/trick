@@ -10,14 +10,14 @@ with sync_playwright() as pw:
  page.goto(BASE+'directions.html')
  page.wait_for_function("document.querySelector('#status').textContent.startsWith('8방향')")
  ids=page.evaluate('__directions.data.actors.map(a=>a.id)')
- assert len(ids)==52
+ assert len(ids)==72
  for actor in ids:
   page.locator('[data-actor="'+actor+'"]').click()
   page.wait_for_function("id=>__directions.selected===id && document.querySelector('#status').textContent.startsWith('8방향')",arg=actor)
   page.wait_for_timeout(45)
   assert page.evaluate("new Set([...document.querySelectorAll('.views canvas')].map(c=>c.toDataURL())).size")==8,actor
- print('PASS: all 52 actors show eight distinct views, 416 views total')
- for kind,count in [('character',4),('npc',8),('monster',40),('all',52)]:
+ print('PASS: all 72 actors show eight distinct views, 576 views total')
+ for kind,count in [('character',4),('npc',8),('monster',60),('all',72)]:
   page.locator('[data-kind="'+kind+'"]').click()
   assert page.locator('[data-actor]').count()==count
  page.locator('#search').fill('콩잎')

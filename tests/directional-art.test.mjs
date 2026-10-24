@@ -16,7 +16,7 @@ function cell(image, size, col, row) {
     ),
   );
 }
-test("all 52 actors have eight distinct native views matching their animated atlas rows", async () => {
+test("all 72 actors have eight distinct native views matching their animated atlas rows", async () => {
   const art = JSON.parse(await readFile("dist/assets/manifest.json", "utf8"));
   assert.deepEqual(
     art.directionOrder,
@@ -74,12 +74,12 @@ test("all 52 actors have eight distinct native views matching their animated atl
         );
         assert.deepEqual(
           portrait.pixels,
-          cell(atlas, size, 0, SOUTH),
-          actor.id + " must show the front in the bestiary",
+          cell(atlas, size, 0, 5),
+          actor.id + " must face lower left in the bestiary",
         );
       }
     }
-  assert.equal(count, 52);
+  assert.equal(count, 72);
 });
 test("direction atelier includes all actors and downloadable PNGs without needing a game session", async () => {
   const html = await readFile("dist/directions.html", "utf8");
@@ -88,10 +88,10 @@ test("direction atelier includes all actors and downloadable PNGs without needin
       /<script id="direction-data" type="application\/json">([\s\S]*?)<\/script>/,
     )[1],
   );
-  assert.equal(data.actors.length, 52);
+  assert.equal(data.actors.length, 72);
   for (const a of data.actors)
     assert.equal(Object.keys(a.layout.views).length, 8, a.id);
   assert.equal(data.actors.filter((a) => a.kind === "character").length, 4);
   assert.equal(data.actors.filter((a) => a.kind === "npc").length, 8);
-  assert.equal(data.actors.filter((a) => a.kind === "monster").length, 40);
+  assert.equal(data.actors.filter((a) => a.kind === "monster").length, 60);
 });

@@ -416,6 +416,44 @@ const pixelWorld = (px, py, width) => ({
 });
 export const NAVIGATION = {};
 export const NPC_POSITIONS = {};
+const additionalHabitats = {
+  sprout: [
+    [8, 5],
+    [18, 3],
+    [23, 6],
+  ],
+  acorn: [
+    [3, 12],
+    [12, 6],
+    [7, 2],
+  ],
+  brook: [
+    [8, 3],
+    [17, 10],
+  ],
+  stump: [
+    [5, 4],
+    [12, 13],
+  ],
+  saltwood: [
+    [8, 7],
+    [13, 4],
+    [20, 4],
+  ],
+  glassbeach: [
+    [7, 3],
+    [15, 2],
+    [23, 4],
+  ],
+  tideroot: [
+    [7, 7],
+    [16, 7],
+  ],
+  seacave: [
+    [8, 5],
+    [16, 9],
+  ],
+};
 const npcProps = {
   guide: 0,
   smith: 1,
@@ -469,9 +507,10 @@ for (const [id, spec] of Object.entries(specs)) {
     ? at(...nearestCell(nav, ...spec.spawn))
     : nav.westLanding;
   nav.boss = spec.boss ? at(...spec.boss) : null;
-  nav.habitats = (spec.habitats || []).map(([c, r]) =>
-    at(...nearestCell(nav, c, r)),
-  );
+  nav.habitats = [
+    ...(spec.habitats || []),
+    ...(additionalHabitats[id] || []),
+  ].map(([c, r]) => at(...nearestCell(nav, c, r)));
   const prop = (index, c, r, walkThrough = false, footY = (r + 1) * TILE) => {
     const px = (c + 0.5) * TILE,
       py = footY;
@@ -531,6 +570,17 @@ for (const [id, spec] of Object.entries(specs)) {
       return count > 2 ? 12 : (c + r) % 3;
     }),
   );
+  // Dual grid: each image encodes the materials at four shared corners.
+  nav.transitions = Array.from({ length: nav.rows + 1 }, (_, r) =>
+    Array.from(
+      { length: nav.cols + 1 },
+      (_, c) =>
+        (floor[r - 1]?.[c - 1] ? 1 : 0) |
+        (floor[r - 1]?.[c] ? 2 : 0) |
+        (floor[r]?.[c] ? 4 : 0) |
+        (floor[r]?.[c - 1] ? 8 : 0),
+    ),
+  );
   NAVIGATION[id] = nav;
 }
 export function worldToImage(x, y, map = "village") {
@@ -544,12 +594,22 @@ export function imageToWorld(u, v, map = "village") {
   const nav = NAVIGATION[map];
   return pixelWorld(u * nav.width, v * nav.height, nav.width);
 }
-export function isWalkable(map, x, y) {
+export function floorValue(map, x, y) {
   const nav = NAVIGATION[map];
-  if (!nav || !Number.isFinite(x) || !Number.isFinite(y)) return false;
-  const c = Math.floor(((x - y) * 16 + nav.width / 2) / TILE),
-    r = Math.floor(((x + y) * 8) / TILE);
-  return !!nav.floor[r]?.[c];
+  if (!nav || !Number.isFinite(x) || !Number.isFinite(y)) return 0;
+  const u = ((x - y) * 16 + nav.width / 2) / TILE - 0.5,
+    v = ((x + y) * 8) / TILE - 0.5,
+    c = Math.floor(u),
+    r = Math.floor(v),
+    tx = u - c,
+    ty = v - r;
+  const at = (cx, cy) => (nav.floor[cy]?.[cx] ? 1 : 0);
+  return (
+    at(c, r) * (1 - tx) * (1 - ty) +
+    at(c + 1, r) * tx * (1 - ty) +
+    at(c, r + 1) * (1 - tx) * ty +
+    at(c + 1, r + 1) * tx * ty
+  );
 }
 export function habitatPoint(map, kind, index, rng) {
   const nav = NAVIGATION[map],
@@ -573,4 +633,8 @@ export function herbPoints(map) {
       ...cells[Math.floor((i * cells.length) / Math.min(20, cells.length))],
     ),
   );
+}
+
+export function isWalkable(map, x, y) {
+  return floorValue(map, x, y) >= 0.5;
 }

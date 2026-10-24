@@ -498,8 +498,8 @@ function renderPanel() {
     title = "숲의 생명 도감";
     html = `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 골드와 경험치는 처치 시 확정 지급됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">검색 가능한 전체 HTML 도감 열기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / 40</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
       [
-        ["0", "햇살잎 숲 · 20종"],
-        ["1", "은물결 해안림 · 20종"],
+        ["0", "햇살잎 숲 · 30종"],
+        ["1", "은물결 해안림 · 30종"],
       ],
     )}<div class="card-grid codex-grid">${MONSTERS.filter(
       (m) => m.region === Number(filter),
@@ -966,7 +966,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.7.0",
+  version: "0.8.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

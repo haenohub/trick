@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "provenance": "image_gen",
   "pixelScale": 2,
   "palette": [
@@ -338,7 +338,28 @@
     "world/tiles-glassbeach",
     "world/tiles-tideroot",
     "world/tiles-seacave",
-    "world/props"
+    "world/props",
+    "creatures/m41",
+    "creatures/m42",
+    "creatures/m43",
+    "creatures/m44",
+    "creatures/m45",
+    "creatures/m46",
+    "creatures/m47",
+    "creatures/m48",
+    "creatures/m49",
+    "creatures/m50",
+    "creatures/m51",
+    "creatures/m52",
+    "creatures/m53",
+    "creatures/m54",
+    "creatures/m55",
+    "creatures/m56",
+    "creatures/m57",
+    "creatures/m58",
+    "creatures/m59",
+    "creatures/m60",
+    "verdant-trophies"
   ],
   "monsters": {
     "m1": {
@@ -377,7 +398,8 @@
           7
         ]
       },
-      "portrait": "portraits/m1"
+      "portrait": "portraits/m1",
+      "portraitDirection": "SW"
     },
     "m2": {
       "file": "creatures/m2",
@@ -415,7 +437,8 @@
           7
         ]
       },
-      "portrait": "portraits/m2"
+      "portrait": "portraits/m2",
+      "portraitDirection": "SW"
     },
     "m3": {
       "file": "creatures/m3",
@@ -453,7 +476,8 @@
           7
         ]
       },
-      "portrait": "portraits/m3"
+      "portrait": "portraits/m3",
+      "portraitDirection": "SW"
     },
     "m4": {
       "file": "creatures/m4",
@@ -491,7 +515,8 @@
           7
         ]
       },
-      "portrait": "portraits/m4"
+      "portrait": "portraits/m4",
+      "portraitDirection": "SW"
     },
     "m5": {
       "file": "creatures/m5",
@@ -529,7 +554,8 @@
           7
         ]
       },
-      "portrait": "portraits/m5"
+      "portrait": "portraits/m5",
+      "portraitDirection": "SW"
     },
     "m6": {
       "file": "creatures/m6",
@@ -567,7 +593,8 @@
           7
         ]
       },
-      "portrait": "portraits/m6"
+      "portrait": "portraits/m6",
+      "portraitDirection": "SW"
     },
     "m7": {
       "file": "creatures/m7",
@@ -605,7 +632,8 @@
           7
         ]
       },
-      "portrait": "portraits/m7"
+      "portrait": "portraits/m7",
+      "portraitDirection": "SW"
     },
     "m8": {
       "file": "creatures/m8",
@@ -643,7 +671,8 @@
           7
         ]
       },
-      "portrait": "portraits/m8"
+      "portrait": "portraits/m8",
+      "portraitDirection": "SW"
     },
     "m9": {
       "file": "creatures/m9",
@@ -681,7 +710,8 @@
           7
         ]
       },
-      "portrait": "portraits/m9"
+      "portrait": "portraits/m9",
+      "portraitDirection": "SW"
     },
     "m10": {
       "file": "creatures/m10",
@@ -719,7 +749,8 @@
           7
         ]
       },
-      "portrait": "portraits/m10"
+      "portrait": "portraits/m10",
+      "portraitDirection": "SW"
     },
     "m11": {
       "file": "creatures/m11",
@@ -757,7 +788,8 @@
           7
         ]
       },
-      "portrait": "portraits/m11"
+      "portrait": "portraits/m11",
+      "portraitDirection": "SW"
     },
     "m12": {
       "file": "creatures/m12",
@@ -795,7 +827,8 @@
           7
         ]
       },
-      "portrait": "portraits/m12"
+      "portrait": "portraits/m12",
+      "portraitDirection": "SW"
     },
     "m13": {
       "file": "creatures/m13",
@@ -833,7 +866,8 @@
           7
         ]
       },
-      "portrait": "portraits/m13"
+      "portrait": "portraits/m13",
+      "portraitDirection": "SW"
     },
     "m14": {
       "file": "creatures/m14",
@@ -871,7 +905,8 @@
           7
         ]
       },
-      "portrait": "portraits/m14"
+      "portrait": "portraits/m14",
+      "portraitDirection": "SW"
     },
     "m15": {
       "file": "creatures/m15",
@@ -909,7 +944,8 @@
           7
         ]
       },
-      "portrait": "portraits/m15"
+      "portrait": "portraits/m15",
+      "portraitDirection": "SW"
     },
     "m16": {
       "file": "creatures/m16",
@@ -947,7 +983,8 @@
           7
         ]
       },
-      "portrait": "portraits/m16"
+      "portrait": "portraits/m16",
+      "portraitDirection": "SW"
     },
     "m17": {
       "file": "creatures/m17",
@@ -985,7 +1022,8 @@
           7
         ]
       },
-      "portrait": "portraits/m17"
+      "portrait": "portraits/m17",
+      "portraitDirection": "SW"
     },
     "m18": {
       "file": "creatures/m18",
@@ -1023,7 +1061,8 @@
           7
         ]
       },
-      "portrait": "portraits/m18"
+      "portrait": "portraits/m18",
+      "portraitDirection": "SW"
     },
     "m19": {
       "file": "creatures/m19",
@@ -1061,7 +1100,8 @@
           7
         ]
       },
-      "portrait": "portraits/m19"
+      "portrait": "portraits/m19",
+      "portraitDirection": "SW"
     },
     "m20": {
       "file": "creatures/m20",
@@ -1099,7 +1139,8 @@
           7
         ]
       },
-      "portrait": "portraits/m20"
+      "portrait": "portraits/m20",
+      "portraitDirection": "SW"
     },
     "m21": {
       "file": "creatures/m21",
@@ -1137,7 +1178,8 @@
           7
         ]
       },
-      "portrait": "portraits/m21"
+      "portrait": "portraits/m21",
+      "portraitDirection": "SW"
     },
     "m22": {
       "file": "creatures/m22",
@@ -1175,7 +1217,8 @@
           7
         ]
       },
-      "portrait": "portraits/m22"
+      "portrait": "portraits/m22",
+      "portraitDirection": "SW"
     },
     "m23": {
       "file": "creatures/m23",
@@ -1213,7 +1256,8 @@
           7
         ]
       },
-      "portrait": "portraits/m23"
+      "portrait": "portraits/m23",
+      "portraitDirection": "SW"
     },
     "m24": {
       "file": "creatures/m24",
@@ -1251,7 +1295,8 @@
           7
         ]
       },
-      "portrait": "portraits/m24"
+      "portrait": "portraits/m24",
+      "portraitDirection": "SW"
     },
     "m25": {
       "file": "creatures/m25",
@@ -1289,7 +1334,8 @@
           7
         ]
       },
-      "portrait": "portraits/m25"
+      "portrait": "portraits/m25",
+      "portraitDirection": "SW"
     },
     "m26": {
       "file": "creatures/m26",
@@ -1327,7 +1373,8 @@
           7
         ]
       },
-      "portrait": "portraits/m26"
+      "portrait": "portraits/m26",
+      "portraitDirection": "SW"
     },
     "m27": {
       "file": "creatures/m27",
@@ -1365,7 +1412,8 @@
           7
         ]
       },
-      "portrait": "portraits/m27"
+      "portrait": "portraits/m27",
+      "portraitDirection": "SW"
     },
     "m28": {
       "file": "creatures/m28",
@@ -1403,7 +1451,8 @@
           7
         ]
       },
-      "portrait": "portraits/m28"
+      "portrait": "portraits/m28",
+      "portraitDirection": "SW"
     },
     "m29": {
       "file": "creatures/m29",
@@ -1441,7 +1490,8 @@
           7
         ]
       },
-      "portrait": "portraits/m29"
+      "portrait": "portraits/m29",
+      "portraitDirection": "SW"
     },
     "m30": {
       "file": "creatures/m30",
@@ -1479,7 +1529,8 @@
           7
         ]
       },
-      "portrait": "portraits/m30"
+      "portrait": "portraits/m30",
+      "portraitDirection": "SW"
     },
     "m31": {
       "file": "creatures/m31",
@@ -1517,7 +1568,8 @@
           7
         ]
       },
-      "portrait": "portraits/m31"
+      "portrait": "portraits/m31",
+      "portraitDirection": "SW"
     },
     "m32": {
       "file": "creatures/m32",
@@ -1555,7 +1607,8 @@
           7
         ]
       },
-      "portrait": "portraits/m32"
+      "portrait": "portraits/m32",
+      "portraitDirection": "SW"
     },
     "m33": {
       "file": "creatures/m33",
@@ -1593,7 +1646,8 @@
           7
         ]
       },
-      "portrait": "portraits/m33"
+      "portrait": "portraits/m33",
+      "portraitDirection": "SW"
     },
     "m34": {
       "file": "creatures/m34",
@@ -1631,7 +1685,8 @@
           7
         ]
       },
-      "portrait": "portraits/m34"
+      "portrait": "portraits/m34",
+      "portraitDirection": "SW"
     },
     "m35": {
       "file": "creatures/m35",
@@ -1669,7 +1724,8 @@
           7
         ]
       },
-      "portrait": "portraits/m35"
+      "portrait": "portraits/m35",
+      "portraitDirection": "SW"
     },
     "m36": {
       "file": "creatures/m36",
@@ -1707,7 +1763,8 @@
           7
         ]
       },
-      "portrait": "portraits/m36"
+      "portrait": "portraits/m36",
+      "portraitDirection": "SW"
     },
     "m37": {
       "file": "creatures/m37",
@@ -1745,7 +1802,8 @@
           7
         ]
       },
-      "portrait": "portraits/m37"
+      "portrait": "portraits/m37",
+      "portraitDirection": "SW"
     },
     "m38": {
       "file": "creatures/m38",
@@ -1783,7 +1841,8 @@
           7
         ]
       },
-      "portrait": "portraits/m38"
+      "portrait": "portraits/m38",
+      "portraitDirection": "SW"
     },
     "m39": {
       "file": "creatures/m39",
@@ -1821,7 +1880,8 @@
           7
         ]
       },
-      "portrait": "portraits/m39"
+      "portrait": "portraits/m39",
+      "portraitDirection": "SW"
     },
     "m40": {
       "file": "creatures/m40",
@@ -1859,7 +1919,788 @@
           7
         ]
       },
-      "portrait": "portraits/m40"
+      "portrait": "portraits/m40",
+      "portraitDirection": "SW"
+    },
+    "m41": {
+      "file": "creatures/m41",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m41/N",
+        "NE": "directions/m41/NE",
+        "E": "directions/m41/E",
+        "SE": "directions/m41/SE",
+        "S": "directions/m41/S",
+        "SW": "directions/m41/SW",
+        "W": "directions/m41/W",
+        "NW": "directions/m41/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m41",
+      "portraitDirection": "SW"
+    },
+    "m42": {
+      "file": "creatures/m42",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m42/N",
+        "NE": "directions/m42/NE",
+        "E": "directions/m42/E",
+        "SE": "directions/m42/SE",
+        "S": "directions/m42/S",
+        "SW": "directions/m42/SW",
+        "W": "directions/m42/W",
+        "NW": "directions/m42/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m42",
+      "portraitDirection": "SW"
+    },
+    "m43": {
+      "file": "creatures/m43",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m43/N",
+        "NE": "directions/m43/NE",
+        "E": "directions/m43/E",
+        "SE": "directions/m43/SE",
+        "S": "directions/m43/S",
+        "SW": "directions/m43/SW",
+        "W": "directions/m43/W",
+        "NW": "directions/m43/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m43",
+      "portraitDirection": "SW"
+    },
+    "m44": {
+      "file": "creatures/m44",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m44/N",
+        "NE": "directions/m44/NE",
+        "E": "directions/m44/E",
+        "SE": "directions/m44/SE",
+        "S": "directions/m44/S",
+        "SW": "directions/m44/SW",
+        "W": "directions/m44/W",
+        "NW": "directions/m44/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m44",
+      "portraitDirection": "SW"
+    },
+    "m45": {
+      "file": "creatures/m45",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m45/N",
+        "NE": "directions/m45/NE",
+        "E": "directions/m45/E",
+        "SE": "directions/m45/SE",
+        "S": "directions/m45/S",
+        "SW": "directions/m45/SW",
+        "W": "directions/m45/W",
+        "NW": "directions/m45/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m45",
+      "portraitDirection": "SW"
+    },
+    "m46": {
+      "file": "creatures/m46",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m46/N",
+        "NE": "directions/m46/NE",
+        "E": "directions/m46/E",
+        "SE": "directions/m46/SE",
+        "S": "directions/m46/S",
+        "SW": "directions/m46/SW",
+        "W": "directions/m46/W",
+        "NW": "directions/m46/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m46",
+      "portraitDirection": "SW"
+    },
+    "m47": {
+      "file": "creatures/m47",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m47/N",
+        "NE": "directions/m47/NE",
+        "E": "directions/m47/E",
+        "SE": "directions/m47/SE",
+        "S": "directions/m47/S",
+        "SW": "directions/m47/SW",
+        "W": "directions/m47/W",
+        "NW": "directions/m47/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m47",
+      "portraitDirection": "SW"
+    },
+    "m48": {
+      "file": "creatures/m48",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m48/N",
+        "NE": "directions/m48/NE",
+        "E": "directions/m48/E",
+        "SE": "directions/m48/SE",
+        "S": "directions/m48/S",
+        "SW": "directions/m48/SW",
+        "W": "directions/m48/W",
+        "NW": "directions/m48/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m48",
+      "portraitDirection": "SW"
+    },
+    "m49": {
+      "file": "creatures/m49",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m49/N",
+        "NE": "directions/m49/NE",
+        "E": "directions/m49/E",
+        "SE": "directions/m49/SE",
+        "S": "directions/m49/S",
+        "SW": "directions/m49/SW",
+        "W": "directions/m49/W",
+        "NW": "directions/m49/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m49",
+      "portraitDirection": "SW"
+    },
+    "m50": {
+      "file": "creatures/m50",
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "views": {
+        "N": "directions/m50/N",
+        "NE": "directions/m50/NE",
+        "E": "directions/m50/E",
+        "SE": "directions/m50/SE",
+        "S": "directions/m50/S",
+        "SW": "directions/m50/SW",
+        "W": "directions/m50/W",
+        "NW": "directions/m50/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m50",
+      "portraitDirection": "SW"
+    },
+    "m51": {
+      "file": "creatures/m51",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m51/N",
+        "NE": "directions/m51/NE",
+        "E": "directions/m51/E",
+        "SE": "directions/m51/SE",
+        "S": "directions/m51/S",
+        "SW": "directions/m51/SW",
+        "W": "directions/m51/W",
+        "NW": "directions/m51/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m51",
+      "portraitDirection": "SW"
+    },
+    "m52": {
+      "file": "creatures/m52",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m52/N",
+        "NE": "directions/m52/NE",
+        "E": "directions/m52/E",
+        "SE": "directions/m52/SE",
+        "S": "directions/m52/S",
+        "SW": "directions/m52/SW",
+        "W": "directions/m52/W",
+        "NW": "directions/m52/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m52",
+      "portraitDirection": "SW"
+    },
+    "m53": {
+      "file": "creatures/m53",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m53/N",
+        "NE": "directions/m53/NE",
+        "E": "directions/m53/E",
+        "SE": "directions/m53/SE",
+        "S": "directions/m53/S",
+        "SW": "directions/m53/SW",
+        "W": "directions/m53/W",
+        "NW": "directions/m53/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m53",
+      "portraitDirection": "SW"
+    },
+    "m54": {
+      "file": "creatures/m54",
+      "cols": 8,
+      "rows": 8,
+      "size": 32,
+      "views": {
+        "N": "directions/m54/N",
+        "NE": "directions/m54/NE",
+        "E": "directions/m54/E",
+        "SE": "directions/m54/SE",
+        "S": "directions/m54/S",
+        "SW": "directions/m54/SW",
+        "W": "directions/m54/W",
+        "NW": "directions/m54/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m54",
+      "portraitDirection": "SW"
+    },
+    "m55": {
+      "file": "creatures/m55",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m55/N",
+        "NE": "directions/m55/NE",
+        "E": "directions/m55/E",
+        "SE": "directions/m55/SE",
+        "S": "directions/m55/S",
+        "SW": "directions/m55/SW",
+        "W": "directions/m55/W",
+        "NW": "directions/m55/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m55",
+      "portraitDirection": "SW"
+    },
+    "m56": {
+      "file": "creatures/m56",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m56/N",
+        "NE": "directions/m56/NE",
+        "E": "directions/m56/E",
+        "SE": "directions/m56/SE",
+        "S": "directions/m56/S",
+        "SW": "directions/m56/SW",
+        "W": "directions/m56/W",
+        "NW": "directions/m56/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m56",
+      "portraitDirection": "SW"
+    },
+    "m57": {
+      "file": "creatures/m57",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m57/N",
+        "NE": "directions/m57/NE",
+        "E": "directions/m57/E",
+        "SE": "directions/m57/SE",
+        "S": "directions/m57/S",
+        "SW": "directions/m57/SW",
+        "W": "directions/m57/W",
+        "NW": "directions/m57/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m57",
+      "portraitDirection": "SW"
+    },
+    "m58": {
+      "file": "creatures/m58",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m58/N",
+        "NE": "directions/m58/NE",
+        "E": "directions/m58/E",
+        "SE": "directions/m58/SE",
+        "S": "directions/m58/S",
+        "SW": "directions/m58/SW",
+        "W": "directions/m58/W",
+        "NW": "directions/m58/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m58",
+      "portraitDirection": "SW"
+    },
+    "m59": {
+      "file": "creatures/m59",
+      "cols": 8,
+      "rows": 8,
+      "size": 48,
+      "views": {
+        "N": "directions/m59/N",
+        "NE": "directions/m59/NE",
+        "E": "directions/m59/E",
+        "SE": "directions/m59/SE",
+        "S": "directions/m59/S",
+        "SW": "directions/m59/SW",
+        "W": "directions/m59/W",
+        "NW": "directions/m59/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m59",
+      "portraitDirection": "SW"
+    },
+    "m60": {
+      "file": "creatures/m60",
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "views": {
+        "N": "directions/m60/N",
+        "NE": "directions/m60/NE",
+        "E": "directions/m60/E",
+        "SE": "directions/m60/SE",
+        "S": "directions/m60/S",
+        "SW": "directions/m60/SW",
+        "W": "directions/m60/W",
+        "NW": "directions/m60/NW"
+      },
+      "animations": {
+        "idle": [
+          0
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack": [
+          4,
+          5
+        ],
+        "hurt": [
+          6
+        ],
+        "death": [
+          7
+        ]
+      },
+      "portrait": "portraits/m60",
+      "portraitDirection": "SW"
     }
   },
   "items": {
@@ -1944,7 +2785,27 @@
     "trophy37": 36,
     "trophy38": 37,
     "trophy39": 38,
-    "trophy40": 39
+    "trophy40": 39,
+    "trophy41": 0,
+    "trophy42": 0,
+    "trophy43": 0,
+    "trophy44": 0,
+    "trophy45": 0,
+    "trophy46": 0,
+    "trophy47": 0,
+    "trophy48": 0,
+    "trophy49": 0,
+    "trophy50": 0,
+    "trophy51": 0,
+    "trophy52": 0,
+    "trophy53": 0,
+    "trophy54": 0,
+    "trophy55": 0,
+    "trophy56": 0,
+    "trophy57": 0,
+    "trophy58": 0,
+    "trophy59": 0,
+    "trophy60": 0
   },
   "itemOverrides": {
     "trophy1": {
@@ -2186,6 +3047,126 @@
       "cols": 8,
       "rows": 5,
       "index": 39
+    },
+    "trophy41": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 0
+    },
+    "trophy42": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 1
+    },
+    "trophy43": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 2
+    },
+    "trophy44": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 3
+    },
+    "trophy45": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 4
+    },
+    "trophy46": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 5
+    },
+    "trophy47": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 6
+    },
+    "trophy48": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 7
+    },
+    "trophy49": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 8
+    },
+    "trophy50": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 9
+    },
+    "trophy51": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 10
+    },
+    "trophy52": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 11
+    },
+    "trophy53": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 12
+    },
+    "trophy54": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 13
+    },
+    "trophy55": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 14
+    },
+    "trophy56": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 15
+    },
+    "trophy57": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 16
+    },
+    "trophy58": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 17
+    },
+    "trophy59": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 18
+    },
+    "trophy60": {
+      "file": "verdant-trophies",
+      "cols": 4,
+      "rows": 5,
+      "index": 19
     }
   },
   "characterLayouts": {
@@ -2835,6 +3816,7 @@
         "walkableScale": 6.89908256880734,
         "shape": "수정 굴방과 깊은 해룡의 방"
       }
-    }
+    },
+    "autotile": "corner-16"
   }
 }

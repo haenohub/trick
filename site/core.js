@@ -1,6 +1,11 @@
 import { isWalkable, NAVIGATION } from "./art-layout.js";
 import { direction, facesTarget, SOUTH } from "./directions.js";
-import { LAYOUT_VERSION, habitatPoint, herbPoints } from "./world-layout.js";
+import {
+  LAYOUT_VERSION,
+  habitatPoint,
+  herbPoints,
+  floorValue,
+} from "./world-layout.js";
 import {
   CLASSES,
   MAPS,
@@ -257,10 +262,14 @@ export function blocked(map, x, y) {
 }
 export function findRoute(map, from, to) {
   const clear = (a, b) => {
-    const n = Math.ceil(distance(a, b) * 5);
+    const n = Math.ceil(distance(a, b) * 10);
     for (let i = 1; i <= n; i++)
       if (
-        blocked(map, a.x + ((b.x - a.x) * i) / n, a.y + ((b.y - a.y) * i) / n)
+        floorValue(
+          map,
+          a.x + ((b.x - a.x) * i) / n,
+          a.y + ((b.y - a.y) * i) / n,
+        ) < (i === n ? 0.5 : 0.505)
       )
         return false;
     return true;

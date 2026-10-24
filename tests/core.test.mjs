@@ -25,6 +25,7 @@ import { NAVIGATION } from "../site/art-layout.js";
 const setup = (cls = "warden", map = "village", level = 1) => {
   const raw = createPlayer(cls, "테스트");
   raw.map = map;
+  Object.assign(raw, NAVIGATION[map].spawn);
   raw.level = level;
   if (map !== "village") raw.visited.push(map);
   if (["shelltown", "seacave"].includes(map)) raw.defeatedBosses = ["m20"];
@@ -63,7 +64,7 @@ test("combat awards XP, quest progress and real loot exactly once per death", ()
   assert.equal(w.act("local", { type: "attack", target: m.uid }), false);
   assert.equal(p.kills, 1);
 });
-test("loot chances are independent and match tables across all forty species", () => {
+test("loot chances are independent and match tables across all sixty species", () => {
   for (const m of MONSTERS) {
     assert.equal(rollDrops(m, () => 0).length, m.drops.length);
     assert.equal(
@@ -179,7 +180,7 @@ test("telegraphed attacks can be dodged instead of applying unavoidable damage",
   w.step(0.05);
   assert.ok(m.windup);
   const hp = p.hp;
-  const escape = { x: p.x + 3, y: p.y + 3 };
+  const escape = { x: p.x + 3, y: p.y - 3 };
   assert.equal(blocked(p.map, escape.x, escape.y), false);
   assert.ok(w.act(p.id, { type: "moveTo", ...escape }));
   for (let i = 0; i < 15; i++) w.step(0.1);

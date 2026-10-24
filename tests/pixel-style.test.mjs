@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { rgbaPixels } from "./png.mjs";
-test("all assets originate from the video-reference repaint, with selective colored contours", async () => {
+test("all assets originate from generated artwork with clean transparent native sprite margins", async () => {
   const repaint = JSON.parse(
     await readFile("art/refinement-sources.json", "utf8"),
   );
@@ -11,8 +11,11 @@ test("all assets originate from the video-reference repaint, with selective colo
   );
   assert.equal(repaint.sources.length, 67);
   const world = JSON.parse(await readFile("art/world-sources.json", "utf8"));
+  const crisp = JSON.parse(await readFile("art/crisp-sources.json", "utf8"));
   const sources = new Set(
-    [...repaint.sources, ...world.sources].map((s) => s.source),
+    [...repaint.sources, ...world.sources, ...crisp.sources].map(
+      (s) => s.source,
+    ),
   );
   for (const a of records.assets)
     assert.ok(sources.has(a.source), a.id + " was not repainted");
@@ -26,31 +29,18 @@ test("all assets originate from the video-reference repaint, with selective colo
     const { width, height, pixels } = rgbaPixels(
       await readFile("site/assets/" + l.views.S + ".png"),
     );
-    let edge = 0,
-      dark = 0;
+    // A dark-edge percentage measured color, not stroke width. The requested
+    // crisper contours may use darker local colors; guard against atlas bleed
+    // and resampling fringe with actual transparent native margins instead.
     for (let y = 0; y < height; y++)
       for (let x = 0; x < width; x++) {
-        const at = (y * width + x) * 4;
-        if (!pixels[at + 3]) continue;
-        if (
-          [
-            [1, 0],
-            [-1, 0],
-            [0, 1],
-            [0, -1],
-          ].some(
-            ([dx, dy]) =>
-              x + dx < 0 ||
-              y + dy < 0 ||
-              x + dx >= width ||
-              y + dy >= height ||
-              !pixels[((y + dy) * width + x + dx) * 4 + 3],
-          )
-        ) {
-          edge++;
-          if (Math.max(...pixels.subarray(at, at + 3)) < 80) dark++;
-        }
+        const alpha = pixels[(y * width + x) * 4 + 3];
+        assert.ok(
+          alpha === 0 || alpha === 255,
+          l.file + " has an antialiased fringe",
+        );
+        if (x < 2 || y < 2 || x >= width - 2 || y >= height - 2)
+          assert.equal(alpha, 0, l.file + " bleeds outside its native frame");
       }
-    assert.ok(dark / edge < 0.25, l.file + " has a heavy near-black contour");
   }
 });

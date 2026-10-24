@@ -1,6 +1,7 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
+import { VERDANT } from "./verdant.js";
 import { TROPHIES } from "./trophies.js";
-export const VERSION = "0.7.0";
+export const VERSION = "0.8.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -642,6 +643,70 @@ export const MONSTERS = monsterRows.map(([name, shape, lore], i) => {
     ],
   };
 });
+MONSTERS.push(
+  ...VERDANT.map((m, i) => {
+    const region = MAPS.find((a) => a.id === m.map).region,
+      elite = m.type === "elite",
+      t = TROPHIES[40 + i],
+      level = m.level;
+    return {
+      id: m.id,
+      index: 40 + i,
+      name: m.name,
+      shape: m.concept,
+      concept: m.concept,
+      lore: m.lore,
+      map: m.map,
+      region,
+      type: m.type,
+      level,
+      spriteSize: m.spriteSize,
+      color: region ? "#73b9bd" : "#9fc36c",
+      hp: Math.round((24 + level * 13) * (elite ? 2.2 : 1)),
+      attack: Math.round((4 + level * 2.1) * (elite ? 1.2 : 1)),
+      defense: Math.floor(level * 0.65),
+      speed: m.spriteSize === 64 ? 0.75 : m.concept === "plant" ? 1 : 1.15,
+      ranged: ["m43", "m48", "m49", "m53", "m55", "m57", "m59", "m60"].includes(
+        m.id,
+      ),
+      xp: Math.round((18 + level * 10) * (elite ? 2.5 : 1)),
+      drops: [
+        { item: t.id, chance: t.chance, min: 1, max: 1 },
+        {
+          item: region ? "seawood" : "fiber",
+          chance: 0.38 + (i % 4) * 0.06,
+          min: 1,
+          max: elite ? 3 : 2,
+        },
+        {
+          item: region ? "shellore" : "ironstone",
+          chance: 0.19 + (i % 3) * 0.05,
+          min: 1,
+          max: elite ? 2 : 1,
+        },
+        {
+          item:
+            m.concept === "plant"
+              ? region
+                ? "breathgrass"
+                : "softleaf"
+              : region
+                ? "saltflower"
+                : "mint",
+          chance: 0.11 + (i % 3) * 0.025,
+          min: 1,
+          max: 1,
+        },
+        {
+          item: ["spear", "staff", "bow", "wand"][i % 4] + (region ? "2" : "1"),
+          chance: elite ? 0.045 : 0.016,
+          min: 1,
+          max: 1,
+        },
+      ],
+    };
+  }),
+);
 export const ITEMS = {};
 const item = (id, name, type, lore, props = {}) =>
   (ITEMS[id] = { id, name, type, lore, price: 10, ...props });
