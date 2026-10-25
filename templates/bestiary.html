@@ -1626,7 +1626,7 @@
             if (!canvas.isConnected) return;
             const { sx, sy, sw, sh } = m.image,
               c = canvas.getContext("2d"),
-              scale = 4;
+              scale = 2;
             c.clearRect(0, 0, 256, 256);
             c.imageSmoothingEnabled = false;
 
@@ -1685,8 +1685,8 @@
               size,
               0,
               0,
-              size * 2,
-              size * 2,
+              32,
+              32,
             );
             canvas.dataset.loaded = "true";
           } catch {

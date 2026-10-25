@@ -8,6 +8,7 @@ import {
   png,
   sample,
   sampleNearest,
+  paletteColor,
   cell,
   blit,
 } from "./pack-pixel-art.mjs";
@@ -42,6 +43,10 @@ async function save(im, file, entry, extra = {}) {
     ...extra,
   });
 }
+const RESOLUTION = Number(process.env.LEAFTALE_ART_RESOLUTION || 1);
+const NATIVE_TILE = TILE * RESOLUTION;
+const EDGE = 2 * RESOLUTION;
+const propSize = 256 * RESOLUTION;
 const propAtlas = decode("site/assets/world/props.png");
 for (const nav of Object.values(NAVIGATION)) {
   const entry = sources.find(
@@ -55,53 +60,73 @@ for (const nav of Object.values(NAVIGATION)) {
     rect.sy += 2;
     rect.sw -= 4;
     rect.sh -= 4;
-    frames.push(sampleNearest(raw, rect, TILE, TILE, true));
+    frames.push(sampleNearest(raw, rect, NATIVE_TILE, NATIVE_TILE, true));
   }
   // Canonical strips come from the top or left edge of a generated matching tile.
   // Width two pixels, with corner pixels canonical for their single material.
+  const authored = frames.map((f) => ({ ...f, data: Buffer.from(f.data) }));
   const edges = [0, 1, 2, 3].map((code) => {
     const hi = (code >> 1) & 1,
       lo = code & 1;
-    return { h: frames[hi | (lo * 2)], v: frames[hi | (lo * 8)] };
+    // A homogeneous edge must use the homogeneous material, not a corner
+    // tile whose flowers or coastline can bleed into an otherwise open road.
+    return {
+      h: authored[hi === lo ? (hi ? 15 : 0) : hi | (lo * 2)],
+      v: authored[hi === lo ? (hi ? 15 : 0) : hi | (lo * 8)],
+    };
   });
-  const copy = (src, sx, sy, dst, dx, dy) =>
-    src.data.copy(
-      dst.data,
-      (dy * TILE + dx) * 4,
-      (sy * TILE + sx) * 4,
-      (sy * TILE + sx) * 4 + 4,
+  // Preserve exact shared boundary pixels, then ease their authored texture
+  // into each tile's interior. This is palette-only atlas stitching, not blur
+  // applied to actors or artwork; the original authored pixels remain crisp.
+  const BAND = 12 * RESOLUTION;
+  const copy = (src, sx, sy, dst, dx, dy, weight = 1) => {
+    const from = (sy * NATIVE_TILE + sx) * 4,
+      to = (dy * NATIVE_TILE + dx) * 4;
+    if (weight >= 1) {
+      src.data.copy(dst.data, to, from, from + 4);
+      return;
+    }
+    const c = paletteColor(
+      ...[0, 1, 2].map((i) =>
+        Math.round(
+          src.data[from + i] * weight + dst.data[to + i] * (1 - weight),
+        ),
+      ),
     );
+    for (let i = 0; i < 3; i++) dst.data[to + i] = c[i];
+  };
   for (let mask = 0; mask < 16; mask++) {
     const f = frames[mask],
       tl = mask & 1 ? 1 : 0,
       tr = mask & 2 ? 1 : 0,
       br = mask & 4 ? 1 : 0,
       bl = mask & 8 ? 1 : 0;
-    for (let t = 0; t < 2; t++)
-      for (let p = 2; p < TILE - 2; p++) {
-        copy(edges[tl * 2 + tr].h, p, t, f, p, t);
-        copy(edges[bl * 2 + br].h, p, t, f, p, TILE - 1 - t);
-        copy(edges[tl * 2 + bl].v, t, p, f, t, p);
-        copy(edges[tr * 2 + br].v, t, p, f, TILE - 1 - t, p);
+    for (let t = 0; t < BAND; t++)
+      for (let p = EDGE; p < NATIVE_TILE - EDGE; p++) {
+        const weight = t < EDGE ? 1 : (BAND - t) / (BAND - EDGE);
+        copy(edges[tl * 2 + tr].h, p, t, f, p, t, weight);
+        copy(edges[bl * 2 + br].h, p, t, f, p, NATIVE_TILE - 1 - t, weight);
+        copy(edges[tl * 2 + bl].v, t, p, f, t, p, weight);
+        copy(edges[tr * 2 + br].v, t, p, f, NATIVE_TILE - 1 - t, p, weight);
       }
     for (const [cx, cy, bit] of [
       [0, 0, tl],
-      [TILE - 2, 0, tr],
-      [TILE - 2, TILE - 2, br],
-      [0, TILE - 2, bl],
+      [NATIVE_TILE - EDGE, 0, tr],
+      [NATIVE_TILE - EDGE, NATIVE_TILE - EDGE, br],
+      [0, NATIVE_TILE - EDGE, bl],
     ])
-      for (let y = 0; y < 2; y++)
-        for (let x = 0; x < 2; x++)
-          copy(frames[bit ? 15 : 0], 2, 2, f, cx + x, cy + y);
+      for (let y = 0; y < EDGE; y++)
+        for (let x = 0; x < EDGE; x++)
+          copy(frames[bit ? 15 : 0], EDGE, EDGE, f, cx + x, cy + y);
   }
-  const atlas = rgba(TILE * 4, TILE * 4);
+  const atlas = rgba(NATIVE_TILE * 4, NATIVE_TILE * 4);
   frames.forEach((f, i) =>
-    blit(f, atlas, (i % 4) * TILE, Math.floor(i / 4) * TILE),
+    blit(f, atlas, (i % 4) * NATIVE_TILE, Math.floor(i / 4) * NATIVE_TILE),
   );
   await save(atlas, "world/tiles-" + nav.id, entry, {
     cols: 4,
     rows: 4,
-    cellSize: TILE,
+    cellSize: NATIVE_TILE,
     autotile: "corner-16",
   });
   const full = rgba(nav.width, nav.height);
@@ -115,18 +140,19 @@ for (const nav of Object.values(NAVIGATION)) {
       f.data.copy(
         full.data,
         (y * nav.width + x) * 4,
-        (sy * TILE + sx) * 4,
-        (sy * TILE + sx) * 4 + 4,
+        (sy * RESOLUTION * NATIVE_TILE + sx * RESOLUTION) * 4,
+        (sy * RESOLUTION * NATIVE_TILE + sx * RESOLUTION) * 4 + 4,
       );
     }
   for (const p of nav.props.toSorted((a, b) => a.py - b.py)) {
-    const sx = (p.index % 4) * 256,
-      sy = Math.floor(p.index / 4) * 256,
+    const sx = (p.index % 4) * propSize,
+      sy = Math.floor(p.index / 4) * propSize,
       ox = Math.round(p.px - 128),
       oy = Math.round(p.py - 254);
     for (let y = 0; y < 256; y++)
       for (let x = 0; x < 256; x++) {
-        const at = ((sy + y) * propAtlas.width + sx + x) * 4,
+        const at =
+            ((sy + y * RESOLUTION) * propAtlas.width + sx + x * RESOLUTION) * 4,
           tx = ox + x,
           ty = oy + y;
         if (
@@ -144,8 +170,8 @@ for (const nav of Object.values(NAVIGATION)) {
     sample(
       full,
       { sx: 0, sy: 0, sw: full.width, sh: full.height },
-      Math.round(nav.width * fit),
-      Math.round(nav.height * fit),
+      Math.round(nav.width * fit) * RESOLUTION,
+      Math.round(nav.height * fit) * RESOLUTION,
       true,
     ),
     "maps/" + nav.id,
@@ -154,7 +180,11 @@ for (const nav of Object.values(NAVIGATION)) {
   );
   console.log("Connected terrain: " + nav.id);
 }
-manifest.version = 7;
+manifest.version = RESOLUTION === 2 ? 8 : 7;
+for (const t of Object.values(manifest.world.tiles)) t.size = NATIVE_TILE;
+manifest.world.nativeTileSize = NATIVE_TILE;
+manifest.world.props.size = propSize;
+manifest.world.resolutionScale = RESOLUTION;
 manifest.world.autotile = "corner-16";
 const replaced = new Set(assets.map((a) => a.id));
 records.assets = [

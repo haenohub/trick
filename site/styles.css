@@ -1758,7 +1758,7 @@ kbd {
 }
 .menu-panel,
 .create-card {
-  border-image-slice: 16 fill;
+  border-image-slice: 32 fill;
 }
 @media (max-width: 600px) {
   .class-preview {

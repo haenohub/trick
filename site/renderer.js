@@ -182,7 +182,8 @@ export class Renderer {
     if (!image) return;
     const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
       c = this.ctx;
-    // One source pixel uses the same 2x base scale and world zoom as terrain.
+    // All doubled-resolution artwork shares one native pixel per world display unit.
+    // Resolution changes do not alter the logical world or camera coverage.
     // World item/effect requests choose an atlas; they never stretch its cells.
     width = sw * ART.pixelScale;
     height = sh * ART.pixelScale;
@@ -386,7 +387,7 @@ export class Renderer {
       y,
       height,
       height,
-      1 - 2 / nativeSize,
+      1 - 2 / (nativeSize / (ART.resolutionScale || 1)),
       false,
     );
     if (anim === "death") c.restore();
@@ -851,7 +852,9 @@ export class Renderer {
     this.present();
   }
   drawTerrain(nav, zero) {
-    const image = IMAGES.get(ART.world.tiles[nav.id].file),
+    const terrain = ART.world.tiles[nav.id],
+      image = IMAGES.get(terrain.file),
+      nativeTile = terrain.size,
       c = this.ctx;
     const left =
       (this.camera.x - this.size.width / (2 * this.zoom) + nav.width) / 2;
@@ -880,10 +883,10 @@ export class Renderer {
           y1 = snap(zero.y + (r + 0.5) * TILE * 2 * this.zoom);
         c.drawImage(
           image,
-          (tile % 4) * TILE,
-          Math.floor(tile / 4) * TILE,
-          TILE,
-          TILE,
+          (tile % 4) * nativeTile,
+          Math.floor(tile / 4) * nativeTile,
+          nativeTile,
+          nativeTile,
           x0,
           y0,
           x1 - x0,
@@ -913,7 +916,9 @@ export class Renderer {
       terrain.height = h;
       const tc = terrain.getContext("2d");
       tc.imageSmoothingEnabled = false;
-      const atlas = IMAGES.get(ART.world.tiles[nav.id].file);
+      const tileLayout = ART.world.tiles[nav.id],
+        atlas = IMAGES.get(tileLayout.file),
+        nativeTile = tileLayout.size;
       for (let r = 0; r <= nav.rows; r++)
         for (let col = 0; col <= nav.cols; col++) {
           const tile = nav.transitions[r][col],
@@ -921,10 +926,10 @@ export class Renderer {
             y = (r - 0.5) * TILE * scale;
           tc.drawImage(
             atlas,
-            (tile % 4) * TILE,
-            Math.floor(tile / 4) * TILE,
-            TILE,
-            TILE,
+            (tile % 4) * nativeTile,
+            Math.floor(tile / 4) * nativeTile,
+            nativeTile,
+            nativeTile,
             ox + x,
             oy + y,
             TILE * scale + 0.5,
@@ -950,10 +955,10 @@ export class Renderer {
       const pos = worldToImage(x, y, state.player.map);
       c.drawImage(
         icons,
-        (index % 8) * 16,
-        Math.floor(index / 8) * 16,
-        16,
-        16,
+        (index % 8) * ART.iconLayout.size,
+        Math.floor(index / 8) * ART.iconLayout.size,
+        ART.iconLayout.size,
+        ART.iconLayout.size,
         ox + pos.u * mw - size / 2,
         oy + pos.v * mh - size / 2,
         size,

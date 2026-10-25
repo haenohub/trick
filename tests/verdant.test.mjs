@@ -30,10 +30,11 @@ test("each region adds exactly ten plant/inanimate species with personal loot, l
   );
 });
 test("every material-matched tile edge uses identical authored pixels and all maps share the dual grid", async () => {
+  const nativeTile = TILE * 2;
   const pixel = (a, t, x, y) =>
     a.pixels.subarray(
-      ((Math.floor(t / 4) * TILE + y) * a.width + (t % 4) * TILE + x) * 4,
-      ((Math.floor(t / 4) * TILE + y) * a.width + (t % 4) * TILE + x) * 4 + 4,
+      ((Math.floor(t / 4) * nativeTile + y) * a.width + (t % 4) * nativeTile + x) * 4,
+      ((Math.floor(t / 4) * nativeTile + y) * a.width + (t % 4) * nativeTile + x) * 4 + 4,
     );
   for (const n of Object.values(NAVIGATION)) {
     const atlas = rgbaPixels(
@@ -43,16 +44,16 @@ test("every material-matched tile edge uses identical authored pixels and all ma
     for (let a = 0; a < 16; a++)
       for (let b = 0; b < 16; b++) {
         if ((a & 2) / 2 === (b & 1) && (a & 4) / 4 === (b & 8) / 8)
-          for (let y = 0; y < TILE; y++)
+          for (let y = 0; y < nativeTile; y++)
             assert.deepEqual(
-              pixel(atlas, a, TILE - 1, y),
+              pixel(atlas, a, nativeTile - 1, y),
               pixel(atlas, b, 0, y),
               n.id + " horizontal " + a + "/" + b,
             );
         if ((a & 8) / 8 === (b & 1) && (a & 4) / 4 === (b & 2) / 2)
-          for (let x = 0; x < TILE; x++)
+          for (let x = 0; x < nativeTile; x++)
             assert.deepEqual(
-              pixel(atlas, a, x, TILE - 1),
+              pixel(atlas, a, x, nativeTile - 1),
               pixel(atlas, b, x, 0),
               n.id + " vertical " + a + "/" + b,
             );

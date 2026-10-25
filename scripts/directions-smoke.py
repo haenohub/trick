@@ -46,7 +46,7 @@ with sync_playwright() as pw:
   assert mobile.evaluate('document.documentElement.scrollWidth<=innerWidth'),actor
   assert mobile.evaluate("[...document.querySelectorAll('.views canvas')].every(c=>Number.isInteger(parseFloat(c.style.width)/c.width))"),actor
  mobile.screenshot(path='/tmp/leaftale-eight-directions-mobile.png',full_page=True)
- print('PASS: mobile gallery fits and keeps whole-number pixel scaling for 32/48/64px')
+ print('PASS: mobile gallery fits and keeps whole-number pixel scaling for 64/96/128px')
  # Recreate a fresh save for each route, then use only actual floor clicks.
  page.goto(BASE);page.locator('#loading').wait_for(state='hidden')
  for row in range(8):

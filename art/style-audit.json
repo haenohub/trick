@@ -1,762 +1,515 @@
 {
-  "reference": {
-    "file": "몬스터 샘플.mp4",
-    "width": 156,
-    "height": 102,
-    "seconds": 4.166633
-  },
-  "pixelGrid": {
-    "native": 1,
-    "display": 2
-  },
-  "before": {
-    "definition": "Near black: all RGB channels below 80; edge: an opaque pixel adjacent to transparency",
-    "solid": 43283,
-    "dark": 27979,
-    "edge": 5897,
-    "darkEdge": 5897,
-    "darkFraction": 0.6464200725458032,
-    "darkEdgeFraction": 1,
-    "actors": [
-      {
-        "id": "warden",
-        "solid": 1192,
-        "dark": 806,
-        "edge": 149,
-        "darkEdge": 149
-      },
-      {
-        "id": "mage",
-        "solid": 1112,
-        "dark": 529,
-        "edge": 126,
-        "darkEdge": 126
-      },
-      {
-        "id": "ranger",
-        "solid": 994,
-        "dark": 810,
-        "edge": 107,
-        "darkEdge": 107
-      },
-      {
-        "id": "herbalist",
-        "solid": 1151,
-        "dark": 599,
-        "edge": 120,
-        "darkEdge": 120
-      },
-      {
-        "id": "guide",
-        "solid": 1181,
-        "dark": 821,
-        "edge": 127,
-        "darkEdge": 127
-      },
-      {
-        "id": "smith",
-        "solid": 1186,
-        "dark": 733,
-        "edge": 127,
-        "darkEdge": 127
-      },
-      {
-        "id": "healer",
-        "solid": 1179,
-        "dark": 669,
-        "edge": 117,
-        "darkEdge": 117
-      },
-      {
-        "id": "merchant",
-        "solid": 1166,
-        "dark": 632,
-        "edge": 128,
-        "darkEdge": 128
-      },
-      {
-        "id": "coastguide",
-        "solid": 1303,
-        "dark": 563,
-        "edge": 118,
-        "darkEdge": 118
-      },
-      {
-        "id": "coastsmith",
-        "solid": 1125,
-        "dark": 673,
-        "edge": 124,
-        "darkEdge": 124
-      },
-      {
-        "id": "coasthealer",
-        "solid": 1270,
-        "dark": 724,
-        "edge": 122,
-        "darkEdge": 122
-      },
-      {
-        "id": "mentor",
-        "solid": 1164,
-        "dark": 652,
-        "edge": 130,
-        "darkEdge": 130
-      },
-      {
-        "id": "m1",
-        "solid": 422,
-        "dark": 295,
-        "edge": 82,
-        "darkEdge": 82
-      },
-      {
-        "id": "m2",
-        "solid": 373,
-        "dark": 192,
-        "edge": 70,
-        "darkEdge": 70
-      },
-      {
-        "id": "m3",
-        "solid": 505,
-        "dark": 336,
-        "edge": 92,
-        "darkEdge": 92
-      },
-      {
-        "id": "m4",
-        "solid": 406,
-        "dark": 306,
-        "edge": 81,
-        "darkEdge": 81
-      },
-      {
-        "id": "m5",
-        "solid": 721,
-        "dark": 418,
-        "edge": 115,
-        "darkEdge": 115
-      },
-      {
-        "id": "m6",
-        "solid": 412,
-        "dark": 228,
-        "edge": 70,
-        "darkEdge": 70
-      },
-      {
-        "id": "m7",
-        "solid": 406,
-        "dark": 229,
-        "edge": 81,
-        "darkEdge": 81
-      },
-      {
-        "id": "m8",
-        "solid": 413,
-        "dark": 242,
-        "edge": 82,
-        "darkEdge": 82
-      },
-      {
-        "id": "m9",
-        "solid": 1082,
-        "dark": 759,
-        "edge": 151,
-        "darkEdge": 151
-      },
-      {
-        "id": "m10",
-        "solid": 1101,
-        "dark": 706,
-        "edge": 119,
-        "darkEdge": 119
-      },
-      {
-        "id": "m11",
-        "solid": 406,
-        "dark": 284,
-        "edge": 92,
-        "darkEdge": 92
-      },
-      {
-        "id": "m12",
-        "solid": 374,
-        "dark": 246,
-        "edge": 92,
-        "darkEdge": 92
-      },
-      {
-        "id": "m13",
-        "solid": 381,
-        "dark": 265,
-        "edge": 76,
-        "darkEdge": 76
-      },
-      {
-        "id": "m14",
-        "solid": 980,
-        "dark": 733,
-        "edge": 113,
-        "darkEdge": 113
-      },
-      {
-        "id": "m15",
-        "solid": 871,
-        "dark": 508,
-        "edge": 105,
-        "darkEdge": 105
-      },
-      {
-        "id": "m16",
-        "solid": 395,
-        "dark": 320,
-        "edge": 90,
-        "darkEdge": 90
-      },
-      {
-        "id": "m17",
-        "solid": 467,
-        "dark": 322,
-        "edge": 70,
-        "darkEdge": 70
-      },
-      {
-        "id": "m18",
-        "solid": 424,
-        "dark": 320,
-        "edge": 94,
-        "darkEdge": 94
-      },
-      {
-        "id": "m19",
-        "solid": 1855,
-        "dark": 1440,
-        "edge": 234,
-        "darkEdge": 234
-      },
-      {
-        "id": "m20",
-        "solid": 2013,
-        "dark": 1293,
-        "edge": 216,
-        "darkEdge": 216
-      },
-      {
-        "id": "m21",
-        "solid": 364,
-        "dark": 184,
-        "edge": 69,
-        "darkEdge": 69
-      },
-      {
-        "id": "m22",
-        "solid": 283,
-        "dark": 225,
-        "edge": 64,
-        "darkEdge": 64
-      },
-      {
-        "id": "m23",
-        "solid": 515,
-        "dark": 280,
-        "edge": 82,
-        "darkEdge": 82
-      },
-      {
-        "id": "m24",
-        "solid": 710,
-        "dark": 493,
-        "edge": 144,
-        "darkEdge": 144
-      },
-      {
-        "id": "m25",
-        "solid": 770,
-        "dark": 476,
-        "edge": 97,
-        "darkEdge": 97
-      },
-      {
-        "id": "m26",
-        "solid": 403,
-        "dark": 287,
-        "edge": 100,
-        "darkEdge": 100
-      },
-      {
-        "id": "m27",
-        "solid": 956,
-        "dark": 727,
-        "edge": 123,
-        "darkEdge": 123
-      },
-      {
-        "id": "m28",
-        "solid": 456,
-        "dark": 209,
-        "edge": 83,
-        "darkEdge": 83
-      },
-      {
-        "id": "m29",
-        "solid": 782,
-        "dark": 548,
-        "edge": 140,
-        "darkEdge": 140
-      },
-      {
-        "id": "m30",
-        "solid": 919,
-        "dark": 543,
-        "edge": 120,
-        "darkEdge": 120
-      },
-      {
-        "id": "m31",
-        "solid": 372,
-        "dark": 289,
-        "edge": 64,
-        "darkEdge": 64
-      },
-      {
-        "id": "m32",
-        "solid": 392,
-        "dark": 288,
-        "edge": 68,
-        "darkEdge": 68
-      },
-      {
-        "id": "m33",
-        "solid": 886,
-        "dark": 637,
-        "edge": 111,
-        "darkEdge": 111
-      },
-      {
-        "id": "m34",
-        "solid": 1138,
-        "dark": 898,
-        "edge": 155,
-        "darkEdge": 155
-      },
-      {
-        "id": "m35",
-        "solid": 1270,
-        "dark": 827,
-        "edge": 183,
-        "darkEdge": 183
-      },
-      {
-        "id": "m36",
-        "solid": 291,
-        "dark": 282,
-        "edge": 111,
-        "darkEdge": 111
-      },
-      {
-        "id": "m37",
-        "solid": 334,
-        "dark": 279,
-        "edge": 71,
-        "darkEdge": 71
-      },
-      {
-        "id": "m38",
-        "solid": 526,
-        "dark": 377,
-        "edge": 83,
-        "darkEdge": 83
-      },
-      {
-        "id": "m39",
-        "solid": 1985,
-        "dark": 1147,
-        "edge": 197,
-        "darkEdge": 197
-      },
-      {
-        "id": "m40",
-        "solid": 1901,
-        "dark": 1330,
-        "edge": 212,
-        "darkEdge": 212
-      }
-    ]
-  },
-  "after": {
-    "definition": "Near black: all RGB channels below 80; edge: an opaque pixel adjacent to transparency",
-    "solid": 39963,
-    "dark": 207,
-    "edge": 6075,
-    "darkEdge": 70,
-    "darkFraction": 0.005179791306958937,
-    "darkEdgeFraction": 0.011522633744855968,
-    "actors": [
-      {
-        "id": "warden",
-        "solid": 1191,
-        "dark": 1,
-        "edge": 135,
-        "darkEdge": 0
-      },
-      {
-        "id": "mage",
-        "solid": 1086,
-        "dark": 0,
-        "edge": 138,
-        "darkEdge": 0
-      },
-      {
-        "id": "ranger",
-        "solid": 1190,
-        "dark": 4,
-        "edge": 128,
-        "darkEdge": 1
-      },
-      {
-        "id": "herbalist",
-        "solid": 1134,
-        "dark": 0,
-        "edge": 173,
-        "darkEdge": 0
-      },
-      {
-        "id": "guide",
-        "solid": 978,
-        "dark": 5,
-        "edge": 123,
-        "darkEdge": 0
-      },
-      {
-        "id": "smith",
-        "solid": 1088,
-        "dark": 22,
-        "edge": 131,
-        "darkEdge": 15
-      },
-      {
-        "id": "healer",
-        "solid": 1310,
-        "dark": 5,
-        "edge": 137,
-        "darkEdge": 3
-      },
-      {
-        "id": "merchant",
-        "solid": 910,
-        "dark": 19,
-        "edge": 116,
-        "darkEdge": 1
-      },
-      {
-        "id": "coastguide",
-        "solid": 1060,
-        "dark": 1,
-        "edge": 137,
-        "darkEdge": 0
-      },
-      {
-        "id": "coastsmith",
-        "solid": 949,
-        "dark": 47,
-        "edge": 112,
-        "darkEdge": 18
-      },
-      {
-        "id": "coasthealer",
-        "solid": 1020,
-        "dark": 3,
-        "edge": 115,
-        "darkEdge": 2
-      },
-      {
-        "id": "mentor",
-        "solid": 1033,
-        "dark": 1,
-        "edge": 149,
-        "darkEdge": 0
-      },
-      {
-        "id": "m1",
-        "solid": 416,
-        "dark": 4,
-        "edge": 81,
-        "darkEdge": 0
-      },
-      {
-        "id": "m2",
-        "solid": 457,
-        "dark": 5,
-        "edge": 93,
-        "darkEdge": 2
-      },
-      {
-        "id": "m3",
-        "solid": 417,
-        "dark": 3,
-        "edge": 89,
-        "darkEdge": 1
-      },
-      {
-        "id": "m4",
-        "solid": 520,
-        "dark": 29,
-        "edge": 92,
-        "darkEdge": 16
-      },
-      {
-        "id": "m5",
-        "solid": 926,
-        "dark": 0,
-        "edge": 113,
-        "darkEdge": 0
-      },
-      {
-        "id": "m6",
-        "solid": 437,
-        "dark": 0,
-        "edge": 69,
-        "darkEdge": 0
-      },
-      {
-        "id": "m7",
-        "solid": 372,
-        "dark": 1,
-        "edge": 78,
-        "darkEdge": 0
-      },
-      {
-        "id": "m8",
-        "solid": 376,
-        "dark": 0,
-        "edge": 82,
-        "darkEdge": 0
-      },
-      {
-        "id": "m9",
-        "solid": 1097,
-        "dark": 0,
-        "edge": 162,
-        "darkEdge": 0
-      },
-      {
-        "id": "m10",
-        "solid": 1049,
-        "dark": 2,
-        "edge": 120,
-        "darkEdge": 0
-      },
-      {
-        "id": "m11",
-        "solid": 335,
-        "dark": 0,
-        "edge": 79,
-        "darkEdge": 0
-      },
-      {
-        "id": "m12",
-        "solid": 358,
-        "dark": 1,
-        "edge": 95,
-        "darkEdge": 0
-      },
-      {
-        "id": "m13",
-        "solid": 306,
-        "dark": 1,
-        "edge": 92,
-        "darkEdge": 0
-      },
-      {
-        "id": "m14",
-        "solid": 799,
-        "dark": 0,
-        "edge": 116,
-        "darkEdge": 0
-      },
-      {
-        "id": "m15",
-        "solid": 772,
-        "dark": 7,
-        "edge": 100,
-        "darkEdge": 1
-      },
-      {
-        "id": "m16",
-        "solid": 337,
-        "dark": 7,
-        "edge": 95,
-        "darkEdge": 3
-      },
-      {
-        "id": "m17",
-        "solid": 466,
-        "dark": 0,
-        "edge": 68,
-        "darkEdge": 0
-      },
-      {
-        "id": "m18",
-        "solid": 333,
-        "dark": 1,
-        "edge": 87,
-        "darkEdge": 0
-      },
-      {
-        "id": "m19",
-        "solid": 1789,
-        "dark": 10,
-        "edge": 173,
-        "darkEdge": 7
-      },
-      {
-        "id": "m20",
-        "solid": 1939,
-        "dark": 2,
-        "edge": 193,
-        "darkEdge": 0
-      },
-      {
-        "id": "m21",
-        "solid": 357,
-        "dark": 0,
-        "edge": 72,
-        "darkEdge": 0
-      },
-      {
-        "id": "m22",
-        "solid": 275,
-        "dark": 0,
-        "edge": 66,
-        "darkEdge": 0
-      },
-      {
-        "id": "m23",
-        "solid": 479,
-        "dark": 0,
-        "edge": 77,
-        "darkEdge": 0
-      },
-      {
-        "id": "m24",
-        "solid": 693,
-        "dark": 0,
-        "edge": 135,
-        "darkEdge": 0
-      },
-      {
-        "id": "m25",
-        "solid": 911,
-        "dark": 0,
-        "edge": 124,
-        "darkEdge": 0
-      },
-      {
-        "id": "m26",
-        "solid": 318,
-        "dark": 1,
-        "edge": 101,
-        "darkEdge": 0
-      },
-      {
-        "id": "m27",
-        "solid": 1003,
-        "dark": 0,
-        "edge": 127,
-        "darkEdge": 0
-      },
-      {
-        "id": "m28",
-        "solid": 507,
-        "dark": 0,
-        "edge": 95,
-        "darkEdge": 0
-      },
-      {
-        "id": "m29",
-        "solid": 761,
-        "dark": 0,
-        "edge": 157,
-        "darkEdge": 0
-      },
-      {
-        "id": "m30",
-        "solid": 851,
-        "dark": 20,
-        "edge": 113,
-        "darkEdge": 0
-      },
-      {
-        "id": "m31",
-        "solid": 310,
-        "dark": 0,
-        "edge": 62,
-        "darkEdge": 0
-      },
-      {
-        "id": "m32",
-        "solid": 324,
-        "dark": 0,
-        "edge": 66,
-        "darkEdge": 0
-      },
-      {
-        "id": "m33",
-        "solid": 841,
-        "dark": 1,
-        "edge": 117,
-        "darkEdge": 0
-      },
-      {
-        "id": "m34",
-        "solid": 909,
-        "dark": 3,
-        "edge": 160,
-        "darkEdge": 0
-      },
-      {
-        "id": "m35",
-        "solid": 1055,
-        "dark": 0,
-        "edge": 212,
-        "darkEdge": 0
-      },
-      {
-        "id": "m36",
-        "solid": 221,
-        "dark": 0,
-        "edge": 70,
-        "darkEdge": 0
-      },
-      {
-        "id": "m37",
-        "solid": 266,
-        "dark": 0,
-        "edge": 85,
-        "darkEdge": 0
-      },
-      {
-        "id": "m38",
-        "solid": 472,
-        "dark": 0,
-        "edge": 80,
-        "darkEdge": 0
-      },
-      {
-        "id": "m39",
-        "solid": 1479,
-        "dark": 0,
-        "edge": 190,
-        "darkEdge": 0
-      },
-      {
-        "id": "m40",
-        "solid": 1481,
-        "dark": 1,
-        "edge": 295,
-        "darkEdge": 0
-      }
-    ]
-  }
+  "definition": "Near black: all RGB channels below 80; edge: an opaque pixel adjacent to transparency",
+  "solid": 234535,
+  "dark": 18674,
+  "edge": 20310,
+  "darkEdge": 5222,
+  "darkFraction": 0.07962137847229625,
+  "darkEdgeFraction": 0.2571147218119153,
+  "actors": [
+    {
+      "id": "warden",
+      "solid": 3027,
+      "dark": 202,
+      "edge": 305,
+      "darkEdge": 73
+    },
+    {
+      "id": "mage",
+      "solid": 4123,
+      "dark": 95,
+      "edge": 264,
+      "darkEdge": 25
+    },
+    {
+      "id": "ranger",
+      "solid": 4061,
+      "dark": 259,
+      "edge": 335,
+      "darkEdge": 76
+    },
+    {
+      "id": "herbalist",
+      "solid": 3934,
+      "dark": 260,
+      "edge": 264,
+      "darkEdge": 95
+    },
+    {
+      "id": "guide",
+      "solid": 3923,
+      "dark": 287,
+      "edge": 250,
+      "darkEdge": 94
+    },
+    {
+      "id": "smith",
+      "solid": 3112,
+      "dark": 344,
+      "edge": 257,
+      "darkEdge": 106
+    },
+    {
+      "id": "healer",
+      "solid": 4006,
+      "dark": 197,
+      "edge": 281,
+      "darkEdge": 68
+    },
+    {
+      "id": "merchant",
+      "solid": 3556,
+      "dark": 463,
+      "edge": 261,
+      "darkEdge": 128
+    },
+    {
+      "id": "coastguide",
+      "solid": 4748,
+      "dark": 362,
+      "edge": 327,
+      "darkEdge": 56
+    },
+    {
+      "id": "coastsmith",
+      "solid": 2833,
+      "dark": 304,
+      "edge": 310,
+      "darkEdge": 105
+    },
+    {
+      "id": "coasthealer",
+      "solid": 4492,
+      "dark": 497,
+      "edge": 326,
+      "darkEdge": 164
+    },
+    {
+      "id": "mentor",
+      "solid": 3945,
+      "dark": 341,
+      "edge": 328,
+      "darkEdge": 71
+    },
+    {
+      "id": "m1",
+      "solid": 1589,
+      "dark": 170,
+      "edge": 263,
+      "darkEdge": 93
+    },
+    {
+      "id": "m2",
+      "solid": 1889,
+      "dark": 57,
+      "edge": 170,
+      "darkEdge": 14
+    },
+    {
+      "id": "m3",
+      "solid": 1579,
+      "dark": 99,
+      "edge": 235,
+      "darkEdge": 46
+    },
+    {
+      "id": "m4",
+      "solid": 1902,
+      "dark": 194,
+      "edge": 199,
+      "darkEdge": 74
+    },
+    {
+      "id": "m5",
+      "solid": 4258,
+      "dark": 260,
+      "edge": 248,
+      "darkEdge": 105
+    },
+    {
+      "id": "m6",
+      "solid": 1533,
+      "dark": 35,
+      "edge": 152,
+      "darkEdge": 18
+    },
+    {
+      "id": "m7",
+      "solid": 1606,
+      "dark": 99,
+      "edge": 193,
+      "darkEdge": 56
+    },
+    {
+      "id": "m8",
+      "solid": 1405,
+      "dark": 122,
+      "edge": 155,
+      "darkEdge": 64
+    },
+    {
+      "id": "m9",
+      "solid": 4686,
+      "dark": 458,
+      "edge": 296,
+      "darkEdge": 187
+    },
+    {
+      "id": "m10",
+      "solid": 3191,
+      "dark": 162,
+      "edge": 322,
+      "darkEdge": 57
+    },
+    {
+      "id": "m11",
+      "solid": 1886,
+      "dark": 368,
+      "edge": 248,
+      "darkEdge": 97
+    },
+    {
+      "id": "m12",
+      "solid": 905,
+      "dark": 84,
+      "edge": 254,
+      "darkEdge": 31
+    },
+    {
+      "id": "m13",
+      "solid": 1304,
+      "dark": 123,
+      "edge": 216,
+      "darkEdge": 52
+    },
+    {
+      "id": "m14",
+      "solid": 3942,
+      "dark": 256,
+      "edge": 250,
+      "darkEdge": 79
+    },
+    {
+      "id": "m15",
+      "solid": 4644,
+      "dark": 422,
+      "edge": 261,
+      "darkEdge": 144
+    },
+    {
+      "id": "m16",
+      "solid": 1625,
+      "dark": 65,
+      "edge": 223,
+      "darkEdge": 10
+    },
+    {
+      "id": "m17",
+      "solid": 1957,
+      "dark": 104,
+      "edge": 171,
+      "darkEdge": 51
+    },
+    {
+      "id": "m18",
+      "solid": 1402,
+      "dark": 560,
+      "edge": 197,
+      "darkEdge": 110
+    },
+    {
+      "id": "m19",
+      "solid": 7854,
+      "dark": 376,
+      "edge": 406,
+      "darkEdge": 135
+    },
+    {
+      "id": "m20",
+      "solid": 7489,
+      "dark": 522,
+      "edge": 333,
+      "darkEdge": 206
+    },
+    {
+      "id": "m21",
+      "solid": 1311,
+      "dark": 41,
+      "edge": 171,
+      "darkEdge": 12
+    },
+    {
+      "id": "m22",
+      "solid": 1236,
+      "dark": 67,
+      "edge": 174,
+      "darkEdge": 22
+    },
+    {
+      "id": "m23",
+      "solid": 1672,
+      "dark": 43,
+      "edge": 151,
+      "darkEdge": 11
+    },
+    {
+      "id": "m24",
+      "solid": 2779,
+      "dark": 77,
+      "edge": 308,
+      "darkEdge": 14
+    },
+    {
+      "id": "m25",
+      "solid": 3768,
+      "dark": 67,
+      "edge": 255,
+      "darkEdge": 16
+    },
+    {
+      "id": "m26",
+      "solid": 1717,
+      "dark": 304,
+      "edge": 251,
+      "darkEdge": 141
+    },
+    {
+      "id": "m27",
+      "solid": 4310,
+      "dark": 148,
+      "edge": 259,
+      "darkEdge": 52
+    },
+    {
+      "id": "m28",
+      "solid": 1898,
+      "dark": 0,
+      "edge": 200,
+      "darkEdge": 0
+    },
+    {
+      "id": "m29",
+      "solid": 3229,
+      "dark": 334,
+      "edge": 433,
+      "darkEdge": 155
+    },
+    {
+      "id": "m30",
+      "solid": 4177,
+      "dark": 431,
+      "edge": 249,
+      "darkEdge": 173
+    },
+    {
+      "id": "m31",
+      "solid": 1598,
+      "dark": 114,
+      "edge": 201,
+      "darkEdge": 51
+    },
+    {
+      "id": "m32",
+      "solid": 1278,
+      "dark": 163,
+      "edge": 162,
+      "darkEdge": 65
+    },
+    {
+      "id": "m33",
+      "solid": 3512,
+      "dark": 192,
+      "edge": 290,
+      "darkEdge": 40
+    },
+    {
+      "id": "m34",
+      "solid": 3999,
+      "dark": 138,
+      "edge": 367,
+      "darkEdge": 17
+    },
+    {
+      "id": "m35",
+      "solid": 4624,
+      "dark": 27,
+      "edge": 743,
+      "darkEdge": 9
+    },
+    {
+      "id": "m36",
+      "solid": 1100,
+      "dark": 24,
+      "edge": 264,
+      "darkEdge": 0
+    },
+    {
+      "id": "m37",
+      "solid": 1338,
+      "dark": 17,
+      "edge": 197,
+      "darkEdge": 3
+    },
+    {
+      "id": "m38",
+      "solid": 2069,
+      "dark": 56,
+      "edge": 205,
+      "darkEdge": 12
+    },
+    {
+      "id": "m39",
+      "solid": 8371,
+      "dark": 291,
+      "edge": 438,
+      "darkEdge": 99
+    },
+    {
+      "id": "m40",
+      "solid": 5777,
+      "dark": 68,
+      "edge": 636,
+      "darkEdge": 5
+    },
+    {
+      "id": "m41",
+      "solid": 1503,
+      "dark": 88,
+      "edge": 204,
+      "darkEdge": 53
+    },
+    {
+      "id": "m42",
+      "solid": 1375,
+      "dark": 208,
+      "edge": 211,
+      "darkEdge": 61
+    },
+    {
+      "id": "m43",
+      "solid": 1709,
+      "dark": 169,
+      "edge": 171,
+      "darkEdge": 60
+    },
+    {
+      "id": "m44",
+      "solid": 3831,
+      "dark": 368,
+      "edge": 371,
+      "darkEdge": 139
+    },
+    {
+      "id": "m45",
+      "solid": 3685,
+      "dark": 856,
+      "edge": 309,
+      "darkEdge": 191
+    },
+    {
+      "id": "m46",
+      "solid": 3641,
+      "dark": 461,
+      "edge": 280,
+      "darkEdge": 115
+    },
+    {
+      "id": "m47",
+      "solid": 1650,
+      "dark": 84,
+      "edge": 207,
+      "darkEdge": 12
+    },
+    {
+      "id": "m48",
+      "solid": 4065,
+      "dark": 292,
+      "edge": 334,
+      "darkEdge": 73
+    },
+    {
+      "id": "m49",
+      "solid": 3934,
+      "dark": 345,
+      "edge": 363,
+      "darkEdge": 103
+    },
+    {
+      "id": "m50",
+      "solid": 8376,
+      "dark": 1713,
+      "edge": 445,
+      "darkEdge": 115
+    },
+    {
+      "id": "m51",
+      "solid": 1859,
+      "dark": 24,
+      "edge": 176,
+      "darkEdge": 0
+    },
+    {
+      "id": "m52",
+      "solid": 3620,
+      "dark": 375,
+      "edge": 359,
+      "darkEdge": 80
+    },
+    {
+      "id": "m53",
+      "solid": 4479,
+      "dark": 263,
+      "edge": 369,
+      "darkEdge": 83
+    },
+    {
+      "id": "m54",
+      "solid": 1674,
+      "dark": 150,
+      "edge": 172,
+      "darkEdge": 27
+    },
+    {
+      "id": "m55",
+      "solid": 4466,
+      "dark": 343,
+      "edge": 325,
+      "darkEdge": 70
+    },
+    {
+      "id": "m56",
+      "solid": 4141,
+      "dark": 428,
+      "edge": 309,
+      "darkEdge": 84
+    },
+    {
+      "id": "m57",
+      "solid": 4019,
+      "dark": 317,
+      "edge": 281,
+      "darkEdge": 45
+    },
+    {
+      "id": "m58",
+      "solid": 4297,
+      "dark": 594,
+      "edge": 298,
+      "darkEdge": 75
+    },
+    {
+      "id": "m59",
+      "solid": 3671,
+      "dark": 412,
+      "edge": 385,
+      "darkEdge": 70
+    },
+    {
+      "id": "m60",
+      "solid": 6371,
+      "dark": 435,
+      "edge": 487,
+      "darkEdge": 179
+    }
+  ]
 }

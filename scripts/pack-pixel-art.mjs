@@ -387,7 +387,7 @@ function entityFrames(
   rows,
   rowIndices,
   size,
-  { walkRows = null, sampling = "area" } = {},
+  { walkRows = null, sampling = "area", padding = 2 } = {},
 ) {
   const rects = rowIndices.flatMap((row) =>
     Array.from({ length: cols }, (_, col) =>
@@ -400,17 +400,18 @@ function entityFrames(
     )
     .map((r) => Math.max(r.sw, r.sh))
     .sort((a, b) => a - b);
-  const scale = (size - 4) / walkExtents[Math.floor(walkExtents.length / 2)];
+  const scale =
+    (size - padding * 2) / walkExtents[Math.floor(walkExtents.length / 2)];
   const frames = rects.map((rect) => {
     const frame = rgba(size, size),
-      fit = Math.min(scale, (size - 4) / Math.max(rect.sw, rect.sh)),
+      fit = Math.min(scale, (size - padding * 2) / Math.max(rect.sw, rect.sh)),
       w = Math.max(1, Math.round(rect.sw * fit)),
       h = Math.max(1, Math.round(rect.sh * fit));
     blit(
       (sampling === "nearest" ? sampleNearest : sample)(source, rect, w, h),
       frame,
       Math.floor((size - w) / 2),
-      size - 2 - h,
+      size - padding - h,
     );
     return frame;
   });
@@ -458,6 +459,7 @@ export async function packPixelArt({
   sourceFile = "art/pixel-sources.json",
   output = "/tmp/leaftale-pixel-assets",
   only = null,
+  resolutionScale = 1,
 } = {}) {
   const registry = JSON.parse(await readFile(sourceFile, "utf8")),
     assets = [],
@@ -486,7 +488,8 @@ export async function packPixelArt({
     if (only && !only.includes(entry.id)) continue;
     console.log("Packing " + entry.id);
     const source = decode(entry.source),
-      sampling = entry.sampling || "nearest";
+      sampling = entry.sampling || "nearest",
+      unit = 16 * resolutionScale;
     if (entry.id.startsWith("monsters-")) {
       const group = Number(entry.id.slice(9));
       for (const [local, m] of MONSTERS.slice(
@@ -543,11 +546,11 @@ export async function packPixelArt({
     } else if (["icons", "loot"].includes(entry.id)) {
       const rows = entry.id === "icons" ? 8 : 5,
         file = entry.id === "icons" ? "items" : "loot",
-        atlas = rgba(128, rows * 16);
+        atlas = rgba(unit * 8, rows * unit);
       for (let row = 0; row < rows; row++)
         for (let col = 0; col < 8; col++) {
           const rect = foreground(source, cell(source, 8, rows, col, row)),
-            scale = 12 / Math.max(rect.sw, rect.sh),
+            scale = (12 * resolutionScale) / Math.max(rect.sw, rect.sh),
             w = Math.max(1, Math.round(rect.sw * scale)),
             h = Math.max(1, Math.round(rect.sh * scale));
           blit(
@@ -558,19 +561,22 @@ export async function packPixelArt({
               h,
             ),
             atlas,
-            col * 16 + Math.floor((16 - w) / 2),
-            row * 16 + Math.floor((16 - h) / 2),
+            col * unit + Math.floor((unit - w) / 2),
+            row * unit + Math.floor((unit - h) / 2),
           );
         }
-      await save(atlas, file, entry, { cellSize: 16, cols: 8, rows });
+      await save(atlas, file, entry, { cellSize: unit, cols: 8, rows });
       files.push(file);
     } else if (entry.id === "effects") {
-      const atlas = rgba(512, 512);
+      const effectSize = 64 * resolutionScale,
+        atlas = rgba(effectSize * 8, effectSize * 8);
       for (let row = 0; row < 8; row++) {
         const rects = Array.from({ length: 8 }, (_, col) =>
           effectBounds(source, cell(source, 8, 8, col, row)),
         );
-        const scale = 56 / Math.max(...rects.map((r) => Math.max(r.sw, r.sh)));
+        const scale =
+          (56 * resolutionScale) /
+          Math.max(...rects.map((r) => Math.max(r.sw, r.sh)));
         for (let col = 0; col < 8; col++) {
           const rect = rects[col],
             w = Math.max(1, Math.round(rect.sw * scale)),
@@ -583,24 +589,29 @@ export async function packPixelArt({
               h,
             ),
             atlas,
-            col * 64 + Math.floor((64 - w) / 2),
-            row * 64 + Math.floor((64 - h) / 2),
+            col * effectSize + Math.floor((effectSize - w) / 2),
+            row * effectSize + Math.floor((effectSize - h) / 2),
           );
         }
       }
-      await save(atlas, "effects", entry, { cellSize: 64, cols: 8, rows: 8 });
+      await save(atlas, "effects", entry, {
+        cellSize: effectSize,
+        cols: 8,
+        rows: 8,
+      });
       files.push("effects");
-      for (const size of [32, 48]) {
+      for (const baseSize of [32, 48]) {
+        const size = baseSize * resolutionScale;
         const smaller = rgba(size * 8, size * 8);
         for (let row = 0; row < 8; row++)
           for (let col = 0; col < 8; col++)
             blit(
-              sample(atlas, cell(atlas, 8, 8, col, row), size, size),
+              sampleNearest(source, cell(source, 8, 8, col, row), size, size),
               smaller,
               col * size,
               row * size,
             );
-        await save(smaller, "effects-" + size, entry, {
+        await save(smaller, "effects-" + baseSize, entry, {
           cellSize: size,
           cols: 8,
           rows: 8,
@@ -614,13 +625,15 @@ export async function packPixelArt({
           : entry.id === "title"
             ? "title-forest"
             : "interface";
-      const [w, h] = map
+      const [baseW, baseH] = map
         ? [960, 640]
         : entry.id === "title"
           ? [480, 320]
           : [128, 128];
+      const w = baseW * resolutionScale,
+        h = baseH * resolutionScale;
       await save(
-        sample(
+        (sampling === "nearest" ? sampleNearest : sample)(
           source,
           { sx: 0, sy: 0, sw: source.width, sh: source.height },
           w,
@@ -740,4 +753,4 @@ if (
   await packPixelArt({ only });
 }
 
-export { sampleNearest };
+export { sampleNearest, color as paletteColor };

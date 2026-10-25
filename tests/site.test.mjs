@@ -134,8 +134,8 @@ test("public build includes the game and no backend code or private persistence"
   const hero = await readFile(
     new URL("../dist/assets/title-forest.png", import.meta.url),
   );
-  assert.equal(hero.readUInt32BE(16), 480);
-  assert.equal(hero.readUInt32BE(20), 320);
+  assert.equal(hero.readUInt32BE(16), 960);
+  assert.equal(hero.readUInt32BE(20), 640);
 });
 test("native pixel assets have the required grids, shared palette and binary alpha", async () => {
   const art = JSON.parse(
@@ -150,15 +150,15 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 7);
+  assert.equal(art.version, 8);
   assert.equal(art.provenance, "image_gen");
-  assert.equal(art.pixelScale, 2);
+  assert.equal(art.pixelScale, 1);
   assert.equal(art.files.length, 102);
   assert.equal(records.assets.length, 738);
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
     nativeUnit: 1,
-    displayUnit: 2,
+    displayUnit: 1,
     outline: "selective-local-color",
     forcedOutline: false,
   });
@@ -187,8 +187,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
   }
   for (const m of MONSTERS) {
     const l = art.monsters[m.id];
-    assert.equal(l.size, m.spriteSize);
-    assert.ok([32, 48, 64].includes(l.size));
+    assert.equal(l.size, m.spriteSize * 2);
+    assert.ok([64, 96, 128].includes(l.size));
     const portrait = await readFile(
       new URL("../dist/assets/" + l.portrait + ".png", import.meta.url),
     );
@@ -223,7 +223,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
         art.characterLayouts[c].rows,
         art.characterLayouts[c].size,
       ],
-      [8, 8, 48],
+      [8, 8, 96],
     );
   }
   assert.equal(Object.keys(art.items).length, 102);
@@ -233,8 +233,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
     const png = await readFile(
       new URL(`../dist/assets/${file}.png`, import.meta.url),
     );
-    assert.equal(png.readUInt32BE(16), size * 8);
-    assert.equal(png.readUInt32BE(20), size * 8);
+    assert.equal(png.readUInt32BE(16), size * 16);
+    assert.equal(png.readUInt32BE(20), size * 16);
   }
 });
 

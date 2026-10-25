@@ -73,6 +73,7 @@ export async function packDirections({
       {
         walkRows: entry.layout === "directions-across" ? 3 : null,
         sampling: entry.sampling || "nearest",
+        padding: 2 * (entry.size / (entry.baseSize || entry.size)),
       },
     );
     // Some artists lay headings across columns. Reusing the neutral passing
@@ -114,6 +115,8 @@ export async function packDirections({
       cols: 8,
       rows: 8,
       size,
+      baseSize: entry.baseSize || size,
+      anchor: 1 - 2 / (entry.baseSize || size),
       views,
       animations: {
         idle: [0],

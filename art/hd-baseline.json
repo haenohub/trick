@@ -1,0 +1,5158 @@
+{
+  "version": "0.11.0",
+  "assets": [
+    {
+      "id": "items",
+      "width": 128,
+      "height": 128,
+      "cellSize": 16,
+      "sha256": "c0ae6a25aa6e522f76ac9639392d63f3c02a82cbde27b89a965eb264441b08dd"
+    },
+    {
+      "id": "loot",
+      "width": 128,
+      "height": 80,
+      "cellSize": 16,
+      "sha256": "7f2e64326a8a769a16504684bf84974fdd6969eb72515542a6fd60ab7c9083f3"
+    },
+    {
+      "id": "effects",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "fa2cbd23cca2da38ff58c41c1c4fc3f85bd7eb2ed7a75426f27b2d01e302df49"
+    },
+    {
+      "id": "effects-32",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "686ebc3000b6b6e07c60fe52063df3ce64f199c5e7aa7b00d860a72bbdfcbb94"
+    },
+    {
+      "id": "effects-48",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "e415a1e84b2fc4439d9957efef01353128098f247bdb0e7ad95d775de1e591f9"
+    },
+    {
+      "id": "interface",
+      "width": 128,
+      "height": 128,
+      "sha256": "cb62beae52b88b924d10c3dcf124493482037fb45be3ef36d87df3fad1fdb5d6"
+    },
+    {
+      "id": "title-forest",
+      "width": 480,
+      "height": 320,
+      "sha256": "7e3a14e7052250914e66faeeaf9c090684c14c18d83498b2adc545b6486cb017"
+    },
+    {
+      "id": "world/props",
+      "width": 1024,
+      "height": 1024,
+      "cellSize": 256,
+      "sha256": "e73c83c6c5873ee24cc180243332e128ca1f3c0a344d13a92d944c94d047a85f"
+    },
+    {
+      "id": "creatures/m41",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "0066e2b6cc891e7bbb26604836dad0ab99996824d08b8ad4334bb95e381fd813"
+    },
+    {
+      "id": "directions/m41/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2841a14be10ea814e2fc77f2bd011c1d1ec25c19ef1e8ec562e232070ea28705"
+    },
+    {
+      "id": "directions/m41/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "adb0b36c21364959defc7294e08ae83995d8c5a6f6e095f40f7160bdd83facf1"
+    },
+    {
+      "id": "directions/m41/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "fc266abd8f47dd3bfc3bc6ddc4a5688742e783ae3011a57a994d35541654c575"
+    },
+    {
+      "id": "directions/m41/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "900faa0c74fe3b57ba98e8b70b5798e081084b43a7161c37d46502e453a912f4"
+    },
+    {
+      "id": "directions/m41/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "04e43e6df69758abf1d5217d655ff328762002ec3afee7774339d47f85c4d6b7"
+    },
+    {
+      "id": "directions/m41/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5a7d4ffc97446e911d8dc6d30ad427cb1671bbe575ded05a4277b52c889d3ee7"
+    },
+    {
+      "id": "directions/m41/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5d0d84aa3f9f6ef744aa92dd87ef5ad797449461d3b304325ab480938f0043f8"
+    },
+    {
+      "id": "directions/m41/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "bf8c3eb86c14f1c2b320a16513445d0e99af516fa0dbd6abe00b3bc759b7a851"
+    },
+    {
+      "id": "portraits/m41",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0d16966453e16c64d8b5b61d120c739039c214ce1ce9e77ac3c45a9c601f143c"
+    },
+    {
+      "id": "creatures/m42",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "713245c16ec199fce20f9c5db9946a78ecd553b316bdaa81e53d196a364fcb26"
+    },
+    {
+      "id": "directions/m42/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b45dc15382fb8d09fb15d57324695a32037576163c5e6fa6ae85503da4b40ed8"
+    },
+    {
+      "id": "directions/m42/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "55cb15f0316d61590cb460b8b1ae89f08fa1f8bbb64e7a1d6135bcdf25feb384"
+    },
+    {
+      "id": "directions/m42/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f899f565f7d284b9bb95249f8415dd0bfd51c5cfd13dfa72945801a8cdca3a13"
+    },
+    {
+      "id": "directions/m42/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d529dbd0fb792d6f8d31af885187c4f8fbc46c34fee4c020a680ddb99a6c6889"
+    },
+    {
+      "id": "directions/m42/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "52aed3aca2dbd1d81b3b372e5ca70fa96274496359df10ef1fbba700ed2f8a9f"
+    },
+    {
+      "id": "directions/m42/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c6e75069114d758989ea538aae76576463f927c577d5cb0ffe4ab9bfc9798c4b"
+    },
+    {
+      "id": "directions/m42/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d1d0e626dec0b8d34e8eb50e4fe04bbc615d2b8807231d88a36ebd7f4f460ca1"
+    },
+    {
+      "id": "directions/m42/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a83fb9429c89ec71bbcfab227818696f739cc9c3ae7e6244f0ca2da0f6cb49bb"
+    },
+    {
+      "id": "portraits/m42",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c6e75069114d758989ea538aae76576463f927c577d5cb0ffe4ab9bfc9798c4b"
+    },
+    {
+      "id": "creatures/m43",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "2c549bb71ce72e67c06041f835c9c1816bd40bc032a0c5b1852c9411cfc90c90"
+    },
+    {
+      "id": "directions/m43/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "00d4f0f73c0ef7a1d3f062bc439e7c07f478a1f92b2356f9c96e0bfd3be81d43"
+    },
+    {
+      "id": "directions/m43/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "20b852f268bec507af127e07270a612c80f41ff2a6893c5840b36a281399b04d"
+    },
+    {
+      "id": "directions/m43/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c254a611eabbc0448549b6df0eea97dcd19964637421bb4bc955b0a396574aab"
+    },
+    {
+      "id": "directions/m43/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5da227e4692c93d7b6ec1906b6143bd503bb288281b1330f7e5b2e323ecb3367"
+    },
+    {
+      "id": "directions/m43/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3589cf0936a09ed4d32562d1ea92b4d0d39c2bd53ca29f8a4219d2b819cdb139"
+    },
+    {
+      "id": "directions/m43/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9aa113d84f28ad56fd10fe4794da28fa5bd538f239bbba17967715a5bd847390"
+    },
+    {
+      "id": "directions/m43/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "af868b76435922aa4bc2bcf971f4fdef475ada9cafa5d892af537e0d22c9a6a5"
+    },
+    {
+      "id": "directions/m43/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ab9b0d44bb2b68f0a47f565ee510ac7fdeeec9a830c289b0e2cf92b84b12dd5e"
+    },
+    {
+      "id": "portraits/m43",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9aa113d84f28ad56fd10fe4794da28fa5bd538f239bbba17967715a5bd847390"
+    },
+    {
+      "id": "creatures/m44",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "95c81f158914bedad9d31f77f2ab091464fea64a1dce839fd75970ad135efc82"
+    },
+    {
+      "id": "directions/m44/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "55861e172c60498417fcd7db8f1bb6a2e73e68f6491188ecdfb9f5a6d804e410"
+    },
+    {
+      "id": "directions/m44/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1079efada6f39f69cf7ada4a4869286825fdc40f4f74da21c7e82cca0002f188"
+    },
+    {
+      "id": "directions/m44/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c5a96abc2bf450b3c19e8e728f9e84610bc62855a020667fab4cd7d82183157d"
+    },
+    {
+      "id": "directions/m44/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8bf65da1859c30d3ea2a67e5fd034a5c1ded73fb5100e669903124b0832eb299"
+    },
+    {
+      "id": "directions/m44/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "535f6b94b0a45565fa41b338a900b8bf4a245a7efc96d32413ee8103b363b801"
+    },
+    {
+      "id": "directions/m44/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fcc992afa28685456db11940df9fa53deda17b5110b4e544afc5546d7ddd900e"
+    },
+    {
+      "id": "directions/m44/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5831423796cd2be18a68fb9841fbdb7f9cfb3785c6affc51c95d4a4bc8d778e6"
+    },
+    {
+      "id": "directions/m44/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "60a7a229b766f6b65f711c5af3cb4fb78c7803714d1b97b4b166e6901aad0a3f"
+    },
+    {
+      "id": "portraits/m44",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fcc992afa28685456db11940df9fa53deda17b5110b4e544afc5546d7ddd900e"
+    },
+    {
+      "id": "creatures/m45",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "c7aef4935da42b5b761aa37df0a1d32c28d99ba18e48f275e7fa5974cde15089"
+    },
+    {
+      "id": "directions/m45/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "94bc5a5fbc32d61326dc577dd8eb503da214279a823714e2908fdde039bfd597"
+    },
+    {
+      "id": "directions/m45/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d232b2361db44bf48d10e7babf7c8145bf32654609888f25fdd04e9eb26fcda8"
+    },
+    {
+      "id": "directions/m45/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "211c97f86379deb2cbff913ac6056d93ef494b306d72d506ffce5accbf125af0"
+    },
+    {
+      "id": "directions/m45/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6acebafadc1ba95b54d37a8a66a5a47780b695882680ce24c2f5ec6b3db1492c"
+    },
+    {
+      "id": "directions/m45/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8a940908748cfab58428361b304ecffdc4bb45f5385568355815f8b872a8e897"
+    },
+    {
+      "id": "directions/m45/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ee2f30be17a827f3ab1693256d3a956e6c3c560b23d7ea5fce182e196ba2adc3"
+    },
+    {
+      "id": "directions/m45/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8eb24c5c1c160afaa0aec90e9672ff2a11262e42acb57be7af3be2f7009f038f"
+    },
+    {
+      "id": "directions/m45/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5b65a90b098aebac69ea70855ac3deea4a5d65b399c41a09efb6c3ba299c9dd1"
+    },
+    {
+      "id": "portraits/m45",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ee2f30be17a827f3ab1693256d3a956e6c3c560b23d7ea5fce182e196ba2adc3"
+    },
+    {
+      "id": "creatures/m46",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "5de930b14e293006dce35a3125a5dd0a31f2617d368e2c1369cf23b56343e66a"
+    },
+    {
+      "id": "directions/m46/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cb591f92285e2978330c5cdfcfc9021416f4c970d2c693d7c3fc91953d67aa30"
+    },
+    {
+      "id": "directions/m46/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "83b7be059aa91be3fc5f9efea7f03a72d5dd85d03d03938b4340656b483f1d78"
+    },
+    {
+      "id": "directions/m46/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "aba3580616b1302cb5a51ab0c651e423d4d107e8e113fe1ce1758172027f7878"
+    },
+    {
+      "id": "directions/m46/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7291d76125580ab7690b3f673be3d1b6d657cedd78adba6b615cc00d8becc4f0"
+    },
+    {
+      "id": "directions/m46/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9767f33b5343552e61666bfd8c1b2963c0dbfdbd4e36dbdd3d123522ddf62acc"
+    },
+    {
+      "id": "directions/m46/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "df96b674a45b9012df13832c6703f4362cd400f26326aec4182adfda27a7aa68"
+    },
+    {
+      "id": "directions/m46/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3ae2204f4aef4150528aa639bfdd81166e29353669996b6e7df4a1c76bf49d4d"
+    },
+    {
+      "id": "directions/m46/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "66fdecad692c8a269875fec3c21ba977367d95056ac3137304c6efc35cecd244"
+    },
+    {
+      "id": "portraits/m46",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "df96b674a45b9012df13832c6703f4362cd400f26326aec4182adfda27a7aa68"
+    },
+    {
+      "id": "creatures/m47",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "a9bad93a1ad41d87a7e20a24b76c56cebf3d565023ba5f7cdc01bbfe38710106"
+    },
+    {
+      "id": "directions/m47/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "63a40a8ef245d0fc1671b2fbfeb5764537e87b53d4fdb575a3e5b565933dc998"
+    },
+    {
+      "id": "directions/m47/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e6c6c2d377e8915498592f79540c5b8e83751ed9e381987c594ae1d4b8a70930"
+    },
+    {
+      "id": "directions/m47/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2e9d346935e7ec0081d9acd44b460252083062d41e29e8da26e4871421984372"
+    },
+    {
+      "id": "directions/m47/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3a99e402ceaec3fd4ead08de68811a8a5eb07688f61d568d8a45a714e4d97606"
+    },
+    {
+      "id": "directions/m47/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "fff013b8c0589a75097acb68e9ea1197dc00ebfe63bfcab30c67ac653d63e278"
+    },
+    {
+      "id": "directions/m47/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4bf872e09b72751c5c111dc4e2775fe9cd043218568433f450af01e224a3c104"
+    },
+    {
+      "id": "directions/m47/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4fa06639353beaa2863120b140200bc84f47264edb8ecb9437533ae43b70038a"
+    },
+    {
+      "id": "directions/m47/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4f95079912ba62d9d424c24973add4976f00ef73113e3c5a86fb96eb8d453313"
+    },
+    {
+      "id": "portraits/m47",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4bf872e09b72751c5c111dc4e2775fe9cd043218568433f450af01e224a3c104"
+    },
+    {
+      "id": "creatures/m48",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "eecd164da1c4f7bf618e6b5b2855bfe225401024dff506cb0d9a0b564324fc3a"
+    },
+    {
+      "id": "directions/m48/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b186531303839e2aa81e3d90ebe1625e6f5d6f2bd006036127db3d724b847f51"
+    },
+    {
+      "id": "directions/m48/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6fae7e92c520e55ebc6525cd4eff68c8258eb7998d13b0040312a3821045fc8e"
+    },
+    {
+      "id": "directions/m48/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "193aff86dcd6a0b2a05cd75d25643c1c7de259f98826aed94a75bde805ecf7d5"
+    },
+    {
+      "id": "directions/m48/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8dc569c86e3f8830123aec74e35e5adbc00a9c3a76f1bd94af71e2e7edade7aa"
+    },
+    {
+      "id": "directions/m48/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0779f47db76db0ddc24eab59bb5ca845e2cf55d85f63f583253b7d84f769960c"
+    },
+    {
+      "id": "directions/m48/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ceac1bda5f3e00dd1c337491dcacb1eca91349c30cb0403122464cb741110f42"
+    },
+    {
+      "id": "directions/m48/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "42705dbd9e706c3ce77c8e4f65e8db4b39b48099f1c3d6b1ebc583c30464bfcb"
+    },
+    {
+      "id": "directions/m48/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "141866d29673ef45f03934b3fd1978511c3f4240a2842915889719fbe68baef5"
+    },
+    {
+      "id": "portraits/m48",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ceac1bda5f3e00dd1c337491dcacb1eca91349c30cb0403122464cb741110f42"
+    },
+    {
+      "id": "creatures/m49",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "ca466df047de84b93a44a3e86f0e44f3fc96fa6874030cd0fb1bd52fe4676a39"
+    },
+    {
+      "id": "directions/m49/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "df09ff4f5e2673231f91ea89c50abda9edd0718bb32effe492023d7954f58b2b"
+    },
+    {
+      "id": "directions/m49/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6a56ff46b2f427b339c9fe36d8477017f7737b1b018cba8ff14d09f383e5d928"
+    },
+    {
+      "id": "directions/m49/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0be9d11bdea22ec1419e0d5d533e48a29c07d6463bbf3f875d7771d610c62b38"
+    },
+    {
+      "id": "directions/m49/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5877a8253fdcf35921cae9b3f27fbe1bfac8130df84eb49eba4acb3f16f0ecc6"
+    },
+    {
+      "id": "directions/m49/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a40e9ba3f6cddafde434be81849ec9de8263b674aa24671f2f41f5ea34f89092"
+    },
+    {
+      "id": "directions/m49/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ad9b675ab4172da1415e116c9b275ce7e9c397e4ca2c5f0b43d898b50822492e"
+    },
+    {
+      "id": "directions/m49/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a31157e774b71c760139a04ca84dc337c21cb6d4943c20df763c54be811aaa09"
+    },
+    {
+      "id": "directions/m49/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b7758f1221774fc36a41c12fb67e0746e2ca5851af2bae546808552dbe18a31b"
+    },
+    {
+      "id": "portraits/m49",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ad9b675ab4172da1415e116c9b275ce7e9c397e4ca2c5f0b43d898b50822492e"
+    },
+    {
+      "id": "creatures/m50",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "2f51dd8f4317dcbdd9ea96e4958ec275a416032212fa33bec4e562becd0b8305"
+    },
+    {
+      "id": "directions/m50/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "c307c4c1f27c112fef399708f4db086fa886034cad3c4b8b78fd57782fa45937"
+    },
+    {
+      "id": "directions/m50/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "a658b1d882b5ac7205e86bf2d2d01b774473ffb9764964ae67dff6a7f4cf47b5"
+    },
+    {
+      "id": "directions/m50/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "1bfc50c37839ae0081da029a0b57b2d80bda9da21410c2a2b790c78fb4cf850f"
+    },
+    {
+      "id": "directions/m50/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "d5ee982a2b4567d949e42c4e9739eb4311a97ce9d83d01e6e317205c51dee41f"
+    },
+    {
+      "id": "directions/m50/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "7105b52d1788d61e1fee73f4d9748d31d42f268beeb2a55ecf869bb636d0d990"
+    },
+    {
+      "id": "directions/m50/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "adc80c6b80e50033dba03ed6898530075146b5ead7726d38acf1b1dd5b21979c"
+    },
+    {
+      "id": "directions/m50/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "ee8b0fe228a611c44b7743be678e9c9f1305e70b3870074400bf345048c62e6d"
+    },
+    {
+      "id": "directions/m50/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "2df0598e4c4f47c9ac9047732f42c43a38bf5cb68e049c84b6ca3111c352176f"
+    },
+    {
+      "id": "portraits/m50",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "adc80c6b80e50033dba03ed6898530075146b5ead7726d38acf1b1dd5b21979c"
+    },
+    {
+      "id": "creatures/m51",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "ef465201fede62b2bb0008a4e6679fd3d1b008e41b6ad049ac06edf526f5c317"
+    },
+    {
+      "id": "directions/m51/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f484f2ae368faf5317f786145994b72bb76514777f5f8d46bcb84ac983dd276f"
+    },
+    {
+      "id": "directions/m51/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "72ce9d94874ad7a56600cc0621cfc8c9077a6e7bd0f2bb503d81b3d081156021"
+    },
+    {
+      "id": "directions/m51/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f4c37cad98422bb9df82644c43ece5edcdab321dfc6589b503d1f116f90d44e4"
+    },
+    {
+      "id": "directions/m51/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "240ab7bea211989644d15c47948bbcfe6f91654b03b1eba5c6986611daf8c73d"
+    },
+    {
+      "id": "directions/m51/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b60f61bfc8d75e915e82283c7a159dccd1de0e3a9b0f60431f96f788f628ab71"
+    },
+    {
+      "id": "directions/m51/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a6b6d0a920bb1ae4b3d696f45f11b5ac2f23a943e32d775b94bfd61b0d1023a1"
+    },
+    {
+      "id": "directions/m51/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9a4b64a60d4d401c5b61d009fe3e6c05d0ee37e2c1444443a8c7af797055eb05"
+    },
+    {
+      "id": "directions/m51/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "48cb7a38c350fb0b449ff3bf742694cbb6dd70c53935695d3491d6494ae3ed80"
+    },
+    {
+      "id": "portraits/m51",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a6b6d0a920bb1ae4b3d696f45f11b5ac2f23a943e32d775b94bfd61b0d1023a1"
+    },
+    {
+      "id": "creatures/m52",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "4213cea3bb25bea005ab718df13b4c6f988517e96b09185f226eef88389a6e35"
+    },
+    {
+      "id": "directions/m52/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c9f3e808d756e9920ba4fb1814d8e184477d47d34fda270621bc1659c37286a5"
+    },
+    {
+      "id": "directions/m52/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6e9eb7c193aaad70bce9f68a5756bdd31b6f08d71706c8c201113dd79655129a"
+    },
+    {
+      "id": "directions/m52/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ddd8ab76389306461cd04834f0e63f291558a7f85e79f05ecb7679f00696ef54"
+    },
+    {
+      "id": "directions/m52/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c5c9d08b5f95e182658efb0f38527c9d2c82808b695a9797a2757a30572c9625"
+    },
+    {
+      "id": "directions/m52/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b819b4a3f16dd6744e812caaed8f37d1003458036f288c8d57477e8c704c4281"
+    },
+    {
+      "id": "directions/m52/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c35eda0d16bc4a6724e9a964af654506f72494564d09fe5702851857d9754fb8"
+    },
+    {
+      "id": "directions/m52/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9d605c056612009e2b33eb45f838a5f4efab3ef89e9a31c27cdf0af3e9680e1a"
+    },
+    {
+      "id": "directions/m52/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "940109e82eddc1f49514a4bdc34fe64daddf6fc1edc2ee60faf0daee14a23663"
+    },
+    {
+      "id": "portraits/m52",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c35eda0d16bc4a6724e9a964af654506f72494564d09fe5702851857d9754fb8"
+    },
+    {
+      "id": "creatures/m53",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "0fd8a76a8803457c9bce115a97ea7e39d680b2f86958ae141c999f651841da3b"
+    },
+    {
+      "id": "directions/m53/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f2c829702dc79558c35528b26e34075b087f4833accf4e63466f57d8705373ce"
+    },
+    {
+      "id": "directions/m53/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "98d3543279664e6e9af967bade768aee411bb32769c5fa6a0a58878a3626bf01"
+    },
+    {
+      "id": "directions/m53/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "bed8aed01585566681bd4147d26da9706f7e34df474ca051ee0cd1bbba50e50e"
+    },
+    {
+      "id": "directions/m53/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "918c22f77d3f7884deab1b0bda4afc53a2f80531b543ccd097b5decec3a8b573"
+    },
+    {
+      "id": "directions/m53/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "168989a33fb372090f1bef447a1e204e28ba446a2a61b90908b684d41872a04a"
+    },
+    {
+      "id": "directions/m53/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c1e84863dfb074376fcaed1cbdcfb63816583f201b7c0cd82f6d8ef2f52e2bf9"
+    },
+    {
+      "id": "directions/m53/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "26c03f9d21df3aac22e316ac81c653f31ab51102d5b0e1d5b4f4dbd6c1bea269"
+    },
+    {
+      "id": "directions/m53/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7e03e16e6d99dae04f046665036641b7e291595385473348d21f912a2823f1dc"
+    },
+    {
+      "id": "portraits/m53",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c1e84863dfb074376fcaed1cbdcfb63816583f201b7c0cd82f6d8ef2f52e2bf9"
+    },
+    {
+      "id": "creatures/m54",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "2299c614d74eb3cd2bdbffc3cb75a6e764f9d9a4bb1034081bc55ba03b395b9b"
+    },
+    {
+      "id": "directions/m54/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "01e50dba4191f50f9ef053eab752a00a19dec920e73859c65397bf8c60fb9a06"
+    },
+    {
+      "id": "directions/m54/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "652ea2102bf6e68227b937b8068a2583a7fd24ff2fe015258205c931e178ef23"
+    },
+    {
+      "id": "directions/m54/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ebe4b0cfff52de4fc58ed1ae9e3612d487a91e296414fce307a8a25c002613ce"
+    },
+    {
+      "id": "directions/m54/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0c9ec6baff35d4a7dd0015677f2db3c19b820c63ad5457c930020dfe102cedd3"
+    },
+    {
+      "id": "directions/m54/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ba33a9d5fb80705afbc473daff50b432a7aa89d8b1da7c5949bfcba73eba31b7"
+    },
+    {
+      "id": "directions/m54/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6805c38efa26f5f6e62a4bf95bdb01c9fd06e889108f90120727e7ecb15c3284"
+    },
+    {
+      "id": "directions/m54/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0cc35eb0bdb0d0784f87337627c550f1defe1cae9c9ab3e24d2300798d2dd4ce"
+    },
+    {
+      "id": "directions/m54/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3d0d65c8c02e7b4bcf11b4845ae98c5e4aef584cc228b3aa20caab9000180421"
+    },
+    {
+      "id": "portraits/m54",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6805c38efa26f5f6e62a4bf95bdb01c9fd06e889108f90120727e7ecb15c3284"
+    },
+    {
+      "id": "creatures/m55",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "8ceb4249452abe82294eb4333f6c41cbcaa574e32098547ac8b2e93b89060908"
+    },
+    {
+      "id": "directions/m55/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5ec1896de6324c0971b63cdbe4f1f9cb268393ecbff112c1f1be6bc58df170ad"
+    },
+    {
+      "id": "directions/m55/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d3f8a6c25399450830aed23903b3ae4d0f1fbe508a3c7a2abc807a4fa12a80b1"
+    },
+    {
+      "id": "directions/m55/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "13f2a030e3efcbfb92a40de7b0465e4f796174910800481d901b3dff8ed4ce7f"
+    },
+    {
+      "id": "directions/m55/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1cc28a88837e56c802d25b2a2e057afe7b31ee9b1ad8e579ada410916fbbb913"
+    },
+    {
+      "id": "directions/m55/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e1ec13f815ec404b46f4cbf0ace95fd034650b85b1e56d06082a99ebd4d79c62"
+    },
+    {
+      "id": "directions/m55/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "14ad1b0dc6e59699025f7c459d57eda5c3fee31d742ec6279a4308bf1e41973b"
+    },
+    {
+      "id": "directions/m55/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2660a6a9662b8909f6c35b50e334bf4492c45d15f6bf4cd0acc7daf3c519ecaf"
+    },
+    {
+      "id": "directions/m55/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c04b96c97ecf141f99faa7e2b6388222bfd7c65d54cf6e54ffaf989997f1bec8"
+    },
+    {
+      "id": "portraits/m55",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "14ad1b0dc6e59699025f7c459d57eda5c3fee31d742ec6279a4308bf1e41973b"
+    },
+    {
+      "id": "creatures/m56",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "ca37194c757db46f7f5e4a3f582d6ec4bfbc84af48e31170e1b0212f63a8bb93"
+    },
+    {
+      "id": "directions/m56/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "28db844a41bdfc46b832eb4668180d5d78c1ce7c40cb40fa99bb255466144f41"
+    },
+    {
+      "id": "directions/m56/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "121ba92211f98de2abfd3699b20bb016dce0c6f201217891daa015ee0463d985"
+    },
+    {
+      "id": "directions/m56/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3b27c8f37abeb7bf8310d1ba0d29a8a92a5fbd5def036170d20f9152bff66edd"
+    },
+    {
+      "id": "directions/m56/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c9398ff8fd3e37623c5b10dcab73ae3dd2a80c5f0faf0e248e47d4684a0c70a6"
+    },
+    {
+      "id": "directions/m56/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8c6f0b6640eecb89ae8e7adaf029f5022e1f6aa2321e7402060fbefede9a4932"
+    },
+    {
+      "id": "directions/m56/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3a76362284b40ede63869c70b278202a80bcd6b16cf32b7f5cc7c3e42b7e36e6"
+    },
+    {
+      "id": "directions/m56/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fba932df48cabd8a3b6870ce35bece5219f477fb66fe471ca37bc593ce7df79f"
+    },
+    {
+      "id": "directions/m56/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8b0f454e20acefd8b158b7c6d5db5bfc2ed9fe5a49cca95a8cd39c7c34e5f2d8"
+    },
+    {
+      "id": "portraits/m56",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3a76362284b40ede63869c70b278202a80bcd6b16cf32b7f5cc7c3e42b7e36e6"
+    },
+    {
+      "id": "creatures/m57",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "5b24c3dd753155434d413264f65f1a6b70a3d3e85cfb806df5ac1d1c11e34060"
+    },
+    {
+      "id": "directions/m57/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e1b089f50824054c62ac6209b5f2b43868bfffeb8e7af20b944d70596bac320b"
+    },
+    {
+      "id": "directions/m57/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8b1c6f8b2077839b95cd70279039fd241ee4c2c98914e1748c8250934c4d419f"
+    },
+    {
+      "id": "directions/m57/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "73ab823fe63861b2d64bc29b921985fdce3be854b1ce590144d22d78f351dd76"
+    },
+    {
+      "id": "directions/m57/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "dfaca1216ef1c237e558d0e84363d81dea162d0493622ca99cf5af5b46dceb9b"
+    },
+    {
+      "id": "directions/m57/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "78c69e68a632ed23867521cc42fd5e63bd26a72f08e78c699703918faa70ad6f"
+    },
+    {
+      "id": "directions/m57/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8959281ab463c075f5a4e7ecebec42658bf0865451f41f5bece4824665870f9b"
+    },
+    {
+      "id": "directions/m57/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e1baf6f5827a2f9e496d16dadd79bd9150ce997ddbb632d57d27cda6c28eb1b1"
+    },
+    {
+      "id": "directions/m57/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1b5fda01543ab96b78567c903fbc973b60cb23e1e75609ea0c4e7d9e280fedd8"
+    },
+    {
+      "id": "portraits/m57",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8959281ab463c075f5a4e7ecebec42658bf0865451f41f5bece4824665870f9b"
+    },
+    {
+      "id": "creatures/m58",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "2a6be15efe1e73be2bb7e902c104d73de22a236aa38364b213e14f1d4d4fa7ec"
+    },
+    {
+      "id": "directions/m58/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "44c5ecedd23a48a102994990feff3e05019fe9f09be014cca0c5eb0e8165a24d"
+    },
+    {
+      "id": "directions/m58/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9b2a23c6e6982c34b6932663163628e6b9599ef979edbb4243059429412c59e8"
+    },
+    {
+      "id": "directions/m58/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7ea1ba67d006b0161a59e04d9c4831a8d27bf94cac228cddaa02cebfe20355be"
+    },
+    {
+      "id": "directions/m58/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8e49ac08b960dadb5ae76790ddb06873831c1da7021f4782d4b90191e927d28f"
+    },
+    {
+      "id": "directions/m58/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3baf64523c68e4def08da66eb28df11868de97034193ca0175c60a0c0141ee80"
+    },
+    {
+      "id": "directions/m58/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7c6029dee668c1a5db87b11ce932694c8585e3d184e804440f02776d4a92dee4"
+    },
+    {
+      "id": "directions/m58/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4cf80ba2ccf5d1bd49680d600549614decbf661824a62ec441d12ea307fdd9f0"
+    },
+    {
+      "id": "directions/m58/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a571c4047d0a3f8c17d87e8357b3ecf42382873ba171cc9b7c8dd34db5663fd7"
+    },
+    {
+      "id": "portraits/m58",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7c6029dee668c1a5db87b11ce932694c8585e3d184e804440f02776d4a92dee4"
+    },
+    {
+      "id": "creatures/m59",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "d6f89f1826f8388a66268ad67aadfc0d874ce2f6f2c9ef544faa6fae1621d546"
+    },
+    {
+      "id": "directions/m59/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "34a498f9d5e68391fde56a0bde623a6c6b68c2bff37cde0dcb84ab44feabfe52"
+    },
+    {
+      "id": "directions/m59/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d38e85a8c11e50800c84360807785eaf801799cc16e1d376f3d9193c6bb21010"
+    },
+    {
+      "id": "directions/m59/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d809107e17bb26f17a6960d0c16639c7f264a446820139d4308239c6fcf63772"
+    },
+    {
+      "id": "directions/m59/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "24b40a96fd104bc79933f42c7eeb53cb63227463c24adbbfbc4ac024128548b5"
+    },
+    {
+      "id": "directions/m59/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4b21498122096f6fa110630e5aec7c9ae4dce4a2eddada9e8161b4b3d389ef07"
+    },
+    {
+      "id": "directions/m59/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "69f744368ba95058d5abdf56c6b72c8021e4896aaf4bd16550f4ca3e3cb427d2"
+    },
+    {
+      "id": "directions/m59/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0821ec040ca97578dcb2d681a071a0b75aa61779bd3b7dad285942267a7bdf09"
+    },
+    {
+      "id": "directions/m59/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "82c02675b77cf0996c1422b16c184978a852a945d812f99cf24bebd05654d347"
+    },
+    {
+      "id": "portraits/m59",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "69f744368ba95058d5abdf56c6b72c8021e4896aaf4bd16550f4ca3e3cb427d2"
+    },
+    {
+      "id": "creatures/m60",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "a3188042c5af1758d858a31188e7356d914b38163e81297f713bfc24fa41ad93"
+    },
+    {
+      "id": "directions/m60/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "2327a7349b9c2bdfe83e03b8bdd654173ee08748e7b171cf83f4a51558aecf68"
+    },
+    {
+      "id": "directions/m60/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "26521c9543d110a90564dc55717a2eb914966c40639e81382a5699d2131bfe5d"
+    },
+    {
+      "id": "directions/m60/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "d4fe26a7aee56cc7337b91c0c76400d36280644f26f9d7191990ef1dcca89dd6"
+    },
+    {
+      "id": "directions/m60/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "8c26bd33ba0473dbe090077d6edf25b5cba1b138f3826e7963f0be5c1a80d832"
+    },
+    {
+      "id": "directions/m60/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "a1af3a7954c140f2b50f6933419d066b868263b362d2ed8be4c8bb36a24d9b95"
+    },
+    {
+      "id": "directions/m60/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "b0d1d6d925e3c9d4a969b8b6f55fdda5587b2e2163976532cd692de12074b59f"
+    },
+    {
+      "id": "directions/m60/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "511709d5e92c49a3e8e0df828e5d6e10df7a488e602af17ba68bfd94db95e333"
+    },
+    {
+      "id": "directions/m60/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "63621c4dd13a2e981b90c68daec888f317ff7decf9a0a281d7f4c3cf8a699144"
+    },
+    {
+      "id": "portraits/m60",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "b0d1d6d925e3c9d4a969b8b6f55fdda5587b2e2163976532cd692de12074b59f"
+    },
+    {
+      "id": "creatures/m8",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "f104d2f9389825153ac763c3304db352b57036eb30dbbb995250cd913bb3ff9a"
+    },
+    {
+      "id": "directions/m8/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e42c394793f2f3aeaeedda0be058d4827bf55582248142ca20fa7090c5645a1f"
+    },
+    {
+      "id": "directions/m8/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b79592aca6811ead875d145d906a0b3e6a688aeb63a664ac7dc5db6a5964a7d1"
+    },
+    {
+      "id": "directions/m8/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d70ca66827efc3231ae6f9f427c9e11f78545c189cda4d9bc3dc6740ca7112e0"
+    },
+    {
+      "id": "directions/m8/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6be9a250552c39ccf90763eed8ae1416ca2c20f8fa562287fedfbf45442d8cca"
+    },
+    {
+      "id": "directions/m8/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f1960ce5c5080ad7a9343805351cb11941ced208d8d92063529d41e3d57291a0"
+    },
+    {
+      "id": "directions/m8/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "432235759121225b1339fb716234e3724b94ba1bda187a5710f2d2d32603801e"
+    },
+    {
+      "id": "directions/m8/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "63f963748953d8a0c6fc02c65563f29394850bd47cb7b1f766232ac3a27f6577"
+    },
+    {
+      "id": "directions/m8/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ff7b3e60fcd0182c6d4223ccaca84aff7a7d0edafe5df3702d9b4d82e0325e1d"
+    },
+    {
+      "id": "portraits/m8",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "432235759121225b1339fb716234e3724b94ba1bda187a5710f2d2d32603801e"
+    },
+    {
+      "id": "creatures/m9",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "40644e5feb24dac09dd11fa499a44c4fc1e16bffcb623ad8c6ee09fbd1b3270d"
+    },
+    {
+      "id": "directions/m9/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "909813ebbac6e9f4525a7f55505c5ba371be483f4a5e5bd9141b35b1f649986d"
+    },
+    {
+      "id": "directions/m9/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5519a74fa4d149f1a4f87527767906e66b7aaaced3e0e6217fb89f0a24aa6a10"
+    },
+    {
+      "id": "directions/m9/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4b9aeb464bd03774dbac766d003c3fa4923e9bda0bafb93ea6fd8d4046467f72"
+    },
+    {
+      "id": "directions/m9/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "565fc7a5b16f919c34cf104e15dea8b186b0abf699ddea803ed310094c55cebb"
+    },
+    {
+      "id": "directions/m9/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "953befe7d95384101c259070deb2eb73404633192f2e126fb6e09ca3f3842359"
+    },
+    {
+      "id": "directions/m9/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "57ef6d38b7fe6a69b5e622cccb90d394090768663174660a0f7d963d8ee24f92"
+    },
+    {
+      "id": "directions/m9/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "872ab2001d1f82e963326dd8b75cbe650656d36713d4af57540137524aa62547"
+    },
+    {
+      "id": "directions/m9/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "8b56b24e9039248c3382bd94ff7232a9d75cedc82b751ac68c8e382423ad1d0e"
+    },
+    {
+      "id": "portraits/m9",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "57ef6d38b7fe6a69b5e622cccb90d394090768663174660a0f7d963d8ee24f92"
+    },
+    {
+      "id": "creatures/m13",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "b20651c3aa705c49d923e9403b56634b139229e9ef55933030ca17dc689d5837"
+    },
+    {
+      "id": "directions/m13/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "229d06310a935bee31973900cd70792a747dcd6a6842a90eeea0a9418e337f8b"
+    },
+    {
+      "id": "directions/m13/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9968e38b8ed237e3198922b8828aaf20dff11f286d6186815e7923e6f0cb7a13"
+    },
+    {
+      "id": "directions/m13/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2fb28e7f5b7e82503069e40280db3054251750f7c5b7cd6fb0617b77635f2878"
+    },
+    {
+      "id": "directions/m13/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "fb0b8da7e721c8fbe649412dc802d02ed8f9eb330b5bee0409e3093338ffcfde"
+    },
+    {
+      "id": "directions/m13/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6104e1b2dc2f9791d7680801ae50c8fa37eb0f673884c4fb6944175db456a996"
+    },
+    {
+      "id": "directions/m13/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f03c222f2b1c53df6576d345e6a90d228db459f998617cd8e649f824ea8e86fb"
+    },
+    {
+      "id": "directions/m13/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "13caf8bfa25cefe3f3a3c044ec0a9f2bf20d5dfcb4249d53c2fae636e398f821"
+    },
+    {
+      "id": "directions/m13/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e6431e8b31d171f13a2b4a734e8092825b547b7e200f67fede3c89258f1d1767"
+    },
+    {
+      "id": "portraits/m13",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f03c222f2b1c53df6576d345e6a90d228db459f998617cd8e649f824ea8e86fb"
+    },
+    {
+      "id": "creatures/m11",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "ccc8c8b68e4f018e82be285425c445ef3421b41bbd5649253cc6bf31b737c4c9"
+    },
+    {
+      "id": "directions/m11/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9c9544485681e13dfb56e057c5db7d8dd36dd039b675f2456bc8d50a973ae705"
+    },
+    {
+      "id": "directions/m11/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ce690ce97705ba8263fe6dd7b1b4a8f14c88c09c84f26cdfe20967e089f12677"
+    },
+    {
+      "id": "directions/m11/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4e772b76fcab53139b423b5bdf3ee183982f274d0c120cb2b250737e780fe3ea"
+    },
+    {
+      "id": "directions/m11/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8c4993fa6fb754cc792bd61c40893fe66906ff129cacade45bf9492c11a4789d"
+    },
+    {
+      "id": "directions/m11/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8ff0f1ac2acf551221aaedd99a5832d0ac4444fc7faba6179d4de65ce1da4ca2"
+    },
+    {
+      "id": "directions/m11/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "11f24da442057d9cbe3103ba115e799197946eba8762824307f8506506c1aeda"
+    },
+    {
+      "id": "directions/m11/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3025055b6b28dfed84350a0d014930b7cae09f5d30b35906530569e4b9e89709"
+    },
+    {
+      "id": "directions/m11/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "67f3fefc3452827e9ae6f98d4aaf543ce1a5c8aa276c58f369edb3c5cc303425"
+    },
+    {
+      "id": "portraits/m11",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "11f24da442057d9cbe3103ba115e799197946eba8762824307f8506506c1aeda"
+    },
+    {
+      "id": "creatures/m12",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "f2edcf0d8003deb48f30420f3498177befbd32d99e35c8a5fbbe3933d3367ae4"
+    },
+    {
+      "id": "directions/m12/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "14a5917d464d23320e764f55f5a7f61de34854e7da72cd268f72a812218f94de"
+    },
+    {
+      "id": "directions/m12/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2c2482d696d1915ac15b3dfb54475f5a7fbc427ec2122a3b762105f84964a6fe"
+    },
+    {
+      "id": "directions/m12/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0e545d45f470c2c2dcb7ffab6c678d8b07cd7f45be13fb106d7d67b52086829b"
+    },
+    {
+      "id": "directions/m12/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a041dd727816515b054d96724ab31fe8c94de5a3111dafc17410ebee82b87ec4"
+    },
+    {
+      "id": "directions/m12/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "97e58dbba18b6eb96c4e6212bd2fd3467436d586dfec6be54355659a886379b9"
+    },
+    {
+      "id": "directions/m12/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6220d032cbee1ad2ea2e25a177e1004bace4379c4763ad4816779709afad6c13"
+    },
+    {
+      "id": "directions/m12/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7e446d262039ddcf520585483defd2d20ef3f63eb9fd4672b337a82029ade3e5"
+    },
+    {
+      "id": "directions/m12/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9a19f008b5f1218f906fc0f33917feca0b6d0e093b9cd8b9fc2a8b9982444bd5"
+    },
+    {
+      "id": "portraits/m12",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6220d032cbee1ad2ea2e25a177e1004bace4379c4763ad4816779709afad6c13"
+    },
+    {
+      "id": "creatures/m14",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "b8e607e325da225ea0134a8db9769556da475d5070cb5426af804f1d52ec379c"
+    },
+    {
+      "id": "directions/m14/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "931959fbcd1c65473eb2d2ecbeddb843f91c4108a5d1ce68b126907137dadd19"
+    },
+    {
+      "id": "directions/m14/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e31be00b0447e65e3685e35eea4be2799d594bce4233052f9d5c3ad57adc97cb"
+    },
+    {
+      "id": "directions/m14/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5d08ac93c99238d8f9de4ef45c8e40929af9cbf2065ac53a8f755b62838d8282"
+    },
+    {
+      "id": "directions/m14/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "71d69539b510e6faf54e8d91186d07e3f0c9699a3fc9c8e23dbfe61304b779bb"
+    },
+    {
+      "id": "directions/m14/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0a68b82dfc282f22d22c16a291ed7c8ad1113fe05ff7cdd52d973a8d797e84b6"
+    },
+    {
+      "id": "directions/m14/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "98e9e5dd2b9d7e1e3f96065a0add19f73c02ed32bffe8ea58de9f3adeada1257"
+    },
+    {
+      "id": "directions/m14/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "22714c9a42573fe6394657a096483828c497f51d3dd31d856759a748609af86f"
+    },
+    {
+      "id": "directions/m14/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a5c62fb0e3d1452e99fda30fe3112838c43bbb15fd5d114f21e48982d0b6e463"
+    },
+    {
+      "id": "portraits/m14",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "98e9e5dd2b9d7e1e3f96065a0add19f73c02ed32bffe8ea58de9f3adeada1257"
+    },
+    {
+      "id": "creatures/m17",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "c28fb80def23dff4050042eb1ec9b6b70fec5a777515abeb0be5d0c6bb1bc72a"
+    },
+    {
+      "id": "directions/m17/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "133e7a12bb76b2cbe693e76f0da9de655ef076dfe1081976f733bf58d8324570"
+    },
+    {
+      "id": "directions/m17/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2791b20fcb0814b5d64aab1e4d0199c2ff57997b47c0bfdd04283bd83bd40a76"
+    },
+    {
+      "id": "directions/m17/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5fd639fa51de99efb61950b0a62e59bcd0b2c230aa1bb4c7705051c627c4af44"
+    },
+    {
+      "id": "directions/m17/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "bc8f033469404153e17db8206043c7009a5d22cc81e5f770a723a4f12cef0da2"
+    },
+    {
+      "id": "directions/m17/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f074a058b304ca7f17c2f58adfd798a666281c241b4f7b576ba51044b6f79f38"
+    },
+    {
+      "id": "directions/m17/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "defad632a3a82b383582ad8eafea94b66f6f4a7bb4607530e05b66cc893654eb"
+    },
+    {
+      "id": "directions/m17/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "36c143b3f080b181fd7c4ef74a9b637c591966a619d7e619a7fd8f02f803dc87"
+    },
+    {
+      "id": "directions/m17/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a50761e490315dfa16f13a8c227942c4d7a2f43c68fea03ea8b3a01b29e8e226"
+    },
+    {
+      "id": "portraits/m17",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "defad632a3a82b383582ad8eafea94b66f6f4a7bb4607530e05b66cc893654eb"
+    },
+    {
+      "id": "creatures/m15",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "c1f701d51682566133f980ecbcea6ddc6eb18559ab27f53bb9797fe02734dac5"
+    },
+    {
+      "id": "directions/m15/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "18760ff0f4dd911dfa578758f471b263fd5c1fa1a55bfc86aba67b18ebedd95a"
+    },
+    {
+      "id": "directions/m15/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cbbfdb3ee778a6a31b8bb9b5bd428d0ae8a15e7242ef80575e5e3acfdb9caaee"
+    },
+    {
+      "id": "directions/m15/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "174e0d3e7101556ecb31a33fe6e6ceb5f6e352d66b6aea2ed86e645c6a43363c"
+    },
+    {
+      "id": "directions/m15/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fe3f1005ee4688f876138a60f80b7399886442ec837b6731002b794bc790b715"
+    },
+    {
+      "id": "directions/m15/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6cb5c86171363ca87db06992ead4847425a69eca1442fd99ed14a05a537696e0"
+    },
+    {
+      "id": "directions/m15/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e09a09b19d10f513f9890382c096e7932b5247d85e529710bf0e5acc358e73fa"
+    },
+    {
+      "id": "directions/m15/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "131feabc32a98ea1e225786b05615dbbc74ffc413ec078410f5bf347a60c57c6"
+    },
+    {
+      "id": "directions/m15/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3fa7f3478cd88fbe747dab8598b69adb987fd3a4edbe35feddb7283852e99bdb"
+    },
+    {
+      "id": "portraits/m15",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e09a09b19d10f513f9890382c096e7932b5247d85e529710bf0e5acc358e73fa"
+    },
+    {
+      "id": "creatures/m19",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "6dfa9e1cbe85c4a3a919904dda9b2dcaff05af465a3493620ea97464400ed75e"
+    },
+    {
+      "id": "directions/m19/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "b2f262104f635e57253aa34f8a6e6b9ae1db6399fd6749635b534c55efd1ade0"
+    },
+    {
+      "id": "directions/m19/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "f3e9676e6447a8eef8c67874f8bc17e9bf2743ebfc5c47a562b92eed62cc3f47"
+    },
+    {
+      "id": "directions/m19/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "0db4db2bed4b388e4b74dd3644a75d84eebeebfafdaadaede1cf4caf40d1483a"
+    },
+    {
+      "id": "directions/m19/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "c133f6f19eb74960f0e8e207697b4de55da92b2b8110def6ee0717e18e733dc2"
+    },
+    {
+      "id": "directions/m19/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "9434421faca814d8e789cb81fe977a9ccb236b950977a33016abfadcbd53967c"
+    },
+    {
+      "id": "directions/m19/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "711f6d3375cb30c417cda854b98c37cbcd3ecbb1dc9a344e33a28efe66a840f7"
+    },
+    {
+      "id": "directions/m19/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "99b741f9b727605a99df8bc67c13e2f700c30c8bc9123d5ef527bf7552a9ffe4"
+    },
+    {
+      "id": "directions/m19/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "67700d11dc583515fe57275073a6e8614292bf49fba2b5fc17823ce994c47108"
+    },
+    {
+      "id": "portraits/m19",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "711f6d3375cb30c417cda854b98c37cbcd3ecbb1dc9a344e33a28efe66a840f7"
+    },
+    {
+      "id": "creatures/m18",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "18e1c16c9d560b0dce1b54d9f952c488bbc50145b2df6d2fa68f0c933d69bc7f"
+    },
+    {
+      "id": "directions/m18/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9c0f1bf7ee0a34581506682edfcc821d43ad6ec6e2ea0d3bcf5a7ad77507806f"
+    },
+    {
+      "id": "directions/m18/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ab344dfce9d853b90fd373e8e23d67d4f831dcdd61a9d785e1244db0cf2df1bf"
+    },
+    {
+      "id": "directions/m18/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "16b040749c086af93cb664c53a368601f46402def1c8ee6532fe8edd6cb73f17"
+    },
+    {
+      "id": "directions/m18/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3f4de6842bbf131881e4375677138c0762668e00c83b1e86d4e9cb4ec56fc9d7"
+    },
+    {
+      "id": "directions/m18/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8655d8dceae865f234b1799f3ac4397c912e95acf3fb11ff2e822caeba5fd72d"
+    },
+    {
+      "id": "directions/m18/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b37d5c85732c7de868ae01b1c1db96ef15e79ed97f2a7932322d3d6a0cd3c2ed"
+    },
+    {
+      "id": "directions/m18/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "cfa8e6a4a1ee60270a7ea987a71f1bffb4d251c35830511d92aaa2c94f10def8"
+    },
+    {
+      "id": "directions/m18/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "1723e244bf4def5cbc2a4e483e3e29458071fb32f918191d56b7546bee6b82a5"
+    },
+    {
+      "id": "portraits/m18",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b37d5c85732c7de868ae01b1c1db96ef15e79ed97f2a7932322d3d6a0cd3c2ed"
+    },
+    {
+      "id": "creatures/m16",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "ded62393923987310428db5bcd6f63bcd567f44e70011fde70894e75358032d3"
+    },
+    {
+      "id": "directions/m16/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "95b7ffb980ce9babf9148721eee64234a69e53f49363c24c96fe72cbf38f853a"
+    },
+    {
+      "id": "directions/m16/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b096678e19779b9c416b673c2b5a2cbcbbae38342578bc613cd6178c321103d9"
+    },
+    {
+      "id": "directions/m16/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9356db46af6ddf83863a83bf897991daef36f1e36d7eea75df4c2f025f1f62a6"
+    },
+    {
+      "id": "directions/m16/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "1fae2fd3ff6df3b2967909a004b52de61a851f4e733ab5f075661d187d8eaf52"
+    },
+    {
+      "id": "directions/m16/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0b649c7af5be526ea53ba6bbdb8018f074f5432cf4511a4fd2e93eb2cfc06fe3"
+    },
+    {
+      "id": "directions/m16/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "25d4714a5df8b0b5d9f5306dbd1756364afb79e9e6a38c268b31018c1a450fc4"
+    },
+    {
+      "id": "directions/m16/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7f34a63ff76dc38c795aaf629d252adbffa5a3ddd5fd0dce88361a3d9f8b4ddf"
+    },
+    {
+      "id": "directions/m16/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f86606ec1b6c5f1a240efdae8c6c0d88acea4b7db49a2501c6411f5e2863c85e"
+    },
+    {
+      "id": "portraits/m16",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "25d4714a5df8b0b5d9f5306dbd1756364afb79e9e6a38c268b31018c1a450fc4"
+    },
+    {
+      "id": "creatures/m21",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "4105bab1523295fec1cb68a6db4ca76adc2e545c375dcc7cbac1b901191c731f"
+    },
+    {
+      "id": "directions/m21/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b696ae9c0220433e7f404dc20d92aa4487a476cc736197efe5b3d11f582bcac7"
+    },
+    {
+      "id": "directions/m21/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d53ecd021f84a51cd7b7cf4d3ca05fd8df357f3ef7ccc32f21d299fac5a1dc87"
+    },
+    {
+      "id": "directions/m21/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "96c965f5f4fea22cae00ddee78425983afc16017b3dc1700b35b9d34229f3c8a"
+    },
+    {
+      "id": "directions/m21/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e29e2fac486bb1708f606882092e222aeba006b279cc8fd83a8b3eec2589bc4f"
+    },
+    {
+      "id": "directions/m21/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ab11a4c987e645a85829cafef6bbfdca93a22e1139853ed95a1567077ad930c6"
+    },
+    {
+      "id": "directions/m21/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "1484ae97d1d93695d912a458cd2ef275b374b8d4c480c748160c072f9cb0cb55"
+    },
+    {
+      "id": "directions/m21/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "50846fa9ef5188e36da44c3d227f1e08232656d67c97c7f000596aa5e578f30d"
+    },
+    {
+      "id": "directions/m21/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d0a054a91fbbb26eb58619dd4e62886ffae29f07fede992979602fcdc0b3e5e2"
+    },
+    {
+      "id": "portraits/m21",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "1484ae97d1d93695d912a458cd2ef275b374b8d4c480c748160c072f9cb0cb55"
+    },
+    {
+      "id": "creatures/m20",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "58609f073fd81f4f18b1c135ce5958f8d280cb0ffceab1c0c1cc558cd814b9c2"
+    },
+    {
+      "id": "directions/m20/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "571459ff63e3feef02f439399310567fe026e404c2258db3b6a952f5ef2397c9"
+    },
+    {
+      "id": "directions/m20/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4dcf22c64c4c1a563a7e93e7b429f360c9a94e74d1b37e762603544036978f96"
+    },
+    {
+      "id": "directions/m20/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "0fa72b13cac2eca32d20089261e237f1b596925fa4ba8b9e025036e339ebe892"
+    },
+    {
+      "id": "directions/m20/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "f264437ac101173b9b10a867ff946e29ebd6b0846b9c74b7fae1437cc8b69828"
+    },
+    {
+      "id": "directions/m20/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "aa5089ae71accc2f803b125cda624b0523f04feed0965695eb9d3438e879f568"
+    },
+    {
+      "id": "directions/m20/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "637cb9697f12d81da88486d63ff6bfca068191db877843eb66f2aed63d68ee99"
+    },
+    {
+      "id": "directions/m20/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "6578b0a26c01e0e12ada47b178971e4337d7a71810ca7c3870258f588ed59154"
+    },
+    {
+      "id": "directions/m20/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "2a58dcbb2ad50934d0be92354b6a5924f98cf7920a2211d08235853b7287e2be"
+    },
+    {
+      "id": "portraits/m20",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "637cb9697f12d81da88486d63ff6bfca068191db877843eb66f2aed63d68ee99"
+    },
+    {
+      "id": "creatures/m24",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "1ec25d01da18077cb29e4f28d080d7ec43622002e5a528b016076f6644ad08ca"
+    },
+    {
+      "id": "directions/m24/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "db12c5d3d0d90bcaf9853e7098559337303d598de389185ed0bd02cb78fb36b0"
+    },
+    {
+      "id": "directions/m24/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ff8af340e71df3ac26677536eca9edf9521e9e0f358169fcd9205101aaf155e1"
+    },
+    {
+      "id": "directions/m24/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7dab096f711b33ed515bd37250a63fd5df4ba372036b653d707566c2899106cd"
+    },
+    {
+      "id": "directions/m24/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "da5cabc1039403c5503481fcf253e3d1aa1c396a8bb907b53a1191dd4d487f34"
+    },
+    {
+      "id": "directions/m24/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b3483fda9917df448ccabb1c631cf78452f48f53425a4f5b728d25a0cfe7918a"
+    },
+    {
+      "id": "directions/m24/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fcc47753fd76e5e8f1b4ca34c1a0d4b21c5ee56bd3de6321593bb0d52c8c74c0"
+    },
+    {
+      "id": "directions/m24/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f169f511da44ed9db2dd3444a0d987c07d517e9f86c8deff633e52dd27badcd6"
+    },
+    {
+      "id": "directions/m24/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "08a49891e3f1ddacde4d8a37ae9c80abde75ceb53422e6954d57a407bd0dcdf8"
+    },
+    {
+      "id": "portraits/m24",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fcc47753fd76e5e8f1b4ca34c1a0d4b21c5ee56bd3de6321593bb0d52c8c74c0"
+    },
+    {
+      "id": "creatures/m22",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "1809c8c0a2f4431cc64f64b3837e532ae7ca41739746eee999c2ff1bb307b3ab"
+    },
+    {
+      "id": "directions/m22/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ba90478e5f619fb52441cef6b44eb7e6b77595df833eec594a6b59e72e007b66"
+    },
+    {
+      "id": "directions/m22/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "bb67c269267c35b039c6bf1c55ab9c91b788f88b34af927b994d24f3a294b35e"
+    },
+    {
+      "id": "directions/m22/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "91af0ed0af64b6f14a504933ef415e360e6dba9c58e46ecdcd5d32dd8e83ff33"
+    },
+    {
+      "id": "directions/m22/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3ad7e787553dd4934c7e7372564405c2626cd1fdf0b1c3215ae0f0f1630615d3"
+    },
+    {
+      "id": "directions/m22/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "24c0a223c44646e02b61f39011d7863ab019f21fbf2ccbd2c28205293c46a6f3"
+    },
+    {
+      "id": "directions/m22/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5cfc0f71a29aa4e543e8a6f54ec183071e12acf92226447779cdc7745b58ce53"
+    },
+    {
+      "id": "directions/m22/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5da9d821072e6ee7f51750127030eecb7ca6cf4037b5d1c9aab9d74865cb5de0"
+    },
+    {
+      "id": "directions/m22/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8fb19be4463425ec8222644267e97079dd38af407c716bd004e8ed99fcf4e732"
+    },
+    {
+      "id": "portraits/m22",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5cfc0f71a29aa4e543e8a6f54ec183071e12acf92226447779cdc7745b58ce53"
+    },
+    {
+      "id": "creatures/m26",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "3b58e212b5b239daf5e9c965683b97d917b9d7baa312069eb10a5e880f79daea"
+    },
+    {
+      "id": "directions/m26/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c2bf6dd105d3735f47577acaa1fe94985957db080452ffcf9b52128f53ba5601"
+    },
+    {
+      "id": "directions/m26/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7eb17bd07b1e438fddae2b53426a762fe988034097b55e690370fe43de6f1518"
+    },
+    {
+      "id": "directions/m26/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9d72ca79c0ae7011e4fb43ef2d607e8305a8355987a7fed756559ab2e39349ec"
+    },
+    {
+      "id": "directions/m26/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7e01fb3bc19ffac6a0e8c964601ca0844b863c38aa3732b8f90afa0ec3dd09e0"
+    },
+    {
+      "id": "directions/m26/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a0ee96aee8f0dad9f23730da704e5eb882f759d361d489e5e8878c4bd49bf6d0"
+    },
+    {
+      "id": "directions/m26/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5d2216db92be8a7f7247bccb1115195848cd258c3534d4f9fc45c157d94aa278"
+    },
+    {
+      "id": "directions/m26/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "bbb157a9f7de5d730248d068bfb2415b51f6eb219045d4c90925d68770327767"
+    },
+    {
+      "id": "directions/m26/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6f9e200d1eed07df431ee18f8a84160d6958e69a9fb910b1e99d70cb55c122f5"
+    },
+    {
+      "id": "portraits/m26",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5d2216db92be8a7f7247bccb1115195848cd258c3534d4f9fc45c157d94aa278"
+    },
+    {
+      "id": "creatures/m25",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "932029c97ef47bdb8355b0ed063262a4e81ecbc14f8cb0fa6ba27d9f1d8d8c58"
+    },
+    {
+      "id": "directions/m25/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "858a43512f526436467ed7d549b0a05805e9561231f20478042ceee2fa60791d"
+    },
+    {
+      "id": "directions/m25/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3b1494e4cec78752700905c670e414d5201a40986fe0ea08bf1a9e19b518ae68"
+    },
+    {
+      "id": "directions/m25/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d2ba245d02e1c25dc1c894ec258bd733d6f873af3f3fd81e2dc2bcf65842350b"
+    },
+    {
+      "id": "directions/m25/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "77fc0a2f09ec9d9a58e03a8a8c632ba5b6c3a0d83e7183d7449fd5fb980ce923"
+    },
+    {
+      "id": "directions/m25/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "97068c66979ac414b7738fca522dd895b57857a8c1d7af27f98bd09106a639da"
+    },
+    {
+      "id": "directions/m25/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "88109b7594a7fc03f3f4cea928bddc924e5f334aa4c68e40f5ea76dd84612918"
+    },
+    {
+      "id": "directions/m25/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ca8af32a6bc131e0763b28feb9ee0695e2a9133fb5680ba843ff8ce01b1d05bc"
+    },
+    {
+      "id": "directions/m25/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a8c859da3c34312ec01d5812629077350dd1beb2350c09f2d02d28bf6d206d75"
+    },
+    {
+      "id": "portraits/m25",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "88109b7594a7fc03f3f4cea928bddc924e5f334aa4c68e40f5ea76dd84612918"
+    },
+    {
+      "id": "creatures/m23",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "1a6c6c8a86ba9108871238de5c55c869dc6a4691b8570a7655b6728ad8288e73"
+    },
+    {
+      "id": "directions/m23/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c8b9fe116cf58fb91ebe4f5b3a89e7fe02619d9aa64fc227d28efe6052e691f2"
+    },
+    {
+      "id": "directions/m23/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7c38388b0d9bd5cbfc34751883c03e65a88c933e90886e90ea52d2e2baec55c4"
+    },
+    {
+      "id": "directions/m23/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3ad9ca3bab7b73820ab1e3f1954b7739fe23aa2411ee08813d97a74850844e4e"
+    },
+    {
+      "id": "directions/m23/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a6d640fa32907d77ee9307ff43efea3b398f7b6c135d7f9d7983e3df3e42caa7"
+    },
+    {
+      "id": "directions/m23/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "56912cc1c8a6fc822fcfc2eea00db98c6cce8f8fe2c951f1758d3787b6c6dd77"
+    },
+    {
+      "id": "directions/m23/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c60bbf6594e5a575365a0fcd4f4a67fb808045af87cdd511f62e41bc5d08f6e7"
+    },
+    {
+      "id": "directions/m23/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "346e17794e61391df8f2d99fa2c5df4501c10848a50564cdcecd695e29a6c23f"
+    },
+    {
+      "id": "directions/m23/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a048258a1ce6f92c968e9435bebc44f0662e3a1a88319b9f63de205914462a75"
+    },
+    {
+      "id": "portraits/m23",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c60bbf6594e5a575365a0fcd4f4a67fb808045af87cdd511f62e41bc5d08f6e7"
+    },
+    {
+      "id": "creatures/m28",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "7195b78771120fea866412368aee15fb8817d542a28d6acd79b9d378ce99b1cb"
+    },
+    {
+      "id": "directions/m28/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "78f76f51802ef3ab4f7ef2aa8786fee19c916a3d9354c1a6c8fa9341bc0f3750"
+    },
+    {
+      "id": "directions/m28/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2476745eaa740861fb3efce5d9d9d2b765b2321faaff2403477155ee9687c05d"
+    },
+    {
+      "id": "directions/m28/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "22aa65183aa3d02dfb22cf7c6038e6d08e25cda869db9a6fca5c6f28db2c7b69"
+    },
+    {
+      "id": "directions/m28/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "629b3fd09ceb36c476a59a107668446fcfa3b6feeb9a6daf78d02e8c58c7b8d4"
+    },
+    {
+      "id": "directions/m28/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d42414725a5c430a88263494edb6d67356acb8513b379e9b16c175e9fbe8c8fd"
+    },
+    {
+      "id": "directions/m28/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "74e09ff0b4a8f7d48e5468a980470e162f30b3577bf2a213fe5b8c05fdf2bd21"
+    },
+    {
+      "id": "directions/m28/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b70698a85ee3d5132dda382243e630d68088674907292524b7660be8baaae79a"
+    },
+    {
+      "id": "directions/m28/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4d7a0b208145b6fac0cea9c81987d566c57f9e26cd912589346c71b70a9f5343"
+    },
+    {
+      "id": "portraits/m28",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "74e09ff0b4a8f7d48e5468a980470e162f30b3577bf2a213fe5b8c05fdf2bd21"
+    },
+    {
+      "id": "creatures/m27",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "8b625bca94feea091a96da9443f4d3d88eeb31fa64f0b49033a40f6dcdd44f54"
+    },
+    {
+      "id": "directions/m27/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "186dcf764b40264f79853d3900d7c497b49c5c0200a4c35711cdfa7ab4865a8b"
+    },
+    {
+      "id": "directions/m27/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a81763b20b6de122d27909134daa30bee1f16bf1ec1e00c9aa01f75d0bdbb87e"
+    },
+    {
+      "id": "directions/m27/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "054a120e9d7d611fae92c12dcf0fdb28e6ee8cf597dbb661873262a189074653"
+    },
+    {
+      "id": "directions/m27/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cc125c775f8d74b1d548ebc15c827102f6943963afcecb049d1112ce01fd0cc6"
+    },
+    {
+      "id": "directions/m27/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5f1b4bd88059d63c45d364007d029f7833c0b37a8544963ff13880450ddefc62"
+    },
+    {
+      "id": "directions/m27/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "33797df38ac921ba3df5efc107afaa726652430a4dda9906569082ae6172b712"
+    },
+    {
+      "id": "directions/m27/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "067fa1d827320acf15eb0311f1812628d2806392846f667b14ab6fe8dc46adc1"
+    },
+    {
+      "id": "directions/m27/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7f336aaf2facf92e1844b51e73d1c43680b235155696c733c3971aa51a0adfeb"
+    },
+    {
+      "id": "portraits/m27",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "33797df38ac921ba3df5efc107afaa726652430a4dda9906569082ae6172b712"
+    },
+    {
+      "id": "creatures/m29",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "608ceb9f72691d5e9f00ecc54005bfb9d5cb535007b26bc1fde5a562cdf813b7"
+    },
+    {
+      "id": "directions/m29/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1a7366da54fda78a84293027ecb63e16b6a031fd7cce213436acda766635cb31"
+    },
+    {
+      "id": "directions/m29/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "55c444b7052b6f6017b4feae7d32a5705bcf6a1a2ad3b2e1d2ba33d792320576"
+    },
+    {
+      "id": "directions/m29/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f31017414885e07650b43a5e93e33454538543fb56cedc5bd4356c83e4cb22d9"
+    },
+    {
+      "id": "directions/m29/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e88d717d5346f4afdeb4462721019f0c67fdc7774290bf30481ffd074e748158"
+    },
+    {
+      "id": "directions/m29/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3dc67ba70a350b1f7269124897bd2bb328ddfd019ea9e70d6f083bb65cc157ee"
+    },
+    {
+      "id": "directions/m29/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "614dbe12c42c994fc2a569c27b69e57fa3d662035435709c8b0a1ec7fafff1eb"
+    },
+    {
+      "id": "directions/m29/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b35827d8fa4e7350cece841755540432e5f30f45f6f1e3b02b66b19d6c699eeb"
+    },
+    {
+      "id": "directions/m29/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b606e5ef5bd761d97e9e844a4c3eb2b7f479257f4d116ae69199ff207d92e600"
+    },
+    {
+      "id": "portraits/m29",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "614dbe12c42c994fc2a569c27b69e57fa3d662035435709c8b0a1ec7fafff1eb"
+    },
+    {
+      "id": "creatures/m33",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "2ffe25ec7e28b9a81fa92d3e21a971a10a119dbf300dd94a74934821a6c5a239"
+    },
+    {
+      "id": "directions/m33/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d04c733e77ae9760eace23284ac08945b436b7e4b54c26586a323ba9b7200822"
+    },
+    {
+      "id": "directions/m33/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d4d2327749d4af94e836b51611f4391eccdd31bcc507f6938a4f8df0966694a6"
+    },
+    {
+      "id": "directions/m33/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a3b3c928e14dfef79bccae790ff39de2e24df3bc56494f89eab960fab8c34938"
+    },
+    {
+      "id": "directions/m33/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7435ac0607d9e9e6b27cfa77e44d4cc048c816a5e3153825001fe4dfd165dfe4"
+    },
+    {
+      "id": "directions/m33/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a852bf339449c6c3ceae13aca7edb2e3be9202b05248cf9510c7aa5648d57dbb"
+    },
+    {
+      "id": "directions/m33/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "efd5f8242491ee4f70f9ca0a04d03102be6324bdb0b72de39f48f2c464436105"
+    },
+    {
+      "id": "directions/m33/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7a09c0bd095a468f57544d118260a158fba7548b80368bc5b832a63ac2c744ae"
+    },
+    {
+      "id": "directions/m33/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3fe08832ee06c2707bcf4787476db3e93b048ee1895be658be4c42006b1c8e76"
+    },
+    {
+      "id": "portraits/m33",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "efd5f8242491ee4f70f9ca0a04d03102be6324bdb0b72de39f48f2c464436105"
+    },
+    {
+      "id": "creatures/m30",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "43c34708400204290878739f7d79633ef2bf1c40e50f02077bfa4a25d5e22646"
+    },
+    {
+      "id": "directions/m30/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "94a24a3aac0234f549f7f1b85e0e01dc4598ff94b2d3d51a7ef317f2b5acb6d3"
+    },
+    {
+      "id": "directions/m30/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "989d1a360d77b9e0a6489d880cad33e188bddb0325e5d4748ed0034201e8d966"
+    },
+    {
+      "id": "directions/m30/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "789db9e4c963fec5324af3874d4dfc6d6862f122e4e0c29116969e254e92d7e4"
+    },
+    {
+      "id": "directions/m30/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f72d58cd110a784f4a9f5b4adc619157099804c380a3279c78df79920fc9f563"
+    },
+    {
+      "id": "directions/m30/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b960d81080a10ff8ead15683d5840352c4fb4dc31eacfb3cdebd5daca5f03d43"
+    },
+    {
+      "id": "directions/m30/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e99dcfa329205f454fae64449137e9326fd3bc557a19d84e8189e32cbe547c9d"
+    },
+    {
+      "id": "directions/m30/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c58c2921c9e3266462d4139232efe152091eb02f38971078f59f82fa22f7862e"
+    },
+    {
+      "id": "directions/m30/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a89b6882dc3cf4fa432da0587096ef1d6430c99f4a05dedb686fc34c8a32ac69"
+    },
+    {
+      "id": "portraits/m30",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e99dcfa329205f454fae64449137e9326fd3bc557a19d84e8189e32cbe547c9d"
+    },
+    {
+      "id": "creatures/m34",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "ad3e45ef448602e881b718bf05354987b3acff56b9c27012d5a59bf223d80b11"
+    },
+    {
+      "id": "directions/m34/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a464c971fc987fb54af7495106a618d31d0982485735776b0c84c34ffe5b609c"
+    },
+    {
+      "id": "directions/m34/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "19070a9f75553083e4b283014bfe86ed7317ef7e3439cfe2fef00db62aa73a49"
+    },
+    {
+      "id": "directions/m34/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4e937fd320a6ab5654220543ba470fb7f9acde89401d1598f51d444d4b0e6242"
+    },
+    {
+      "id": "directions/m34/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c79f5f5b3a292b1d2edbeabb915ba984aa65160dc200ce384b1e8b01dff0f91d"
+    },
+    {
+      "id": "directions/m34/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b4bfac22003b0d374b706738ea6ffa46ad353f49d1d11d48e36c178bdfb3d5b8"
+    },
+    {
+      "id": "directions/m34/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9e7d964e869120a747ec03103520f766b087568654b6ae904098ff7015e52da0"
+    },
+    {
+      "id": "directions/m34/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b9379cd67972d6f6b48adbb4c2ceefcbd030ed22a85ba152dcfa6d176ee1d315"
+    },
+    {
+      "id": "directions/m34/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9daf80b2d9b4b4d29e02c208375ed922c2898f9aba2a4849b5f08f5f972bd002"
+    },
+    {
+      "id": "portraits/m34",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9e7d964e869120a747ec03103520f766b087568654b6ae904098ff7015e52da0"
+    },
+    {
+      "id": "creatures/m31",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "0d2501198e5e7ddffdb3566378c7053a8fc684160d5df8cffaf5d4801273e58c"
+    },
+    {
+      "id": "directions/m31/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f7b904bdb6e6c08ea43bd7cd973079b01b596049742e0f876bbbe959493e148c"
+    },
+    {
+      "id": "directions/m31/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "072989588ec7199cd6cbbbd2556ad4570cc694b4e627eb8475ce3fd8d2d1fcbb"
+    },
+    {
+      "id": "directions/m31/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "41bcdda827fc36717e159092c623c77b3581fe580091b9fc8eceffdafb2e7968"
+    },
+    {
+      "id": "directions/m31/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c112a94ead31a50046256f1086a8abf59bbc1fc3f21f85ec743c60f0ea898076"
+    },
+    {
+      "id": "directions/m31/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "29f1178fcb347878d760c7e0fa98068ff7bb6b63afabb47a275074c762265c5a"
+    },
+    {
+      "id": "directions/m31/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9154f043f87a48e3008cedfbc47e8cff7150ace1cff8912e17fce48567df5765"
+    },
+    {
+      "id": "directions/m31/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "4619ba4a9191beea1a0481e47dd7a54ef27289d0a933d37bc70bf0690809921b"
+    },
+    {
+      "id": "directions/m31/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "656794769b2e26fad68159b7a3922b1a26a5891f17e1ef3633d66e56def132cf"
+    },
+    {
+      "id": "portraits/m31",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9154f043f87a48e3008cedfbc47e8cff7150ace1cff8912e17fce48567df5765"
+    },
+    {
+      "id": "creatures/m35",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "599a23519fb567521e37f3d751e396f2b84e8b4cbcc52ffc1aa614df27b7aade"
+    },
+    {
+      "id": "directions/m35/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "8266f9058d609088e8a5763e736d1de0508a376f359b821acb062958f92df86c"
+    },
+    {
+      "id": "directions/m35/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4e3210a9e0155db5a0107661c2729117d7ce7e297c392425dca2e456bba18305"
+    },
+    {
+      "id": "directions/m35/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "fb7194d37dfdcc68de8c434ab5c8d89c7d1f1809af299eaef1156071b438ad99"
+    },
+    {
+      "id": "directions/m35/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4bdb6d3a9b7c0c5f48528feb44f03996c74ee23687e798fcb7d1032c8c294814"
+    },
+    {
+      "id": "directions/m35/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "e18b1281120401801fe0bfeac87cf8cf7c80acf791eadc5f0e6b839e497d7a59"
+    },
+    {
+      "id": "directions/m35/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "43149ba8d0dc76e751c6795b687b71e4f312953012413e0220d9ec3cbf3fc8e3"
+    },
+    {
+      "id": "directions/m35/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "c76ae44a32ecbee22a59d88000db5c5fea7bd899a371b0f5bbe8d10d4dd3aef4"
+    },
+    {
+      "id": "directions/m35/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4f007fc1ee5fc898bb30477752efb52512ad421f277962ebdfa4222074e87b1e"
+    },
+    {
+      "id": "portraits/m35",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "43149ba8d0dc76e751c6795b687b71e4f312953012413e0220d9ec3cbf3fc8e3"
+    },
+    {
+      "id": "creatures/m36",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "8ba7f2fc794457fe00bc0c310d5980380a4da5b4869e83cd36c75e3be7bfc0c5"
+    },
+    {
+      "id": "directions/m36/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "18572f38fda87a05f86e9e41b5bb24316825b995f3b09483f7a6f7646c8cb15e"
+    },
+    {
+      "id": "directions/m36/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c2c4ec466fda74df06648245cdcf37b6abb512b20fdf0c4098a595b014d166b2"
+    },
+    {
+      "id": "directions/m36/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "bfef6d9524d83107fc8837852ddae20f5d40281f6eaf2085c6d39945461821ef"
+    },
+    {
+      "id": "directions/m36/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "9364e878566e5a5417184fe762411d5ad05196e5cfe559b492c0b1ea570e1deb"
+    },
+    {
+      "id": "directions/m36/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "194b7512f7dd22a80d8cf9ffec1e89171aa6bbaf288bd57850051a548797c614"
+    },
+    {
+      "id": "directions/m36/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "84e10051816afb610d2dc751ca0064dff3e0fa2b8a36780bb2f2505c2dbb67be"
+    },
+    {
+      "id": "directions/m36/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a67cbb44b0cb16a6cd975e3d815a938c3b80a6b5a8928463b669a029b26161df"
+    },
+    {
+      "id": "directions/m36/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b228dbb2283a9f9ad2ede2ae066315392dd00e97088dd6fbccc559dba86f1189"
+    },
+    {
+      "id": "portraits/m36",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "84e10051816afb610d2dc751ca0064dff3e0fa2b8a36780bb2f2505c2dbb67be"
+    },
+    {
+      "id": "creatures/m32",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "bab5586d0834a65020dfa7c5d840772236041298215211b0a656b6cb4ff2002f"
+    },
+    {
+      "id": "directions/m32/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3d2bcd39576b384e5298d9f51238d49958d60e966bd0746747dc02d753b3ac25"
+    },
+    {
+      "id": "directions/m32/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5fb580cb70b667c0fe26e769b1ec7f75c56ceb051abbeea9222a61748225e197"
+    },
+    {
+      "id": "directions/m32/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "cbc30fc07e9a99f3228957d6db8767c3a2cf6abdf67a98600bc2002de756ca0e"
+    },
+    {
+      "id": "directions/m32/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d994ba5a8211b4f3524c8dd2be11a3407e70d29ed0c4f90eccf4fafc0698e389"
+    },
+    {
+      "id": "directions/m32/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "209b9b5a737cbc7d9f4626c1b8c8b77b28c089eb9b9e7c13a28a965c1297f955"
+    },
+    {
+      "id": "directions/m32/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8a0a168268b18b9ab2134d41ee04d32b22806c2d969982218c8ee68dea564de1"
+    },
+    {
+      "id": "directions/m32/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c7c5da75b285f9cab7fd1a4bf96f469fa1bbcc654cd83b7b06aff39a3bba0385"
+    },
+    {
+      "id": "directions/m32/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "516dff47ce9cbb1d09b05b932db4c838f8f4cbf98a28598dde26f63d4f02ab87"
+    },
+    {
+      "id": "portraits/m32",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "8a0a168268b18b9ab2134d41ee04d32b22806c2d969982218c8ee68dea564de1"
+    },
+    {
+      "id": "creatures/m37",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "7602b6a55430130eda593f22b90ef93295fd5c49e581cd57942d1a9f16dead2a"
+    },
+    {
+      "id": "directions/m37/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "556f01c4378ba66766e5d83080f3887a7a7d192abfb11dde5f1244dd5eadaa53"
+    },
+    {
+      "id": "directions/m37/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "82baf8d85507523bc66d4cb7cb493d49ca1a2896f51b7afdd02280ba6b82ba2a"
+    },
+    {
+      "id": "directions/m37/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "906c70715a15d2cfbdcd5bf209cfd4818ea6ad91bb777ab011ee7bdb7a049e00"
+    },
+    {
+      "id": "directions/m37/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "18dcceb24c7b5663355bfaad21fe7b4470345b210c1835b3c81d89a4e26f196c"
+    },
+    {
+      "id": "directions/m37/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ade3fca0222744562f6064d82362e2409854b5cf478a4d77239673d60996c3fc"
+    },
+    {
+      "id": "directions/m37/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "640924f94ae53029a29de615478c273ee7ea40e7bfda26edab8334c85aaade2c"
+    },
+    {
+      "id": "directions/m37/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "28719cc5ec9e6902fdfbf7478684859515a9bd1a01edfda2c7ba465e0e7694f2"
+    },
+    {
+      "id": "directions/m37/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "fadac5c24419034a268792767e7c3d65a4fb428e20378c8fbdd5b2227dcbbf58"
+    },
+    {
+      "id": "portraits/m37",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "640924f94ae53029a29de615478c273ee7ea40e7bfda26edab8334c85aaade2c"
+    },
+    {
+      "id": "creatures/m38",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "8fa054b3c2c748a6c2d8db27b9a4e0f7b0c182106df2358b10ab22482bb8a689"
+    },
+    {
+      "id": "directions/m38/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0fa02ec46ec1cc15db5a9ed1d5fdfe20e45285f5f8b87050b202722d22d49689"
+    },
+    {
+      "id": "directions/m38/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "457253e9f8d4ec4957e8a831486db3978b87c390a0afe1121f6a5b5af3751765"
+    },
+    {
+      "id": "directions/m38/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2fbba65a391b17817b268aa71c3e4394fee5f774474ef6911de2c5a4d3a9cdc2"
+    },
+    {
+      "id": "directions/m38/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a6b36cfae6662a455bfb5b15abed7088204ef094fd2466fcb65aced67d09e7dd"
+    },
+    {
+      "id": "directions/m38/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "124d8c13167ea6d6c46dd74c6ce3b2895de82e7f2eab16904125e59c0f26ef43"
+    },
+    {
+      "id": "directions/m38/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b116811d079a4881bc708f4e14b7934c5419f787bdd85dded7411951b2f00ed5"
+    },
+    {
+      "id": "directions/m38/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "70610795efa539e51693015e2cc32b060204d50a282b0229a7fe3ee39ff1cd88"
+    },
+    {
+      "id": "directions/m38/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "18457e682fced3eff383bfe9fae890f899b157abde43ead0892947c7d956c072"
+    },
+    {
+      "id": "portraits/m38",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b116811d079a4881bc708f4e14b7934c5419f787bdd85dded7411951b2f00ed5"
+    },
+    {
+      "id": "creatures/m39",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "9bba28b44814df45c51689cc6b46904358285c87472e1366219fe75612e1a17b"
+    },
+    {
+      "id": "directions/m39/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "7c4d449e77d8c148ecd8f6cdf52f8dc5f9645baea2745ea6a23fc227202dddc9"
+    },
+    {
+      "id": "directions/m39/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4f7a2d854a0e1910d45026f86d498698180d3eef503c1ae6f699b2a8b4b67c56"
+    },
+    {
+      "id": "directions/m39/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "41716054c3a9d25c4faab3bff7e308c0ee0c76773801b37156a4a83e118c2d17"
+    },
+    {
+      "id": "directions/m39/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "4ad2c38312b8d7414cf3382a3334d6783ea13442f4f0ef90a50794b9a4e7a51b"
+    },
+    {
+      "id": "directions/m39/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "d8d63cde4765b67d31102c83223a200ecbb663d50ce320589cf1208c6a93abc2"
+    },
+    {
+      "id": "directions/m39/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "fdd8dfccad0493ac83b1049d1dd004590eefe61b395c4c89d57769e7f9307554"
+    },
+    {
+      "id": "directions/m39/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "29555ff2a7cb9227f3ba24488a17aec07bda76b54f66e65bb302ddc6f3705fb6"
+    },
+    {
+      "id": "directions/m39/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "6e88a2a95b7296219ca001a9193be0b3d7b67a7f1589533e7edf7981f5685dfc"
+    },
+    {
+      "id": "portraits/m39",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "1dc60a2d9cb0dcd998e3611edf642d57428b9fdfa3211ac4085cb05d4ccb7eb5"
+    },
+    {
+      "id": "creatures/m40",
+      "width": 512,
+      "height": 512,
+      "cellSize": 64,
+      "sha256": "bc5dae3fa720df38f72e1a724a4fedf94b465ed926fbf42d17f44168abf95388"
+    },
+    {
+      "id": "directions/m40/N",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "839c6d1c3165202eb83062d1eab946a5ad631f317aba0cd862cda1ff9494ac78"
+    },
+    {
+      "id": "directions/m40/NE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "9a5509d15b42028a930b120575739fa97b5160b8864a3dfba587ba638c9f8800"
+    },
+    {
+      "id": "directions/m40/E",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "c12a1c96d4d99f5cd3d88335b2df10ed07ed4529ba7fcd0b0750de1c43ae9c7a"
+    },
+    {
+      "id": "directions/m40/SE",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "e2e389e3bfa4f79713bbd2c3ff58539cebf505291f5d4493c4733192744c0562"
+    },
+    {
+      "id": "directions/m40/S",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "fd06da39ebc50fc1535b39f083d87abf57a009e4aa6291916e6836618ab020a4"
+    },
+    {
+      "id": "directions/m40/SW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "604b61cdfaceaf3322faa06724d019ee8601263488139903fb1e0a6f9f973923"
+    },
+    {
+      "id": "directions/m40/W",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "c207147c9327de146a7a6c53eaa504994d7327d6d959366d67cc6435c262eaba"
+    },
+    {
+      "id": "directions/m40/NW",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "a6cef5bb922125f04c27d7242600f6aca1d8b8554165a0152c76da016de711de"
+    },
+    {
+      "id": "portraits/m40",
+      "width": 64,
+      "height": 64,
+      "cellSize": 64,
+      "sha256": "604b61cdfaceaf3322faa06724d019ee8601263488139903fb1e0a6f9f973923"
+    },
+    {
+      "id": "world/tiles-village",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "e6655fb83659543b364aad1f85858353d9c3da76eecfa0d6737a46fb1f3ef000"
+    },
+    {
+      "id": "maps/village",
+      "width": 384,
+      "height": 219,
+      "sha256": "1e4e286d96cf9e9ea254916c138e504fb525307a0a15a17ddbba749d3f7c8799"
+    },
+    {
+      "id": "world/tiles-sprout",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "374e02b5dc032861cc41b7bc582b6701997edae16c7a92e681aa45b6237a2ec1"
+    },
+    {
+      "id": "maps/sprout",
+      "width": 384,
+      "height": 128,
+      "sha256": "f6362589f22798f06c68b9817abb551380e58c9325868fdb23b0a8e23d4cd461"
+    },
+    {
+      "id": "world/tiles-acorn",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "288cf8984d50b84da85cbccecfbef9f7e3a9ce6f13926b20cd94f26410a9fd01"
+    },
+    {
+      "id": "maps/acorn",
+      "width": 230,
+      "height": 256,
+      "sha256": "b002f0300c8f762b4dde870ded59463b19e23433c2413f61db989297165db8d9"
+    },
+    {
+      "id": "world/tiles-brook",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "c16a22999f9ec0dc361a50d8daac9f948e044c37b2107254cd034e8157052ef5"
+    },
+    {
+      "id": "maps/brook",
+      "width": 384,
+      "height": 207,
+      "sha256": "ef3c182a2ee8fbf7e12990f8d58f0a152800e3449d5d1f4def4b0920202a4f4e"
+    },
+    {
+      "id": "world/tiles-stump",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "eb247fd324703916554f69c963ac4bbe03fc0a3c4c51c116e1782f1173a67a77"
+    },
+    {
+      "id": "maps/stump",
+      "width": 256,
+      "height": 256,
+      "sha256": "94c9c0b56c2d38953ef0a368426c9f2e673490d25d1c2b05e09a9bc5548ded4c"
+    },
+    {
+      "id": "world/tiles-shelltown",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "b00ff284752c88759f79ffc9b943574b20cc21153de3055a7e6307f05ca6b882"
+    },
+    {
+      "id": "maps/shelltown",
+      "width": 384,
+      "height": 209,
+      "sha256": "c11f18c609689d340e8d2ba117db605c180551aa4070ef688e543a1e9067bce5"
+    },
+    {
+      "id": "world/tiles-saltwood",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "399609a70c8a6be8d534aa3be8e1431b7eb85c543f1e50ade5ca831bcb52684d"
+    },
+    {
+      "id": "maps/saltwood",
+      "width": 384,
+      "height": 165,
+      "sha256": "d1f0f7320cd09f1235ef15d92ba04419b88725dcd1ada07c3a05ff3b46e97f88"
+    },
+    {
+      "id": "world/tiles-glassbeach",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "866df26d1d4a6b5b617722d81c2df3bb582ac82dbef105bdfe849c39a67eac48"
+    },
+    {
+      "id": "maps/glassbeach",
+      "width": 384,
+      "height": 128,
+      "sha256": "755d16a61a22a4e6bc00df232f944c9bcacccb1b0d801c91ae45449469899f11"
+    },
+    {
+      "id": "world/tiles-tideroot",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "c16348d52f9b6ca9e21fc9736b8638078b8dd3a942db496cc4f5b60f7f38889a"
+    },
+    {
+      "id": "maps/tideroot",
+      "width": 384,
+      "height": 240,
+      "sha256": "0a681836e7f278beb1c937dd98569fc1e1f7568cc502ce2563b40263e22340f2"
+    },
+    {
+      "id": "world/tiles-seacave",
+      "width": 448,
+      "height": 448,
+      "cellSize": 112,
+      "sha256": "2f871ab11c84ad40047138d2a7f91fd3caacb88169d816e8376c5dfca4753d1d"
+    },
+    {
+      "id": "maps/seacave",
+      "width": 352,
+      "height": 256,
+      "sha256": "3472eca5e843a89b6921c0f7ec79524c4f63e689914d4deea866043bde463be4"
+    },
+    {
+      "id": "verdant-trophies",
+      "width": 64,
+      "height": 80,
+      "sha256": "525fa1b65ca59ec56735420a39b6d798af468000d2ce93fd3f2e1c3217e8eabd"
+    },
+    {
+      "id": "creatures/m2",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "5d70feafde5d89b6358c856d93749ad2bd697c2450314c456482997f7edfa06c"
+    },
+    {
+      "id": "directions/m2/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "cbe29951f0f4e378f5ba4a47f654bf9f0a86ca4eb8c75b3595370b6c9c2ae246"
+    },
+    {
+      "id": "directions/m2/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "386245e60e5b68a2ea746f95916fdb2d633f092d0c75f97521061866196cf464"
+    },
+    {
+      "id": "directions/m2/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "dcb468ad10f8e9ef7e0f5c6a39468ec2405b866b9893dc337393992d43ba182d"
+    },
+    {
+      "id": "directions/m2/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f894ed2206f53aa96b3e8e398933fbc4b7cf174b7d8a63dd1b58ef3183128477"
+    },
+    {
+      "id": "directions/m2/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "d67868bf9ea9c9ea5f72478afd827e1513b2d88694fc00641991c3f0b41382a3"
+    },
+    {
+      "id": "directions/m2/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "87391d84f69a4c051eab03221d3526c9b0d162917a0883828e971140dd7bec60"
+    },
+    {
+      "id": "directions/m2/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5bb6d20cdcd5ed0e02cd92243fa01f0ef4c23abc5022739cc684d3be2e8c59ca"
+    },
+    {
+      "id": "directions/m2/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "42b5093e931f21882e9c8530493afbc3d4a52b106d9c32e80c3284bdad4cb8dc"
+    },
+    {
+      "id": "portraits/m2",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "87391d84f69a4c051eab03221d3526c9b0d162917a0883828e971140dd7bec60"
+    },
+    {
+      "id": "creatures/m1",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "94ba91a5199857b4a34e6d56e723b360167d18767fbea3df7bdae71ac61dfd41"
+    },
+    {
+      "id": "directions/m1/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "374326ce877a9044936a2baf615efaed38ca9e3997f83699e615698370d13d78"
+    },
+    {
+      "id": "directions/m1/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "db51a558a10144d063b1be072e303d57ef59b4cefc3230b0f043b8859292c1d4"
+    },
+    {
+      "id": "directions/m1/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5dd0e04f9ffae8d942261fd926f228afe7db5b56699c4f835aefe3d3f710b75e"
+    },
+    {
+      "id": "directions/m1/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "979add19065fb089afab99b821316feab5e2d1192cee1921d061b3b484dcda1c"
+    },
+    {
+      "id": "directions/m1/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f8d9c4be70b181afd2f88148da28bf2f2fc4ec53886df9a952ffa7e3f23442e6"
+    },
+    {
+      "id": "directions/m1/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e4728c3ed0b8d669efd46ad58cc650ee77cb1dcd912e547c4d541f415b90107b"
+    },
+    {
+      "id": "directions/m1/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "48acd1884611a9d7a3155ad7e1a9e94982797f82ed1818b6b592370bf9fac68c"
+    },
+    {
+      "id": "directions/m1/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e4425ee9f8fe8cba85ae952caf727c4988bb910a6c535baa12793666a35f3424"
+    },
+    {
+      "id": "portraits/m1",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e4728c3ed0b8d669efd46ad58cc650ee77cb1dcd912e547c4d541f415b90107b"
+    },
+    {
+      "id": "creatures/m5",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "9b50bfdd4ee06a09bf74c525ac6edb997d2e3209718ebac31758121b1babfd24"
+    },
+    {
+      "id": "directions/m5/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "47462c192ec17d08eebfc42bccec51cab00057c6737864d7a520e932dcd1e393"
+    },
+    {
+      "id": "directions/m5/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9cde948188cd07456c8d215f10c936a4caf61b78497a9db350871f2011276e06"
+    },
+    {
+      "id": "directions/m5/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0e1b1ad6079ba83ecb5baac889f1f084d356ec3f0574dfb909da720cea688fa4"
+    },
+    {
+      "id": "directions/m5/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "67c5e5de5f01f312db71c3aee7dfd793b1b072a058655fb447616ffbee00481f"
+    },
+    {
+      "id": "directions/m5/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2518018e37e60419cbc43991cdb9673f668f6520ff1d68efa5770f54b0b2839d"
+    },
+    {
+      "id": "directions/m5/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cdde1a86a35234718dbb34c1b3cbeb077f9c2cd663c74e558236813838e0cc77"
+    },
+    {
+      "id": "directions/m5/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "527c91e10b0fdab46a12c76378cb705d6b17086c18c9815fabd15fbcdf0b0db8"
+    },
+    {
+      "id": "directions/m5/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c08441a8d92928a988e56b225724e51db52754bfbad74fc0878903a8cd13b386"
+    },
+    {
+      "id": "portraits/m5",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cdde1a86a35234718dbb34c1b3cbeb077f9c2cd663c74e558236813838e0cc77"
+    },
+    {
+      "id": "creatures/m3",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "4b01e6bee47385f3e8d482c1a14f285fc0288b97af2710f46b12a1638a7579bb"
+    },
+    {
+      "id": "directions/m3/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "1de6b8274c13320d5a94beeadd2049299b6cb9a499c8e73e48e9310cc04ab932"
+    },
+    {
+      "id": "directions/m3/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "025969197321fb1edb277a0378f5c30b346b7cc7a52812f86c4b5286bf5b6272"
+    },
+    {
+      "id": "directions/m3/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0b72537fbaa4f3cc01da704a50c2a5ae68c19842d40c95a91ec330eb517173af"
+    },
+    {
+      "id": "directions/m3/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "c9b339aaadd252b62c200e5f5e15b627fff7b6d078875cc5d6b36d91a5b7620d"
+    },
+    {
+      "id": "directions/m3/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "30aca9cd83d11df5d3a580498a3672b548f82046d3025a8066030c89f7f9a216"
+    },
+    {
+      "id": "directions/m3/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "874492d4498535ae2d25b02b7658380be32120af2084e7b0e699b2fcb7c127c0"
+    },
+    {
+      "id": "directions/m3/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "7c78ce6d5320297c0e3cb6ee2c85601e4d8ee355c49c79d53a456fa81b5306d2"
+    },
+    {
+      "id": "directions/m3/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a10f346bd504bc9df6421b9065a4566b3c90174c886d5635ec28275f1f18bc0c"
+    },
+    {
+      "id": "portraits/m3",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "874492d4498535ae2d25b02b7658380be32120af2084e7b0e699b2fcb7c127c0"
+    },
+    {
+      "id": "creatures/m6",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "5812df7ae8a5ec3da0d0805c5451271a26cdd264301b079f56db38b27e487f6c"
+    },
+    {
+      "id": "directions/m6/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "62be618ee7eeeacc1ec4bb3200fe77e8fd4239d05a88250a6c11cdfcc7b5d0eb"
+    },
+    {
+      "id": "directions/m6/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "b77ac0b2ea56632bf366decd1809b79d66fb43cdadc062f829cda88b793483b5"
+    },
+    {
+      "id": "directions/m6/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3d014187b2443771124a8aa266c3a45f2464c8466863d04293213a59cb380de4"
+    },
+    {
+      "id": "directions/m6/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "6f550dbc1a6532bfc55842363f1a075bf5e2d976eee00030b2f2f93fd0fbd616"
+    },
+    {
+      "id": "directions/m6/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "48d59e3bd14fe0f5bb68c667d0f597d3ea72d7868ef98609908b091a990c8309"
+    },
+    {
+      "id": "directions/m6/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a70a0c521f85a39a6c372c8917a1ef06d63f80d5dcdb817f0fd0c1df23a2f7b5"
+    },
+    {
+      "id": "directions/m6/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "5c2b93808192b763050e6f678bb3e34f8116798d6c8190da082fee03a4dc0fda"
+    },
+    {
+      "id": "directions/m6/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "922105eec9ed9708144d23f088e19dd7728a10e977a068d932fc4a3421a582e8"
+    },
+    {
+      "id": "portraits/m6",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a70a0c521f85a39a6c372c8917a1ef06d63f80d5dcdb817f0fd0c1df23a2f7b5"
+    },
+    {
+      "id": "creatures/m7",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "e99959e677398a3e96d51d6108ef5c50c309e0fad76040eb59fe7de96deeb6aa"
+    },
+    {
+      "id": "directions/m7/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "3f5bcd732cb18620aa2f15288841d5ad9158beaffebf8392486f16228ce7975d"
+    },
+    {
+      "id": "directions/m7/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0f1c12a8e8ce87ecbe905f17222a8953f8f751a1742e75e49acb5702a829a2a2"
+    },
+    {
+      "id": "directions/m7/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "211d76dd3dee3fb864140016ae7744ef92807d6ae11f83979ff304cf95b43c40"
+    },
+    {
+      "id": "directions/m7/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "0d06beaa9d972dbe7fda20f6e6663005afe197b7cec9004e6bdeb8aff8ba7fe1"
+    },
+    {
+      "id": "directions/m7/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "a6c783396e9986e83d7fca5fd1ebf1be80bd39987a3c2170ac9860a70bc69057"
+    },
+    {
+      "id": "directions/m7/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2681b1e83e1f9935a52f4b986fdf9f49a7db57c78a756a65ee917b6ce645ba87"
+    },
+    {
+      "id": "directions/m7/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ed770a439fb45c7d5959695a7311dfe51551b23c3a4729a0fe7ef0d85357f669"
+    },
+    {
+      "id": "directions/m7/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "ffe3f8a1855ff5a3d1ea3cd807ffe44d095d91028e320224ae574e058d7144ad"
+    },
+    {
+      "id": "portraits/m7",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "2681b1e83e1f9935a52f4b986fdf9f49a7db57c78a756a65ee917b6ce645ba87"
+    },
+    {
+      "id": "creatures/m4",
+      "width": 256,
+      "height": 256,
+      "cellSize": 32,
+      "sha256": "9bdd6bc7542f6d7d52e8d1cdfe530b2fbe7a15384fe649d92e63cf0aae66c42d"
+    },
+    {
+      "id": "directions/m4/N",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "78c681045d34298755ba03371bed95e0e91a8960023db5a4b30867503a5925f2"
+    },
+    {
+      "id": "directions/m4/NE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "10d06c67552cc32d136bb21bd8b8c3c94f3a7bc05bfd97fd5fafb27eb75a8991"
+    },
+    {
+      "id": "directions/m4/E",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "02b3370f904c2c47558e820ab29223bede12606ec18a52f8318bc990ceb8ffd1"
+    },
+    {
+      "id": "directions/m4/SE",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "f5e232738822c1836b0c6626371acf8559bea64a0a630f0e08bcc7611d08969e"
+    },
+    {
+      "id": "directions/m4/S",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "e1d382e5023b1390dc838683d3c842d253055e4445c845aa7156148b7568b303"
+    },
+    {
+      "id": "directions/m4/SW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "72fb1b3b77ec8cdd32d4a57a34a880586dbf0f23ca7186dc5ff6dc2db50a11e1"
+    },
+    {
+      "id": "directions/m4/W",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "61911f354aaa069a49360a80c94fd876e12737f8e621c692355559476815e361"
+    },
+    {
+      "id": "directions/m4/NW",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "83210b1351ea57e244f5f0566c7b5473fe33b466328ab18985a16fbdd2f73db8"
+    },
+    {
+      "id": "portraits/m4",
+      "width": 32,
+      "height": 32,
+      "cellSize": 32,
+      "sha256": "72fb1b3b77ec8cdd32d4a57a34a880586dbf0f23ca7186dc5ff6dc2db50a11e1"
+    },
+    {
+      "id": "creatures/m10",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "b5d786d82c76ea92f266c75b187602a80c27f765cfb0dcfa5101592ab393f9f3"
+    },
+    {
+      "id": "directions/m10/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "16209c5de406581b5e9f8b98f04fe2007a8185531fbdc8cd7e60f2ac0bafd1f4"
+    },
+    {
+      "id": "directions/m10/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0cdb948ff590a4113eb9a8134e7d55c4d110e9b8a385dd7a98038afbd51e8738"
+    },
+    {
+      "id": "directions/m10/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "849b495ce88f2e8086b4592354619e7e8977b1584a002f66c69a0114bbbd3bfa"
+    },
+    {
+      "id": "directions/m10/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "537fb0b008565ac786e43c08da43366ca66e1ba8b6cb4303e635af3678a3042d"
+    },
+    {
+      "id": "directions/m10/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4a8200f2511557c5f0782679d6dfe97eb491e5e45f48b57625f1a0dae53c5a33"
+    },
+    {
+      "id": "directions/m10/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3c5cfcc8d54329ffe179b788c01f186caa3f2448fd1234a608e40f1026fd1c1a"
+    },
+    {
+      "id": "directions/m10/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "78c37e9c31e572dba5886d027c246fc39f5c5996efb4b67a00a32531ef5eaeb0"
+    },
+    {
+      "id": "directions/m10/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9662980edbd028048973bf0f8beb48eddd47312d3beceb86ba7a02e3fd7966df"
+    },
+    {
+      "id": "portraits/m10",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3c5cfcc8d54329ffe179b788c01f186caa3f2448fd1234a608e40f1026fd1c1a"
+    },
+    {
+      "id": "characters/warden",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "f317b9cb49a1ce4e66ee8dc10b1d174563f8b1b128393d71fe942221858752d2"
+    },
+    {
+      "id": "directions/warden/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "367086343aac8dc8e9a1a8a82be00788f90b7e93a1e74d712f666c9980015ffa"
+    },
+    {
+      "id": "directions/warden/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "350a4b937eb79a84637aee4591cdb456bcd1f78a0a8a333b81224de959c16465"
+    },
+    {
+      "id": "directions/warden/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3ae523a9456459edf67cbc05cd1cc404f2690045bb2bd4ab12c7e813e5b43587"
+    },
+    {
+      "id": "directions/warden/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "359ba1da5876d9cd262774bd42e5b0dccdc69b8b83cddcc0f6e5907432ea30c8"
+    },
+    {
+      "id": "directions/warden/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "25db479ccc54ae22a244e8f88ef0dd3c94dc4d43ad33d18c5a166c12d72ccd59"
+    },
+    {
+      "id": "directions/warden/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9386cd25e7416b0f535f57673587f4ba633fb4afecb96326115e9505f188b12a"
+    },
+    {
+      "id": "directions/warden/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "19c487b0d476802290f84749387cbe642940025776e9cd805eeacf376f7c28fb"
+    },
+    {
+      "id": "directions/warden/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "82c10c98986ef6a0af680d052d10d97f1cdedcec0ad2e94becfe164366697e0b"
+    },
+    {
+      "id": "characters/mage",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "7d715a612fb6397f4fbe3dfc935131bfe6e115145fa3a6549b8676a3febd7d73"
+    },
+    {
+      "id": "directions/mage/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "220c551507c0592ffa6d1a5e7da094347137c76967865fea9ba176e3d41a5b1a"
+    },
+    {
+      "id": "directions/mage/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7b38ecf7cdb6edf26c8aaa38342ce678202aa972ce88625466b4e5483be24bf7"
+    },
+    {
+      "id": "directions/mage/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "379566679d05fad6671c6b41417decc73a7e36f9806350b709666d3ce1d72c22"
+    },
+    {
+      "id": "directions/mage/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7689d1a63ed089422760aae6edd35d8cd1587395c259a8e01b1c1339ea34c5ee"
+    },
+    {
+      "id": "directions/mage/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fcedbfaaa340697d64f8621b7a2e67e90274e2f658a99744aa6880f7eb2cb996"
+    },
+    {
+      "id": "directions/mage/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7860145f37d201563d17e49f5183da6e8ab3e9fe38f9d7dbecdd3b29d5a6163d"
+    },
+    {
+      "id": "directions/mage/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "52ca66a0ab7469214a23974009bcd0f52b1ad723b79f30706f848030b4626633"
+    },
+    {
+      "id": "directions/mage/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4b1f5ef29490975f8e70933e3b3222943dc89a37b94cce0c71a56312a556729e"
+    },
+    {
+      "id": "characters/herbalist",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "fc269b600f00f98214f8ead91afbd243aee7b6acc029e3a037e13be07926c905"
+    },
+    {
+      "id": "directions/herbalist/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f17ed689f9c359d4b7883ca58e48a3cd16cbc88294268c803c26ee5067066b66"
+    },
+    {
+      "id": "directions/herbalist/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d1475438c6cbe43502281631b2c6f81a62ee3a4873023a8c0aeca0de1afca455"
+    },
+    {
+      "id": "directions/herbalist/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "962cdf6012d9ada92de0872b6a6969dba5d98d6d3d7123dbafb5840b5df9775f"
+    },
+    {
+      "id": "directions/herbalist/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1f2cdc332f8198b6819b017e959a8510e4a191afccd26a41cfd138a767d8ca80"
+    },
+    {
+      "id": "directions/herbalist/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "3fb692e5c6c81ec995f35b419781d9c029badb70beaf4cfd5cfbe521918b915b"
+    },
+    {
+      "id": "directions/herbalist/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2f5b4394778f89c0a41fb096ad192c40213a4a59778653eac152ce26677bdc68"
+    },
+    {
+      "id": "directions/herbalist/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "01b80a131e6f18c9c0a3f5c3eaa021f10459a4d2e3a6b25105688515c2186028"
+    },
+    {
+      "id": "directions/herbalist/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "73191ae0f0e9fa23b0245b2fc1538e44ba5cbbe2f14a62078d2a8285c1f1599c"
+    },
+    {
+      "id": "characters/ranger",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "e765a9f8b3c44abc0896af5aa412bfde9b26ed1fb6625e831ff9b163fa9adb73"
+    },
+    {
+      "id": "directions/ranger/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "19cb49276e3b0da043abcc1d105bf4d20d49c5e9331c0463605d4bc3d21c9524"
+    },
+    {
+      "id": "directions/ranger/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "999961c5f938011c450f0f288c2bacf95a16cbcafcae035881d1404b5ec7e3d8"
+    },
+    {
+      "id": "directions/ranger/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a098b173e24ed36fb3bf126cad92c981c867b77b56fbf161b51c9b5295b242fa"
+    },
+    {
+      "id": "directions/ranger/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d7fd1fb0b9655e8798d32929479b3f1c712280259d0bbaebfe35921d5b6383a7"
+    },
+    {
+      "id": "directions/ranger/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "58f96417fe8b99c2a4e727d38926b3e68a014bfea78d91f028d74a86c7a14c73"
+    },
+    {
+      "id": "directions/ranger/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "eed2dfe2b73e3b505d5c2eac5ad1e32ad4ed6e8ebeea754367006c44161bcd1d"
+    },
+    {
+      "id": "directions/ranger/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b639721b4187219e7d4155dfec7854f27692bb9552f95026d95dcdc32b002150"
+    },
+    {
+      "id": "directions/ranger/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "500afb7cf2aa9c73728ad878825c0bc5d4c415bc08dd3136519ebf66b26d108e"
+    },
+    {
+      "id": "npcs/guide",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "c00b959eccf2e17e94ac8fde786217cbb1081f8fc5c5b02705828cf1433f469f"
+    },
+    {
+      "id": "directions/guide/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ec59cda5be15b8fcb5fbdc56260fd9b8272255691bdb0cce3c1ea678b8332ca5"
+    },
+    {
+      "id": "directions/guide/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fb35b2be778ea7c36f3ccecb4ef8d19f8be10ce47ce312c1e951efc3addec783"
+    },
+    {
+      "id": "directions/guide/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f4a3544d22e5561f4017902ba37752d4ad9780cef3cf123bd5bb3855bdc3b532"
+    },
+    {
+      "id": "directions/guide/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e7e4f8a7048475d80d33b3beee68fe66248c6913af3fe32fd5b388edf5ecb576"
+    },
+    {
+      "id": "directions/guide/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0b87e27a391765eccfdcb6c6759da9cf4bb5a5349fccd95e9230ed548efd2f9d"
+    },
+    {
+      "id": "directions/guide/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "bd5cfc02bba4cfd0ae2f61d3f8fe059fdf3465ae1e7093a6d31e49ae83084c9c"
+    },
+    {
+      "id": "directions/guide/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "440f238c29187235f3c7c2a4561769733a41c592fb5ea6eb34aa8fe1a7c26dd6"
+    },
+    {
+      "id": "directions/guide/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d8f5f648639c1d550ea2635eb9dbd1dc770886bc73ee8b61c5f8d7eb3a58398a"
+    },
+    {
+      "id": "npcs/merchant",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "bb244ba5966c6e9c31289b29b6fa633600812c97ce6b0ba8a11579c8cee73058"
+    },
+    {
+      "id": "directions/merchant/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "df2ec893a8a03b134932ff9caae39faefac29b55cfa743d6e010265a476efc3d"
+    },
+    {
+      "id": "directions/merchant/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5d73c34c5276f9d72ecd9e874985fa224acb3b6f99615ebf6dd27b9b40f98b2a"
+    },
+    {
+      "id": "directions/merchant/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4b277ac4e7612ea2f202911a8277b02ec17d95787f2572e79d5eef3dd4a229ea"
+    },
+    {
+      "id": "directions/merchant/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e2988a659496ca3ea52c8031550bf87a99267a7a44dac93a18938e662d7dee9f"
+    },
+    {
+      "id": "directions/merchant/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "30cd7d48d2d760f768a062b1baadb4332b1997c3a2182854e1048f1f41585d4a"
+    },
+    {
+      "id": "directions/merchant/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "e03b5d781cf74df3150674262d574200712164aec29fe8508699f86cae3bc626"
+    },
+    {
+      "id": "directions/merchant/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "eef29ff57df884d754c71c054dbebc5f24b8061a733cc7d1bf98936fbd47805e"
+    },
+    {
+      "id": "directions/merchant/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "04cc55c09b30c529b0825667ba3ae53eefd0b7f9cfb1099f9e00e1824169b092"
+    },
+    {
+      "id": "npcs/smith",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "2a012f23ebb6ba748f068be77b1ebee9f87bef8f9e349f06a94b60f772b12ba2"
+    },
+    {
+      "id": "directions/smith/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "499fcf88802e4491fc86e127d5fa90e7651a8f67d822f5aebc30667691157d37"
+    },
+    {
+      "id": "directions/smith/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d7151a258eae425c91ad3f70388b2b94be10c70484c8ce7b378c1cd12ed8b98a"
+    },
+    {
+      "id": "directions/smith/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2ce66ecc4c867f7d462bd6a72b1b6db06688ef5416652f17ea52a889d9616ea4"
+    },
+    {
+      "id": "directions/smith/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "95cddccff047c49b6db1212cc6078d5151a7e490f4a11371e52c05c6d9708c31"
+    },
+    {
+      "id": "directions/smith/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "58b21a973afddaa5d1ef9d2e608145e7e8fe347b637b92a1d8bb5f1ac7838d30"
+    },
+    {
+      "id": "directions/smith/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "ad75c3275faf2dc5349d6fb5700601f33f80986b1df405c9e0597114ab206b39"
+    },
+    {
+      "id": "directions/smith/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f058af85f2cfbbef0954ff3b02a83024a577fc6a3c37978cca6e3250cb5be605"
+    },
+    {
+      "id": "directions/smith/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a81c1ae9e414d2ced03d1d00ac85ed7b29f1017b99578674af352c166c6b2876"
+    },
+    {
+      "id": "npcs/coastguide",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "079ed798f66ddebd6b66600a2d0ca0a7de2ca64f349ce86fe4316b11937517d4"
+    },
+    {
+      "id": "directions/coastguide/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "cd3f97776ce16a9c090706097dd5301d1ed4af9f7eeb0d47bd81b8a890e6a547"
+    },
+    {
+      "id": "directions/coastguide/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b68786ed50818f84296a0617b0b7d70c0ac13cbcfbdd1516dce65cdab2a2bdde"
+    },
+    {
+      "id": "directions/coastguide/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5e271c299ee34d66413e577cf0782f9442c3b09274e14fe8f7f0b2b3f820e21e"
+    },
+    {
+      "id": "directions/coastguide/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6441b27efccf36fbf9e08fb38a8d489a89d1cfd8791bb65d9bea9906ae317b6d"
+    },
+    {
+      "id": "directions/coastguide/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f2de75769e617ef4d04fd95d3fe75b5e1ca2e2864b2daf3c42dad12897e7039f"
+    },
+    {
+      "id": "directions/coastguide/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4e3ba6b929460ea4c6b42b26fe3c0e7d3868eaf900a2136e16c791e8b605a44e"
+    },
+    {
+      "id": "directions/coastguide/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2d4e56991021ea6de43d4b39fc9357c1a6556db299281d912f5b8929f4773cc5"
+    },
+    {
+      "id": "directions/coastguide/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7cc30a602dc40ebe60aba5e4d05a6d1d38c595da32fb851541eda63c6fa14cce"
+    },
+    {
+      "id": "npcs/coastsmith",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "f9905721a9cce223c7aac724ff98ca0574391a3c9089de30214b3f97f37cafca"
+    },
+    {
+      "id": "directions/coastsmith/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "55334347019d7a88f0a72407b2836cc6f0ae24fa352e649e837885efe49aa65c"
+    },
+    {
+      "id": "directions/coastsmith/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "f5b796e12aa53efee1d29f2bcb8f186351a49dbb6acd091ca1335930015417d4"
+    },
+    {
+      "id": "directions/coastsmith/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "b1f6ce8d561eb901a0ce2d560ae92d80c286ee0b82b6b2170d7c989c753baadc"
+    },
+    {
+      "id": "directions/coastsmith/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "14c3c60dce99308bcfea745d22317417595eeade6608e77738ec3b980136c00d"
+    },
+    {
+      "id": "directions/coastsmith/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "200f1e878617d984f80e7444bc9038229d8fdc8b078cd398fa22cc4032cd5172"
+    },
+    {
+      "id": "directions/coastsmith/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "c72021f8e8932afeefbd513405ce8b3a93c1d7c65f8687ad24236cfed20f96af"
+    },
+    {
+      "id": "directions/coastsmith/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "bd2a53332fe133ca89e7ea15f4b3a493336c1fcdb3f6efb8ef88696627795c67"
+    },
+    {
+      "id": "directions/coastsmith/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "9fcf7f96e74610b78320fffdfb62fa7ce1566e520ed407033325b38e7c7142b0"
+    },
+    {
+      "id": "npcs/healer",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "d03599511ef51e8a5668283d19c90087e24e8efb1a6a8841b5bacc972ce4ea42"
+    },
+    {
+      "id": "directions/healer/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "fe1ddb89fa6b3cccaf00e5b52d6d551eaa2ef528e2b58f4761017c051d759a39"
+    },
+    {
+      "id": "directions/healer/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "0f11a7967bb51f3be96366d06f00b71bb01cec7c7dbd9383ce33577b1bcc9c08"
+    },
+    {
+      "id": "directions/healer/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "69920a8c197d7ee2d427fc791abf13335838982123e0ccbe3f41a97aa0070096"
+    },
+    {
+      "id": "directions/healer/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "7a60e833aa45d6c3232f22700c134c1ce14d3ed9429e224f0fcf5d8c0b73f188"
+    },
+    {
+      "id": "directions/healer/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2d5254d8677de58fa76658342f52ca5910631ce720083f001f4bbe29343a3437"
+    },
+    {
+      "id": "directions/healer/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "80e47e164c37c83c7c2fc1a6cfffc1560e0834aa5226b3c591fbdc111aa5b65a"
+    },
+    {
+      "id": "directions/healer/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "29a5c1747479210fe03147d6c4e6961121b3cf5c85876f39664e07da25c0685b"
+    },
+    {
+      "id": "directions/healer/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "5d43585c9665ce676628c00198960a0cc102495db68a7a0a81fca4baeef9a842"
+    },
+    {
+      "id": "npcs/coasthealer",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "635397a14a811c4b147b83de9d6e0223c36124ce4195f498411d3d85b05ebfed"
+    },
+    {
+      "id": "directions/coasthealer/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "77cacb35ca4fee2d21b9942bea36a3e62ae8940558179df308bbc43e5739f40c"
+    },
+    {
+      "id": "directions/coasthealer/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "498f33ba5ae00be90e0ecd00029d155a6558a3f9561cde702a4aa48f21ffd0a4"
+    },
+    {
+      "id": "directions/coasthealer/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "59eebd59fa53f7b68101ba03fe38ddf2864a1aaf4527199873bf68ae496d0d15"
+    },
+    {
+      "id": "directions/coasthealer/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "1a4813eb054e4a3487fcd38a08f5a5558753507cecf73c0c2aadc6568c8ea584"
+    },
+    {
+      "id": "directions/coasthealer/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "a6f789b0bfc89836d86e8c2923457a188b6f0cbdae905c71f6ada25f9b0aeebf"
+    },
+    {
+      "id": "directions/coasthealer/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "bf401f9de931f638ba2d2f77db580c72cc640226e599faea21d767ba4586b5d0"
+    },
+    {
+      "id": "directions/coasthealer/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "4ae28fc9227bac50f20684fc3f518354ba9a42100148ad0c40f61831c49d3e22"
+    },
+    {
+      "id": "directions/coasthealer/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "2264d47dd89844db43f362919ab7bea404864a8c0e1b7a16e423471c96b38001"
+    },
+    {
+      "id": "npcs/mentor",
+      "width": 384,
+      "height": 384,
+      "cellSize": 48,
+      "sha256": "4a3bc3ff7ee37fe08cc904b1ef48cff16ebdc1aeffc8aec4dd2886a8f54d2c35"
+    },
+    {
+      "id": "directions/mentor/N",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "d8d8924ee9ea2fe425636aaad208bd126ba3d91248eef5d4f2cfcbe977db982a"
+    },
+    {
+      "id": "directions/mentor/NE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "93f6054b18a193ab56e95624d9d6da7ddb53147d0f66f9cc40c146455e661db3"
+    },
+    {
+      "id": "directions/mentor/E",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "6dae0670d9978017808486276966d6fe065bdda506a09b73114d4484c65db128"
+    },
+    {
+      "id": "directions/mentor/SE",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "95052adc769eb017590d9531d7f6eebf9658c76efbf56cbecca4425deecba5e8"
+    },
+    {
+      "id": "directions/mentor/S",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "08b7df0590b4e87c5594320d26468c8e734c2ca958017e23bd6cf1dd11a8080b"
+    },
+    {
+      "id": "directions/mentor/SW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "22667a6a3b2fb84f2b3aee13a21beadcf7342f057b37e98d076ce5fbd39c9ab7"
+    },
+    {
+      "id": "directions/mentor/W",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "07abf261b8a8939745c380310e2dce4d1bd57d82abf039993648f5e04398a2b8"
+    },
+    {
+      "id": "directions/mentor/NW",
+      "width": 48,
+      "height": 48,
+      "cellSize": 48,
+      "sha256": "56d8cb45b0ab80864e8d96d1a7e1b9a5b2a8c9bba1eacf7236d1663828fb41a8"
+    },
+    {
+      "id": "currency-leaf",
+      "width": 16,
+      "height": 16,
+      "cellSize": 16,
+      "sha256": "0c6282494d7ba8967b9ccdba2a85e80628ac73473458fc74cd789ee1e6aa8269"
+    }
+  ]
+}

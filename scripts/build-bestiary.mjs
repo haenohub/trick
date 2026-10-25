@@ -28,6 +28,8 @@ export async function buildBestiary() {
     const rect = { sx: 0, sy: 0, sw: sprite.size, sh: sprite.size };
     return {
       ...m,
+      spriteSize: sprite.size,
+      baseSpriteSize: m.spriteSize,
       xp: xpReward(m.xp),
       gold: Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5),
       image: { file: `assets/${file}.png`, direction: "SW", ...rect },
@@ -38,14 +40,14 @@ export async function buildBestiary() {
           ? {
               ...art.itemOverrides[d.item],
               file: `assets/${art.itemOverrides[d.item].file}.png`,
-              size: 16,
+              size: art.iconLayout.size,
             }
           : {
               file: "assets/items.png",
               cols: 8,
               rows: 8,
               index: art.items[d.item],
-              size: 16,
+              size: art.iconLayout.size,
             },
         name: ITEMS[d.item].name,
         lore: ITEMS[d.item].lore,
@@ -59,14 +61,14 @@ export async function buildBestiary() {
       ? {
           ...art.itemOverrides[id],
           file: `assets/${art.itemOverrides[id].file}.png`,
-          size: 16,
+          size: art.iconLayout.size,
         }
       : {
           file: "assets/items.png",
           cols: 8,
           rows: 8,
           index: art.items[id],
-          size: 16,
+          size: art.iconLayout.size,
         };
   const itemTypes = {
     equipment: "장비",

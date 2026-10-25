@@ -1346,7 +1346,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.11.0",
+  version: "0.12.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

@@ -4,14 +4,14 @@ import { readFile } from "node:fs/promises";
 import { rgbaPixels } from "./png.mjs";
 test("all assets originate from generated artwork with clean transparent native sprite margins", async () => {
   const repaint = JSON.parse(
-    await readFile("art/storybook-sources.json", "utf8"),
+    await readFile("art/hd-sources.json", "utf8"),
   );
   const records = JSON.parse(
     await readFile("art/generated-assets.json", "utf8"),
   );
-  assert.equal(repaint.sources.length, 20);
-  assert.equal(repaint.pending.length, 70);
-  assert.equal(repaint.generationError.code, "usage_limit_reached");
+  assert.equal(repaint.sources.length, 90);
+  assert.equal(repaint.pending.length, 0);
+  assert.equal(repaint.resolutionScale, 2);
   const previous = (
     await Promise.all(
       ["refinement", "world", "crisp"].map(async (name) =>
@@ -25,7 +25,7 @@ test("all assets originate from generated artwork with clean transparent native 
       ...(s.deathSource ? [s.deathSource] : []),
     ]),
   );
-  for (const actor of repaint.sources) {
+  for (const actor of repaint.sources.filter(a => ["monster", "character", "npc"].includes(a.kind))) {
     const atlas = records.assets.find(
       (a) =>
         a.id ===
