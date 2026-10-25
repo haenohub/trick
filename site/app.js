@@ -1,4 +1,5 @@
 import { NAVIGATION } from "./world-layout.js";
+import { PickupHold } from "./pickup-hold.js";
 import { speciesForMap, mapsForSpecies } from "./ecology.js";
 import {
   CONTROL_ACTIONS,
@@ -94,6 +95,7 @@ let world = null,
   tooltipTimer = null,
   inventorySignature = "";
 let bindings;
+const pickupHold = new PickupHold();
 try {
   bindings = restoreBindings(JSON.parse(localStorage.getItem(CONTROLS_KEY)));
 } catch {
@@ -101,6 +103,7 @@ try {
 }
 const bindingLabel = (id) => keyLabel(bindings[id]);
 function persistBindings() {
+  pickupHold.cancel();
   writeSetting(CONTROLS_KEY, JSON.stringify(bindings));
   refreshBindingLabels();
   buildSkillbar();
@@ -151,6 +154,7 @@ function showItemTooltip(slot) {
   const id = slot.dataset.inventoryItem;
   if (!state?.player.inventory[id]) return;
   clearTimeout(tooltipTimer);
+  if (tooltipItem === id && !$("item-tooltip").hidden) return;
   tooltipItem = id;
   const tip = $("item-tooltip");
   tip.innerHTML = itemCard(ITEMS[id], state.player);
@@ -158,8 +162,15 @@ function showItemTooltip(slot) {
   const r = slot.getBoundingClientRect(),
     w = tip.getBoundingClientRect().width,
     h = tip.getBoundingClientRect().height;
+  const panelRect = $("menu-panel").getBoundingClientRect();
   const left =
-    r.right + w + 12 <= innerWidth ? r.right + 8 : Math.max(8, r.left - w - 8);
+    panelRect.left - w - 8 >= 8
+      ? panelRect.left - w - 8
+      : panelRect.right + w + 8 <= innerWidth
+        ? panelRect.right + 8
+        : r.right + w + 12 <= innerWidth
+          ? r.right + 8
+          : Math.max(8, r.left - w - 8);
   tip.style.left = Math.min(left, innerWidth - w - 8) + "px";
   tip.style.top = Math.max(8, Math.min(r.top, innerHeight - h - 8)) + "px";
 }
@@ -384,7 +395,7 @@ function hud() {
   }
   $("exploration-progress").textContent =
     `흔적 ${(state.discoveries || []).filter((d) => d.discovered).length}/${(state.discoveries || []).length} · 보물함 ${p.exploration.opened.filter((id) => CHESTS.find((c) => c.id === id)?.map === p.map).length}/${CHESTS.filter((c) => c.map === p.map).length}`;
-  drawCharacterPreview($("portrait"), p.classId, true);
+  drawCharacterPreview($("portrait"), p.classId, true, p.equipment);
   $("hp-fill").style.width = `${(p.hp / s.maxHp) * 100}%`;
   $("hp-text").textContent = `${Math.ceil(p.hp)} / ${s.maxHp}`;
   $("focus-fill").style.width = `${p.focus}%`;
@@ -528,6 +539,7 @@ function interact(whole = false) {
     toast("사람, 보물함, 약초 또는 이동 지점 가까이 다가가 보세요.");
 }
 function openPanel(name) {
+  pickupHold.cancel();
   if (panel === name) {
     closePanel();
     return;
@@ -602,7 +614,7 @@ function renderPanel() {
         "대화 · 보물함 · 이동 · 잎 따기 / 포기 수확",
       ],
       [bindingLabel("potion"), "보들잎 연고"],
-      [bindingLabel("pickup"), "가까운 전리품 하나 줍기"],
+      [bindingLabel("pickup"), "하나 줍기 · 길게 누르면 차례로 줍기"],
       ["P", "전체 단축키 확인 · 변경"],
       [bindingLabel("target"), "가까운 적 선택"],
       [
@@ -1074,6 +1086,7 @@ $("chat-form").onsubmit = (e) => {
   input.value = "";
 };
 function showLobby() {
+  pickupHold.cancel();
   document.body.classList.remove("in-game");
   const saved = readSave();
   $("lobby").hidden = false;
@@ -1266,13 +1279,26 @@ window.addEventListener("keydown", (e) => {
     }
     return;
   }
+  if (action === "pickup" && running) {
+    e.preventDefault();
+    if (
+      !e.repeat &&
+      state.player.hp > 0 &&
+      pickupHold.press(e.code, performance.now()) &&
+      pickupHold.take(
+        performance.now(),
+        state.drops.some((d) => d.pickupEnds > state.time),
+      )
+    )
+      if (!send({ type: "pickupNearest" }, true))
+        toast("가까운 바닥 전리품이 없습니다.");
+    return;
+  }
   if (!running || e.repeat) return;
   if (action) e.preventDefault();
   if (action?.startsWith("skill"))
     send({ type: "skill", slot: Number(action.slice(5)), target }, true);
   if (action === "attack") send({ type: "attack", target }, true);
-  if (action === "pickup" && !send({ type: "pickupNearest" }, true))
-    toast("가까운 바닥 전리품이 없습니다.");
   if (action === "potion") send({ type: "potion", item: "salve" });
   if (action === "interact") interact(e.shiftKey);
   if (action === "target") {
@@ -1306,6 +1332,26 @@ $("item-tooltip").addEventListener("pointerenter", () =>
 $("item-tooltip").addEventListener("pointerleave", () => {
   tooltipTimer = setTimeout(hideItemTooltip, 180);
 });
+// Description pixels pass through to the real item below. Keep the popup open
+// while crossing its non-interactive text to reach its explicit action buttons.
+window.addEventListener("pointermove", (e) => {
+  if (panel !== "inventory" || $("item-tooltip").hidden) return;
+  const r = $("item-tooltip").getBoundingClientRect();
+  if (
+    e.clientX >= r.left &&
+    e.clientX <= r.right &&
+    e.clientY >= r.top &&
+    e.clientY <= r.bottom
+  )
+    clearTimeout(tooltipTimer);
+  else if (
+    !e.target.closest?.("[data-inventory-item]") &&
+    !$("item-tooltip").contains(e.target)
+  ) {
+    clearTimeout(tooltipTimer);
+    tooltipTimer = setTimeout(hideItemTooltip, 180);
+  }
+});
 $("panel-body").addEventListener("scroll", hideItemTooltip);
 $("panel-body").addEventListener("focusout", (e) => {
   if (
@@ -1316,9 +1362,17 @@ $("panel-body").addEventListener("focusout", (e) => {
 });
 window.addEventListener("resize", hideItemTooltip);
 window.addEventListener("blur", () => {
+  pickupHold.cancel();
   if (running) send({ type: "move", x: 0, y: 0 }, true);
 });
-window.addEventListener("pagehide", () => save());
+window.addEventListener("keyup", (e) => pickupHold.release(e.code));
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) pickupHold.cancel();
+});
+window.addEventListener("pagehide", () => {
+  pickupHold.cancel();
+  save();
+});
 function frame(now) {
   const dt = Math.min(0.05, (now - lastFrame) / 1000);
   lastFrame = now;
@@ -1327,6 +1381,14 @@ function frame(now) {
       world.step(dt);
       state = world.snapshot("local");
     }
+    if (panel || state.player.hp <= 0) pickupHold.cancel();
+    else if (
+      pickupHold.take(
+        now,
+        state.drops.some((d) => d.pickupEnds > state.time),
+      )
+    )
+      send({ type: "pickupNearest" }, true);
     if (pendingInteraction && !panel) {
       const n =
         pendingInteraction.kind === "npc"
@@ -1370,7 +1432,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.15.0",
+  version: "0.16.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

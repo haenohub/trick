@@ -4,7 +4,7 @@ export const CONTROL_ACTIONS = [
   ["skill1", "스킬 2", "KeyW"],
   ["skill2", "스킬 3", "KeyE"],
   ["skill3", "스킬 4", "KeyR"],
-  ["pickup", "전리품 하나 줍기", "Space"],
+  ["pickup", "전리품 줍기 · 길게 누르면 연속", "Space"],
   ["attack", "기본 공격", "KeyA"],
   ["interact", "대화 · 채집 · 이동", "KeyF"],
   ["potion", "연고 사용", "KeyT"],

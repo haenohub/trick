@@ -50,6 +50,8 @@ for (const name of [
   "controls.js",
   "animation.js",
   "view-projection.js",
+  "pickup-hold.js",
+  "equipment-appearance.js",
   "ecology.js",
   "exploration.js",
 ]) {

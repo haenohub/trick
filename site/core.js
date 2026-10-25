@@ -2018,6 +2018,7 @@ export class World {
           y: a.y,
           classId: a.classId,
           branch: a.branch,
+          equipment: { ...a.equipment },
           level: a.level,
           hp: a.hp,
           maxHp: stats(a).maxHp,

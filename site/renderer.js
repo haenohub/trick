@@ -1,9 +1,19 @@
 import { animationFrame, LocomotionClocks } from "./animation.js";
-import { project, unproject, viewAnchor } from "./view-projection.js";
+import {
+  equippedAppearance,
+  orderedEquipmentLayers,
+  starterEquipment,
+} from "./equipment-appearance.js";
+import {
+  project,
+  unproject,
+  viewAnchor,
+  fitProjected,
+} from "./view-projection.js";
 export { project } from "./view-projection.js";
 import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
-import { worldToImage } from "./art-layout.js";
+import { imageToWorld, worldToImage } from "./art-layout.js";
 import { direction, SOUTH } from "./directions.js";
 import { NAVIGATION, TILE, WORLD_ZOOM } from "./world-layout.js";
 const IMAGES = new Map();
@@ -65,7 +75,44 @@ function preview(canvas, file, cols, rows, col, row, face = false) {
     sh * scale,
   );
 }
-export function drawCharacterPreview(canvas, id, face = false) {
+export function drawCharacterPreview(
+  canvas,
+  id,
+  face = false,
+  equipment = null,
+) {
+  const appearance = equippedAppearance(
+    ART,
+    id,
+    equipment || starterEquipment(id),
+  );
+  if (appearance) {
+    const l = appearance.layout,
+      c = canvas.getContext("2d"),
+      frame = l.animations.idle[0];
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.imageSmoothingEnabled = false;
+    for (const layer of orderedEquipmentLayers(appearance, SOUTH)) {
+      const rect = sourceRect(layer.file, l.cols, l.rows, frame, SOUTH);
+      if (face) {
+        rect.sy += rect.sh * 0.3;
+        rect.sh *= 0.6;
+      }
+      const scale = Math.min(canvas.width / rect.sw, canvas.height / rect.sh);
+      c.drawImage(
+        IMAGES.get(layer.file),
+        rect.sx,
+        rect.sy,
+        rect.sw,
+        rect.sh,
+        (canvas.width - rect.sw * scale) / 2,
+        canvas.height - rect.sh * scale,
+        rect.sw * scale,
+        rect.sh * scale,
+      );
+    }
+    return;
+  }
   const l = ART.characterLayouts[id];
   preview(canvas, "characters/" + id, l.cols, l.rows, 0, SOUTH, face);
 }
@@ -351,13 +398,16 @@ export class Renderer {
     height = 96,
     duration = null,
     actorKey = name,
+    equipment = null,
   ) {
-    const layout = /^m\d+$/.test(name)
+    const originalLayout = /^m\d+$/.test(name)
       ? ART.monsters[name]
       : name.startsWith("npc:")
         ? ART.npcLayouts[name.slice(4)]
         : ART.characterLayouts[name];
-    if (!layout) return;
+    if (!originalLayout) return;
+    const appearance = equippedAppearance(ART, name, equipment);
+    const layout = appearance?.layout || originalLayout;
     const clip = layout.clips?.[anim];
     const file = clip?.file || layout.file || "characters/" + name,
       age = Math.max(0, time - start),
@@ -367,25 +417,30 @@ export class Renderer {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
     }
-    this.cell(
-      file,
-      clip?.cols || layout.cols,
-      clip?.rows || layout.rows,
-      animationFrame(
-        layout,
-        anim,
-        time,
-        ["idle", "walk"].includes(anim) ? loopStart : start,
-        duration,
-      ),
-      dir,
-      x,
-      y,
-      height,
-      height,
-      1 - 2 / (layout.size / (ART.resolutionScale || 1)),
-      false,
+    const frame = animationFrame(
+      layout,
+      anim,
+      time,
+      ["idle", "walk"].includes(anim) ? loopStart : start,
+      duration,
     );
+    const layers = appearance
+      ? orderedEquipmentLayers(appearance, dir)
+      : [{ file }];
+    for (const layer of layers)
+      this.cell(
+        layer.file,
+        clip?.cols || layout.cols,
+        clip?.rows || layout.rows,
+        frame,
+        dir,
+        x,
+        y,
+        height,
+        height,
+        1 - 2 / (layout.size / (ART.resolutionScale || 1)),
+        false,
+      );
     if (anim === "death") c.restore();
   }
   render(state, target, dt = 1 / 60) {
@@ -744,6 +799,7 @@ export class Renderer {
         height,
         o.animDuration,
         o.kind + ":" + (o.uid || o.id || name),
+        o.equipment,
       );
       if (monster && o.hitUntil > time)
         this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);
@@ -954,50 +1010,61 @@ export class Renderer {
     c.imageSmoothingEnabled = false;
     c.fillStyle = "#1e3d35";
     c.fillRect(0, 0, w, h);
-    const scale = Math.min(w / nav.width, h / nav.height),
-      mw = nav.width * scale,
-      mh = nav.height * scale,
-      ox = (w - mw) / 2,
-      oy = (h - mh) / 2;
-    let terrain = this.minimapCache.get(nav.id);
+    const frame = fitProjected(
+      [
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [0, 1],
+      ].map(([u, v]) => imageToWorld(u, v, nav.id)),
+      w,
+      h,
+    );
+    const { scale, offsetX, offsetY } = frame;
+    const clipDiamond = (ctx) => {
+      ctx.beginPath();
+      frame.corners.forEach((p, i) => ctx[i ? "lineTo" : "moveTo"](p.x, p.y));
+      ctx.closePath();
+      ctx.clip();
+    };
+    const cacheKey = nav.id + ":" + w + "x" + h + ":quarter";
+    let terrain = this.minimapCache.get(cacheKey);
     if (!terrain) {
       terrain = document.createElement("canvas");
       terrain.width = w;
       terrain.height = h;
-      const tc = terrain.getContext("2d");
-      // Area-filter only this tiny UI map; full-size world pixels stay sharp.
+      const tc = terrain.getContext("2d"),
+        tileLayout = ART.world.tiles[nav.id],
+        atlas = IMAGES.get(tileLayout.file),
+        size = tileLayout.size;
       tc.imageSmoothingEnabled = true;
       tc.imageSmoothingQuality = "high";
-      const tileLayout = ART.world.tiles[nav.id],
-        atlas = IMAGES.get(tileLayout.file),
-        nativeTile = tileLayout.size;
-      for (let r = 0; r <= nav.rows; r++)
+      tc.save();
+      clipDiamond(tc);
+      tc.transform(scale, scale / 2, -scale, scale / 2, offsetX, offsetY);
+      for (let row = 0; row <= nav.rows; row++)
         for (let col = 0; col <= nav.cols; col++) {
-          const tile = nav.transitions[r][col],
-            x = (col - 0.5) * TILE * scale,
-            y = (r - 0.5) * TILE * scale;
+          const tile = nav.transitions[row][col];
           tc.drawImage(
             atlas,
-            (tile % 4) * nativeTile,
-            Math.floor(tile / 4) * nativeTile,
-            nativeTile,
-            nativeTile,
-            ox + x,
-            oy + y,
-            TILE * scale + 0.5,
-            TILE * scale + 0.5,
+            (tile % 4) * size,
+            Math.floor(tile / 4) * size,
+            size,
+            size,
+            (col - 0.5) * TILE * 2 - nav.width,
+            (row - 0.5) * TILE * 2,
+            TILE * 2 + 1,
+            TILE * 2 + 1,
           );
         }
-      this.minimapCache.set(nav.id, terrain);
+      tc.restore();
+      this.minimapCache.set(cacheKey, terrain);
     }
     c.drawImage(terrain, 0, 0);
+    c.save();
+    clipDiamond(c);
     c.strokeStyle = "#fff0af";
     c.lineWidth = 1.5;
-    // The quarter-view viewport is a polygon in the top-down minimap.
-    c.save();
-    c.beginPath();
-    c.rect(ox, oy, mw, mh);
-    c.clip();
     c.beginPath();
     [
       [0, 0],
@@ -1006,24 +1073,22 @@ export class Renderer {
       [0, this.size.height],
     ]
       .map(([x, y]) => this.screenToWorld(x, y))
-      .map((p) => worldToImage(p.x, p.y, nav.id))
-      .forEach((p, i) =>
-        c[i ? "lineTo" : "moveTo"](ox + p.u * mw, oy + p.v * mh),
-      );
+      .map((p) => frame.point(p.x, p.y))
+      .forEach((p, i) => c[i ? "lineTo" : "moveTo"](p.x, p.y));
     c.closePath();
     c.stroke();
     c.restore();
     const icons = IMAGES.get("items");
     const mark = (x, y, index, size) => {
-      const pos = worldToImage(x, y, state.player.map);
+      const pos = frame.point(x, y);
       c.drawImage(
         icons,
         (index % 8) * ART.iconLayout.size,
         Math.floor(index / 8) * ART.iconLayout.size,
         ART.iconLayout.size,
         ART.iconLayout.size,
-        ox + pos.u * mw - size / 2,
-        oy + pos.v * mh - size / 2,
+        pos.x - size / 2,
+        pos.y - size / 2,
         size,
         size,
       );

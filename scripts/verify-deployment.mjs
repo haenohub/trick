@@ -39,6 +39,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "controls.js",
       "animation.js",
       "view-projection.js",
+      "pickup-hold.js",
+      "equipment-appearance.js",
       "ecology.js",
       "assets/currency-leaf.png",
       "renderer.js",

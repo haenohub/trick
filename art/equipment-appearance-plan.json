@@ -1,0 +1,2398 @@
+{
+  "version": 1,
+  "tool": "image_gen",
+  "status": "blocked-usage-limit",
+  "blocker": {
+    "type": "usage_limit_reached",
+    "resetAt": "2026-10-26T02:40:29.000Z",
+    "clientResetAt": "2026-10-26T11:40:29+09:00"
+  },
+  "directionOrder": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "layout": {
+    "size": 96,
+    "cols": 32,
+    "rows": 8,
+    "animations": {
+      "idle": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "walk": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "windup": [
+        8,
+        9,
+        10
+      ],
+      "attack": [
+        11,
+        12
+      ],
+      "recover": [
+        13,
+        2
+      ],
+      "hurt": [
+        14
+      ],
+      "death": [
+        15
+      ]
+    }
+  },
+  "integration": "Pack neutral bases and aligned gear front/back layers. Register them in manifest.appearance.bases/items and manifest.files. Each item entry is keyed by item ID then class ID; layers have file and optional orderByDirection. Runtime falls back until all five equipped slots are ready. No inventory-icon overlays.",
+  "sources": [],
+  "pending": [
+    {
+      "id": "base-warden",
+      "kind": "base",
+      "classId": "warden",
+      "target": "appearance/base/warden",
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle"
+        }
+      ],
+      "directionReferences": {
+        "N": "directions/warden/N",
+        "NE": "directions/warden/NE",
+        "E": "directions/warden/E",
+        "SE": "directions/warden/SE",
+        "S": "directions/warden/S",
+        "SW": "directions/warden/SW",
+        "W": "directions/warden/W",
+        "NW": "directions/warden/NW"
+      },
+      "animations": {
+        "idle": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "walk": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "windup": [
+          8,
+          9,
+          10
+        ],
+        "attack": [
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
+        ],
+        "hurt": [
+          14
+        ],
+        "death": [
+          15
+        ]
+      },
+      "prompt": "Use the three approved animation sheets as exact registration guides. Generate the same character as a clean unarmed paper-doll body in neutral fitted linen underclothes. Remove all baked weapons, capes, hats, armor, boots and jewelry; paint complete hands/feet rather than holes. Preserve face, hair, proportions, eight true directions, poses and frame order. Work on combat16/walk8/idle8 segments separately, then pack into32x8 native96px cells. Thin sharp local-color contours, no blur, four-pixel transparent gutters. Do not mirror directions or substitute poses."
+    },
+    {
+      "id": "warden-spear1",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "spear1",
+      "slot": "weapon",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-spear1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 12,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 연습용 버들창 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-wardenarmor1",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "wardenarmor1",
+      "slot": "armor",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-wardenarmor1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 13,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 덧댄 숲길 조끼 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-spear2",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "spear2",
+      "slot": "weapon",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-spear2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 14,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 조개날 물푸레창 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-wardenarmor2",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "wardenarmor2",
+      "slot": "armor",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-wardenarmor2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 15,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 해안수비 흉갑 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-hood1",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "hood1",
+      "slot": "head",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-hood1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 28,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 접은잎 두건 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-hood2",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "hood2",
+      "slot": "head",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-hood2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 29,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 조개빛 이마띠 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-boots1",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "boots1",
+      "slot": "boots",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-boots1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 30,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 기운 천신 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-boots2",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "boots2",
+      "slot": "boots",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-boots2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 31,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 소금길 장화 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-charm1",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "charm1",
+      "slot": "charm",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-charm1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 32,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 도토리 약속목걸이 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-charm2",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "charm2",
+      "slot": "charm",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-charm2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 33,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 조개반지 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-antlerweapon",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "antlerweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-antlerweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 34,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 녹각 새싹창 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "warden-thornweapon",
+      "kind": "equipment",
+      "classId": "warden",
+      "item": "thornweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-warden"
+      ],
+      "target": "appearance/gear/warden-thornweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 35,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/warden",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/warden-walk",
+          "reference": "appearance/base/warden"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/warden-idle",
+          "reference": "appearance/base/warden"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 갈고리 가시창 for the approved unarmed 수림창사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "base-mage",
+      "kind": "base",
+      "classId": "mage",
+      "target": "appearance/base/mage",
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle"
+        }
+      ],
+      "directionReferences": {
+        "N": "directions/mage/N",
+        "NE": "directions/mage/NE",
+        "E": "directions/mage/E",
+        "SE": "directions/mage/SE",
+        "S": "directions/mage/S",
+        "SW": "directions/mage/SW",
+        "W": "directions/mage/W",
+        "NW": "directions/mage/NW"
+      },
+      "animations": {
+        "idle": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "walk": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "windup": [
+          8,
+          9,
+          10
+        ],
+        "attack": [
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
+        ],
+        "hurt": [
+          14
+        ],
+        "death": [
+          15
+        ]
+      },
+      "prompt": "Use the three approved animation sheets as exact registration guides. Generate the same character as a clean unarmed paper-doll body in neutral fitted linen underclothes. Remove all baked weapons, capes, hats, armor, boots and jewelry; paint complete hands/feet rather than holes. Preserve face, hair, proportions, eight true directions, poses and frame order. Work on combat16/walk8/idle8 segments separately, then pack into32x8 native96px cells. Thin sharp local-color contours, no blur, four-pixel transparent gutters. Do not mirror directions or substitute poses."
+    },
+    {
+      "id": "mage-staff1",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "staff1",
+      "slot": "weapon",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-staff1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 16,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 말린잎 지팡이 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-magearmor1",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "magearmor1",
+      "slot": "armor",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-magearmor1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 17,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 잎맥 견습 로브 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-staff2",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "staff2",
+      "slot": "weapon",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-staff2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 18,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 가지봉 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-magearmor2",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "magearmor2",
+      "slot": "armor",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-magearmor2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 19,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 법의 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-hood1",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "hood1",
+      "slot": "head",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-hood1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 28,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 접은잎 두건 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-hood2",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "hood2",
+      "slot": "head",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-hood2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 29,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 조개빛 이마띠 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-boots1",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "boots1",
+      "slot": "boots",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-boots1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 30,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 기운 천신 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-boots2",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "boots2",
+      "slot": "boots",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-boots2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 31,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 소금길 장화 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-charm1",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "charm1",
+      "slot": "charm",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-charm1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 32,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 도토리 약속목걸이 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-charm2",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "charm2",
+      "slot": "charm",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-charm2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 33,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 조개반지 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-moonweapon",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "moonweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-moonweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 36,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 달고리 가지장 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "mage-bloomweapon",
+      "kind": "equipment",
+      "classId": "mage",
+      "item": "bloomweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-mage"
+      ],
+      "target": "appearance/gear/mage-bloomweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 37,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/mage",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/mage-walk",
+          "reference": "appearance/base/mage"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/mage-idle",
+          "reference": "appearance/base/mage"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 별꽃 파종장 for the approved unarmed 별잎술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "base-ranger",
+      "kind": "base",
+      "classId": "ranger",
+      "target": "appearance/base/ranger",
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle"
+        }
+      ],
+      "directionReferences": {
+        "N": "directions/ranger/N",
+        "NE": "directions/ranger/NE",
+        "E": "directions/ranger/E",
+        "SE": "directions/ranger/SE",
+        "S": "directions/ranger/S",
+        "SW": "directions/ranger/SW",
+        "W": "directions/ranger/W",
+        "NW": "directions/ranger/NW"
+      },
+      "animations": {
+        "idle": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "walk": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "windup": [
+          8,
+          9,
+          10
+        ],
+        "attack": [
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
+        ],
+        "hurt": [
+          14
+        ],
+        "death": [
+          15
+        ]
+      },
+      "prompt": "Use the three approved animation sheets as exact registration guides. Generate the same character as a clean unarmed paper-doll body in neutral fitted linen underclothes. Remove all baked weapons, capes, hats, armor, boots and jewelry; paint complete hands/feet rather than holes. Preserve face, hair, proportions, eight true directions, poses and frame order. Work on combat16/walk8/idle8 segments separately, then pack into32x8 native96px cells. Thin sharp local-color contours, no blur, four-pixel transparent gutters. Do not mirror directions or substitute poses."
+    },
+    {
+      "id": "ranger-bow1",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "bow1",
+      "slot": "weapon",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-bow1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 20,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 묶은가지 사냥활 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-rangerarmor1",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "rangerarmor1",
+      "slot": "armor",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-rangerarmor1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 21,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 풀그늘 사냥복 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-bow2",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "bow2",
+      "slot": "weapon",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-bow2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 22,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 소금바람 굽이활 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-rangerarmor2",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "rangerarmor2",
+      "slot": "armor",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-rangerarmor2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 23,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 갈대바람 경갑 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-hood1",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "hood1",
+      "slot": "head",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-hood1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 28,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 접은잎 두건 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-hood2",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "hood2",
+      "slot": "head",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-hood2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 29,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 조개빛 이마띠 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-boots1",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "boots1",
+      "slot": "boots",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-boots1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 30,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 기운 천신 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-boots2",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "boots2",
+      "slot": "boots",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-boots2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 31,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 소금길 장화 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-charm1",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "charm1",
+      "slot": "charm",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-charm1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 32,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 도토리 약속목걸이 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-charm2",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "charm2",
+      "slot": "charm",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-charm2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 33,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 조개반지 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-hawkweapon",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "hawkweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-hawkweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 38,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 흰깃 매눈궁 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "ranger-mistweapon",
+      "kind": "equipment",
+      "classId": "ranger",
+      "item": "mistweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-ranger"
+      ],
+      "target": "appearance/gear/ranger-mistweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 39,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/ranger",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/ranger-walk",
+          "reference": "appearance/base/ranger"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/ranger-idle",
+          "reference": "appearance/base/ranger"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 안개잎 단궁 for the approved unarmed 숲그늘궁수 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "base-herbalist",
+      "kind": "base",
+      "classId": "herbalist",
+      "target": "appearance/base/herbalist",
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle"
+        }
+      ],
+      "directionReferences": {
+        "N": "directions/herbalist/N",
+        "NE": "directions/herbalist/NE",
+        "E": "directions/herbalist/E",
+        "SE": "directions/herbalist/SE",
+        "S": "directions/herbalist/S",
+        "SW": "directions/herbalist/SW",
+        "W": "directions/herbalist/W",
+        "NW": "directions/herbalist/NW"
+      },
+      "animations": {
+        "idle": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "walk": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "windup": [
+          8,
+          9,
+          10
+        ],
+        "attack": [
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
+        ],
+        "hurt": [
+          14
+        ],
+        "death": [
+          15
+        ]
+      },
+      "prompt": "Use the three approved animation sheets as exact registration guides. Generate the same character as a clean unarmed paper-doll body in neutral fitted linen underclothes. Remove all baked weapons, capes, hats, armor, boots and jewelry; paint complete hands/feet rather than holes. Preserve face, hair, proportions, eight true directions, poses and frame order. Work on combat16/walk8/idle8 segments separately, then pack into32x8 native96px cells. Thin sharp local-color contours, no blur, four-pixel transparent gutters. Do not mirror directions or substitute poses."
+    },
+    {
+      "id": "herbalist-wand1",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "wand1",
+      "slot": "weapon",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-wand1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 24,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 새순 가지봉 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-herbalistarmor1",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "herbalistarmor1",
+      "slot": "armor",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-herbalistarmor1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 25,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 약초주머니 겉옷 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-wand2",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "wand2",
+      "slot": "weapon",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-wand2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 26,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 해풍꽃 약초봉 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-herbalistarmor2",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "herbalistarmor2",
+      "slot": "armor",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-herbalistarmor2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 27,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 해풍꽃 외투 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted armor equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-hood1",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "hood1",
+      "slot": "head",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-hood1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 28,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 접은잎 두건 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-hood2",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "hood2",
+      "slot": "head",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-hood2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 29,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 조개빛 이마띠 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted head equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-boots1",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "boots1",
+      "slot": "boots",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-boots1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 30,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 기운 천신 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-boots2",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "boots2",
+      "slot": "boots",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-boots2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 31,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 소금길 장화 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted boots equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-charm1",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "charm1",
+      "slot": "charm",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-charm1",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 32,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 도토리 약속목걸이 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-charm2",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "charm2",
+      "slot": "charm",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-charm2",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 33,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 은물결 조개반지 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted charm equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-flowerweapon",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "flowerweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-flowerweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 40,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 꽃숨 순환봉 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    },
+    {
+      "id": "herbalist-venomweapon",
+      "kind": "equipment",
+      "classId": "herbalist",
+      "item": "venomweapon",
+      "slot": "weapon",
+      "requires": [
+        "base-herbalist"
+      ],
+      "target": "appearance/gear/herbalist-venomweapon",
+      "icon": {
+        "file": "items",
+        "cols": 8,
+        "rows": 8,
+        "index": 41,
+        "size": 32
+      },
+      "size": 96,
+      "cols": 32,
+      "rows": 8,
+      "segments": [
+        {
+          "kind": "combat",
+          "cols": 16,
+          "file": "characters/herbalist",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "walk",
+          "cols": 8,
+          "file": "locomotion/herbalist-walk",
+          "reference": "appearance/base/herbalist"
+        },
+        {
+          "kind": "idle",
+          "cols": 8,
+          "file": "locomotion/herbalist-idle",
+          "reference": "appearance/base/herbalist"
+        }
+      ],
+      "prompt": "Create transparent wearable layers of 쓴향 가시봉 for the approved unarmed 약초술사 body. Match the actual item icon EXACTLY: shape, colors, materials, decorations and silhouette. This is fitted weapon equipment, not a floating inventory icon or badge. Keep all32 poses and8 headings aligned to the96px body cells: combat16, walk8, idle8. Fit hands, torso, head or feet according to the slot; leave face/fingers and all non-equipment pixels transparent. Produce separate back/front layers when the object crosses behind the body. Never repaint or include the body in a gear layer. Every heading is authored, asymmetry remains correct, four-pixel gutters, sharp native pixels. Follow breathing, footfalls, preparation, impact and recovery without clipping adjacent cells."
+    }
+  ]
+}
