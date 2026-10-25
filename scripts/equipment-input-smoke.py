@@ -35,7 +35,7 @@ with sync_playwright() as pw:
   p.keyboard.press('i')
  print('PASS: descriptions covering adjacent slots pass mouse input through and update to the underlying item at four viewport widths')
  p.set_viewport_size({'width':1440,'height':900});p.locator('[data-panel=settings]').click();p.locator('[data-special=title]').click()
- p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
+ p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');p.keyboard.press('a')
  p.wait_for_function('__leaftale.snapshot().drops.length>=3');p.wait_for_timeout(150)
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(1100)
