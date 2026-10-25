@@ -2350,3 +2350,504 @@ body {
 .lobby-content .create-card {
   padding-bottom: 24px;
 }
+
+/* Field HUD: compact edge-mounted windows, leaving the hero's center clear. */
+body.in-game {
+  --field-frame: #a4b3d4;
+  --field-ink: #f3f3ff;
+}
+body.in-game #hud {
+  inset: 0;
+  color: var(--field-ink);
+}
+body.in-game .glass {
+  background: linear-gradient(180deg, #344d7bbd, #172a58ad);
+  border: 1px solid #a4b3d4b8;
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 1px #101d4b8c,
+    0 2px 8px #0f183b38;
+}
+body.in-game .topbar {
+  top: auto;
+  bottom: 0;
+  height: 30px;
+  padding: 0 8px;
+  justify-content: flex-end;
+  background: linear-gradient(#b4bfd3ed, #53688fed);
+  border: 1px solid #d0d6e8;
+  box-shadow: inset 0 0 0 1px #3d4e78;
+  z-index: 12;
+}
+body.in-game .topbar .wordmark,
+body.in-game .topbar .chapter-pill {
+  display: none;
+}
+body.in-game .topbar nav {
+  gap: 2px;
+}
+body.in-game .topbar nav button {
+  color: #fff;
+  background: #3a4d75;
+  border: 1px solid #d7def28c;
+  border-radius: 1px;
+  padding: 2px 8px;
+  font-size: calc(9px + var(--font-increase));
+}
+body.in-game #hud .player-card {
+  left: 8px;
+  top: 22px;
+  width: 236px;
+  padding: 5px 6px;
+  gap: 6px;
+}
+body.in-game .portrait {
+  width: 34px;
+  height: 46px;
+  border-radius: 1px;
+  background: none;
+  border: 0;
+  align-self: center;
+}
+body.in-game .name-line {
+  gap: 4px;
+}
+body.in-game .player-info small {
+  display: inline;
+  font-size: calc(8px + var(--font-increase));
+  line-height: 1.4;
+  color: #d8e3ff;
+  margin: 0 5px 0 0;
+}
+body.in-game #combat-trait {
+  display: none;
+}
+body.in-game .meter {
+  border: 1px solid #c7d1eb;
+  height: 15px;
+  border-radius: 0;
+  margin-top: 3px;
+  background: #1d2455;
+}
+body.in-game .meter b {
+  font-size: calc(8px + var(--font-increase));
+  line-height: 13px;
+  color: #fff;
+  text-shadow: 1px 1px #1b183f;
+}
+body.in-game .health > span {
+  background: linear-gradient(#f9a7ab, #da4f68);
+}
+body.in-game .focus > span {
+  background: linear-gradient(#9ee2ff, #3d8fd7);
+}
+body.in-game .character-open {
+  right: -1px;
+  bottom: -1px;
+  border-radius: 0;
+  width: 20px;
+  height: 20px;
+  font-size: calc(12px + var(--font-increase));
+  line-height: 16px;
+  background: #435f9a;
+}
+body.in-game #hud .experience {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: #262947;
+  border: 1px solid #cac99b;
+  z-index: 7;
+}
+body.in-game .experience > span {
+  background: linear-gradient(#f9f5a6, #b5ac50);
+}
+body.in-game .experience b {
+  left: 8px;
+  top: 0;
+  bottom: auto;
+  transform: none;
+  line-height: 13px;
+  font-size: calc(8px + var(--font-increase));
+  font-weight: 600;
+  color: #fff8cc;
+  text-shadow: 1px 1px #3c352b;
+}
+body.in-game #hud .map-card {
+  top: 22px;
+  right: 8px;
+  width: 184px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+body.in-game .map-heading {
+  order: 0;
+  font-size: calc(8px + var(--font-increase));
+  color: #d8e5ff;
+}
+body.in-game #minimap {
+  order: 1;
+  width: 174px;
+  height: 116px;
+  border: 1px solid #d8e2f5;
+  border-radius: 0;
+  margin-top: 3px;
+}
+body.in-game .map-card h2 {
+  order: 2;
+  font-size: calc(11px + var(--font-increase));
+  margin: 5px 2px 2px;
+  text-align: center;
+  color: #fff4cc;
+}
+body.in-game .map-foot {
+  order: 3;
+  font-size: calc(7px + var(--font-increase));
+  margin: 1px 2px 3px;
+  color: #ced9f6;
+}
+body.in-game #exploration-progress {
+  order: 4;
+  font-size: calc(8px + var(--font-increase));
+  color: #e1e6bb;
+  margin: 0 2px;
+}
+body.in-game #hud .quest-card {
+  left: 8px;
+  top: 148px;
+  width: 218px;
+  padding: 0 9px 8px;
+}
+body.in-game .small-heading {
+  margin: 0 -9px;
+  padding: 3px 7px;
+  background: linear-gradient(#aebbd5, #637aa4);
+  border-bottom: 1px solid #bccaea;
+  color: #fff;
+}
+body.in-game .quest-card h2 {
+  margin: 7px 0 4px;
+  font-size: calc(11px + var(--font-increase));
+  line-height: 1.45;
+}
+body.in-game .quest-card p {
+  font-size: calc(9px + var(--font-increase));
+  line-height: 1.5;
+  color: #e0e8ff;
+  max-height: 4.5em;
+  overflow: auto;
+}
+body.in-game .quest-bottom {
+  margin-top: 5px;
+  font-size: calc(9px + var(--font-increase));
+}
+body.in-game .quest-bottom button {
+  padding: 2px 6px;
+  border-radius: 1px;
+}
+body.in-game #hud .target-card {
+  top: 42px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: 232px;
+  padding: 5px 9px;
+}
+body.in-game .target-card small {
+  font-size: calc(7px + var(--font-increase));
+  margin: 0;
+}
+body.in-game .target-card strong {
+  font-size: calc(10px + var(--font-increase));
+}
+body.in-game .target-card .meter {
+  height: 6px;
+  margin-top: 4px;
+}
+body.in-game #hud .boss-banner {
+  top: 108px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: 270px;
+  padding: 6px 10px;
+}
+body.in-game .boss-banner small {
+  font-size: calc(8px + var(--font-increase));
+  margin-top: 3px;
+}
+body.in-game .boss-banner:not([hidden]) ~ .quest-card {
+  top: 148px;
+}
+body.in-game #hud .bottom-dock {
+  left: auto;
+  right: 8px;
+  bottom: 43px;
+  transform: none;
+  display: block;
+  padding: 5px;
+  width: 108px;
+  max-width: none;
+  border: 1px solid #c3cee6;
+  border-radius: 1px;
+  background: linear-gradient(#8294bcd4, #293d6bca);
+  box-shadow: inset 0 0 0 1px #2e3b67;
+}
+body.in-game .skillbar {
+  display: grid;
+  grid-template-columns: repeat(2, 46px);
+  gap: 4px;
+}
+body.in-game .skill {
+  width: 46px;
+  height: 48px;
+  border-radius: 1px;
+  background: linear-gradient(#7d96c5, #354e85);
+  border: 1px solid #d2dcf3;
+  box-shadow: inset 0 0 0 1px #314271;
+}
+body.in-game .skill .glyph {
+  line-height: 29px;
+}
+body.in-game .skill .skill-name {
+  font-size: calc(7px + var(--font-increase));
+}
+body.in-game .skill kbd {
+  border-radius: 0;
+  color: #fff;
+  background: #263c72d6;
+}
+body.in-game .field-menu {
+  position: absolute;
+  left: 6px;
+  bottom: 3px;
+  display: flex;
+  gap: 3px;
+  pointer-events: auto;
+  z-index: 15;
+}
+body.in-game .field-menu button {
+  padding: 2px 7px;
+  background: linear-gradient(#e0e5ef, #9baac6);
+  border: 1px solid #f5f7ff;
+  border-radius: 1px;
+  color: #27365a;
+  font-size: calc(9px + var(--font-increase));
+  height: 24px;
+  line-height: 17px;
+}
+body.in-game .field-menu kbd {
+  border: 0;
+  padding: 0 1px;
+  color: #495d83;
+  font-size: calc(8px + var(--font-increase));
+  min-width: 0;
+}
+body.in-game #hud .statusbar {
+  display: none;
+}
+body.in-game #hud .event-log {
+  left: 8px;
+  bottom: 39px;
+  width: min(380px, 42%);
+  max-height: 110px;
+  overflow: hidden;
+  padding: 6px 9px;
+  background: #1d315b8c;
+  border: 1px solid #a7bbdf80;
+  border-radius: 1px;
+  mask-image: none;
+  font-size: calc(9px + var(--font-increase));
+  line-height: 1.6;
+}
+body.in-game .event-log:empty {
+  display: none;
+}
+body.in-game #hud .loot-notices {
+  right: 126px;
+  bottom: 44px;
+  width: 230px;
+  max-width: 37%;
+}
+body.in-game .loot-receipt {
+  background: #293f69c9;
+  border: 1px solid #a7bbdf80;
+  border-radius: 1px;
+}
+body.in-game .leaf-wallet {
+  padding: 3px 6px;
+  font-size: calc(10px + var(--font-increase));
+}
+body.in-game #interact-prompt {
+  bottom: 38px;
+  padding: 3px 9px;
+  border-radius: 1px;
+  background: #253a63ca;
+  border-color: #c4d0ed;
+  font-size: calc(10px + var(--font-increase));
+  max-width: 48%;
+}
+body.in-game #chat-box,
+body.in-game #chat-toggle {
+  display: none !important;
+}
+body.in-game #panel-backdrop {
+  inset: 15px 0 30px;
+}
+body.in-game .menu-panel {
+  top: 36px;
+  bottom: 48px;
+  background: linear-gradient(#344c76f5, #1d2d50f7);
+  border: 1px solid #c5d2eb;
+  border-radius: 2px;
+}
+body.in-game .menu-panel > header {
+  background: linear-gradient(#a8b7d2, #526f9f);
+  border-bottom: 1px solid #d3dded;
+}
+@media (max-width: 760px) {
+  body.in-game #hud .player-card {
+    width: 204px;
+    left: 5px;
+    top: 20px;
+  }
+  body.in-game .portrait {
+    display: none;
+  }
+  body.in-game #hud .map-card {
+    right: 5px;
+    top: 20px;
+    width: 138px;
+  }
+  body.in-game #minimap {
+    width: 128px;
+    height: 88px;
+  }
+  body.in-game .map-heading {
+    font-size: calc(7px + var(--font-increase));
+  }
+  body.in-game #region-name {
+    max-width: 103px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  body.in-game #exploration-progress,
+  body.in-game .map-foot {
+    display: none;
+  }
+  body.in-game #hud .quest-card {
+    left: 5px;
+    top: 136px;
+    width: 174px;
+  }
+  body.in-game .quest-card p {
+    display: none;
+  }
+  body.in-game .quest-card h2 {
+    font-size: calc(10px + var(--font-increase));
+  }
+  body.in-game #hud .target-card {
+    top: 211px;
+    width: 176px;
+  }
+  body.in-game #hud .boss-banner {
+    top: 255px;
+    width: 220px;
+  }
+  body.in-game #hud .bottom-dock {
+    right: 5px;
+    bottom: 40px;
+    width: 96px;
+    padding: 4px;
+  }
+  body.in-game .skillbar {
+    grid-template-columns: repeat(2, 41px);
+    gap: 3px;
+  }
+  body.in-game .skill {
+    width: 41px;
+    height: 46px;
+  }
+  body.in-game .field-menu {
+    left: 3px;
+    gap: 2px;
+  }
+  body.in-game .field-menu button {
+    padding: 2px 4px;
+    font-size: calc(8px + var(--font-increase));
+  }
+  body.in-game .field-menu kbd {
+    display: none;
+  }
+  body.in-game .topbar nav {
+    gap: 2px;
+  }
+  body.in-game .topbar nav button {
+    font-size: calc(8px + var(--font-increase));
+    padding: 2px 5px;
+  }
+  body.in-game .topbar nav [data-panel="journal"],
+  body.in-game .topbar nav [data-panel="help"] {
+    display: none;
+  }
+  body.in-game #hud .event-log {
+    max-height: 64px;
+    bottom: 37px;
+    width: calc(100% - 118px);
+    font-size: calc(8px + var(--font-increase));
+  }
+  body.in-game #hud .loot-notices {
+    right: 109px;
+    bottom: 115px;
+    width: 180px;
+    max-width: calc(100% - 120px);
+  }
+  body.in-game #interact-prompt {
+    bottom: 37px;
+    left: 44%;
+    max-width: 65%;
+    font-size: calc(9px + var(--font-increase));
+  }
+}
+@media (max-width: 360px) {
+  body.in-game #hud .player-card {
+    width: 176px;
+  }
+  body.in-game #hud .map-card {
+    width: 122px;
+  }
+  body.in-game #minimap {
+    width: 112px;
+    height: 80px;
+  }
+  body.in-game #hud .quest-card {
+    width: 154px;
+  }
+}
+@media (max-height: 600px) {
+  body.in-game #hud .quest-card {
+    top: 132px;
+  }
+  body.in-game .quest-card p {
+    display: none;
+  }
+  body.in-game #hud .event-log {
+    max-height: 50px;
+  }
+  body.in-game #minimap {
+    height: 80px;
+  }
+  body.in-game #exploration-progress {
+    display: none;
+  }
+}
+body.in-game .player-info .pocket-leaf {
+  display: block;
+  color: #ffe5a2;
+  margin-top: 3px;
+  font-size: calc(8px + var(--font-increase));
+}

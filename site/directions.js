@@ -1,4 +1,5 @@
-// Atlas rows follow screen compass headings in the isometric world.
+import { project, unproject } from "./view-projection.js";
+// Atlas rows follow screen compass headings in the quarter-view world.
 export const DIRECTIONS = [
   { id: "N", label: "상 · 북" },
   { id: "NE", label: "북동" },
@@ -12,16 +13,14 @@ export const DIRECTIONS = [
 export const SOUTH = 4;
 export function direction(dx, dy, fallback = SOUTH) {
   if (Math.hypot(dx, dy) < 1e-8) return fallback;
-  const screenX = dx - dy,
-    screenY = (dx + dy) / 2;
+  const { x: screenX, y: screenY } = project(dx, dy);
   return (Math.round(Math.atan2(screenX, -screenY) / (Math.PI / 4)) + 8) % 8;
 }
 export function facingVector(dir) {
   const angle = (dir * Math.PI) / 4;
   const sx = Math.sin(angle),
     sy = -Math.cos(angle);
-  const x = sx / 2 + sy,
-    y = sy - sx / 2;
+  const { x, y } = unproject(sx, sy);
   const length = Math.hypot(x, y);
   return { x: x / length, y: y / length };
 }

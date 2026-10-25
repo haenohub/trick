@@ -8,7 +8,7 @@ with sync_playwright() as pw:
  p=b.new_page(viewport={'width':1440,'height':900});p.on('pageerror',lambda e:errors.append(str(e)))
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden');p.locator('#start-game').click();p.wait_for_timeout(200)
  result=p.evaluate('''()=>{const s=__leaftale.snapshot().player,a=__leaftale.worldToScreen(s.x,s.y),c=__leaftale.worldToScreen(s.x+1,s.y-1),q=__leaftale.screenToWorld(c.x,c.y);return{zoom:__leaftale.view().zoom,dx:c.x-a.x,dy:c.y-a.y,error:Math.hypot(q.x-s.x-1,q.y-s.y+1)}}''')
- assert abs(result['zoom']-1/1.2)<1e-10 and abs(result['dx']-64/1.2)<1e-7 and abs(result['dy'])<1e-7 and result['error']<1e-7,result
+ assert abs(result['zoom']-1/1.2)<1e-10 and abs(result['dx']-64/1.2)<1e-7 and abs(result['dy']-32/1.2)<1e-7 and result['error']<1e-7,result
  initial=p.evaluate('({p:__leaftale.snapshot().player,c:__leaftale.view().camera})')
  target={'x':initial['p']['x']+3,'y':initial['p']['y']-3}
  point=p.evaluate('(q)=>__leaftale.worldToScreen(q.x,q.y)',target);box=p.locator('#world').bounding_box();p.mouse.click(box['x']+point['x'],box['y']+point['y'])
@@ -29,7 +29,7 @@ with sync_playwright() as pw:
   assert p.evaluate('__leaftale.snapshot().player.map')==map_id,map_id
   assert p.locator('#minimap').evaluate('(c)=>c.getContext("2d").getImageData(0,0,c.width,c.height).data.some(v=>v)')
   p.screenshot(path='/tmp/leaftale-expanded-'+map_id+'.png')
- print('PASS: all ten expanded maps render with camera bounds, portals, distinct terrain and minimaps')
+ print('PASS: all ten expanded maps render with centered cameras, portals, distinct terrain and minimaps')
  p.set_viewport_size({'width':390,'height':844});p.wait_for_timeout(200)
  assert p.evaluate('document.documentElement.scrollWidth<=innerWidth')
  p.screenshot(path='/tmp/leaftale-expanded-mobile.png')

@@ -244,6 +244,7 @@ function start(saved = null) {
   );
   state = world.snapshot("local");
   running = true;
+  document.body.classList.add("in-game");
   $("lobby").hidden = true;
   $("hud").hidden = false;
   target = null;
@@ -388,6 +389,7 @@ function hud() {
   $("hp-text").textContent = `${Math.ceil(p.hp)} / ${s.maxHp}`;
   $("focus-fill").style.width = `${p.focus}%`;
   $("focus-text").textContent = `${Math.floor(p.focus)} / 100`;
+  $("pocket-leaf").textContent = `리프 ${p.gold.toLocaleString()}`;
   $("region-name").textContent =
     `${REGIONS[map.region].name} · CHAPTER 0${map.region + 1}`;
   $("map-name").textContent = map.name;
@@ -1072,6 +1074,7 @@ $("chat-form").onsubmit = (e) => {
   input.value = "";
 };
 function showLobby() {
+  document.body.classList.remove("in-game");
   const saved = readSave();
   $("lobby").hidden = false;
   $("continue-game").hidden = !saved;
@@ -1280,7 +1283,7 @@ window.addEventListener("keydown", (e) => {
       target =
         mobs[(mobs.findIndex((m) => m.uid === target) + 1) % mobs.length].uid;
   }
-  if (e.code === "Enter") $("chat-toggle").click();
+  if (e.code === "Enter" && !$("chat-toggle").hidden) $("chat-toggle").click();
 });
 $("panel-body").addEventListener("pointerover", (e) => {
   const slot = e.target.closest("[data-inventory-item]");
@@ -1367,7 +1370,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.14.0",
+  version: "0.15.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

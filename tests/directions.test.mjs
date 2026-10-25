@@ -5,15 +5,19 @@ import { NAVIGATION } from "../site/world-layout.js";
 import { World, createPlayer } from "../site/core.js";
 
 const headings = [
-  [-1, -1],
+  [-3, -1],
+  [-3.5, -2.5],
   [-0.5, -1.5],
-  [1, -1],
-  [1.5, 0.5],
-  [1, 1],
+  [2.5, -0.5],
+  [3, 1],
+  [3.5, 2.5],
   [0.5, 1.5],
-  [-1, 1],
-  [-1.5, -0.5],
-];
+  [-2.5, 0.5],
+].map(([x, y]) => {
+  const length = Math.hypot(x, y);
+  return [x / length, y / length];
+});
+
 test("eight world routes face their actual compass direction on the isometric screen", () => {
   headings.forEach(([dx, dy], row) => {
     assert.equal(direction(dx, dy), row);

@@ -1,4 +1,6 @@
 import { animationFrame, LocomotionClocks } from "./animation.js";
+import { project, unproject, viewAnchor } from "./view-projection.js";
+export { project } from "./view-projection.js";
 import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
@@ -73,7 +75,6 @@ export function drawMonsterPreview(canvas, id) {
   canvas.style.width = canvas.style.height = canvas.width + "px";
   preview(canvas, m.file, m.cols, m.rows, 0, 5);
 }
-export const project = (x, y) => ({ x: (x - y) * 32, y: (x + y) * 16 });
 export class Renderer {
   constructor(canvas, minimap) {
     this.canvas = canvas;
@@ -114,25 +115,18 @@ export class Renderer {
   }
   worldToScreen(x, y) {
     const s = project(x, y);
+    const anchor = viewAnchor(this.size.width, this.size.height, this.zoom);
     return {
-      x:
-        (s.x - this.camera.x) * this.zoom +
-        this.size.width / 2 +
-        (this.shake?.x || 0),
-      y:
-        (s.y - this.camera.y) * this.zoom +
-        this.size.height * 0.53 +
-        (this.shake?.y || 0),
+      x: (s.x - this.camera.x) * this.zoom + anchor.x + (this.shake?.x || 0),
+      y: (s.y - this.camera.y) * this.zoom + anchor.y + (this.shake?.y || 0),
     };
   }
   screenToWorld(x, y) {
+    const anchor = viewAnchor(this.size.width, this.size.height, this.zoom);
     const xx =
-        (x - (this.shake?.x || 0) - this.size.width / 2) / this.zoom +
-        this.camera.x,
-      yy =
-        (y - (this.shake?.y || 0) - this.size.height * 0.53) / this.zoom +
-        this.camera.y;
-    return { x: xx / 64 + yy / 32, y: yy / 32 - xx / 64 };
+        (x - (this.shake?.x || 0) - anchor.x) / this.zoom + this.camera.x,
+      yy = (y - (this.shake?.y || 0) - anchor.y) / this.zoom + this.camera.y;
+    return unproject(xx, yy);
   }
   text(text, x, y, color = "#fff5da", size = 12, align = "center") {
     this.labels.push({ text, x, y, color, size, align });
@@ -426,28 +420,17 @@ export class Renderer {
         };
     c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     c.imageSmoothingEnabled = false;
-    const desired = project(p.x, p.y),
-      cx = Math.max(
-        -nav.width + w / (2 * this.zoom),
-        Math.min(nav.width - w / (2 * this.zoom), desired.x),
-      ),
-      cy = Math.max(
-        (h * 0.53) / this.zoom,
-        Math.min(nav.height * 2 - (h * 0.47) / this.zoom, desired.y),
-      );
+    const desired = project(p.x, p.y);
     if (this.lastMap !== p.map) {
-      this.camera = { x: cx, y: cy };
       this.lastMap = p.map;
       this.destination = null;
-    } else {
-      const t = 1 - Math.exp(-Math.min(dt, 0.1) * 7);
-      this.camera.x += (cx - this.camera.x) * t;
-      this.camera.y += (cy - this.camera.y) * t;
     }
-    const zero = this.worldToScreen(0, 0);
+    // Movement already advances every animation frame. Follow that exact
+    // position, so the hero never drifts off center or hits a camera edge stop.
+    this.camera = desired;
     c.fillStyle = "#203c2f";
     c.fillRect(0, 0, w, h);
-    this.drawTerrain(nav, zero);
+    this.drawTerrain(nav);
     for (const prop of nav.props.filter((o) => o.walkThrough)) {
       const s = this.worldToScreen(prop.x, prop.y);
       this.cell(
@@ -575,7 +558,7 @@ export class Renderer {
         .map((m) => ({ ...m, kind: "monster" })),
       ...state.peers.map((peer) => ({ ...peer, kind: "peer" })),
       { ...p, kind: "player" },
-    ].sort((a, b) => a.x + a.y - (b.x + b.y));
+    ].sort((a, b) => project(a.x, a.y).y - project(b.x, b.y).y);
     for (const o of objects) {
       const s = this.worldToScreen(o.x, o.y);
       const margin = o.kind === "prop" ? 450 : 200;
@@ -587,6 +570,14 @@ export class Renderer {
       )
         continue;
       if (o.kind === "prop") {
+        const hero = this.worldToScreen(p.x, p.y);
+        c.save();
+        if (
+          s.y >= hero.y &&
+          s.y - hero.y < 380 * this.zoom &&
+          Math.abs(s.x - hero.x) < 160 * this.zoom
+        )
+          c.globalAlpha = 0.38;
         this.cell(
           "world/props",
           4,
@@ -599,6 +590,7 @@ export class Renderer {
           512,
           1 - 2 / 256,
         );
+        c.restore();
         continue;
       }
       if (o.kind === "chest") {
@@ -801,7 +793,7 @@ export class Renderer {
           y: s.y - 45,
           r: 34,
         });
-      } else if (o.kind !== "monster")
+      } else if (o.kind !== "monster") {
         this.text(
           o.name,
           s.x,
@@ -809,6 +801,18 @@ export class Renderer {
           o.kind === "player" ? "#fff4d3" : "#d6eed8",
           11,
         );
+        if (o.kind === "player") {
+          const width = 44,
+            left = Math.round(s.x - width / 2),
+            top = Math.round(s.y + 7);
+          c.fillStyle = "#182030";
+          c.fillRect(left - 1, top - 1, width + 2, 10);
+          c.fillStyle = "#e87c87";
+          c.fillRect(left, top, (width * p.hp) / p.stats.maxHp, 3);
+          c.fillStyle = "#7dbbe8";
+          c.fillRect(left, top + 5, (width * p.focus) / 100, 2);
+        }
+      }
     }
     for (const drop of state.drops.filter((d) => d.pickupEnds)) {
       const t = Math.max(
@@ -892,48 +896,53 @@ export class Renderer {
     this.drawMinimap(state);
     this.present();
   }
-  drawTerrain(nav, zero) {
+  drawTerrain(nav) {
     const terrain = ART.world.tiles[nav.id],
       image = IMAGES.get(terrain.file),
-      nativeTile = terrain.size,
       c = this.ctx;
-    const left =
-      (this.camera.x - this.size.width / (2 * this.zoom) + nav.width) / 2;
-    const top = (this.camera.y - (this.size.height * 0.53) / this.zoom) / 2;
-    const right = left + this.size.width / (2 * this.zoom),
-      bottom = top + this.size.height / (2 * this.zoom);
-    const snap = (v) => Math.round(v * this.dpr) / this.dpr;
-    for (
-      let r = Math.max(0, Math.floor(top / TILE + 0.5));
-      r <= Math.min(nav.rows, Math.ceil(bottom / TILE + 0.5));
-      r++
-    )
-      for (
-        let col = Math.max(0, Math.floor(left / TILE + 0.5));
-        col <= Math.min(nav.cols, Math.ceil(right / TILE + 0.5));
-        col++
-      ) {
-        const tile = nav.transitions[r][col],
-          x0 = snap(
-            zero.x + ((col - 0.5) * TILE - nav.width / 2) * 2 * this.zoom,
-          ),
-          y0 = snap(zero.y + (r - 0.5) * TILE * 2 * this.zoom),
-          x1 = snap(
-            zero.x + ((col + 0.5) * TILE - nav.width / 2) * 2 * this.zoom,
-          ),
-          y1 = snap(zero.y + (r + 0.5) * TILE * 2 * this.zoom);
+    const corners = [
+      [0, 0],
+      [this.size.width, 0],
+      [this.size.width, this.size.height],
+      [0, this.size.height],
+    ]
+      .map(([x, y]) => this.screenToWorld(x, y))
+      .map((p) => worldToImage(p.x, p.y, nav.id));
+    const minCol =
+      Math.floor(Math.min(...corners.map((p) => p.u * nav.cols)) - 0.5) - 1;
+    const maxCol =
+      Math.ceil(Math.max(...corners.map((p) => p.u * nav.cols)) + 0.5) + 1;
+    const minRow =
+      Math.floor(Math.min(...corners.map((p) => p.v * nav.rows)) - 0.5) - 1;
+    const maxRow =
+      Math.ceil(Math.max(...corners.map((p) => p.v * nav.rows)) + 0.5) + 1;
+    const anchor = viewAnchor(this.size.width, this.size.height, this.zoom);
+    c.save();
+    c.translate(
+      anchor.x - this.camera.x * this.zoom + this.shake.x,
+      anchor.y - this.camera.y * this.zoom + this.shake.y,
+    );
+    // Project only the floor. Upright sprites keep their approved native pixels.
+    c.transform(this.zoom, this.zoom / 2, -this.zoom, this.zoom / 2, 0, 0);
+    for (let row = minRow; row <= maxRow; row++)
+      for (let col = minCol; col <= maxCol; col++) {
+        // Continue the biome past collision bounds so a centered camera never
+        // exposes an empty border when the hero approaches the edge of a map.
+        const tile = nav.transitions[row]?.[col] ?? 0,
+          size = terrain.size;
         c.drawImage(
           image,
-          (tile % 4) * nativeTile,
-          Math.floor(tile / 4) * nativeTile,
-          nativeTile,
-          nativeTile,
-          x0,
-          y0,
-          x1 - x0,
-          y1 - y0,
+          (tile % 4) * size,
+          Math.floor(tile / 4) * size,
+          size,
+          size,
+          (col - 0.5) * TILE * 2 - nav.width,
+          (row - 0.5) * TILE * 2,
+          TILE * 2 + 1,
+          TILE * 2 + 1,
         );
       }
+    c.restore();
   }
 
   drawMinimap(state) {
@@ -956,7 +965,9 @@ export class Renderer {
       terrain.width = w;
       terrain.height = h;
       const tc = terrain.getContext("2d");
-      tc.imageSmoothingEnabled = false;
+      // Area-filter only this tiny UI map; full-size world pixels stay sharp.
+      tc.imageSmoothingEnabled = true;
+      tc.imageSmoothingQuality = "high";
       const tileLayout = ART.world.tiles[nav.id],
         atlas = IMAGES.get(tileLayout.file),
         nativeTile = tileLayout.size;
@@ -982,15 +993,26 @@ export class Renderer {
     c.drawImage(terrain, 0, 0);
     c.strokeStyle = "#fff0af";
     c.lineWidth = 1.5;
-    c.strokeRect(
-      ox +
-        ((this.camera.x - this.size.width / (2 * this.zoom) + nav.width) / 2) *
-          scale,
-      oy +
-        ((this.camera.y - (this.size.height * 0.53) / this.zoom) / 2) * scale,
-      (this.size.width / (2 * this.zoom)) * scale,
-      (this.size.height / (2 * this.zoom)) * scale,
-    );
+    // The quarter-view viewport is a polygon in the top-down minimap.
+    c.save();
+    c.beginPath();
+    c.rect(ox, oy, mw, mh);
+    c.clip();
+    c.beginPath();
+    [
+      [0, 0],
+      [this.size.width, 0],
+      [this.size.width, this.size.height],
+      [0, this.size.height],
+    ]
+      .map(([x, y]) => this.screenToWorld(x, y))
+      .map((p) => worldToImage(p.x, p.y, nav.id))
+      .forEach((p, i) =>
+        c[i ? "lineTo" : "moveTo"](ox + p.u * mw, oy + p.v * mh),
+      );
+    c.closePath();
+    c.stroke();
+    c.restore();
     const icons = IMAGES.get("items");
     const mark = (x, y, index, size) => {
       const pos = worldToImage(x, y, state.player.map);

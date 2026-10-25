@@ -63,6 +63,7 @@
             <div class="meter focus">
               <span id="focus-fill"></span><b id="focus-text"></b>
             </div>
+            <small id="pocket-leaf" class="pocket-leaf"></small>
           </div>
           <button
             data-panel="skills"
@@ -102,8 +103,8 @@
           <h2 id="map-name"></h2>
           <canvas
             id="minimap"
-            width="176"
-            height="112"
+            width="174"
+            height="116"
             aria-label="현재 지역 미니맵"
           ></canvas>
           <div id="exploration-progress" class="exploration-progress"></div>
@@ -135,29 +136,32 @@
           ></div>
         </section>
         <div class="bottom-dock">
-          <div class="dock-side">
-            <button data-panel="inventory" title="가방 [I]">
-              <span>▧</span>가방 <kbd data-keybind="inventory">I</kbd></button
-            ><button data-panel="craft" title="제작 [B]">
-              <span>⚒</span>제작 <kbd data-keybind="craft">B</kbd>
-            </button>
-          </div>
           <div class="skillbar" id="skillbar"></div>
-          <div class="dock-side">
-            <button data-panel="map" title="지도 [M]">
-              <span>◇</span>지도 <kbd data-keybind="map">M</kbd></button
-            ><button data-panel="skills" title="직업 [C]">
-              <span>✧</span>직업 <kbd data-keybind="skills">C</kbd>
-            </button>
-          </div>
         </div>
+        <nav class="field-menu" aria-label="모험 메뉴">
+          <button data-panel="inventory" title="가방 [I]">
+            가방 <kbd data-keybind="inventory">I</kbd>
+          </button>
+          <button data-panel="craft" title="제작 [B]">
+            제작 <kbd data-keybind="craft">B</kbd>
+          </button>
+          <button data-panel="map" title="지도 [M]">
+            지도 <kbd data-keybind="map">M</kbd>
+          </button>
+          <button data-panel="skills" title="직업 [C]">
+            직업 <kbd data-keybind="skills">C</kbd>
+          </button>
+          <button data-panel="bindings" title="단축키 [P]">
+            단축키 <kbd>P</kbd>
+          </button>
+        </nav>
         <div class="experience">
           <span id="xp-fill"></span><b id="xp-text"></b>
         </div>
         <div class="statusbar">
           <span id="connection-label">나의 모험 · 브라우저 저장</span
           ><span id="save-status">저장 대기</span
-          ><button id="chat-toggle" title="채팅">채팅 ↵</button>
+          ><button id="chat-toggle" title="채팅" hidden>채팅 ↵</button>
         </div>
         <div id="chat-box" class="glass" hidden>
           <div id="chat-lines"></div>
