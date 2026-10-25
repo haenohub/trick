@@ -53,6 +53,11 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "assets/world/props.png",
       "assets/creatures/m40.png",
       "assets/npcs/guide.png",
+      "assets/locomotion/warden-walk.png",
+      "assets/locomotion/warden-idle.png",
+      "assets/locomotion/guide-idle.png",
+      "assets/locomotion/m1-walk.png",
+      "assets/locomotion/m16-idle.png",
       "assets/directions/warden/N.png",
       "assets/maps/seacave.png",
     ]) {

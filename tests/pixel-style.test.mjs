@@ -18,11 +18,16 @@ test("all assets originate from generated artwork with clean transparent native 
     )
   ).flatMap((r) => r.sources);
   const motion = JSON.parse(await readFile("art/motion-sources.json", "utf8"));
+  const locomotion = JSON.parse(
+    await readFile("art/locomotion-sources.json", "utf8"),
+  );
   const sources = new Set(
-    [...previous, ...repaint.sources, ...motion.sources].flatMap((s) => [
-      s.source,
-      ...(s.deathSource ? [s.deathSource] : []),
-    ]),
+    [
+      ...previous,
+      ...repaint.sources,
+      ...motion.sources,
+      ...locomotion.sources,
+    ].flatMap((s) => [s.source, ...(s.deathSource ? [s.deathSource] : [])]),
   );
   for (const actor of repaint.sources.filter((a) =>
     ["monster", "character", "npc"].includes(a.kind),

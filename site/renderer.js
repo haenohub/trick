@@ -1,4 +1,4 @@
-import { animationFrame } from "./animation.js";
+import { animationFrame, LocomotionClocks } from "./animation.js";
 import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
@@ -81,6 +81,7 @@ export class Renderer {
     this.ctx = this.scene.getContext("2d", { alpha: false });
     this.display = canvas.getContext("2d", { alpha: false });
     this.labels = [];
+    this.locomotion = new LocomotionClocks();
     this.minimap = minimap;
     this.camera = { x: 0, y: 448 };
     this.hitboxes = [];
@@ -345,25 +346,44 @@ export class Renderer {
       ? Math.floor(progress * frames) % frames
       : Math.min(frames - 1, Math.floor(progress * frames));
   }
-  sprite(name, x, y, anim, dir, time, start, height = 96, duration = null) {
+  sprite(
+    name,
+    x,
+    y,
+    anim,
+    dir,
+    time,
+    start,
+    height = 96,
+    duration = null,
+    actorKey = name,
+  ) {
     const layout = /^m\d+$/.test(name)
       ? ART.monsters[name]
       : name.startsWith("npc:")
         ? ART.npcLayouts[name.slice(4)]
         : ART.characterLayouts[name];
     if (!layout) return;
-    const file = layout.file || "characters/" + name,
+    const clip = layout.clips?.[anim];
+    const file = clip?.file || layout.file || "characters/" + name,
       age = Math.max(0, time - start),
       c = this.ctx;
+    const loopStart = this.locomotion.start(actorKey, anim, time);
     if (anim === "death") {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
     }
     this.cell(
       file,
-      layout.cols,
-      layout.rows,
-      animationFrame(layout, anim, time, start, duration),
+      clip?.cols || layout.cols,
+      clip?.rows || layout.rows,
+      animationFrame(
+        layout,
+        anim,
+        time,
+        ["idle", "walk"].includes(anim) ? loopStart : start,
+        duration,
+      ),
       dir,
       x,
       y,
@@ -731,6 +751,7 @@ export class Renderer {
         o.animAt || 0,
         height,
         o.animDuration,
+        o.kind + ":" + (o.uid || o.id || name),
       );
       if (monster && o.hitUntil > time)
         this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);

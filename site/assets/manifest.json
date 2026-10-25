@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "provenance": "image_gen",
   "pixelScale": 1,
   "palette": [
@@ -360,7 +360,63 @@
     "creatures/m59",
     "creatures/m60",
     "verdant-trophies",
-    "currency-leaf"
+    "currency-leaf",
+    "locomotion/warden-walk",
+    "locomotion/warden-idle",
+    "locomotion/mage-walk",
+    "locomotion/mage-idle",
+    "locomotion/ranger-walk",
+    "locomotion/ranger-idle",
+    "locomotion/herbalist-walk",
+    "locomotion/herbalist-idle",
+    "locomotion/guide-walk",
+    "locomotion/guide-idle",
+    "locomotion/smith-walk",
+    "locomotion/smith-idle",
+    "locomotion/healer-walk",
+    "locomotion/healer-idle",
+    "locomotion/merchant-walk",
+    "locomotion/merchant-idle",
+    "locomotion/coastguide-walk",
+    "locomotion/coastguide-idle",
+    "locomotion/coastsmith-walk",
+    "locomotion/coastsmith-idle",
+    "locomotion/coasthealer-walk",
+    "locomotion/coasthealer-idle",
+    "locomotion/mentor-walk",
+    "locomotion/mentor-idle",
+    "locomotion/m1-walk",
+    "locomotion/m1-idle",
+    "locomotion/m2-walk",
+    "locomotion/m2-idle",
+    "locomotion/m3-walk",
+    "locomotion/m3-idle",
+    "locomotion/m4-walk",
+    "locomotion/m4-idle",
+    "locomotion/m5-walk",
+    "locomotion/m5-idle",
+    "locomotion/m6-walk",
+    "locomotion/m6-idle",
+    "locomotion/m7-walk",
+    "locomotion/m7-idle",
+    "locomotion/m8-walk",
+    "locomotion/m8-idle",
+    "locomotion/m9-walk",
+    "locomotion/m9-idle",
+    "locomotion/m10-walk",
+    "locomotion/m10-idle",
+    "locomotion/m11-walk",
+    "locomotion/m11-idle",
+    "locomotion/m12-walk",
+    "locomotion/m12-idle",
+    "locomotion/m13-walk",
+    "locomotion/m13-idle",
+    "locomotion/m14-walk",
+    "locomotion/m14-idle",
+    "locomotion/m15-walk",
+    "locomotion/m15-idle",
+    "locomotion/m16-walk",
+    "locomotion/m16-idle"
   ],
   "monsters": {
     "m1": {
@@ -426,7 +482,46 @@
         6,
         5,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m1-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m1-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m2": {
       "file": "creatures/m2",
@@ -491,7 +586,46 @@
         6,
         5,
         6
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m2-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m2-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m3": {
       "file": "creatures/m3",
@@ -556,7 +690,46 @@
         2,
         7,
         7
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m3-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m3-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m4": {
       "file": "creatures/m4",
@@ -621,7 +794,46 @@
         0,
         0,
         4
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m4-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m4-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m5": {
       "file": "creatures/m5",
@@ -686,7 +898,46 @@
         6,
         6,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m5-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m5-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m6": {
       "file": "creatures/m6",
@@ -751,7 +1002,46 @@
         5,
         5,
         5
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m6-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m6-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m7": {
       "file": "creatures/m7",
@@ -816,7 +1106,46 @@
         3,
         5,
         7
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m7-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m7-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m8": {
       "file": "creatures/m8",
@@ -881,7 +1210,46 @@
         6,
         5,
         7
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m8-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m8-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m9": {
       "file": "creatures/m9",
@@ -946,7 +1314,46 @@
         1,
         5,
         1
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m9-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m9-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m10": {
       "file": "creatures/m10",
@@ -1011,7 +1418,46 @@
         6,
         6,
         5
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m10-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m10-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m11": {
       "file": "creatures/m11",
@@ -1076,7 +1522,46 @@
         2,
         4,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m11-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m11-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m12": {
       "file": "creatures/m12",
@@ -1141,7 +1626,46 @@
         4,
         0,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m12-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m12-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m13": {
       "file": "creatures/m13",
@@ -1206,7 +1730,46 @@
         3,
         7,
         4
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m13-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m13-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m14": {
       "file": "creatures/m14",
@@ -1271,7 +1834,46 @@
         3,
         0,
         1
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m14-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m14-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m15": {
       "file": "creatures/m15",
@@ -1336,7 +1938,46 @@
         3,
         6,
         5
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m15-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m15-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m16": {
       "file": "creatures/m16",
@@ -1401,7 +2042,46 @@
         2,
         4,
         5
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/m16-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/m16-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 64,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "m17": {
       "file": "creatures/m17",
@@ -4852,7 +5532,46 @@
         2,
         5,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/warden-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/warden-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "mage": {
       "file": "characters/mage",
@@ -4915,7 +5634,46 @@
         1,
         6,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/mage-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/mage-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "ranger": {
       "file": "characters/ranger",
@@ -4978,7 +5736,46 @@
         4,
         4,
         4
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/ranger-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/ranger-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "herbalist": {
       "file": "characters/herbalist",
@@ -5041,7 +5838,46 @@
         7,
         7,
         0
-      ]
+      ],
+      "clips": {
+        "walk": {
+          "file": "locomotion/herbalist-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/herbalist-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     }
   },
   "effects": {
@@ -5141,7 +5977,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/guide-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/guide-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "smith": {
       "file": "npcs/smith",
@@ -5180,7 +6055,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/smith-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/smith-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "healer": {
       "file": "npcs/healer",
@@ -5219,7 +6133,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/healer-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/healer-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "merchant": {
       "file": "npcs/merchant",
@@ -5258,7 +6211,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/merchant-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/merchant-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "coastguide": {
       "file": "npcs/coastguide",
@@ -5297,7 +6289,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/coastguide-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/coastguide-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "coastsmith": {
       "file": "npcs/coastsmith",
@@ -5336,7 +6367,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/coastsmith-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/coastsmith-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "coasthealer": {
       "file": "npcs/coasthealer",
@@ -5375,7 +6445,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/coasthealer-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/coasthealer-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     },
     "mentor": {
       "file": "npcs/mentor",
@@ -5414,7 +6523,46 @@
         "death": [
           7
         ]
-      }
+      },
+      "clips": {
+        "walk": {
+          "file": "locomotion/mentor-walk",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.64,
+          "loop": true
+        },
+        "idle": {
+          "file": "locomotion/mentor-idle",
+          "cols": 8,
+          "rows": 8,
+          "size": 96,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "duration": 0.72,
+          "loop": true
+        }
+      },
+      "locomotionVersion": 3
     }
   },
   "pixelGrid": {
@@ -5781,5 +6929,77 @@
     "windupFrames": 3,
     "strikeFrames": 2,
     "recoveryFrames": 2
+  },
+  "locomotion": {
+    "version": 3,
+    "actors": 28,
+    "totalActors": 72,
+    "complete": false,
+    "pendingActors": [
+      "m17",
+      "m18",
+      "m19",
+      "m20",
+      "m21",
+      "m22",
+      "m23",
+      "m24",
+      "m25",
+      "m26",
+      "m27",
+      "m28",
+      "m29",
+      "m30",
+      "m31",
+      "m32",
+      "m33",
+      "m34",
+      "m35",
+      "m36",
+      "m37",
+      "m38",
+      "m39",
+      "m40",
+      "m41",
+      "m42",
+      "m43",
+      "m44",
+      "m45",
+      "m46",
+      "m47",
+      "m48",
+      "m49",
+      "m50",
+      "m51",
+      "m52",
+      "m53",
+      "m54",
+      "m55",
+      "m56",
+      "m57",
+      "m58",
+      "m59",
+      "m60"
+    ],
+    "directions": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "walkFrames": 8,
+    "idleFrames": 8,
+    "source": "image_gen",
+    "oneDirectionPerSource": true,
+    "referenceVideo": {
+      "fileId": "file_0000000073448230ba32982f9e2f08e5",
+      "frames": 6,
+      "duration": 0.72,
+      "notes": "Planted feet, torso breathing and delayed appendage motion; eight authored poses retain the same cycle."
+    }
   }
 }

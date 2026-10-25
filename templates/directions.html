@@ -442,14 +442,17 @@
               <option value="walk">걷기</option>
               <option value="attack">공격</option>
               <option value="hurt">피격</option>
-              <option value="windup">공격 준비</option><option value="recover">공격 회복</option><option value="combo">준비 → 명중 → 회복</option><option value="death">쓰러짐</option></select
+              <option value="windup">공격 준비</option>
+              <option value="recover">공격 회복</option>
+              <option value="combo">준비 → 명중 → 회복</option>
+              <option value="death">쓰러짐</option></select
             ><button id="play" aria-pressed="true">일시 정지</button
             ><button id="next" aria-label="다음 방향">↷</button>
           </div>
           <p id="status" role="status"></p>
           <div class="views" id="views"></div>
           <div class="downloads">
-            <a id="atlas-download" download>전체 모션 시트 PNG ↓</a
+            <a id="atlas-download" download>현재 동작 시트 PNG ↓</a
             ><a id="view-download" download>선택한 방향 PNG ↓</a>
           </div>
           <p class="note">
@@ -474,6 +477,7 @@
         kind = "all",
         playing = true,
         sheet = null,
+        clipSheets = {},
         epoch = performance.now(),
         ticket = 0;
       const cache = new Map();
@@ -588,23 +592,30 @@
         facing(heading);
         sizeViews();
         try {
-          const image = await load(actor.layout.file);
+          const [image, walk, idle] = await Promise.all([
+            load(actor.layout.file),
+            load(actor.layout.clips?.walk?.file || actor.layout.file),
+            load(actor.layout.clips?.idle?.file || actor.layout.file),
+          ]);
           if (current !== ticket) return;
           sheet = image;
+          clipSheets = { walk, idle };
           $("#status").textContent =
-            "8방향 · 방향마다 걷기 4프레임 / 공격 2프레임 / 피격 / 쓰러짐";
+            actor.layout.clips?.walk && actor.layout.clips?.idle
+              ? "8방향 · 방향마다 걷기 8프레임 / 대기 8프레임 · 발 디딤과 호흡 주기"
+              : "8방향 · 기존 모션 · 새 걷기와 대기는 준비 중";
         } catch (e) {
           if (current === ticket) $("#status").textContent = e.message;
         }
       }
-      function draw(canvas, row, frame, scale = 1) {
+      function draw(canvas, row, frame, scale = 1, image = sheet) {
         const size = selected.layout.size,
           c = canvas.getContext("2d");
         c.imageSmoothingEnabled = false;
         c.clearRect(0, 0, canvas.width, canvas.height);
         const side = size * scale;
         c.drawImage(
-          sheet,
+          image,
           frame * size,
           row * size,
           size,
@@ -617,16 +628,45 @@
       }
       function render(now) {
         if (sheet) {
-          const anim=$("#animation").value, clips=selected.layout.animations;
-          const frames=anim==='combo'?[...(clips.windup||[]),...clips.attack,...(clips.recover||[])]:clips[anim]||clips.idle;
-          const span={walk:0.5,windup:0.24,attack:0.14,recover:0.18,hurt:0.3,death:0.85,combo:0.56}[anim]||1;
+          const anim = $("#animation").value,
+            clips = selected.layout.animations,
+            clip = selected.layout.clips?.[anim];
+          const frames =
+            clip?.frames ||
+            (anim === "combo"
+              ? [
+                  ...(clips.windup || []),
+                  ...clips.attack,
+                  ...(clips.recover || []),
+                ]
+              : clips[anim] || clips.idle);
+          const span =
+            clip?.duration ||
+            {
+              walk: 0.64,
+              idle: 0.72,
+              windup: 0.24,
+              attack: 0.14,
+              recover: 0.18,
+              hurt: 0.3,
+              death: 0.85,
+              combo: 0.56,
+            }[anim] ||
+            1;
+          const image = clipSheets[anim] || sheet;
+          const file = clip?.file || selected.layout.file;
+          $("#atlas-download").href = "./assets/" + file + ".png";
+          $("#atlas-download").download = selected.id + "-" + anim + ".png";
           const frame =
             frames[
-              playing ? Math.floor((now - epoch) / (1000 * span / frames.length)) % frames.length : 0
+              playing
+                ? Math.floor((now - epoch) / ((1000 * span) / frames.length)) %
+                  frames.length
+                : 0
             ];
-          draw($("#hero"), heading, frame, 2);
+          draw($("#hero"), heading, frame, 2, image);
           for (const canvas of document.querySelectorAll(".views canvas"))
-            draw(canvas, +canvas.dataset.row, frame);
+            draw(canvas, +canvas.dataset.row, frame, 1, image);
         }
         requestAnimationFrame(render);
       }
