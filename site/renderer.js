@@ -1,3 +1,4 @@
+import { animationFrame } from "./animation.js";
 import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { worldToImage } from "./art-layout.js";
@@ -283,9 +284,9 @@ export class Renderer {
       const draw = (dx, dy) =>
         this.cell(
           ART.effects.variants[32],
-          8,
-          8,
-          Math.min(7, Math.max(0, frame)),
+          ART.effects.cols,
+          ART.effects.rows,
+          Math.min(ART.effects.cols - 1, Math.max(0, frame)),
           row,
           dx,
           dy,
@@ -325,9 +326,9 @@ export class Renderer {
           : 64;
     this.cell(
       ART.effects.variants[native],
-      8,
-      8,
-      Math.min(7, Math.max(0, frame)),
+      ART.effects.cols,
+      ART.effects.rows,
+      Math.min(ART.effects.cols - 1, Math.max(0, frame)),
       row,
       x,
       y,
@@ -337,57 +338,38 @@ export class Renderer {
     );
     c.restore();
   }
-  sprite(name, x, y, anim, dir, time, start, height = 96) {
-    let file,
-      cols,
-      rows,
-      row,
-      frames,
-      nativeSize = 48;
-    if (/^m\d+$/.test(name)) {
-      const layout = ART.monsters[name];
-      if (!layout) return;
-      ({ file, cols, rows } = layout);
-      nativeSize = layout.size;
-      row = dir;
-      frames = layout.animations[anim] || layout.animations.idle;
-    } else if (name.startsWith("npc:")) {
-      const layout = ART.npcLayouts[name.slice(4)];
-      if (!layout) return;
-      ({ file, cols, rows } = layout);
-      row = dir;
-      frames = layout.animations[anim] || layout.animations.idle;
-      nativeSize = layout.size;
-    } else {
-      const layout = ART.characterLayouts[name];
-      if (!layout) return;
-      file = "characters/" + name;
-      cols = layout.cols;
-      rows = layout.rows;
-      row = dir;
-      frames = layout.animations[anim] || layout.animations.idle;
-      nativeSize = layout.size;
-    }
-    const age = Math.max(0, time - start),
+  effectFrame(age, duration = 0.8, loop = false) {
+    const frames = ART.effects.frames || 8;
+    const progress = Math.max(0, age) / duration;
+    return loop
+      ? Math.floor(progress * frames) % frames
+      : Math.min(frames - 1, Math.floor(progress * frames));
+  }
+  sprite(name, x, y, anim, dir, time, start, height = 96, duration = null) {
+    const layout = /^m\d+$/.test(name)
+      ? ART.monsters[name]
+      : name.startsWith("npc:")
+        ? ART.npcLayouts[name.slice(4)]
+        : ART.characterLayouts[name];
+    if (!layout) return;
+    const file = layout.file || "characters/" + name,
+      age = Math.max(0, time - start),
       c = this.ctx;
-    const index = ["attack", "hurt", "death"].includes(anim)
-      ? Math.min(frames.length - 1, Math.floor(age * 10))
-      : Math.floor(time * (anim === "walk" ? 8 : 1.5)) % frames.length;
     if (anim === "death") {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
     }
     this.cell(
       file,
-      cols,
-      rows,
-      frames[index],
-      row,
+      layout.cols,
+      layout.rows,
+      animationFrame(layout, anim, time, start, duration),
+      dir,
       x,
       y,
       height,
       height,
-      1 - 2 / (nativeSize / (ART.resolutionScale || 1)),
+      1 - 2 / (layout.size / (ART.resolutionScale || 1)),
       false,
     );
     if (anim === "death") c.restore();
@@ -464,7 +446,15 @@ export class Renderer {
     this.hitboxes = [];
     for (const port of PORTALS(p.map)) {
       const s = this.worldToScreen(port.x, port.y);
-      this.fx(7, Math.floor(time * 7) % 8, s.x, s.y + 12, 100, 95, 0.85);
+      this.fx(
+        8,
+        this.effectFrame(time, 1.2, true),
+        s.x,
+        s.y + 12,
+        100,
+        95,
+        0.85,
+      );
       this.text(port.label, s.x, s.y - 65, "#fff1c5", 12);
       this.text("클릭하여 이동", s.x, s.y + 29, "#ffefc9", 9);
       this.hitboxes.push({
@@ -475,11 +465,11 @@ export class Renderer {
         r: 40,
       });
     }
-    if (this.destination && time - this.destination.at < 1.5) {
+    if (this.destination && time - this.destination.at < 0.8) {
       const d = this.worldToScreen(this.destination.x, this.destination.y);
       this.fx(
         7,
-        Math.floor((time - this.destination.at) * 8) % 8,
+        this.effectFrame(time - this.destination.at, 0.8),
         d.x,
         d.y + 8,
         40,
@@ -498,7 +488,7 @@ export class Renderer {
           const mark = this.worldToScreen(q.x, q.y);
           this.fx(
             7,
-            Math.min(7, Math.floor(t * 5)),
+            this.effectFrame(t, 1),
             mark.x,
             mark.y,
             32,
@@ -536,7 +526,7 @@ export class Renderer {
       }[e.kind];
       this.fx(
         row,
-        Math.floor(time * 12) % 8,
+        this.effectFrame(time, 2 / 3, true),
         s.x,
         s.y + 8,
         (e.radius || 2) * 55,
@@ -597,7 +587,15 @@ export class Renderer {
         this.icon(56, s.x, s.y - 10, 32);
         c.restore();
         if (!o.opened)
-          this.fx(6, Math.floor(time * 6) % 8, s.x, s.y - 10, 32, 32, 0.65);
+          this.fx(
+            6,
+            this.effectFrame(time, 4 / 3, true),
+            s.x,
+            s.y - 10,
+            32,
+            32,
+            0.65,
+          );
         this.text(
           o.opened
             ? "열어 본 보물함"
@@ -621,7 +619,15 @@ export class Renderer {
       }
       if (o.kind === "discovery") {
         this.icon(60, s.x, s.y - 12, 32);
-        this.fx(6, Math.floor(time * 5) % 8, s.x, s.y - 12, 32, 32, 0.5);
+        this.fx(
+          6,
+          this.effectFrame(time, 1.6, true),
+          s.x,
+          s.y - 12,
+          32,
+          32,
+          0.5,
+        );
         this.text("길가의 흔적", s.x, s.y - 38, "#e9edbb", 10);
         this.hitboxes.push({
           kind: "discovery",
@@ -633,12 +639,22 @@ export class Renderer {
         continue;
       }
       if (o.kind === "herb") {
+        if (o.patch === 0 && Math.hypot(p.x - o.x, p.y - o.y) < 14)
+          this.text(o.siteName, s.x, s.y - 38, "#d9f4ba", 10);
         c.save();
         c.globalAlpha = o.ready ? 1 : 0.3;
         this.item(o.item, s.x, s.y - 12, 34);
         c.restore();
         if (o.ready)
-          this.fx(6, Math.floor(time * 6) % 8, s.x, s.y, 32, 32, 0.55);
+          this.fx(
+            6,
+            this.effectFrame(time, 4 / 3, true),
+            s.x,
+            s.y,
+            32,
+            32,
+            0.55,
+          );
         this.hitboxes.push({
           kind: "herb",
           id: o.id,
@@ -714,6 +730,7 @@ export class Renderer {
         time,
         o.animAt || 0,
         height,
+        o.animDuration,
       );
       if (monster && o.hitUntil > time)
         this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);
@@ -789,8 +806,8 @@ export class Renderer {
           12 +
           (end.y - 40 - start.y) * ease -
           Math.sin(t * Math.PI) * 72;
+      if (t < 0.8) this.fx(6, this.effectFrame(t, 0.8), x, y, 32, 32, 0.45);
       this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
-      if (t < 0.8) this.fx(6, Math.floor(t * 7) % 8, x, y, 32, 32, 0.25);
     }
     for (const e of state.effects) {
       const s = this.worldToScreen(e.x, e.y),
@@ -809,7 +826,7 @@ export class Renderer {
           dy = end.y - s.y;
         this.fx(
           e.kind === "beam" ? 1 : 3,
-          Math.floor(time * 16) % 8,
+          this.effectFrame(time, 0.5, true),
           (s.x + end.x) / 2,
           (s.y + end.y) / 2 - 35,
           Math.max(50, Math.hypot(dx, dy) / this.zoom),
@@ -840,7 +857,10 @@ export class Renderer {
               : e.kind === "burst"
                 ? 1
                 : 0,
-          Math.floor((1 - remaining) * 9) % 8,
+          this.effectFrame(
+            time - (e.started ?? e.until - 0.75),
+            e.until - (e.started ?? e.until - 0.75),
+          ),
           s.x,
           s.y - 25,
           e.kind === "level" ? 130 : 75,

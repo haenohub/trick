@@ -4,8 +4,8 @@ export const CONTROL_ACTIONS = [
   ["skill1", "스킬 2", "KeyW"],
   ["skill2", "스킬 3", "KeyE"],
   ["skill3", "스킬 4", "KeyR"],
-  ["pickup", "전리품 하나 줍기", "KeyA"],
-  ["attack", "기본 공격", "Space"],
+  ["pickup", "전리품 하나 줍기", "Space"],
+  ["attack", "기본 공격", "KeyA"],
   ["interact", "대화 · 채집 · 이동", "KeyF"],
   ["potion", "연고 사용", "KeyT"],
   ["target", "다음 적 선택", "Tab"],
@@ -162,6 +162,9 @@ export function keyLabel(code) {
 }
 export function restoreBindings(raw) {
   if (!raw || typeof raw !== "object") return { ...DEFAULT_BINDINGS };
+  // Migrate the previous default pair while retaining custom skill/menu keys.
+  if (raw.pickup === "KeyA" && raw.attack === "Space")
+    raw = { ...raw, pickup: "Space", attack: "KeyA" };
   const values = CONTROL_ACTIONS.map((a) => raw[a.id]);
   return values.every(isAssignable) && new Set(values).size === values.length
     ? Object.fromEntries(CONTROL_ACTIONS.map((a) => [a.id, raw[a.id]]))
@@ -196,6 +199,9 @@ export function actionForEvent(event, bindings) {
   if (code === "KeyP") return "bindings";
   const action = CONTROL_ACTIONS.find((a) => bindings[a.id] === code)?.id;
   return (
-    action || (code === "KeyJ" && bindings.attack === "Space" ? "attack" : null)
+    action ||
+    (code === "KeyJ" && bindings.attack === DEFAULT_BINDINGS.attack
+      ? "attack"
+      : null)
   );
 }

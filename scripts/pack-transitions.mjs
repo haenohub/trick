@@ -65,16 +65,11 @@ for (const nav of Object.values(NAVIGATION)) {
   // Canonical strips come from the top or left edge of a generated matching tile.
   // Width two pixels, with corner pixels canonical for their single material.
   const authored = frames.map((f) => ({ ...f, data: Buffer.from(f.data) }));
-  const edges = [0, 1, 2, 3].map((code) => {
-    const hi = (code >> 1) & 1,
-      lo = code & 1;
-    // A homogeneous edge must use the homogeneous material, not a corner
-    // tile whose flowers or coastline can bleed into an otherwise open road.
-    return {
-      h: authored[hi === lo ? (hi ? 15 : 0) : hi | (lo * 2)],
-      v: authored[hi === lo ? (hi ? 15 : 0) : hi | (lo * 8)],
-    };
-  });
+  // Corner bits locate the material transition at the shared edge midpoint.
+  // Sampling mixed corner pictures can drag a thin leaf/rock strip across a
+  // narrow open path. Assemble each half from its pure authored material.
+  const edgeSource = (code, p) =>
+    authored[(p < NATIVE_TILE / 2 ? (code >> 1) & 1 : code & 1) ? 15 : 0];
   // Preserve exact shared boundary pixels, then ease their authored texture
   // into each tile's interior. This is palette-only atlas stitching, not blur
   // applied to actors or artwork; the original authored pixels remain crisp.
@@ -104,10 +99,26 @@ for (const nav of Object.values(NAVIGATION)) {
     for (let t = 0; t < BAND; t++)
       for (let p = EDGE; p < NATIVE_TILE - EDGE; p++) {
         const weight = t < EDGE ? 1 : (BAND - t) / (BAND - EDGE);
-        copy(edges[tl * 2 + tr].h, p, t, f, p, t, weight);
-        copy(edges[bl * 2 + br].h, p, t, f, p, NATIVE_TILE - 1 - t, weight);
-        copy(edges[tl * 2 + bl].v, t, p, f, t, p, weight);
-        copy(edges[tr * 2 + br].v, t, p, f, NATIVE_TILE - 1 - t, p, weight);
+        copy(edgeSource(tl * 2 + tr, p), p, t, f, p, t, weight);
+        copy(
+          edgeSource(bl * 2 + br, p),
+          p,
+          t,
+          f,
+          p,
+          NATIVE_TILE - 1 - t,
+          weight,
+        );
+        copy(edgeSource(tl * 2 + bl, p), t, p, f, t, p, weight);
+        copy(
+          edgeSource(tr * 2 + br, p),
+          t,
+          p,
+          f,
+          NATIVE_TILE - 1 - t,
+          p,
+          weight,
+        );
       }
     for (const [cx, cy, bit] of [
       [0, 0, tl],
@@ -180,11 +191,25 @@ for (const nav of Object.values(NAVIGATION)) {
   );
   console.log("Connected terrain: " + nav.id);
 }
-manifest.version = RESOLUTION === 2 ? 8 : 7;
+manifest.version = Math.max(manifest.version, RESOLUTION === 2 ? 8 : 7);
 for (const t of Object.values(manifest.world.tiles)) t.size = NATIVE_TILE;
 manifest.world.nativeTileSize = NATIVE_TILE;
 manifest.world.props.size = propSize;
 manifest.world.resolutionScale = RESOLUTION;
+manifest.world.maps = Object.fromEntries(
+  Object.values(NAVIGATION).map((n) => [
+    n.id,
+    {
+      width: n.width,
+      height: n.height,
+      areaScale: n.areaScale,
+      walkableScale: n.walkableScale,
+      shape: n.shape,
+      routeCount: n.routeCount,
+      gatherSites: n.gatherSites,
+    },
+  ]),
+);
 manifest.world.autotile = "corner-16";
 const replaced = new Set(assets.map((a) => a.id));
 records.assets = [

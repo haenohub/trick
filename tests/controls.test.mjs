@@ -14,7 +14,22 @@ test("default physical QWER skills have unique bindings with separate pickup, po
     [0, 1, 2, 3].map((i) => DEFAULT_BINDINGS["skill" + i]),
     ["KeyQ", "KeyW", "KeyE", "KeyR"],
   );
-  assert.equal(DEFAULT_BINDINGS.pickup, "KeyA");
+  assert.equal(DEFAULT_BINDINGS.pickup, "Space");
+  assert.equal(DEFAULT_BINDINGS.attack, "KeyA");
+  assert.equal(actionForEvent({ code: "Space" }, DEFAULT_BINDINGS), "pickup");
+  assert.equal(
+    actionForEvent({ code: "KeyA", key: "ㅁ" }, DEFAULT_BINDINGS),
+    "attack",
+  );
+  assert.deepEqual(
+    restoreBindings({
+      ...DEFAULT_BINDINGS,
+      pickup: "KeyA",
+      attack: "Space",
+      skill0: "KeyZ",
+    }),
+    { ...DEFAULT_BINDINGS, skill0: "KeyZ" },
+  );
   assert.equal(DEFAULT_BINDINGS.interact, "KeyF");
   assert.equal(DEFAULT_BINDINGS.potion, "KeyT");
   assert.equal(

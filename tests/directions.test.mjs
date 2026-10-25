@@ -48,6 +48,7 @@ test("authoritative movement and attacks publish eight directions to clients", (
   for (const [row, [dx, dy]] of headings.entries()) {
     Object.assign(p, { ...NAVIGATION.sprout.spawn, attackReady: 0 });
     Object.assign(target, { x: p.x + dx * 0.5, y: p.y + dy * 0.5, hp: 10000 });
+    w.cancelAction(p);
     assert.ok(w.attack(p, target.uid));
     assert.equal(p.dir, row);
     assert.equal(w.snapshot(p.id).player.dir, row);

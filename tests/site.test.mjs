@@ -1,3 +1,4 @@
+import { mapsForSpecies } from "../site/ecology.js";
 import { xpReward, dropChance } from "../site/balance.js";
 import { test } from "node:test";
 import { createHash } from "node:crypto";
@@ -56,16 +57,20 @@ test("standalone HTML bestiary preserves every real loot probability and story",
     const expected = MONSTERS.flatMap((m) =>
       m.drops
         .filter((d) => d.item === item.id)
-        .map((d) => ({
-          id: m.id,
-          chance: dropChance(d.chance),
-          min: d.min,
-          max: d.max,
-        })),
+        .flatMap((d) =>
+          mapsForSpecies(m.id).map((map) => ({
+            id: m.id,
+            map: map.id,
+            chance: dropChance(d.chance),
+            min: d.min,
+            max: d.max,
+          })),
+        ),
     );
     assert.deepEqual(
-      entry.sources.monsters.map(({ id, chance, min, max }) => ({
+      entry.sources.monsters.map(({ id, map, chance, min, max }) => ({
         id,
+        map,
         chance,
         min,
         max,
@@ -150,7 +155,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
       "utf8",
     ),
   );
-  assert.equal(art.version, 8);
+  assert.equal(art.version, 9);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 1);
   assert.equal(art.files.length, 102);
@@ -199,7 +204,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
         new URL("../dist/assets/" + l.file + ".png", import.meta.url),
       ),
     );
-    assert.equal(width, l.size * 8, m.id);
+    assert.equal(width, l.size * l.cols, m.id);
     const hashes = l.animations.walk.map((frame) => {
       const data = Buffer.concat(
         Array.from({ length: l.size }, (_, y) =>
@@ -223,7 +228,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
         art.characterLayouts[c].rows,
         art.characterLayouts[c].size,
       ],
-      [8, 8, 96],
+      [16, 8, 96],
     );
   }
   assert.equal(Object.keys(art.items).length, 102);
@@ -233,8 +238,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
     const png = await readFile(
       new URL(`../dist/assets/${file}.png`, import.meta.url),
     );
-    assert.equal(png.readUInt32BE(16), size * 16);
-    assert.equal(png.readUInt32BE(20), size * 16);
+    assert.equal(png.readUInt32BE(16), size * 32);
+    assert.equal(png.readUInt32BE(20), size * 18);
   }
 });
 

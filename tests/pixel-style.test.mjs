@@ -3,9 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { rgbaPixels } from "./png.mjs";
 test("all assets originate from generated artwork with clean transparent native sprite margins", async () => {
-  const repaint = JSON.parse(
-    await readFile("art/hd-sources.json", "utf8"),
-  );
+  const repaint = JSON.parse(await readFile("art/hd-sources.json", "utf8"));
   const records = JSON.parse(
     await readFile("art/generated-assets.json", "utf8"),
   );
@@ -19,13 +17,16 @@ test("all assets originate from generated artwork with clean transparent native 
       ),
     )
   ).flatMap((r) => r.sources);
+  const motion = JSON.parse(await readFile("art/motion-sources.json", "utf8"));
   const sources = new Set(
-    [...previous, ...repaint.sources].flatMap((s) => [
+    [...previous, ...repaint.sources, ...motion.sources].flatMap((s) => [
       s.source,
       ...(s.deathSource ? [s.deathSource] : []),
     ]),
   );
-  for (const actor of repaint.sources.filter(a => ["monster", "character", "npc"].includes(a.kind))) {
+  for (const actor of repaint.sources.filter((a) =>
+    ["monster", "character", "npc"].includes(a.kind),
+  )) {
     const atlas = records.assets.find(
       (a) =>
         a.id ===

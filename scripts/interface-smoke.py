@@ -39,14 +39,14 @@ with sync_playwright() as pw:
  p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const world=new World(),q=world.addPlayer(raw),m=world.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');p.keyboard.press('q')
  p.wait_for_function('__leaftale.snapshot().drops.length>=4')
- count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('a')
+ count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('Space')
  p.wait_for_function('__leaftale.snapshot().drops.filter(d=>d.pickupEnds).length===1')
- p.keyboard.down('a');p.wait_for_timeout(100);assert p.evaluate('__leaftale.snapshot().drops.filter(d=>d.pickupEnds).length')==1;p.keyboard.up('a')
+ p.keyboard.down('Space');p.wait_for_timeout(100);assert p.evaluate('__leaftale.snapshot().drops.filter(d=>d.pickupEnds).length')==1;p.keyboard.up('Space')
  p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===1');assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
- p.keyboard.press('a');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
+ p.keyboard.press('Space');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
  before=p.evaluate('__leaftale.snapshot().player.inventory.salve');p.keyboard.press('t');assert p.evaluate('__leaftale.snapshot().player.inventory.salve')==before-1
  p.keyboard.press('k');p.locator('[data-catalogue=items]').click();assert p.locator('.item-entry').count()==102;p.keyboard.press('k')
- print('PASS: keyboard-shaped settings, conflict rejection, persisted remapping, QWER labels, Q skill, one pickup per A press, T potion and in-game item guide')
+ print('PASS: keyboard-shaped settings, conflict rejection, persisted remapping, QWER labels, Q skill, one pickup per Space press, T potion and in-game item guide')
  p.goto(BASE+'bestiary.html');assert '리프테일 도감' in p.title()
  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='102종'
  p.locator('#search').fill('소금꽃 해독제');assert p.locator('.item-guide-card').count()==1;assert '마을 상점' in p.locator('.item-guide-card').inner_text()

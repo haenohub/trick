@@ -1,3 +1,10 @@
+import { speciesForMap, encounterPoint } from "./ecology.js";
+import {
+  attackTimeline,
+  HIT_OFFSET,
+  STRIKE_DURATION,
+  RECOVERY_DURATION,
+} from "./animation.js";
 import {
   attackZones,
   zoneHits,
@@ -173,7 +180,7 @@ export function hydrateSave(raw) {
   )
     p.map = "village";
   if (
-    raw.layoutVersion === LAYOUT_VERSION &&
+    Number(raw.layoutVersion) >= 2 &&
     !blocked(p.map, Number(raw.x), Number(raw.y))
   ) {
     p.x = Number(raw.x);
@@ -457,6 +464,8 @@ export class World {
       potionReady: 0,
       anim: "idle",
       animAt: 0,
+      animDuration: 0,
+      action: null,
       dir: SOUTH,
       shield: 0,
       shieldUntil: 0,
@@ -510,11 +519,11 @@ export class World {
     const rng = seeded(hash(id)),
       mobs = [],
       herbs = [];
-    const definitions = MONSTERS.filter((m) => m.map === id);
-    for (const [habitat, def] of definitions.entries()) {
-      const count = def.type === "normal" ? 6 : 1;
+    const definitions = speciesForMap(id);
+    for (const { habitat, def, guest } of definitions) {
+      const count = def.type === "normal" ? (guest ? 3 : 6) : 1;
       for (let j = 0; j < count; j++) {
-        let { x, y } = habitatPoint(id, habitat, j, rng);
+        let { x, y } = encounterPoint(id, habitat, j, rng);
         if (def.type === "boss") {
           ({ x, y } = NAVIGATION[id].boss || NAVIGATION[id].habitats[habitat]);
         }
@@ -528,9 +537,9 @@ export class World {
           trial < 24 && safe.some((a) => distance(a, { x, y }) < 4);
           trial++
         )
-          ({ x, y } = habitatPoint(id, habitat, j, rng));
+          ({ x, y } = encounterPoint(id, habitat, j, rng));
         mobs.push({
-          uid: `${def.id}-${j}`,
+          uid: `${def.id}-${guest ? "guest-" : ""}${j}`,
           def: def.id,
           x,
           y,
@@ -556,18 +565,16 @@ export class World {
       }
     }
     if (!config.town)
-      for (const [i, { x, y }] of herbPoints(id).entries()) {
+      for (const [i, point] of herbPoints(id).entries()) {
+        const { x, y, item, site, name, patch } = point;
         herbs.push({
           id: `herb-${id}-${i}`,
           x,
           y,
-          item: config.region
-            ? i % 3 === 0
-              ? "breathgrass"
-              : "saltflower"
-            : i % 3 === 0
-              ? "mint"
-              : "softleaf",
+          item,
+          site,
+          siteName: name,
+          patch,
           readyAt: 0,
         });
       }
@@ -586,6 +593,7 @@ export class World {
       kind,
       x,
       y,
+      started: this.time,
       until: this.time + (props.duration || 0.75),
       ...props,
     });
@@ -684,6 +692,7 @@ export class World {
         const x = Number(action.x),
           y = Number(action.y);
         if (!Number.isFinite(x) || !Number.isFinite(y)) return false;
+        this.cancelAction(p);
         p.move = { x: clamp(x, -1, 1), y: clamp(y, -1, 1) };
         p.moveTarget = null;
         p.route = [];
@@ -697,6 +706,7 @@ export class World {
           return false;
         p.route = findRoute(p.map, p, { x, y });
         if (!p.route.length) return false;
+        this.cancelAction(p);
         p.moveTarget = { x, y };
         p.move = { x: 0, y: 0 };
         p.queuedAttack = null;
@@ -982,7 +992,7 @@ export class World {
     );
   }
   attack(p, uid) {
-    if (this.time < p.attackReady) return false;
+    if (p.action || this.time < p.attackReady) return false;
     const t = this.target(p, uid);
     if (!t) return false;
     const s = stats(p);
@@ -995,11 +1005,75 @@ export class World {
       return true;
     }
     p.attackReady = this.time + 0.62;
-    p.anim = "attack";
+    return this.beginAction(p, "basic", t);
+  }
+  cancelAction(p) {
+    p.action = null;
+    if (["windup", "attack", "recover"].includes(p.anim)) p.anim = "idle";
+  }
+  beginAction(p, kind, target, slot = null, selfCast = false) {
+    p.action = {
+      ...attackTimeline(this.time, p.classId),
+      kind,
+      slot,
+      target: target?.uid || null,
+      selfCast,
+      map: p.map,
+      released: false,
+    };
+    p.anim = "windup";
     p.animAt = this.time;
-    p.dir = direction(t.x - p.x, t.y - p.y);
+    p.animDuration = p.action.strikeAt - this.time;
+    p.attackReady = Math.max(p.attackReady, p.action.endAt);
     p.moveTarget = null;
+    p.move = { x: 0, y: 0 };
+    p.route = [];
     p.queuedAttack = null;
+    if (target) p.dir = direction(target.x - p.x, target.y - p.y);
+    return true;
+  }
+  advanceAction(p) {
+    const a = p.action;
+    if (!a) return;
+    if (a.map !== p.map || p.hp <= 0) {
+      this.cancelAction(p);
+      return;
+    }
+    if (!a.released && this.time + 1e-9 >= a.hitAt) {
+      a.released = true;
+      const target = this.map(p.map).mobs.find(
+        (m) => m.uid === a.target && m.hp > 0,
+      );
+      const range = stats(p).range + (a.kind === "basic" ? 0.6 : 2);
+      const valid =
+        target &&
+        this.sight(p.map, p, target) &&
+        distance(p, target) <=
+          (a.slot === 3 && p.branch === "hawk" ? 11 : range);
+      if (a.kind === "basic" && valid) this.releaseBasic(p, target);
+      if (a.kind === "skill" && (a.selfCast || valid))
+        this.releaseSkill(p, a.slot, valid ? target : null);
+    }
+    if (this.time >= a.endAt) {
+      this.cancelAction(p);
+      return;
+    }
+    if (this.time < a.strikeAt) {
+      p.anim = "windup";
+      p.animAt = a.start;
+      p.animDuration = a.strikeAt - a.start;
+    } else if (this.time < a.strikeEnd) {
+      p.anim = "attack";
+      p.animAt = a.strikeAt;
+      p.animDuration = STRIKE_DURATION;
+    } else {
+      p.anim = "recover";
+      p.animAt = a.strikeEnd;
+      p.animDuration = RECOVERY_DURATION;
+    }
+  }
+  releaseBasic(p, t) {
+    const s = stats(p);
     this.damage(p, t, s.attack, "hit");
     if (p.classId === "mage") p.spellCharge = Math.min(3, p.spellCharge + 1);
     if (p.classId === "herbalist") this.toxin(p, t, 1, 4);
@@ -1015,7 +1089,6 @@ export class World {
         color: CLASSES.find((c) => c.id === p.classId).color,
         duration: 0.32,
       });
-    return true;
   }
   damage(p, m, value, kind = "hit") {
     if (m.hp <= 0 || m.ai === "return") return;
@@ -1088,6 +1161,7 @@ export class World {
   }
   skill(p, slot, uid) {
     if (
+      p.action ||
       !Number.isInteger(slot) ||
       slot < 0 ||
       slot > 3 ||
@@ -1121,11 +1195,19 @@ export class World {
       return false;
     p.focus -= SKILL_COSTS[slot];
     p.cooldowns[slot] = this.time + SKILL_COOLDOWNS[slot];
-    p.anim = "attack";
-    p.animAt = this.time;
-    p.moveTarget = null;
-    p.queuedAttack = null;
-    if (t) p.dir = direction(t.x - p.x, t.y - p.y);
+    if (p.classId === "ranger" && slot === 1) {
+      p.moveTarget = null;
+      p.queuedAttack = null;
+      this.releaseSkill(p, slot, t);
+      p.anim = "recover";
+      p.animAt = this.time;
+      p.animDuration = RECOVERY_DURATION;
+      return true;
+    }
+    return this.beginAction(p, "skill", t, slot, selfCast);
+  }
+  releaseSkill(p, slot, t) {
+    const s = stats(p);
     const aoe = (center, r, mult, root = 0) => {
       for (const m of this.map(p.map).mobs)
         if (
@@ -1376,6 +1458,7 @@ export class World {
     }
     const prev = MAPS.findIndex((m) => m.id === p.map),
       ni = MAPS.findIndex((m) => m.id === dest);
+    this.cancelAction(p);
     p.map = dest;
     const entry = fast
       ? NAVIGATION[dest].spawn
@@ -1413,8 +1496,11 @@ export class World {
     n -= absorbed;
     p.hp = Math.max(0, p.hp - n);
     p.lastHit = this.time;
-    p.anim = "hurt";
-    p.animAt = this.time;
+    if (!p.action) {
+      p.anim = "hurt";
+      p.animAt = this.time;
+      p.animDuration = 0.3;
+    }
     this.effect(p.map, "hurt", p.x, p.y, {
       text: n > 0 ? "-" + n : "방어",
       color: "#f6b4a4",
@@ -1423,6 +1509,7 @@ export class World {
       impact: n > 0 ? 2 : 0,
     });
     if (p.hp <= 0) {
+      this.cancelAction(p);
       const town = MAPS.find(
         (m) => m.town && m.region === MAPS.find((m) => m.id === p.map).region,
       );
@@ -1496,11 +1583,21 @@ export class World {
       }
     }
     if (m.windup) {
-      if (this.time < m.windup.at) return;
+      const strikeAt = m.windup.strikeAt ?? m.windup.at - HIT_OFFSET;
+      if (this.time < m.windup.at) {
+        m.anim = this.time < strikeAt ? "windup" : "attack";
+        m.animAt =
+          this.time < strikeAt ? (m.windup.start ?? m.animAt) : strikeAt;
+        m.animDuration =
+          this.time < strikeAt ? strikeAt - m.animAt : STRIKE_DURATION;
+        return;
+      }
       const w = m.windup;
       m.windup = null;
       m.anim = "attack";
-      m.animAt = this.time;
+      m.animAt = strikeAt;
+      m.animDuration = STRIKE_DURATION;
+      m.attackEnd = strikeAt + STRIKE_DURATION;
       for (const p of players)
         if (
           p.map === id &&
@@ -1548,12 +1645,19 @@ export class World {
           ty: w.y,
           duration: 0.3,
         });
-      m.recoverUntil = this.time + (boss ? 0.65 : 0.3);
+      m.recoverUntil = m.attackEnd + (boss ? 0.65 : 0.3);
       m.nextAttack = this.time + (boss ? 2.2 - (m.phase - 1) * 0.35 : 2.1);
       return;
     }
     if (m.recoverUntil > this.time) {
-      m.anim = "idle";
+      if (this.time < m.attackEnd) {
+        m.anim = "attack";
+        m.animDuration = STRIKE_DURATION;
+      } else {
+        m.anim = "recover";
+        m.animAt = m.attackEnd;
+        m.animDuration = boss ? 0.65 : 0.3;
+      }
       return;
     }
     const active = players.filter((p) => p.hp > 0 && p.map === id);
@@ -1645,8 +1749,11 @@ export class World {
             w = { ...w, radius: 1.7, name: "독향 확산" };
         }
         m.pattern = (m.pattern || 0) + 1;
+        w.strikeAt = w.at;
+        w.at += HIT_OFFSET;
         m.windup = w;
-        m.anim = "attack";
+        m.anim = "windup";
+        m.animDuration = w.strikeAt - w.start;
         m.animAt = this.time;
         m.dir = direction(target.x - m.x, target.y - m.y);
         if (boss)
@@ -1706,6 +1813,7 @@ export class World {
           avoidable: false,
         });
       }
+      this.advanceAction(p);
       let dx = p.move.x,
         dy = p.move.y;
       if (p.moveTarget) {
@@ -1740,7 +1848,11 @@ export class World {
           )
         : s.speed * tideSlow;
       const moving = this.moveEntity(p, p.map, dx, dy, dt, moveSpeed);
-      if (this.time - p.animAt > 0.5 || !["attack", "hurt"].includes(p.anim))
+      if (
+        !p.action &&
+        (this.time - p.animAt > 0.5 ||
+          !["attack", "hurt", "recover"].includes(p.anim))
+      )
         p.anim = moving ? "walk" : "idle";
       if (p.queuedAttack) {
         const t = map.mobs.find((m) => m.uid === p.queuedAttack);
@@ -1884,6 +1996,7 @@ export class World {
         stats: stats(p),
         anim: p.anim,
         animAt: p.animAt,
+        animDuration: p.animDuration,
         dir: p.dir,
         shield: p.shieldUntil > this.time ? p.shield : 0,
         cooldowns: p.cooldowns.map((t) => Math.max(0, t - this.time)),
@@ -1910,6 +2023,7 @@ export class World {
           maxHp: stats(a).maxHp,
           anim: a.anim,
           animAt: a.animAt,
+          animDuration: a.animDuration,
           dir: a.dir,
         })),
       mobs: map.mobs.map(({ path, pathAt, pathGoal, ...m }) => ({ ...m })),

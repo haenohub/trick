@@ -26,7 +26,7 @@ with sync_playwright() as p:
     assert page.locator("#result-count").inner_text() == "30종"
     assert page.locator("#map-filter option").count() == 5
     page.locator("#map-filter").select_option("seacave")
-    assert page.locator("#result-count").inner_text() == "7종"
+    assert page.locator("#result-count").inner_text() == "8종"
     page.locator('[data-rank="boss"]').click()
     assert page.locator(".monster-card").get_attribute("data-id") == "m40"
     assert page.locator(".chance").all_inner_texts() == ["100%", "100%", "100%", "100%", "100%"]

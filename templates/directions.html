@@ -442,7 +442,7 @@
               <option value="walk">걷기</option>
               <option value="attack">공격</option>
               <option value="hurt">피격</option>
-              <option value="death">쓰러짐</option></select
+              <option value="windup">공격 준비</option><option value="recover">공격 회복</option><option value="combo">준비 → 명중 → 회복</option><option value="death">쓰러짐</option></select
             ><button id="play" aria-pressed="true">일시 정지</button
             ><button id="next" aria-label="다음 방향">↷</button>
           </div>
@@ -617,10 +617,12 @@
       }
       function render(now) {
         if (sheet) {
-          const frames = selected.layout.animations[$("#animation").value];
+          const anim=$("#animation").value, clips=selected.layout.animations;
+          const frames=anim==='combo'?[...(clips.windup||[]),...clips.attack,...(clips.recover||[])]:clips[anim]||clips.idle;
+          const span={walk:0.5,windup:0.24,attack:0.14,recover:0.18,hurt:0.3,death:0.85,combo:0.56}[anim]||1;
           const frame =
             frames[
-              playing ? Math.floor((now - epoch) / 150) % frames.length : 0
+              playing ? Math.floor((now - epoch) / (1000 * span / frames.length)) % frames.length : 0
             ];
           draw($("#hero"), heading, frame, 2);
           for (const canvas of document.querySelectorAll(".views canvas"))

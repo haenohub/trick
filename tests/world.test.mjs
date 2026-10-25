@@ -111,7 +111,7 @@ test("legacy saves migrate location while retaining progress; new saves retain e
   assert.equal(restored.y, p.y);
   assert.ok(p.x > 28 || p.y > 28 || p.x < 2 || p.y < 2);
 });
-test("NPCs face their service buildings, species inhabit separate zones, and portal arrivals do not bounce", () => {
+test("NPCs face their service buildings, species disperse through overlapping habitats, and portal arrivals do not bounce", () => {
   const w = new World();
   for (const npc of NPCS) {
     const n = NAVIGATION[npc.map];
@@ -132,11 +132,17 @@ test("NPCs face their service buildings, species inhabit separate zones, and por
       const center = d.type === "boss" ? n.boss : n.habitats[i];
       const group = mobs.filter((m) => m.def === d.id);
       assert.equal(group.length, d.type === "normal" ? 6 : 1);
-      for (const m of group)
+      if (d.type === "boss")
         assert.ok(
-          Math.hypot(m.x - center.x, m.y - center.y) < 6,
-          d.id + " habitat",
+          group.every((m) => Math.hypot(m.x - center.x, m.y - center.y) < 0.1),
         );
+      else if (group.length > 1)
+        assert.ok(
+          group.some((m) => Math.hypot(m.x - group[0].x, m.y - group[0].y) > 8),
+          d.id + " should occupy several areas",
+        );
+      for (const m of group)
+        assert.ok(isWalkable(n.id, m.x, m.y), d.id + " must stay on floor");
     }
   }
   const p = w.addPlayer(createPlayer());

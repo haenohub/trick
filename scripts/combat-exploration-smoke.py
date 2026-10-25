@@ -14,7 +14,7 @@ with sync_playwright() as pw:
   page.evaluate('''async ({cls,mode})=>{
     const{createPlayer,stats,World}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');
     const p=createPlayer(cls);p.level=30;p.defeatedBosses=['m20'];p.map=mode==='boss'?'stump':mode==='tideboss'?'seacave':'sprout';
-    if(mode==='chest'){const end=NAVIGATION.sprout.secretPassage.finish;p.x=end.x-3.2;p.y=end.y-3.2;}
+    if(mode==='chest'){const end=NAVIGATION.sprout.secretPassage.finish;p.x=end.x;p.y=end.y;const route=NAVIGATION.sprout.secretPassage;Object.assign(p,{x:route.finish.x-2.2,y:route.finish.y-2.2});}
     else if(mode==='boss'||mode==='tideboss'){Object.assign(p,NAVIGATION[p.map].boss);p.x+=4;}
     else {const w=new World(),q=w.addPlayer({...p,...NAVIGATION.sprout.spawn}),m=w.map('sprout').mobs[0];p.x=m.x-.9;p.y=m.y;}
     p.hp=stats(p).maxHp;localStorage.setItem('leaftale:save:v1',JSON.stringify(p));

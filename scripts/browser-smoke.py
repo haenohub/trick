@@ -57,7 +57,7 @@ with sync_playwright() as p:
  # Exercise every class's actual UI skills against real spawned enemies.
  for cls in ['warden','mage','ranger','herbalist']:
   fixture(page,cls,'sprout',30,True)
-  page.keyboard.press('Tab');page.keyboard.press('q');page.wait_for_timeout(250)
+  page.keyboard.press('Tab');page.keyboard.press('q');page.wait_for_timeout(650)
   snap=page.evaluate('__leaftale.snapshot()')
   assert snap['player']['cooldowns'][0]>0,cls
   if cls!='herbalist':assert snap['player']['kills']>=1,cls

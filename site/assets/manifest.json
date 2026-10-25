@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "provenance": "image_gen",
   "pixelScale": 1,
   "palette": [
@@ -365,7 +365,7 @@
   "monsters": {
     "m1": {
       "file": "creatures/m1",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -388,25 +388,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m1",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        3,
+        2,
+        3,
+        4,
+        6,
+        5,
+        0
+      ]
     },
     "m2": {
       "file": "creatures/m2",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -429,25 +453,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m2",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        1,
+        2,
+        2,
+        4,
+        6,
+        5,
+        6
+      ]
     },
     "m3": {
       "file": "creatures/m3",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -470,25 +518,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m3",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        0,
+        6,
+        0,
+        3,
+        2,
+        7,
+        7
+      ]
     },
     "m4": {
       "file": "creatures/m4",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -511,25 +583,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m4",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        0,
+        2,
+        0,
+        4,
+        0,
+        0,
+        4
+      ]
     },
     "m5": {
       "file": "creatures/m5",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -552,25 +648,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m5",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        5,
+        3,
+        2,
+        4,
+        6,
+        6,
+        0
+      ]
     },
     "m6": {
       "file": "creatures/m6",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -593,25 +713,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m6",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        1,
+        1,
+        2,
+        0,
+        5,
+        5,
+        5
+      ]
     },
     "m7": {
       "file": "creatures/m7",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -634,25 +778,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m7",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        4,
+        6,
+        4,
+        0,
+        3,
+        5,
+        7
+      ]
     },
     "m8": {
       "file": "creatures/m8",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -675,25 +843,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m8",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        2,
+        2,
+        0,
+        6,
+        5,
+        7
+      ]
     },
     "m9": {
       "file": "creatures/m9",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -716,25 +908,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m9",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        6,
+        2,
+        7,
+        3,
+        1,
+        5,
+        1
+      ]
     },
     "m10": {
       "file": "creatures/m10",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -757,25 +973,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m10",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        2,
+        2,
+        3,
+        0,
+        6,
+        6,
+        5
+      ]
     },
     "m11": {
       "file": "creatures/m11",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -798,25 +1038,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m11",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        6,
+        3,
+        7,
+        7,
+        1,
+        2,
+        4,
+        0
+      ]
     },
     "m12": {
       "file": "creatures/m12",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -839,25 +1103,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m12",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        1,
+        2,
+        0,
+        0,
+        4,
+        0,
+        0
+      ]
     },
     "m13": {
       "file": "creatures/m13",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -880,25 +1168,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m13",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        3,
+        7,
+        4
+      ]
     },
     "m14": {
       "file": "creatures/m14",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -921,25 +1233,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m14",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        1,
+        6,
+        2,
+        4,
+        3,
+        0,
+        1
+      ]
     },
     "m15": {
       "file": "creatures/m15",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -962,25 +1298,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m15",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        1,
+        2,
+        2,
+        4,
+        3,
+        6,
+        5
+      ]
     },
     "m16": {
       "file": "creatures/m16",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1003,25 +1363,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m16",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        3,
+        7,
+        6,
+        2,
+        2,
+        4,
+        5
+      ]
     },
     "m17": {
       "file": "creatures/m17",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1044,25 +1428,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m17",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        4,
+        2,
+        2,
+        4,
+        3,
+        3,
+        1
+      ]
     },
     "m18": {
       "file": "creatures/m18",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1085,25 +1493,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m18",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        4,
+        7
+      ]
     },
     "m19": {
       "file": "creatures/m19",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -1126,25 +1558,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m19",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        3,
+        6,
+        4,
+        0,
+        5,
+        7
+      ]
     },
     "m20": {
       "file": "creatures/m20",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -1167,25 +1623,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m20",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        5,
+        6,
+        7
+      ]
     },
     "m21": {
       "file": "creatures/m21",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1208,25 +1688,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m21",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        1,
+        6,
+        0,
+        1,
+        2,
+        2,
+        7
+      ]
     },
     "m22": {
       "file": "creatures/m22",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1249,25 +1753,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m22",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        1,
+        2,
+        2,
+        0,
+        6,
+        6,
+        4
+      ]
     },
     "m23": {
       "file": "creatures/m23",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1290,25 +1818,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m23",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        5,
+        6,
+        3
+      ]
     },
     "m24": {
       "file": "creatures/m24",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1331,25 +1883,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m24",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        5,
+        7
+      ]
     },
     "m25": {
       "file": "creatures/m25",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1372,25 +1948,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m25",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        1,
+        5,
+        3,
+        4,
+        4,
+        4,
+        4
+      ]
     },
     "m26": {
       "file": "creatures/m26",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1413,25 +2013,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m26",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        2,
+        4,
+        4,
+        2,
+        5,
+        7
+      ]
     },
     "m27": {
       "file": "creatures/m27",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1454,25 +2078,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m27",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        6,
+        3,
+        7,
+        2,
+        4,
+        5,
+        7,
+        7
+      ]
     },
     "m28": {
       "file": "creatures/m28",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1495,25 +2143,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m28",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        4,
+        2,
+        0,
+        0,
+        7,
+        6,
+        7
+      ]
     },
     "m29": {
       "file": "creatures/m29",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1536,25 +2208,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m29",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        6,
+        7,
+        0,
+        4,
+        3,
+        2,
+        1
+      ]
     },
     "m30": {
       "file": "creatures/m30",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1577,25 +2273,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m30",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        6,
+        7,
+        6,
+        4,
+        3,
+        4,
+        0
+      ]
     },
     "m31": {
       "file": "creatures/m31",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1618,25 +2338,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m31",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        1,
+        2,
+        1,
+        0,
+        7,
+        6,
+        7
+      ]
     },
     "m32": {
       "file": "creatures/m32",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1659,25 +2403,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m32",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        3,
+        2,
+        3,
+        5,
+        7,
+        6,
+        4
+      ]
     },
     "m33": {
       "file": "creatures/m33",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1700,25 +2468,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m33",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        3,
+        2,
+        2,
+        4,
+        6,
+        6,
+        7
+      ]
     },
     "m34": {
       "file": "creatures/m34",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -1741,25 +2533,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m34",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        5,
+        7,
+        7,
+        3,
+        6,
+        6,
+        7
+      ]
     },
     "m35": {
       "file": "creatures/m35",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -1782,25 +2598,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m35",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        2,
+        2,
+        1,
+        0,
+        6,
+        5,
+        7
+      ]
     },
     "m36": {
       "file": "creatures/m36",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1823,25 +2663,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m36",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        1,
+        3,
+        2,
+        4,
+        6,
+        5,
+        7
+      ]
     },
     "m37": {
       "file": "creatures/m37",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1864,25 +2728,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m37",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        3,
+        6,
+        0,
+        7,
+        5,
+        5,
+        1
+      ]
     },
     "m38": {
       "file": "creatures/m38",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -1905,25 +2793,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m38",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        2,
+        0,
+        1,
+        5,
+        1,
+        6,
+        6
+      ]
     },
     "m39": {
       "file": "creatures/m39",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -1946,25 +2858,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m39",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        0,
+        0,
+        2,
+        4,
+        0,
+        0,
+        7
+      ]
     },
     "m40": {
       "file": "creatures/m40",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -1987,25 +2923,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m40",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        3,
+        2,
+        3,
+        4,
+        5,
+        5,
+        7
+      ]
     },
     "m41": {
       "file": "creatures/m41",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2028,25 +2988,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m41",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        7,
+        7,
+        1,
+        4,
+        3,
+        3,
+        3
+      ]
     },
     "m42": {
       "file": "creatures/m42",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2069,25 +3053,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m42",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        1,
+        6,
+        2,
+        4,
+        7,
+        3,
+        0
+      ]
     },
     "m43": {
       "file": "creatures/m43",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2110,25 +3118,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m43",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        3,
+        3,
+        1,
+        7,
+        4,
+        2,
+        7
+      ]
     },
     "m44": {
       "file": "creatures/m44",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2151,25 +3183,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m44",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        2,
+        5,
+        7,
+        1,
+        3,
+        6,
+        3
+      ]
     },
     "m45": {
       "file": "creatures/m45",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2192,25 +3248,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m45",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        5,
+        3,
+        1,
+        4,
+        4,
+        7,
+        0
+      ]
     },
     "m46": {
       "file": "creatures/m46",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2233,25 +3313,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m46",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        2,
+        0,
+        3,
+        1,
+        4,
+        0,
+        0
+      ]
     },
     "m47": {
       "file": "creatures/m47",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2274,25 +3378,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m47",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        6,
+        7,
+        7,
+        2,
+        0,
+        0,
+        0
+      ]
     },
     "m48": {
       "file": "creatures/m48",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2315,25 +3443,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m48",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        3,
+        3,
+        6,
+        4,
+        2,
+        1,
+        1
+      ]
     },
     "m49": {
       "file": "creatures/m49",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2356,25 +3508,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m49",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        5,
+        7,
+        7,
+        6,
+        2,
+        2,
+        2
+      ]
     },
     "m50": {
       "file": "creatures/m50",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -2397,25 +3573,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m50",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        2,
+        2,
+        2,
+        4,
+        6,
+        6,
+        0
+      ]
     },
     "m51": {
       "file": "creatures/m51",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2438,25 +3638,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m51",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        6,
+        1,
+        0,
+        4,
+        3,
+        2,
+        0
+      ]
     },
     "m52": {
       "file": "creatures/m52",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2479,25 +3703,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m52",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        7,
+        0,
+        1,
+        5,
+        4,
+        3,
+        4,
+        2
+      ]
     },
     "m53": {
       "file": "creatures/m53",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2520,25 +3768,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m53",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        4,
+        2,
+        2,
+        5,
+        4,
+        7,
+        6,
+        7
+      ]
     },
     "m54": {
       "file": "creatures/m54",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 64,
       "baseSize": 32,
@@ -2561,25 +3833,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m54",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        2,
+        0,
+        3,
+        4,
+        6,
+        1,
+        6,
+        2
+      ]
     },
     "m55": {
       "file": "creatures/m55",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2602,25 +3898,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m55",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        3,
+        7,
+        7,
+        4,
+        2,
+        6,
+        2
+      ]
     },
     "m56": {
       "file": "creatures/m56",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2643,25 +3963,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m56",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        2,
+        2,
+        2,
+        4,
+        4,
+        7,
+        2,
+        2
+      ]
     },
     "m57": {
       "file": "creatures/m57",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2684,25 +4028,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m57",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        0,
+        0,
+        0,
+        6,
+        3,
+        7,
+        3
+      ]
     },
     "m58": {
       "file": "creatures/m58",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2725,25 +4093,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m58",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        3,
+        6,
+        2,
+        5,
+        0,
+        1,
+        1,
+        7
+      ]
     },
     "m59": {
       "file": "creatures/m59",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -2766,25 +4158,49 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m59",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        1,
+        1,
+        2,
+        3,
+        4,
+        7,
+        0,
+        6
+      ]
     },
     "m60": {
       "file": "creatures/m60",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 128,
       "baseSize": 64,
@@ -2807,21 +4223,45 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
       },
       "portrait": "portraits/m60",
-      "portraitDirection": "SW"
+      "portraitDirection": "SW",
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        5,
+        5,
+        5,
+        0,
+        0,
+        4,
+        4,
+        2
+      ]
     }
   },
   "items": {
@@ -3353,7 +4793,7 @@
   "characterLayouts": {
     "warden": {
       "file": "characters/warden",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -3376,23 +4816,47 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
-      }
+      },
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        5,
+        0
+      ]
     },
     "mage": {
       "file": "characters/mage",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -3415,23 +4879,47 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
-      }
+      },
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        6,
+        0
+      ]
     },
     "ranger": {
       "file": "characters/ranger",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -3454,23 +4942,47 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
-      }
+      },
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        2,
+        4,
+        3,
+        3,
+        4,
+        4,
+        4,
+        4
+      ]
     },
     "herbalist": {
       "file": "characters/herbalist",
-      "cols": 8,
+      "cols": 16,
       "rows": 8,
       "size": 96,
       "baseSize": 48,
@@ -3493,24 +5005,48 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "windup": [
+          8,
+          9,
+          10
         ],
         "attack": [
-          4,
-          5
+          11,
+          12
+        ],
+        "recover": [
+          13,
+          2
         ],
         "hurt": [
-          6
+          14
         ],
         "death": [
-          7
+          15
         ]
-      }
+      },
+      "motionVersion": 2,
+      "sourceDirectionRows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        7,
+        0
+      ]
     }
   },
   "effects": {
-    "cols": 8,
-    "rows": 8,
+    "cols": 16,
+    "rows": 9,
     "size": 128,
     "variants": {
       "32": "effects-32",
@@ -3521,7 +5057,9 @@
       "32": 64,
       "48": 96,
       "64": 128
-    }
+    },
+    "frames": 16,
+    "portalRow": 8
   },
   "iconLayout": {
     "cols": 8,
@@ -3961,70 +5499,266 @@
         "height": 1344,
         "areaScale": 5.145,
         "walkableScale": 7.401667484060814,
-        "shape": "분수 광장과 네 갈래 생활길"
+        "shape": "분수 광장과 네 갈래 생활길",
+        "routeCount": 4,
+        "gatherSites": []
       },
       "sprout": {
         "width": 3360,
         "height": 1120,
         "areaScale": 6.125,
-        "walkableScale": 9.315068493150685,
-        "shape": "길게 뻗은 밭둑길과 세 쉼터"
+        "walkableScale": 7.671232876712328,
+        "shape": "길게 뻗은 밭둑길과 세 쉼터 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 3,
+        "gatherSites": [
+          {
+            "id": "sprout-grove-0",
+            "name": "클로버 밭둑",
+            "item": "softleaf",
+            "x": 29.75,
+            "y": 75.25
+          },
+          {
+            "id": "sprout-grove-1",
+            "name": "그늘진 묘목터",
+            "item": "softleaf",
+            "x": 57.75,
+            "y": 47.25
+          },
+          {
+            "id": "sprout-grove-2",
+            "name": "이슬 고인 흙길",
+            "item": "mint",
+            "x": 40.25,
+            "y": 8.75
+          }
+        ]
       },
       "acorn": {
         "width": 2016,
         "height": 2240,
         "areaScale": 7.35,
-        "walkableScale": 5.654478362965448,
-        "shape": "남북으로 이어지는 계단형 샛길"
+        "walkableScale": 8.284468299228447,
+        "shape": "남북으로 이어지는 계단형 샛길 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 3,
+        "gatherSites": [
+          {
+            "id": "acorn-grove-0",
+            "name": "참나무 그늘",
+            "item": "softleaf",
+            "x": 82.25,
+            "y": 120.75
+          },
+          {
+            "id": "acorn-grove-1",
+            "name": "나이테 쉼터",
+            "item": "softleaf",
+            "x": 68.25,
+            "y": 64.75
+          },
+          {
+            "id": "acorn-grove-2",
+            "name": "축축한 낙엽틈",
+            "item": "mint",
+            "x": 26.25,
+            "y": 36.75
+          }
+        ]
       },
       "brook": {
         "width": 2912,
         "height": 1568,
         "areaScale": 7.431666666666667,
-        "walkableScale": 5.732806324110672,
-        "shape": "징검다리 세 곳을 잇는 지그재그 강변길"
+        "walkableScale": 9.296442687747035,
+        "shape": "징검다리 세 곳을 잇는 지그재그 강변길 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 3,
+        "gatherSites": [
+          {
+            "id": "brook-grove-0",
+            "name": "징검돌 물가",
+            "item": "mint",
+            "x": 36.75,
+            "y": 68.25
+          },
+          {
+            "id": "brook-grove-1",
+            "name": "개울 합류 웅덩이",
+            "item": "mint",
+            "x": 50.75,
+            "y": 54.25
+          },
+          {
+            "id": "brook-grove-2",
+            "name": "물가 잎무더기",
+            "item": "softleaf",
+            "x": 99.75,
+            "y": 47.25
+          }
+        ]
       },
       "stump": {
         "width": 2016,
         "height": 2016,
         "areaScale": 6.615,
-        "walkableScale": 6.7509341998375305,
-        "shape": "뿌리 고리길과 안쪽 수호자 터"
+        "walkableScale": 8.152071486596263,
+        "shape": "뿌리 고리길과 안쪽 수호자 터 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 3,
+        "gatherSites": [
+          {
+            "id": "stump-grove-0",
+            "name": "고목 뿌리 정원",
+            "item": "mint",
+            "x": 96.25,
+            "y": 92.75
+          },
+          {
+            "id": "stump-grove-1",
+            "name": "수관 아래",
+            "item": "softleaf",
+            "x": 26.25,
+            "y": 50.75
+          },
+          {
+            "id": "stump-grove-2",
+            "name": "뿌리 사이 그늘",
+            "item": "softleaf",
+            "x": 99.75,
+            "y": 75.25
+          }
+        ]
       },
       "shelltown": {
         "width": 2464,
         "height": 1344,
         "areaScale": 5.39,
         "walkableScale": 5.200061699830325,
-        "shape": "조개 광장과 반달형 선착장 길"
+        "shape": "조개 광장과 반달형 선착장 길",
+        "routeCount": 3,
+        "gatherSites": []
       },
       "saltwood": {
         "width": 3136,
         "height": 1344,
         "areaScale": 6.86,
-        "walkableScale": 6.569165143205362,
-        "shape": "바람을 가르는 두 갈래 순환길"
+        "walkableScale": 9.196831200487507,
+        "shape": "바람을 가르는 두 갈래 순환길 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 4,
+        "gatherSites": [
+          {
+            "id": "saltwood-grove-0",
+            "name": "햇볕 드는 소금밭",
+            "item": "saltflower",
+            "x": 50.75,
+            "y": 54.25
+          },
+          {
+            "id": "saltwood-grove-1",
+            "name": "바닷바람 꽃터",
+            "item": "saltflower",
+            "x": 92.75,
+            "y": 40.25
+          },
+          {
+            "id": "saltwood-grove-2",
+            "name": "바람막이 이끼틈",
+            "item": "breathgrass",
+            "x": 1.75,
+            "y": 33.25
+          }
+        ]
       },
       "glassbeach": {
         "width": 3360,
         "height": 1120,
         "areaScale": 6.125,
-        "walkableScale": 6.792899408284024,
-        "shape": "만을 따라 휘어진 모래 해변"
+        "walkableScale": 9.940828402366863,
+        "shape": "만을 따라 휘어진 모래 해변 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 4,
+        "gatherSites": [
+          {
+            "id": "glassbeach-grove-0",
+            "name": "조개 둔덕",
+            "item": "saltflower",
+            "x": -1.75,
+            "y": 50.75
+          },
+          {
+            "id": "glassbeach-grove-1",
+            "name": "썰물 꽃밭",
+            "item": "saltflower",
+            "x": 64.75,
+            "y": 40.25
+          },
+          {
+            "id": "glassbeach-grove-2",
+            "name": "젖은 모래 그늘",
+            "item": "breathgrass",
+            "x": 75.25,
+            "y": 15.75
+          }
+        ]
       },
       "tideroot": {
         "width": 2688,
         "height": 1680,
         "areaScale": 7.35,
-        "walkableScale": 5.450907240969984,
-        "shape": "섬 다섯 곳을 잇는 굽은 나무길"
+        "walkableScale": 9.971171782262168,
+        "shape": "섬 다섯 곳을 잇는 굽은 나무길 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 4,
+        "gatherSites": [
+          {
+            "id": "tideroot-grove-0",
+            "name": "물금 아래 뿌리",
+            "item": "breathgrass",
+            "x": 64.75,
+            "y": 96.25
+          },
+          {
+            "id": "tideroot-grove-1",
+            "name": "밀물이 쉬는 섬",
+            "item": "breathgrass",
+            "x": 57.75,
+            "y": 19.25
+          },
+          {
+            "id": "tideroot-grove-2",
+            "name": "마른 섬의 소금꽃",
+            "item": "saltflower",
+            "x": 54.25,
+            "y": -5.25
+          }
+        ]
       },
       "seacave": {
         "width": 2464,
         "height": 1792,
         "areaScale": 7.1866666666666665,
-        "walkableScale": 6.89908256880734,
-        "shape": "수정 굴방과 깊은 해룡의 방"
+        "walkableScale": 9.98165137614679,
+        "shape": "수정 굴방과 깊은 해룡의 방 · 갈림길·합류터·숨은 굽이",
+        "routeCount": 5,
+        "gatherSites": [
+          {
+            "id": "seacave-grove-0",
+            "name": "푸른숨 습지",
+            "item": "breathgrass",
+            "x": 75.25,
+            "y": 85.75
+          },
+          {
+            "id": "seacave-grove-1",
+            "name": "수정벽 이슬터",
+            "item": "breathgrass",
+            "x": 82.25,
+            "y": 64.75
+          },
+          {
+            "id": "seacave-grove-2",
+            "name": "굴 입구 소금꽃",
+            "item": "saltflower",
+            "x": 50.75,
+            "y": 110.25
+          }
+        ]
       }
     },
     "autotile": "corner-16",
@@ -4038,5 +5772,14 @@
     "size": 32
   },
   "style": "Bright classic Korean forest-and-sea RPG: cream ground, lime foliage, turquoise water, crisp thin local-color contours; doubled native resolution throughout",
-  "resolutionScale": 2
+  "resolutionScale": 2,
+  "motion": {
+    "version": 2,
+    "actorFrames": 16,
+    "walkFrames": 8,
+    "walkCycle": 0.5,
+    "windupFrames": 3,
+    "strikeFrames": 2,
+    "recoveryFrames": 2
+  }
 }

@@ -1,6 +1,6 @@
 // Shared terrain layout: all visible cells use image-generated terrain textures.
 export const TILE = 112;
-export const LAYOUT_VERSION = 2;
+export const LAYOUT_VERSION = 3;
 // Show 20% more world in each dimension without scaling any HTML text.
 export const WORLD_ZOOM = 1 / 1.2;
 const baseline = {
@@ -353,6 +353,211 @@ const specs = {
     ],
   },
 };
+// Deliberately different forks, reconnecting loops and gathering clearings.
+const dynamicRoutes = {
+  sprout: {
+    branches: [
+      [
+        [8, 5],
+        [8, 7],
+        [16, 7],
+        [20, 6],
+        [23, 6],
+      ],
+      [
+        [13, 3],
+        [16, 5],
+        [16, 7],
+      ],
+    ],
+    rooms: [
+      [16, 7, 1.5],
+      [19, 3, 1.3],
+    ],
+  },
+  acorn: {
+    branches: [
+      [
+        [3, 12],
+        [7, 12],
+        [7, 6],
+      ],
+      [
+        [7, 9],
+        [12, 9],
+      ],
+    ],
+    rooms: [
+      [9, 9, 1.7],
+      [7, 12, 1.2],
+    ],
+  },
+  brook: {
+    branches: [
+      [
+        [8, 11],
+        [12, 11],
+        [12, 7],
+        [17, 7],
+      ],
+      [
+        [8, 7],
+        [12, 7],
+      ],
+    ],
+    rooms: [
+      [12, 7, 1.4],
+      [17, 10, 1.1],
+    ],
+    bridges: [[12, 7]],
+  },
+  stump: {
+    branches: [
+      [
+        [5, 4],
+        [9, 4],
+        [9, 9],
+      ],
+      [
+        [12, 13],
+        [9, 13],
+        [9, 9],
+      ],
+    ],
+    rooms: [
+      [9, 9, 2],
+      [9, 13, 1],
+    ],
+  },
+  saltwood: {
+    branches: [
+      [
+        [8, 7],
+        [13, 7],
+        [20, 7],
+        [20, 4],
+      ],
+    ],
+    rooms: [
+      [13, 7, 1.6],
+      [20, 7, 1.1],
+    ],
+  },
+  glassbeach: {
+    branches: [
+      [
+        [7, 7],
+        [7, 3],
+        [11, 3],
+      ],
+      [
+        [18, 7],
+        [23, 7],
+        [23, 6],
+      ],
+    ],
+    rooms: [
+      [18, 7, 1.4],
+      [7, 3, 0.9],
+    ],
+  },
+  tideroot: {
+    branches: [
+      [
+        [7, 12],
+        [12, 12],
+        [17, 12],
+        [17, 10],
+      ],
+      [
+        [7, 5],
+        [7, 3],
+        [12, 3],
+        [17, 3],
+      ],
+      [
+        [12, 5],
+        [17, 5],
+        [17, 10],
+      ],
+    ],
+    rooms: [
+      [12, 10, 1.4],
+      [17, 5, 1.3],
+    ],
+  },
+  seacave: {
+    branches: [
+      [
+        [6, 8],
+        [13, 8],
+        [13, 10],
+      ],
+      [
+        [13, 4],
+        [18, 4],
+        [18, 5],
+      ],
+      [
+        [9, 11],
+        [13, 11],
+        [13, 10],
+      ],
+    ],
+    rooms: [
+      [9, 8, 1.3],
+      [13, 10, 1.6],
+    ],
+  },
+};
+for (const [id, additions] of Object.entries(dynamicRoutes)) {
+  const spec = specs[id];
+  for (const field of ["branches", "rooms", "bridges"])
+    spec[field] = [...(spec[field] || []), ...(additions[field] || [])];
+  spec.shape += " · 갈림길·합류터·숨은 굽이";
+}
+const gathering = {
+  sprout: [
+    ["클로버 밭둑", "softleaf", 8, 7],
+    ["그늘진 묘목터", "softleaf", 16, 7],
+    ["이슬 고인 흙길", "mint", 19, 3],
+  ],
+  acorn: [
+    ["참나무 그늘", "softleaf", 3, 14],
+    ["나이테 쉼터", "softleaf", 9, 9],
+    ["축축한 낙엽틈", "mint", 7, 4],
+  ],
+  brook: [
+    ["징검돌 물가", "mint", 8, 7],
+    ["개울 합류 웅덩이", "mint", 12, 7],
+    ["물가 잎무더기", "softleaf", 20, 10],
+  ],
+  stump: [
+    ["고목 뿌리 정원", "mint", 9, 13],
+    ["수관 아래", "softleaf", 5, 5],
+    ["뿌리 사이 그늘", "softleaf", 12, 12],
+  ],
+  saltwood: [
+    ["햇볕 드는 소금밭", "saltflower", 13, 7],
+    ["바닷바람 꽃터", "saltflower", 21, 9],
+    ["바람막이 이끼틈", "breathgrass", 9, 2],
+  ],
+  glassbeach: [
+    ["조개 둔덕", "saltflower", 7, 3],
+    ["썰물 꽃밭", "saltflower", 18, 7],
+    ["젖은 모래 그늘", "breathgrass", 23, 6],
+  ],
+  tideroot: [
+    ["물금 아래 뿌리", "breathgrass", 7, 11],
+    ["밀물이 쉬는 섬", "breathgrass", 17, 5],
+    ["마른 섬의 소금꽃", "saltflower", 20, 3],
+  ],
+  seacave: [
+    ["푸른숨 습지", "breathgrass", 9, 11],
+    ["수정벽 이슬터", "breathgrass", 13, 10],
+    ["굴 입구 소금꽃", "saltflower", 2, 11],
+  ],
+};
 function gridLine(a, b) {
   const path = [a],
     [x0, y0] = a,
@@ -502,38 +707,60 @@ for (const [id, spec] of Object.entries(specs)) {
             [-1, 0],
             [0, -1],
           ]) {
-            const cells = [
-              [c + dx, r + dy],
-              [c + dx * 2, r + dy * 2],
-            ];
-            if (
-              cells.some(
-                ([x, y]) =>
-                  x < 1 ||
-                  y < 1 ||
-                  x >= spec.cols - 1 ||
-                  y >= spec.rows - 1 ||
-                  floor[y][x],
-              )
-            )
-              continue;
-            const [x, y] = cells[1];
-            if (
-              (spec.props || []).some(
-                ([, px, py]) => Math.hypot(px - x, py - y) < 2,
-              )
-            )
-              continue;
-            if (spec.boss && Math.hypot(spec.boss[0] - x, spec.boss[1] - y) < 3)
-              continue;
-            candidates.push({
-              entrance: [c, r],
-              cells,
-              score: Math.hypot(x - ax, y - ay),
-            });
+            for (const length of [2, 1])
+              for (const side of [-1, 1]) {
+                const px = -dy * side,
+                  py = dx * side;
+                const steps = [
+                  ...Array.from({ length }, () => [dx, dy]),
+                  [px, py],
+                  [px, py],
+                  [dx, dy],
+                ];
+                let x = c,
+                  y = r;
+                const cells = steps.map(([sx, sy]) => [(x += sx), (y += sy)]);
+                if (
+                  cells.some(
+                    ([x, y], i) =>
+                      x < 1 ||
+                      y < 1 ||
+                      x >= spec.cols - 1 ||
+                      y >= spec.rows - 1 ||
+                      floor[y][x] ||
+                      (i > 0 &&
+                        [
+                          [1, 0],
+                          [-1, 0],
+                          [0, 1],
+                          [0, -1],
+                        ].some(([sx, sy]) => floor[y + sy]?.[x + sx])),
+                  )
+                )
+                  continue;
+                const [ex, ey] = cells.at(-1);
+                if (
+                  (spec.props || []).some(
+                    ([, x, y]) => Math.hypot(x - ex, y - ey) < 2,
+                  )
+                )
+                  continue;
+                if (
+                  spec.boss &&
+                  Math.hypot(spec.boss[0] - ex, spec.boss[1] - ey) < 3
+                )
+                  continue;
+                candidates.push({
+                  entrance: [c, r],
+                  cells,
+                  score: Math.hypot(ex - ax, ey - ay) - length * 0.4,
+                });
+              }
           }
         }
-    secretPassage = candidates.sort((a, b) => a.score - b.score)[0];
+    secretPassage = candidates.sort(
+      (a, b) => b.cells.length - a.cells.length || a.score - b.score,
+    )[0];
     if (!secretPassage) throw Error("No connected side passage: " + id);
     for (const [x, y] of secretPassage.cells) floor[y][x] = true;
   }
@@ -615,6 +842,20 @@ for (const [id, spec] of Object.entries(specs)) {
     NPC_POSITIONS[npc] = pixelWorld(px, py, nav.width);
     prop(npcProps[npc], c, r - 1, false, r * TILE - 4);
   }
+  nav.gatherSites = (gathering[id] || []).map(([name, item, c, r], index) => ({
+    id: id + "-grove-" + index,
+    name,
+    item,
+    ...at(...nearestCell(nav, c, r)),
+  }));
+  nav.encounterZones = [
+    ...nav.habitats,
+    ...(spec.rooms || []).map(([c, r]) => at(...nearestCell(nav, c, r))),
+    ...(spec.branches || []).map((path) =>
+      at(...nearestCell(nav, ...path[Math.floor(path.length / 2)])),
+    ),
+  ];
+  nav.routeCount = 1 + (spec.branches || []).length;
   nav.walkablePixels = floor.flat().filter(Boolean).length * TILE * TILE;
   nav.areaScale = (nav.width * nav.height) / (960 * 640);
   nav.walkableScale = nav.walkablePixels / nav.baseline;
@@ -699,16 +940,27 @@ export function habitatPoint(map, kind, index, rng) {
 }
 export function herbPoints(map) {
   const nav = NAVIGATION[map],
-    cells = [];
-  for (let r = 1; r < nav.rows - 1; r++)
-    for (let c = 1; c < nav.cols - 1; c++)
-      if (nav.floor[r][c] && (!nav.floor[r - 1]?.[c] || !nav.floor[r + 1]?.[c]))
-        cells.push([c, r]);
-  return Array.from({ length: Math.min(20, cells.length) }, (_, i) =>
-    nav.worldAt(
-      ...cells[Math.floor((i * cells.length) / Math.min(20, cells.length))],
-    ),
-  );
+    points = [];
+  for (const site of nav.gatherSites)
+    for (let i = 0; i < 4; i++) {
+      const offsets = [
+        [0, 0],
+        [1.2, 0.5],
+        [-1.1, 0.8],
+        [0.3, -1.3],
+      ];
+      const [dx, dy] = offsets[i],
+        x = site.x + dx,
+        y = site.y + dy;
+      points.push({
+        ...site,
+        site: site.id,
+        x: isWalkable(map, x, y) ? x : site.x,
+        y: isWalkable(map, x, y) ? y : site.y,
+        patch: i,
+      });
+    }
+  return points;
 }
 
 export function isWalkable(map, x, y) {

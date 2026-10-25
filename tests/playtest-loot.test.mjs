@@ -26,8 +26,10 @@ function setup() {
 function kill(w, p) {
   const m = w.map(p.map).mobs[0];
   Object.assign(m, { x: p.x + 0.7, y: p.y, hp: 1 });
+  Object.assign(m,{homeX:m.x,homeY:m.y,rootUntil:Infinity,nextAttack:Infinity});
   w.rng = () => 0;
   w.attack(p, m.uid);
+  for(let n=0;n<60&&p.action;n++)w.step(.01);
   return m;
 }
 const tick = (w, t) => {

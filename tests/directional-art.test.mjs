@@ -34,13 +34,17 @@ test("all 72 actors have eight distinct native views matching their animated atl
       count++;
       const l = layouts[actor.id],
         size = l.size;
-      assert.equal(l.cols, 8, actor.id);
+      assert.equal(
+        l.cols,
+        NPCS.some((n) => n.id === actor.id) ? 8 : 16,
+        actor.id,
+      );
       assert.equal(l.rows, 8, actor.id);
       assert.equal(Object.keys(l.views).length, 8, actor.id);
       const atlas = rgbaPixels(
         await readFile("dist/assets/" + l.file + ".png"),
       );
-      assert.equal(atlas.width, size * 8);
+      assert.equal(atlas.width, size * l.cols);
       assert.equal(atlas.height, size * 8);
       const hashes = [];
       for (const [row, d] of DIRECTIONS.entries()) {

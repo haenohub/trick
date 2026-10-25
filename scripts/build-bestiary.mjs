@@ -1,3 +1,4 @@
+import { mapsForSpecies } from "../site/ecology.js";
 import { createPlayer } from "../site/core.js";
 import { CHESTS } from "../site/exploration.js";
 import { xpReward, dropChance, TEST_BALANCE } from "../site/balance.js";
@@ -28,6 +29,8 @@ export async function buildBestiary() {
     const rect = { sx: 0, sy: 0, sw: sprite.size, sh: sprite.size };
     return {
       ...m,
+      spawnMaps: mapsForSpecies(m.id).map((a) => a.id),
+      habitatNames: mapsForSpecies(m.id).map((a) => a.name),
       spriteSize: sprite.size,
       baseSpriteSize: m.spriteSize,
       xp: xpReward(m.xp),
@@ -100,15 +103,17 @@ export async function buildBestiary() {
       monsters: monsters.flatMap((m) =>
         m.drops
           .filter((d) => d.item === item.id)
-          .map((d) => ({
-            id: m.id,
-            name: m.name,
-            map: m.map,
-            mapName: MAPS.find((a) => a.id === m.map).name,
-            chance: d.chance,
-            min: d.min,
-            max: d.max,
-          })),
+          .flatMap((d) =>
+            m.spawnMaps.map((map) => ({
+              id: m.id,
+              name: m.name,
+              map,
+              mapName: MAPS.find((a) => a.id === map).name,
+              chance: d.chance,
+              min: d.min,
+              max: d.max,
+            })),
+          ),
       ),
       shop: item.type === "consumable",
       starting: CLASSES.filter(

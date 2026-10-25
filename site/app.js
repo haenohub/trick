@@ -1,3 +1,5 @@
+import { NAVIGATION } from "./world-layout.js";
+import { speciesForMap, mapsForSpecies } from "./ecology.js";
 import {
   CONTROL_ACTIONS,
   DEFAULT_BINDINGS,
@@ -681,6 +683,19 @@ function renderPanel() {
     title = "잎새 너머의 지도";
     html =
       `<p class="panel-intro">길 끝의 빛나는 표식에서 ${bindingLabel("interact")}를 눌러 다음 맵으로 이동합니다. 방문한 마을에는 전투가 끝난 뒤 빠르게 돌아갈 수 있습니다.</p>` +
+      `<article class="content-card"><h3>현재 지역 · ${NAVIGATION[p.map].shape}</h3><p>${NAVIGATION[p.map].routeCount}갈래 동선을 따라 합류터와 굽은 샛길을 탐험하세요.</p>${
+        NAVIGATION[p.map].gatherSites.length
+          ? "<h4>채집 군락</h4><p>" +
+            NAVIGATION[p.map].gatherSites
+              .map((a) => a.name + " · " + ITEMS[a.item].name)
+              .join("<br>") +
+            "</p><h4>함께 서식하는 생물</h4><p>" +
+            speciesForMap(p.map)
+              .map((a) => a.def.name)
+              .join(" · ") +
+            "</p>"
+          : ""
+      }</article>` +
       REGIONS.map(
         (r, ri) =>
           `<section class="map-region"><h3>0${ri + 1}. ${r.name}</h3><p class="panel-intro">${r.story}</p><div class="map-list">${MAPS.filter(
@@ -742,7 +757,13 @@ function renderPanel() {
         )
           .map(
             (m) =>
-              `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${MAPS.find((a) => a.id === m.map).name} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${xpReward(m.xp)} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 리프</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(dropChance(d.chance) * 1000) / 10}%</b></div>`).join("")}</details></article>`,
+              `<article class="content-card"><canvas class="monster-preview" data-monster-preview="${m.id}" width="72" height="64" aria-hidden="true"></canvas><small class="equipped">${TYPE_NAMES[m.type]} · Lv.${m.level}</small><h3>${m.name}</h3><p>${m.lore}</p><small class="equipped">${mapsForSpecies(
+                m.id,
+              )
+                .map((a) => a.name)
+                .join(
+                  " · ",
+                )} · HP ${m.hp}</small><details><summary class="small-button">드롭 테이블 보기</summary><p>확정 ${xpReward(m.xp)} 경험치 · ${Math.round(m.level * (m.type === "boss" ? 15 : 1.8) + 5)} 리프</p>${m.drops.map((d) => `<div class="drop-row"><span>${itemIcon(d.item)}${ITEMS[d.item].name} ×${d.min}${d.min !== d.max ? "–" + d.max : ""}</span><b>${Math.round(dropChance(d.chance) * 1000) / 10}%</b></div>`).join("")}</details></article>`,
           )
           .join("")}</div>`;
   } else if (panel === "skills") {
@@ -1346,7 +1367,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.12.0",
+  version: "0.13.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

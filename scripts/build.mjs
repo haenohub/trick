@@ -48,6 +48,8 @@ for (const name of [
   "combat.js",
   "audio.js",
   "controls.js",
+  "animation.js",
+  "ecology.js",
   "exploration.js",
 ]) {
   const file = new URL(name, output);

@@ -65,9 +65,9 @@ export const DISCOVERIES = Object.entries(stories).flatMap(([map, rows]) =>
     name: rows[i * 2],
     lore: rows[i * 2 + 1],
     hidden: i === 1,
-    radius: i ? 4 : 5,
+    radius: i ? 2.8 : 5,
     hint: i
-      ? "표지의 흔적을 따라 본길 옆의 짧은 샛길을 찾아보세요."
+      ? "표지의 흔적을 따라 갈림길 뒤의 굽은 샛길을 찾아보세요."
       : "길가의 반짝이는 기록을 가까이에서 살펴보세요.",
     xp: map === "village" || map === "shelltown" ? 15 : 30 + (i ? 25 : 0),
   })),

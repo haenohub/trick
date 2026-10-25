@@ -46,6 +46,9 @@ function enemy(w, p, index = 0) {
 const tick = (w, t) => {
   for (let i = 0; i < Math.ceil(t / 0.05); i++) w.step(0.05);
 };
+const finishAction = (w, p) => {
+  for (let n = 0; n < 80 && p.action; n++) w.step(0.01);
+};
 test("telegraph circles, safe rings and finite-width lines share exact outline geometry", () => {
   const ring = { x: 0, y: 0, style: "ring", radius: 5, innerRadius: 2 };
   assert.ok(!zoneHits({ x: 1, y: 0 }, ring));
@@ -71,6 +74,7 @@ test("warden banks absorbed guard into a piercing counter and interrupts ordinar
   assert.equal(p.guardPower, 3);
   const hp = p.hp;
   assert.ok(w.skill(p, 0, a.uid));
+  finishAction(w, p);
   assert.equal(p.guardPower, 0);
   assert.ok(a.hp < 10000 && b.hp < 10000);
   assert.equal(p.hp, hp);
@@ -78,6 +82,7 @@ test("warden banks absorbed guard into a piercing counter and interrupts ordinar
   b.windup = { at: 10 };
   p.focus = 100;
   assert.ok(w.skill(p, 2, a.uid));
+  finishAction(w, p);
   assert.equal(a.windup, null);
   assert.equal(b.windup, null);
 });
@@ -87,10 +92,12 @@ test("mage builds three seeds through attacks and spends them on a stronger wide
   for (let i = 0; i < 3; i++) {
     p.attackReady = 0;
     assert.ok(w.attack(p, m.uid));
+    finishAction(w, p);
   }
   assert.equal(p.spellCharge, 3);
   const before = m.hp;
   assert.ok(w.skill(p, 1, m.uid));
+  finishAction(w, p);
   assert.equal(p.spellCharge, 0);
   const def = MONSTERS.find((d) => d.id === m.def);
   assert.equal(
@@ -118,6 +125,7 @@ test("ranger roll has a short dodge window and exactly one empowered follow-up s
   const { w, p } = setup("ranger"),
     m = enemy(w, p);
   assert.ok(w.skill(p, 1, m.uid));
+  finishAction(w, p);
   const hp = p.hp;
   w.hurtPlayer(p, 25);
   assert.equal(p.hp, hp);
@@ -126,6 +134,7 @@ test("ranger roll has a short dodge window and exactly one empowered follow-up s
   assert.equal(p.hp, hp - 25);
   const before = m.hp;
   assert.ok(w.attack(p, m.uid));
+  finishAction(w, p);
   assert.equal(p.precisionUntil, 0);
   const def = MONSTERS.find((d) => d.id === m.def);
   assert.equal(
@@ -138,11 +147,14 @@ test("herbalist stacks poison and a stationary garden heals allies rather than f
     m = enemy(w, p);
   p.lastHit = 0;
   w.attack(p, m.uid);
+  finishAction(w, p);
   assert.equal(m.toxinStacks, 1);
   w.skill(p, 1, m.uid);
+  finishAction(w, p);
   assert.equal(m.toxinStacks, 3);
   p.focus = 100;
   assert.ok(w.skill(p, 2, m.uid));
+  finishAction(w, p);
   const field = w.effects.find((e) => e.tickAt);
   const ally = w.addPlayer(
     { ...createPlayer(), map: p.map, x: field.x, y: field.y },

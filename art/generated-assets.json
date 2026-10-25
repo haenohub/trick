@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-10-25T03:15:01.265Z",
+  "generatedAt": "2026-10-25T05:02:41.625Z",
   "style": "Bright classic Korean forest-and-sea RPG: cream ground, lime foliage, turquoise water, crisp thin local-color contours; doubled native resolution throughout",
   "assets": [
-    {
-      "id": "characters/warden",
-      "target": "site/assets/characters/warden.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-415a4188-95f7-4d63-b81a-6df5894b9c09.png",
-      "request": "warden",
-      "width": 768,
-      "height": 768,
-      "sha256": "843bbd1e4e14311cd7db31fa4c585e91b6bf893199c1506aefcb43288a9c58a3",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
     {
       "id": "directions/warden/N",
       "target": "site/assets/directions/warden/N.png",
@@ -119,20 +105,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "NW"
-    },
-    {
-      "id": "characters/herbalist",
-      "target": "site/assets/characters/herbalist.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-441533a9-273e-4069-a15a-9e5e5ec4e73c.png",
-      "request": "herbalist",
-      "width": 768,
-      "height": 768,
-      "sha256": "512dd49962c6e13493f21838cbdc01716789b2863194eb0816829287b75cc6ac",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/herbalist/N",
@@ -473,20 +445,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "NW"
-    },
-    {
-      "id": "characters/ranger",
-      "target": "site/assets/characters/ranger.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-26ffaab5-6589-4d09-9bce-3f5181f1ff5c.png",
-      "request": "ranger",
-      "width": 768,
-      "height": 768,
-      "sha256": "084c21d9a200966f00bfae79510ad8ee85c2d12857cb0b4602c63880fee3bbfc",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/ranger/N",
@@ -947,20 +905,6 @@
       "direction": "NW"
     },
     {
-      "id": "characters/mage",
-      "target": "site/assets/characters/mage.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-81f385a7-c213-4f7a-a6bf-77da3277caa9.png",
-      "request": "mage",
-      "width": 768,
-      "height": 768,
-      "sha256": "c73cabb7ba21031dfcd3481884299741edc7c697c316f0af309a44b874d7ea75",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/mage/N",
       "target": "site/assets/directions/mage/N.png",
       "tool": "image_gen",
@@ -1063,20 +1007,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "NW"
-    },
-    {
-      "id": "creatures/m2",
-      "target": "site/assets/creatures/m2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6fe614df-8007-4331-a467-eacd01d02080.png",
-      "request": "m2",
-      "width": 512,
-      "height": 512,
-      "sha256": "2065829c0d3a42e8f65cc23c25690cf520d9e81833f32394f06d2cce513907af",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m2/N",
@@ -1194,20 +1124,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m3",
-      "target": "site/assets/creatures/m3.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ebd68a64-466b-4a5a-a2ce-61b67a601ef1.png",
-      "request": "m3",
-      "width": 512,
-      "height": 512,
-      "sha256": "f903d8c90fd67fc738e7181aaeafcb94ae691c2b155d8dcad3e79b2ac28602ec",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m3/N",
@@ -1563,20 +1479,6 @@
       "direction": "NW"
     },
     {
-      "id": "creatures/m6",
-      "target": "site/assets/creatures/m6.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-a7eb37ba-0d30-40a8-ab25-a07dd7ce9c07.png",
-      "request": "m6",
-      "width": 512,
-      "height": 512,
-      "sha256": "0611c3a84d331f41911b4b65bcbd60bb7a4c7f726416fef7df87ca0abf80909c",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m6/N",
       "target": "site/assets/directions/m6/N.png",
       "tool": "image_gen",
@@ -1692,20 +1594,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m4",
-      "target": "site/assets/creatures/m4.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-2d5933d5-a812-4c2f-853e-e2da681a49af.png",
-      "request": "m4",
-      "width": 512,
-      "height": 512,
-      "sha256": "296cfa2a38f2559fa562f28993684abfe315cc1d4d99af262e8746271f3e67ad",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m4/N",
@@ -1943,20 +1831,6 @@
       "direction": "NW"
     },
     {
-      "id": "creatures/m1",
-      "target": "site/assets/creatures/m1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-58bc1089-468f-4d08-80a8-6c4702687084.png",
-      "request": "m1",
-      "width": 512,
-      "height": 512,
-      "sha256": "b56314d3fb7e274abbfb3fb98b3a81e81f81b077dd9adbf7acce0e84b1e894de",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m1/N",
       "target": "site/assets/directions/m1/N.png",
       "tool": "image_gen",
@@ -2072,20 +1946,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m7",
-      "target": "site/assets/creatures/m7.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-55ff4b3f-cbd5-48f3-981c-740105a6247e.png",
-      "request": "m7",
-      "width": 512,
-      "height": 512,
-      "sha256": "5d92e2c9b66e6e95e8ddf0b60a7128bd9c4ceed73304797e079bc63194bbf92c",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m7/N",
@@ -2205,20 +2065,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m5",
-      "target": "site/assets/creatures/m5.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-8ea3a080-51d0-4db5-a7eb-09a2fb62c625.png",
-      "request": "m5",
-      "width": 768,
-      "height": 768,
-      "sha256": "a3ac42e1395a3200135b556450eaeb98b032325eb1070baa55a39206cd005a76",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m5/N",
       "target": "site/assets/directions/m5/N.png",
       "tool": "image_gen",
@@ -2334,20 +2180,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m10",
-      "target": "site/assets/creatures/m10.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-7ecd6042-7770-4bc9-8a9b-b23e322dc32c.png",
-      "request": "m10",
-      "width": 768,
-      "height": 768,
-      "sha256": "e82dd2a7c77cb985b7cafe1f101c7b237590d3d35bab7de547d04399194f8efe",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m10/N",
@@ -2467,20 +2299,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m8",
-      "target": "site/assets/creatures/m8.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-47ddfe09-8b55-4424-97ad-4ddb9dee34dd.png",
-      "request": "m8",
-      "width": 512,
-      "height": 512,
-      "sha256": "e72cbf157dab5e0b665dc9983619f24dc3510f83a9c06ba5ff7d14cb503f554f",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m8/N",
       "target": "site/assets/directions/m8/N.png",
       "tool": "image_gen",
@@ -2596,20 +2414,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m9",
-      "target": "site/assets/creatures/m9.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-836c7f24-41f9-41a9-9e8d-30dec623d241.png",
-      "request": "m9",
-      "width": 768,
-      "height": 768,
-      "sha256": "9a47554782fa2dd1728a51e63cc002cc8dffa2f990f77664cef782f8c32eed87",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m9/N",
@@ -2729,20 +2533,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m11",
-      "target": "site/assets/creatures/m11.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0571b496-345c-4054-86bd-d71e8367d658.png",
-      "request": "m11",
-      "width": 512,
-      "height": 512,
-      "sha256": "46a53e8dfd83e8a3ce80a502f0981a3571ed88cada82386675d8457e54f8502f",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m11/N",
       "target": "site/assets/directions/m11/N.png",
       "tool": "image_gen",
@@ -2858,20 +2648,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m12",
-      "target": "site/assets/creatures/m12.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-1f930408-3611-4853-9f56-05f15c28f4eb.png",
-      "request": "m12",
-      "width": 512,
-      "height": 512,
-      "sha256": "64bbd9660c1ceef632d5ae05cf46421defe3f375db697f40d821c4e8c1780999",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m12/N",
@@ -2991,20 +2767,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m13",
-      "target": "site/assets/creatures/m13.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0bdc9fd9-0a22-4424-972a-0691ecc91ded.png",
-      "request": "m13",
-      "width": 512,
-      "height": 512,
-      "sha256": "b67cae4f8b33e52a9c43547521fb51060003fa65a187d0d1216ac5520a0db440",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m13/N",
       "target": "site/assets/directions/m13/N.png",
       "tool": "image_gen",
@@ -3120,20 +2882,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m14",
-      "target": "site/assets/creatures/m14.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-605ab4f8-4e35-4201-8836-c2036912ddf1.png",
-      "request": "m14",
-      "width": 768,
-      "height": 768,
-      "sha256": "c07733fb8e36a171784e55e3ce02e245f910fd535d7fb4ee5e4144f1c1ca5cec",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m14/N",
@@ -3253,20 +3001,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m15",
-      "target": "site/assets/creatures/m15.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-e98834a6-78fe-4d16-8323-b7aedb3d924a.png",
-      "request": "m15",
-      "width": 768,
-      "height": 768,
-      "sha256": "9e035191b2fce1c894224455ab229ba41f91359e8311ff5996ebbb36a9462d89",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m15/N",
       "target": "site/assets/directions/m15/N.png",
       "tool": "image_gen",
@@ -3382,20 +3116,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m16",
-      "target": "site/assets/creatures/m16.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-c2e9332e-6f79-496d-b4ce-f5bf62c485c8.png",
-      "request": "m16",
-      "width": 512,
-      "height": 512,
-      "sha256": "e41a0766d258b7ad9a1c43ae1ce16508584bde9237cc9f42f6d1d9cb408d7ff3",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m16/N",
@@ -3515,20 +3235,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m17",
-      "target": "site/assets/creatures/m17.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-36c580b3-e8e6-46d2-a389-8ffcde9597a0.png",
-      "request": "m17",
-      "width": 512,
-      "height": 512,
-      "sha256": "dc87ae87e2e1d91ececcbebdb675f654f562e3cac82a767337b911f61bdb38da",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m17/N",
       "target": "site/assets/directions/m17/N.png",
       "tool": "image_gen",
@@ -3644,20 +3350,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m18",
-      "target": "site/assets/creatures/m18.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d43e9b82-e10a-41cf-b2f6-c1cd4a632b1a.png",
-      "request": "m18",
-      "width": 512,
-      "height": 512,
-      "sha256": "bb55b3f4c900ff0ab967907777425a0ab6e47ab865347f10034153c60adc69af",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m18/N",
@@ -3777,20 +3469,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m19",
-      "target": "site/assets/creatures/m19.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-28834996-5009-4515-a992-85d1a0ba5f43.png",
-      "request": "m19",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "bd534a123a5d1d688c3903c4b9705781ee8325c7315b2c31a24ad53b5689ad6c",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m19/N",
       "target": "site/assets/directions/m19/N.png",
       "tool": "image_gen",
@@ -3906,20 +3584,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 128,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m20",
-      "target": "site/assets/creatures/m20.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-4ff274bb-d3a0-4ebf-8720-100d3c34d666.png",
-      "request": "m20",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "f5e419324c507a4ca41f8377db9609d2ba2cbb48996039884f3f9ba4f554194e",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m20/N",
@@ -4039,20 +3703,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m21",
-      "target": "site/assets/creatures/m21.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-e7ba4142-f24b-4c2f-8cd7-873db98b748e.png",
-      "request": "m21",
-      "width": 512,
-      "height": 512,
-      "sha256": "b389874e2f25d01473d70606e7f2589f0bf01e112580188f4acbc2a89307cc1c",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m21/N",
       "target": "site/assets/directions/m21/N.png",
       "tool": "image_gen",
@@ -4168,20 +3818,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m22",
-      "target": "site/assets/creatures/m22.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d1cc601c-28e2-4305-a25a-aac309629e74.png",
-      "request": "m22",
-      "width": 512,
-      "height": 512,
-      "sha256": "9b462cce515eb948b7e7ac2375d778e09f8adbae34071cc2f9a7e9cd562539d9",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m22/N",
@@ -4301,20 +3937,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m23",
-      "target": "site/assets/creatures/m23.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-25c271a0-e379-4a0e-83b1-5da9481ea415.png",
-      "request": "m23",
-      "width": 512,
-      "height": 512,
-      "sha256": "22357f1f0f4bd202b252ee427e792f2ec3312075ba69cc27908d8b9ec6336a9e",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m23/N",
       "target": "site/assets/directions/m23/N.png",
       "tool": "image_gen",
@@ -4430,20 +4052,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m24",
-      "target": "site/assets/creatures/m24.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-74d8f2ed-87a7-4d2f-b0a8-aef03e8bbe11.png",
-      "request": "m24",
-      "width": 768,
-      "height": 768,
-      "sha256": "2f2f5d13162d86a7ccbd68e0fe00e31d1806846c7e5c8e762ea03e8ab84505c9",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m24/N",
@@ -4563,20 +4171,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m25",
-      "target": "site/assets/creatures/m25.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-bc3e8a0e-8ec8-40a2-ad16-c843ae9c2596.png",
-      "request": "m25",
-      "width": 768,
-      "height": 768,
-      "sha256": "ade230d7ce4dd7e07bbccdca971234f6e147316ec30086f3c273b29c86586001",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m25/N",
       "target": "site/assets/directions/m25/N.png",
       "tool": "image_gen",
@@ -4692,20 +4286,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m26",
-      "target": "site/assets/creatures/m26.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-22d9df7d-ae2b-40a5-b894-0cf58f4c7f41.png",
-      "request": "m26",
-      "width": 512,
-      "height": 512,
-      "sha256": "e344a8556c88c2cf5afeed1eebd3afc427a4f2dcbe70622ae132b77eea848fa7",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m26/N",
@@ -4825,20 +4405,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m27",
-      "target": "site/assets/creatures/m27.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-3f99b500-2e34-46bf-9497-837a76f4206e.png",
-      "request": "m27",
-      "width": 768,
-      "height": 768,
-      "sha256": "3c068ce35757dadd53ce1af6d13322001b03c9742476a96209cd2d712850a109",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m27/N",
       "target": "site/assets/directions/m27/N.png",
       "tool": "image_gen",
@@ -4954,20 +4520,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m28",
-      "target": "site/assets/creatures/m28.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-e8800d15-99ad-497d-b81d-1eda3598847c.png",
-      "request": "m28",
-      "width": 512,
-      "height": 512,
-      "sha256": "a0c9735ed35404c5af487c083044a0395620e191d4b47f7a1e6b1a86b5b97b18",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m28/N",
@@ -5087,20 +4639,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m29",
-      "target": "site/assets/creatures/m29.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0772d7c2-d279-4ec2-af1c-d724e09693bd.png",
-      "request": "m29",
-      "width": 768,
-      "height": 768,
-      "sha256": "53a9bc177ddbbccdf9703bba27c1c7c16341abbd8cfe8ed7e7ded5a163d04411",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m29/N",
       "target": "site/assets/directions/m29/N.png",
       "tool": "image_gen",
@@ -5216,20 +4754,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m30",
-      "target": "site/assets/creatures/m30.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-315af7b1-950e-4c57-8518-39a582a53bad.png",
-      "request": "m30",
-      "width": 768,
-      "height": 768,
-      "sha256": "0f8e98c676b8d1457177ac1c6eb95ef1ae4e0fbdfc940c5a7584bed0958199bd",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m30/N",
@@ -5349,20 +4873,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m31",
-      "target": "site/assets/creatures/m31.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-9620f02e-bc16-44bf-9e02-48276b1963ff.png",
-      "request": "m31",
-      "width": 512,
-      "height": 512,
-      "sha256": "f3afd88751c1b8ecad144616397a74519a25167537faf8e9d19d3c60ecf3d28a",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m31/N",
       "target": "site/assets/directions/m31/N.png",
       "tool": "image_gen",
@@ -5478,20 +4988,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m32",
-      "target": "site/assets/creatures/m32.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6d1481ed-23f9-451d-8940-60627e46648a.png",
-      "request": "m32",
-      "width": 512,
-      "height": 512,
-      "sha256": "eb4565a77428b7e2775db34333601fc25fb76d501612538df9781f3e5e0f3947",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m32/N",
@@ -5611,20 +5107,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m33",
-      "target": "site/assets/creatures/m33.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-eb6c6b0f-8195-4005-a9f5-e5100104bca7.png",
-      "request": "m33",
-      "width": 768,
-      "height": 768,
-      "sha256": "43a16d9f849d0dc6d3c84858ceeb639ad94ad308a140737fd4ca09dca811ac9e",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m33/N",
       "target": "site/assets/directions/m33/N.png",
       "tool": "image_gen",
@@ -5740,20 +5222,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m34",
-      "target": "site/assets/creatures/m34.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-94dd0e00-7683-4929-a7be-3a16f93d1ccd.png",
-      "request": "m34",
-      "width": 768,
-      "height": 768,
-      "sha256": "a60a302b41cbfcc1760e7496542598c28668f971d4ddfdc8c074d937dc69eba8",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m34/N",
@@ -5873,20 +5341,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m35",
-      "target": "site/assets/creatures/m35.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-32d30a52-34ec-46eb-b48a-ae5fb717dcc0.png",
-      "request": "m35",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "5c9277433c2453320d4c67e9357ed8b9a33c609d134bcbe510450e2bcefbcd8a",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m35/N",
       "target": "site/assets/directions/m35/N.png",
       "tool": "image_gen",
@@ -6002,20 +5456,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 128,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m36",
-      "target": "site/assets/creatures/m36.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-b2c60357-b34e-4be3-887d-f01265c914a9.png",
-      "request": "m36",
-      "width": 512,
-      "height": 512,
-      "sha256": "aa9c1a54b4e040e579d88363546fe968f3456954dafc6d1874d3c2835edcea5d",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m36/N",
@@ -6135,20 +5575,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m37",
-      "target": "site/assets/creatures/m37.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-5103a6ca-e3de-4760-b92f-795c0a8f2537.png",
-      "request": "m37",
-      "width": 512,
-      "height": 512,
-      "sha256": "f68245797f33bb8902218fcd42b1b9f77c02dc2f1fd1166ddf2e479e0fed1a33",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m37/N",
       "target": "site/assets/directions/m37/N.png",
       "tool": "image_gen",
@@ -6264,20 +5690,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m38",
-      "target": "site/assets/creatures/m38.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-df293eca-b9fa-46c9-8b3a-aeca714689ac.png",
-      "request": "m38",
-      "width": 512,
-      "height": 512,
-      "sha256": "61baa65d1f5ee04965daecdacbdee9ff82772814f985161fcea1243b3c07739a",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m38/N",
@@ -6397,20 +5809,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m39",
-      "target": "site/assets/creatures/m39.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d8d23c8e-0df1-4abc-9b97-57f3a7e2dd19.png",
-      "request": "m39",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "b6965d1e77625790ec12942dc85a022f4b0ded7f7d14a1c5ae9261e3bb3f8833",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m39/N",
       "target": "site/assets/directions/m39/N.png",
       "tool": "image_gen",
@@ -6526,20 +5924,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 128,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m40",
-      "target": "site/assets/creatures/m40.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-b3594549-3a74-48fd-9e0c-b8aa7ac014a1.png",
-      "request": "m40",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "0babf3131f3a4c9a7ef02b22fce20d8e711825f3dd295912d474879dba0740eb",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m40/N",
@@ -6659,20 +6043,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m41",
-      "target": "site/assets/creatures/m41.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0e94def3-d245-44ea-9fb5-aec162d6d087.png",
-      "request": "m41",
-      "width": 512,
-      "height": 512,
-      "sha256": "53ea297ebe73ced1d21eaec306fab5884fd31222c8c66da71342315428689ef1",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m41/N",
       "target": "site/assets/directions/m41/N.png",
       "tool": "image_gen",
@@ -6788,20 +6158,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m42",
-      "target": "site/assets/creatures/m42.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-371bbee4-0b30-4324-914c-fca833a119c3.png",
-      "request": "m42",
-      "width": 512,
-      "height": 512,
-      "sha256": "6daf2342831acdd4b97f78f2214b502f49abe7cf8ebf865f4caa282f3d95c7cc",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m42/N",
@@ -6921,20 +6277,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m43",
-      "target": "site/assets/creatures/m43.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-183f2ec2-30b2-49c1-9f98-66f208fcd93e.png",
-      "request": "m43",
-      "width": 512,
-      "height": 512,
-      "sha256": "6c9c51849207b6cb7179055a5a53fc4c70af053f2a35952b0abb3d483d948c98",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m43/N",
       "target": "site/assets/directions/m43/N.png",
       "tool": "image_gen",
@@ -7050,20 +6392,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m44",
-      "target": "site/assets/creatures/m44.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-9ac3c038-a22f-46bb-b165-6772a9106f11.png",
-      "request": "m44",
-      "width": 768,
-      "height": 768,
-      "sha256": "8055be4d2209f4f664737df9fbd22d75155b19ab97687cf0c7eb3b2763abb421",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m44/N",
@@ -7183,20 +6511,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m45",
-      "target": "site/assets/creatures/m45.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-cea4a86b-1513-495b-b27c-9c0185070251.png",
-      "request": "m45",
-      "width": 768,
-      "height": 768,
-      "sha256": "79951c16c1472100b0e9ded48af2dcfd5cd0af593174bf421900c2f02d797023",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m45/N",
       "target": "site/assets/directions/m45/N.png",
       "tool": "image_gen",
@@ -7312,20 +6626,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m46",
-      "target": "site/assets/creatures/m46.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0b641dba-a221-4f38-b1b5-143ece1ad22e.png",
-      "request": "m46",
-      "width": 768,
-      "height": 768,
-      "sha256": "15fa6fbd25504594dbc4ffc193d1148c6d3dcf21bb82e98f3dcb26db9d3fed52",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m46/N",
@@ -7445,20 +6745,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m47",
-      "target": "site/assets/creatures/m47.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-73e5e072-58a0-47a6-8979-a8e93ebf88f7.png",
-      "request": "m47",
-      "width": 512,
-      "height": 512,
-      "sha256": "31463398bf60592e1f60be3b9332ee9e9caf002aaae8d3e32a42774e342eae90",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m47/N",
       "target": "site/assets/directions/m47/N.png",
       "tool": "image_gen",
@@ -7574,20 +6860,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m48",
-      "target": "site/assets/creatures/m48.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-8073de5b-6393-4fa7-a699-419b4683fde5.png",
-      "request": "m48",
-      "width": 768,
-      "height": 768,
-      "sha256": "7005b196171801ec4a11beff35330afe0a01224f2e5b8e31600a54e5934224cd",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m48/N",
@@ -7707,20 +6979,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m49",
-      "target": "site/assets/creatures/m49.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d39b7318-d27f-4932-a8ef-0adb9af34127.png",
-      "request": "m49",
-      "width": 768,
-      "height": 768,
-      "sha256": "5767e0b9d8f4a892fe1d769e48d117e4e517e6ccf2843a5b0c4407cf9593ac80",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m49/N",
       "target": "site/assets/directions/m49/N.png",
       "tool": "image_gen",
@@ -7836,20 +7094,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m50",
-      "target": "site/assets/creatures/m50.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d5090f8c-a049-4e97-b029-858d88ad861c.png",
-      "request": "m50",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "3059dbfe6998e67f8415700401b6ddd764ae1b9c0461f29294d7a449333aa6ae",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m50/N",
@@ -7969,20 +7213,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m51",
-      "target": "site/assets/creatures/m51.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-5335eb37-5c61-4726-9adc-ca22914f89fd.png",
-      "request": "m51",
-      "width": 512,
-      "height": 512,
-      "sha256": "a8dd4bdd18e9422a0b4d6e97122cec7ea9fc7ec2b5276b41d8f7464654d9a784",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m51/N",
       "target": "site/assets/directions/m51/N.png",
       "tool": "image_gen",
@@ -8098,20 +7328,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 64,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m52",
-      "target": "site/assets/creatures/m52.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d0c7c012-e011-46ac-9cb1-5569ed418263.png",
-      "request": "m52",
-      "width": 768,
-      "height": 768,
-      "sha256": "38f248a6629f6f240d4fbed32580a0935f5b1dd49635d51452d298216167908a",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m52/N",
@@ -8231,20 +7447,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m53",
-      "target": "site/assets/creatures/m53.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-18b9f479-f9b9-4b62-8c5f-24bab25af895.png",
-      "request": "m53",
-      "width": 768,
-      "height": 768,
-      "sha256": "c05a020fb5ade2bec180a78a603ced73b9f79de0b23237dcc7019d4216fb3c7a",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m53/N",
       "target": "site/assets/directions/m53/N.png",
       "tool": "image_gen",
@@ -8360,20 +7562,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m54",
-      "target": "site/assets/creatures/m54.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-955e0fae-2230-4a4f-b071-4722866c5a05.png",
-      "request": "m54",
-      "width": 512,
-      "height": 512,
-      "sha256": "3a81ff3deb97aac855f5b2170ee15324096f478e2eebc89f1e72d876868010df",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m54/N",
@@ -8493,20 +7681,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m55",
-      "target": "site/assets/creatures/m55.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d515500b-0164-4d97-a90c-be04b80ca5a7.png",
-      "request": "m55",
-      "width": 768,
-      "height": 768,
-      "sha256": "5819ffc6445e81dde26506ac517b5ad7a59c4881db35641eb3d4ae4fa5b7d930",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m55/N",
       "target": "site/assets/directions/m55/N.png",
       "tool": "image_gen",
@@ -8622,20 +7796,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m56",
-      "target": "site/assets/creatures/m56.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-09e07faa-39b0-4085-b964-73669fa7937a.png",
-      "request": "m56",
-      "width": 768,
-      "height": 768,
-      "sha256": "13e9c2c381fb83eec811194e7a45e644353ae46d60f93d5b82860bf15db1b03e",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m56/N",
@@ -8755,20 +7915,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m57",
-      "target": "site/assets/creatures/m57.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-04778ea3-baaf-466f-9a75-ac4a30a1b26f.png",
-      "request": "m57",
-      "width": 768,
-      "height": 768,
-      "sha256": "f8c47bac5cb281cb539ada1880922a1afc11d2c1a105def136bef9ef3ead3213",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m57/N",
       "target": "site/assets/directions/m57/N.png",
       "tool": "image_gen",
@@ -8884,20 +8030,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m58",
-      "target": "site/assets/creatures/m58.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-b9fb4a3b-3a3c-419e-9007-2724ecc6d437.png",
-      "request": "m58",
-      "width": 768,
-      "height": 768,
-      "sha256": "548c6b6e800e192efa5d1117160493ecc96c7a2875cc1035ff11197e058b9ac5",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m58/N",
@@ -9017,20 +8149,6 @@
       "direction": "SW"
     },
     {
-      "id": "creatures/m59",
-      "target": "site/assets/creatures/m59.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0b12da09-1370-436c-b4e3-d62bf3d239f9.png",
-      "request": "m59",
-      "width": 768,
-      "height": 768,
-      "sha256": "72ef5cbfe8bb22a961a75b05bc042dd457dcc4a4dc54462d7ea6a719ed3a621e",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "directions/m59/N",
       "target": "site/assets/directions/m59/N.png",
       "tool": "image_gen",
@@ -9146,20 +8264,6 @@
       "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
       "cellSize": 96,
       "direction": "SW"
-    },
-    {
-      "id": "creatures/m60",
-      "target": "site/assets/creatures/m60.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-babfd09a-cc2a-44f8-aa39-d6976b9bfe24.png",
-      "request": "m60",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "e8cac08f09f47cd8d33b094b7022c72440786ad15b7d50d0750ea9fb934becc8",
-      "processing": "Eight independently generated headings; nearest native pixel-grid extraction without color averaging, shared palette, binary alpha; no mirroring or synthetic rotations",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
     },
     {
       "id": "directions/m60/N",
@@ -9307,48 +8411,6 @@
       "rows": 5
     },
     {
-      "id": "effects",
-      "target": "site/assets/effects.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-73c74cc2-958c-4330-9105-bb7a7a16f965.png",
-      "request": "effects",
-      "width": 1024,
-      "height": 1024,
-      "sha256": "dfd732eed5315ee22d9baf8578cba7b0cb960c98ff7a60effe635950f68df920",
-      "processing": "Native pixel-grid packing, shared palette and binary transparency; artwork originates from image_gen",
-      "cellSize": 128,
-      "cols": 8,
-      "rows": 8
-    },
-    {
-      "id": "effects-32",
-      "target": "site/assets/effects-32.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-73c74cc2-958c-4330-9105-bb7a7a16f965.png",
-      "request": "effects",
-      "width": 512,
-      "height": 512,
-      "sha256": "cf949696ee87eda5dfab61b2e97dd7972252d03ebc179988578919aa515a8ff3",
-      "processing": "Native pixel-grid packing, shared palette and binary transparency; artwork originates from image_gen",
-      "cellSize": 64,
-      "cols": 8,
-      "rows": 8
-    },
-    {
-      "id": "effects-48",
-      "target": "site/assets/effects-48.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-73c74cc2-958c-4330-9105-bb7a7a16f965.png",
-      "request": "effects",
-      "width": 768,
-      "height": 768,
-      "sha256": "ab5af289b6f7d49bfc36e677654d15ad8c4758fb7948db083d46a470b9a87a94",
-      "processing": "Native pixel-grid packing, shared palette and binary transparency; artwork originates from image_gen",
-      "cellSize": 96,
-      "cols": 8,
-      "rows": 8
-    },
-    {
       "id": "interface",
       "target": "site/assets/interface.png",
       "tool": "image_gen",
@@ -9413,6 +8475,1233 @@
       "processing": "Twenty separately generated loot icons; nearest native icon extraction, shared palette, binary alpha"
     },
     {
+      "id": "characters/herbalist",
+      "target": "site/assets/characters/herbalist.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-441533a9-273e-4069-a15a-9e5e5ec4e73c.png",
+      "request": "herbalist",
+      "width": 1536,
+      "height": 768,
+      "sha256": "cd9bc48d6d955c1ae940a0f15693955154e06b0b98f725bff46eaceb283d112f",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0c35d8e2-b5f0-413d-9a7f-bbaed5075653.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m1",
+      "target": "site/assets/creatures/m1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-58bc1089-468f-4d08-80a8-6c4702687084.png",
+      "request": "m1",
+      "width": 1024,
+      "height": 512,
+      "sha256": "12fc1939c418b39bd41dc686382a5ef4288081c5c3a7617804626cf2d7ee9c28",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-c92c9e41-83f3-4661-9b26-6ee6106a9f97.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m10",
+      "target": "site/assets/creatures/m10.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-7ecd6042-7770-4bc9-8a9b-b23e322dc32c.png",
+      "request": "m10",
+      "width": 1536,
+      "height": 768,
+      "sha256": "64d3a339f85ee2adcd71e2a96566699ea2edb089db2a2e311acb42eed3745d43",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-e34c22df-99ea-40ab-b78b-9962c1f3f865.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m11",
+      "target": "site/assets/creatures/m11.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0571b496-345c-4054-86bd-d71e8367d658.png",
+      "request": "m11",
+      "width": 1024,
+      "height": 512,
+      "sha256": "b9a3cd7c416c7ee70debd81c287bd5554f9968e08e5c386155fdd6c7f013a5e2",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-c1e47564-fb81-44d3-8ceb-fd92954d94b2.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m12",
+      "target": "site/assets/creatures/m12.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-1f930408-3611-4853-9f56-05f15c28f4eb.png",
+      "request": "m12",
+      "width": 1024,
+      "height": 512,
+      "sha256": "daf423f9fea85fa5f79c84fd05edf7dede901130cb36d20d6065e65427a7af5e",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-3613b206-6d35-4d36-a547-048f35b68f33.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m13",
+      "target": "site/assets/creatures/m13.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0bdc9fd9-0a22-4424-972a-0691ecc91ded.png",
+      "request": "m13",
+      "width": 1024,
+      "height": 512,
+      "sha256": "8223296c08abe6d636b8b2c5c068886363bfc36a15c3ff72e87d6ef5b7cab08e",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-88df0f9a-bdc6-40a3-b23d-3de58ba27aeb.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m14",
+      "target": "site/assets/creatures/m14.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-605ab4f8-4e35-4201-8836-c2036912ddf1.png",
+      "request": "m14",
+      "width": 1536,
+      "height": 768,
+      "sha256": "090e7ab8cb88e46457e6c53b0f90afda36402893585320a4c9b014334e1070ba",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-6c93d27e-16f8-4cda-9af5-cea76ead9f1f.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m15",
+      "target": "site/assets/creatures/m15.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-e98834a6-78fe-4d16-8323-b7aedb3d924a.png",
+      "request": "m15",
+      "width": 1536,
+      "height": 768,
+      "sha256": "f556982c19b5506a0c1b12be516a6ab15bdc7f9df61399c4018b21b61da46c2b",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-b04b2319-55e2-42a3-9194-7187d2d76638.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m16",
+      "target": "site/assets/creatures/m16.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c2e9332e-6f79-496d-b4ce-f5bf62c485c8.png",
+      "request": "m16",
+      "width": 1024,
+      "height": 512,
+      "sha256": "977473a5e74b758af13edc3b700476a4c5aea1028632ff37669914a2cc489f1a",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0c41785f-3658-4fdd-bf34-da5fa4adb0ef.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m17",
+      "target": "site/assets/creatures/m17.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-36c580b3-e8e6-46d2-a389-8ffcde9597a0.png",
+      "request": "m17",
+      "width": 1024,
+      "height": 512,
+      "sha256": "85ed2927ca802d4053430611de7bfa099e888a4387672872c61e10c3491436bf",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0aa8ebd1-c33d-4dee-91fe-cdf0ceedd2da.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m18",
+      "target": "site/assets/creatures/m18.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d43e9b82-e10a-41cf-b2f6-c1cd4a632b1a.png",
+      "request": "m18",
+      "width": 1024,
+      "height": 512,
+      "sha256": "25266eacaa1d3bde343bfa8195de83db7e370260c380091d9380e91de438bf7f",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-6a9ee1ba-6742-4fa0-a6ad-cba89e224ab3.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m19",
+      "target": "site/assets/creatures/m19.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-28834996-5009-4515-a992-85d1a0ba5f43.png",
+      "request": "m19",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "1b83432975a42b8962f00f2186eba667fb66d09c8e77c5d22575ae4924f08853",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-4ed1e124-f9ec-4ad4-b76f-23bb147b3057.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m2",
+      "target": "site/assets/creatures/m2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6fe614df-8007-4331-a467-eacd01d02080.png",
+      "request": "m2",
+      "width": 1024,
+      "height": 512,
+      "sha256": "719d6b30d112f3bac197e6107dd151a5d8102a1b9fa1f2dc2fd134b20581a7ac",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-b95d454f-d07f-4042-83c5-7d6b34f9665e.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m20",
+      "target": "site/assets/creatures/m20.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4ff274bb-d3a0-4ebf-8720-100d3c34d666.png",
+      "request": "m20",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "31e40b5050249a5967fa9b248934ee204a48d89158cd628fcbfb18ff96f21f27",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-09373fa2-3b50-45c6-b20f-9e57f96131da.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m21",
+      "target": "site/assets/creatures/m21.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-e7ba4142-f24b-4c2f-8cd7-873db98b748e.png",
+      "request": "m21",
+      "width": 1024,
+      "height": 512,
+      "sha256": "2cb64ca71e02c6002dd8617d32870fd4a40b5e594b60b4cd7192ffb3231c15c4",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-f86b3292-b7bd-4fa8-9baa-14731505e635.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m22",
+      "target": "site/assets/creatures/m22.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d1cc601c-28e2-4305-a25a-aac309629e74.png",
+      "request": "m22",
+      "width": 1024,
+      "height": 512,
+      "sha256": "c6b0b3584d42ea6eb459490d528a009d61846a33d26014c57efeb19b820e40d7",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-e55129bb-48a0-4607-a37d-55d954ec8764.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m23",
+      "target": "site/assets/creatures/m23.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-25c271a0-e379-4a0e-83b1-5da9481ea415.png",
+      "request": "m23",
+      "width": 1024,
+      "height": 512,
+      "sha256": "aa2ae486b408f1b10e5d8a98c7384438a0005427612f8e7863b155e64053a1e4",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-cad98ca0-35bc-46fd-a6ec-bd5a298fdebc.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m24",
+      "target": "site/assets/creatures/m24.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-74d8f2ed-87a7-4d2f-b0a8-aef03e8bbe11.png",
+      "request": "m24",
+      "width": 1536,
+      "height": 768,
+      "sha256": "1f457a666841ecbeb0c2adb9ea6ea2fa45685b2edf281c9bb0c7920ec9249d13",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-95a17844-95f7-4f6b-ade0-c55ba3b9b023.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m25",
+      "target": "site/assets/creatures/m25.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-bc3e8a0e-8ec8-40a2-ad16-c843ae9c2596.png",
+      "request": "m25",
+      "width": 1536,
+      "height": 768,
+      "sha256": "1446ab557e765785c8eeadf5a28a296008f61228b20c3f2a0cbd29998c05877f",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-9161699e-5807-487e-8679-87224209e8be.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m26",
+      "target": "site/assets/creatures/m26.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-22d9df7d-ae2b-40a5-b894-0cf58f4c7f41.png",
+      "request": "m26",
+      "width": 1024,
+      "height": 512,
+      "sha256": "a3b5af4eb5243f5a9fdc6a1c3b30e4c330b68b54d87b101424472e8e1d4ce689",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-14bbd257-0d80-4aeb-8b63-70684bd85877.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m27",
+      "target": "site/assets/creatures/m27.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-3f99b500-2e34-46bf-9497-837a76f4206e.png",
+      "request": "m27",
+      "width": 1536,
+      "height": 768,
+      "sha256": "ec3e7b47b33fa10bbe5ab9d944140544e0686f40a5f55efbb378df45a4b99cd2",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-f269a4fd-906d-423a-94c6-c7bf04ff334b.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m28",
+      "target": "site/assets/creatures/m28.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-e8800d15-99ad-497d-b81d-1eda3598847c.png",
+      "request": "m28",
+      "width": 1024,
+      "height": 512,
+      "sha256": "77f18513f9c1024030e1457c8f3b1ddd839b888fbcc44eb6b2f1678575ee4b69",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-c1821260-8765-4b8d-841a-b3b2391b1c3d.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m29",
+      "target": "site/assets/creatures/m29.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0772d7c2-d279-4ec2-af1c-d724e09693bd.png",
+      "request": "m29",
+      "width": 1536,
+      "height": 768,
+      "sha256": "3f420b627df128e609f96a5fbda1b3b91f31250ebf0ab3d00f79208c694ff79a",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-6a298a52-3d88-4f80-97b6-4c12aeba4ef8.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m3",
+      "target": "site/assets/creatures/m3.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ebd68a64-466b-4a5a-a2ce-61b67a601ef1.png",
+      "request": "m3",
+      "width": 1024,
+      "height": 512,
+      "sha256": "aff2fcd3522dcd878eccc4b597cb61dad7f2413c054d537540755215c04decf2",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-78a59d4a-378f-4184-9f0a-b9c86ccbe548.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m30",
+      "target": "site/assets/creatures/m30.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-315af7b1-950e-4c57-8518-39a582a53bad.png",
+      "request": "m30",
+      "width": 1536,
+      "height": 768,
+      "sha256": "cf55d0da254f624b44c0beee373077210e50fc7aada379f1489013f847b67f40",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-92fd8bdf-5a56-44ca-8cd3-d2d17c112150.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m31",
+      "target": "site/assets/creatures/m31.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9620f02e-bc16-44bf-9e02-48276b1963ff.png",
+      "request": "m31",
+      "width": 1024,
+      "height": 512,
+      "sha256": "6f94247f999f23893d0f04574d9b8bab0d2ff06393d145f370f523a37cbf8d1c",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-25107845-3edd-4f57-a614-c8bc0906fceb.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m32",
+      "target": "site/assets/creatures/m32.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6d1481ed-23f9-451d-8940-60627e46648a.png",
+      "request": "m32",
+      "width": 1024,
+      "height": 512,
+      "sha256": "ca54b907d3ddb35dedb6dee753552293787cf65c524dd5a8b24c51568be1ce14",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-48949f96-7a19-4ec0-884b-0903d30c1814.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m33",
+      "target": "site/assets/creatures/m33.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-eb6c6b0f-8195-4005-a9f5-e5100104bca7.png",
+      "request": "m33",
+      "width": 1536,
+      "height": 768,
+      "sha256": "6e5c0acfb6e3f1303cc7ae8681738599222af4c85c9ae04f0a45e930bd6ef0f7",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-9c4ed13c-c075-490a-bc49-6eb8866990a0.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m34",
+      "target": "site/assets/creatures/m34.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-94dd0e00-7683-4929-a7be-3a16f93d1ccd.png",
+      "request": "m34",
+      "width": 1536,
+      "height": 768,
+      "sha256": "e47b41a43a449b24203e3d454ab7fcbb26f1784cd0faca2e033eee74ccc456aa",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d6212639-0191-4e9c-af21-421b7152d16f.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m35",
+      "target": "site/assets/creatures/m35.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-32d30a52-34ec-46eb-b48a-ae5fb717dcc0.png",
+      "request": "m35",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "bffa7756475d7afd6bc868901d52946e82f7db5c56dd682228f7d0cc09396365",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-e01fef24-1a16-46c6-ae8b-261250f2d5e6.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m36",
+      "target": "site/assets/creatures/m36.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b2c60357-b34e-4be3-887d-f01265c914a9.png",
+      "request": "m36",
+      "width": 1024,
+      "height": 512,
+      "sha256": "3b8e96e316d9816012ae73cb234db8f80633f0f145c07106461666f4701b5de3",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-4fffffea-7a8d-4537-bfe3-384312595678.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m37",
+      "target": "site/assets/creatures/m37.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-5103a6ca-e3de-4760-b92f-795c0a8f2537.png",
+      "request": "m37",
+      "width": 1024,
+      "height": 512,
+      "sha256": "5ff18509fbe0d4a6b42ac367105310fa18bd42aee6b12ed6aaade3b789d2cd99",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-171fce03-78f0-4ba2-9e5f-c4f7192ab821.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m38",
+      "target": "site/assets/creatures/m38.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-df293eca-b9fa-46c9-8b3a-aeca714689ac.png",
+      "request": "m38",
+      "width": 1024,
+      "height": 512,
+      "sha256": "a9952d7b4418fdac0f0d85201689f4fe62ef744c3af07fbb4f69b4c01608ba59",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-53278aeb-e08b-4cbc-9e09-40c2c63627d6.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m39",
+      "target": "site/assets/creatures/m39.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d8d23c8e-0df1-4abc-9b97-57f3a7e2dd19.png",
+      "request": "m39",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "09bd4819e9494f99c6c3f1d952a68fb872e950d019624a9382894d1af4fd0897",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-fb2c4832-df5e-4bc3-b295-154099f8de60.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m4",
+      "target": "site/assets/creatures/m4.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-2d5933d5-a812-4c2f-853e-e2da681a49af.png",
+      "request": "m4",
+      "width": 1024,
+      "height": 512,
+      "sha256": "ac99c8e2520d354c7855fceb1529e0d53001f854f547928ad7c68036adb92c0e",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-96fa8b8f-a74f-4c22-9c36-0d0d9df8d36d.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m40",
+      "target": "site/assets/creatures/m40.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b3594549-3a74-48fd-9e0c-b8aa7ac014a1.png",
+      "request": "m40",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "d7298547f56d8aa6490fe701de50696a9a7e973c73c80ac55bdbb30871e4f43c",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-3b024c27-3d59-4857-b32e-33eb08523931.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m41",
+      "target": "site/assets/creatures/m41.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0e94def3-d245-44ea-9fb5-aec162d6d087.png",
+      "request": "m41",
+      "width": 1024,
+      "height": 512,
+      "sha256": "905a2e30587c4d93cd763b0342c5b161a04ae09b0b1d79f669c5be6c47d8b793",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-ff8ec21c-9caa-4d22-8bf0-c41ae4939ee2.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m42",
+      "target": "site/assets/creatures/m42.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-371bbee4-0b30-4324-914c-fca833a119c3.png",
+      "request": "m42",
+      "width": 1024,
+      "height": 512,
+      "sha256": "f9d58155bb3deddd46b5a749fb82532887b332bdb688aea30179bc39e21af77e",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-1b9cc916-f9cf-4ed4-b645-20148313f42d.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m43",
+      "target": "site/assets/creatures/m43.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-183f2ec2-30b2-49c1-9f98-66f208fcd93e.png",
+      "request": "m43",
+      "width": 1024,
+      "height": 512,
+      "sha256": "6134777a50a0bcdd629eb257dd693b3fe50f7a5ec3242f6be8f61710d0d4fabc",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-ac7d0b0f-c246-410b-a8ca-aeca22eccadd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m44",
+      "target": "site/assets/creatures/m44.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9ac3c038-a22f-46bb-b165-6772a9106f11.png",
+      "request": "m44",
+      "width": 1536,
+      "height": 768,
+      "sha256": "d71f401d9f865effd7b13ad436f64cac6906574cd97fd3d8cd211a9c8d71d269",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-6a3e37a0-b9bc-4065-90e8-baa00fa42811.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m45",
+      "target": "site/assets/creatures/m45.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-cea4a86b-1513-495b-b27c-9c0185070251.png",
+      "request": "m45",
+      "width": 1536,
+      "height": 768,
+      "sha256": "a70708a4513014618f4f539dc12c1d709a68d37a2f72f092fb08df68c5cf31d0",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-bfae7f90-cf50-4a56-9bda-51aa8db8c5b8.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m46",
+      "target": "site/assets/creatures/m46.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0b641dba-a221-4f38-b1b5-143ece1ad22e.png",
+      "request": "m46",
+      "width": 1536,
+      "height": 768,
+      "sha256": "3e2da2268dec42e6095e1c3d1aa31c2fbf87f754e2e6294a00381239759b68bd",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-a081da85-0a4a-4ac7-adbc-31e9eb556915.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m47",
+      "target": "site/assets/creatures/m47.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-73e5e072-58a0-47a6-8979-a8e93ebf88f7.png",
+      "request": "m47",
+      "width": 1024,
+      "height": 512,
+      "sha256": "9ce57eb6a4a69344e8fce5f0facc470117b48234d8968edf44e873bf9b3b5633",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-013ce239-c8c0-44dd-8a42-686afcbeb8e9.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m48",
+      "target": "site/assets/creatures/m48.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-8073de5b-6393-4fa7-a699-419b4683fde5.png",
+      "request": "m48",
+      "width": 1536,
+      "height": 768,
+      "sha256": "d97abcf590fa7e59afe6b3339199cf80d23935cadb762138461a038029ceb669",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-09f5cf43-f631-4e32-85c2-8a3010a91d0c.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m49",
+      "target": "site/assets/creatures/m49.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d39b7318-d27f-4932-a8ef-0adb9af34127.png",
+      "request": "m49",
+      "width": 1536,
+      "height": 768,
+      "sha256": "78315197c16ccec7d54189a9d26e54c347e04628a73efee293c72a84863e38dc",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-da2f9aed-060c-47d8-9cc8-5f6daee2452b.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m5",
+      "target": "site/assets/creatures/m5.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-8ea3a080-51d0-4db5-a7eb-09a2fb62c625.png",
+      "request": "m5",
+      "width": 1536,
+      "height": 768,
+      "sha256": "4777021e25103772184c7a4b68290237f69f931b7cc1d38ad59d33ec7f80d13b",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-31441e76-b710-421c-9519-875925578bec.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m50",
+      "target": "site/assets/creatures/m50.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d5090f8c-a049-4e97-b029-858d88ad861c.png",
+      "request": "m50",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "203a0c1d4951417702839e3e39e701611d0e3cca443a3bd1c65228113f816f25",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-2596b4b8-6cbe-409e-9507-5520efc04e7f.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m51",
+      "target": "site/assets/creatures/m51.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-5335eb37-5c61-4726-9adc-ca22914f89fd.png",
+      "request": "m51",
+      "width": 1024,
+      "height": 512,
+      "sha256": "72dca1079f980ee2c8f0bbb45da4dd5b1002f32ef07c86184afebbd3694984ec",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-dc967053-a13d-4308-b3d5-1c0c3cb56db5.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m52",
+      "target": "site/assets/creatures/m52.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d0c7c012-e011-46ac-9cb1-5569ed418263.png",
+      "request": "m52",
+      "width": 1536,
+      "height": 768,
+      "sha256": "7afa30be0f948eb5c144f86a68d2c2887b81d018320d5a4ac510f377ee5bc62d",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d9fde694-5ff9-4d4d-8f4f-5ca56375d8d1.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m53",
+      "target": "site/assets/creatures/m53.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-18b9f479-f9b9-4b62-8c5f-24bab25af895.png",
+      "request": "m53",
+      "width": 1536,
+      "height": 768,
+      "sha256": "70e80047706b2b7451380f423c4f4f26ea851daa33e220fbcd6f8b94bc97e3f6",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d8fd702a-57bd-4574-9fc8-aaa3de4d8adb.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m54",
+      "target": "site/assets/creatures/m54.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-955e0fae-2230-4a4f-b071-4722866c5a05.png",
+      "request": "m54",
+      "width": 1024,
+      "height": 512,
+      "sha256": "f705f8933e91fcfe58ef0dd6274a74d6dfe379d3eedb98ee4d708eafd7518fa7",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-9605cb65-6354-4803-9f14-507ecd02cad7.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m55",
+      "target": "site/assets/creatures/m55.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d515500b-0164-4d97-a90c-be04b80ca5a7.png",
+      "request": "m55",
+      "width": 1536,
+      "height": 768,
+      "sha256": "5ff8815b3967a56cb3c4be5eb93c1d51f944ed2955ee7b5cfc0bdc015e068c97",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d7b1ccef-ba71-4660-93ba-98e5fa82c28d.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m56",
+      "target": "site/assets/creatures/m56.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-09e07faa-39b0-4085-b964-73669fa7937a.png",
+      "request": "m56",
+      "width": 1536,
+      "height": 768,
+      "sha256": "82835362e92e763157ddc3ceec14b9b159bd2db2d5837a6f947e8a21b6c3ca53",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d8a112a-9cac-41a7-8c9c-1f93ac9b2b6e.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m57",
+      "target": "site/assets/creatures/m57.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-04778ea3-baaf-466f-9a75-ac4a30a1b26f.png",
+      "request": "m57",
+      "width": 1536,
+      "height": 768,
+      "sha256": "982a76512dad23154a7eee6f8756531ae6060aa10fcf445e4e1b8fc3aa9e188f",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-20a07bac-433b-4b43-bef9-d1be96d99168.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m58",
+      "target": "site/assets/creatures/m58.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b9fb4a3b-3a3c-419e-9007-2724ecc6d437.png",
+      "request": "m58",
+      "width": 1536,
+      "height": 768,
+      "sha256": "951e4e230a5e6c50b20f4476974a77d468a7ea93fde24c5a80dd2c297672366b",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d8cb4bb9-6b90-4dd7-90ad-2695f69ddf2c.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m59",
+      "target": "site/assets/creatures/m59.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0b12da09-1370-436c-b4e3-d62bf3d239f9.png",
+      "request": "m59",
+      "width": 1536,
+      "height": 768,
+      "sha256": "5bdf10547defa27887109f185629a491e44152f68f1ad8695130e586142c5e01",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0514c6f7-174c-4c37-bc7d-81dea19aab4f.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m6",
+      "target": "site/assets/creatures/m6.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a7eb37ba-0d30-40a8-ab25-a07dd7ce9c07.png",
+      "request": "m6",
+      "width": 1024,
+      "height": 512,
+      "sha256": "b038a888c042a1422365383312fbc38b84ed2c16932bc6fc1651327b7ebb97ed",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-f9e9c3f4-bf5b-4a6e-9479-d756c1ad7abd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m60",
+      "target": "site/assets/creatures/m60.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-babfd09a-cc2a-44f8-aa39-d6976b9bfe24.png",
+      "request": "m60",
+      "width": 2048,
+      "height": 1024,
+      "sha256": "226240fe983d3f64d1f0a3725003d2af146338e7aecd9af4e3c44554bed14c3f",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-34d17e0f-f640-459c-8346-d1fba9922186.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m7",
+      "target": "site/assets/creatures/m7.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-55ff4b3f-cbd5-48f3-981c-740105a6247e.png",
+      "request": "m7",
+      "width": 1024,
+      "height": 512,
+      "sha256": "7920a68b222e292a1b9ac87bee26b16dc5fcdd8847febe1e203ddd24d8ec77d6",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-89913a91-5787-4c37-85af-60744e212dac.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m8",
+      "target": "site/assets/creatures/m8.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-47ddfe09-8b55-4424-97ad-4ddb9dee34dd.png",
+      "request": "m8",
+      "width": 1024,
+      "height": 512,
+      "sha256": "bfdb3f523011d72f8f146e2b68d5e15d30f80663bc6d87e14f8764bc0c160ba6",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-1f52747a-103f-491c-9597-c9ca559b5d86.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "creatures/m9",
+      "target": "site/assets/creatures/m9.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-836c7f24-41f9-41a9-9e8d-30dec623d241.png",
+      "request": "m9",
+      "width": 1536,
+      "height": 768,
+      "sha256": "0af80f7e2e2c20508f865efa5e998560f4d247baa68a9dba33f4c008767f4a48",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-e950659e-4cda-422c-8247-e03839a74e50.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "characters/mage",
+      "target": "site/assets/characters/mage.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-81f385a7-c213-4f7a-a6bf-77da3277caa9.png",
+      "request": "mage",
+      "width": 1536,
+      "height": 768,
+      "sha256": "425f7462bbf25ce5a138907a48e58bd97032ad8d74ba0111f3b1999ba42a8e07",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-91a28faa-82cf-40d7-90ad-64d0fcb58832.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "characters/ranger",
+      "target": "site/assets/characters/ranger.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-26ffaab5-6589-4d09-9bce-3f5181f1ff5c.png",
+      "request": "ranger",
+      "width": 1536,
+      "height": 768,
+      "sha256": "57f2eb72c5c32991c5a23f188292a0a871edc15183a86aa0550e4fce308b76ac",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-d9c1bad2-64b8-49c3-bcee-d964ac2dfba9.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "characters/warden",
+      "target": "site/assets/characters/warden.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-415a4188-95f7-4d63-b81a-6df5894b9c09.png",
+      "request": "warden",
+      "width": 1536,
+      "height": 768,
+      "sha256": "93d0e3b6ee38a4263e95c83fb750fe516f8cc2ea43c1564ea48dec47136c5411",
+      "processing": "Original approved poses interleaved with 64 independently image-generated intermediate poses; aligned native grid, binary alpha, no synthetic interpolation or mirroring",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 8,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0ac603ce-3883-44a8-8d0d-151bd102edfd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "effects-32",
+      "target": "site/assets/effects-32.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4fab59a0-2567-4616-9d27-99535d6a080e.png",
+      "request": "effects",
+      "width": 1024,
+      "height": 576,
+      "sha256": "1d980136d2a804a3264381e9308f077f8b94b894ce8efeb0c9c1149cab30ec63",
+      "processing": "Nine image-generated 16-frame VFX sequences; fixed cell extraction with generous transparent safety gutters, shared palette and binary alpha",
+      "cellSize": 64,
+      "cols": 16,
+      "rows": 9,
+      "additionalSources": [
+        "/workspace/generated_images/exec-2b066b93-b51c-45c7-815f-4baec81dd3ec.png",
+        "/workspace/generated_images/exec-16e56d75-7a91-42db-b67a-e9dfb4be6382.png",
+        "/workspace/generated_images/exec-2c038f2c-bd4d-41ca-a0c1-745c00e56aab.png",
+        "/workspace/generated_images/exec-cbedf9cc-a92b-4771-ad28-71c86d3f873d.png",
+        "/workspace/generated_images/exec-b933d747-4219-4230-a43c-cd30337148e9.png",
+        "/workspace/generated_images/exec-2c9e319d-b90f-4281-9b87-9de09af5f749.png",
+        "/workspace/generated_images/exec-4828ccb1-e0a2-414d-8ad6-8a4f9484c32e.png",
+        "/workspace/generated_images/exec-370b0361-a090-45b0-a76a-e0ae6e9387cd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "effects-48",
+      "target": "site/assets/effects-48.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4fab59a0-2567-4616-9d27-99535d6a080e.png",
+      "request": "effects",
+      "width": 1536,
+      "height": 864,
+      "sha256": "8a047e6e30cb8d79a64f157efdb549ae6638795643c15d14c461dd0179374442",
+      "processing": "Nine image-generated 16-frame VFX sequences; fixed cell extraction with generous transparent safety gutters, shared palette and binary alpha",
+      "cellSize": 96,
+      "cols": 16,
+      "rows": 9,
+      "additionalSources": [
+        "/workspace/generated_images/exec-2b066b93-b51c-45c7-815f-4baec81dd3ec.png",
+        "/workspace/generated_images/exec-16e56d75-7a91-42db-b67a-e9dfb4be6382.png",
+        "/workspace/generated_images/exec-2c038f2c-bd4d-41ca-a0c1-745c00e56aab.png",
+        "/workspace/generated_images/exec-cbedf9cc-a92b-4771-ad28-71c86d3f873d.png",
+        "/workspace/generated_images/exec-b933d747-4219-4230-a43c-cd30337148e9.png",
+        "/workspace/generated_images/exec-2c9e319d-b90f-4281-9b87-9de09af5f749.png",
+        "/workspace/generated_images/exec-4828ccb1-e0a2-414d-8ad6-8a4f9484c32e.png",
+        "/workspace/generated_images/exec-370b0361-a090-45b0-a76a-e0ae6e9387cd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
+      "id": "effects",
+      "target": "site/assets/effects.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4fab59a0-2567-4616-9d27-99535d6a080e.png",
+      "request": "effects",
+      "width": 2048,
+      "height": 1152,
+      "sha256": "24fa6ee2d28eb4eb728bfc8c758f49d94aed273b067190939ad6f46997d7b2c0",
+      "processing": "Nine image-generated 16-frame VFX sequences; fixed cell extraction with generous transparent safety gutters, shared palette and binary alpha",
+      "cellSize": 128,
+      "cols": 16,
+      "rows": 9,
+      "additionalSources": [
+        "/workspace/generated_images/exec-2b066b93-b51c-45c7-815f-4baec81dd3ec.png",
+        "/workspace/generated_images/exec-16e56d75-7a91-42db-b67a-e9dfb4be6382.png",
+        "/workspace/generated_images/exec-2c038f2c-bd4d-41ca-a0c1-745c00e56aab.png",
+        "/workspace/generated_images/exec-cbedf9cc-a92b-4771-ad28-71c86d3f873d.png",
+        "/workspace/generated_images/exec-b933d747-4219-4230-a43c-cd30337148e9.png",
+        "/workspace/generated_images/exec-2c9e319d-b90f-4281-9b87-9de09af5f749.png",
+        "/workspace/generated_images/exec-4828ccb1-e0a2-414d-8ad6-8a4f9484c32e.png",
+        "/workspace/generated_images/exec-370b0361-a090-45b0-a76a-e0ae6e9387cd.png"
+      ],
+      "motionVersion": 2
+    },
+    {
       "id": "world/tiles-village",
       "target": "site/assets/world/tiles-village.png",
       "tool": "image_gen",
@@ -9420,7 +9709,7 @@
       "request": "autotiles-village",
       "width": 896,
       "height": 896,
-      "sha256": "fa367124aac67fb5d5cc3f5cf7d2188def7c3ee4892cd1589ecf83e746fb2f19",
+      "sha256": "3bef5d06c533ca9df4271ae311efa9fc2fba9d80a94ee184947b3437e85c4009",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9435,7 +9724,7 @@
       "request": "autotiles-village",
       "width": 768,
       "height": 438,
-      "sha256": "45adfda34151925a5cafb58ccccc4e9cb8cfdff44c23633504970c074babd92f",
+      "sha256": "cac154bf144a648d8a5655f9fde90bbb16c67450a58159913501f8595f82f5ac",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2352,
       "worldHeight": 1344
@@ -9448,7 +9737,7 @@
       "request": "autotiles-sprout",
       "width": 896,
       "height": 896,
-      "sha256": "6529051921244b9366d0a8aed25741320f8c777cfd867b82cccbcb0fc077371a",
+      "sha256": "692e8172d7e174b8cb5e1bb493b0a7bd5710b85d181712d89f7fadd2ec49b2b9",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9463,7 +9752,7 @@
       "request": "autotiles-sprout",
       "width": 768,
       "height": 256,
-      "sha256": "1c8d94517cf3cdd4d8b51e77bc0d151e618949a747334ca9c37a04ce329aad9e",
+      "sha256": "80f4a672ae109f18dd6b812af6d9f2edab4206764084156575307aba8579a394",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 3360,
       "worldHeight": 1120
@@ -9476,7 +9765,7 @@
       "request": "autotiles-acorn",
       "width": 896,
       "height": 896,
-      "sha256": "7c5b78229640e54792a7bc7d7d3d555f43fda2dd641f7e5298c9ad2061a72827",
+      "sha256": "f9823e2a616c24b444d830f5cbd98a09f905f06699da9977204aa22063ccd2d7",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9491,7 +9780,7 @@
       "request": "autotiles-acorn",
       "width": 460,
       "height": 512,
-      "sha256": "871e6f9d2aa4dfba380a793d737ca8d5da06dc8fc9a2c6a1d16da7584e38fea7",
+      "sha256": "522e88819992d25b4506a34b9a6721b7f533867fbb2ef3941cd80bd060a0946c",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2016,
       "worldHeight": 2240
@@ -9504,7 +9793,7 @@
       "request": "autotiles-brook",
       "width": 896,
       "height": 896,
-      "sha256": "8b3fa1e350a0cb680ac4de234bc5c3582001df25ccb2bf898aeae4d3fee2ae4c",
+      "sha256": "983d01d927a22effbab6129c7499b91fb51df2fbc4d6fed4f389dd36148a5629",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9519,7 +9808,7 @@
       "request": "autotiles-brook",
       "width": 768,
       "height": 414,
-      "sha256": "fe24b0a1fdb60d533093c0940235826f105c913f5afe6c36d070159b4ef36c0c",
+      "sha256": "cc8c3122aaeb4782f899a22300cb3c9534d248e4c2f93c61b0138dc5d01736c4",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2912,
       "worldHeight": 1568
@@ -9532,7 +9821,7 @@
       "request": "autotiles-stump",
       "width": 896,
       "height": 896,
-      "sha256": "3b3b81ae9c3915bdb8bdab4b3df2044553c8ed8d776819d370e1871de0ba4c30",
+      "sha256": "89102baab46d390058c8db34ceabcb2bf6b24be55c1d146793122c740e5649a6",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9547,7 +9836,7 @@
       "request": "autotiles-stump",
       "width": 512,
       "height": 512,
-      "sha256": "6e8a9a17db947a28597eb2b25708908d79ec3a26fd3d3d9430c27e4110aa90cc",
+      "sha256": "2554f77097f74e7ac44578f8be2dca3893bfc33c2b36205cd0c84a7dc1a47619",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2016,
       "worldHeight": 2016
@@ -9560,7 +9849,7 @@
       "request": "autotiles-shelltown",
       "width": 896,
       "height": 896,
-      "sha256": "59a054650fdac66bc7a1d427cbefc9bb23329f63826b72a64839aeb95ce4ff42",
+      "sha256": "415535f1e32692ab6ce538f11fc09ea56de1fbd7400c3fe56fb7d8c1f9c54ff5",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9575,7 +9864,7 @@
       "request": "autotiles-shelltown",
       "width": 768,
       "height": 418,
-      "sha256": "e4193f022d65ea821dd26315748616baa2d87495c8a06ee2ddc72643edd524e2",
+      "sha256": "db1379ca111a122e30a34248165468db301e52656b8c4c95c1856668c3f25443",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2464,
       "worldHeight": 1344
@@ -9588,7 +9877,7 @@
       "request": "autotiles-saltwood",
       "width": 896,
       "height": 896,
-      "sha256": "5140969604d5d29dc101ae0426eafe12e2a0c79583e31f40be4e0f9194d5aedc",
+      "sha256": "49d9c63182476d74e29a13e88f602437f4c1e52f3c2b424333432361c42c0d10",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9603,7 +9892,7 @@
       "request": "autotiles-saltwood",
       "width": 768,
       "height": 330,
-      "sha256": "fc4dc911ec23dc465faf64eca6f449ae69ff11d29869558832f70585fd96df46",
+      "sha256": "54e4cff8df28a5cfa89bc782f0458ff24c4588c91a2770899d4da477affed246",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 3136,
       "worldHeight": 1344
@@ -9616,7 +9905,7 @@
       "request": "autotiles-glassbeach",
       "width": 896,
       "height": 896,
-      "sha256": "1fe0aeab9fbbfb06f22299db14f4298dd34cacfd7edcda6abe47d4ac0c05c77a",
+      "sha256": "3fe8c223bd6de0b3421519f6c203d1d0c935eb26ea2273410828933ff1b235c5",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9631,7 +9920,7 @@
       "request": "autotiles-glassbeach",
       "width": 768,
       "height": 256,
-      "sha256": "46cf7e19192c5dae05a16d731f5b433ecd8d5dbfef75da49ee7b5627201eb0c9",
+      "sha256": "19d17fcaeff43fd5a15c858d1a3723612aa7ea677ea03a3c250e821b60d2b6cf",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 3360,
       "worldHeight": 1120
@@ -9644,7 +9933,7 @@
       "request": "autotiles-tideroot",
       "width": 896,
       "height": 896,
-      "sha256": "6cd358afaf2d81d23b6054ebc29409bb7040c91ed55b8f80c30e07c0024c823c",
+      "sha256": "a5080bc601b84e9e80e97acd62448bba30fe8d80a78a99f5d58924d76ffc41d0",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9659,7 +9948,7 @@
       "request": "autotiles-tideroot",
       "width": 768,
       "height": 480,
-      "sha256": "fe1fdf24f8f34d9f2feb566e366ee831bb43b88078a27c46d3b53435a6b960df",
+      "sha256": "42f3f36cd55f2be8bf3dca08889c1b6fc38b7d452f037c3855c2c37347f81256",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2688,
       "worldHeight": 1680
@@ -9672,7 +9961,7 @@
       "request": "autotiles-seacave",
       "width": 896,
       "height": 896,
-      "sha256": "a584a62dc3b3ff0bce5ff465a3aa32f14a8fe913367415ce11a9e746530d0699",
+      "sha256": "abff3588874a8465e7c1aee9fb50e7fe16dc434340dff5eb39d21808ac7bf20a",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "cols": 4,
       "rows": 4,
@@ -9687,7 +9976,7 @@
       "request": "autotiles-seacave",
       "width": 704,
       "height": 512,
-      "sha256": "6a82854155c22e927e0bf622a9d02aaa638ba9332e58ac2070cee408281d19e1",
+      "sha256": "6f59f8168fd66fa73aeb576426686e5e79de992c13d164b629933aaa0398a104",
       "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
       "worldWidth": 2464,
       "worldHeight": 1792
