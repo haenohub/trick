@@ -41,7 +41,9 @@ with sync_playwright() as pw:
  p.wait_for_function('__leaftale.snapshot().drops.length>=4')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space')
  p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===1');assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
- p.keyboard.press('Space');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
+ # This checks separate taps; the independent rate tests cover the exact
+ # 200ms boundary. A frame can award loot just before the key timer expires.
+ p.wait_for_timeout(220);p.keyboard.press('Space');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
  before=p.evaluate('__leaftale.snapshot().player.inventory.salve');p.keyboard.press('t');assert p.evaluate('__leaftale.snapshot().player.inventory.salve')==before-1
  p.keyboard.press('k');p.locator('[data-catalogue=items]').click();assert p.locator('.item-entry').count()==102;p.keyboard.press('k')
  print('PASS: keyboard-shaped settings, conflict rejection, persisted remapping, QWER labels, Q skill, one pickup per Space press, T potion and in-game item guide')
