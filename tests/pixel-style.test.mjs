@@ -21,12 +21,16 @@ test("all assets originate from generated artwork with clean transparent native 
   const locomotion = JSON.parse(
     await readFile("art/locomotion-sources.json", "utf8"),
   );
+  const equipment = JSON.parse(
+    await readFile("art/equipment-generation-receipts.json", "utf8"),
+  );
   const sources = new Set(
     [
       ...previous,
       ...repaint.sources,
       ...motion.sources,
       ...locomotion.sources,
+      ...equipment.sources.map((s) => ({ source: s.path })),
     ].flatMap((s) => [s.source, ...(s.deathSource ? [s.deathSource] : [])]),
   );
   for (const actor of repaint.sources.filter((a) =>

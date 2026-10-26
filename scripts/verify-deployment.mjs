@@ -61,6 +61,13 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "assets/locomotion/guide-idle.png",
       "assets/locomotion/m1-walk.png",
       "assets/locomotion/m16-idle.png",
+      "assets/locomotion/m60-walk.png",
+      "assets/locomotion/m60-idle.png",
+      "assets/appearance/base/warden.png",
+      "assets/appearance/gear/warden-spear2.png",
+      "assets/appearance/gear/mage-staff1.png",
+      "assets/appearance/gear/ranger-hawkweapon.png",
+      "assets/appearance/gear/herbalist-venomweapon.png",
       "assets/directions/warden/N.png",
       "assets/maps/seacave.png",
     ]) {

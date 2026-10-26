@@ -158,8 +158,15 @@ test("native pixel assets have the required grids, shared palette and binary alp
   assert.equal(art.version, 10);
   assert.equal(art.provenance, "image_gen");
   assert.equal(art.pixelScale, 1);
-  assert.equal(art.files.length, 102 + art.locomotion.actors * 2);
-  assert.equal(records.assets.length, 738 + art.locomotion.actors * 2);
+  const appearanceFiles = art.files.filter((f) => f.startsWith("appearance/"));
+  assert.equal(
+    art.files.length,
+    102 + art.locomotion.actors * 2 + appearanceFiles.length,
+  );
+  assert.equal(
+    records.assets.length,
+    738 + art.locomotion.actors * 2 + appearanceFiles.length,
+  );
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
     nativeUnit: 1,

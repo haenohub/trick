@@ -80,12 +80,9 @@ const plan = {
   ...previous,
   version: 1,
   tool: "image_gen",
-  status: "blocked-usage-limit",
-  blocker: {
-    type: "usage_limit_reached",
-    resetAt: "2026-10-26T02:40:29.000Z",
-    clientResetAt: "2026-10-26T11:40:29+09:00",
-  },
+  status: jobs.every((j) => sources.some((s) => s.id === j.id))
+    ? "complete"
+    : "generating",
   directionOrder: art.directionOrder,
   layout: { size: 96, cols: 32, rows: 8, animations },
   integration:
@@ -93,6 +90,7 @@ const plan = {
   sources,
   pending: jobs.filter((j) => !sources.some((s) => s.id === j.id)),
 };
+delete plan.blocker;
 await writeFile(file, JSON.stringify(plan, null, 2) + "\n");
 console.log(
   plan.pending.length +

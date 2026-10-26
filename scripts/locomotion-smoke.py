@@ -22,7 +22,7 @@ with sync_playwright() as pw:
   }
   return {actors:actors.length,calls:calls.length,files:new Set(calls.map(c=>c.file)).size};
  }''')
- assert result['actors']==28 and result['calls']==28*2*8*3 and result['files']==56,result
+ assert result['actors']==72 and result['calls']==72*2*8*3 and result['files']==144,result
  p.goto(BASE+'directions.html');p.wait_for_function("document.querySelector('#status').textContent.startsWith('8방향')")
  actors=p.evaluate('DATA.actors.map(a=>({id:a.id,kind:a.kind,ready:!!a.layout.clips?.idle}))')
  for actor in actors:
@@ -37,5 +37,5 @@ with sync_playwright() as pw:
    else:assert '준비 중' in p.locator('#status').inner_text()
  p.screenshot(path='/tmp/leaftale-locomotion-atelier.png')
  assert not errors,errors
- print('PASS: 28 completed actors × 8 headings × walk/idle use 56 new atlases; 1344 draw calls in bounds; all 72 atelier actors work and 44 unfinished actors are visibly marked')
+ print('PASS: all 72 actors × 8 headings × walk/idle use 144 new atlases; 3456 draw calls in bounds; all atelier actors use finished motion')
  b.close()

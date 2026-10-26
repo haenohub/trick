@@ -20,7 +20,9 @@ test("the entire authored asset set has twice the native density without changin
   );
   assert.equal(
     after.assets.length,
-    before.assets.length + art.locomotion.actors * 2,
+    before.assets.length +
+      art.locomotion.actors * 2 +
+      art.files.filter((f) => f.startsWith("appearance/")).length,
   );
   for (const previous of before.assets) {
     const current = after.assets.find((a) => a.id === previous.id);

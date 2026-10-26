@@ -1,7 +1,7 @@
 // Locate the authored grid by transparent gutters. Unlike global connected
 // components, this keeps separate poses when a stray edge pixel touches the
 // neighboring sprite. No pixels are invented or poses substituted.
-export function directionalRects(source, count = 8) {
+export function directionalRects(source, count = 8, rowCount = count) {
   const alpha = 220;
   const cuts = (axis) => {
     const length = axis === "x" ? source.width : source.height;
@@ -10,9 +10,10 @@ export function directionalRects(source, count = 8) {
       for (let x = 0; x < source.width; x++)
         if (source.data[(y * source.width + x) * 4 + 3] >= alpha)
           histogram[axis === "x" ? x : y]++;
-    const pitch = length / count,
+    const divisions = axis === "x" ? count : rowCount;
+    const pitch = length / divisions,
       result = [0];
-    for (let i = 1; i < count; i++) {
+    for (let i = 1; i < divisions; i++) {
       const nominal = i * pitch;
       let best = Math.round(nominal),
         score = Infinity;
@@ -35,7 +36,7 @@ export function directionalRects(source, count = 8) {
   };
   const xs = cuts("x"),
     ys = cuts("y");
-  return Array.from({ length: count }, (_, row) =>
+  return Array.from({ length: rowCount }, (_, row) =>
     Array.from({ length: count }, (_, col) => {
       const x0 = xs[col],
         x1 = xs[col + 1],

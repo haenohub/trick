@@ -2,7 +2,6 @@ import { animationFrame, LocomotionClocks } from "./animation.js";
 import {
   equippedAppearance,
   orderedEquipmentLayers,
-  starterEquipment,
 } from "./equipment-appearance.js";
 import {
   project,
@@ -17,11 +16,15 @@ import { imageToWorld, worldToImage } from "./art-layout.js";
 import { direction, SOUTH } from "./directions.js";
 import { NAVIGATION, TILE, WORLD_ZOOM } from "./world-layout.js";
 const IMAGES = new Map();
+const REQUESTS = new Map();
+const PREVIEWS = new WeakMap();
 let ART = null;
 const REVISION =
   document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
 function load(file) {
-  return new Promise((resolve, reject) => {
+  if (IMAGES.has(file)) return Promise.resolve();
+  if (REQUESTS.has(file)) return REQUESTS.get(file);
+  const request = new Promise((resolve, reject) => {
     const image = new Image();
     image.onload = () => {
       IMAGES.set(file, image);
@@ -31,18 +34,35 @@ function load(file) {
       reject(new Error(`필수 아트를 불러오지 못했습니다: ${file}`));
     image.src = `./assets/${file}.png?v=${REVISION}`;
   });
+  REQUESTS.set(file, request);
+  return request;
 }
 export async function loadArt(progress = () => {}) {
   const response = await fetch("./assets/manifest.json", { cache: "no-store" });
   if (!response.ok) throw new Error("Art manifest unavailable");
   ART = await response.json();
   let done = 0;
+  const initial = ART.files.filter((file) => !file.startsWith("appearance/"));
   await Promise.all(
-    ART.files.map(async (file) => {
+    initial.map(async (file) => {
       await load(file);
-      progress(++done / ART.files.length);
+      progress(++done / initial.length);
     }),
   );
+}
+export async function prepareEquipmentArt(classId, equipment) {
+  const appearance = equippedAppearance(ART, classId, equipment);
+  if (!appearance) return null;
+  await Promise.all(appearance.layers.map((layer) => load(layer.file)));
+  return appearance;
+}
+function readyAppearance(classId, equipment) {
+  const appearance = equippedAppearance(ART, classId, equipment);
+  if (!appearance) return null;
+  if (appearance.layers.every((layer) => IMAGES.has(layer.file)))
+    return appearance;
+  prepareEquipmentArt(classId, equipment).catch(() => {});
+  return null;
 }
 // Native assets use equal, integer pixel cells.
 function sourceRect(file, cols, rows, col, row) {
@@ -81,11 +101,16 @@ export function drawCharacterPreview(
   face = false,
   equipment = null,
 ) {
-  const appearance = equippedAppearance(
-    ART,
-    id,
-    equipment || starterEquipment(id),
-  );
+  const signature = id + ":" + JSON.stringify(equipment);
+  PREVIEWS.set(canvas, signature);
+  const appearance = equipment ? readyAppearance(id, equipment) : null;
+  if (equipment && !appearance && equippedAppearance(ART, id, equipment))
+    prepareEquipmentArt(id, equipment)
+      .then(() => {
+        if (PREVIEWS.get(canvas) === signature)
+          drawCharacterPreview(canvas, id, face, equipment);
+      })
+      .catch(() => {});
   if (appearance) {
     const l = appearance.layout,
       c = canvas.getContext("2d"),
@@ -406,7 +431,7 @@ export class Renderer {
         ? ART.npcLayouts[name.slice(4)]
         : ART.characterLayouts[name];
     if (!originalLayout) return;
-    const appearance = equippedAppearance(ART, name, equipment);
+    const appearance = readyAppearance(name, equipment);
     const layout = appearance?.layout || originalLayout;
     const clip = layout.clips?.[anim];
     const file = clip?.file || layout.file || "characters/" + name,
