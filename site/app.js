@@ -1,5 +1,13 @@
 import { NAVIGATION } from "./world-layout.js";
 import { PickupHold } from "./pickup-hold.js";
+import {
+  ATTRIBUTE_NAMES,
+  STAT_NAMES,
+  attributes,
+  canEquip,
+  equipRequirements,
+  statValue,
+} from "./progression.js";
 import { speciesForMap, mapsForSpecies } from "./ecology.js";
 import {
   CONTROL_ACTIONS,
@@ -182,7 +190,7 @@ function codexItemCard(item) {
   const sources = MONSTERS.filter((m) =>
     m.drops.some((d) => d.item === item.id),
   );
-  return `<article class="content-card item-entry"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${item.attack || item.defense ? `<p>공격 +${item.attack || 0} · 방어 +${item.defense || 0}</p>` : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
+  return `<article class="content-card item-entry"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${equipmentStats(item)}${state?.player ? equipmentRequirements(item, state.player) : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
     item.recipe
       ? `<p>제작 재료: ${Object.entries(item.recipe)
           .map(([id, n]) => ITEMS[id].name + " ×" + n)
@@ -576,15 +584,63 @@ function closePanel() {
   )
     previousPanelFocus.focus();
 }
+function equipmentStats(i) {
+  if (!i.slot) return "";
+  return (
+    '<div class="item-stat-grid">' +
+    Object.entries(STAT_NAMES)
+      .filter(([key]) => i[key])
+      .map(
+        ([key, label]) =>
+          `<span>${label} <b>${statValue(key, i[key], true)}</b></span>`,
+      )
+      .join("") +
+    "</div>"
+  );
+}
+function equipmentRequirements(i, p) {
+  if (!i.slot) return "";
+  const name = (v) =>
+    CLASSES.find((c) => c.id === v)?.name ||
+    CLASSES.flatMap((c) => c.branches).find((b) => b.id === v)?.name ||
+    v ||
+    "미전직";
+  return (
+    '<div class="equipment-requirements"><strong>장착 조건 · 기본 성장 스탯 기준</strong>' +
+    equipRequirements(p, i)
+      .map(
+        (c) =>
+          `<span class="${c.met ? "met" : "missing"}">${c.label} ${name(c.required)} <small>(현재 ${name(c.current)})</small></span>`,
+      )
+      .join("") +
+    "</div>"
+  );
+}
+function playerStats(p) {
+  const next = attributes({ ...p, level: p.level + 1 });
+  return (
+    '<section data-player-stats><h3 class="panel-section">레벨 성장 능력치</h3><p class="panel-intro">레벨이 오를 때 직업에 맞게 자동 성장합니다. 장착 조건은 장비 보너스를 제외한 이 수치로 검사합니다.</p><div class="player-stat-grid">' +
+    Object.entries(ATTRIBUTE_NAMES)
+      .map(
+        ([key, label]) =>
+          `<div><span>${label}</span><b data-attribute="${key}">${p.stats.attributes[key]}</b><small>레벨당 +${next[key] - p.stats.attributes[key]}</small></div>`,
+      )
+      .join("") +
+    '</div><h3 class="panel-section">장비를 포함한 전투 능력치</h3><div class="player-stat-grid">' +
+    Object.entries(STAT_NAMES)
+      .map(
+        ([key, label]) =>
+          `<div><span>${label}</span><b data-stat="${key}">${statValue(key, p.stats[key])}</b></div>`,
+      )
+      .join("") +
+    "</div></section>"
+  );
+}
 function itemCard(i, p) {
   const n = p.inventory[i.id] || 0,
     equipped = Object.values(p.equipment).includes(i.id),
-    usable =
-      i.slot &&
-      (!i.classId || i.classId === p.classId) &&
-      i.level <= p.level &&
-      (!i.branch || i.branch === p.branch);
-  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${i.attack || i.defense ? `<div class="item-stats">${i.attack ? "공격 +" + i.attack : ""} ${i.defense ? "방어 +" + i.defense : ""}</div>` : ""}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} 리프</button>` : ""}</div></article>`;
+    usable = canEquip(p, i);
+  return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${equipmentStats(i)}${equipmentRequirements(i, p)}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} 리프</button>` : ""}</div></article>`;
 }
 function tabs(names) {
   return `<div class="tabs">${names.map(([id, label]) => `<button data-filter="${id}" class="${filter === id ? "active" : ""}">${label}</button>`).join("")}</div>`;
@@ -782,7 +838,7 @@ function renderPanel() {
           .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -1287,7 +1343,9 @@ window.addEventListener("keydown", (e) => {
       pickupHold.press(e.code, performance.now()) &&
       pickupHold.take(
         performance.now(),
-        state.drops.some((d) => d.pickupEnds > state.time),
+        state.drops.some(
+          (d) => d.owner === state.player.id && d.pickupEnds > state.time,
+        ),
       )
     )
       if (!send({ type: "pickupNearest" }, true))
@@ -1385,7 +1443,9 @@ function frame(now) {
     else if (
       pickupHold.take(
         now,
-        state.drops.some((d) => d.pickupEnds > state.time),
+        state.drops.some(
+          (d) => d.owner === state.player.id && d.pickupEnds > state.time,
+        ),
       )
     )
       send({ type: "pickupNearest" }, true);
@@ -1432,7 +1492,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.17.0",
+  version: "0.18.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

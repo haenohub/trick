@@ -16,7 +16,7 @@ function encounter(classId = "warden") {
   });
   const w = new World({ seed: 5 }),
     p = w.addPlayer(raw);
-  w.rng = () => 0.99;
+  w.rng = () => 0.5;
   for (const m of w.map(p.map).mobs) {
     m.hp = 0;
     m.respawn = Infinity;

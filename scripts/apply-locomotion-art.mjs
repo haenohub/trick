@@ -179,7 +179,7 @@ for (const [key, a] of packed) {
     rows: 8,
     size: a.size,
     frames: [0, 1, 2, 3, 4, 5, 6, 7],
-    duration: a.kind === "walk" ? 0.64 : 0.72,
+    duration: a.kind === "walk" ? 1.28 : 0.72,
     loop: true,
   };
   a.layout.locomotionVersion = 3;

@@ -47,10 +47,18 @@ export function equippedAppearance(art, classId, equipment) {
       !definition?.layers?.length
     )
       return null;
-    for (const layer of definition.layers) {
+    const held = slot === "weapon" ? art.appearance.weapons?.[id] : null;
+    const itemLayers = held
+      ? [{ ...held, held: true, order: 50 }]
+      : definition.layers;
+    for (const layer of itemLayers) {
       if (!available.has(layer.file)) return null;
       layers.push({ ...layer, slot, item: id });
     }
+  }
+  if (base.handFile) {
+    if (!available.has(base.handFile)) return null;
+    layers.push({ file: base.handFile, order: 60, hands: true });
   }
   return {
     layout: base,

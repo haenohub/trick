@@ -32,7 +32,13 @@ for (const name of ["index.html", "bestiary.html", "directions.html"]) {
     )
     .replaceAll('href="./bestiary.html"', `href="./bestiary.html?v=${VERSION}"`)
     .replaceAll('href="./"', `href="./?v=${VERSION}"`);
-  await writeFile(file, page);
+  await writeFile(
+    file,
+    page.replaceAll(
+      'import("./avatar-draw.js")',
+      `import("./avatar-draw.js?v=${revision}")`,
+    ),
+  );
 }
 for (const name of [
   "app.js",
@@ -49,6 +55,8 @@ for (const name of [
   "audio.js",
   "controls.js",
   "animation.js",
+  "avatar-draw.js",
+  "progression.js",
   "view-projection.js",
   "pickup-hold.js",
   "equipment-appearance.js",

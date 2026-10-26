@@ -30,6 +30,8 @@ test("all assets originate from generated artwork with clean transparent native 
       ...repaint.sources,
       ...motion.sources,
       ...locomotion.sources,
+      ...JSON.parse(await readFile("art/combat-cycles.json","utf8")).sources,
+      ...JSON.parse(await readFile("art/held-weapons.json","utf8")).sources,
       ...equipment.sources.map((s) => ({ source: s.path })),
     ].flatMap((s) => [s.source, ...(s.deathSource ? [s.deathSource] : [])]),
   );

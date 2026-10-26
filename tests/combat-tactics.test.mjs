@@ -21,7 +21,7 @@ function setup(cls = "warden", map = "sprout") {
   raw.hp = stats(raw).maxHp;
   const w = new World({ seed: 9 }),
     p = w.addPlayer(raw);
-  w.rng = () => 0.99;
+  w.rng = () => 0.5;
   for (const m of w.map(map).mobs) {
     m.hp = 0;
     m.respawn = Infinity;
@@ -102,7 +102,7 @@ test("mage builds three seeds through attacks and spends them on a stronger wide
   const def = MONSTERS.find((d) => d.id === m.def);
   assert.equal(
     before - m.hp,
-    Math.round(stats(p).attack * 3.45 - def.defense * 0.4),
+    Math.round(stats(p).magicPower * 3.45 - Math.round(def.defense*.75+def.level*.15) * 0.4),
   );
   assert.ok(w.effects.some((e) => e.kind === "magic" && e.radius > 3));
 });

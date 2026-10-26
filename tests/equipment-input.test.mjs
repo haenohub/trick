@@ -14,7 +14,7 @@ test("held pickup fires once per flight, does not burst after a pause, and relea
   assert.equal(h.take(0), false);
   assert.ok(h.press("Space", 0));
   assert.ok(h.take(0));
-  assert.equal(h.take(PICKUP_DURATION * 1000), false);
+  assert.equal(h.take(PICKUP_DURATION * 1000 - 1), false);
   assert.equal(h.press("Space", 100), false);
   assert.equal(h.take(900, true), false);
   assert.ok(h.take(950));
@@ -23,8 +23,8 @@ test("held pickup fires once per flight, does not burst after a pause, and relea
   assert.equal(h.code, "Space");
   h.release("Space");
   assert.equal(h.take(99999), false);
-  assert.ok(h.press("KeyV", 1000));
-  assert.ok(h.take(1000));
+  assert.ok(h.press("KeyV", 1200));
+  assert.ok(h.take(1200));
   assert.ok(h.take(99999));
   assert.equal(h.take(99999), false);
   h.cancel();

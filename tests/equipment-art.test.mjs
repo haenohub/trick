@@ -31,17 +31,29 @@ test("all thirty equipment items have real fitted layers for every eligible clas
       const equipped = { ...starter, [item.slot]: item.id },
         a = equippedAppearance(art, cls.id, equipped);
       assert.ok(a, cls.id + " " + item.id + " must not fall back");
-      assert.equal(a.layers.length, 6);
+      assert.equal(a.layers.length, 7);
       const layer = a.layers.find((l) => l.item === item.id);
-      assert.ok(layer.file.startsWith("appearance/gear/"));
-      allFiles.add(layer.file);
+      assert.ok(layer.file.startsWith("appearance/gear/") || layer.held);
+      allFiles.add(layer.file + (layer.held ? ":" + layer.index : ""));
       const record = records.assets.find((r) => r.id === layer.file),
         receipt = receipts.sources.find((s) => s.id === cls.id + "-" + item.id);
       assert.equal(record.tool, "image_gen");
-      assert.equal(record.source, receipt.path);
-      assert.equal(record.item, item.id);
-      assert.equal(record.classId, cls.id);
-      gearSources.add(record.source);
+      if (layer.held) {
+        assert.equal(layer.index, art.appearance.weapons[item.id].index);
+        const plan = await json("art/held-weapons.json");
+        assert.equal(plan.sources.length, 8);
+        for (const direction of plan.sources)
+          assert.ok(
+            direction.weapons.some(
+              (w) => w.id === item.id && w.index === layer.index,
+            ),
+          );
+      } else {
+        assert.equal(record.source, receipt.path);
+        assert.equal(record.item, item.id);
+        assert.equal(record.classId, cls.id);
+      }
+      gearSources.add(receipt.path);
       for (const other of a.layers.filter(
         (l) => l.slot && l.slot !== item.slot,
       ))
@@ -61,7 +73,9 @@ test("all thirty equipment items have real fitted layers for every eligible clas
 });
 test("paper-doll sheets keep all 256 poses on native 96px cells with clean four-pixel margins", async () => {
   const art = await json("site/assets/manifest.json");
-  for (const file of art.files.filter((f) => f.startsWith("appearance/"))) {
+  for (const file of art.files.filter(
+    (f) => f.startsWith("appearance/") && f !== "appearance/held-weapons",
+  )) {
     const { width, height, pixels } = rgbaPixels(
       await readFile("site/assets/" + file + ".png"),
     );
@@ -78,7 +92,8 @@ test("paper-doll sheets keep all 256 poses on native 96px cells with clean four-
               assert.equal(alpha, 0, file + " frame bleed " + row + ":" + col);
             if (alpha) ink++;
           }
-        assert.ok(ink > 0, file + " empty pose " + row + ":" + col);
+        if (!file.startsWith("appearance/hands/"))
+          assert.ok(ink > 0, file + " empty pose " + row + ":" + col);
       }
     if (file.startsWith("appearance/base/"))
       for (let row = 0; row < 8; row++)

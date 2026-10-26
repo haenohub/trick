@@ -24,16 +24,16 @@ with sync_playwright() as pw:
  }''')
  assert result['actors']==72 and result['calls']==72*2*8*3 and result['files']==144,result
  p.goto(BASE+'directions.html');p.wait_for_function("document.querySelector('#status').textContent.startsWith('8방향')")
- actors=p.evaluate('DATA.actors.map(a=>({id:a.id,kind:a.kind,ready:!!a.layout.clips?.idle}))')
+ actors=p.evaluate('DATA.actors.map(a=>({id:a.id,kind:a.kind,ready:!!a.layout.clips?.idle,clips:a.layout.clips}))')
  for actor in actors:
   p.evaluate('(id)=>choose(DATA.actors.find(a=>a.id===id))',actor['id'])
   p.wait_for_function("sheet !== null && document.querySelector('#status').textContent.startsWith('8방향')")
   for anim in ['idle','walk']:
    p.locator('#animation').select_option(anim);frames=[]
    for i in range(4):
-    p.wait_for_timeout(100);frames.append(p.locator('#hero').evaluate('(c)=>c.toDataURL()'))
+    p.wait_for_timeout(200 if anim=='walk' else 100);frames.append(p.locator('#hero').evaluate('(c)=>c.toDataURL()'))
    assert len(set(frames))>=(3 if actor['ready'] or anim=='walk' else 1),(actor,anim)
-   if actor['ready']:assert ('/locomotion/'+actor['id']+'-'+anim+'.png') in p.locator('#atlas-download').get_attribute('href')
+   if actor['ready']:assert ('/'+actor['clips'][anim]['file']+'.png') in p.locator('#atlas-download').get_attribute('href')
    else:assert '준비 중' in p.locator('#status').inner_text()
  p.screenshot(path='/tmp/leaftale-locomotion-atelier.png')
  assert not errors,errors

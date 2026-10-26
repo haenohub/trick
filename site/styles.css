@@ -2856,3 +2856,12 @@ body.in-game .player-info .pocket-leaf {
   margin-top: 3px;
   font-size: calc(8px + var(--font-increase));
 }
+
+/* Equipment and automatic level growth use the existing readable UI font. */
+.item-stat-grid,.player-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;margin:12px 0}
+.item-stat-grid span,.equipment-requirements span{display:block;overflow-wrap:anywhere}
+.equipment-requirements{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:9px;margin-top:9px}
+.equipment-requirements strong{display:block}.equipment-requirements .met{color:#c7e8ae}
+.player-stat-grid>div{display:grid;gap:4px;background:#122f3b80;border:1px solid #b6c8d34a;padding:10px}
+.player-stat-grid b{color:#ffe7ad}.player-stat-grid small{color:#b8c8c3}
+@media(min-width:760px){.player-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

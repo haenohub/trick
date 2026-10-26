@@ -1,5 +1,6 @@
 import { mapsForSpecies } from "../site/ecology.js";
 import { createPlayer } from "../site/core.js";
+import { STAT_NAMES, ATTRIBUTE_NAMES, statValue } from "../site/progression.js";
 import { CHESTS } from "../site/exploration.js";
 import { xpReward, dropChance, TEST_BALANCE } from "../site/balance.js";
 import { readFile, writeFile } from "node:fs/promises";
@@ -81,6 +82,15 @@ export async function buildBestiary() {
   };
   const items = Object.values(ITEMS).map((item, index) => ({
     ...item,
+    statLines: Object.entries(STAT_NAMES)
+      .filter(([key]) => item[key])
+      .map(([key, label]) => ({
+        label,
+        value: statValue(key, item[key], true),
+      })),
+    requirementLines: Object.entries(item.requirements || {}).map(
+      ([key, value]) => ({ label: ATTRIBUTE_NAMES[key], value }),
+    ),
     index,
     image: iconFor(item.id),
     typeName: itemTypes[item.type],

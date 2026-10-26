@@ -1,0 +1,744 @@
+{
+  "version": 1,
+  "tool": "image_gen",
+  "status": "complete",
+  "sources": [
+    {
+      "id": "held-E",
+      "direction": "E",
+      "directionRow": 2,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in RIGHT profile view, as if held by a character facing E. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to RIGHT profile view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: RIGHT profile view.",
+      "source": "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png"
+    },
+    {
+      "id": "held-N",
+      "direction": "N",
+      "directionRow": 0,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in BACK view, viewer sees the rear of each object, as if held by a character facing N. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to BACK view, viewer sees the rear of each object. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: BACK view, viewer sees the rear of each object.",
+      "source": "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png"
+    },
+    {
+      "id": "held-NE",
+      "direction": "NE",
+      "directionRow": 1,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in BACK-RIGHT three-quarter view, as if held by a character facing NE. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to BACK-RIGHT three-quarter view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: BACK-RIGHT three-quarter view.",
+      "source": "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png"
+    },
+    {
+      "id": "held-NW",
+      "direction": "NW",
+      "directionRow": 7,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in BACK-LEFT three-quarter view, as if held by a character facing NW. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to BACK-LEFT three-quarter view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: BACK-LEFT three-quarter view.",
+      "source": "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png"
+    },
+    {
+      "id": "held-S",
+      "direction": "S",
+      "directionRow": 4,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in FRONT view toward viewer, as if held by a character facing S. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to FRONT view toward viewer. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: FRONT view toward viewer.",
+      "source": "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png"
+    },
+    {
+      "id": "held-SE",
+      "direction": "SE",
+      "directionRow": 3,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in FRONT-RIGHT three-quarter view, as if held by a character facing SE. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to FRONT-RIGHT three-quarter view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: FRONT-RIGHT three-quarter view.",
+      "source": "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png"
+    },
+    {
+      "id": "held-SW",
+      "direction": "SW",
+      "directionRow": 5,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in FRONT-LEFT three-quarter view, as if held by a character facing SW. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to FRONT-LEFT three-quarter view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: FRONT-LEFT three-quarter view.",
+      "source": "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png"
+    },
+    {
+      "id": "held-W",
+      "direction": "W",
+      "directionRow": 6,
+      "reference": "/tmp/leaftale-held-weapons/items.png",
+      "cols": 4,
+      "rows": 4,
+      "weapons": [
+        {
+          "id": "spear1",
+          "index": 0,
+          "weapon": "spear"
+        },
+        {
+          "id": "spear2",
+          "index": 1,
+          "weapon": "spear"
+        },
+        {
+          "id": "antlerweapon",
+          "index": 2,
+          "weapon": "spear"
+        },
+        {
+          "id": "thornweapon",
+          "index": 3,
+          "weapon": "spear"
+        },
+        {
+          "id": "staff1",
+          "index": 4,
+          "weapon": "staff"
+        },
+        {
+          "id": "staff2",
+          "index": 5,
+          "weapon": "staff"
+        },
+        {
+          "id": "moonweapon",
+          "index": 6,
+          "weapon": "staff"
+        },
+        {
+          "id": "bloomweapon",
+          "index": 7,
+          "weapon": "staff"
+        },
+        {
+          "id": "bow1",
+          "index": 8,
+          "weapon": "bow"
+        },
+        {
+          "id": "bow2",
+          "index": 9,
+          "weapon": "bow"
+        },
+        {
+          "id": "hawkweapon",
+          "index": 10,
+          "weapon": "bow"
+        },
+        {
+          "id": "mistweapon",
+          "index": 11,
+          "weapon": "bow"
+        },
+        {
+          "id": "wand1",
+          "index": 12,
+          "weapon": "wand"
+        },
+        {
+          "id": "wand2",
+          "index": 13,
+          "weapon": "wand"
+        },
+        {
+          "id": "flowerweapon",
+          "index": 14,
+          "weapon": "wand"
+        },
+        {
+          "id": "venomweapon",
+          "index": 15,
+          "weapon": "wand"
+        }
+      ],
+      "prompt": "Production forest fantasy RPG EQUIPMENT ONLY sprite atlas. Reference contains sixteen distinct items in4columns x4rows. Preserve every corresponding item's exact shape, ornamentation, material and palette. Generate EXACTLY4columns x4rows: row1 four spears, row2 four magical staffs, row3 four bows, row4 four small herbal wands, SAME order as reference. EVERY one of the16 objects is seen in LEFT profile view, as if held by a character facing W. Keep ALL spear/staff/wand tips pointing UP in this neutral grip pose; bow held upright, string and sculpted leaf/feather perspective appropriate to LEFT profile view. No people, no hands, no character bodies, NO text or shadows. Each128px cell has8px transparent margins. Right-hand GRIP point of each handle is at(64,88) within the cell; for bows this is the CENTRAL HANDLE, not the bottom limb. Put a tiny 2-pixel pure MAGENTA registration dot exactly on this grip point; it will be removed during sprite packing. Draw the real complete handle behind the dot. Weapon length about96px, centered around the grip; keep complete tips and limbs inside the cell. 16 individual precisely readable native pixel sprites, thin local-color contour, rich 3D-informed shading, no glow, no blur. Transparent square1024x1024 atlas. This is actual held equipment, not compact inventory badges. All16 have ONE fixed viewing direction: LEFT profile view.",
+      "source": "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+    }
+  ],
+  "pending": []
+}

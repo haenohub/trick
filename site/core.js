@@ -1,5 +1,11 @@
 import { speciesForMap, encounterPoint } from "./ecology.js";
 import {
+  derivedStats,
+  canEquip,
+  monsterStats,
+  hitChance,
+} from "./progression.js";
+import {
   attackTimeline,
   HIT_OFFSET,
   STRIKE_DURATION,
@@ -21,6 +27,7 @@ import {
   PICKUP_RANGE,
   NEARBY_PICKUP_RANGE,
   PICKUP_DURATION,
+  PICKUP_INTERVAL,
 } from "./balance.js";
 import { isWalkable, NAVIGATION } from "./art-layout.js";
 import { direction, facesTarget, SOUTH } from "./directions.js";
@@ -59,13 +66,10 @@ export function stats(p) {
     .map((id) => ITEMS[id])
     .filter(Boolean);
   return {
-    maxHp:
-      160 +
-      p.level * (p.classId === "warden" ? 35 : 27) +
-      (p.branch === "antler" ? p.level * 12 : 0),
-    maxFocus: 100,
-    attack: 12 + p.level * 4.5 + gear.reduce((s, i) => s + (i.attack || 0), 0),
-    defense: p.level * 0.8 + gear.reduce((s, i) => s + (i.defense || 0), 0),
+    ...derivedStats(
+      p,
+      gear.filter((i) => canEquip(p, i)),
+    ),
     range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 7.5 : 6,
     speed: (c.id === "ranger" ? 3.7 : 3.3) * TEST_BALANCE.speed,
   };
@@ -161,6 +165,12 @@ export function hydrateSave(raw) {
     ITEMS[p.equipment.weapon].branch !== p.branch
   )
     p.equipment.weapon = cls.weapon + "1";
+  for (const [slot, id] of Object.entries(p.equipment))
+    if (!canEquip(p, ITEMS[id])) {
+      const replacement = createPlayer(p.classId).equipment[slot];
+      p.equipment[slot] = replacement;
+      p.inventory[replacement] = Math.max(1, p.inventory[replacement] || 0);
+    }
   p.visited = [
     ...new Set([
       "village",
@@ -717,6 +727,7 @@ export class World {
       case "pickup":
         return this.pickup(p, action.drop);
       case "pickupNearest": {
+        if (this.time + 1e-9 < (p.nearbyPickupReady || 0)) return false;
         const drop = map.drops
           .filter(
             (d) =>
@@ -728,7 +739,9 @@ export class World {
               this.sight(p.map, p, d),
           )
           .sort((a, b) => distance(p, a) - distance(p, b) || a.id - b.id)[0];
-        return !!drop && this.pickup(p, drop.id);
+        if (!drop || !this.pickup(p, drop.id)) return false;
+        p.nearbyPickupReady = this.time + PICKUP_INTERVAL;
+        return true;
       }
       case "attack":
         return this.attack(p, action.target);
@@ -764,14 +777,7 @@ export class World {
         return this.travel(p, action.map, !!action.fast);
       case "equip": {
         const i = ITEMS[action.item];
-        if (
-          !i?.slot ||
-          !p.inventory[i.id] ||
-          i.level > p.level ||
-          (i.classId && i.classId !== p.classId) ||
-          (i.branch && i.branch !== p.branch)
-        )
-          return false;
+        if (!i?.slot || !p.inventory[i.id] || !canEquip(p, i)) return false;
         p.equipment[i.slot] = i.id;
         p.hp = Math.min(p.hp, stats(p).maxHp);
         this.log(p, `${i.name} 장착`);
@@ -979,7 +985,7 @@ export class World {
     );
     m.dotUntil = this.time + duration;
     m.dotOwner = p.id;
-    m.dotPower = stats(p).attack * (0.18 + m.toxinStacks * 0.12);
+    m.dotPower = stats(p).power * (0.18 + m.toxinStacks * 0.12);
     m.dotTick = this.time + 1;
   }
   target(p, uid, range = 12) {
@@ -1074,9 +1080,10 @@ export class World {
   }
   releaseBasic(p, t) {
     const s = stats(p);
-    this.damage(p, t, s.attack, "hit");
-    if (p.classId === "mage") p.spellCharge = Math.min(3, p.spellCharge + 1);
-    if (p.classId === "herbalist") this.toxin(p, t, 1, 4);
+    const landed = this.damage(p, t, s.power, "hit");
+    if (landed && p.classId === "mage")
+      p.spellCharge = Math.min(3, p.spellCharge + 1);
+    if (landed && p.classId === "herbalist") this.toxin(p, t, 1, 4);
     this.effect(p.map, "action", p.x, p.y, {
       cue: p.classId,
       owner: p.id,
@@ -1093,7 +1100,23 @@ export class World {
   damage(p, m, value, kind = "hit") {
     if (m.hp <= 0 || m.ai === "return") return;
     const def = MONSTERS.find((d) => d.id === m.def),
-      crit = this.rng() < 0.12;
+      s = stats(p),
+      enemy = monsterStats(def),
+      dot = kind === "poison";
+    const roll = dot ? 0 : this.rng(),
+      chance = hitChance(s, enemy);
+    if (!dot && roll >= chance) {
+      m.threat = p.id;
+      m.threatUntil = this.time + 4;
+      this.effect(p.map, "miss", m.x, m.y, {
+        text: "빗나감",
+        owner: p.id,
+        duration: 0.5,
+        color: "#b9c9bd",
+      });
+      return false;
+    }
+    const crit = !dot && roll / chance < s.critChance;
     const armored =
       ["beetle", "hermit", "crab"].includes(def.shape) &&
       m.windup &&
@@ -1106,9 +1129,10 @@ export class World {
     const n = Math.max(
       1,
       Math.round(
-        (value * (precision ? 1.55 : 1) - def.defense * 0.4) *
+        (value * (precision ? 1.55 : 1) -
+          (s.damageType === "magic" ? enemy.magicDefense : def.defense) * 0.4) *
           (m.markedUntil > this.time ? 1.3 : 1) *
-          (crit ? 1.5 : 1) *
+          (crit ? s.critDamage : 1) *
           (armored ? 0.65 : 1),
       ),
     );
@@ -1158,6 +1182,7 @@ export class World {
         "combat",
       );
     }
+    return true;
   }
   skill(p, slot, uid) {
     if (
@@ -1215,8 +1240,8 @@ export class World {
           distance(m, center) <= r &&
           this.sight(p.map, center, m)
         ) {
-          this.damage(p, m, s.attack * mult, "burst");
-          if (root)
+          const landed = this.damage(p, m, s.power * mult, "burst");
+          if (landed && root)
             m.rootUntil =
               this.time +
               (MONSTERS.find((d) => d.id === m.def).type === "boss"
@@ -1248,7 +1273,7 @@ export class World {
             (mob === t || segmentDistance(mob, p, end) < 0.75) &&
             this.sight(p.map, p, mob)
           )
-            this.damage(p, mob, s.attack * power);
+            this.damage(p, mob, s.power * power);
         this.effect(p.map, "beam", p.x, p.y, {
           tx: end.x,
           ty: end.y,
@@ -1278,8 +1303,8 @@ export class World {
     }
     if (p.classId === "mage") {
       if (slot === 0 && t) {
-        this.damage(p, t, s.attack * 2.2, "burst");
-        p.spellCharge = Math.min(3, p.spellCharge + 1);
+        if (this.damage(p, t, s.power * 2.2, "burst"))
+          p.spellCharge = Math.min(3, p.spellCharge + 1);
       }
       if (slot === 1 && t) {
         const charge = p.spellCharge;
@@ -1296,7 +1321,7 @@ export class World {
       }
     }
     if (p.classId === "ranger") {
-      if (slot === 0 && t) this.damage(p, t, s.attack * 2.2);
+      if (slot === 0 && t) this.damage(p, t, s.power * 2.2);
       if (slot === 1) {
         const dx = t ? p.x - t.x : p.move.x || 1,
           dy = t ? p.y - t.y : p.move.y;
@@ -1311,15 +1336,14 @@ export class World {
       }
       if (slot === 2 && t) {
         t.markedUntil = this.time + 9;
-        this.damage(p, t, s.attack * 1.2);
+        this.damage(p, t, s.power * 1.2);
         this.effect(p.map, "mark", t.x, t.y, { duration: 1 });
       }
     }
     if (p.classId === "herbalist") {
       if (slot === 0) heal(s.maxHp * 0.32);
       if (slot === 1 && t) {
-        this.damage(p, t, s.attack * 1.4);
-        this.toxin(p, t, 2, 8);
+        if (this.damage(p, t, s.power * 1.4)) this.toxin(p, t, 2, 8);
         this.effect(p.map, "poison", t.x, t.y);
       }
       if (slot === 2) {
@@ -1330,7 +1354,7 @@ export class World {
           duration: 7,
           owner: p.id,
           tickAt: this.time + 1,
-          power: s.attack,
+          power: s.power,
         });
       }
     }
@@ -1355,10 +1379,10 @@ export class World {
             0.05,
             Math.min(12, d * 2),
           );
-        this.damage(p, t, s.attack * 4.4);
+        this.damage(p, t, s.power * 4.4);
       }
       if (p.branch === "moon" && t) {
-        this.damage(p, t, s.attack * (5.5 + p.spellCharge * 0.5), "burst");
+        this.damage(p, t, s.power * (5.5 + p.spellCharge * 0.5), "burst");
         p.spellCharge = 0;
         this.effect(p.map, "beam", p.x, p.y, { tx: t.x, ty: t.y, duration: 1 });
       }
@@ -1367,7 +1391,7 @@ export class World {
         this.effect(p.map, "garden", t.x, t.y, { radius: 4, duration: 1.6 });
       }
       if (p.branch === "hawk" && t) {
-        this.damage(p, t, s.attack * 5.8);
+        this.damage(p, t, s.power * 5.8);
         this.effect(p.map, "beam", p.x, p.y, {
           tx: t.x,
           ty: t.y,
@@ -1478,15 +1502,20 @@ export class World {
     this.effect(dest, "arrival", p.x, p.y, { text: next.name, duration: 1.5 });
     return true;
   }
-  hurtPlayer(p, n, { avoidable = true } = {}) {
-    if (avoidable && p.evadeUntil > this.time) {
+  hurtPlayer(p, n, { avoidable = true, accuracy = 80 } = {}) {
+    const s = stats(p),
+      evade = Math.max(
+        0.01,
+        Math.min(0.55, s.evasion + (s.accuracy - accuracy) * 0.001),
+      );
+    if (avoidable && (p.evadeUntil > this.time || this.rng() < evade)) {
       this.effect(p.map, "evade", p.x, p.y, {
         text: "회피",
         owner: p.id,
         cue: "dodge",
         duration: 0.5,
       });
-      return;
+      return false;
     }
     if (p.shieldUntil <= this.time) p.shield = 0;
     const absorbed = Math.min(n, p.shield);
@@ -1528,6 +1557,7 @@ export class World {
         "story",
       );
     }
+    return true;
   }
   moveMob(m, map, target, dt, speed) {
     if (m.rootUntil > this.time) return false;
@@ -1604,16 +1634,25 @@ export class World {
           attackZones(w).some((zone) => zoneHits(p, zone)) &&
           this.sight(id, m, p)
         ) {
-          this.hurtPlayer(
+          const landed = this.hurtPlayer(
             p,
             Math.max(
               2,
               Math.round(
-                (def.attack - stats(p).defense * 0.45) * (w.damageScale || 1),
+                (def.attack -
+                  (["jelly", "anemone", "dragon", "totem", "crystal"].includes(
+                    def.shape,
+                  )
+                    ? stats(p).magicDefense
+                    : stats(p).defense) *
+                    0.45) *
+                  (w.damageScale || 1),
               ),
             ),
+            { accuracy: monsterStats(def).accuracy },
           );
           if (
+            landed &&
             ["bug", "jelly", "mantis", "anemone"].includes(def.shape) &&
             def.region === 1 &&
             p.map === id &&
@@ -1911,7 +1950,7 @@ export class World {
           d.pickupEnds = 0;
           continue;
         }
-        if (this.time < d.pickupEnds || d.until <= this.time) continue;
+        if (this.time + 1e-9 < d.pickupEnds || d.until <= this.time) continue;
         d.collected = true;
         d.until = 0;
         if (d.kind === "currency")

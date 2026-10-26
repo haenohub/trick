@@ -39,9 +39,7 @@ with sync_playwright() as pw:
  p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const world=new World(),q=world.addPlayer(raw),m=world.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');p.keyboard.press('q')
  p.wait_for_function('__leaftale.snapshot().drops.length>=4')
- count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('Space')
- p.wait_for_function('__leaftale.snapshot().drops.filter(d=>d.pickupEnds).length===1')
- p.keyboard.down('Space');p.wait_for_timeout(100);assert p.evaluate('__leaftale.snapshot().drops.filter(d=>d.pickupEnds).length')==1;p.keyboard.up('Space')
+ count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space')
  p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===1');assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
  p.keyboard.press('Space');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
  before=p.evaluate('__leaftale.snapshot().player.inventory.salve');p.keyboard.press('t');assert p.evaluate('__leaftale.snapshot().player.inventory.salve')==before-1

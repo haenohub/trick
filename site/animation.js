@@ -2,6 +2,7 @@
 export const STRIKE_DURATION = 0.14;
 export const HIT_OFFSET = STRIKE_DURATION / 2;
 export const RECOVERY_DURATION = 0.18;
+export const WALK_DURATION = 1.28;
 export const WINDUP_DURATION = {
   warden: 0.22,
   mage: 0.26,
@@ -40,7 +41,7 @@ export function animationFrame(layout, anim, time, start, duration) {
       )
     ];
   }
-  const span = clip?.duration || (anim === "walk" ? 0.64 : 0.72);
+  const span = clip?.duration || (anim === "walk" ? WALK_DURATION : 0.72);
   return frames[
     Math.floor((age / span) * frames.length + 1e-8) % frames.length
   ];

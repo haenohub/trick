@@ -1,4 +1,5 @@
 import { animationFrame, LocomotionClocks } from "./animation.js";
+import { drawPaperDoll } from "./avatar-draw.js";
 import {
   equippedAppearance,
   orderedEquipmentLayers,
@@ -67,8 +68,8 @@ function readyAppearance(classId, equipment) {
 // Native assets use equal, integer pixel cells.
 function sourceRect(file, cols, rows, col, row) {
   const image = IMAGES.get(file),
-    sw = image.width / cols,
-    sh = image.height / rows;
+    sw = Math.floor(image.width / cols),
+    sh = Math.floor(image.height / rows);
   return { sx: col * sw, sy: row * sh, sw, sh };
 }
 function preview(canvas, file, cols, rows, col, row, face = false) {
@@ -117,25 +118,25 @@ export function drawCharacterPreview(
       frame = l.animations.idle[0];
     c.clearRect(0, 0, canvas.width, canvas.height);
     c.imageSmoothingEnabled = false;
-    for (const layer of orderedEquipmentLayers(appearance, SOUTH)) {
-      const rect = sourceRect(layer.file, l.cols, l.rows, frame, SOUTH);
-      if (face) {
-        rect.sy += rect.sh * 0.3;
-        rect.sh *= 0.6;
-      }
-      const scale = Math.min(canvas.width / rect.sw, canvas.height / rect.sh);
-      c.drawImage(
-        IMAGES.get(layer.file),
-        rect.sx,
-        rect.sy,
-        rect.sw,
-        rect.sh,
-        (canvas.width - rect.sw * scale) / 2,
-        canvas.height - rect.sh * scale,
-        rect.sw * scale,
-        rect.sh * scale,
-      );
-    }
+    const avatar = document.createElement("canvas");
+    avatar.width = avatar.height = 96;
+    const context = avatar.getContext("2d");
+    context.imageSmoothingEnabled = false;
+    drawPaperDoll(context, appearance, IMAGES, frame, SOUTH, 0, 0, 1);
+    const sy = face ? 28.8 : 0,
+      sh = face ? 57.6 : 96,
+      scale = Math.min(canvas.width / 96, canvas.height / sh);
+    c.drawImage(
+      avatar,
+      0,
+      sy,
+      96,
+      sh,
+      (canvas.width - 96 * scale) / 2,
+      canvas.height - sh * scale,
+      96 * scale,
+      sh * scale,
+    );
     return;
   }
   const l = ART.characterLayouts[id];
@@ -247,7 +248,7 @@ export class Renderer {
     mirror = false,
   ) {
     const image = IMAGES.get(file);
-    if (!image) return;
+    if (!image || col < 0 || col >= cols || row < 0 || row >= rows) return;
     const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
       c = this.ctx;
     // All doubled-resolution artwork shares one native pixel per world display unit.
@@ -449,6 +450,21 @@ export class Renderer {
       ["idle", "walk"].includes(anim) ? loopStart : start,
       duration,
     );
+    if (appearance && layout.anchors) {
+      const anchor = 1 - 2 / (layout.size / (ART.resolutionScale || 1));
+      drawPaperDoll(
+        c,
+        appearance,
+        IMAGES,
+        frame,
+        dir,
+        x - 48 * this.zoom,
+        y - 96 * anchor * this.zoom,
+        this.zoom,
+      );
+      if (anim === "death") c.restore();
+      return;
+    }
     const layers = appearance
       ? orderedEquipmentLayers(appearance, dir)
       : [{ file }];

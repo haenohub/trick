@@ -78382,126 +78382,6 @@
       ]
     },
     {
-      "id": "appearance/base/warden",
-      "target": "site/assets/appearance/base/warden.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-48b98af8-d720-4b2c-9b32-f0623b54d212.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "68ccc8bcff8af401c817f55dbb27a9c8552b2464596a29d2e9ed4a9e6d00820b",
-      "appearanceVersion": 1,
-      "additionalSources": [
-        "/workspace/generated_images/exec-bbcdee9c-bc8e-4196-be04-d1f81ffb8392.png",
-        "/workspace/generated_images/exec-ef56001a-a986-4ec8-a850-18c0048e109c.png"
-      ]
-    },
-    {
-      "id": "appearance/base/herbalist",
-      "target": "site/assets/appearance/base/herbalist.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ee9d1edf-ba3f-4047-866f-b871ce1c0f62.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "e2e04d9bd7851ddec47b505e8261d9ca2d6a44ba0c3158219781e260fbbe2184",
-      "appearanceVersion": 1
-    },
-    {
-      "id": "appearance/base/mage",
-      "target": "site/assets/appearance/base/mage.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-8140b918-bdc5-49ef-b74f-6deb9139ff1c.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "9241d83f412ae483123d337f06c82b0701c88203dc031cc279f9db45829553bb",
-      "appearanceVersion": 1
-    },
-    {
-      "id": "appearance/base/ranger",
-      "target": "site/assets/appearance/base/ranger.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-a849d16b-1e02-41a5-a943-a544008be094.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "197e48e52024407765550cca9579d168dd30342ed0e71f78db0f6bf411d6aab2",
-      "appearanceVersion": 1
-    },
-    {
-      "id": "appearance/gear/herbalist-boots1",
-      "target": "site/assets/appearance/gear/herbalist-boots1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-90612486-68ba-4137-9313-2b32b8adc4ae.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "3410bc07d31a81cf6f8a98ca77bb71ee488c36113aa394889deea19148b49d78",
-      "appearanceVersion": 1,
-      "item": "boots1",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-boots2",
-      "target": "site/assets/appearance/gear/herbalist-boots2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-83a69351-de39-4874-aa9f-cb5f69b06b8f.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "19845a34ea9146c0571982142bab62fe0e43aecb5e0ebec6d9ea55510c5d0e5d",
-      "appearanceVersion": 1,
-      "item": "boots2",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-charm1",
-      "target": "site/assets/appearance/gear/herbalist-charm1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-db75aa69-5edd-478e-9fe7-64a5ddfdec55.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "a76cd4ad8c7988966f898a8009186a4a33f78a36d92c829692566fe15e59776f",
-      "appearanceVersion": 1,
-      "item": "charm1",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-charm2",
-      "target": "site/assets/appearance/gear/herbalist-charm2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-63a8a896-f2e7-4cf3-8165-45ca0359cd58.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "bbf6b497355f75b0a6c207b045eb88fbb4eb82390a7628f8ee09c28ca23ec162",
-      "appearanceVersion": 1,
-      "item": "charm2",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
       "id": "appearance/gear/herbalist-flowerweapon",
       "target": "site/assets/appearance/gear/herbalist-flowerweapon.png",
       "tool": "image_gen",
@@ -78511,82 +78391,6 @@
       "sha256": "a7f1f6ef0dcc07280d2ce4b84d0c1cff7b98afb31224b109288762114bc344e2",
       "appearanceVersion": 1,
       "item": "flowerweapon",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-herbalistarmor1",
-      "target": "site/assets/appearance/gear/herbalist-herbalistarmor1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-c9e2c41b-9c1b-414b-8e81-3239437db9d1.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "9cd5ee6aa068e36d29fb3be69fc5b1bfbddf57d820ec41c2c9af68861e9705cf",
-      "appearanceVersion": 1,
-      "item": "herbalistarmor1",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-herbalistarmor2",
-      "target": "site/assets/appearance/gear/herbalist-herbalistarmor2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-f39db76f-3aac-4781-86ac-ab6e26af750e.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "2ce6c8e428e10ef9a61942e4ea89804113a210ee36e99354f28d89c3bcf68849",
-      "appearanceVersion": 1,
-      "item": "herbalistarmor2",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-hood1",
-      "target": "site/assets/appearance/gear/herbalist-hood1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-b226b469-d9a4-4c79-a5e7-242e601a47bc.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "838fdcea3a43c3f40ec53f1837d6611b2dc146b56abff0ce10346a332618efe4",
-      "appearanceVersion": 1,
-      "item": "hood1",
-      "classId": "herbalist",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/herbalist-hood2",
-      "target": "site/assets/appearance/gear/herbalist-hood2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0ab64ec2-0314-45c7-a9e4-a5b6c76c1f94.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "f475ab51bb61761a526206269c04c78b9db5f7af0222a0af82bcadb14b5dbca8",
-      "appearanceVersion": 1,
-      "item": "hood2",
       "classId": "herbalist",
       "registration": {
         "method": "anatomical-body-registration",
@@ -78673,158 +78477,6 @@
       }
     },
     {
-      "id": "appearance/gear/mage-boots1",
-      "target": "site/assets/appearance/gear/mage-boots1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-742cfd5d-4374-4ce6-868e-5e94f6ebff84.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "459f753018f81591353153a5a4f7e4de0f413b0bf9eba03cece48fa9862f7b24",
-      "appearanceVersion": 1,
-      "item": "boots1",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-boots2",
-      "target": "site/assets/appearance/gear/mage-boots2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-5b8d4020-fdf7-4d9c-9a23-65e5b0a64cfc.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "813dd8237592eb9f1b3da82556b570e132243c6273a8d133991d9239b96bfed4",
-      "appearanceVersion": 1,
-      "item": "boots2",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-charm1",
-      "target": "site/assets/appearance/gear/mage-charm1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-cdd8a321-c84e-4a66-8500-d98a12226e99.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "ff9aca2848085bf64bc9d1bcb784fc46ad855ec5076ed64d43ed956cef720a0e",
-      "appearanceVersion": 1,
-      "item": "charm1",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-charm2",
-      "target": "site/assets/appearance/gear/mage-charm2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-e53f9f18-dd9c-4371-baa8-5f6ae141e695.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "f60cd12342629f3b0f894adfdfcc1d27e9478bad467ed86cf1e2b0892bd703aa",
-      "appearanceVersion": 1,
-      "item": "charm2",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-hood1",
-      "target": "site/assets/appearance/gear/mage-hood1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-51e2a147-4243-48b0-872a-99ecdd8869bf.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "2e0d8d60bd7ca3822bf4f5fc8ccec03a46563f7d4ef8248a3faddf3900a9da9d",
-      "appearanceVersion": 1,
-      "item": "hood1",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-hood2",
-      "target": "site/assets/appearance/gear/mage-hood2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6c301a34-d624-409d-93cf-75ad58b39214.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "4b0b8aa7eec177ab67e2ea39cacedf5f756561e8c8371f7876553bafe618f7c9",
-      "appearanceVersion": 1,
-      "item": "hood2",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-magearmor1",
-      "target": "site/assets/appearance/gear/mage-magearmor1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-9570842e-ecad-4407-b345-1e8425052d38.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "8b74d52f4fa86e5dd0067568f4b212850a08d7d3501e784ebb250ef010bd6a2f",
-      "appearanceVersion": 1,
-      "item": "magearmor1",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/mage-magearmor2",
-      "target": "site/assets/appearance/gear/mage-magearmor2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-f4516530-11ca-49fa-8df9-0f63a75db425.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "93db0252e7a1a8a0638879018af218d835b710babe10a2fc5d9bdb72cc2055f2",
-      "appearanceVersion": 1,
-      "item": "magearmor2",
-      "classId": "mage",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
       "id": "appearance/gear/mage-moonweapon",
       "target": "site/assets/appearance/gear/mage-moonweapon.png",
       "tool": "image_gen",
@@ -78882,44 +78534,6 @@
       }
     },
     {
-      "id": "appearance/gear/ranger-boots1",
-      "target": "site/assets/appearance/gear/ranger-boots1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-a8229f09-ee82-4efa-a228-5b569cfdb141.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "e417d0d7f43bf4702ba366144b2fd6d4831efbc114b8b1f2af9fd7e540432321",
-      "appearanceVersion": 1,
-      "item": "boots1",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/ranger-boots2",
-      "target": "site/assets/appearance/gear/ranger-boots2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-0c9ba4e7-f59f-47c5-83e5-7dbc309bb894.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "c3f6dd1b1753dc11298e2900d313908c4f20cf484915fe1e00a5a2669da3932e",
-      "appearanceVersion": 1,
-      "item": "boots2",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
       "id": "appearance/gear/ranger-bow1",
       "target": "site/assets/appearance/gear/ranger-bow1.png",
       "tool": "image_gen",
@@ -78958,44 +78572,6 @@
       }
     },
     {
-      "id": "appearance/gear/ranger-charm1",
-      "target": "site/assets/appearance/gear/ranger-charm1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-326f8ae5-626b-4af9-b11d-bbe1dc843f26.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "ed9c651317fe9c39fc02c2a22a67ed3afb8ad10c68fbf06ff6f57e1e47b4a2cc",
-      "appearanceVersion": 1,
-      "item": "charm1",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/ranger-charm2",
-      "target": "site/assets/appearance/gear/ranger-charm2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-c8eb8536-c2be-409c-ad65-10162be51c56.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "6313b2117cc217329e6ce33f4d0ab7cb9771fca80b0ee3f638c5ae43cab4b1b0",
-      "appearanceVersion": 1,
-      "item": "charm2",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
       "id": "appearance/gear/ranger-hawkweapon",
       "target": "site/assets/appearance/gear/ranger-hawkweapon.png",
       "tool": "image_gen",
@@ -79005,44 +78581,6 @@
       "sha256": "bbbb1a7a3f5644b5074d245851f6f8ea9079697a34c25d7cb60f8ffb61c90259",
       "appearanceVersion": 1,
       "item": "hawkweapon",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/ranger-hood1",
-      "target": "site/assets/appearance/gear/ranger-hood1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-a785b07b-0e86-4ea3-84ef-9714b846d4a6.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "a1432e6c9cbc5027c21210913d9af182b4d7f0d7326ec00459e96a9ab94bff37",
-      "appearanceVersion": 1,
-      "item": "hood1",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/ranger-hood2",
-      "target": "site/assets/appearance/gear/ranger-hood2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-b577c9a8-2d32-45df-bcba-ff2a49265165.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "d714bb55330fc659b3029f138eb81d4e96011d882ad82d62526d43e7ea56e86c",
-      "appearanceVersion": 1,
-      "item": "hood2",
       "classId": "ranger",
       "registration": {
         "method": "anatomical-body-registration",
@@ -79072,44 +78610,6 @@
       }
     },
     {
-      "id": "appearance/gear/ranger-rangerarmor1",
-      "target": "site/assets/appearance/gear/ranger-rangerarmor1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-4c38746f-4752-4c97-94e0-26f1b471c434.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "30dbc00de6255250eec3f0f41cc42720b4500ad6f9cd75db94c1791a2fae99cc",
-      "appearanceVersion": 1,
-      "item": "rangerarmor1",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/ranger-rangerarmor2",
-      "target": "site/assets/appearance/gear/ranger-rangerarmor2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-18015589-72b1-4709-9f5e-5a60d6ee6080.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "0c0a17eb936a2da850514280d95fb2a5bf079ada9f960a4fe17e380121304c43",
-      "appearanceVersion": 1,
-      "item": "rangerarmor2",
-      "classId": "ranger",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
       "id": "appearance/gear/warden-antlerweapon",
       "target": "site/assets/appearance/gear/warden-antlerweapon.png",
       "tool": "image_gen",
@@ -79119,120 +78619,6 @@
       "sha256": "66383ac7ccbbbf395e06109af49f79a91e19e296f4bf859114734dbf5a36fe96",
       "appearanceVersion": 1,
       "item": "antlerweapon",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-boots1",
-      "target": "site/assets/appearance/gear/warden-boots1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-2bc38f47-6b8d-4070-a211-82f12c57a2e6.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "a741a5f3c0e0342f0070f2d4799c902cb934b761867e02502385ecf2d8b46a02",
-      "appearanceVersion": 1,
-      "item": "boots1",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-boots2",
-      "target": "site/assets/appearance/gear/warden-boots2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6f671d3b-f724-41f7-b36f-96faefb709ff.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "7e8d0ca0fc9596678937c41bc3a148c2b9c4a4ffe9cd35bbdd8de62a4d66e353",
-      "appearanceVersion": 1,
-      "item": "boots2",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-charm1",
-      "target": "site/assets/appearance/gear/warden-charm1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-541fdcab-f29b-4b5c-bfbb-d62111b15e28.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "138a16e93bedebeaa32cef7054e926e33d4a1fb056b362d4ab7f62c696cb2aad",
-      "appearanceVersion": 1,
-      "item": "charm1",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-charm2",
-      "target": "site/assets/appearance/gear/warden-charm2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-d41c8b7b-9b2c-4ad9-b57a-258dd01e8253.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "322ca1012e604d4c897031e4bfdd01fcafc623fad39528dda35a44ce62975b64",
-      "appearanceVersion": 1,
-      "item": "charm2",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-hood1",
-      "target": "site/assets/appearance/gear/warden-hood1.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6a4828a8-d5b5-4a6f-83e0-ef24f41c7b55.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "5a85ee5858479a5990619b78d4ccd21ef230805f277911d23d15e97a3a3dd4eb",
-      "appearanceVersion": 1,
-      "item": "hood1",
-      "classId": "warden",
-      "registration": {
-        "method": "anatomical-body-registration",
-        "poses": 256,
-        "cols": 32,
-        "rows": 8,
-        "size": 96
-      }
-    },
-    {
-      "id": "appearance/gear/warden-hood2",
-      "target": "site/assets/appearance/gear/warden-hood2.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-6f93b17a-2614-4a52-9397-bab670b7f449.png",
-      "width": 3072,
-      "height": 768,
-      "sha256": "00b4b20950bbf3030b931bddc32d004d8a334f96d04ffa33614bdd86125f6912",
-      "appearanceVersion": 1,
-      "item": "hood2",
       "classId": "warden",
       "registration": {
         "method": "anatomical-body-registration",
@@ -79300,13 +78686,2598 @@
       }
     },
     {
+      "id": "combat/warden",
+      "target": "site/assets/combat/warden.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png",
+        "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
+        "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
+        "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png",
+        "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png",
+        "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
+        "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
+        "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "a0cdcd05be6352bcd00d84028102b9eb15dd1370965dd7d16beeb296900da08b",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      },
+      "compositedStarterEquipment": true
+    },
+    {
+      "id": "combat/mage",
+      "target": "site/assets/combat/mage.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png",
+        "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
+        "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
+        "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png",
+        "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png",
+        "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
+        "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
+        "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "6ade8d4ef7bc3ebf862d131cf7a7d62a79f741857b968b81daf45c35c012fca2",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      },
+      "compositedStarterEquipment": true
+    },
+    {
+      "id": "combat/ranger",
+      "target": "site/assets/combat/ranger.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png",
+        "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
+        "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
+        "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png",
+        "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png",
+        "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
+        "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
+        "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "c4a983c18e9d95c79f207ec643a696efaf855c56b9af4ef4202f949d20ccf38d",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      },
+      "compositedStarterEquipment": true
+    },
+    {
+      "id": "combat/herbalist",
+      "target": "site/assets/combat/herbalist.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png",
+        "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
+        "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
+        "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png",
+        "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png",
+        "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
+        "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
+        "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "522a312d803742f7c49e94ca364c115be459e7227c116f7f44c69effd1a16d76",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      },
+      "compositedStarterEquipment": true
+    },
+    {
+      "id": "combat/m1",
+      "target": "site/assets/combat/m1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "332c855f84cc75ed3a7fc9466f7ec130c50896f5c6aded7d2fc7ace2d98c7e20",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m2",
+      "target": "site/assets/combat/m2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "815a72b89feed80af0c222c5994a44955adebdd8f2e108b56a6ac90835111c4f",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m3",
+      "target": "site/assets/combat/m3.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "bf0c8d8a78ad60f636bbe972106a2d2b2bf78e26d92e1863a5d11f1db9745551",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m4",
+      "target": "site/assets/combat/m4.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "8b032b1609fa8638f924fce8d937e5b64b001cce20432457badb4ef294da5be5",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m5",
+      "target": "site/assets/combat/m5.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "09a3b98ca2daa2eeb27f31fbe35d76922e28e960a6c1e8ee2282d3933bfc5fd0",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m6",
+      "target": "site/assets/combat/m6.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "fafd9a496ef950a8f6031d3387ee0b2cd41b8bb762933230d36993c27f070a07",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m7",
+      "target": "site/assets/combat/m7.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "91627afcd92954622802c17ae09fb258b14ba4ecf9e05aad1e81b97971a26340",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m8",
+      "target": "site/assets/combat/m8.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "2647f65730892cffe459e5dcedba2a352b15583669a27f60dca978c8c9e97d27",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m9",
+      "target": "site/assets/combat/m9.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "ec05be1d6e0cf250463262a4b4a3cbd41469ece0f537ef4a95a6f3ebbba4c92b",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m10",
+      "target": "site/assets/combat/m10.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "3420bcee473f242e92b77bf1570645be888b34ab2ab2fda2da66158c8dde4a07",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m11",
+      "target": "site/assets/combat/m11.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "4b0d5622332d8f9ae62d8c7519cedff947443bec92d910b53fc52971efa29e82",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m12",
+      "target": "site/assets/combat/m12.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c35b8df4-2153-406f-842c-937974b1e50f.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f080f1de-8485-4fb7-85c5-e9bbceec868e.png",
+        "/workspace/generated_images/exec-df63ff0c-618f-4316-af41-829223a89952.png",
+        "/workspace/generated_images/exec-f6c5f2b4-5c66-409d-a4d7-7ce66b8a36b8.png",
+        "/workspace/generated_images/exec-18024099-b342-462c-ba93-8ffb64ecf97f.png",
+        "/workspace/generated_images/exec-f0b6524b-0aac-4c0a-ad81-4b2f4be646ea.png",
+        "/workspace/generated_images/exec-66a9fbd6-e30b-40d0-a8af-0d226c01ffd5.png",
+        "/workspace/generated_images/exec-552909ce-13e0-4c1b-bfa8-d6fd35ae5046.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "df8491c04c839ed9768019c30c46ecea06e6f7fa9a3a01d2a11a1cb1951b787f",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m13",
+      "target": "site/assets/combat/m13.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "7ca66e84f575e1f5b818ab1dbda6e8db718fbf03295b80dbd2aeaabeb49a8f68",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m14",
+      "target": "site/assets/combat/m14.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "c0d159146e66318dd6d3b5ea42dee02e5948f0ed3354dad63fb3366f055c2bd7",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m15",
+      "target": "site/assets/combat/m15.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "c1982e1aea47209dfc8bc8dbab8a529f71e0ae4acf49e6691513400d32dd982f",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m16",
+      "target": "site/assets/combat/m16.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "6177df54007ad315b415edca18969d003a4fd27a9a9310bc1e2c54b11d67ea8b",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m17",
+      "target": "site/assets/combat/m17.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "7161f01459f1fdb7ce2123f947c7d7108f02de03ded73f39dce00b47e1410790",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m18",
+      "target": "site/assets/combat/m18.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "cbe442eb4f26cf036976e1826dc46e4f0025c582fb687d8f5965abeb361d818d",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m19",
+      "target": "site/assets/combat/m19.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "80d3edb3c8893e2cbba662a743db92551f0a1476e86665403f12b5e420677a27",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m20",
+      "target": "site/assets/combat/m20.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ca3ee581-69df-453f-aab6-9fc09c628926.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f6d71c85-4379-4962-9a5b-2890598f0caa.png",
+        "/workspace/generated_images/exec-f5dc13e7-b073-4f55-bfec-638b4eb248e2.png",
+        "/workspace/generated_images/exec-e2cc9a77-9c97-4c1b-98ec-eaec4f579f95.png",
+        "/workspace/generated_images/exec-a6affa30-6e42-44d1-8c04-38a28ef1476a.png",
+        "/workspace/generated_images/exec-f7821f10-27e8-4a9d-aee1-b14a504ef19e.png",
+        "/workspace/generated_images/exec-e2589a98-f34c-40b0-a29e-7ff3b41fcf95.png",
+        "/workspace/generated_images/exec-b327ca15-fa2a-4268-a430-707cccf6ebaf.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "4e5d657b2d731cb45ae901d562b3515573a961930be738bd9e8c3569578740ea",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m21",
+      "target": "site/assets/combat/m21.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "80280d8bc63284a1165a83158160494ab380973475b19f895fd0d426be27527e",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m22",
+      "target": "site/assets/combat/m22.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "fc0db7a5b49e4ac2bbd59d08ddd2d4df92ead36c44efdccef5c617ddb17c6ca2",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m23",
+      "target": "site/assets/combat/m23.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "b0f035cba485a102d26cf6fb2a187bf12f0a1762eda7094ae45ed07114248e3f",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m24",
+      "target": "site/assets/combat/m24.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "36829977a7f738b4feb27f87ea92bc31bd249d504f8ec2c718c8b74dea2fd133",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m25",
+      "target": "site/assets/combat/m25.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "82feb8972a72a1ee0da92687f4b26032ce0d740dd580efc948b0d3635346db9d",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m26",
+      "target": "site/assets/combat/m26.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "c78092732457f897dce8f8ff2a4809bef69eb742578cb63ffe55ffce4d8bf3c4",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m27",
+      "target": "site/assets/combat/m27.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "f4e59ddd33aec15f86e18aed00220d2fe597aa957147a080d7d379d12842eadc",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m28",
+      "target": "site/assets/combat/m28.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-361089c8-488e-4786-ab43-63f5aeaf4a1a.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-6d98aa11-840a-43c6-baa9-8b60af683144.png",
+        "/workspace/generated_images/exec-7fe08a54-e185-4577-a63e-055d1a9f325e.png",
+        "/workspace/generated_images/exec-6c3d9409-1854-45d6-800d-0186292b9c4a.png",
+        "/workspace/generated_images/exec-2f6b7cbf-7297-4240-8c6a-b96678bf980a.png",
+        "/workspace/generated_images/exec-23d66fda-6183-44c4-b259-c133e76481d3.png",
+        "/workspace/generated_images/exec-720829ee-9f18-43dd-839e-3052bf68c3cd.png",
+        "/workspace/generated_images/exec-c5d8b83d-e52b-40f7-ab9a-82ed07173ac0.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "1dae06a278ce86ba149b956004e19dea858a5dfe721e602526d4ca2cf8b0c0ca",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m29",
+      "target": "site/assets/combat/m29.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "23ab5bc5a2a1a2cbb9acfccf05dcfe7639058760147f6f9966c4b26b2d8c0b78",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m30",
+      "target": "site/assets/combat/m30.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "98cf09a666966831930202c756ccece865efc01198d18c2a856db1d392ac0f16",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m31",
+      "target": "site/assets/combat/m31.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "ea592c0c78db8735619c019d90e005d7caa47de2fa71117de9d0a27b20a7f183",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m32",
+      "target": "site/assets/combat/m32.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "f0f1711e3a84aa6e0824502daa663320ecc6f6c7f2aa1cd66ab0c696aafc4970",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m33",
+      "target": "site/assets/combat/m33.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "11a80a5370626003dda6ba8dc654d2dadcba7235b30e724a8657f8d824c04325",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m34",
+      "target": "site/assets/combat/m34.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "3185de4580bdcdc45d69f0a4947541ffff2e4a20a7b939ddb2a9f6e746608596",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m35",
+      "target": "site/assets/combat/m35.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "f2ef93b591cd514e89a5f3ebf6ad103383de750c0074fdac85384cfc45a67a05",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m36",
+      "target": "site/assets/combat/m36.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4e99b6d9-a3b2-4434-803f-970da785e415.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-cab05049-b4ef-4df8-aba1-b3de8a6de54d.png",
+        "/workspace/generated_images/exec-43dc7a68-3b0e-4a4c-88af-74ea280bc86f.png",
+        "/workspace/generated_images/exec-2f45ffe1-7a08-4a64-8120-2a1024401dbc.png",
+        "/workspace/generated_images/exec-142cf41f-4b16-47ea-9df0-e1e305a6d06d.png",
+        "/workspace/generated_images/exec-edf5ccb7-d419-4b06-a6cc-8d2af7c7e817.png",
+        "/workspace/generated_images/exec-a7711d81-6936-4bbc-9651-fe9159bcbc88.png",
+        "/workspace/generated_images/exec-28ca30df-d39e-41df-82e9-81e300d56638.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "a733c66697c2b248ee3d5569a6ab13e0fda130eb6259df490e3187fd667b1b7a",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m37",
+      "target": "site/assets/combat/m37.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "c135800fd846a5b0ecefa63627233a4e80c4f5f9a255ce87b06d4180cb72200b",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m38",
+      "target": "site/assets/combat/m38.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "36e805e097d5a447172936da1b09bc2745d39fdcd0536d52367d62248fc43a82",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m39",
+      "target": "site/assets/combat/m39.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "76a739e966ee81faf5133e3a64e736092d121a3f0c069e3c584780dfc3aa004b",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m40",
+      "target": "site/assets/combat/m40.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "0df375a891a703fd52652f08ff27622435f94aecfa181997652ff2c35b421b8a",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m41",
+      "target": "site/assets/combat/m41.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "42b8ed353a450cd21f56168d956bdbf4dcfd0b56f568812f82c143995d636a45",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m42",
+      "target": "site/assets/combat/m42.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "ed61762ef3436dfdaa844949704a59f71920f122e6bed10c90564857f494eea3",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m43",
+      "target": "site/assets/combat/m43.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "9ff642019797d1a4f4fb9a6d4a12df4eb9cd8d426e7a37eaf892c4dd28071c0e",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m44",
+      "target": "site/assets/combat/m44.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-84cfec5a-53f7-46b5-9030-d0f3397b156d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-a603d846-39de-42c0-aab9-e78850c5cd4b.png",
+        "/workspace/generated_images/exec-4881ec6f-726c-4766-90df-7329317587b8.png",
+        "/workspace/generated_images/exec-30b6e2f7-736f-4147-af96-0c5e070addec.png",
+        "/workspace/generated_images/exec-553b9064-c939-4960-8157-b5bbaf530f50.png",
+        "/workspace/generated_images/exec-9bb4fc55-b680-4afd-bc2c-1e2802b02f1b.png",
+        "/workspace/generated_images/exec-d3d85e8b-c1fe-4048-870c-cd9168890169.png",
+        "/workspace/generated_images/exec-e752b7ac-9bd4-4da7-92bb-3ae972584c92.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "2127c715020876f4f87326a3f6d457e15a09e8f886cca00479479e89d9414582",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m45",
+      "target": "site/assets/combat/m45.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "6d8ade364dd68d705cadba15eeca842da6c76f01e4e45188827d8137be3c4c17",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m46",
+      "target": "site/assets/combat/m46.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "b02a0c85c2ee1fb5396dcd36d91acbf2e46c34f7ba6fb5c99801e894368dc670",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m47",
+      "target": "site/assets/combat/m47.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "9bcd40c9708953a7a40eab37cc60629cada7fefef6bb0107ae6118d28d7400bb",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m48",
+      "target": "site/assets/combat/m48.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "e081c7bd90e4cc3ba26f35c61f53dd956cc4cc3a930cfd42716bc55a66c80a1d",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m49",
+      "target": "site/assets/combat/m49.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "4ed6a97ec89c0d4aec0cef57b32a3bca68f17847253f755f3e96a580e91bc3d6",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m50",
+      "target": "site/assets/combat/m50.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "3a398ce23b1a350127f100e3b0a87d089e241ee13dae54990dceaf26f318610c",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m51",
+      "target": "site/assets/combat/m51.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "2dcdd5dbe785cdf515b5665f2c6b8f1f172629f7af4599457adbec62d0e47748",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m52",
+      "target": "site/assets/combat/m52.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-37e769ba-525c-4811-b338-788772ebeec4.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-8b59f5a2-b79b-49b6-975b-04445f04af68.png",
+        "/workspace/generated_images/exec-adc30ade-e8f6-4d83-a461-919a469a4ab8.png",
+        "/workspace/generated_images/exec-de36510d-d193-4c09-9324-2b84ac350aa9.png",
+        "/workspace/generated_images/exec-1107736d-655e-449f-a453-ae5d91d86421.png",
+        "/workspace/generated_images/exec-7a42f3b9-6d36-4d60-a3a8-553320df96bd.png",
+        "/workspace/generated_images/exec-2850a617-0d04-40da-b932-b3ac642ae54e.png",
+        "/workspace/generated_images/exec-06d670a0-d356-4149-bb69-24a11f62b8e6.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "02a1e5265eb0cce44727f31b01b042de53b8db7e153b7c1ecd246c13a53845b7",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m53",
+      "target": "site/assets/combat/m53.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "6c1a7d5c259f6a5c8d8f5f55177f014ee5b1e42f3c9b4a080011faa2896f3cb9",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m54",
+      "target": "site/assets/combat/m54.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 512,
+      "height": 512,
+      "sha256": "260bbe7cf4e745c16f403602ab0728c1032419b6ba1fa3e2967fd8b111164d01",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 64,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m55",
+      "target": "site/assets/combat/m55.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "9a4b246640b7531790dadb57aa89674388990d5764ed6d1f1474a986c27fa06e",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m56",
+      "target": "site/assets/combat/m56.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "e47da7988ace6c833eb68d8c5fe14818e4a84fbac003cd86c3b9861cb950ad97",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m57",
+      "target": "site/assets/combat/m57.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "ebfc22e07248c0c36e89981317de8b9699490a63d4dbb3a4ed94d532eb9dc509",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m58",
+      "target": "site/assets/combat/m58.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "3105d90a857a21afef62404395851a7f8dfa83a5978914105b094189df5ef1ee",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m59",
+      "target": "site/assets/combat/m59.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 768,
+      "height": 768,
+      "sha256": "0d11445227dc0211c336b7b0d4db9d22c5b1cd9f4359d68b5ee5bfd9a18b2cfb",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 96,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "combat/m60",
+      "target": "site/assets/combat/m60.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9768c5b6-165c-4710-b772-850107ae29cf.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-df760e72-4ebb-4b5e-a571-fe10cb44dd76.png",
+        "/workspace/generated_images/exec-490e29ab-afc8-43bc-8da3-964e35428db7.png",
+        "/workspace/generated_images/exec-7c829ddd-7bbf-4d8a-9454-d08411cc4eeb.png",
+        "/workspace/generated_images/exec-9f634864-1a70-4a9f-ae59-39864823c8fc.png",
+        "/workspace/generated_images/exec-21c4a9dd-b8a0-430a-a41f-cfcb5d29530e.png",
+        "/workspace/generated_images/exec-aed195e2-c6a2-46b0-9ede-dea6d847ec82.png",
+        "/workspace/generated_images/exec-8bd5df29-2e91-4ded-96fb-e6541e8fa5a9.png"
+      ],
+      "width": 1024,
+      "height": 1024,
+      "sha256": "0756e8bf0d74876e539b57379d123a588a96de5f3fa543f2a2f954b4ea210fa1",
+      "combatVersion": 1,
+      "cols": 8,
+      "rows": 8,
+      "size": 128,
+      "registration": {
+        "method": "isolated-per-cell",
+        "gutters": 4,
+        "directions": [
+          "E",
+          "N",
+          "NE",
+          "NW",
+          "S",
+          "SE",
+          "SW",
+          "W"
+        ]
+      }
+    },
+    {
+      "id": "appearance/held-weapons",
+      "target": "site/assets/appearance/held-weapons.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
+        "/workspace/generated_images/exec-6cafb3ec-9cca-4bb9-9497-7f4c43f2025e.png",
+        "/workspace/generated_images/exec-9b555c52-e539-429f-a184-7016a543ab2e.png",
+        "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
+        "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
+        "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+      ],
+      "width": 768,
+      "height": 1536,
+      "sha256": "aa25b22dc36f9191e39ed85c7eff3446399ebe53cad711b0111168f95c0460dc",
+      "rigVersion": 1,
+      "cols": 8,
+      "rows": 16,
+      "size": 96
+    },
+    {
+      "id": "appearance/base/warden",
+      "target": "site/assets/appearance/base/warden.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-48b98af8-d720-4b2c-9b32-f0623b54d212.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "70643dc3dafe0baea6f402b85c5160dab6c278e43e3197266808066d2233db9d",
+      "appearanceVersion": 1,
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/hands/warden",
+      "target": "site/assets/appearance/hands/warden.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 3072,
+      "height": 768,
+      "sha256": "7ed1808491d75813d9b7931e3009f966768e76c4354aeb8b02a043174192fc43",
+      "rigVersion": 1,
+      "cols": 32,
+      "rows": 8,
+      "size": 96
+    },
+    {
+      "id": "appearance/gear/warden-boots1",
+      "target": "site/assets/appearance/gear/warden-boots1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-2bc38f47-6b8d-4070-a211-82f12c57a2e6.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "7a9633b88c4943f91ed17d1189cacc4115c4f9f36ed9fb3da6655093ae1ca523",
+      "appearanceVersion": 1,
+      "item": "boots1",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/warden-charm2",
+      "target": "site/assets/appearance/gear/warden-charm2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d41c8b7b-9b2c-4ad9-b57a-258dd01e8253.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "67868447708e0839fe02c46aacbcad65b329e6a872c61929e5b6c057dddad1c0",
+      "appearanceVersion": 1,
+      "item": "charm2",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/warden-hood2",
+      "target": "site/assets/appearance/gear/warden-hood2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6f93b17a-2614-4a52-9397-bab670b7f449.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "23a8422b7e11e9be3830898426830dfc293a48c4c27c75bbd1b604dea308de63",
+      "appearanceVersion": 1,
+      "item": "hood2",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/warden-hood1",
+      "target": "site/assets/appearance/gear/warden-hood1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6a4828a8-d5b5-4a6f-83e0-ef24f41c7b55.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "a14cad7d8d6e1678c487b9328d998f29d85a0e33f70ed9c0c90eda7acfc0976c",
+      "appearanceVersion": 1,
+      "item": "hood1",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/warden-boots2",
+      "target": "site/assets/appearance/gear/warden-boots2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6f671d3b-f724-41f7-b36f-96faefb709ff.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "f33432113f869e5e409158ccd4d063a945df7137cf5f3332a1ae457d0e433678",
+      "appearanceVersion": 1,
+      "item": "boots2",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/warden-charm1",
+      "target": "site/assets/appearance/gear/warden-charm1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-541fdcab-f29b-4b5c-bfbb-d62111b15e28.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "99d3ca43b6ff087c2d7b822aec9c76bab6d00a67e341d6b6916442bb32d9aa5d",
+      "appearanceVersion": 1,
+      "item": "charm1",
+      "classId": "warden",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
       "id": "appearance/gear/warden-wardenarmor1",
       "target": "site/assets/appearance/gear/warden-wardenarmor1.png",
       "tool": "image_gen",
       "source": "/workspace/generated_images/exec-2e942f9b-611c-4449-a823-a5884882e21a.png",
       "width": 3072,
       "height": 768,
-      "sha256": "0688cd1062c5d1e921502d60c88340b81594a82389051ced11c7ac902a82ffd9",
+      "sha256": "f9db7c1f63b31d6b73c56a0d4100593b3d07f94f8a114df7eaf0abd9df908b80",
       "appearanceVersion": 1,
       "item": "wardenarmor1",
       "classId": "warden",
@@ -79316,7 +81287,18 @@
         "cols": 32,
         "rows": 8,
         "size": 96
-      }
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
     },
     {
       "id": "appearance/gear/warden-wardenarmor2",
@@ -79325,7 +81307,7 @@
       "source": "/workspace/generated_images/exec-4613f662-2b39-456e-8e21-4dd79224f601.png",
       "width": 3072,
       "height": 768,
-      "sha256": "e34b117b98d09f4c46cabbb934afc48cf9c6175f87f6c6a9c1f6e7ce006a3f20",
+      "sha256": "128d5b0ec4a0dc7e34419bf9af9181423e7441172beb98fdcd05e2dc79917461",
       "appearanceVersion": 1,
       "item": "wardenarmor2",
       "classId": "warden",
@@ -79335,7 +81317,867 @@
         "cols": 32,
         "rows": 8,
         "size": 96
-      }
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/base/herbalist",
+      "target": "site/assets/appearance/base/herbalist.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ee9d1edf-ba3f-4047-866f-b871ce1c0f62.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "4df3d0d6ea63762f2c0fef46c54f3f8cd22d254ad3187e74ace65c1dee72d341",
+      "appearanceVersion": 1,
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/hands/herbalist",
+      "target": "site/assets/appearance/hands/herbalist.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 3072,
+      "height": 768,
+      "sha256": "ef5c872fc094c91089bcd9c0d292bb8e80455052a4dd79319a55a47d270a16c7",
+      "rigVersion": 1,
+      "cols": 32,
+      "rows": 8,
+      "size": 96
+    },
+    {
+      "id": "appearance/gear/herbalist-boots1",
+      "target": "site/assets/appearance/gear/herbalist-boots1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-90612486-68ba-4137-9313-2b32b8adc4ae.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0934e97eec44600c1874069e310734af5c451a2dde84711bc507a335245ed3d9",
+      "appearanceVersion": 1,
+      "item": "boots1",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-charm2",
+      "target": "site/assets/appearance/gear/herbalist-charm2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-63a8a896-f2e7-4cf3-8165-45ca0359cd58.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "1b02a5f44070d2b7a5f4f04d0e2a3d894ebb819f1cb588fc811b291a04811170",
+      "appearanceVersion": 1,
+      "item": "charm2",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-hood2",
+      "target": "site/assets/appearance/gear/herbalist-hood2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0ab64ec2-0314-45c7-a9e4-a5b6c76c1f94.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "35fba9d04722686544e7e2fa0b6f047c226c38dca36b3068287710a67253e281",
+      "appearanceVersion": 1,
+      "item": "hood2",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-hood1",
+      "target": "site/assets/appearance/gear/herbalist-hood1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b226b469-d9a4-4c79-a5e7-242e601a47bc.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0e5574de6783b523d07345c4a345ab3481eefd15822f4dfa229e99af02d2bb70",
+      "appearanceVersion": 1,
+      "item": "hood1",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-boots2",
+      "target": "site/assets/appearance/gear/herbalist-boots2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-83a69351-de39-4874-aa9f-cb5f69b06b8f.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "118b0b41b694c9ed9d490bdf9349ef1183194fa0158dc871a1377ac45d4553eb",
+      "appearanceVersion": 1,
+      "item": "boots2",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-charm1",
+      "target": "site/assets/appearance/gear/herbalist-charm1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-db75aa69-5edd-478e-9fe7-64a5ddfdec55.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "d79bf9af52f7019e5d884aaad5d176159e22256f50741adc8d031cd6f30393f4",
+      "appearanceVersion": 1,
+      "item": "charm1",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-herbalistarmor1",
+      "target": "site/assets/appearance/gear/herbalist-herbalistarmor1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c9e2c41b-9c1b-414b-8e81-3239437db9d1.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "7d1a433d36ed7c620469641afd621b95430b61e27c31a4ebf35596051f288425",
+      "appearanceVersion": 1,
+      "item": "herbalistarmor1",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/herbalist-herbalistarmor2",
+      "target": "site/assets/appearance/gear/herbalist-herbalistarmor2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-f39db76f-3aac-4781-86ac-ab6e26af750e.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "21b2170774cc4bc2c4ed8d91be16bc6a4a91933771fc2d14fa5f4746a234c455",
+      "appearanceVersion": 1,
+      "item": "herbalistarmor2",
+      "classId": "herbalist",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/base/mage",
+      "target": "site/assets/appearance/base/mage.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-8140b918-bdc5-49ef-b74f-6deb9139ff1c.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "346d6790537c3c2442deda9a084d956ce676d4360ca11cab8f522abb93840aa0",
+      "appearanceVersion": 1,
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/hands/mage",
+      "target": "site/assets/appearance/hands/mage.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 3072,
+      "height": 768,
+      "sha256": "ce7509a6ff0402fd9fae16fdb0ffbe236f887ed996328c5c31680721dfe9b0f7",
+      "rigVersion": 1,
+      "cols": 32,
+      "rows": 8,
+      "size": 96
+    },
+    {
+      "id": "appearance/gear/mage-boots1",
+      "target": "site/assets/appearance/gear/mage-boots1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-742cfd5d-4374-4ce6-868e-5e94f6ebff84.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "2d7361ce856dd1eace7e1a9c9e1ff0e7231f3849f2d62e52add8d3efb1b346a2",
+      "appearanceVersion": 1,
+      "item": "boots1",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-charm2",
+      "target": "site/assets/appearance/gear/mage-charm2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-e53f9f18-dd9c-4371-baa8-5f6ae141e695.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "07230f7c9a973fdaef668ae9800034e0855faed2804333f25515706b8ec2ef14",
+      "appearanceVersion": 1,
+      "item": "charm2",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-hood2",
+      "target": "site/assets/appearance/gear/mage-hood2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-6c301a34-d624-409d-93cf-75ad58b39214.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "1a346d45621247ba6ac7c6c4913d7f362259e481f3c8fa84ab7c6b5faba9b006",
+      "appearanceVersion": 1,
+      "item": "hood2",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-magearmor1",
+      "target": "site/assets/appearance/gear/mage-magearmor1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9570842e-ecad-4407-b345-1e8425052d38.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0d54717d56942394357fc7249d6f137167c833cfd31910c3ba55924f346022f5",
+      "appearanceVersion": 1,
+      "item": "magearmor1",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-hood1",
+      "target": "site/assets/appearance/gear/mage-hood1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-51e2a147-4243-48b0-872a-99ecdd8869bf.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "ce8a012718328d9305bab5f5fcbcd5e033119b0550ed76d764869625f6add084",
+      "appearanceVersion": 1,
+      "item": "hood1",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-boots2",
+      "target": "site/assets/appearance/gear/mage-boots2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-5b8d4020-fdf7-4d9c-9a23-65e5b0a64cfc.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "1d00bf5968ee1ad5089f52094cf3b2a0e67c62217992b3471203f88194cdd3ed",
+      "appearanceVersion": 1,
+      "item": "boots2",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-charm1",
+      "target": "site/assets/appearance/gear/mage-charm1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-cdd8a321-c84e-4a66-8500-d98a12226e99.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "981420f0fe96e313aa979bc79af0e42bfa86db29417e4c18b234bc5a0524127e",
+      "appearanceVersion": 1,
+      "item": "charm1",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/mage-magearmor2",
+      "target": "site/assets/appearance/gear/mage-magearmor2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-f4516530-11ca-49fa-8df9-0f63a75db425.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0873195d5ef19498d0c0da8295b2e62248d9d139a201c8061b656b36e6755aef",
+      "appearanceVersion": 1,
+      "item": "magearmor2",
+      "classId": "mage",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/base/ranger",
+      "target": "site/assets/appearance/base/ranger.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a849d16b-1e02-41a5-a943-a544008be094.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "9c3cf4d49bf5bb8c94925d7bee931c6938b473d7f4b6c05e2e019ab4312aed17",
+      "appearanceVersion": 1,
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/hands/ranger",
+      "target": "site/assets/appearance/hands/ranger.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "width": 3072,
+      "height": 768,
+      "sha256": "996b2e707773dd6d01ac6d2abcc6d2dbe7464bab45cd663d9c2e7f7e1066e87b",
+      "rigVersion": 1,
+      "cols": 32,
+      "rows": 8,
+      "size": 96
+    },
+    {
+      "id": "appearance/gear/ranger-boots1",
+      "target": "site/assets/appearance/gear/ranger-boots1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a8229f09-ee82-4efa-a228-5b569cfdb141.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "be89a4d7510fd1a7343d76c63d85b847b027ba697d75048808798ca8beaebf33",
+      "appearanceVersion": 1,
+      "item": "boots1",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-charm2",
+      "target": "site/assets/appearance/gear/ranger-charm2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c8eb8536-c2be-409c-ad65-10162be51c56.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "c08aa70f52fdad0e2c53423c569d217698fc1a5c0d6c125b2860ae361c42b8df",
+      "appearanceVersion": 1,
+      "item": "charm2",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-hood2",
+      "target": "site/assets/appearance/gear/ranger-hood2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b577c9a8-2d32-45df-bcba-ff2a49265165.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "95984b675e336091f7987f28a721c8afda54df02cf257d4051f92dfc66f7650a",
+      "appearanceVersion": 1,
+      "item": "hood2",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-hood1",
+      "target": "site/assets/appearance/gear/ranger-hood1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a785b07b-0e86-4ea3-84ef-9714b846d4a6.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "d05185e7bfdc439d80644ffa859b6697c7e2364127c23cc1fe63ce014f14dea8",
+      "appearanceVersion": 1,
+      "item": "hood1",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-boots2",
+      "target": "site/assets/appearance/gear/ranger-boots2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-0c9ba4e7-f59f-47c5-83e5-7dbc309bb894.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0f56672219b2bb71e6e22053e1746901073fe13eda889dfe3114f126fc58fb24",
+      "appearanceVersion": 1,
+      "item": "boots2",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-charm1",
+      "target": "site/assets/appearance/gear/ranger-charm1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-326f8ae5-626b-4af9-b11d-bbe1dc843f26.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "0c81be776c450f762b17b8be003349fc7ef08c458a26718b1ba040e13d2908d7",
+      "appearanceVersion": 1,
+      "item": "charm1",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-rangerarmor2",
+      "target": "site/assets/appearance/gear/ranger-rangerarmor2.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-18015589-72b1-4709-9f5e-5a60d6ee6080.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "ac8fb1f98781e80e1852023bcaeed39c5cb445de3c29a15452c62a40f00b4334",
+      "appearanceVersion": 1,
+      "item": "rangerarmor2",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
+    },
+    {
+      "id": "appearance/gear/ranger-rangerarmor1",
+      "target": "site/assets/appearance/gear/ranger-rangerarmor1.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4c38746f-4752-4c97-94e0-26f1b471c434.png",
+      "width": 3072,
+      "height": 768,
+      "sha256": "b201c9e5cabb23f5f352bad3418c90e98ea599e53bc877ce248e449cfb8ddb54",
+      "appearanceVersion": 1,
+      "item": "rangerarmor1",
+      "classId": "ranger",
+      "registration": {
+        "method": "anatomical-body-registration",
+        "poses": 256,
+        "cols": 32,
+        "rows": 8,
+        "size": 96
+      },
+      "additionalSources": [
+        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
+        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
+        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
+        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
+        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
+        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
+        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
+        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
+      ],
+      "rigVersion": 1
     }
   ]
 }

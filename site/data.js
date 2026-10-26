@@ -1,7 +1,8 @@
 import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
 import { VERDANT } from "./verdant.js";
 import { TROPHIES } from "./trophies.js";
-export const VERSION = "0.17.0";
+import { equipmentProfile } from "./progression.js";
+export const VERSION = "0.18.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -998,6 +999,7 @@ for (const trophy of TROPHIES) {
     color: monster.color,
   });
 }
+for (const i of Object.values(ITEMS)) if (i.type === 'equipment') Object.assign(i,equipmentProfile(i));
 export const RECIPES = Object.values(ITEMS).filter((i) => i.recipe);
 export const QUESTS = [
   {

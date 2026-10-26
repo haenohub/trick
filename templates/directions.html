@@ -478,6 +478,8 @@
         playing = true,
         sheet = null,
         clipSheets = {},
+        avatarImages = new Map(),
+        drawAvatar = null,
         epoch = performance.now(),
         ticket = 0;
       const cache = new Map();
@@ -600,6 +602,13 @@
           if (current !== ticket) return;
           sheet = image;
           clipSheets = { walk, idle };
+          for(const [anim,clip] of Object.entries(actor.layout.clips||{}))clipSheets[anim]=await load(clip.file);
+          if(actor.appearance?.layout.anchors){
+            const api=await import("./avatar-draw.js");
+            const entries=await Promise.all(actor.appearance.layers.map(async layer=>[layer.file,await load(layer.file)]));
+            if(current!==ticket)return;
+            avatarImages=new Map(entries);drawAvatar=api.drawPaperDoll;
+          }else drawAvatar=null;
           $("#status").textContent =
             actor.layout.clips?.walk && actor.layout.clips?.idle
               ? "8방향 · 방향마다 걷기 8프레임 / 대기 8프레임 · 발 디딤과 호흡 주기"
@@ -614,6 +623,10 @@
         c.imageSmoothingEnabled = false;
         c.clearRect(0, 0, canvas.width, canvas.height);
         const side = size * scale;
+        if(selected.appearance?.layout.anchors && drawAvatar){
+          drawAvatar(c,selected.appearance,avatarImages,frame,row,Math.floor((canvas.width-side)/2),canvas.height-side,scale);
+          return;
+        }
         c.drawImage(
           image,
           frame * size,
@@ -643,7 +656,7 @@
           const span =
             clip?.duration ||
             {
-              walk: 0.64,
+              walk: 1.28,
               idle: 0.72,
               windup: 0.24,
               attack: 0.14,

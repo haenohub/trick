@@ -1,7 +1,7 @@
 // Locate the authored grid by transparent gutters. Unlike global connected
 // components, this keeps separate poses when a stray edge pixel touches the
 // neighboring sprite. No pixels are invented or poses substituted.
-export function directionalRects(source, count = 8, rowCount = count) {
+export function directionalRects(source, count = 8, rowCount = count, options = {}) {
   const alpha = 220;
   const cuts = (axis) => {
     const length = axis === "x" ? source.width : source.height;
@@ -34,8 +34,8 @@ export function directionalRects(source, count = 8, rowCount = count) {
     result.push(length);
     return result;
   };
-  const xs = cuts("x"),
-    ys = cuts("y");
+  const xs = options.xs || cuts("x"),
+    ys = options.ys || cuts("y");
   return Array.from({ length: rowCount }, (_, row) =>
     Array.from({ length: count }, (_, col) => {
       const x0 = xs[col],
@@ -92,7 +92,7 @@ export function directionalRects(source, count = 8, rowCount = count) {
           parts.push(part);
         }
       parts.sort((a, b) => b.area - a.area);
-      if (!parts.length || parts[0].area < w * h * 0.08)
+      if (!parts.length || parts[0].area < w * h * (options.minArea ?? 0.08))
         throw Error("Missing complete actor at " + row + ":" + col);
       const keep = parts.filter(
         (p) => p.area >= Math.max(8, parts[0].area * 0.035),
