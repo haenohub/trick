@@ -2,3 +2,5 @@ dist/
 node_modules/
 server/data/
 test-results/
+__pycache__/
+*.py[cod]
