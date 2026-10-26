@@ -1,6 +1,6 @@
 {
   "style": "Bright classic Korean forest-and-sea RPG: cream ground, lime foliage, turquoise water, crisp thin local-color contours",
-  "status": "partial-generation-limit",
+  "status": "superseded-by-hd",
   "guide": {
     "source": "/workspace/generated_images/exec-5160c648-d823-48a9-be21-729a2aefc6b8.png",
     "reference": "art/storybook-guide.png",
@@ -489,7 +489,15 @@
       "transparent_background": true
     }
   ],
-  "pending": [
+  "generationError": {
+    "code": "usage_limit_reached",
+    "completed": 20,
+    "remaining": 70,
+    "resetUnixSeconds": 1792884831
+  },
+  "supersededBy": "art/hd-sources.json",
+  "note": "Historical half-resolution requests; all 70 remaining subjects were regenerated in the complete 90-source, double-density HD replacement. Do not regenerate this obsolete queue.",
+  "supersededRequests": [
     {
       "id": "m8",
       "name": "솔방울구름 애벌레",
@@ -1824,10 +1832,5 @@
       "transparent_background": true
     }
   ],
-  "generationError": {
-    "code": "usage_limit_reached",
-    "completed": 20,
-    "remaining": 70,
-    "resetUnixSeconds": 1792884831
-  }
+  "pending": []
 }
