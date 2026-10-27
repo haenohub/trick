@@ -17726,7 +17726,8 @@
             }
           ]
         ],
-        "handFile": "appearance/hands/warden"
+        "handFile": "appearance/hands/warden",
+        "costumeFile": "appearance/gear/warden-wardenarmor1"
       },
       "herbalist": {
         "file": "appearance/base/herbalist",
@@ -22665,7 +22666,8 @@
             }
           ]
         ],
-        "handFile": "appearance/hands/herbalist"
+        "handFile": "appearance/hands/herbalist",
+        "costumeFile": "appearance/gear/herbalist-herbalistarmor1"
       },
       "mage": {
         "file": "appearance/base/mage",
@@ -27604,7 +27606,8 @@
             }
           ]
         ],
-        "handFile": "appearance/hands/mage"
+        "handFile": "appearance/hands/mage",
+        "costumeFile": "appearance/gear/mage-magearmor1"
       },
       "ranger": {
         "file": "appearance/base/ranger",
@@ -32543,7 +32546,8 @@
             }
           ]
         ],
-        "handFile": "appearance/hands/ranger"
+        "handFile": "appearance/hands/ranger",
+        "costumeFile": "appearance/gear/ranger-rangerarmor1"
       }
     },
     "items": {
@@ -33986,7 +33990,8 @@
         ]
       }
     },
-    "rigVersion": 1
+    "rigVersion": 1,
+    "mode": "original-costume-with-equipped-weapon"
   },
   "combat": {
     "version": 1,

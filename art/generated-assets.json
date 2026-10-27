@@ -78705,11 +78705,12 @@
         "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
         "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
         "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
-        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png",
+        "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png"
       ],
       "width": 768,
       "height": 768,
-      "sha256": "a0cdcd05be6352bcd00d84028102b9eb15dd1370965dd7d16beeb296900da08b",
+      "sha256": "4d707fe15aff6efc875357ad71aa67e41ee1947779aea82d2c67232247350938",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78750,11 +78751,12 @@
         "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
         "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
         "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
-        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png",
+        "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png"
       ],
       "width": 768,
       "height": 768,
-      "sha256": "6ade8d4ef7bc3ebf862d131cf7a7d62a79f741857b968b81daf45c35c012fca2",
+      "sha256": "e9819f9b4202284afe0d2b28c24fa6d9a0cbbedceec87b40a2a26b98b05caaef",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78795,11 +78797,12 @@
         "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
         "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
         "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
-        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png",
+        "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png"
       ],
       "width": 768,
       "height": 768,
-      "sha256": "c4a983c18e9d95c79f207ec643a696efaf855c56b9af4ef4202f949d20ccf38d",
+      "sha256": "0c5ab1709c5be4718e96c7cc5b25fa2c0f55eb31721d844b21becf96d8e2c163",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78840,11 +78843,12 @@
         "/workspace/generated_images/exec-e9cb7907-057d-447d-b3ac-52b68e5f4450.png",
         "/workspace/generated_images/exec-34c55e13-4f2a-4ecb-841f-aa2d679c5395.png",
         "/workspace/generated_images/exec-d37b3df2-18b7-4fd3-b677-e956ea29d8c8.png",
-        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png"
+        "/workspace/generated_images/exec-ac0e95d9-8d1d-4ae5-8d35-2a1df76fb7cd.png",
+        "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png"
       ],
       "width": 768,
       "height": 768,
-      "sha256": "522a312d803742f7c49e94ca364c115be459e7227c116f7f44c69effd1a16d76",
+      "sha256": "8bbfc1e18df9a6f69be5aabb1195c80fd50606463bfec643527ec1cc05d8c9ab",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -81274,10 +81278,10 @@
       "id": "appearance/gear/warden-wardenarmor1",
       "target": "site/assets/appearance/gear/warden-wardenarmor1.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-2e942f9b-611c-4449-a823-a5884882e21a.png",
+      "source": "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png",
       "width": 3072,
       "height": 768,
-      "sha256": "f9db7c1f63b31d6b73c56a0d4100593b3d07f94f8a114df7eaf0abd9df908b80",
+      "sha256": "c7864a072408dacdc2f39bbd02cdb579eef4808e8303c5039432b6a19bd93608",
       "appearanceVersion": 1,
       "item": "wardenarmor1",
       "classId": "warden",
@@ -81288,17 +81292,9 @@
         "rows": 8,
         "size": 96
       },
-      "additionalSources": [
-        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
-        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
-        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
-        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
-        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
-        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
-        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
-        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
-      ],
-      "rigVersion": 1
+      "additionalSources": [],
+      "rigVersion": 1,
+      "fixedOriginalCostume": true
     },
     {
       "id": "appearance/gear/warden-wardenarmor2",
@@ -81557,10 +81553,10 @@
       "id": "appearance/gear/herbalist-herbalistarmor1",
       "target": "site/assets/appearance/gear/herbalist-herbalistarmor1.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-c9e2c41b-9c1b-414b-8e81-3239437db9d1.png",
+      "source": "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png",
       "width": 3072,
       "height": 768,
-      "sha256": "7d1a433d36ed7c620469641afd621b95430b61e27c31a4ebf35596051f288425",
+      "sha256": "ec138a71bb6aa244f4fdc71286601edec03d6cd2ca3ee5e3e71cde5b45f78992",
       "appearanceVersion": 1,
       "item": "herbalistarmor1",
       "classId": "herbalist",
@@ -81571,17 +81567,9 @@
         "rows": 8,
         "size": 96
       },
-      "additionalSources": [
-        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
-        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
-        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
-        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
-        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
-        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
-        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
-        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
-      ],
-      "rigVersion": 1
+      "additionalSources": [],
+      "rigVersion": 1,
+      "fixedOriginalCostume": true
     },
     {
       "id": "appearance/gear/herbalist-herbalistarmor2",
@@ -81750,10 +81738,10 @@
       "id": "appearance/gear/mage-magearmor1",
       "target": "site/assets/appearance/gear/mage-magearmor1.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-9570842e-ecad-4407-b345-1e8425052d38.png",
+      "source": "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png",
       "width": 3072,
       "height": 768,
-      "sha256": "0d54717d56942394357fc7249d6f137167c833cfd31910c3ba55924f346022f5",
+      "sha256": "5a3efc82f0bebf4122eec7c502df0767af09e76549a6efeceedf18b858971879",
       "appearanceVersion": 1,
       "item": "magearmor1",
       "classId": "mage",
@@ -81764,17 +81752,9 @@
         "rows": 8,
         "size": 96
       },
-      "additionalSources": [
-        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
-        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
-        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
-        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
-        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
-        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
-        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
-        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
-      ],
-      "rigVersion": 1
+      "additionalSources": [],
+      "rigVersion": 1,
+      "fixedOriginalCostume": true
     },
     {
       "id": "appearance/gear/mage-hood1",
@@ -82153,10 +82133,10 @@
       "id": "appearance/gear/ranger-rangerarmor1",
       "target": "site/assets/appearance/gear/ranger-rangerarmor1.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-4c38746f-4752-4c97-94e0-26f1b471c434.png",
+      "source": "/workspace/generated_images/exec-72cc5b68-91b7-4da9-8789-869183d47f83.png",
       "width": 3072,
       "height": 768,
-      "sha256": "b201c9e5cabb23f5f352bad3418c90e98ea599e53bc877ce248e449cfb8ddb54",
+      "sha256": "5abf2faa5d20721b95ec2e21d2fbd26d23ce7338440deda7d0033f085ac882cc",
       "appearanceVersion": 1,
       "item": "rangerarmor1",
       "classId": "ranger",
@@ -82167,17 +82147,9 @@
         "rows": 8,
         "size": 96
       },
-      "additionalSources": [
-        "/workspace/generated_images/exec-fdf77ee2-9b59-4528-846b-e3f2b6bb4543.png",
-        "/workspace/generated_images/exec-b907d595-3498-422e-a78f-ec33460448df.png",
-        "/workspace/generated_images/exec-3a2cc2d1-1c66-49f6-99c8-4978de28a862.png",
-        "/workspace/generated_images/exec-416a2a23-d027-4b87-bf10-208b14746e5d.png",
-        "/workspace/generated_images/exec-dd683e56-201f-4c4e-89d4-2d74f38ec92d.png",
-        "/workspace/generated_images/exec-74b2763e-d15f-4268-9502-5f5847e46ca4.png",
-        "/workspace/generated_images/exec-79e59e16-72f1-43c3-bc87-6618447606d1.png",
-        "/workspace/generated_images/exec-321b7bc3-2131-49b4-9e56-ba36a0ca87fe.png"
-      ],
-      "rigVersion": 1
+      "additionalSources": [],
+      "rigVersion": 1,
+      "fixedOriginalCostume": true
     }
   ]
 }

@@ -25,6 +25,7 @@ for (const id of ["warden", "mage", "ranger", "herbalist"]) {
   record.additionalSources = [
     ...new Set([
       ...record.additionalSources,
+      ...(art.appearance.bases[id].costumeFile ? [records.assets.find(r=>r.id===art.appearance.bases[id].costumeFile).source] : []),
       weapon.source,
       ...weapon.additionalSources,
     ]),

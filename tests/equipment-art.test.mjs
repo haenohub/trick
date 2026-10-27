@@ -9,67 +9,34 @@ import {
 } from "../site/equipment-appearance.js";
 import { rgbaPixels } from "./png.mjs";
 const json = async (f) => JSON.parse(await readFile(f, "utf8"));
-test("all thirty equipment items have real fitted layers for every eligible class and every slot can change independently", async () => {
-  const art = await json("site/assets/manifest.json"),
-    plan = await json("art/equipment-appearance-plan.json"),
-    receipts = await json("art/equipment-generation-receipts.json"),
-    records = await json("art/generated-assets.json");
-  assert.equal(plan.status, "complete");
-  assert.equal(plan.pending.length, 0);
-  assert.equal(plan.sources.length, 52);
-  assert.equal(Object.keys(art.appearance.bases).length, 4);
-  assert.equal(Object.keys(art.appearance.items).length, 30);
-  const allFiles = new Set(),
-    gearSources = new Set();
+test("non-weapon equipment leaves the original class costume unchanged while weapons change independently", async () => {
+  const art = await json("site/assets/manifest.json");
   for (const cls of CLASSES) {
     const starter = starterEquipment(cls.id),
       initial = equippedAppearance(art, cls.id, starter);
-    assert.ok(initial, cls.id + " starter appearance");
+    assert.equal(initial.layers.length, 4);
+    assert.ok(
+      initial.layers.some(
+        (l) =>
+          l.fixedCostume && l.file === art.appearance.bases[cls.id].costumeFile,
+      ),
+    );
     for (const item of Object.values(ITEMS).filter(
       (i) => i.type === "equipment" && (!i.classId || i.classId === cls.id),
     )) {
-      const equipped = { ...starter, [item.slot]: item.id },
-        a = equippedAppearance(art, cls.id, equipped);
-      assert.ok(a, cls.id + " " + item.id + " must not fall back");
-      assert.equal(a.layers.length, 7);
-      const layer = a.layers.find((l) => l.item === item.id);
-      assert.ok(layer.file.startsWith("appearance/gear/") || layer.held);
-      allFiles.add(layer.file + (layer.held ? ":" + layer.index : ""));
-      const record = records.assets.find((r) => r.id === layer.file),
-        receipt = receipts.sources.find((s) => s.id === cls.id + "-" + item.id);
-      assert.equal(record.tool, "image_gen");
-      if (layer.held) {
-        assert.equal(layer.index, art.appearance.weapons[item.id].index);
-        const plan = await json("art/held-weapons.json");
-        assert.equal(plan.sources.length, 8);
-        for (const direction of plan.sources)
-          assert.ok(
-            direction.weapons.some(
-              (w) => w.id === item.id && w.index === layer.index,
-            ),
-          );
-      } else {
-        assert.equal(record.source, receipt.path);
-        assert.equal(record.item, item.id);
-        assert.equal(record.classId, cls.id);
-      }
-      gearSources.add(receipt.path);
-      for (const other of a.layers.filter(
-        (l) => l.slot && l.slot !== item.slot,
-      ))
-        assert.equal(
-          other.file,
-          initial.layers.find((l) => l.slot === other.slot).file,
-          "unrelated worn gear changed",
+      const a = equippedAppearance(art, cls.id, {
+        ...starter,
+        [item.slot]: item.id,
+      });
+      if (item.slot === "weapon") {
+        assert.equal(a.layers.find((l) => l.held).item, item.id);
+        assert.deepEqual(
+          a.layers.filter((l) => !l.held),
+          initial.layers.filter((l) => !l.held),
         );
+      } else assert.deepEqual(a, initial);
     }
   }
-  assert.equal(allFiles.size, 48);
-  assert.equal(
-    gearSources.size,
-    48,
-    "each fitted item needs its own authored artwork",
-  );
 });
 test("paper-doll sheets keep all 256 poses on native 96px cells with clean four-pixel margins", async () => {
   const art = await json("site/assets/manifest.json");

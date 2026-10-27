@@ -13,14 +13,10 @@ export function starterEquipment(classId) {
     : null;
 }
 export function equipmentSignature(classId, equipment) {
-  return (
-    classId +
-    ":" +
-    APPEARANCE_SLOTS.map((slot) => equipment?.[slot] || "").join(":")
-  );
+  return classId + ":" + (equipment?.weapon || "");
 }
-// All pieces must be real authored, aligned 32-pose/8-direction layers. Do not
-// paste inventory icons over baked gear or show a half-finished naked base.
+// Class costume is fixed; only the weapon follows equipped items.
+// Keep both registered to the existing 32-pose/eight-direction body rig.
 export function equippedAppearance(art, classId, equipment) {
   const base = art.appearance?.bases?.[classId];
   if (
@@ -36,26 +32,23 @@ export function equippedAppearance(art, classId, equipment) {
   const available = new Set(art.files),
     layers = [{ file: base.file, order: 0 }];
   if (!available.has(base.file)) return null;
-  for (const slot of APPEARANCE_SLOTS) {
-    const id = equipment[slot],
-      item = ITEMS[id],
-      definition = art.appearance.items?.[id]?.[classId];
-    if (
-      !item ||
-      item.slot !== slot ||
-      (item.classId && item.classId !== classId) ||
-      !definition?.layers?.length
-    )
-      return null;
-    const held = slot === "weapon" ? art.appearance.weapons?.[id] : null;
-    const itemLayers = held
-      ? [{ ...held, held: true, order: 50 }]
-      : definition.layers;
-    for (const layer of itemLayers) {
-      if (!available.has(layer.file)) return null;
-      layers.push({ ...layer, slot, item: id });
-    }
+  const costume = base.costumeFile;
+  if (costume) {
+    if (!available.has(costume)) return null;
+    layers.push({ file: costume, order: 20, fixedCostume: true });
   }
+  const id = equipment.weapon,
+    item = ITEMS[id],
+    held = art.appearance.weapons?.[id];
+  if (
+    !item ||
+    item.slot !== "weapon" ||
+    (item.classId && item.classId !== classId) ||
+    !held ||
+    !available.has(held.file)
+  )
+    return null;
+  layers.push({ ...held, held: true, order: 50, slot: "weapon", item: id });
   if (base.handFile) {
     if (!available.has(base.handFile)) return null;
     layers.push({ file: base.handFile, order: 60, hands: true });

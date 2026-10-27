@@ -26,7 +26,7 @@ test("all assets originate from generated artwork with clean transparent native 
   );
   const sources = new Set(
     [
-      ...previous,
+      ...previous, {source:JSON.parse(await readFile('art/original-costumes.json','utf8')).source},
       ...repaint.sources,
       ...motion.sources,
       ...locomotion.sources,
