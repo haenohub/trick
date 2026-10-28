@@ -5,6 +5,9 @@ import {
   canEquip,
   derivedStats,
   monsterStats,
+  unspentPoints,
+  POINTS_PER_LEVEL,
+  legacyAttributes,
 } from "../site/progression.js";
 import {
   World,
@@ -24,8 +27,19 @@ test("all four professions gain their own attributes through multiple level-ups 
       oldPower = stats(p).power;
     const gained = grantXp(p, 1200);
     assert.ok(gained > 1);
-    for (const [key, n] of Object.entries(attributes(p)))
-      assert.ok(n > before[key]);
+    assert.deepEqual(attributes(p), before);
+    assert.equal(unspentPoints(p), gained * POINTS_PER_LEVEL);
+    const world = new World(),
+      live = world.addPlayer(p);
+    assert.ok(
+      world.act(live.id, {
+        type: "allocateStat",
+        attribute: "strength",
+        amount: 1,
+      }),
+    );
+    assert.equal(attributes(live).strength, before.strength + 1);
+    assert.equal(unspentPoints(live), gained * POINTS_PER_LEVEL - 1);
     assert.ok(stats(p).power > oldPower);
     assert.equal(p.hp, stats(p).maxHp);
     const restored = hydrateSave({
@@ -63,6 +77,7 @@ test("equipment has real combat bonuses and requirements are enforced without it
   const w = new World(),
     p = w.addPlayer(createPlayer());
   p.level = 20;
+  p.allocated = { strength: 45, vitality: 20 };
   p.inventory.spear2 = 1;
   assert.ok(canEquip(p, ITEMS.spear2));
   const old = ITEMS.spear2.requirements;
@@ -134,7 +149,7 @@ test("a held key and rapid repeated taps both respect the same 200ms cadence", (
   }
   assert.equal(count, 5);
 });
-test("the authoritative world accepts five nearby pickups per second, awards each at200ms and never duplicates loot", () => {
+test("the authoritative world accepts five nearby pickups per second, supports overlapping600ms flights and never duplicates loot", () => {
   const w = new World(),
     p = w.addPlayer(createPlayer());
   const initial = p.inventory.fiber;
@@ -151,6 +166,12 @@ test("the authoritative world accepts five nearby pickups per second, awards eac
     if (n === 2) assert.equal(p.inventory.fiber, initial);
   }
   assert.equal(accepted, 5);
+  assert.equal(p.inventory.fiber, initial + 3);
+  assert.equal(
+    w.map(p.map).drops.filter((d) => d.pickupEnds && !d.collected).length,
+    2,
+  );
+  for (let n = 0; n < 10; n++) w.step(0.05);
   assert.equal(p.inventory.fiber, initial + 5);
   assert.equal(w.map(p.map).drops.filter((d) => !d.collected).length, 5);
 });

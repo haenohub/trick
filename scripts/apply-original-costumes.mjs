@@ -5,6 +5,7 @@ import { decode, rgba, sampleNearest, png } from "./pack-pixel-art.mjs";
 const plan = JSON.parse(await readFile("art/original-costumes.json", "utf8"));
 const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
 const records = JSON.parse(await readFile("art/generated-assets.json", "utf8"));
+if(art.appearance.mode==="integrated-clothed-body-with-equipped-weapon")throw Error("Use apply-dressed-players.mjs for integrated character art");
 const src = decode(plan.source);
 for (let i = 3; i < src.data.length; i += 4)
   if (src.data[i] < 220) src.data[i] = 0;

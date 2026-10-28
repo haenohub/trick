@@ -1,0 +1,85 @@
+{
+  "status": "complete",
+  "tool": "image_gen",
+  "sources": [
+    {
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png",
+      "status": "complete",
+      "cols": 8,
+      "rows": 4
+    },
+    {
+      "id": "warden",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "warden",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-62ad12fe-eb2b-4052-8b7c-99bcd68e29e0.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "warden",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-8a9e946c-1181-455d-925c-4a3199fb374c.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "mage",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "mage",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-3e57117f-829d-41a4-8d4e-dabcf69fe2b1.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "mage",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-04c6fc90-ad39-4c06-967b-78806248785c.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "ranger",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "ranger",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-e51943a7-9720-456b-a624-ed9b8474a87d.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "ranger",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-20f1d09a-f5ce-4e6f-b68f-30439d9dc142.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "herbalist",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "herbalist",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-f0fccfd4-1749-4621-8670-374691c6c2e0.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "herbalist",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-df72412a-6fb7-4bba-9a28-e2c95ffd7a0a.png",
+      "tool": "image_gen"
+    }
+  ]
+}

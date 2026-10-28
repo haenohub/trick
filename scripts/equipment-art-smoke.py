@@ -26,8 +26,8 @@ with sync_playwright() as pw:
     const equipment={...starter,[item.slot]:item.id};await prepareEquipmentArt(cls.id,equipment);
     for(const anim of ['idle','walk','windup','attack','recover','hurt','death'])for(let dir=0;dir<8;dir++)for(const time of [0,.1,.2,.4]){
      calls.length=0;r.sprite(cls.id,64,112,anim,dir,time,0,96,null,cls.id+anim+dir,equipment);
-     if(calls.length!==4)throw Error(cls.id+' '+item.id+' wrong layer count '+calls.length);
-     if(!calls.some(c=>c.file.includes(item.slot==='weapon'?'/appearance/held-weapons.png':'/appearance/gear/'+cls.id+'-'+cls.id+'armor1.png')))throw Error('equipped item is invisible');
+     if(calls.length!==3)throw Error(cls.id+' '+item.id+' wrong layer count '+calls.length);
+     if(!calls.some(c=>c.file.includes(item.slot==='weapon'?'/appearance/held-weapons.png':'/appearance/base/'+cls.id+'.png')))throw Error('equipped item is invisible');
      const frame=calls[0].args.slice(0,4).join(',');
      for(const c of calls){
       const [sx,sy,sw,sh]=c.args;
@@ -46,12 +46,12 @@ with sync_playwright() as pw:
  }''')
  assert result=={'variants':48,'checked':10752},result
  p.locator('#outfits').screenshot(path='/tmp/leaftale-all-classes-equipped.png')
- print('PASS: lazy wardrobe loading; all 48 fitted class/item variants × 8 directions × 7 motions × 4 times draw fixed original costumes and independently held weapons')
+ print('PASS: lazy wardrobe loading; all 48 fitted class/item variants × 8 directions × 7 motions × 4 times draw integrated clothed bodies and independently held weapons')
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden')
  p.evaluate('''async()=>{
   const {createPlayer}=await import('./core.js');const q=createPlayer('warden');q.level=30;q.branch='antler';
   for(const id of ['spear2','wardenarmor2','hood2','boots2','charm2'])q.inventory[id]=1;
-  localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
+  delete q.allocationVersion;delete q.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
  }''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()
  p.evaluate('''()=>{window.gearCalls=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(image,...args){if(image.src?.includes('/appearance/')){gearCalls.push(image.src);if(gearCalls.length>1000)gearCalls.shift();}return draw.call(this,image,...args);};}''')
@@ -61,7 +61,7 @@ with sync_playwright() as pw:
   p.locator('[data-inventory-item='+item+']').hover()
   p.locator('#item-tooltip [data-action=equip]').click()
   p.wait_for_function('(q)=>__leaftale.snapshot().player.equipment[q.slot]===q.item',arg={'slot':slot,'item':item})
-  p.wait_for_function('(item)=>gearCalls.some(f=>f.includes(item.startsWith("spear")?"/appearance/held-weapons.png":"/appearance/gear/warden-wardenarmor1.png"))',arg=item)
+  p.wait_for_function('(item)=>gearCalls.some(f=>f.includes(item.startsWith("spear")?"/appearance/held-weapons.png":"/appearance/base/warden.png"))',arg=item)
  p.keyboard.press('i');p.wait_for_timeout(5500)
  p.screenshot(path='/tmp/leaftale-equipped-in-game.png')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()

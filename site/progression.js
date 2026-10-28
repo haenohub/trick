@@ -27,7 +27,7 @@ export const GROWTH = {
 };
 const keys = Object.keys(ATTRIBUTE_NAMES),
   cap = (n, a, b) => Math.max(a, Math.min(b, n));
-export function attributes(p) {
+export function legacyAttributes(p) {
   const g = GROWTH[p.classId] || GROWTH.warden,
     level = cap(Math.floor(Number(p.level) || 1), 1, 80);
   const out = Object.fromEntries(
@@ -46,6 +46,47 @@ export function attributes(p) {
     }[p.branch];
   for (const [k, n] of Object.entries(bonus || {})) out[k] += extra * n;
   return out;
+}
+export const POINTS_PER_LEVEL = 12;
+export function earnedPoints(p) {
+  return (
+    Math.max(0, Math.min(80, Math.floor(Number(p.level) || 1)) - 1) *
+      POINTS_PER_LEVEL +
+    (p.branch ? Math.max(0, Math.min(80, p.level) - 24) * 2 : 0)
+  );
+}
+export function allocatedPoints(p) {
+  return Object.fromEntries(
+    keys.map((k) => [
+      k,
+      Number.isSafeInteger(p.allocated?.[k]) && p.allocated[k] >= 0
+        ? p.allocated[k]
+        : 0,
+    ]),
+  );
+}
+export function unspentPoints(p) {
+  return Math.max(
+    0,
+    earnedPoints(p) -
+      Object.values(allocatedPoints(p)).reduce((a, b) => a + b, 0),
+  );
+}
+export function normalizeAllocation(p, raw) {
+  p.allocationVersion = 1;
+  if (raw.allocationVersion !== 1) {
+    const old = legacyAttributes(p),
+      base = (GROWTH[p.classId] || GROWTH.warden).base;
+    p.allocated = Object.fromEntries(keys.map((k, i) => [k, old[k] - base[i]]));
+  } else p.allocated = allocatedPoints(raw);
+  if (Object.values(p.allocated).reduce((a, b) => a + b, 0) > earnedPoints(p))
+    p.allocated = Object.fromEntries(keys.map((k) => [k, 0]));
+}
+export function attributes(p) {
+  if (p.allocationVersion !== 1) return legacyAttributes(p);
+  const g = GROWTH[p.classId] || GROWTH.warden,
+    a = allocatedPoints(p);
+  return Object.fromEntries(keys.map((k, i) => [k, g.base[i] + a[k]]));
 }
 export function equipmentProfile(i) {
   const t = i.tier || 1,
@@ -74,7 +115,7 @@ export function equipmentProfile(i) {
       : i.classId === "ranger"
         ? "dexterity"
         : "strength";
-    const expected = attributes({ classId: i.classId, level: i.level });
+    const expected = legacyAttributes({ classId: i.classId, level: i.level });
     requirements = { [key]: Math.floor(expected[key] * 0.75) };
     if (t > 1)
       requirements[magic ? "spirit" : "vitality"] = Math.floor(
@@ -86,7 +127,7 @@ export function equipmentProfile(i) {
     out.maxHp = high ? 70 : 15;
     if (magic) out.magicPower = high ? 10 : 3;
     if (i.classId === "ranger") out.evasion = high ? 0.04 : 0.015;
-    const expected = attributes({ classId: i.classId, level: i.level });
+    const expected = legacyAttributes({ classId: i.classId, level: i.level });
     requirements = {
       [magic ? "spirit" : "vitality"]: Math.floor(
         expected[magic ? "spirit" : "vitality"] * 0.7,

@@ -15,8 +15,8 @@ export function starterEquipment(classId) {
 export function equipmentSignature(classId, equipment) {
   return classId + ":" + (equipment?.weapon || "");
 }
-// Class costume is fixed; only the weapon follows equipped items.
-// Keep both registered to the existing 32-pose/eight-direction body rig.
+// Body and original costume are authored together in each pose.
+// Only the equipped weapon and its finger occlusion are separate.
 export function equippedAppearance(art, classId, equipment) {
   const base = art.appearance?.bases?.[classId];
   if (

@@ -1,6 +1,10 @@
+import { worldPulse } from "./living-world.js";
 import { speciesForMap, encounterPoint } from "./ecology.js";
 import {
   derivedStats,
+  normalizeAllocation,
+  unspentPoints,
+  ATTRIBUTE_NAMES,
   canEquip,
   monsterStats,
   hitChance,
@@ -91,6 +95,8 @@ export function createPlayer(classId = "warden", name = "새잎 모험가") {
   };
   const p = {
     version: 1,
+    allocationVersion: 1,
+    allocated: {},
     name: String(name).trim().slice(0, 16) || "새잎 모험가",
     classId: cls.id,
     branch: null,
@@ -132,6 +138,14 @@ export function hydrateSave(raw) {
     return null;
   const p = createPlayer(raw.classId, raw.name);
   p.level = clamp(Math.floor(Number(raw.level) || 1), 1, MAX_LEVEL);
+  p.branch =
+    p.level >= 25 &&
+    CLASSES.find((c) => c.id === p.classId).branches.some(
+      (b) => b.id === raw.branch,
+    )
+      ? raw.branch
+      : null;
+  normalizeAllocation(p, raw);
   p.xp = clamp(Number(raw.xp) || 0, 0, xpNeeded(p.level) - 1);
   p.gold = clamp(Math.floor(Number(raw.gold) || 0), 0, 1e8);
   p.inventory = Object.fromEntries(
@@ -266,6 +280,8 @@ export function hydrateSave(raw) {
 }
 export function serialize(p) {
   const keys = [
+    "allocationVersion",
+    "allocated",
     "layoutVersion",
     "version",
     "name",
@@ -753,8 +769,12 @@ export class World {
         if (action.herb) {
           const h = map.herbs.find((h) => h.id === action.herb);
           if (!h || distance(p, h) > 2 || h.readyAt > this.time) return false;
-          const n = action.harvest === "whole" ? 3 : 1;
-          h.readyAt = this.time + (n === 3 ? 38 : 12);
+          const n =
+            (action.harvest === "whole" ? 3 : 1) +
+            (worldPulse(map.config, this.time).active && map.config.region === 0
+              ? 1
+              : 0);
+          h.readyAt = this.time + (action.harvest === "whole" ? 38 : 12);
           this.addItem(p, h.item, n);
           p.herbXp += n * 4;
           recordEvent(p, "gather", { item: h.item, count: n });
@@ -775,6 +795,19 @@ export class World {
       }
       case "travel":
         return this.travel(p, action.map, !!action.fast);
+      case "allocateStat": {
+        const { attribute, amount } = action;
+        if (
+          !Object.hasOwn(ATTRIBUTE_NAMES, attribute) ||
+          !Number.isSafeInteger(amount) ||
+          amount < 1 ||
+          amount > unspentPoints(p)
+        )
+          return false;
+        p.allocated[attribute] = (p.allocated[attribute] || 0) + amount;
+        this.log(p, `${ATTRIBUTE_NAMES[attribute]} +${amount}`);
+        return true;
+      }
       case "equip": {
         const i = ITEMS[action.item];
         if (!i?.slot || !p.inventory[i.id] || !canEquip(p, i)) return false;
@@ -1174,7 +1207,18 @@ export class World {
       }
       this.spawnLoot(p, m, [
         ...rollDrops(def, this.rng),
-        { kind: "currency", count: gold },
+        {
+          kind: "currency",
+          count: Math.round(
+            gold *
+              (worldPulse(
+                MAPS.find((a) => a.id === p.map),
+                this.time,
+              ).active && MAPS.find((a) => a.id === p.map).region === 1
+                ? 1.25
+                : 1),
+          ),
+        },
       ]);
       this.log(
         p,
@@ -2029,6 +2073,7 @@ export class World {
     const map = this.map(p.map);
     return {
       time: this.time,
+      ambience: worldPulse(map.config, this.time),
       player: {
         ...serialize(p),
         id: p.id,

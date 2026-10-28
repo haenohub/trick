@@ -14,13 +14,9 @@ test("non-weapon equipment leaves the original class costume unchanged while wea
   for (const cls of CLASSES) {
     const starter = starterEquipment(cls.id),
       initial = equippedAppearance(art, cls.id, starter);
-    assert.equal(initial.layers.length, 4);
-    assert.ok(
-      initial.layers.some(
-        (l) =>
-          l.fixedCostume && l.file === art.appearance.bases[cls.id].costumeFile,
-      ),
-    );
+    assert.equal(initial.layers.length, 3);
+    assert.ok(initial.layout.clothedBody);
+    assert.ok(!initial.layers.some((l) => l.fixedCostume));
     for (const item of Object.values(ITEMS).filter(
       (i) => i.type === "equipment" && (!i.classId || i.classId === cls.id),
     )) {

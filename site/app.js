@@ -3,7 +3,8 @@ import { PickupHold } from "./pickup-hold.js";
 import {
   ATTRIBUTE_NAMES,
   STAT_NAMES,
-  attributes,
+  unspentPoints,
+  POINTS_PER_LEVEL,
   canEquip,
   equipRequirements,
   statValue,
@@ -306,6 +307,7 @@ function send(action, quiet = false) {
     hud();
     if (
       [
+        "allocateStat",
         "craft",
         "equip",
         "buy",
@@ -412,6 +414,10 @@ function hud() {
   $("region-name").textContent =
     `${REGIONS[map.region].name} · CHAPTER 0${map.region + 1}`;
   $("map-name").textContent = map.name;
+  if ($("world-phase") && state.ambience)
+    $("world-phase").textContent =
+      state.ambience.label +
+      (map.town ? "" : ` · ${state.ambience.remaining}초`);
   $("map-level").textContent = map.town
     ? "안전한 마을"
     : `권장 Lv.${map.level}–${map.level + 3}`;
@@ -617,13 +623,15 @@ function equipmentRequirements(i, p) {
   );
 }
 function playerStats(p) {
-  const next = attributes({ ...p, level: p.level + 1 });
+  const points = unspentPoints(p);
   return (
-    '<section data-player-stats><h3 class="panel-section">레벨 성장 능력치</h3><p class="panel-intro">레벨이 오를 때 직업에 맞게 자동 성장합니다. 장착 조건은 장비 보너스를 제외한 이 수치로 검사합니다.</p><div class="player-stat-grid">' +
+    '<section data-player-stats><h3 class="panel-section">레벨 성장 능력치</h3><p class="panel-intro">레벨마다 12포인트를 직접 배분합니다. +1 또는 수량을 입력해 적용하세요. 장착 조건은 장비 보너스를 제외한 수치로 검사합니다.</p><p class="stat-points">남은 포인트 <b data-unspent>' +
+    points +
+    '</b></p><div class="player-stat-grid">' +
     Object.entries(ATTRIBUTE_NAMES)
       .map(
         ([key, label]) =>
-          `<div><span>${label}</span><b data-attribute="${key}">${p.stats.attributes[key]}</b><small>레벨당 +${next[key] - p.stats.attributes[key]}</small></div>`,
+          `<div><span>${label}</span><b data-attribute="${key}">${p.stats.attributes[key]}</b><div class="stat-allocate"><button data-action="allocateStat" data-attribute="${key}" data-amount="1" ${points < 1 ? "disabled" : ""}>+1</button><input aria-label="${label} 배분 수량" data-stat-amount="${key}" type="number" min="1" max="${points}" step="1" value="1" ${points < 1 ? "disabled" : ""}><button data-action="allocateStat" data-attribute="${key}" ${points < 1 ? "disabled" : ""}>적용</button></div></div>`,
       )
       .join("") +
     '</div><h3 class="panel-section">장비를 포함한 전투 능력치</h3><div class="player-stat-grid">' +
@@ -942,9 +950,19 @@ function connect(url) {
           closePanel();
           toast("함께 걷는 숲에 도착했습니다.");
         } else if (msg.type === "state") {
+          const beforeStats = state?.player?.allocated;
           state = msg.state;
           buildSkillbarIfNeeded();
           hud();
+          if (
+            panel === "skills" &&
+            JSON.stringify(beforeStats) !==
+              JSON.stringify(state.player.allocated)
+          ) {
+            const top = $("panel-body").scrollTop;
+            renderPanel();
+            $("panel-body").scrollTop = top;
+          }
         } else if (msg.type === "chat") addChat(msg.name, msg.text);
         else if (msg.type === "error") toast(msg.message);
       } catch {}
@@ -1081,9 +1099,34 @@ function panelClick(e) {
     !confirm("이 길을 선택하면 바꿀 수 없습니다. 전직할까요?")
   )
     return;
+  if (b.dataset.action === "allocateStat") {
+    const amount = Number(
+      b.dataset.amount ??
+        document.querySelector(`[data-stat-amount="${b.dataset.attribute}"]`)
+          ?.value,
+    );
+    if (
+      !Number.isSafeInteger(amount) ||
+      amount < 1 ||
+      amount > unspentPoints(state.player)
+    ) {
+      toast("남은 포인트 안에서 1 이상의 정수를 입력해 주세요.");
+      return;
+    }
+    const top = $("panel-body").scrollTop;
+    send({ type: "allocateStat", attribute: b.dataset.attribute, amount });
+    $("panel-body").scrollTop = top;
+    return;
+  }
   if (b.dataset.action)
     send({
       type: b.dataset.action,
+      attribute: b.dataset.attribute,
+      amount: Number(
+        b.dataset.amount ??
+          document.querySelector(`[data-stat-amount="${b.dataset.attribute}"]`)
+            ?.value,
+      ),
       item: b.dataset.item,
       slot: Number(b.dataset.slot),
       map: b.dataset.map,
@@ -1341,12 +1384,7 @@ window.addEventListener("keydown", (e) => {
       !e.repeat &&
       state.player.hp > 0 &&
       pickupHold.press(e.code, performance.now()) &&
-      pickupHold.take(
-        performance.now(),
-        state.drops.some(
-          (d) => d.owner === state.player.id && d.pickupEnds > state.time,
-        ),
-      )
+      pickupHold.take(performance.now())
     )
       if (!send({ type: "pickupNearest" }, true))
         toast("가까운 바닥 전리품이 없습니다.");
@@ -1440,15 +1478,7 @@ function frame(now) {
       state = world.snapshot("local");
     }
     if (panel || state.player.hp <= 0) pickupHold.cancel();
-    else if (
-      pickupHold.take(
-        now,
-        state.drops.some(
-          (d) => d.owner === state.player.id && d.pickupEnds > state.time,
-        ),
-      )
-    )
-      send({ type: "pickupNearest" }, true);
+    else if (pickupHold.take(now)) send({ type: "pickupNearest" }, true);
     if (pendingInteraction && !panel) {
       const n =
         pendingInteraction.kind === "npc"
@@ -1492,7 +1522,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.18.1",
+  version: "0.19.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

@@ -35,15 +35,15 @@ with sync_playwright() as pw:
   p.keyboard.press('i')
  print('PASS: descriptions covering adjacent slots pass mouse input through and update to the underlying item at four viewport widths')
  p.set_viewport_size({'width':1440,'height':900});p.locator('[data-panel=settings]').click();p.locator('[data-special=title]').click()
- p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
+ p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');p.keyboard.press('a')
  p.wait_for_function('__leaftale.snapshot().drops.length>=3');p.wait_for_timeout(150)
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(1100)
  assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
  p.evaluate('''()=>{window.flightSamples=[];window.flightCapture=true;function sample(){const s=__leaftale.snapshot();flightSamples.push(s.drops.filter(d=>d.pickupEnds>s.time).length);if(flightCapture)requestAnimationFrame(sample);}requestAnimationFrame(sample);}''')
  p.keyboard.down('Space');p.wait_for_function('__leaftale.snapshot().drops.length===0');p.keyboard.up('Space')
- samples=p.evaluate('()=>{flightCapture=false;return flightSamples;}');assert max(samples)==1,samples
- print('PASS: tapping Space collects exactly one item; holding collects all nearby drops one flight at a time without OS key-repeat')
+ samples=p.evaluate('()=>{flightCapture=false;return flightSamples;}');assert 2<=max(samples)<=4,samples
+ print('PASS: tapping Space collects exactly one item; holding collects all nearby drops with overlapping 600ms flights without OS key-repeat')
  # Make another pile through real combat, then interrupt a held pickup with UI.
  p.keyboard.press('Tab');p.keyboard.press('a');p.wait_for_function('__leaftale.snapshot().drops.length>=3')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('Space');p.keyboard.press('i');p.wait_for_timeout(1700)

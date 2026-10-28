@@ -6,7 +6,7 @@ with sync_playwright() as pw:
  b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
  p=b.new_page(viewport={'width':1440,'height':900});errors=[];p.on('pageerror',lambda e:errors.append(str(e)))
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden')
- p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.7;raw.y=m.y;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
+ p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.7;raw.y=m.y;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.wait_for_timeout(100)
  assert p.locator('#skillbar [data-action=attack] kbd').inner_text()=='A'
  p.evaluate('''()=>{window.motionSamples=[];window.captureMotion=true;function sample(){const s=__leaftale.snapshot();motionSamples.push({time:s.time,anim:s.player.anim,hp:s.mobs.reduce((n,m)=>n+m.hp,0)});if(captureMotion)requestAnimationFrame(sample);}requestAnimationFrame(sample);}''')

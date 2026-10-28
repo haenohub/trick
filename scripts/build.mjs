@@ -57,6 +57,7 @@ for (const name of [
   "animation.js",
   "avatar-draw.js",
   "progression.js",
+  "living-world.js",
   "view-projection.js",
   "pickup-hold.js",
   "equipment-appearance.js",

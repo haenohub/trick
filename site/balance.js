@@ -7,7 +7,7 @@ export const TEST_BALANCE = Object.freeze({
 export const CURRENCY_NAME = "리프";
 export const PICKUP_RANGE = 24;
 export const NEARBY_PICKUP_RANGE = 3;
-export const PICKUP_DURATION = 0.2;
+export const PICKUP_DURATION = 0.6;
 export const PICKUP_INTERVAL = 0.2;
 export const xpReward = (amount) =>
   Math.max(0, Math.floor(Number(amount) || 0)) * TEST_BALANCE.experience;

@@ -1,5 +1,5 @@
 import { PICKUP_INTERVAL } from "./balance.js";
-// A short press attempts one pickup. Holding repeats after each flight, without
+// A short press attempts one pickup. Holding starts another flight every 200ms, without
 // depending on OS key-repeat or queuing a burst when a tab resumes.
 export class PickupHold {
   constructor() {

@@ -6,6 +6,16 @@
 
 **8방향 아틀리에:** https://haenohub.github.io/trick/directions.html
 
+## v0.19.0 통합 캐릭터·수동 성장·살아 있는 지역
+
+- 4직업의 의상과 몸을 함께 그린 8방향 걷기·대기·공격과 방향별 피격 시트를 새로 생성했습니다. 별도 의상 합성을 없애고 무기만 측정한 손 위치에 연결합니다. 출처: `art/dressed-players.json`, `art/dressed-hurt.json`. 기존 96px·256색·4px 여백을 유지합니다.
+- Space는 0.2초마다 줍기를 시작하고 각 전리품은 0.6초 동안 회전하며 날아옵니다. 여러 비행이 겹쳐도 소유권과 중복 방지 판정은 아이템별로 유지합니다.
+- C에서 레벨당 12포인트를 +1 또는 정수 수량 입력으로 직접 배분합니다. 전직 이후 레벨에는 추가 2포인트가 있습니다. 이전 자동 성장 저장은 기존 능력치를 배분된 수치로 이전해 보존합니다. 새로운 레벨에는 자동 배분하지 않습니다. 장비 요구 조건은 같은 기본 능력치로 검사합니다.
+- 숲의 잎·꽃잎·반딧불, 해안의 물결을 새 도트 시트로 추가했습니다. 180초 지역 주기 중 30초 동안 숲 개화는 채집 +1, 해안 밀물 선물은 리프 +25%를 제공합니다. 미니맵 아래 표시와 실제 보상이 같은 판정 시계를 사용합니다. 동작 줄이기 설정에서는 환경 애니메이션을 끕니다.
+- 단계별 범위와 출시 검증 기준은 [RELEASE_STAGES.md](RELEASE_STAGES.md)를 참고하세요. 자동 검사 통과를 장시간 실기기 QA 또는 정식 출시 완료로 간주하지 않습니다.
+- `node scripts/apply-dressed-players.mjs`, `node scripts/apply-ambient-art.mjs`로 생성 원본을 패킹한 뒤 빌드·로컬 8093 서버·`scripts/render-equipped-combat.py`·`scripts/record-equipped-combat.mjs`·빌드 순서로 복원할 수 있습니다. 일반 빌드에는 생성 도구가 필요하지 않습니다.
+- 새 시스템 검사는 `tests/manual-allocation.test.mjs`, `tests/living-world.test.mjs`, `scripts/manual-stats-smoke.py`에 있습니다.
+
 ## v0.18.1 원래 직업 외형 고정
 
 - 방어구·모자·신발·장신구를 바꿔도 외형은 원래 직업 의상으로 유지됩니다. 장비 능력치와 장착 조건은 계속 적용됩니다. 장착한 무기만 손에서 교체됩니다.
@@ -179,7 +189,7 @@ python3 scripts/interface-smoke.py http://127.0.0.1:8080/
 
 72종 전체에 각각 8방향 걷기 8프레임·대기 8프레임과 576개 단독 방향 PNG를 제공합니다. 장비는 중립 몸체 4종과 직업/아이템별 레이어 48종을 같은 32자세×8방향으로 합성합니다. 아틀리에는 검색·방향 전환·모션 재생·PNG 다운로드를 지원합니다. 공격에는 방향별 새 8프레임 시트와 손 위치에 고정된 무기 레이어를 사용합니다. 생성 출처와 재패킹 절차는 위의 v0.18.0·v0.17.0 항목을 참고하세요.
 
-배포 배열은 `site/assets/manifest.json`, 네이티브 PNG 1,003개의 원본 연결과 체크섬은 `art/generated-assets.json`에 기록합니다. 총 367개 아틀라스 중 장비 외형 57개는 필요한 때 불러옵니다. 옛 절반 해상도 요청은 완성된 `art/hd-sources.json`으로 대체했으며 `scripts/apply-storybook.mjs`는 현재 에셋을 재생성하는 도구가 아닙니다. 일반 빌드·배포는 커밋된 PNG만 사용합니다. 이전 버전의 기록은 [ART_REWORK.md](ART_REWORK.md)에 있습니다.
+배포 배열은 `site/assets/manifest.json`, 네이티브 PNG 1,004개의 원본 연결과 체크섬은 `art/generated-assets.json`에 기록합니다. 총 368개 아틀라스 중 장비 외형 57개는 필요한 때 불러옵니다. 옛 절반 해상도 요청은 완성된 `art/hd-sources.json`으로 대체했으며 `scripts/apply-storybook.mjs`는 현재 에셋을 재생성하는 도구가 아닙니다. 일반 빌드·배포는 커밋된 PNG만 사용합니다. 이전 버전의 기록은 [ART_REWORK.md](ART_REWORK.md)에 있습니다.
 
 ## 파일 구조
 

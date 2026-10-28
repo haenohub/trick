@@ -10,11 +10,11 @@ with sync_playwright() as pw:
  p.evaluate('''async()=>{
   const {createPlayer}=await import('./core.js'),q=createPlayer('warden');
   for(const id of ['spear2','staff2','thornweapon'])q.inventory[id]=1;
-  localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
+  delete q.allocationVersion;delete q.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
  }''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()
- p.keyboard.press('c');assert p.locator('[data-attribute]').count()==6;assert p.locator('[data-stat]').count()==9
- values=p.evaluate('''()=>Object.fromEntries([...document.querySelectorAll('[data-attribute]')].map(e=>[e.dataset.attribute,Number(e.textContent)]))''')
+ p.keyboard.press('c');assert p.locator('b[data-attribute]').count()==6;assert p.locator('[data-stat]').count()==9
+ values=p.evaluate('''()=>Object.fromEntries([...document.querySelectorAll('b[data-attribute]')].map(e=>[e.dataset.attribute,Number(e.textContent)]))''')
  assert values==p.evaluate('__leaftale.snapshot().player.stats.attributes')
  p.keyboard.press('c');p.keyboard.press('i')
  for item in ['spear2','staff2','thornweapon']:
@@ -27,11 +27,11 @@ with sync_playwright() as pw:
  p.evaluate('''async()=>{
   const {createPlayer,grantXp}=await import('./core.js');const q=createPlayer('warden');grantXp(q,1200);
   q.level=30;q.branch='antler';for(const id of ['spear2','wardenarmor2','hood2','boots2','charm2'])q.inventory[id]=1;
-  localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
+  delete q.allocationVersion;delete q.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(q));
  }''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('c')
- assert int(p.locator('[data-attribute=strength]').inner_text())>values['strength']
- assert int(p.locator('[data-attribute=vitality]').inner_text())>values['vitality']
+ assert int(p.locator('b[data-attribute=strength]').inner_text())>values['strength']
+ assert int(p.locator('b[data-attribute=vitality]').inner_text())>values['vitality']
  for e in p.locator('[data-stat]').all():
   key=e.get_attribute('data-stat');assert e.inner_text()!='NaN';assert p.evaluate('(k)=>Number.isFinite(__leaftale.snapshot().player.stats[k])',key)
  p.screenshot(path='/tmp/leaftale-growth-stats.png');p.keyboard.press('c')

@@ -15,7 +15,7 @@ import { attackZones, zoneOutline } from "./combat.js";
 import { MAPS, MONSTERS, NPCS, CLASSES, PORTALS, ITEMS } from "./data.js";
 import { imageToWorld, worldToImage } from "./art-layout.js";
 import { direction, SOUTH } from "./directions.js";
-import { NAVIGATION, TILE, WORLD_ZOOM } from "./world-layout.js";
+import { NAVIGATION, TILE, WORLD_ZOOM, isWalkable } from "./world-layout.js";
 const IMAGES = new Map();
 const REQUESTS = new Map();
 const PREVIEWS = new WeakMap();
@@ -990,8 +990,66 @@ export class Renderer {
           0.85,
         );
     }
+    this.drawAmbience(state, map);
     this.drawMinimap(state);
     this.present();
+  }
+  drawAmbience(state, map) {
+    if (!ART.ambient || matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const p = state.player,
+      t = state.time,
+      row = map.region === 0 ? (state.ambience?.active ? 3 : 0) : 1;
+    const cx = Math.floor(p.x / 6),
+      cy = Math.floor(p.y / 6);
+    for (let iy = cy - 5; iy <= cy + 5; iy++)
+      for (let ix = cx - 5; ix <= cx + 5; ix++) {
+        const seed = Math.abs((ix * 73856093) ^ (iy * 19349663));
+        if (seed % 4) continue;
+        const x = ix * 6 + (seed % 41) / 10,
+          y = iy * 6 + ((seed >> 5) % 41) / 10,
+          s = this.worldToScreen(x, y);
+        if (
+          s.x < -40 ||
+          s.y < -40 ||
+          s.x > this.size.width + 40 ||
+          s.y > this.size.height + 40
+        )
+          continue;
+        if (
+          map.region === 0
+            ? !isWalkable(map.id, x, y)
+            : isWalkable(map.id, x, y)
+        )
+          continue;
+        const frame = Math.floor((t + (seed % 80) / 10) * 6) % 8,
+          drift = Math.sin(t * 0.7 + seed) * 8;
+        this.cell(
+          ART.ambient.file,
+          8,
+          4,
+          frame,
+          row,
+          s.x + drift,
+          s.y - 12,
+          32,
+          32,
+          0.55,
+        );
+        if (map.region === 0 && seed % 12 === 0)
+          this.cell(
+            ART.ambient.file,
+            8,
+            4,
+            frame,
+            2,
+            s.x,
+            s.y - 25,
+            24,
+            24,
+            0.65,
+          );
+      }
   }
   drawTerrain(nav) {
     const terrain = ART.world.tiles[nav.id],

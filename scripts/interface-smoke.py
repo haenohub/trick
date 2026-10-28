@@ -36,7 +36,7 @@ with sync_playwright() as pw:
  p.keyboard.press('p');p.locator('[data-reset-bindings]').click();p.keyboard.press('p')
  assert p.locator('#skillbar [data-slot] kbd').all_inner_texts()==['Q','W','E','R']
  p.locator('[data-panel=settings]').click();p.locator('[data-special=title]').click()
- p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const world=new World(),q=world.addPlayer(raw),m=world.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
+ p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const world=new World(),q=world.addPlayer(raw),m=world.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');p.keyboard.press('q')
  p.wait_for_function('__leaftale.snapshot().drops.length>=4')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space')
