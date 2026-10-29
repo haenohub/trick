@@ -13,3 +13,5 @@ export const xpReward = (amount) =>
   Math.max(0, Math.floor(Number(amount) || 0)) * TEST_BALANCE.experience;
 export const dropChance = (chance) =>
   Math.min(1, Math.max(0, Number(chance) || 0) * TEST_BALANCE.drops);
+
+export const PLAYER_DAMAGE_SCALE = 0.5;

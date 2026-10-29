@@ -1,3 +1,4 @@
+import { combatAim } from "./targeting.js";
 import { NAVIGATION } from "./world-layout.js";
 import { PickupHold } from "./pickup-hold.js";
 import {
@@ -203,7 +204,7 @@ const skillDescriptions = {
   warden: [
     "앞의 적과 뒤쪽 적을 관통해 210% 피해를 줍니다. 반격 1회마다 35%가 추가됩니다.",
     "최대 체력의 28% 보호막을 얻어 7초 동안 몸을 지킵니다.",
-    "주변에 190% 피해를 주고 일반 몬스터의 공격 준비를 끊습니다.",
+    "지정한 지역에 190% 피해를 주고 일반 몬스터의 공격 준비를 끊습니다.",
   ],
   mage: [
     "220% 피해를 주고 달씨앗을 하나 얻습니다. 최대 3개까지 모읍니다.",
@@ -216,11 +217,47 @@ const skillDescriptions = {
     "9초 동안 적이 받는 피해를 30% 늘리고 120% 피해를 줍니다.",
   ],
   herbalist: [
-    "자신과 가까운 동료의 체력을 최대 체력의 32%만큼 회복합니다.",
+    "지정한 범위에 있는 아군의 체력을 최대 체력의 32%만큼 회복합니다.",
     "140% 피해와 독 2겹을 남깁니다. 독은 최대 3겹이며 중첩에 따라 주기 피해가 커집니다.",
-    "120% 범위 피해와 7초 정원. 안에 있는 아군을 회복하고 독에 물든 적을 주기적으로 공격합니다.",
+    "지정한 위치에 120% 범위 피해와 7초 정원. 안에 있는 아군을 회복하고 독에 물든 적을 주기적으로 공격합니다.",
   ],
 };
+let aimedAction = null,
+  aimPointer = null;
+function clearAim() {
+  const wasArmed = !!aimedAction;
+  aimedAction = null;
+  renderer.aim = null;
+  canvas.classList.remove("aiming");
+  if (wasArmed) {
+    clearTimeout(toastTimer);
+    $("toast").hidden = true;
+  }
+}
+function armCombat(type, slot = null) {
+  if (!running || panel) return;
+  pendingInteraction = null;
+  send({ type: "move", x: 0, y: 0 }, true);
+  aimedAction = {
+    type,
+    slot,
+    map: state.player.map,
+    rule: combatAim(state.player, slot),
+  };
+  canvas.classList.add("aiming");
+  canvas.focus();
+  toast(
+    aimedAction.rule.mode === "enemy"
+      ? "공격할 적을 클릭하세요 · Esc/우클릭 취소"
+      : aimedAction.rule.mode === "self"
+        ? "클릭해서 발동하세요 · Esc/우클릭 취소"
+        : "발동할 위치를 클릭하세요 · Esc/우클릭 취소",
+  );
+}
+canvas.addEventListener("pointermove", (e) => {
+  const r = canvas.getBoundingClientRect();
+  aimPointer = { x: e.clientX - r.left, y: e.clientY - r.top };
+});
 function toast(text) {
   $("toast").textContent = text;
   $("toast").hidden = false;
@@ -275,7 +312,7 @@ function start(saved = null) {
   save();
   if (!saved)
     toast(
-      `바닥 클릭 이동 · 몬스터 클릭 공격 · ${bindingLabel("interact")} 상호작용 · ${bindingLabel("pickup")} 줍기 · P 단축키`,
+      `바닥 클릭 이동 · 공격/스킬키 → 대상 클릭 · ${bindingLabel("interact")} 상호작용 · ${bindingLabel("pickup")} 줍기 · P 단축키`,
     );
 }
 function send(action, quiet = false) {
@@ -355,7 +392,7 @@ function skillName(slot) {
 function buildSkillbar() {
   if (!state) return;
   $("skillbar").innerHTML =
-    `<button class="skill basic" data-action="attack" title="기본 공격 [${bindingLabel("attack")}]"><kbd>${bindingLabel("attack")}</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
+    `<button class="skill basic" data-action="attack" title="기본 공격 대상 지정 [${bindingLabel("attack")}]"><kbd>${bindingLabel("attack")}</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
     [0, 1, 2, 3]
       .map(
         (n) =>
@@ -553,6 +590,7 @@ function interact(whole = false) {
     toast("사람, 보물함, 약초 또는 이동 지점 가까이 다가가 보세요.");
 }
 function openPanel(name) {
+  clearAim();
   pickupHold.cancel();
   if (panel === name) {
     closePanel();
@@ -668,7 +706,7 @@ function renderPanel() {
     html = `<p class="panel-intro">작은 발걸음으로 숲을 탐험하세요. 마을의 숲길지기에게 이야기를 듣고, 길 끝의 빛나는 표식으로 다음 맵에 갈 수 있습니다.</p><div class="help-grid">${[
       ["바닥 클릭 / 터치", "목적지로 이동"],
       ["이동 표식 클릭", "다음 맵으로 이동"],
-      ["몬스터 클릭 / " + bindingLabel("attack"), "기본 공격"],
+      [bindingLabel("attack") + " → 몬스터 클릭", "기본 공격 대상 지정"],
       [
         [0, 1, 2, 3].map((n) => bindingLabel("skill" + n)).join(" · "),
         "직업 스킬",
@@ -1139,16 +1177,13 @@ $("item-tooltip").addEventListener("click", panelClick);
 
 $("skillbar").addEventListener("click", (e) => {
   const b = e.target.closest("button");
-  if (b)
-    send(
-      {
-        type: b.dataset.action,
-        slot: Number(b.dataset.slot),
-        target,
-        item: "salve",
-      },
-      true,
+  if (!b) return;
+  if (["attack", "skill"].includes(b.dataset.action))
+    armCombat(
+      b.dataset.action,
+      b.dataset.action === "skill" ? Number(b.dataset.slot) : null,
     );
+  else send({ type: b.dataset.action, item: "salve" }, true);
 });
 for (const b of document.querySelectorAll("[data-panel]"))
   b.addEventListener("click", () => openPanel(b.dataset.panel));
@@ -1231,6 +1266,24 @@ canvas.addEventListener("pointerdown", (e) => {
     y = e.clientY - r.top,
     hit = renderer.hit(x, y);
   canvas.focus();
+  if (aimedAction) {
+    const a = aimedAction,
+      pos = renderer.screenToWorld(x, y);
+    if (a.rule.mode === "enemy" && hit?.kind !== "monster") {
+      toast("공격할 적을 클릭해 주세요.");
+      return;
+    }
+    const action = { type: a.type, slot: a.slot };
+    if (a.rule.mode === "enemy") {
+      action.target = hit.id;
+      target = hit.id;
+    }
+    if (a.rule.mode === "ground") action.point = pos;
+    if (send(action)) {
+      clearAim();
+    } else toast("사거리·시야·집중·재사용 시간을 확인해 주세요.");
+    return;
+  }
   if (hit?.kind === "portal") {
     const portal = PORTALS(state.player.map).find((p) => p.to === hit.id);
     if (distance(portal, state.player) < 2.5)
@@ -1270,7 +1323,7 @@ canvas.addEventListener("pointerdown", (e) => {
     }
   } else if (hit?.kind === "monster") {
     target = hit.id;
-    send({ type: "attack", target }, true);
+    // Clicking an unarmed enemy selects it without attacking.
   } else if (hit?.kind === "npc") {
     const n = NPCS.find((n) => n.id === hit.id);
     if (distance(n, state.player) < 2.6) openPanel("npc:" + n.id);
@@ -1300,7 +1353,10 @@ canvas.addEventListener("pointerdown", (e) => {
       renderer.destination = { ...pos, at: state.time };
   }
 });
-canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+canvas.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+  clearAim();
+});
 window.addEventListener("keydown", (e) => {
   const typing = e.target.closest?.(
     'input,textarea,select,[contenteditable="true"]',
@@ -1328,6 +1384,11 @@ window.addEventListener("keydown", (e) => {
     return;
   }
   if (e.key === "Escape") {
+    if (aimedAction) {
+      clearAim();
+      e.preventDefault();
+      return;
+    }
     if (panel) {
       closePanel();
       e.preventDefault();
@@ -1392,9 +1453,8 @@ window.addEventListener("keydown", (e) => {
   }
   if (!running || e.repeat) return;
   if (action) e.preventDefault();
-  if (action?.startsWith("skill"))
-    send({ type: "skill", slot: Number(action.slice(5)), target }, true);
-  if (action === "attack") send({ type: "attack", target }, true);
+  if (action?.startsWith("skill")) armCombat("skill", Number(action.slice(5)));
+  if (action === "attack") armCombat("attack");
   if (action === "potion") send({ type: "potion", item: "salve" });
   if (action === "interact") interact(e.shiftKey);
   if (action === "target") {
@@ -1459,6 +1519,7 @@ $("panel-body").addEventListener("focusout", (e) => {
 window.addEventListener("resize", hideItemTooltip);
 window.addEventListener("blur", () => {
   pickupHold.cancel();
+  clearAim();
   if (running) send({ type: "move", x: 0, y: 0 }, true);
 });
 window.addEventListener("keyup", (e) => pickupHold.release(e.code));
@@ -1508,6 +1569,14 @@ function frame(now) {
         pendingInteraction = null;
       }
     }
+    if (aimedAction && aimedAction.map !== state.player.map) clearAim();
+    if (aimedAction) {
+      aimedAction.rule = combatAim(state.player, aimedAction.slot);
+      const point = aimPointer
+        ? renderer.screenToWorld(aimPointer.x, aimPointer.y)
+        : state.player;
+      renderer.aim = { ...aimedAction.rule, point, origin: state.player };
+    }
     renderer.render(state, target, dt);
     if (now - lastHud > 130) {
       hud();
@@ -1522,7 +1591,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.19.0",
+  version: "0.20.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

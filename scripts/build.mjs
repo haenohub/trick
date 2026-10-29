@@ -52,6 +52,7 @@ for (const name of [
   "verdant.js",
   "balance.js",
   "combat.js",
+  "targeting.js",
   "audio.js",
   "controls.js",
   "animation.js",

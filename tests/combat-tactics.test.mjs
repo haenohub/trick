@@ -47,7 +47,8 @@ const tick = (w, t) => {
   for (let i = 0; i < Math.ceil(t / 0.05); i++) w.step(0.05);
 };
 const finishAction = (w, p) => {
-  for (let n = 0; n < 80 && p.action; n++) w.step(0.01);
+  for (let n = 0; n < 120 && (p.action || (w.pendingHits || []).length); n++)
+    w.step(0.01);
 };
 test("telegraph circles, safe rings and finite-width lines share exact outline geometry", () => {
   const ring = { x: 0, y: 0, style: "ring", radius: 5, innerRadius: 2 };
@@ -102,7 +103,11 @@ test("mage builds three seeds through attacks and spends them on a stronger wide
   const def = MONSTERS.find((d) => d.id === m.def);
   assert.equal(
     before - m.hp,
-    Math.round(stats(p).magicPower * 3.45 - Math.round(def.defense*.75+def.level*.15) * 0.4),
+    Math.round(
+      (stats(p).magicPower * 3.45 -
+        Math.round(def.defense * 0.75 + def.level * 0.15) * 0.4) *
+        0.5,
+    ),
   );
   assert.ok(w.effects.some((e) => e.kind === "magic" && e.radius > 3));
 });
@@ -139,7 +144,7 @@ test("ranger roll has a short dodge window and exactly one empowered follow-up s
   const def = MONSTERS.find((d) => d.id === m.def);
   assert.equal(
     before - m.hp,
-    Math.round(stats(p).attack * 1.55 - def.defense * 0.4),
+    Math.round((stats(p).attack * 1.55 - def.defense * 0.4) * 0.5),
   );
 });
 test("herbalist stacks poison and a stationary garden heals allies rather than following its caster", () => {

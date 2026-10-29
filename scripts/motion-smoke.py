@@ -1,3 +1,4 @@
+from browser_combat import confirm_attack
 """Real A input, observed combat phases, dynamic map UI and complete VFX cells."""
 from playwright.sync_api import sync_playwright
 import sys
@@ -10,7 +11,7 @@ with sync_playwright() as pw:
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.wait_for_timeout(100)
  assert p.locator('#skillbar [data-action=attack] kbd').inner_text()=='A'
  p.evaluate('''()=>{window.motionSamples=[];window.captureMotion=true;function sample(){const s=__leaftale.snapshot();motionSamples.push({time:s.time,anim:s.player.anim,hp:s.mobs.reduce((n,m)=>n+m.hp,0)});if(captureMotion)requestAnimationFrame(sample);}requestAnimationFrame(sample);}''')
- p.keyboard.press('Tab');p.keyboard.press('a');p.wait_for_timeout(750)
+ p.keyboard.press('Tab');confirm_attack(p,'a');p.wait_for_timeout(750)
  samples=p.evaluate('()=>{captureMotion=false;return motionSamples;}')
  assert any(s['anim']=='windup' for s in samples),samples
  assert any(s['anim']=='attack' for s in samples),samples

@@ -1,3 +1,4 @@
+import { combatAim } from "./targeting.js";
 import { worldPulse } from "./living-world.js";
 import { speciesForMap, encounterPoint } from "./ecology.js";
 import {
@@ -32,6 +33,7 @@ import {
   NEARBY_PICKUP_RANGE,
   PICKUP_DURATION,
   PICKUP_INTERVAL,
+  PLAYER_DAMAGE_SCALE,
 } from "./balance.js";
 import { isWalkable, NAVIGATION } from "./art-layout.js";
 import { direction, facesTarget, SOUTH } from "./directions.js";
@@ -762,7 +764,7 @@ export class World {
       case "attack":
         return this.attack(p, action.target);
       case "skill":
-        return this.skill(p, Number(action.slot), action.target);
+        return this.skill(p, Number(action.slot), action.target, action.point);
       case "potion":
         return this.potion(p, action.item || "salve");
       case "interact": {
@@ -1032,7 +1034,7 @@ export class World {
   }
   attack(p, uid) {
     if (p.action || this.time < p.attackReady) return false;
-    const t = this.target(p, uid);
+    const t = this.map(p.map).mobs.find((m) => m.uid === uid && m.hp > 0);
     if (!t) return false;
     const s = stats(p);
     if (distance(p, t) > s.range + 0.2 || !this.sight(p.map, p, t)) {
@@ -1057,6 +1059,7 @@ export class World {
       slot,
       target: target?.uid || null,
       selfCast,
+      aim: target && !target.uid ? { x: target.x, y: target.y } : null,
       map: p.map,
       released: false,
     };
@@ -1080,10 +1083,12 @@ export class World {
     }
     if (!a.released && this.time + 1e-9 >= a.hitAt) {
       a.released = true;
-      const target = this.map(p.map).mobs.find(
-        (m) => m.uid === a.target && m.hp > 0,
-      );
-      const range = stats(p).range + (a.kind === "basic" ? 0.6 : 2);
+      const target =
+        a.aim ||
+        this.map(p.map).mobs.find((m) => m.uid === a.target && m.hp > 0);
+      const range = a.aim
+        ? combatAim({ ...p, stats: stats(p) }, a.slot).range
+        : stats(p).range + (a.kind === "basic" ? 0.6 : 2);
       const valid =
         target &&
         this.sight(p.map, p, target) &&
@@ -1113,22 +1118,67 @@ export class World {
   }
   releaseBasic(p, t) {
     const s = stats(p);
-    const landed = this.damage(p, t, s.power, "hit");
-    if (landed && p.classId === "mage")
-      p.spellCharge = Math.min(3, p.spellCharge + 1);
-    if (landed && p.classId === "herbalist") this.toxin(p, t, 1, 4);
+    if (["ranger", "mage"].includes(p.classId)) {
+      const travel = p.classId === "ranger" ? 0.26 : 0.48;
+      this.pendingHits ||= [];
+      this.effect(
+        p.map,
+        p.classId === "ranger" ? "arrow-shot" : "starfall",
+        p.x,
+        p.y,
+        {
+          tx: t.x,
+          ty: t.y,
+          target: t.uid,
+          owner: p.id,
+          dir: p.dir,
+          hitAt: this.time + travel,
+          duration: travel + 0.2,
+        },
+      );
+      this.pendingHits.push({
+        owner: p.id,
+        target: t.uid,
+        map: p.map,
+        at: this.time + travel,
+        power: s.power,
+        effect: this.sequence,
+      });
+    } else {
+      const landed = this.damage(p, t, s.power, "hit");
+      if (landed && p.classId === "herbalist") this.toxin(p, t, 1, 4);
+      if (s.range > 2)
+        this.effect(p.map, "projectile", p.x, p.y, {
+          tx: t.x,
+          ty: t.y,
+          color: CLASSES.find((c) => c.id === p.classId).color,
+          duration: 0.32,
+        });
+    }
     this.effect(p.map, "action", p.x, p.y, {
       cue: p.classId,
       owner: p.id,
       duration: 0.2,
     });
-    if (s.range > 2)
-      this.effect(p.map, "projectile", p.x, p.y, {
-        tx: t.x,
-        ty: t.y,
-        color: CLASSES.find((c) => c.id === p.classId).color,
-        duration: 0.32,
-      });
+  }
+  advanceProjectiles() {
+    for (const shot of this.pendingHits || []) {
+      const p = this.players.get(shot.owner),
+        m = this.map(shot.map).mobs.find((m) => m.uid === shot.target),
+        e = this.effects.find((e) => e.id === shot.effect);
+      if (m && e) {
+        e.tx = m.x;
+        e.ty = m.y;
+      }
+      if (shot.done || this.time + 1e-9 < shot.at) continue;
+      shot.done = true;
+      if (!p || p.map !== shot.map || p.hp <= 0 || !m || m.hp <= 0) continue;
+      const landed = this.damage(p, m, shot.power, "hit");
+      if (e) e.landed = landed;
+      if (landed && p.classId === "mage")
+        p.spellCharge = Math.min(3, p.spellCharge + 1);
+    }
+    this.pendingHits = (this.pendingHits || []).filter((s) => !s.done);
   }
   damage(p, m, value, kind = "hit") {
     if (m.hp <= 0 || m.ai === "return") return;
@@ -1166,7 +1216,8 @@ export class World {
           (s.damageType === "magic" ? enemy.magicDefense : def.defense) * 0.4) *
           (m.markedUntil > this.time ? 1.3 : 1) *
           (crit ? s.critDamage : 1) *
-          (armored ? 0.65 : 1),
+          (armored ? 0.65 : 1) *
+          PLAYER_DAMAGE_SCALE,
       ),
     );
     m.hp = Math.max(0, m.hp - n);
@@ -1228,7 +1279,7 @@ export class World {
     }
     return true;
   }
-  skill(p, slot, uid) {
+  skill(p, slot, uid, point = null) {
     if (
       p.action ||
       !Number.isInteger(slot) ||
@@ -1242,7 +1293,22 @@ export class World {
     )
       return false;
     const s = stats(p),
-      t = this.target(p, uid, slot === 3 ? 11 : 9);
+      rule = combatAim({ ...p, stats: s }, slot);
+    let t = uid
+      ? this.map(p.map).mobs.find((m) => m.uid === uid && m.hp > 0)
+      : null;
+    if (point) {
+      if (
+        rule.mode !== "ground" ||
+        !Number.isFinite(point.x) ||
+        !Number.isFinite(point.y) ||
+        distance(p, point) > rule.range ||
+        blocked(p.map, point.x, point.y) ||
+        !this.sight(p.map, p, point)
+      )
+        return false;
+      t = { x: point.x, y: point.y };
+    }
     const selfCast =
       (p.classId === "herbalist" && [0, 2].includes(slot)) ||
       (slot === 1 && ["warden", "ranger"].includes(p.classId)) ||
@@ -1258,6 +1324,7 @@ export class World {
     if (
       t &&
       !selfCast &&
+      !point &&
       distance(t, p) > s.range + 2 &&
       !(slot === 3 && p.branch === "hawk")
     )
@@ -1295,7 +1362,7 @@ export class World {
     };
     const heal = (amount) => {
       for (const ally of this.players.values())
-        if (ally.map === p.map && distance(ally, p) < 4) {
+        if (ally.map === p.map && distance(ally, t || p) < 4) {
           ally.hp = Math.min(stats(ally).maxHp, ally.hp + amount);
           this.effect(p.map, "heal", ally.x, ally.y, {
             text: "+" + Math.round(amount),
@@ -1330,11 +1397,11 @@ export class World {
         this.effect(p.map, "shield", p.x, p.y, { duration: 1 });
       }
       if (slot === 2) {
-        aoe(p, 3, 1.9);
+        aoe(t || p, 3, 1.9);
         for (const mob of this.map(p.map).mobs)
           if (
             mob.hp > 0 &&
-            distance(mob, p) < 3 &&
+            distance(mob, t || p) < 3 &&
             this.sight(p.map, p, mob) &&
             MONSTERS.find((d) => d.id === mob.def).type !== "boss"
           ) {
@@ -1342,7 +1409,7 @@ export class World {
             mob.nextAttack = this.time + 1.2;
             mob.rootUntil = this.time + 0.6;
           }
-        this.effect(p.map, "slash", p.x, p.y, { radius: 3 });
+        this.effect(p.map, "slash", (t || p).x, (t || p).y, { radius: 3 });
       }
     }
     if (p.classId === "mage") {
@@ -1367,8 +1434,8 @@ export class World {
     if (p.classId === "ranger") {
       if (slot === 0 && t) this.damage(p, t, s.power * 2.2);
       if (slot === 1) {
-        const dx = t ? p.x - t.x : p.move.x || 1,
-          dy = t ? p.y - t.y : p.move.y;
+        const dx = t ? (t.uid ? p.x - t.x : t.x - p.x) : p.move.x || 1,
+          dy = t ? (t.uid ? p.y - t.y : t.y - p.y) : p.move.y;
         for (let n = 0; n < 8; n++) this.moveEntity(p, p.map, dx, dy, 0.075, 5);
         p.evadeUntil = this.time + 0.45;
         p.precisionUntil = this.time + 4;
@@ -1392,8 +1459,8 @@ export class World {
       }
       if (slot === 2) {
         heal(s.maxHp * 0.12);
-        aoe(p, 3, 1.2);
-        this.effect(p.map, "garden", p.x, p.y, {
+        aoe(t || p, 3, 1.2);
+        this.effect(p.map, "garden", (t || p).x, (t || p).y, {
           radius: 3,
           duration: 7,
           owner: p.id,
@@ -1405,12 +1472,15 @@ export class World {
     if (slot === 3) {
       if (p.branch === "antler") {
         for (const ally of this.players.values())
-          if (ally.map === p.map && distance(ally, p) < 5) {
+          if (ally.map === p.map && distance(ally, t || p) < 5) {
             ally.shield = stats(ally).maxHp * 0.45;
             ally.shieldUntil = this.time + 9;
           }
-        aoe(p, 3, 2);
-        this.effect(p.map, "shield", p.x, p.y, { radius: 4, duration: 1.3 });
+        aoe(t || p, 3, 2);
+        this.effect(p.map, "shield", (t || p).x, (t || p).y, {
+          radius: 4,
+          duration: 1.3,
+        });
       }
       if (p.branch === "thorn" && t) {
         const d = distance(p, t);
@@ -1443,21 +1513,24 @@ export class World {
         });
       }
       if (p.branch === "mist") {
-        aoe(p, 5, 2.8);
+        aoe(t || p, 5, 2.8);
         p.shield = s.maxHp * 0.22;
         p.shieldUntil = this.time + 5;
-        this.effect(p.map, "dash", p.x, p.y, { radius: 4 });
+        this.effect(p.map, "dash", (t || p).x, (t || p).y, { radius: 4 });
       }
       if (p.branch === "flower") {
         heal(s.maxHp * 0.6);
         p.regenUntil = this.time + 10;
         p.poisonUntil = 0;
-        this.effect(p.map, "garden", p.x, p.y, { radius: 4, duration: 2 });
+        this.effect(p.map, "garden", (t || p).x, (t || p).y, {
+          radius: 4,
+          duration: 2,
+        });
       }
       if (p.branch === "venom" && t) {
         aoe(t, 3.5, 3.5);
         for (const m of this.map(p.map).mobs)
-          if (m.hp > 0 && distance(m, t) < 4) {
+          if (m.hp > 0 && distance(m, t) < 4 && this.sight(p.map, t, m)) {
             this.toxin(p, m, 3, 10);
           }
         this.effect(p.map, "poison", t.x, t.y, { radius: 3.5 });
@@ -1880,6 +1953,7 @@ export class World {
   step(dt) {
     dt = clamp(dt, 0, 0.1);
     this.time += dt;
+    this.advanceProjectiles();
     this.effects = this.effects.filter((e) => e.until > this.time);
     for (const p of this.players.values()) {
       this.explore(p);

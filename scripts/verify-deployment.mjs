@@ -34,6 +34,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "core.js",
       "balance.js",
       "combat.js",
+      "targeting.js",
+      "assets/targeted-combat.png",
       "exploration.js",
       "audio.js",
       "controls.js",

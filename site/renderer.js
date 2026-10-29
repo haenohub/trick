@@ -527,6 +527,7 @@ export class Renderer {
     c.fillStyle = "#203c2f";
     c.fillRect(0, 0, w, h);
     this.drawTerrain(nav);
+    this.drawAimPreview();
     for (const prop of nav.props.filter((o) => o.walkThrough)) {
       const s = this.worldToScreen(prop.x, prop.y);
       this.cell(
@@ -785,13 +786,6 @@ export class Renderer {
           y: s.y - 12,
           r: 19,
         });
-        this.text(
-          o.lootKind === "currency" ? `${o.count} 리프` : `×${o.count}`,
-          s.x,
-          s.y + 12,
-          o.lootKind === "currency" ? "#ffe6a1" : "#f8f5d8",
-          10,
-        );
         continue;
       }
 
@@ -932,6 +926,8 @@ export class Renderer {
       this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
     }
     for (const e of state.effects) {
+      if (["arrow-shot", "starfall"].includes(e.kind))
+        this.targetedCombatEffect(e, state);
       const s = this.worldToScreen(e.x, e.y),
         remaining = e.until - time;
       if (e.text)
@@ -993,6 +989,141 @@ export class Renderer {
     this.drawAmbience(state, map);
     this.drawMinimap(state);
     this.present();
+  }
+  drawAimPreview() {
+    const a = this.aim;
+    if (!a) return;
+    const c = this.ctx,
+      point = a.mode === "self" ? a.origin : a.point;
+    const valid =
+      a.mode === "self" ||
+      (Math.hypot(point.x - a.origin.x, point.y - a.origin.y) <= a.range &&
+        (a.mode !== "ground" || isWalkable(a.origin.map, point.x, point.y)));
+    const path = (zone, fill = false) => {
+      const points = zoneOutline(zone).map((p) => this.worldToScreen(p.x, p.y));
+      c.beginPath();
+      points.forEach((p, i) => (i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y)));
+      c.closePath();
+      if (fill) c.fill();
+      c.stroke();
+    };
+    c.save();
+    c.strokeStyle = valid ? "#b3f4cf" : "#fa8e83";
+    c.lineWidth = 1.5;
+    c.fillStyle = valid ? "#7edaaa2e" : "#ef60452e";
+    if (a.range > 0) {
+      c.globalAlpha = 0.45;
+      path({ ...a.origin, radius: a.range });
+      c.globalAlpha = 1;
+    }
+    if (a.shape === "line") {
+      const n = Math.hypot(point.x - a.origin.x, point.y - a.origin.y) || 1,
+        k = (a.length || n) / n;
+      path(
+        {
+          style: "line",
+          ...a.origin,
+          tx: a.origin.x + (point.x - a.origin.x) * k,
+          ty: a.origin.y + (point.y - a.origin.y) * k,
+          width: a.radius,
+        },
+        true,
+      );
+    } else path({ ...point, radius: a.radius || 0.45 }, true);
+    c.restore();
+  }
+  targetedCombatEffect(e, state) {
+    const file = ART.targetCombat?.file,
+      image = file && IMAGES.get(file);
+    if (!image) return;
+    const age = state.time - e.started,
+      travel = e.hitAt - e.started,
+      origin = this.worldToScreen(e.x, e.y),
+      end = this.worldToScreen(e.tx, e.ty),
+      z = this.zoom,
+      c = this.ctx;
+    const actor =
+        e.owner === state.player.id
+          ? state.player
+          : state.peers.find((p) => p.id === e.owner),
+      hand =
+        ART.appearance?.bases?.[actor?.classId]?.anchors?.[e.dir || 0]?.[3]
+          ?.hand;
+    const start = {
+        x: origin.x + (hand ? hand[0] - 48 : 0) * z,
+        y: origin.y - (hand ? 92 - hand[1] : 42) * z,
+      },
+      dest = { x: end.x, y: end.y - 28 * z };
+    const cell = (row, frame, x, y, w, h, angle = 0, alpha = 1) => {
+      c.save();
+      c.globalAlpha = alpha;
+      c.translate(Math.round(x), Math.round(y));
+      c.rotate(angle);
+      c.drawImage(
+        image,
+        Math.min(7, Math.max(0, frame)) * 96,
+        row * 96,
+        96,
+        96,
+        (-w * z) / 2,
+        (-h * z) / 2,
+        w * z,
+        h * z,
+      );
+      c.restore();
+    };
+    if (e.kind === "arrow-shot") {
+      const t = Math.min(1, age / travel),
+        angle = Math.atan2(dest.y - start.y, dest.x - start.x),
+        landed = age >= travel,
+        tipX = dest.x - Math.cos(angle) * 22 * z,
+        tipY = dest.y - Math.sin(angle) * 22 * z;
+      if (landed && e.landed === false) return;
+      cell(
+        0,
+        Math.floor((landed ? (age - travel) / 0.2 : t) * 8),
+        start.x + (tipX - start.x) * t,
+        start.y + (tipY - start.y) * t,
+        56,
+        40,
+        angle,
+        landed ? Math.max(0, 1 - (age - travel) / 0.2) : 1,
+      );
+    } else {
+      if (age < 0.28)
+        cell(
+          2,
+          Math.floor(Math.min(1, age / 0.22) * 7),
+          start.x,
+          start.y - Math.min(1, age / 0.22) * 100 * z,
+          36,
+          52,
+          0,
+          age > 0.22 ? 0.5 : 1,
+        );
+      if (age >= 0.28) {
+        c.save();
+        if (age < travel) {
+          c.beginPath();
+          c.rect(
+            dest.x - 40 * z,
+            dest.y - 101 * z,
+            80 * z,
+            112 * z * Math.min(1, (age - 0.28) / 0.2),
+          );
+          c.clip();
+        }
+        cell(
+          3,
+          Math.floor(((age - 0.28) / 0.4) * 8),
+          dest.x,
+          dest.y - 45 * z,
+          54,
+          112,
+        );
+        c.restore();
+      }
+    }
   }
   drawAmbience(state, map) {
     if (!ART.ambient || matchMedia("(prefers-reduced-motion: reduce)").matches)

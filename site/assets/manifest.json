@@ -626,7 +626,8 @@
     "appearance/hands/herbalist",
     "appearance/hands/mage",
     "appearance/hands/ranger",
-    "ambient"
+    "ambient",
+    "targeted-combat"
   ],
   "monsters": {
     "m1": {
@@ -34010,5 +34011,11 @@
     "cols": 8,
     "rows": 4,
     "size": 64
+  },
+  "targetCombat": {
+    "file": "targeted-combat",
+    "cols": 8,
+    "rows": 4,
+    "size": 96
   }
 }

@@ -22,7 +22,7 @@ test("the entire authored asset set has twice the native density without changin
     after.assets.length,
     before.assets.length +
       art.locomotion.actors * 2 +
-      art.files.filter((f) => f.startsWith("appearance/")).length + (art.combat?.actors || 0) + (art.ambient ? 1 : 0),
+      art.files.filter((f) => f.startsWith("appearance/")).length + (art.combat?.actors || 0) + (art.ambient ? 1 : 0)+(art.targetCombat ? 1 : 0),
   );
   for (const previous of before.assets) {
     const current = after.assets.find((a) => a.id === previous.id);

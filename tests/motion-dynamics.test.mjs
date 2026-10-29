@@ -60,13 +60,21 @@ test("damage, resource procs and strike-frame feedback occur after preparation e
       11,
     );
     advance(w, action.hitAt + 0.001);
-    assert.ok(m.hp < before);
+    const ranged = ["mage", "ranger"].includes(cls);
+    if (ranged) {
+      assert.equal(m.hp, before);
+      assert.equal(w.pendingHits.length, 1);
+    } else assert.ok(m.hp < before);
     assert.equal(
       animationFrame(layout, p.anim, w.time, p.animAt, p.animDuration),
       12,
     );
+    if (ranged) {
+      advance(w, action.hitAt + (cls === "mage" ? 0.48 : 0.26) + 0.01);
+      assert.ok(m.hp < before);
+    }
     const after = m.hp;
-    advance(w, action.endAt + 0.01);
+    advance(w, Math.max(w.time, action.endAt) + 0.01);
     assert.equal(m.hp, after);
     if (cls === "mage") assert.equal(p.spellCharge, 1);
     if (cls === "herbalist") assert.equal(m.toxinStacks, 1);

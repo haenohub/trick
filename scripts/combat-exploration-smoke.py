@@ -1,3 +1,4 @@
+from browser_combat import confirm_attack
 """Exercise new tactics, warnings, sounds and treasure through real browser UI."""
 from playwright.sync_api import sync_playwright
 import sys,math
@@ -42,7 +43,7 @@ with sync_playwright() as pw:
  assert page.evaluate('__leaftale.snapshot().chests[0].opened')
  print('PASS: real floor-click discovery, visible chest click, ground treasure, coin flight, journal lore and exact uncollected rewards after reload')
  # A real mage attack grows the visible resource; no runtime state injection.
- fixture('mage','combat');page.keyboard.press('Tab');page.keyboard.press('q')
+ fixture('mage','combat');page.keyboard.press('Tab');confirm_attack(page,'q')
  page.wait_for_function('__leaftale.snapshot().player.spellCharge===1')
  page.wait_for_function('document.querySelector("#combat-trait").textContent.includes("1/3")')
  page.keyboard.press('c');assert '달씨앗 공명' in page.locator('#panel-body').inner_text();page.keyboard.press('Escape')
