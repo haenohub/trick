@@ -1,0 +1,417 @@
+{
+  "version": 1,
+  "status": "complete",
+  "reference": {
+    "fileName": "트릭스터 플레이영상.mp4",
+    "fps": 30,
+    "frames": 454,
+    "duration": 15.1333,
+    "sha256": "6fe2534a86ad4839671ec7ca9a27d7be62a7428b3851aa0a3808b780f169ccb3"
+  },
+  "sources": [
+    {
+      "id": "warden",
+      "motion": "combat",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-cd9aba72-d944-41da-af55-dfb7f53d61a0.png",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 3,
+          "sourcePalm": {
+            "x": 593,
+            "y": 125
+          }
+        },
+        {
+          "dir": 1,
+          "col": 1,
+          "sourcePalm": {
+            "x": 287,
+            "y": 239
+          }
+        },
+        {
+          "dir": 1,
+          "col": 2,
+          "sourcePalm": {
+            "x": 447,
+            "y": 234
+          }
+        },
+        {
+          "dir": 2,
+          "col": 4,
+          "sourcePalm": {
+            "x": 766,
+            "y": 397
+          }
+        },
+        {
+          "dir": 4,
+          "col": 3,
+          "sourcePalm": {
+            "x": 495,
+            "y": 708
+          }
+        },
+        {
+          "dir": 7,
+          "col": 1,
+          "sourcePalm": {
+            "x": 186,
+            "y": 1178
+          }
+        },
+        {
+          "dir": 7,
+          "col": 2,
+          "sourcePalm": {
+            "x": 343,
+            "y": 1178
+          }
+        },
+        {
+          "dir": 7,
+          "col": 3,
+          "sourcePalm": {
+            "x": 499,
+            "y": 1173
+          }
+        },
+        {
+          "dir": 7,
+          "col": 4,
+          "sourcePalm": {
+            "x": 651,
+            "y": 1177
+          }
+        }
+      ],
+      "measuredCombatPalms": 64,
+      "correctedHandSwitches": [
+        {
+          "dir": 0,
+          "col": 3,
+          "hand": [
+            24,
+            77
+          ]
+        },
+        {
+          "dir": 0,
+          "col": 4,
+          "hand": [
+            16,
+            52
+          ]
+        },
+        {
+          "dir": 0,
+          "col": 5,
+          "hand": [
+            19,
+            55
+          ]
+        },
+        {
+          "dir": 1,
+          "col": 3,
+          "hand": [
+            70,
+            76
+          ]
+        },
+        {
+          "dir": 1,
+          "col": 4,
+          "hand": [
+            84,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mage",
+      "motion": "combat",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ccf03212-3dcf-4d21-8682-b7d775000db3.png",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 1,
+          "sourcePalm": {
+            "x": 283,
+            "y": 112
+          }
+        },
+        {
+          "dir": 1,
+          "col": 4,
+          "sourcePalm": {
+            "x": 753,
+            "y": 238
+          }
+        },
+        {
+          "dir": 3,
+          "col": 1,
+          "sourcePalm": {
+            "x": 277,
+            "y": 568
+          }
+        },
+        {
+          "dir": 7,
+          "col": 5,
+          "sourcePalm": {
+            "x": 839,
+            "y": 1217
+          }
+        },
+        {
+          "dir": 7,
+          "col": 6,
+          "sourcePalm": {
+            "x": 995,
+            "y": 1217
+          }
+        }
+      ],
+      "measuredCombatPalms": 64,
+      "correctedHandSwitches": [
+        {
+          "dir": 3,
+          "col": 1,
+          "hand": [
+            25,
+            47
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 2,
+          "hand": [
+            25,
+            47
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 3,
+          "hand": [
+            22,
+            58
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 4,
+          "hand": [
+            18,
+            59
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 5,
+          "hand": [
+            27,
+            76
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 4,
+          "hand": [
+            19,
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "motion": "combat",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-18a20b24-7a0b-4f74-9457-7e2e025e923c.png",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 5,
+          "sourcePalm": {
+            "x": 906,
+            "y": 90
+          }
+        },
+        {
+          "dir": 7,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1135,
+            "y": 1195
+          }
+        }
+      ],
+      "measuredCombatPalms": 64,
+      "correctedHandSwitches": [
+        {
+          "dir": 0,
+          "col": 4,
+          "hand": [
+            77,
+            53
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 4,
+          "hand": [
+            69,
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herbalist",
+      "motion": "combat",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ce6ff379-e5f0-47b9-974d-1576bdea4940.png",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 0,
+          "sourcePalm": {
+            "x": 102,
+            "y": 122
+          }
+        },
+        {
+          "dir": 0,
+          "col": 5,
+          "sourcePalm": {
+            "x": 885,
+            "y": 122
+          }
+        },
+        {
+          "dir": 0,
+          "col": 6,
+          "sourcePalm": {
+            "x": 1041,
+            "y": 122
+          }
+        },
+        {
+          "dir": 0,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1213,
+            "y": 104
+          }
+        },
+        {
+          "dir": 1,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1203,
+            "y": 270
+          }
+        },
+        {
+          "dir": 2,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1196,
+            "y": 422
+          }
+        },
+        {
+          "dir": 3,
+          "col": 2,
+          "sourcePalm": {
+            "x": 420,
+            "y": 584
+          }
+        },
+        {
+          "dir": 3,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1198,
+            "y": 582
+          }
+        },
+        {
+          "dir": 4,
+          "col": 0,
+          "sourcePalm": {
+            "x": 66,
+            "y": 742
+          }
+        },
+        {
+          "dir": 4,
+          "col": 1,
+          "sourcePalm": {
+            "x": 222,
+            "y": 742
+          }
+        },
+        {
+          "dir": 4,
+          "col": 6,
+          "sourcePalm": {
+            "x": 1005,
+            "y": 742
+          }
+        },
+        {
+          "dir": 5,
+          "col": 0,
+          "sourcePalm": {
+            "x": 54,
+            "y": 896
+          }
+        },
+        {
+          "dir": 5,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1153,
+            "y": 895
+          }
+        },
+        {
+          "dir": 6,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1151,
+            "y": 1050
+          }
+        },
+        {
+          "dir": 7,
+          "col": 7,
+          "sourcePalm": {
+            "x": 1136,
+            "y": 1199
+          }
+        }
+      ],
+      "measuredCombatPalms": 64,
+      "correctedHandSwitches": [
+        {
+          "dir": 4,
+          "col": 3,
+          "hand": [
+            19,
+            50
+          ]
+        }
+      ]
+    }
+  ]
+}

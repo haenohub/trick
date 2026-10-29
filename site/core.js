@@ -487,6 +487,10 @@ export class World {
       move: { x: 0, y: 0 },
       moveTarget: null,
       queuedAttack: null,
+      combatTarget: null,
+      queuedSkill: null,
+      autoCombatArmed: false,
+      autoAttackSuppressed: false,
       cooldowns: [0, 0, 0, 0],
       attackReady: 0,
       potionReady: 0,
@@ -720,7 +724,7 @@ export class World {
         const x = Number(action.x),
           y = Number(action.y);
         if (!Number.isFinite(x) || !Number.isFinite(y)) return false;
-        this.cancelAction(p);
+        this.stopCombat(p, p.autoAttackSuppressed);
         p.move = { x: clamp(x, -1, 1), y: clamp(y, -1, 1) };
         p.moveTarget = null;
         p.route = [];
@@ -732,9 +736,10 @@ export class World {
           y = Number(action.y);
         if (!Number.isFinite(x) || !Number.isFinite(y) || blocked(p.map, x, y))
           return false;
-        p.route = findRoute(p.map, p, { x, y });
-        if (!p.route.length) return false;
-        this.cancelAction(p);
+        const route = findRoute(p.map, p, { x, y });
+        if (!route.length) return false;
+        this.stopCombat(p, p.autoAttackSuppressed);
+        p.route = route;
         p.moveTarget = { x, y };
         p.move = { x: 0, y: 0 };
         p.queuedAttack = null;
@@ -762,9 +767,17 @@ export class World {
         return true;
       }
       case "attack":
-        return this.attack(p, action.target);
+        return this.requestAttack(p, action.target);
       case "skill":
-        return this.skill(p, Number(action.slot), action.target, action.point);
+        return this.requestSkill(
+          p,
+          Number(action.slot),
+          action.target,
+          action.point,
+        );
+      case "cancelCombat":
+        this.stopCombat(p);
+        return true;
       case "potion":
         return this.potion(p, action.item || "salve");
       case "interact": {
@@ -1045,8 +1058,165 @@ export class World {
       p.queuedAttack = t.uid;
       return true;
     }
-    p.attackReady = this.time + 0.62;
     return this.beginAction(p, "basic", t);
+  }
+  stopCombat(p, suppress = true) {
+    this.cancelAction(p);
+    p.combatTarget = null;
+    p.queuedAttack = null;
+    p.queuedSkill = null;
+    p.autoCombatArmed = false;
+    // Explicit cancellation remains effective even when an enemy hits again.
+    p.autoAttackSuppressed = suppress;
+    p.moveTarget = null;
+    p.move = { x: 0, y: 0 };
+    p.route = [];
+  }
+  skillAvailable(p, slot) {
+    return (
+      Number.isInteger(slot) &&
+      slot >= 0 &&
+      slot <= 3 &&
+      p.cooldowns[slot] <= this.time &&
+      p.focus >= SKILL_COSTS[slot] &&
+      (slot !== 1 || p.level >= 4) &&
+      (slot !== 2 || p.level >= 8) &&
+      (slot !== 3 || !!p.branch)
+    );
+  }
+  requestAttack(p, uid) {
+    const t = this.map(p.map).mobs.find(
+      (m) => m.uid === uid && m.hp > 0 && m.ai !== "return",
+    );
+    if (!t) return false;
+    if (
+      (distance(p, t) > stats(p).range || !this.sight(p.map, p, t)) &&
+      !findRoute(p.map, p, t).length
+    )
+      return false;
+    if (p.action && p.action.target !== uid && !p.action.released)
+      this.cancelAction(p);
+    p.combatTarget = uid;
+    p.autoCombatArmed = true;
+    p.autoAttackSuppressed = false;
+    p.queuedSkill = null;
+    this.advanceCombat(p);
+    return true;
+  }
+  requestSkill(p, slot, uid, point = null) {
+    if (!this.skillAvailable(p, slot)) return false;
+    const rule = combatAim({ ...p, stats: stats(p) }, slot);
+    const enemy = this.map(p.map).mobs.find(
+      (m) => m.uid === uid && m.hp > 0 && m.ai !== "return",
+    );
+    let goal = null;
+    if (rule.mode === "ground") {
+      goal = point || enemy;
+      if (
+        !goal ||
+        !Number.isFinite(goal.x) ||
+        !Number.isFinite(goal.y) ||
+        blocked(p.map, goal.x, goal.y)
+      )
+        return false;
+      goal = { x: goal.x, y: goal.y };
+    } else if (rule.mode === "enemy") {
+      if (!enemy || point) return false;
+      goal = enemy;
+    } else if (point) return false;
+    if (
+      goal &&
+      (distance(p, goal) > rule.range || !this.sight(p.map, p, goal)) &&
+      !findRoute(p.map, p, goal).length
+    )
+      return false;
+    p.queuedSkill = {
+      slot,
+      target: rule.mode === "enemy" ? uid : null,
+      point: rule.mode === "ground" ? goal : null,
+      map: p.map,
+      until: this.time + 45,
+    };
+    p.autoAttackSuppressed = false;
+    p.autoCombatArmed = true;
+    if (rule.mode === "enemy") p.combatTarget = uid;
+    p.queuedAttack = null;
+    p.route = [];
+    p.moveTarget = null;
+    p.move = { x: 0, y: 0 };
+    this.advanceCombat(p);
+    return true;
+  }
+  approachCombat(p, goal) {
+    if (!p.moveTarget || this.time >= (p.combatPathAt || 0)) {
+      p.route = findRoute(p.map, p, goal);
+      p.moveTarget = p.route.length ? { x: goal.x, y: goal.y } : null;
+      p.combatPathAt = this.time + 0.4;
+    }
+    return !!p.moveTarget;
+  }
+  advanceCombat(p) {
+    if (
+      p.hp <= 0 ||
+      p.action ||
+      (p.anim === "hurt" && this.time < p.animAt + 0.1) ||
+      (p.anim === "recover" && this.time < p.animAt + p.animDuration)
+    )
+      return;
+    const q = p.queuedSkill;
+    if (q) {
+      const rule = combatAim({ ...p, stats: stats(p) }, q.slot);
+      const t =
+        q.point ||
+        this.map(p.map).mobs.find(
+          (m) => m.uid === q.target && m.hp > 0 && m.ai !== "return",
+        );
+      if (
+        q.map !== p.map ||
+        q.until < this.time ||
+        !this.skillAvailable(p, q.slot) ||
+        (rule.mode !== "self" && !t)
+      ) {
+        p.queuedSkill = null;
+        p.moveTarget = null;
+        p.route = [];
+      } else if (
+        t &&
+        (distance(p, t) > rule.range || !this.sight(p.map, p, t))
+      ) {
+        if (!this.approachCombat(p, t)) p.queuedSkill = null;
+        return;
+      } else {
+        p.queuedSkill = null;
+        p.moveTarget = null;
+        p.route = [];
+        if (this.skill(p, q.slot, q.target, q.point)) return;
+      }
+    }
+    if (!p.combatTarget) return;
+    const t = this.map(p.map).mobs.find(
+      (m) => m.uid === p.combatTarget && m.hp > 0 && m.ai !== "return",
+    );
+    if (!t) {
+      p.combatTarget = null;
+      p.queuedAttack = null;
+      p.autoCombatArmed = false;
+      p.moveTarget = null;
+      p.route = [];
+      return;
+    }
+    if (distance(p, t) > stats(p).range || !this.sight(p.map, p, t)) {
+      if (!this.approachCombat(p, t)) {
+        p.combatTarget = null;
+        p.queuedAttack = null;
+        p.autoCombatArmed = false;
+      }
+    } else {
+      p.moveTarget = null;
+      p.route = [];
+      p.queuedAttack = null;
+      if (this.time >= p.attackReady) this.attack(p, t.uid);
+    }
   }
   cancelAction(p) {
     p.action = null;
@@ -1066,7 +1236,7 @@ export class World {
     p.anim = "windup";
     p.animAt = this.time;
     p.animDuration = p.action.strikeAt - this.time;
-    p.attackReady = Math.max(p.attackReady, p.action.endAt);
+    p.attackReady = Math.max(p.attackReady, p.action.endAt + 2 / 30);
     p.moveTarget = null;
     p.move = { x: 0, y: 0 };
     p.route = [];
@@ -1118,12 +1288,14 @@ export class World {
   }
   releaseBasic(p, t) {
     const s = stats(p);
-    if (["ranger", "mage"].includes(p.classId)) {
-      const travel = p.classId === "ranger" ? 0.26 : 0.48;
+    if (["ranger", "mage", "herbalist"].includes(p.classId)) {
+      const travel = { ranger: 0.26, mage: 0.48, herbalist: 0.22 }[p.classId];
       this.pendingHits ||= [];
       this.effect(
         p.map,
-        p.classId === "ranger" ? "arrow-shot" : "starfall",
+        { ranger: "arrow-shot", mage: "starfall", herbalist: "herb-shot" }[
+          p.classId
+        ],
         p.x,
         p.y,
         {
@@ -1145,8 +1317,7 @@ export class World {
         effect: this.sequence,
       });
     } else {
-      const landed = this.damage(p, t, s.power, "hit");
-      if (landed && p.classId === "herbalist") this.toxin(p, t, 1, 4);
+      this.damage(p, t, s.power, "hit");
       if (s.range > 2)
         this.effect(p.map, "projectile", p.x, p.y, {
           tx: t.x,
@@ -1177,6 +1348,7 @@ export class World {
       if (e) e.landed = landed;
       if (landed && p.classId === "mage")
         p.spellCharge = Math.min(3, p.spellCharge + 1);
+      if (landed && p.classId === "herbalist") this.toxin(p, m, 1, 4);
     }
     this.pendingHits = (this.pendingHits || []).filter((s) => !s.done);
   }
@@ -1223,7 +1395,16 @@ export class World {
     m.hp = Math.max(0, m.hp - n);
     m.threat = p.id;
     m.threatUntil = this.time + 4;
+    if (
+      p.autoCombatArmed &&
+      !p.autoAttackSuppressed &&
+      !this.map(p.map).mobs.some((t) => t.uid === p.combatTarget && t.hp > 0)
+    )
+      p.combatTarget = m.uid;
     m.hitUntil = this.time + 0.12;
+    m.hitAt = this.time;
+    m.hitDx = m.x - p.x;
+    m.hitDy = m.y - p.y;
     m.anim = "hurt";
     m.animAt = this.time;
     if (!p.discovered.includes(def.id)) p.discovered.push(def.id);
@@ -1599,7 +1780,7 @@ export class World {
     }
     const prev = MAPS.findIndex((m) => m.id === p.map),
       ni = MAPS.findIndex((m) => m.id === dest);
-    this.cancelAction(p);
+    this.stopCombat(p, false);
     p.map = dest;
     const entry = fast
       ? NAVIGATION[dest].spawn
@@ -1619,7 +1800,7 @@ export class World {
     this.effect(dest, "arrival", p.x, p.y, { text: next.name, duration: 1.5 });
     return true;
   }
-  hurtPlayer(p, n, { avoidable = true, accuracy = 80 } = {}) {
+  hurtPlayer(p, n, { avoidable = true, accuracy = 80, source = null } = {}) {
     const s = stats(p),
       evade = Math.max(
         0.01,
@@ -1642,6 +1823,18 @@ export class World {
     n -= absorbed;
     p.hp = Math.max(0, p.hp - n);
     p.lastHit = this.time;
+    if (
+      source?.hp > 0 &&
+      !p.autoAttackSuppressed &&
+      !p.combatTarget &&
+      !p.moveTarget &&
+      !p.move.x &&
+      !p.move.y &&
+      this.map(p.map).mobs.includes(source)
+    ) {
+      p.combatTarget = source.uid;
+      p.autoCombatArmed = true;
+    }
     if (!p.action) {
       p.anim = "hurt";
       p.animAt = this.time;
@@ -1655,7 +1848,7 @@ export class World {
       impact: n > 0 ? 2 : 0,
     });
     if (p.hp <= 0) {
-      this.cancelAction(p);
+      this.stopCombat(p);
       const town = MAPS.find(
         (m) => m.town && m.region === MAPS.find((m) => m.id === p.map).region,
       );
@@ -1766,7 +1959,7 @@ export class World {
                   (w.damageScale || 1),
               ),
             ),
-            { accuracy: monsterStats(def).accuracy },
+            { accuracy: monsterStats(def).accuracy, source: m },
           );
           if (
             landed &&
@@ -1971,6 +2164,7 @@ export class World {
         });
       }
       this.advanceAction(p);
+      this.advanceCombat(p);
       let dx = p.move.x,
         dy = p.move.y;
       if (p.moveTarget) {
@@ -2011,7 +2205,7 @@ export class World {
           !["attack", "hurt", "recover"].includes(p.anim))
       )
         p.anim = moving ? "walk" : "idle";
-      if (p.queuedAttack) {
+      if (p.queuedAttack && !p.combatTarget && !p.queuedSkill) {
         const t = map.mobs.find((m) => m.uid === p.queuedAttack);
         if (!t || t.hp <= 0) {
           p.queuedAttack = null;
@@ -2155,6 +2349,9 @@ export class World {
         anim: p.anim,
         animAt: p.animAt,
         animDuration: p.animDuration,
+        action: p.action ? { ...p.action } : null,
+        combatTarget: p.combatTarget,
+        queuedSkill: p.queuedSkill ? structuredClone(p.queuedSkill) : null,
         dir: p.dir,
         shield: p.shieldUntil > this.time ? p.shield : 0,
         cooldowns: p.cooldowns.map((t) => Math.max(0, t - this.time)),
@@ -2183,6 +2380,10 @@ export class World {
           anim: a.anim,
           animAt: a.animAt,
           animDuration: a.animDuration,
+          combatTarget: a.combatTarget,
+          queuedSkill: a.queuedSkill
+            ? { slot: a.queuedSkill.slot, point: a.queuedSkill.point }
+            : null,
           dir: a.dir,
         })),
       mobs: map.mobs.map(({ path, pathAt, pathGoal, ...m }) => ({ ...m })),

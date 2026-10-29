@@ -78503,8 +78503,9 @@
       "id": "combat/warden",
       "target": "site/assets/combat/warden.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
+      "source": "/workspace/generated_images/exec-cd9aba72-d944-41da-af55-dfb7f53d61a0.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png",
         "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
         "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
@@ -78517,7 +78518,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "615b4124984a9c40b9f1b14cbd85815cf6ecf8e449a417f68f8ff2522823d564",
+      "sha256": "07ac24cae404452bd473f4b315dc95cc8943f9bcfba9655288052f50e414be66",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78537,14 +78538,16 @@
         ]
       },
       "compositedStarterEquipment": true,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "combat/mage",
       "target": "site/assets/combat/mage.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
+      "source": "/workspace/generated_images/exec-ccf03212-3dcf-4d21-8682-b7d775000db3.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png",
         "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
         "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
@@ -78557,7 +78560,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "db0a48921d7d895846a504c7e10dcc4e88fa4d43fbf77b6f167d5b374e86419a",
+      "sha256": "62f9a7bf8f8b353a5d7d137fb5a25f362b3a400db86042161286de3f9bb622ab",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78577,14 +78580,16 @@
         ]
       },
       "compositedStarterEquipment": true,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "combat/ranger",
       "target": "site/assets/combat/ranger.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
+      "source": "/workspace/generated_images/exec-18a20b24-7a0b-4f74-9457-7e2e025e923c.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png",
         "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
         "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
@@ -78597,7 +78602,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "ffcf6decc6bb0760f32052f3291f03a86bf0ad8a2843826bce94b604e0cff3e1",
+      "sha256": "f800ddfd28298d628bb2c57b2298aac68b6d37564bfb1a51c28078ab7f83ebb6",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78617,14 +78622,16 @@
         ]
       },
       "compositedStarterEquipment": true,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "combat/herbalist",
       "target": "site/assets/combat/herbalist.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
+      "source": "/workspace/generated_images/exec-ce6ff379-e5f0-47b9-974d-1576bdea4940.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png",
         "/workspace/generated_images/exec-490ac3a5-fa9f-466c-9e05-fa44f6893885.png",
         "/workspace/generated_images/exec-f678a45d-a91b-4008-94dd-c5a20d929796.png",
@@ -78637,7 +78644,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "0dd833056f51db7303cc839135c4de1c190b95eea1c0eafebf063396e01d0459",
+      "sha256": "17c2772b6a4a91a0cd0227084e8e4288d044d0680f01294a6c46a427cf9f7d47",
       "combatVersion": 1,
       "cols": 8,
       "rows": 8,
@@ -78657,7 +78664,8 @@
         ]
       },
       "compositedStarterEquipment": true,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "combat/m1",
@@ -80845,37 +80853,41 @@
       "id": "appearance/base/warden",
       "target": "site/assets/appearance/base/warden.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
+      "source": "/workspace/generated_images/exec-cd9aba72-d944-41da-af55-dfb7f53d61a0.png",
       "width": 3072,
       "height": 768,
-      "sha256": "811c6e9f62b3906baadd8aa8cccd608ea6712ec85d2d411227eed0367fba7b60",
+      "sha256": "8ffc15d1cff5cf379824cf7e114ea2d480f043d81c969fb2bf5ed11aedca6c1d",
       "appearanceVersion": 1,
       "additionalSources": [
+        "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
         "/workspace/generated_images/exec-62ad12fe-eb2b-4052-8b7c-99bcd68e29e0.png",
         "/workspace/generated_images/exec-8a9e946c-1181-455d-925c-4a3199fb374c.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "rigVersion": 1,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/hands/warden",
       "target": "site/assets/appearance/hands/warden.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
+      "source": "/workspace/generated_images/exec-cd9aba72-d944-41da-af55-dfb7f53d61a0.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-ee8b55fa-472b-4400-9209-508e191db15a.png",
         "/workspace/generated_images/exec-62ad12fe-eb2b-4052-8b7c-99bcd68e29e0.png",
         "/workspace/generated_images/exec-8a9e946c-1181-455d-925c-4a3199fb374c.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "width": 3072,
       "height": 768,
-      "sha256": "61d5ee0dee56217c241291381bb365514a342038e37a78a918c23aad22ee0a51",
+      "sha256": "d50eb9b9a57663501166f985a5cd33c70686deeb95f18956a61a73ddd4d0a113",
       "rigVersion": 1,
       "cols": 32,
       "rows": 8,
       "size": 96,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/gear/warden-boots1",
@@ -81113,37 +81125,41 @@
       "id": "appearance/base/herbalist",
       "target": "site/assets/appearance/base/herbalist.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
+      "source": "/workspace/generated_images/exec-ce6ff379-e5f0-47b9-974d-1576bdea4940.png",
       "width": 3072,
       "height": 768,
-      "sha256": "1406bd05abcbef198d34fbc593e3f5bdea87dd65c90fe604eb4a1f9150b16257",
+      "sha256": "a32bdea00215550b393dc54878eeaa78a387c432a9a5e1c22f59e870717382aa",
       "appearanceVersion": 1,
       "additionalSources": [
+        "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
         "/workspace/generated_images/exec-f0fccfd4-1749-4621-8670-374691c6c2e0.png",
         "/workspace/generated_images/exec-df72412a-6fb7-4bba-9a28-e2c95ffd7a0a.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "rigVersion": 1,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/hands/herbalist",
       "target": "site/assets/appearance/hands/herbalist.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
+      "source": "/workspace/generated_images/exec-ce6ff379-e5f0-47b9-974d-1576bdea4940.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-22fcb77f-9380-435e-baf1-8bad402613e4.png",
         "/workspace/generated_images/exec-f0fccfd4-1749-4621-8670-374691c6c2e0.png",
         "/workspace/generated_images/exec-df72412a-6fb7-4bba-9a28-e2c95ffd7a0a.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "width": 3072,
       "height": 768,
-      "sha256": "755948cec68150f6e949654667b1a4490dbf1424fdab8716ebd5108d1ad24280",
+      "sha256": "caa2ea80d06aea74d98d9afcdeb578a449c0d732f78e6b5e810f34d6d53da1dd",
       "rigVersion": 1,
       "cols": 32,
       "rows": 8,
       "size": 96,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/gear/herbalist-boots1",
@@ -81381,37 +81397,41 @@
       "id": "appearance/base/mage",
       "target": "site/assets/appearance/base/mage.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
+      "source": "/workspace/generated_images/exec-ccf03212-3dcf-4d21-8682-b7d775000db3.png",
       "width": 3072,
       "height": 768,
-      "sha256": "d6de1947b83ffa1b07d714632b44821debb87dd6903aee761b1ed3f776e8d499",
+      "sha256": "491599ea4091f6eb459b8b299be6fb8409ed1e2b42b5bb8f7bba76146875e9c9",
       "appearanceVersion": 1,
       "additionalSources": [
+        "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
         "/workspace/generated_images/exec-3e57117f-829d-41a4-8d4e-dabcf69fe2b1.png",
         "/workspace/generated_images/exec-04c6fc90-ad39-4c06-967b-78806248785c.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "rigVersion": 1,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/hands/mage",
       "target": "site/assets/appearance/hands/mage.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
+      "source": "/workspace/generated_images/exec-ccf03212-3dcf-4d21-8682-b7d775000db3.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-19fc44d3-6ec6-4b44-9322-cd9642c77a74.png",
         "/workspace/generated_images/exec-3e57117f-829d-41a4-8d4e-dabcf69fe2b1.png",
         "/workspace/generated_images/exec-04c6fc90-ad39-4c06-967b-78806248785c.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "width": 3072,
       "height": 768,
-      "sha256": "145afbd43d2f867adbf7d78cad1a6a0f5cf105a93f0fae2bf1dff37d84dd2437",
+      "sha256": "ce66b8c22144dcc1c638114c5225d79946e868916bab834417f0cdac98a424a4",
       "rigVersion": 1,
       "cols": 32,
       "rows": 8,
       "size": 96,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/gear/mage-boots1",
@@ -81649,37 +81669,41 @@
       "id": "appearance/base/ranger",
       "target": "site/assets/appearance/base/ranger.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
+      "source": "/workspace/generated_images/exec-18a20b24-7a0b-4f74-9457-7e2e025e923c.png",
       "width": 3072,
       "height": 768,
-      "sha256": "c56dc45cb0008389450f7e26073498a5e7cec6af317816ba90cb614e7c38ac66",
+      "sha256": "263c4098e5698c83e7da92ca1e72cd50ef4641112e2c5728b2affa88b3b77726",
       "appearanceVersion": 1,
       "additionalSources": [
+        "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
         "/workspace/generated_images/exec-e51943a7-9720-456b-a624-ed9b8474a87d.png",
         "/workspace/generated_images/exec-20f1d09a-f5ce-4e6f-b68f-30439d9dc142.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "rigVersion": 1,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/hands/ranger",
       "target": "site/assets/appearance/hands/ranger.png",
       "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
+      "source": "/workspace/generated_images/exec-18a20b24-7a0b-4f74-9457-7e2e025e923c.png",
       "additionalSources": [
+        "/workspace/generated_images/exec-ada917f6-8ecf-4dc4-a2c9-a13675f47bf2.png",
         "/workspace/generated_images/exec-e51943a7-9720-456b-a624-ed9b8474a87d.png",
         "/workspace/generated_images/exec-20f1d09a-f5ce-4e6f-b68f-30439d9dc142.png",
         "/workspace/generated_images/exec-cf58872d-c61a-4d56-acfb-0f8890fbc371.png"
       ],
       "width": 3072,
       "height": 768,
-      "sha256": "ea7bb4ba47208b16c329074d666ce51581faebe6d47eec0eda2acee63e81d5eb",
+      "sha256": "907375f9f7df24894833bd580b3a4db408a530198339969cadf1e7632156160a",
       "rigVersion": 1,
       "cols": 32,
       "rows": 8,
       "size": 96,
-      "clothedBody": true
+      "clothedBody": true,
+      "huntingMotionVersion": 1
     },
     {
       "id": "appearance/gear/ranger-boots1",

@@ -60,7 +60,7 @@ test("damage, resource procs and strike-frame feedback occur after preparation e
       11,
     );
     advance(w, action.hitAt + 0.001);
-    const ranged = ["mage", "ranger"].includes(cls);
+    const ranged = ["mage", "ranger", "herbalist"].includes(cls);
     if (ranged) {
       assert.equal(m.hp, before);
       assert.equal(w.pendingHits.length, 1);
@@ -70,7 +70,12 @@ test("damage, resource procs and strike-frame feedback occur after preparation e
       12,
     );
     if (ranged) {
-      advance(w, action.hitAt + (cls === "mage" ? 0.48 : 0.26) + 0.01);
+      advance(
+        w,
+        action.hitAt +
+          { mage: 0.48, ranger: 0.26, herbalist: 0.22 }[cls] +
+          0.01,
+      );
       assert.ok(m.hp < before);
     }
     const after = m.hp;

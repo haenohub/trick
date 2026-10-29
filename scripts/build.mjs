@@ -40,10 +40,15 @@ for (const name of [
     .replaceAll('href="./"', `href="./?v=${VERSION}"`);
   await writeFile(
     file,
-    page.replaceAll(
-      'import("./avatar-draw.js")',
-      `import("./avatar-draw.js?v=${revision}")`,
-    ),
+    page
+      .replaceAll(
+        'import("./avatar-draw.js")',
+        `import("./avatar-draw.js?v=${revision}")`,
+      )
+      .replaceAll(
+        'import("./animation.js")',
+        `import("./animation.js?v=${revision}")`,
+      ),
   );
 }
 for (const name of [

@@ -28,7 +28,7 @@ with sync_playwright() as pw:
      calls.length=0;r.sprite(cls.id,64,112,anim,dir,time,0,96,null,cls.id+anim+dir,equipment);
      if(calls.length!==3)throw Error(cls.id+' '+item.id+' wrong layer count '+calls.length);
      if(!calls.some(c=>c.file.includes(item.slot==='weapon'?'/appearance/held-weapons.png':'/appearance/base/'+cls.id+'.png')))throw Error('equipped item is invisible');
-     const frame=calls[0].args.slice(0,4).join(',');
+     const frame=calls.find(c=>!c.file.endsWith('/appearance/held-weapons.png')).args.slice(0,4).join(',');
      for(const c of calls){
       const [sx,sy,sw,sh]=c.args;
       if(c.file.endsWith('/appearance/held-weapons.png')){if(sx!==dir*96||sw!==96||sh!==96||sy%96||sy<0||sy+sh>c.height)throw Error('wrong held weapon cell');continue;}

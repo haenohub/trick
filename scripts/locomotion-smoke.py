@@ -24,10 +24,10 @@ with sync_playwright() as pw:
  }''')
  assert result['actors']==72 and result['calls']==72*2*8*3 and result['files']==144,result
  p.goto(BASE+'directions.html');p.wait_for_function("document.querySelector('#status').textContent.startsWith('8방향')")
- actors=p.evaluate('DATA.actors.map(a=>({id:a.id,kind:a.kind,ready:!!a.layout.clips?.idle,clips:a.layout.clips}))')
+ actors=p.evaluate('__directions.data.actors.map(a=>({id:a.id,kind:a.kind,ready:!!a.layout.clips?.idle,clips:a.layout.clips}))')
  for actor in actors:
-  p.evaluate('(id)=>choose(DATA.actors.find(a=>a.id===id))',actor['id'])
-  p.wait_for_function("sheet !== null && document.querySelector('#status').textContent.startsWith('8방향')")
+  p.locator('[data-actor='+actor['id']+']').click()
+  p.wait_for_function("id=>__directions.selected===id && document.querySelector('#status').textContent.startsWith('8방향')",arg=actor['id'])
   for anim in ['idle','walk']:
    p.locator('#animation').select_option(anim);frames=[]
    for i in range(4):

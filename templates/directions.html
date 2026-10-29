@@ -466,7 +466,8 @@
     <script id="direction-data" type="application/json">
       <!-- DIRECTION_DATA -->
     </script>
-    <script>
+    <script type="module">
+      const CLOCK = await import("./animation.js");
       const DATA = JSON.parse(
         document.querySelector("#direction-data").textContent,
       );
@@ -602,13 +603,20 @@
           if (current !== ticket) return;
           sheet = image;
           clipSheets = { walk, idle };
-          for(const [anim,clip] of Object.entries(actor.layout.clips||{}))clipSheets[anim]=await load(clip.file);
-          if(actor.appearance?.layout.anchors){
-            const api=await import("./avatar-draw.js");
-            const entries=await Promise.all(actor.appearance.layers.map(async layer=>[layer.file,await load(layer.file)]));
-            if(current!==ticket)return;
-            avatarImages=new Map(entries);drawAvatar=api.drawPaperDoll;
-          }else drawAvatar=null;
+          for (const [anim, clip] of Object.entries(actor.layout.clips || {}))
+            clipSheets[anim] = await load(clip.file);
+          if (actor.appearance?.layout.anchors) {
+            const api = await import("./avatar-draw.js");
+            const entries = await Promise.all(
+              actor.appearance.layers.map(async (layer) => [
+                layer.file,
+                await load(layer.file),
+              ]),
+            );
+            if (current !== ticket) return;
+            avatarImages = new Map(entries);
+            drawAvatar = api.drawPaperDoll;
+          } else drawAvatar = null;
           $("#status").textContent =
             actor.layout.clips?.walk && actor.layout.clips?.idle
               ? "8방향 · 방향마다 걷기 8프레임 / 대기 8프레임 · 발 디딤과 호흡 주기"
@@ -617,14 +625,31 @@
           if (current === ticket) $("#status").textContent = e.message;
         }
       }
-      function draw(canvas, row, frame, scale = 1, image = sheet) {
+      function draw(
+        canvas,
+        row,
+        frame,
+        scale = 1,
+        image = sheet,
+        motion = null,
+      ) {
         const size = selected.layout.size,
           c = canvas.getContext("2d");
         c.imageSmoothingEnabled = false;
         c.clearRect(0, 0, canvas.width, canvas.height);
         const side = size * scale;
-        if(selected.appearance?.layout.anchors && drawAvatar){
-          drawAvatar(c,selected.appearance,avatarImages,frame,row,Math.floor((canvas.width-side)/2),canvas.height-side,scale);
+        if (selected.appearance?.layout.anchors && drawAvatar) {
+          drawAvatar(
+            c,
+            selected.appearance,
+            avatarImages,
+            frame,
+            row,
+            Math.floor((canvas.width - side) / 2),
+            canvas.height - side,
+            scale,
+            motion,
+          );
           return;
         }
         c.drawImage(
@@ -670,16 +695,58 @@
           const file = clip?.file || selected.layout.file;
           $("#atlas-download").href = "./assets/" + file + ".png";
           $("#atlas-download").download = selected.id + "-" + anim + ".png";
-          const frame =
+          let frame =
             frames[
               playing
                 ? Math.floor((now - epoch) / ((1000 * span) / frames.length)) %
                   frames.length
                 : 0
             ];
-          draw($("#hero"), heading, frame, 2, image);
+          let motion = null;
+          if (
+            selected.appearance &&
+            ["combo", "windup", "attack", "recover"].includes(anim)
+          ) {
+            const timeline = CLOCK.attackTimeline(0, selected.id);
+            let phase = anim,
+              start = 0,
+              duration = span;
+            let age = playing ? (now - epoch) / 1000 : 0;
+            if (anim === "combo") {
+              age %= timeline.endAt + 2 / 30;
+              if (age < timeline.strikeAt) {
+                phase = "windup";
+                duration = timeline.strikeAt;
+              } else if (age < timeline.strikeEnd) {
+                phase = "attack";
+                start = timeline.strikeAt;
+                duration = CLOCK.STRIKE_DURATION;
+              } else {
+                phase = "recover";
+                start = timeline.strikeEnd;
+                duration = CLOCK.RECOVERY_DURATION;
+              }
+            } else {
+              duration =
+                anim === "windup"
+                  ? timeline.strikeAt
+                  : anim === "attack"
+                    ? CLOCK.STRIKE_DURATION
+                    : CLOCK.RECOVERY_DURATION;
+              age %= duration;
+            }
+            frame = CLOCK.animationFrame(
+              selected.layout,
+              phase,
+              age,
+              start,
+              duration,
+            );
+            motion = { anim: phase, time: age, start, duration };
+          }
+          draw($("#hero"), heading, frame, 2, image, motion);
           for (const canvas of document.querySelectorAll(".views canvas"))
-            draw(canvas, +canvas.dataset.row, frame, 1, image);
+            draw(canvas, +canvas.dataset.row, frame, 1, image, motion);
         }
         requestAnimationFrame(render);
       }

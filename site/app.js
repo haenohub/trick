@@ -239,7 +239,6 @@ function clearAim() {
 function armCombat(type, slot = null) {
   if (!running || panel) return;
   pendingInteraction = null;
-  send({ type: "move", x: 0, y: 0 }, true);
   aimedAction = {
     type,
     slot,
@@ -250,7 +249,9 @@ function armCombat(type, slot = null) {
   canvas.focus();
   toast(
     aimedAction.rule.mode === "enemy"
-      ? "공격할 적을 클릭하세요 · Esc/우클릭 취소"
+      ? type === "attack"
+        ? "적 클릭: 연속 기본공격 · 바닥 클릭: 공격 중단"
+        : "공격할 적을 클릭하세요 · Esc/우클릭 취소"
       : aimedAction.rule.mode === "self"
         ? "클릭해서 발동하세요 · Esc/우클릭 취소"
         : "발동할 위치를 클릭하세요 · Esc/우클릭 취소",
@@ -708,7 +709,8 @@ function renderPanel() {
     html = `<p class="panel-intro">작은 발걸음으로 숲을 탐험하세요. 마을의 숲길지기에게 이야기를 듣고, 길 끝의 빛나는 표식으로 다음 맵에 갈 수 있습니다.</p><div class="help-grid">${[
       ["바닥 클릭 / 터치", "목적지로 이동"],
       ["이동 표식 클릭", "다음 맵으로 이동"],
-      [bindingLabel("attack") + " → 몬스터 클릭", "기본 공격 대상 지정"],
+      [bindingLabel("attack") + " → 몬스터 클릭", "대상에게 연속 기본공격"],
+      [bindingLabel("attack") + " → 바닥 클릭", "공격·추적·시전 예약 중단"],
       [
         [0, 1, 2, 3].map((n) => bindingLabel("skill" + n)).join(" · "),
         "직업 스킬",
@@ -1277,6 +1279,13 @@ canvas.addEventListener("pointerdown", (e) => {
     const a = aimedAction,
       pos = renderer.screenToWorld(x, y);
     if (a.rule.mode === "enemy" && hit?.kind !== "monster") {
+      if (a.type === "attack") {
+        send({ type: "cancelCombat" }, true);
+        target = null;
+        clearAim();
+        toast("공격을 중단했습니다.");
+        return;
+      }
       toast("공격할 적을 클릭해 주세요.");
       return;
     }
@@ -1288,6 +1297,8 @@ canvas.addEventListener("pointerdown", (e) => {
     if (a.rule.mode === "ground") action.point = pos;
     if (send(action)) {
       clearAim();
+      if (a.type === "skill" && state.player.queuedSkill)
+        toast("사거리까지 이동한 뒤 스킬을 사용합니다.");
     } else toast("사거리·시야·집중·재사용 시간을 확인해 주세요.");
     return;
   }
@@ -1583,7 +1594,14 @@ function frame(now) {
         ? renderer.screenToWorld(aimPointer.x, aimPointer.y)
         : state.player;
       renderer.aim = { ...aimedAction.rule, point, origin: state.player };
-    }
+    } else if (state.player.queuedSkill?.point) {
+      renderer.aim = {
+        ...combatAim(state.player, state.player.queuedSkill.slot),
+        point: state.player.queuedSkill.point,
+        origin: state.player,
+        queued: true,
+      };
+    } else renderer.aim = null;
     if (renderer.prefetchedRegion !== state.player.map) {
       renderer.prefetchedRegion = state.player.map;
       for (const portal of PORTALS(state.player.map))
@@ -1603,7 +1621,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.21.0",
+  version: "0.22.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

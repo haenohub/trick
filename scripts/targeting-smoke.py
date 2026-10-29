@@ -16,7 +16,7 @@ with sync_playwright() as pw:
   assert p.evaluate('(id)=>__leaftale.snapshot().mobs.find(m=>m.uid===id).hp',target['id'])==target['hp']
   p.locator('#skillbar [data-action=attack]').click();assert 'aiming' in (p.locator('#world').get_attribute('class')or'');assert p.evaluate('__leaftale.snapshot().player.action') is None;assert p.locator('#world').evaluate('(e)=>getComputedStyle(e).cursor')=='crosshair'
   p.keyboard.press('Escape');assert 'aiming' not in (p.locator('#world').get_attribute('class')or'')
-  p.keyboard.press('a');p.mouse.click(30,700);assert 'aiming' in (p.locator('#world').get_attribute('class')or'')
+  p.keyboard.press('a');p.mouse.click(30,700);assert 'aiming' not in (p.locator('#world').get_attribute('class')or'');assert p.evaluate('__leaftale.snapshot().player.combatTarget') is None;p.keyboard.press('a')
   p.evaluate('''id=>{window.samples=[];window.recording=true;function f(){const s=__leaftale.snapshot(),m=s.mobs.find(m=>m.uid===id);samples.push({time:s.time,hp:m?.hp??0,effects:s.effects.filter(e=>['arrow-shot','starfall'].includes(e.kind))});if(recording)requestAnimationFrame(f);}requestAnimationFrame(f); }''',target['id'])
   p.mouse.click(target['x'],target['y']);p.wait_for_function('(kind)=>__leaftale.snapshot().effects.some(e=>e.kind===kind)',arg=kind)
   p.screenshot(path='/tmp/target-'+cls+'-flight.png');p.wait_for_timeout(800)

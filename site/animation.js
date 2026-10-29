@@ -1,13 +1,15 @@
 // The authoritative hit offset and visible strike frames share this clock.
-export const STRIKE_DURATION = 0.14;
+// Reference hunting clip: 30 fps. A short release/contact, followed by a
+// readable planted-foot follow-through instead of snapping straight to idle.
+export const STRIKE_DURATION = 4 / 30;
 export const HIT_OFFSET = STRIKE_DURATION / 2;
-export const RECOVERY_DURATION = 0.18;
+export const RECOVERY_DURATION = 8 / 30;
 export const WALK_DURATION = 1.28;
 export const WINDUP_DURATION = {
-  warden: 0.22,
-  mage: 0.26,
-  ranger: 0.18,
-  herbalist: 0.24,
+  warden: 6 / 30,
+  mage: 8 / 30,
+  ranger: 7 / 30,
+  herbalist: 7 / 30,
 };
 export function attackTimeline(now, classId) {
   const strikeAt = now + (WINDUP_DURATION[classId] || 0.22);

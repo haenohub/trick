@@ -1,6 +1,6 @@
 import { floorTileCode } from "./isometric-layouts.js";
 import { animationFrame, LocomotionClocks } from "./animation.js";
-import { drawPaperDoll } from "./avatar-draw.js";
+import { drawPaperDoll, heldWeaponTip } from "./avatar-draw.js";
 import {
   equippedAppearance,
   orderedEquipmentLayers,
@@ -488,6 +488,7 @@ export class Renderer {
     duration = null,
     actorKey = name,
     equipment = null,
+    combatReady = false,
   ) {
     const originalLayout = /^m\d+$/.test(name)
       ? ART.monsters[name]
@@ -506,13 +507,16 @@ export class Renderer {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
     }
-    const frame = animationFrame(
-      layout,
-      anim,
-      time,
-      ["idle", "walk"].includes(anim) ? loopStart : start,
-      duration,
-    );
+    const frame =
+      combatReady && anim === "idle"
+        ? 6
+        : animationFrame(
+            layout,
+            anim,
+            time,
+            ["idle", "walk"].includes(anim) ? loopStart : start,
+            duration,
+          );
     if (appearance && layout.anchors) {
       const anchor = 1 - 2 / (layout.size / (ART.resolutionScale || 1));
       drawPaperDoll(
@@ -524,6 +528,7 @@ export class Renderer {
         x - 48 * this.zoom,
         y - 96 * anchor * this.zoom,
         this.zoom,
+        { anim, time, start, duration: duration || 0.2, combatReady },
       );
       if (anim === "death") c.restore();
       return;
@@ -893,6 +898,21 @@ export class Renderer {
           0.7,
           "sepia(.8)",
         );
+      const recoil =
+        monster &&
+        o.hitUntil > time &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const hitAge = recoil ? time - (o.hitAt ?? o.animAt) : 1;
+      if (recoil) {
+        const v = project(o.hitDx || 0, o.hitDy || 0),
+          n = Math.hypot(v.x, v.y) || 1;
+        const k =
+          Math.max(0, Math.sin(Math.min(1, hitAge / 0.12) * Math.PI)) *
+          3 *
+          this.zoom;
+        s.x += (v.x / n) * k;
+        s.y += (v.y / n) * k;
+      }
       const jump = o.windup?.jump
         ? Math.sin(
             Math.min(
@@ -903,11 +923,13 @@ export class Renderer {
           22 *
           this.zoom
         : 0;
+      c.save();
+      if (recoil && hitAge < 2 / 30) c.filter = "brightness(1.55)";
       this.sprite(
         name,
         s.x,
         s.y - jump,
-        o.anim || "idle",
+        recoil && o.hp > 0 ? "hurt" : o.anim || "idle",
         o.kind === "npc"
           ? Math.hypot(p.x - o.x, p.y - o.y) < 6
             ? direction(p.x - o.x, p.y - o.y)
@@ -919,7 +941,9 @@ export class Renderer {
         o.animDuration,
         o.kind + ":" + (o.uid || o.id || name),
         o.equipment,
+        !!o.combatTarget && !o.queuedSkill,
       );
+      c.restore();
       if (monster && o.hitUntil > time)
         this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);
       if (monster && o.ai === "return")
@@ -1010,7 +1034,7 @@ export class Renderer {
       this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
     }
     for (const e of state.effects) {
-      if (["arrow-shot", "starfall"].includes(e.kind))
+      if (["arrow-shot", "starfall", "herb-shot"].includes(e.kind))
         this.targetedCombatEffect(e, state);
       const s = this.worldToScreen(e.x, e.y),
         remaining = e.until - time;
@@ -1083,6 +1107,10 @@ export class Renderer {
       a.mode === "self" ||
       (Math.hypot(point.x - a.origin.x, point.y - a.origin.y) <= a.range &&
         (a.mode !== "ground" || isWalkable(a.origin.map, point.x, point.y)));
+    const approaching =
+      !valid &&
+      a.mode === "ground" &&
+      isWalkable(a.origin.map, point.x, point.y);
     const path = (zone, fill = false) => {
       const points = zoneOutline(zone).map((p) => this.worldToScreen(p.x, p.y));
       c.beginPath();
@@ -1092,9 +1120,10 @@ export class Renderer {
       c.stroke();
     };
     c.save();
-    c.strokeStyle = valid ? "#b3f4cf" : "#fa8e83";
+    c.strokeStyle = valid ? "#b3f4cf" : approaching ? "#f4d28d" : "#fa8e83";
     c.lineWidth = 1.5;
-    c.fillStyle = valid ? "#7edaaa2e" : "#ef60452e";
+    c.fillStyle = valid ? "#7edaaa2e" : approaching ? "#e9b55c2e" : "#ef60452e";
+    if (a.queued) c.setLineDash([5, 4]);
     if (a.range > 0) {
       c.globalAlpha = 0.45;
       path({ ...a.origin, radius: a.range });
@@ -1130,9 +1159,9 @@ export class Renderer {
         e.owner === state.player.id
           ? state.player
           : state.peers.find((p) => p.id === e.owner),
-      hand =
-        ART.appearance?.bases?.[actor?.classId]?.anchors?.[e.dir || 0]?.[3]
-          ?.hand;
+      base = ART.appearance?.bases?.[actor?.classId],
+      weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon],
+      hand = base && weapon ? heldWeaponTip(base, weapon, 4, e.dir || 0) : null;
     const start = {
         x: origin.x + (hand ? hand[0] - 48 : 0) * z,
         y: origin.y - (hand ? 92 - hand[1] : 42) * z,
@@ -1156,7 +1185,26 @@ export class Renderer {
       );
       c.restore();
     };
-    if (e.kind === "arrow-shot") {
+    if (e.kind === "herb-shot") {
+      if (age >= travel) return;
+      const t = Math.max(0, Math.min(1, age / travel));
+      for (const [delay, alpha, size] of [
+        [0.12, 0.2, 15],
+        [0.06, 0.4, 20],
+        [0, 1, 28],
+      ]) {
+        const k = Math.max(0, t - delay);
+        this.fx(
+          3,
+          this.effectFrame(age, 0.22),
+          start.x + (dest.x - start.x) * k,
+          start.y + (dest.y - start.y) * k,
+          size,
+          size,
+          alpha,
+        );
+      }
+    } else if (e.kind === "arrow-shot") {
       const t = Math.min(1, age / travel),
         angle = Math.atan2(dest.y - start.y, dest.x - start.x),
         landed = age >= travel,
