@@ -1,6 +1,7 @@
+import { ISOMETRIC_LAYOUTS } from "./isometric-layouts.js";
 // Shared terrain layout: all visible cells use image-generated terrain textures.
 export const TILE = 112;
-export const LAYOUT_VERSION = 3;
+export const LAYOUT_VERSION = 4;
 // Show 20% more world in each dimension without scaling any HTML text.
 export const WORLD_ZOOM = 1.1 / 1.2;
 const baseline = {
@@ -516,6 +517,26 @@ for (const [id, additions] of Object.entries(dynamicRoutes)) {
     spec[field] = [...(spec[field] || []), ...(additions[field] || [])];
   spec.shape += " · 갈림길·합류터·숨은 굽이";
 }
+// Remap ecological anchors into the new two-dimensional layouts, then snap
+// them to connected floor after carving. Services use explicit plaza positions.
+const oldDimensions = Object.fromEntries(
+  Object.entries(specs).map(([id, s]) => [id, [s.cols, s.rows]]),
+);
+for (const [id, layout] of Object.entries(ISOMETRIC_LAYOUTS)) {
+  const spec = specs[id],
+    [ow, oh] = oldDimensions[id],
+    scale = ([x, y]) => [
+      Math.round((x / (ow - 1)) * (layout.cols - 1)),
+      Math.round((y / (oh - 1)) * (layout.rows - 1)),
+    ];
+  spec.habitats = (spec.habitats || []).map(scale);
+  spec.props = (spec.props || []).map(([index, x, y, walkThrough]) => [
+    index,
+    ...scale([x, y]),
+    walkThrough,
+  ]);
+  Object.assign(spec, layout);
+}
 const gathering = {
   sprout: [
     ["클로버 밭둑", "softleaf", 8, 7],
@@ -617,8 +638,8 @@ function nearestCell(nav, c, r, northEdge = false) {
   return best;
 }
 const pixelWorld = (px, py, width) => ({
-  x: (px - width / 2) / 32 + py / 16,
-  y: py / 16 - (px - width / 2) / 32,
+  x: (px - width / 2) / 16,
+  y: py / 16,
 });
 export const NAVIGATION = {};
 export const NPC_POSITIONS = {};
@@ -685,7 +706,7 @@ for (const [id, spec] of Object.entries(specs)) {
   // Short side passages extend the existing connected floor without moving
   // services or main routes. All new cells reuse the authored terrain atlas.
   let secretPassage = null;
-  if (spec.habitats) {
+  if (spec.habitats?.length) {
     const anchors = {
       sprout: [16, 5],
       acorn: [9, 9],
@@ -812,7 +833,10 @@ for (const [id, spec] of Object.entries(specs)) {
   nav.boss = spec.boss ? at(...spec.boss) : null;
   nav.habitats = [
     ...(spec.habitats || []),
-    ...(additionalHabitats[id] || []),
+    ...(additionalHabitats[id] || []).map(([x, y]) => [
+      Math.round((x / (oldDimensions[id][0] - 1)) * (nav.cols - 1)),
+      Math.round((y / (oldDimensions[id][1] - 1)) * (nav.rows - 1)),
+    ]),
   ].map(([c, r]) => at(...nearestCell(nav, c, r)));
   const prop = (index, c, r, walkThrough = false, footY = (r + 1) * TILE) => {
     const px = (c + 0.5) * TILE,
@@ -830,7 +854,7 @@ for (const [id, spec] of Object.entries(specs)) {
   for (const [index, c, r, walkThrough] of spec.props || [])
     prop(index, c, r, walkThrough);
   for (const [c, r] of spec.bridges || [])
-    prop(12, c, r, true, (r + 0.75) * TILE);
+    prop(12, c, r, true, (r + 0.5) * TILE);
   if (spec.fountain) {
     const [c, r] = spec.fountain;
     prop(4, c, r, false, (r + 1) * TILE);
@@ -846,7 +870,13 @@ for (const [id, spec] of Object.entries(specs)) {
     id: id + "-grove-" + index,
     name,
     item,
-    ...at(...nearestCell(nav, c, r)),
+    ...at(
+      ...nearestCell(
+        nav,
+        Math.round((c / (oldDimensions[id][0] - 1)) * (nav.cols - 1)),
+        Math.round((r / (oldDimensions[id][1] - 1)) * (nav.rows - 1)),
+      ),
+    ),
   }));
   nav.encounterZones = [
     ...nav.habitats,
@@ -898,13 +928,102 @@ for (const [id, spec] of Object.entries(specs)) {
         (floor[r]?.[c - 1] ? 8 : 0),
     ),
   );
+  const border = [];
+  for (let r = 1; r < nav.rows - 1; r++)
+    for (let c = 1; c < nav.cols - 1; c++)
+      if (
+        !floor[r][c] &&
+        [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ].some(([dx, dy]) => floor[r + dy]?.[c + dx])
+      )
+        border.push([c, r]);
+  const existing = () =>
+    nav.props.map((p) => [p.px / TILE - 0.5, p.py / TILE - 0.5]);
+  const addScenery = (index, c, r, size = 384) => {
+    prop(index, c, r, false, (r + 0.5) * TILE);
+    Object.assign(nav.props.at(-1), {
+      size,
+      anchor: 1 - 8 / 384,
+      scenery: true,
+    });
+  };
+  for (const [i, feature] of [4, 10, 11, 9].entries()) {
+    if (feature === 4 && spec.fountain) continue;
+    const room =
+      (spec.rooms || [])[i % (spec.rooms?.length || 1)] ||
+      spec.route[Math.min(i + 1, spec.route.length - 1)];
+    const spot = border
+      .filter(([x, y]) =>
+        existing().every(([a, b]) => Math.hypot(x - a, y - b) > 1.3),
+      )
+      .sort(
+        (a, b) =>
+          Math.hypot(a[0] - room[0], a[1] - room[1]) -
+          Math.hypot(b[0] - room[0], b[1] - room[1]),
+      )[0];
+    if (spot) addScenery(feature, ...spot, feature === 10 ? 512 : 384);
+  }
+  let placed = 0;
+  for (const [c, r] of border) {
+    const seed = (c * 31 + r * 17 + id.length * 13) % 19;
+    if (
+      seed % 3 ||
+      existing().some(([x, y]) => Math.hypot(c - x, r - y) < 1.15)
+    )
+      continue;
+    addScenery([9, 15, 13, 15][seed % 4], c, r, seed % 4 === 0 ? 256 : 320);
+    if (++placed >= 34) break;
+  }
+  for (let r = 2; r < nav.rows - 2; r += 3)
+    for (let c = 2; c < nav.cols - 2; c += 3) {
+      if (
+        !floor[r][c] &&
+        existing().every(([x, y]) => Math.hypot(c - x, r - y) > 1.3)
+      )
+        addScenery(
+          [9, 13, 15, 9][(c + r) % 4],
+          c,
+          r,
+          (c + r) % 4 === 2 ? 352 : 288,
+        );
+    }
+  let plants = 0;
+  for (let r = 2; r < nav.rows - 2; r++)
+    for (let c = 2; c < nav.cols - 2; c++) {
+      if (
+        floor[r][c] &&
+        (c * 11 + r * 7) % 17 === 0 &&
+        [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ].some(([dx, dy]) => !floor[r + dy]?.[c + dx]) &&
+        plants++ < 16
+      ) {
+        prop(14, c, r, true, (r + 0.5) * TILE);
+        Object.assign(nav.props.at(-1), {
+          size: 112,
+          anchor: 0.92,
+          scenery: true,
+        });
+      }
+    }
+  for (const p of nav.props) {
+    p.size ??= p.index === 14 ? 112 : 384;
+    p.anchor ??= p.index === 12 ? 0.82 : 1 - 8 / 384;
+  }
   NAVIGATION[id] = nav;
 }
 export function worldToImage(x, y, map = "village") {
   const nav = NAVIGATION[map];
   return {
-    u: ((x - y) * 16 + nav.width / 2) / nav.width,
-    v: ((x + y) * 8) / nav.height,
+    u: (x * 16 + nav.width / 2) / nav.width,
+    v: (y * 16) / nav.height,
   };
 }
 export function imageToWorld(u, v, map = "village") {
@@ -914,8 +1033,8 @@ export function imageToWorld(u, v, map = "village") {
 export function floorValue(map, x, y) {
   const nav = NAVIGATION[map];
   if (!nav || !Number.isFinite(x) || !Number.isFinite(y)) return 0;
-  const u = ((x - y) * 16 + nav.width / 2) / TILE - 0.5,
-    v = ((x + y) * 8) / TILE - 0.5,
+  const u = (x * 16 + nav.width / 2) / TILE - 0.5,
+    v = (y * 16) / TILE - 0.5,
     c = Math.floor(u),
     r = Math.floor(v),
     tx = u - c,

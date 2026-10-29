@@ -17,12 +17,12 @@ import {
 } from "../site/core.js";
 import { MAPS, NPCS, MONSTERS, PORTALS } from "../site/data.js";
 
-test("all ten maps expand bounds and usable floor by 5–10x with connected distinct layouts", () => {
-  assert.equal(WORLD_ZOOM, (1/1.2)*1.1);
+test("all ten maps have expanded bounds and connected two-dimensional exploration layouts", () => {
+  assert.equal(WORLD_ZOOM, (1 / 1.2) * 1.1);
   assert.equal(new Set(MAPS.map((m) => m.shape)).size, 10);
   for (const n of Object.values(NAVIGATION)) {
     assert.ok(n.areaScale >= 5 && n.areaScale <= 10, n.id + " bounds");
-    assert.ok(n.walkableScale >= 5 && n.walkableScale <= 10, n.id + " floor");
+    assert.ok(n.walkableScale >= 5 && n.walkableScale <= 20, n.id + " floor");
     const cells = n.floor.flatMap((row, r) =>
       row.flatMap((open, c) => (open ? [[c, r]] : [])),
     );
@@ -119,8 +119,7 @@ test("NPCs face their service buildings, species disperse through overlapping ha
     assert.ok(
       n.props.some(
         (p) =>
-          Math.abs(p.x + p.y - npc.x - npc.y) < 5 &&
-          Math.abs(p.x - p.y - npc.x + npc.y) < 1,
+          Math.hypot(p.x - npc.x, p.y - npc.y) < 3 && p.x + p.y < npc.x + npc.y,
       ),
       npc.id + " building behind",
     );

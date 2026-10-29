@@ -7,17 +7,18 @@ with sync_playwright() as pw:
  p=b.new_page(viewport={'width':1440,'height':900});errors=[];p.on('pageerror',lambda e:errors.append(str(e)))
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden');p.locator('#start-game').click();p.wait_for_timeout(80)
  p.evaluate('''()=>{window.centerSamples=[];window.centerCapture=true;function sample(){const s=__leaftale.snapshot(),v=__leaftale.view(),q=__leaftale.worldToScreen(s.player.x,s.player.y);centerSamples.push({x:q.x,y:q.y,w:v.size.width,h:v.size.height,z:v.zoom});if(centerCapture)requestAnimationFrame(sample);}requestAnimationFrame(sample);}''')
- start=p.evaluate('__leaftale.snapshot().player');target={'x':start['x']+3,'y':start['y']-3}
+ start=p.evaluate('__leaftale.snapshot().player');target={'x':start['x']+2,'y':start['y']+2}
  q=p.evaluate('q=>__leaftale.worldToScreen(q.x,q.y)',target);p.mouse.click(q['x'],q['y'])
  p.wait_for_function('(q)=>Math.hypot(__leaftale.snapshot().player.x-q.x,__leaftale.snapshot().player.y-q.y)<.05',arg=target)
  samples=p.evaluate('()=>{centerCapture=false;return centerSamples;}')
  assert len(samples)>5 and all(abs(s['x']-s['w']/2)<.01 and abs(s['y']-s['h']/2-24*s['z'])<.01 for s in samples),samples
  print('PASS: real floor-click movement keeps the player centered on every sampled frame')
  result=p.evaluate('''async()=>{
-  const {Renderer,loadArt}=await import('./renderer.js');const {World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');
+  const {Renderer,loadArt,prepareWorldArt}=await import('./renderer.js');const {World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');
   await loadArt();const canvas=document.createElement('canvas');canvas.style.cssText='position:fixed;left:-2000px;top:0;width:1024px;height:768px';document.body.append(canvas);
   const r=new Renderer(canvas,document.createElement('canvas')),results=[];
   for(const nav of Object.values(NAVIGATION)){
+   await prepareWorldArt(nav.id);
    const cells=[];for(let y=0;y<nav.rows;y++)for(let x=0;x<nav.cols;x++)if(nav.floor[y][x])cells.push([x,y]);
    const edge=[cells.toSorted((a,b)=>a[0]-b[0])[0],cells.toSorted((a,b)=>b[0]-a[0])[0],cells.toSorted((a,b)=>a[1]-b[1])[0],cells.toSorted((a,b)=>b[1]-a[1])[0]];
    for(const cell of edge){

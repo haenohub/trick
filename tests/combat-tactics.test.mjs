@@ -176,9 +176,10 @@ test("herbalist stacks poison and a stationary garden heals allies rather than f
 });
 test("monster pursuit routes around a wall, cannot shoot through it and respects a hard leash", () => {
   const { w, p } = setup("mage", "village");
-  Object.assign(p, NAVIGATION.village.worldAt(6, 5));
+  const fountain = NAVIGATION.village.worldAt(...NAVIGATION.village.fountain);
+  Object.assign(p, { x: fountain.x - 4.3, y: fountain.y });
   const template = structuredClone(w.map("sprout").mobs[0]),
-    home = NAVIGATION.village.worldAt(8, 5);
+    home = { x: fountain.x + 4.3, y: fountain.y };
   const m = {
     ...template,
     ...home,
@@ -199,6 +200,10 @@ test("monster pursuit routes around a wall, cannot shoot through it and respects
   }
   assert.ok(distance < start - 2);
   assert.ok(m.pathGoal);
+  // Isolate the leash check from a windup/recovery already in progress.
+  m.windup = null;
+  m.attackEnd = 0;
+  m.recoverUntil = 0;
   m.x = m.homeX + 20;
   m.y = m.homeY;
   w.step(0.05);

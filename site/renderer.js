@@ -1,3 +1,4 @@
+import { floorTileCode } from "./isometric-layouts.js";
 import { animationFrame, LocomotionClocks } from "./animation.js";
 import { drawPaperDoll } from "./avatar-draw.js";
 import {
@@ -31,25 +32,87 @@ function load(file) {
       IMAGES.set(file, image);
       resolve();
     };
-    image.onerror = () =>
+    image.onerror = () => {
+      REQUESTS.delete(file);
       reject(new Error(`필수 아트를 불러오지 못했습니다: ${file}`));
+    };
     image.src = `./assets/${file}.png?v=${REVISION}`;
   });
   REQUESTS.set(file, request);
   return request;
+}
+const WORLD_FAILURES = new Map();
+const WORLD_CACHE = new Map();
+let activeWorld = "village";
+export function worldArtReady(id) {
+  activeWorld = id;
+  const scene = ART?.world?.isometric?.maps?.[id];
+  return (
+    !scene || [scene.floor.file, scene.props.file].every((f) => IMAGES.has(f))
+  );
+}
+export async function prepareWorldArt(id) {
+  const scene = ART?.world?.isometric?.maps?.[id];
+  if (!scene) return;
+  const failed = WORLD_FAILURES.get(id);
+  if (failed && Date.now() < failed.retryAt) throw failed.error;
+  try {
+    await Promise.all([load(scene.floor.file), load(scene.props.file)]);
+    WORLD_FAILURES.delete(id);
+  } catch (error) {
+    WORLD_FAILURES.set(id, { retryAt: Date.now() + 2000, error });
+    throw error;
+  }
+  WORLD_CACHE.delete(id);
+  WORLD_CACHE.set(id, scene);
+  while (WORLD_CACHE.size > 3) {
+    const old = [...WORLD_CACHE.keys()].find((k) => k !== activeWorld);
+    if (!old) break;
+    const a = WORLD_CACHE.get(old);
+    WORLD_CACHE.delete(old);
+    for (const f of [a.floor.file, a.props.file]) {
+      IMAGES.delete(f);
+      REQUESTS.delete(f);
+    }
+  }
 }
 export async function loadArt(progress = () => {}) {
   const response = await fetch("./assets/manifest.json", { cache: "no-store" });
   if (!response.ok) throw new Error("Art manifest unavailable");
   ART = await response.json();
   let done = 0;
-  const initial = ART.files.filter((file) => !file.startsWith("appearance/"));
+  const legacyWorld = new Set(
+    Object.values(ART.world.tiles)
+      .map((t) => t.file)
+      .concat("world/props"),
+  );
+  const nativeWorldComplete =
+    Object.keys(ART.world.isometric?.maps || {}).length === 10;
+  const initial = ART.files.filter(
+    (file) =>
+      !file.startsWith("appearance/") &&
+      !file.startsWith("world/iso-") &&
+      !(nativeWorldComplete && legacyWorld.has(file)),
+  );
   await Promise.all(
     initial.map(async (file) => {
       await load(file);
       progress(++done / initial.length);
     }),
   );
+  let savedMap = "village";
+  try {
+    savedMap =
+      JSON.parse(localStorage.getItem("leaftale:save:v1"))?.map || "village";
+  } catch {}
+  activeWorld = Object.hasOwn(ART.world?.isometric?.maps || {}, savedMap)
+    ? savedMap
+    : "village";
+  await Promise.all(
+    [...new Set(["village", activeWorld])].map(prepareWorldArt),
+  );
+  for (const portal of PORTALS(activeWorld))
+    prepareWorldArt(portal.to).catch(() => {});
 }
 export async function prepareEquipmentArt(classId, equipment) {
   const appearance = equippedAppearance(ART, classId, equipment);
@@ -526,21 +589,40 @@ export class Renderer {
     this.camera = desired;
     c.fillStyle = "#203c2f";
     c.fillRect(0, 0, w, h);
+    if (!worldArtReady(p.map)) {
+      this.camera = project(p.x, p.y);
+      this.hitboxes = [];
+      prepareWorldArt(p.map).catch((e) => {
+        this.worldLoadError =
+          "지역 풍경을 불러오지 못했습니다. 다시 연결하고 있습니다…";
+      });
+      this.text(
+        this.worldLoadError || "새로운 길을 여는 중…",
+        w / 2,
+        h / 2,
+        "#f4e9c6",
+        18,
+      );
+      return;
+    }
+    this.worldLoadError = null;
     this.drawTerrain(nav);
     this.drawAimPreview();
     for (const prop of nav.props.filter((o) => o.walkThrough)) {
       const s = this.worldToScreen(prop.x, prop.y);
       this.cell(
-        "world/props",
+        ART.world.isometric?.maps?.[nav.id]?.props.file || "world/props",
         4,
         4,
         prop.index % 4,
         Math.floor(prop.index / 4),
         s.x,
         s.y,
-        512,
-        512,
-        1 - 2 / 256,
+        prop.size || 384,
+        prop.size || 384,
+        ART.world.isometric?.maps?.[nav.id]?.props.anchors?.[prop.index] ??
+          prop.anchor ??
+          1 - 8 / 384,
       );
     }
     this.hitboxes = [];
@@ -671,21 +753,23 @@ export class Renderer {
         c.save();
         if (
           s.y >= hero.y &&
-          s.y - hero.y < 380 * this.zoom &&
-          Math.abs(s.x - hero.x) < 160 * this.zoom
+          s.y - hero.y < (o.size || 384) * 0.9 * this.zoom &&
+          Math.abs(s.x - hero.x) < (o.size || 384) * 0.45 * this.zoom
         )
           c.globalAlpha = 0.38;
         this.cell(
-          "world/props",
+          ART.world.isometric?.maps?.[nav.id]?.props.file || "world/props",
           4,
           4,
           o.index % 4,
           Math.floor(o.index / 4),
           s.x,
           s.y,
-          512,
-          512,
-          1 - 2 / 256,
+          o.size || 384,
+          o.size || 384,
+          ART.world.isometric?.maps?.[nav.id]?.props.anchors?.[o.index] ??
+            o.anchor ??
+            1 - 8 / 384,
         );
         c.restore();
         continue;
@@ -1183,6 +1267,58 @@ export class Renderer {
       }
   }
   drawTerrain(nav) {
+    const scene = ART.world.isometric?.maps?.[nav.id];
+    if (scene)
+      return this.drawIsometricFloor(
+        this.ctx,
+        nav,
+        scene.floor,
+        (p) => this.worldToScreen(p.x, p.y),
+        this.zoom,
+      );
+    return this.drawLegacyTerrain(nav);
+  }
+  drawIsometricFloor(c, nav, layout, point, scale, overview = false) {
+    const image = IMAGES.get(layout.file);
+    if (!image) return;
+    let minC = 0,
+      maxC = nav.cols,
+      minR = 0,
+      maxR = nav.rows;
+    if (!overview) {
+      const corners = [
+        [0, 0],
+        [this.size.width, 0],
+        [this.size.width, this.size.height],
+        [0, this.size.height],
+      ]
+        .map(([x, y]) => this.screenToWorld(x, y))
+        .map((p) => worldToImage(p.x, p.y, nav.id));
+      minC = Math.floor(Math.min(...corners.map((p) => p.u * nav.cols))) - 2;
+      maxC = Math.ceil(Math.max(...corners.map((p) => p.u * nav.cols))) + 2;
+      minR = Math.floor(Math.min(...corners.map((p) => p.v * nav.rows))) - 2;
+      maxR = Math.ceil(Math.max(...corners.map((p) => p.v * nav.rows))) + 2;
+    }
+    for (let r = minR; r <= maxR; r++)
+      for (let col = minC; col <= maxC; col++) {
+        const tile = floorTileCode(nav, col, r);
+        const p = point(imageToWorld(col / nav.cols, r / nav.rows, nav.id)),
+          w = layout.width * scale,
+          h = layout.height * scale;
+        c.drawImage(
+          image,
+          (tile % 8) * layout.width,
+          Math.floor(tile / 8) * layout.height,
+          layout.width,
+          layout.height,
+          Math.round(p.x - w / 2),
+          Math.round(p.y - h / 2),
+          Math.ceil(w) + 1,
+          Math.ceil(h) + 1,
+        );
+      }
+  }
+  drawLegacyTerrain(nav) {
     const terrain = ART.world.tiles[nav.id],
       image = IMAGES.get(terrain.file),
       c = this.ctx;
@@ -1271,22 +1407,34 @@ export class Renderer {
       tc.imageSmoothingQuality = "high";
       tc.save();
       clipDiamond(tc);
-      tc.transform(scale, scale / 2, -scale, scale / 2, offsetX, offsetY);
-      for (let row = 0; row <= nav.rows; row++)
-        for (let col = 0; col <= nav.cols; col++) {
-          const tile = nav.transitions[row][col];
-          tc.drawImage(
-            atlas,
-            (tile % 4) * size,
-            Math.floor(tile / 4) * size,
-            size,
-            size,
-            (col - 0.5) * TILE * 2 - nav.width,
-            (row - 0.5) * TILE * 2,
-            TILE * 2 + 1,
-            TILE * 2 + 1,
-          );
-        }
+      const scene = ART.world.isometric?.maps?.[nav.id];
+      if (scene)
+        this.drawIsometricFloor(
+          tc,
+          nav,
+          scene.floor,
+          (p) => frame.point(p.x, p.y),
+          scale,
+          true,
+        );
+      else {
+        tc.transform(scale, scale / 2, -scale, scale / 2, offsetX, offsetY);
+        for (let row = 0; row <= nav.rows; row++)
+          for (let col = 0; col <= nav.cols; col++) {
+            const tile = nav.transitions[row][col];
+            tc.drawImage(
+              atlas,
+              (tile % 4) * size,
+              Math.floor(tile / 4) * size,
+              size,
+              size,
+              (col - 0.5) * TILE * 2 - nav.width,
+              (row - 0.5) * TILE * 2,
+              TILE * 2 + 1,
+              TILE * 2 + 1,
+            );
+          }
+      }
       tc.restore();
       this.minimapCache.set(cacheKey, terrain);
     }

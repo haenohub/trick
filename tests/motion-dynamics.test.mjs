@@ -12,7 +12,7 @@ function encounter(classId = "warden") {
   Object.assign(raw, {
     map: "sprout",
     level: 20,
-    ...NAVIGATION.sprout.worldAt(8, 5),
+    ...NAVIGATION.sprout.worldAt(8, 10),
   });
   const w = new World({ seed: 5 }),
     p = w.addPlayer(raw);
@@ -87,7 +87,7 @@ test("moving, changing maps or a target leaving reach prevents latent player hit
     assert.ok(w.attack(p, m.uid));
     if (mode === "move")
       assert.ok(
-        w.act(p.id, { type: "moveTo", ...NAVIGATION.sprout.worldAt(8, 6) }),
+        w.act(p.id, { type: "moveTo", ...NAVIGATION.sprout.worldAt(8, 11) }),
       );
     if (mode === "map") p.map = "village";
     if (mode === "escape") {

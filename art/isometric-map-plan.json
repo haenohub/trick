@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "status": "complete",
+  "projection": "symmetric 2:1 isometric",
+  "maps": [
+    {
+      "id": "village",
+      "name": "Leafwall Village",
+      "concept": "warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza",
+      "open": "warm cream cobblestones mixed with tiny grass seams",
+      "closed": "deep emerald low grass and tiny clover"
+    },
+    {
+      "id": "sprout",
+      "name": "Sprout Enclosures",
+      "concept": "sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers",
+      "open": "honey-colored packed earth with seed husks and tiny sprouts",
+      "closed": "lush low meadow turf and clover"
+    },
+    {
+      "id": "acorn",
+      "name": "Acorn Crossroads",
+      "concept": "amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch",
+      "open": "warm umber leaf litter paths and worn ochre paving",
+      "closed": "dark mossy oak understory and small roots"
+    },
+    {
+      "id": "brook",
+      "name": "Dewbrook",
+      "concept": "clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments",
+      "open": "pale wet stepping stones and silver sand with dew",
+      "closed": "clear shallow turquoise stream bed with pebbles and reeds"
+    },
+    {
+      "id": "stump",
+      "name": "Ancient Stump Sanctuary",
+      "concept": "colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway",
+      "open": "ancient reddish tree-ring wood and moss-filled stone",
+      "closed": "deep mossy forest ground with amber sap veins"
+    },
+    {
+      "id": "shelltown",
+      "name": "Shell Lantern Harbor",
+      "concept": "pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS",
+      "open": "ivory shell mosaic and warm whitewashed harbor paving",
+      "closed": "clear blue lagoon water with shells under the surface"
+    },
+    {
+      "id": "saltwood",
+      "name": "Saltwind Grove",
+      "concept": "wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets",
+      "open": "chalk-white sand mixed with soft sea-green turf",
+      "closed": "silvery low coastal scrub and salt-encrusted soil"
+    },
+    {
+      "id": "glassbeach",
+      "name": "Glassfruit Strand",
+      "concept": "translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion",
+      "open": "pale peach sand with restrained colored sea-glass flecks",
+      "closed": "luminous shallow aquamarine sea with tiny underwater shells"
+    },
+    {
+      "id": "tideroot",
+      "name": "Tideroot Wetlands",
+      "concept": "interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines",
+      "open": "dark weathered wooden boardwalk or firm mossy root ground",
+      "closed": "deep teal brackish tidal water and small reeds"
+    },
+    {
+      "id": "seacave",
+      "name": "Bluebreath Sea Cavern",
+      "concept": "blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns",
+      "open": "smooth blue-gray rock with turquoise mineral seams",
+      "closed": "deep cobalt cave pools and dark calcite ground"
+    }
+  ],
+  "sources": [
+    {
+      "id": "village",
+      "kind": "floor",
+      "name": "Leafwall Village",
+      "concept": "warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza",
+      "source": "/workspace/generated_images/exec-38022d69-60f7-466a-9797-ae04c2764185.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Leafwall Village. Theme: warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE warm cream cobblestones mixed with tiny grass seams; last TWO rows are EIGHT variants of BLOCKED deep emerald low grass and tiny clover. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "village",
+      "kind": "props",
+      "name": "Leafwall Village",
+      "concept": "warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza",
+      "source": "/workspace/generated_images/exec-22c482bf-c224-4e17-a032-7057367381d3.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Leafwall Village. Theme: warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "sprout",
+      "kind": "floor",
+      "name": "Sprout Enclosures",
+      "concept": "sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers",
+      "source": "/workspace/generated_images/exec-b81b4588-27ec-4a91-8f54-10ef6a91556d.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Sprout Enclosures. Theme: sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE honey-colored packed earth with seed husks and tiny sprouts; last TWO rows are EIGHT variants of BLOCKED lush low meadow turf and clover. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "sprout",
+      "kind": "props",
+      "name": "Sprout Enclosures",
+      "concept": "sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers",
+      "source": "/workspace/generated_images/exec-82a55ea3-ca8a-4035-8591-2d163fe1f9e3.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Sprout Enclosures. Theme: sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "acorn",
+      "kind": "floor",
+      "name": "Acorn Crossroads",
+      "concept": "amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch",
+      "source": "/workspace/generated_images/exec-5aad9e6e-1077-4cff-bdfe-32de675aa412.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Acorn Crossroads. Theme: amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE warm umber leaf litter paths and worn ochre paving; last TWO rows are EIGHT variants of BLOCKED dark mossy oak understory and small roots. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "acorn",
+      "kind": "props",
+      "name": "Acorn Crossroads",
+      "concept": "amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch",
+      "source": "/workspace/generated_images/exec-678663b2-4b17-4217-9398-e994881ed05e.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Acorn Crossroads. Theme: amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "brook",
+      "kind": "floor",
+      "name": "Dewbrook",
+      "concept": "clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments",
+      "source": "/workspace/generated_images/exec-d57e4e11-9fef-494f-9d24-e5a571a3058f.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Dewbrook. Theme: clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE pale wet stepping stones and silver sand with dew; last TWO rows are EIGHT variants of BLOCKED clear shallow turquoise stream bed with pebbles and reeds. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "brook",
+      "kind": "props",
+      "name": "Dewbrook",
+      "concept": "clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments",
+      "source": "/workspace/generated_images/exec-ae2b8f39-d7e8-48a0-8fa0-cd8a7d03d57d.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Dewbrook. Theme: clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "stump",
+      "kind": "floor",
+      "name": "Ancient Stump Sanctuary",
+      "concept": "colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway",
+      "source": "/workspace/generated_images/exec-d580d949-2b1e-4340-a9cd-9c9b49edf519.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Ancient Stump Sanctuary. Theme: colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE ancient reddish tree-ring wood and moss-filled stone; last TWO rows are EIGHT variants of BLOCKED deep mossy forest ground with amber sap veins. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "stump",
+      "kind": "props",
+      "name": "Ancient Stump Sanctuary",
+      "concept": "colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway",
+      "source": "/workspace/generated_images/exec-3eb9dec0-77bd-4a33-81ab-77c729d1ec22.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Ancient Stump Sanctuary. Theme: colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "shelltown",
+      "kind": "floor",
+      "name": "Shell Lantern Harbor",
+      "concept": "pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS",
+      "source": "/workspace/generated_images/exec-36cd5875-7c49-4124-b6bd-e4f6bcfeadef.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Shell Lantern Harbor. Theme: pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE ivory shell mosaic and warm whitewashed harbor paving; last TWO rows are EIGHT variants of BLOCKED clear blue lagoon water with shells under the surface. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "shelltown",
+      "kind": "props",
+      "name": "Shell Lantern Harbor",
+      "concept": "pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS",
+      "source": "/workspace/generated_images/exec-52fa5800-bdf4-4773-b140-cc24e639eda5.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Shell Lantern Harbor. Theme: pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "saltwood",
+      "kind": "floor",
+      "name": "Saltwind Grove",
+      "concept": "wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets",
+      "source": "/workspace/generated_images/exec-efd208ae-6bf6-4075-a049-a8cc16a0cec1.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Saltwind Grove. Theme: wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE chalk-white sand mixed with soft sea-green turf; last TWO rows are EIGHT variants of BLOCKED silvery low coastal scrub and salt-encrusted soil. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "saltwood",
+      "kind": "props",
+      "name": "Saltwind Grove",
+      "concept": "wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets",
+      "source": "/workspace/generated_images/exec-eeaa7672-33ca-463f-bbfe-c554226b874c.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Saltwind Grove. Theme: wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "glassbeach",
+      "kind": "floor",
+      "name": "Glassfruit Strand",
+      "concept": "translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion",
+      "source": "/workspace/generated_images/exec-74829827-9fbc-48c6-bdc8-e330caaafd15.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Glassfruit Strand. Theme: translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE pale peach sand with restrained colored sea-glass flecks; last TWO rows are EIGHT variants of BLOCKED luminous shallow aquamarine sea with tiny underwater shells. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "glassbeach",
+      "kind": "props",
+      "name": "Glassfruit Strand",
+      "concept": "translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion",
+      "source": "/workspace/generated_images/exec-df5c9e3c-e49e-4acf-a27f-a8b1620f3a82.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Glassfruit Strand. Theme: translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "tideroot",
+      "kind": "floor",
+      "name": "Tideroot Wetlands",
+      "concept": "interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines",
+      "source": "/workspace/generated_images/exec-afe33b9c-0fe2-4d69-b9ad-72cda2a0a6d0.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Tideroot Wetlands. Theme: interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE dark weathered wooden boardwalk or firm mossy root ground; last TWO rows are EIGHT variants of BLOCKED deep teal brackish tidal water and small reeds. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "tideroot",
+      "kind": "props",
+      "name": "Tideroot Wetlands",
+      "concept": "interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines",
+      "source": "/workspace/generated_images/exec-88e6c067-4b30-4267-8b08-e453a625b926.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Tideroot Wetlands. Theme: interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    },
+    {
+      "id": "seacave",
+      "kind": "floor",
+      "name": "Bluebreath Sea Cavern",
+      "concept": "blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns",
+      "source": "/workspace/generated_images/exec-ed2ce7ca-83a1-4195-bd1c-928e9357fad9.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Bluebreath Sea Cavern. Theme: blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. TERRAIN atlas EXACTLY4columns x4rows of SIXTEEN separate 2:1 diamond ground tiles. Wide2:1 canvas approximately1792x896px. Each cell448x224px, each diamond nearly fills its cell with a little clear margin, no tile crossing. First TWO rows are EIGHT variants of WALKABLE smooth blue-gray rock with turquoise mineral seams; last TWO rows are EIGHT variants of BLOCKED deep cobalt cave pools and dark calcite ground. Maintain one cohesive material palette across all eight variants of a material. Quiet tiny texture details, subtle stones, tufts, shells, footprints appropriate to theme. FLAT ground only: NO trees, houses, tall rocks, large objects, isolated huge icons or floating terrain slabs. All tiles have same scale and lighting and clean silhouette and minimal contact edges. Artwork already drawn in proper 2:1 isometric diamond perspective."
+    },
+    {
+      "id": "seacave",
+      "kind": "props",
+      "name": "Bluebreath Sea Cavern",
+      "concept": "blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns",
+      "source": "/workspace/generated_images/exec-0bd107f5-4c0a-42da-9c1b-e73e4d810c88.png",
+      "tool": "image_gen",
+      "prompt": "Original richly detailed crisp pixel art for LeafTale, Korean-style fantasy RPG. Region Bluebreath Sea Cavern. Theme: blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns. TRUE ORTHOGRAPHIC ISOMETRIC camera:45degree azimuth,30degree elevation, 2:1 ground diamonds with symmetric left/right axes. NOT a top-down picture rotated diagonally. Deliberate native pixel clusters, fine local-color contours, rich warm/cool 3D shading, no blur or thick black outlines. Transparent background. No characters, UI, letters or numbers. SCENERY atlas EXACT4columns x4rows, SIXTEEN separate large upright scene assets on transparent background. Approximately1536x1536px,384px square cells with at least8%transparent clear margin. Each object has its own 2:1 footprint, two consistent visible side faces and visible top, ground-contact pivot at bottom center. Preserve all subject edges, do not connect neighboring cells. Row1: (1)welcoming lodge, (2)smith workshop, (3)apothecary hut, (4)open market pavilion. Row2: (5)central region-specific monumental landmark, (6)travel kiosk, (7)tools workshop tent, (8)herbal laboratory. Row3:(9)mentor shrine, (10)region-specific dense flora cluster, (11)SECOND region-specific spectacular large landmark, (12)region-specific ancient ruin fragment. Row4:(13)LOW FLUSH boardwalk/bridge deck with no elevation or tall rails, (14)region-specific rock/cliff outcrop with visible side faces, (15)small region-specific flowers or collectible scenery cluster, (16)region-specific upright tree/reed/crystal cluster. All16 entirely unique, strong region identity. Buildings have fully visible entrances facing lower-left or lower-right and enough large detail to stand beside96px characters; no tiny repeated generic green cottages. Do not draw characters or weapons."
+    }
+  ]
+}

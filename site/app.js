@@ -58,6 +58,8 @@ import {
 import {
   Renderer,
   loadArt,
+  worldArtReady,
+  prepareWorldArt,
   drawCharacterPreview,
   drawMonsterPreview,
 } from "./renderer.js";
@@ -316,7 +318,7 @@ function start(saved = null) {
     );
 }
 function send(action, quiet = false) {
-  if (!running) return false;
+  if (!running || (state && !worldArtReady(state.player.map))) return false;
   if (online) {
     if (socket?.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify({ type: "action", action }));
@@ -796,6 +798,7 @@ function renderPanel() {
       })
       .join("")}</div>`;
   } else if (panel === "map") {
+    // All regions share the game’s native isometric scenery atlas.
     title = "잎새 너머의 지도";
     html =
       `<p class="panel-intro">길 끝의 빛나는 표식에서 ${bindingLabel("interact")}를 눌러 다음 맵으로 이동합니다. 방문한 마을에는 전투가 끝난 뒤 빠르게 돌아갈 수 있습니다.</p>` +
@@ -913,6 +916,10 @@ function renderPanel() {
   if (panel === "inventory")
     inventorySignature = JSON.stringify([p.inventory, p.equipment]);
   $("panel-title").textContent = title;
+  if (panel === "map")
+    html =
+      '<p><a href="./maps.html" target="_blank" rel="noopener">지역 풍경 둘러보기 ↗</a></p>' +
+      html;
   body.innerHTML = html;
   for (const node of body.querySelectorAll("[data-monster-preview]"))
     drawMonsterPreview(node, node.dataset.monsterPreview);
@@ -1534,7 +1541,7 @@ function frame(now) {
   const dt = Math.min(0.05, (now - lastFrame) / 1000);
   lastFrame = now;
   if (running && state) {
-    if (!online) {
+    if (!online && worldArtReady(state.player.map)) {
       world.step(dt);
       state = world.snapshot("local");
     }
@@ -1577,6 +1584,11 @@ function frame(now) {
         : state.player;
       renderer.aim = { ...aimedAction.rule, point, origin: state.player };
     }
+    if (renderer.prefetchedRegion !== state.player.map) {
+      renderer.prefetchedRegion = state.player.map;
+      for (const portal of PORTALS(state.player.map))
+        prepareWorldArt(portal.to).catch(() => {});
+    }
     renderer.render(state, target, dt);
     if (now - lastHud > 130) {
       hud();
@@ -1591,7 +1603,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.20.0",
+  version: "0.21.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

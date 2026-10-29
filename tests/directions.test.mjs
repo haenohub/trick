@@ -5,14 +5,14 @@ import { NAVIGATION } from "../site/world-layout.js";
 import { World, createPlayer } from "../site/core.js";
 
 const headings = [
-  [-3, -1],
-  [-3.5, -2.5],
-  [-0.5, -1.5],
-  [2.5, -0.5],
-  [3, 1],
-  [3.5, 2.5],
-  [0.5, 1.5],
-  [-2.5, 0.5],
+  [-1, -1],
+  [0, -1],
+  [1, -1],
+  [1, 0],
+  [1, 1],
+  [0, 1],
+  [-1, 1],
+  [-1, 0],
 ].map(([x, y]) => {
   const length = Math.hypot(x, y);
   return [x / length, y / length];
@@ -40,7 +40,7 @@ test("authoritative movement and attacks publish eight directions to clients", (
     p = w.addPlayer(createPlayer());
   assert.equal(p.dir, SOUTH);
   headings.forEach(([dx, dy], row) => {
-    const { x, y } = NAVIGATION.village.worldAt(7, 7);
+    const { x, y } = NAVIGATION.village.worldAt(10, 10);
     Object.assign(p, { x, y });
     w.moveEntity(p, p.map, dx, dy, 0.05, 1);
     assert.ok(Math.hypot(p.x - x, p.y - y) > 0);

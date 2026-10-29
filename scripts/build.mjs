@@ -23,9 +23,15 @@ html = html
   .replace("./styles.css", `./styles.css?v=${revision}`)
   .replace("./app.js", `./app.js?v=${revision}`);
 await writeFile(htmlFile, html);
-for (const name of ["index.html", "bestiary.html", "directions.html"]) {
+for (const name of [
+  "index.html",
+  "bestiary.html",
+  "directions.html",
+  "maps.html",
+]) {
   const file = new URL(name, output);
   const page = (await readFile(file, "utf8"))
+    .replace("./map-atlas.js", `./map-atlas.js?v=${revision}`)
     .replaceAll(
       'href="./directions.html"',
       `href="./directions.html?v=${VERSION}"`,
@@ -42,6 +48,7 @@ for (const name of ["index.html", "bestiary.html", "directions.html"]) {
 }
 for (const name of [
   "app.js",
+  "map-atlas.js",
   "renderer.js",
   "core.js",
   "data.js",
@@ -49,6 +56,7 @@ for (const name of [
   "trophies.js",
   "directions.js",
   "world-layout.js",
+  "isometric-layouts.js",
   "verdant.js",
   "balance.js",
   "combat.js",

@@ -627,7 +627,27 @@
     "appearance/hands/mage",
     "appearance/hands/ranger",
     "ambient",
-    "targeted-combat"
+    "targeted-combat",
+    "world/iso-village-floor",
+    "world/iso-village-props",
+    "world/iso-sprout-floor",
+    "world/iso-sprout-props",
+    "world/iso-acorn-floor",
+    "world/iso-acorn-props",
+    "world/iso-brook-floor",
+    "world/iso-brook-props",
+    "world/iso-stump-floor",
+    "world/iso-stump-props",
+    "world/iso-shelltown-floor",
+    "world/iso-shelltown-props",
+    "world/iso-saltwood-floor",
+    "world/iso-saltwood-props",
+    "world/iso-glassbeach-floor",
+    "world/iso-glassbeach-props",
+    "world/iso-tideroot-floor",
+    "world/iso-tideroot-props",
+    "world/iso-seacave-floor",
+    "world/iso-seacave-props"
   ],
   "monsters": {
     "m1": {
@@ -12742,7 +12762,375 @@
     },
     "autotile": "corner-16",
     "nativeTileSize": 224,
-    "resolutionScale": 2
+    "resolutionScale": 2,
+    "isometric": {
+      "version": 1,
+      "projection": "symmetric-2:1-native-diamonds",
+      "maps": {
+        "village": {
+          "floor": {
+            "file": "world/iso-village-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-village-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6646785848892497,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "warm leaf-roof cottages, ancient tree nursery, mosaic fountain square, bread ovens, suspended seed lanterns, ivy pergolas, cobbled circular plaza"
+        },
+        "sprout": {
+          "floor": {
+            "file": "world/iso-sprout-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-sprout-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6080808746134478,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "sunlit seedling gardens, wicker hedge labyrinth, glass seed greenhouse, irrigation wheels, giant bean trellises, seed trays and scarecrow flowers"
+        },
+        "acorn": {
+          "floor": {
+            "file": "world/iso-acorn-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-acorn-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.664779276655684,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "amber oak forest, fallen hollow log tunnels, acorn storage silos, leaf-covered stone stairs, mossy woodcutters ruins, enormous split acorn arch"
+        },
+        "brook": {
+          "floor": {
+            "file": "world/iso-brook-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-brook-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6932424280650004,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "clear turquoise streams, stepping-stone plazas, waterwheel tea pavilion, willow curtains, crystal dew basins, weathered aqueduct fragments"
+        },
+        "stump": {
+          "floor": {
+            "file": "world/iso-stump-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-stump-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.7098759957773807,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "colossal hollow stump amphitheater, radial roots, broken wooden crown, ring-shaped shrine, amber sap channels, fern alcoves, guardian doorway"
+        },
+        "shelltown": {
+          "floor": {
+            "file": "world/iso-shelltown-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-shelltown-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6758887783266077,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "pearl shell-roof cottages, tide clock plaza, curved docks, shell lantern kiosks, coralglass workshops, shell mosaic fountain, sailcloth markets NO ANCHORS"
+        },
+        "saltwood": {
+          "floor": {
+            "file": "world/iso-saltwood-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-saltwood-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6297911449181696,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "wind-bent silver-leaf trees, salt flower terraces, woven wind screens, tiny windmill towers, petrified coral roots, salt harvesting baskets"
+        },
+        "glassbeach": {
+          "floor": {
+            "file": "world/iso-glassbeach-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-glassbeach-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.7220601031967906,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "translucent fruit grove, colored sea-glass dunes, shell fans, clear tidal pools, coral arches, giant split glassfruit pavilion"
+        },
+        "tideroot": {
+          "floor": {
+            "file": "world/iso-tideroot-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-tideroot-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6875050809503164,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "interlocking mangrove roots, circular boardwalk islands, luminous seed pods, tide gauge stones, moss-covered fishing huts NO ANCHORS, half-sunken root shrines"
+        },
+        "seacave": {
+          "floor": {
+            "file": "world/iso-seacave-floor",
+            "width": 448,
+            "height": 224,
+            "cols": 8,
+            "rows": 4
+          },
+          "props": {
+            "file": "world/iso-seacave-props",
+            "size": 384,
+            "cols": 4,
+            "rows": 4,
+            "anchors": [
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.6045228002670774,
+              0.9791666666666666,
+              0.9791666666666666,
+              0.9791666666666666
+            ]
+          },
+          "concept": "blue calcite cathedral, coral-root vaults, fractured ancient tide gate, bioluminescent anemones, giant shell fossils, opal crystal columns"
+        }
+      },
+      "files": [
+        "world/iso-village-floor",
+        "world/iso-village-props",
+        "world/iso-sprout-floor",
+        "world/iso-sprout-props",
+        "world/iso-acorn-floor",
+        "world/iso-acorn-props",
+        "world/iso-brook-floor",
+        "world/iso-brook-props",
+        "world/iso-stump-floor",
+        "world/iso-stump-props",
+        "world/iso-shelltown-floor",
+        "world/iso-shelltown-props",
+        "world/iso-saltwood-floor",
+        "world/iso-saltwood-props",
+        "world/iso-glassbeach-floor",
+        "world/iso-glassbeach-props",
+        "world/iso-tideroot-floor",
+        "world/iso-tideroot-props",
+        "world/iso-seacave-floor",
+        "world/iso-seacave-props"
+      ]
+    }
   },
   "currency": {
     "file": "currency-leaf",

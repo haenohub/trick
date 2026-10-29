@@ -29,6 +29,7 @@ test("all assets originate from generated artwork with clean transparent native 
       ...JSON.parse(await readFile("art/dressed-players.json","utf8")).sources,
       JSON.parse(await readFile("art/ambient-sources.json","utf8")),
       JSON.parse(await readFile("art/targeted-combat-vfx.json","utf8")),
+      ...JSON.parse(await readFile("art/isometric-map-plan.json","utf8")).sources,
       ...previous, {source:JSON.parse(await readFile('art/original-costumes.json','utf8')).source},
       ...repaint.sources,
       ...motion.sources,

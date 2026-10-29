@@ -9717,19 +9717,6 @@
       "autotile": "corner-16"
     },
     {
-      "id": "maps/village",
-      "target": "site/assets/maps/village.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-8b84a85d-a39c-453b-9634-828a1cf9ce9f.png",
-      "request": "autotiles-village",
-      "width": 768,
-      "height": 438,
-      "sha256": "cac154bf144a648d8a5655f9fde90bbb16c67450a58159913501f8595f82f5ac",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2352,
-      "worldHeight": 1344
-    },
-    {
       "id": "world/tiles-sprout",
       "target": "site/assets/world/tiles-sprout.png",
       "tool": "image_gen",
@@ -9743,19 +9730,6 @@
       "rows": 4,
       "cellSize": 224,
       "autotile": "corner-16"
-    },
-    {
-      "id": "maps/sprout",
-      "target": "site/assets/maps/sprout.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-28b74818-5f11-4ea3-b10a-136b6cecf9a8.png",
-      "request": "autotiles-sprout",
-      "width": 768,
-      "height": 256,
-      "sha256": "80f4a672ae109f18dd6b812af6d9f2edab4206764084156575307aba8579a394",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 3360,
-      "worldHeight": 1120
     },
     {
       "id": "world/tiles-acorn",
@@ -9773,19 +9747,6 @@
       "autotile": "corner-16"
     },
     {
-      "id": "maps/acorn",
-      "target": "site/assets/maps/acorn.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-dab0136c-5550-4628-a83c-cc6bc13d8914.png",
-      "request": "autotiles-acorn",
-      "width": 460,
-      "height": 512,
-      "sha256": "522e88819992d25b4506a34b9a6721b7f533867fbb2ef3941cd80bd060a0946c",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2016,
-      "worldHeight": 2240
-    },
-    {
       "id": "world/tiles-brook",
       "target": "site/assets/world/tiles-brook.png",
       "tool": "image_gen",
@@ -9799,19 +9760,6 @@
       "rows": 4,
       "cellSize": 224,
       "autotile": "corner-16"
-    },
-    {
-      "id": "maps/brook",
-      "target": "site/assets/maps/brook.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-c731ea8b-3232-4496-b472-a2a3fc810635.png",
-      "request": "autotiles-brook",
-      "width": 768,
-      "height": 414,
-      "sha256": "cc8c3122aaeb4782f899a22300cb3c9534d248e4c2f93c61b0138dc5d01736c4",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2912,
-      "worldHeight": 1568
     },
     {
       "id": "world/tiles-stump",
@@ -9829,19 +9777,6 @@
       "autotile": "corner-16"
     },
     {
-      "id": "maps/stump",
-      "target": "site/assets/maps/stump.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-f7b06b31-0806-4a61-b145-d3a587e119dc.png",
-      "request": "autotiles-stump",
-      "width": 512,
-      "height": 512,
-      "sha256": "2554f77097f74e7ac44578f8be2dca3893bfc33c2b36205cd0c84a7dc1a47619",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2016,
-      "worldHeight": 2016
-    },
-    {
       "id": "world/tiles-shelltown",
       "target": "site/assets/world/tiles-shelltown.png",
       "tool": "image_gen",
@@ -9855,19 +9790,6 @@
       "rows": 4,
       "cellSize": 224,
       "autotile": "corner-16"
-    },
-    {
-      "id": "maps/shelltown",
-      "target": "site/assets/maps/shelltown.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-ff772be0-e2d4-4a07-95f9-3773f4799055.png",
-      "request": "autotiles-shelltown",
-      "width": 768,
-      "height": 418,
-      "sha256": "db1379ca111a122e30a34248165468db301e52656b8c4c95c1856668c3f25443",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2464,
-      "worldHeight": 1344
     },
     {
       "id": "world/tiles-saltwood",
@@ -9885,19 +9807,6 @@
       "autotile": "corner-16"
     },
     {
-      "id": "maps/saltwood",
-      "target": "site/assets/maps/saltwood.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-2d4e4c43-0da0-4d8f-8410-a3ae78cbb75a.png",
-      "request": "autotiles-saltwood",
-      "width": 768,
-      "height": 330,
-      "sha256": "54e4cff8df28a5cfa89bc782f0458ff24c4588c91a2770899d4da477affed246",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 3136,
-      "worldHeight": 1344
-    },
-    {
       "id": "world/tiles-glassbeach",
       "target": "site/assets/world/tiles-glassbeach.png",
       "tool": "image_gen",
@@ -9911,19 +9820,6 @@
       "rows": 4,
       "cellSize": 224,
       "autotile": "corner-16"
-    },
-    {
-      "id": "maps/glassbeach",
-      "target": "site/assets/maps/glassbeach.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-8e4bf6af-9fef-4358-b1e3-e3132a91d095.png",
-      "request": "autotiles-glassbeach",
-      "width": 768,
-      "height": 256,
-      "sha256": "19d17fcaeff43fd5a15c858d1a3723612aa7ea677ea03a3c250e821b60d2b6cf",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 3360,
-      "worldHeight": 1120
     },
     {
       "id": "world/tiles-tideroot",
@@ -9941,19 +9837,6 @@
       "autotile": "corner-16"
     },
     {
-      "id": "maps/tideroot",
-      "target": "site/assets/maps/tideroot.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-a1f3a20a-986e-44c2-99fa-45716a091ad4.png",
-      "request": "autotiles-tideroot",
-      "width": 768,
-      "height": 480,
-      "sha256": "42f3f36cd55f2be8bf3dca08889c1b6fc38b7d452f037c3855c2c37347f81256",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2688,
-      "worldHeight": 1680
-    },
-    {
       "id": "world/tiles-seacave",
       "target": "site/assets/world/tiles-seacave.png",
       "tool": "image_gen",
@@ -9967,19 +9850,6 @@
       "rows": 4,
       "cellSize": 224,
       "autotile": "corner-16"
-    },
-    {
-      "id": "maps/seacave",
-      "target": "site/assets/maps/seacave.png",
-      "tool": "image_gen",
-      "source": "/workspace/generated_images/exec-91c4bbea-c1fe-4f3f-91b2-4ff53d388f84.png",
-      "request": "autotiles-seacave",
-      "width": 704,
-      "height": 512,
-      "sha256": "6f59f8168fd66fa73aeb576426686e5e79de992c13d164b629933aaa0398a104",
-      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
-      "worldWidth": 2464,
-      "worldHeight": 1792
     },
     {
       "id": "locomotion/warden-walk",
@@ -82060,6 +81930,446 @@
       "width": 768,
       "height": 384,
       "sha256": "e75e455d9354589ebcf58043d612628c1b76eff5062036a0d0dc36dcda22ca0e"
+    },
+    {
+      "id": "world/iso-village-floor",
+      "target": "site/assets/world/iso-village-floor.png",
+      "source": "/workspace/generated_images/exec-38022d69-60f7-466a-9797-ae04c2764185.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "c84fa1b3b5c45a3b576034c39682732a35f15ef84b0e371789d8d5a96725ea69",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-village-props",
+      "target": "site/assets/world/iso-village-props.png",
+      "source": "/workspace/generated_images/exec-22c482bf-c224-4e17-a032-7057367381d3.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "42e43a4d2efa2ff0e0d84a8b81fca6dec105cc80d6f46fd0dfde58d36b668827",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/village",
+      "target": "site/assets/maps/village.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-38022d69-60f7-466a-9797-ae04c2764185.png",
+      "request": "autotiles-village",
+      "width": 768,
+      "height": 438,
+      "sha256": "33c50394ee25e8428c6188d71df669896a3ad75e7bb0bf26f856ae6ab028009d",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2352,
+      "worldHeight": 1344,
+      "additionalSources": [
+        "/workspace/generated_images/exec-22c482bf-c224-4e17-a032-7057367381d3.png"
+      ]
+    },
+    {
+      "id": "world/iso-sprout-floor",
+      "target": "site/assets/world/iso-sprout-floor.png",
+      "source": "/workspace/generated_images/exec-b81b4588-27ec-4a91-8f54-10ef6a91556d.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "cf6a739efc61f510b45a6ace82a53c8a55ac6c084ca46b13debb36098ccba8ab",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-sprout-props",
+      "target": "site/assets/world/iso-sprout-props.png",
+      "source": "/workspace/generated_images/exec-82a55ea3-ca8a-4035-8591-2d163fe1f9e3.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "c80e5e8f460e512663fb939d1edc722bedd97d718e5a7cc155380135eb5adaaf",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/sprout",
+      "target": "site/assets/maps/sprout.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b81b4588-27ec-4a91-8f54-10ef6a91556d.png",
+      "request": "autotiles-sprout",
+      "width": 768,
+      "height": 256,
+      "sha256": "cb9fff66eb10fc770a99f392fee3d103dd943c5014fe4980bcaea4fdc2d03ef9",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 3360,
+      "worldHeight": 1120,
+      "additionalSources": [
+        "/workspace/generated_images/exec-82a55ea3-ca8a-4035-8591-2d163fe1f9e3.png"
+      ]
+    },
+    {
+      "id": "world/iso-acorn-floor",
+      "target": "site/assets/world/iso-acorn-floor.png",
+      "source": "/workspace/generated_images/exec-5aad9e6e-1077-4cff-bdfe-32de675aa412.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "e7e5cb001b3ff70013050805c2f868a987da8f520c19d717a03e030b0385a703",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-acorn-props",
+      "target": "site/assets/world/iso-acorn-props.png",
+      "source": "/workspace/generated_images/exec-678663b2-4b17-4217-9398-e994881ed05e.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "b9d9f9c7a2bdef95357aeb23efc640aca551017a6d0f6c21b1520cad01aebffd",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/acorn",
+      "target": "site/assets/maps/acorn.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-5aad9e6e-1077-4cff-bdfe-32de675aa412.png",
+      "request": "autotiles-acorn",
+      "width": 460,
+      "height": 512,
+      "sha256": "5506399ce5756b36e573b6c029811aecb3861cae4f0d1f0470374130bbeae254",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2016,
+      "worldHeight": 2240,
+      "additionalSources": [
+        "/workspace/generated_images/exec-678663b2-4b17-4217-9398-e994881ed05e.png"
+      ]
+    },
+    {
+      "id": "world/iso-brook-floor",
+      "target": "site/assets/world/iso-brook-floor.png",
+      "source": "/workspace/generated_images/exec-d57e4e11-9fef-494f-9d24-e5a571a3058f.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "38588d37a15ba9a5b888f66b0522c952c2908b1fd4a7fffec5bf4a3b3200e27c",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-brook-props",
+      "target": "site/assets/world/iso-brook-props.png",
+      "source": "/workspace/generated_images/exec-ae2b8f39-d7e8-48a0-8fa0-cd8a7d03d57d.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "ab49ca3123e92d051657ea3ff55fec9de883717b71a8863b37c9af89d2a1441d",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/brook",
+      "target": "site/assets/maps/brook.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d57e4e11-9fef-494f-9d24-e5a571a3058f.png",
+      "request": "autotiles-brook",
+      "width": 768,
+      "height": 414,
+      "sha256": "32e31167377ff28f7f25ff3c05a6991b326d96e7ed1438f996e939f289597c36",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2912,
+      "worldHeight": 1568,
+      "additionalSources": [
+        "/workspace/generated_images/exec-ae2b8f39-d7e8-48a0-8fa0-cd8a7d03d57d.png"
+      ]
+    },
+    {
+      "id": "world/iso-stump-floor",
+      "target": "site/assets/world/iso-stump-floor.png",
+      "source": "/workspace/generated_images/exec-d580d949-2b1e-4340-a9cd-9c9b49edf519.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "b0518b2a48216968837c49401e5521a2fc70d0e8b631172cacdad6e43b7b4469",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-stump-props",
+      "target": "site/assets/world/iso-stump-props.png",
+      "source": "/workspace/generated_images/exec-3eb9dec0-77bd-4a33-81ab-77c729d1ec22.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "ce45a507a67d9dac44cb3fa15b7276b8c5530595da884a86495b38ba628cd232",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/stump",
+      "target": "site/assets/maps/stump.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-d580d949-2b1e-4340-a9cd-9c9b49edf519.png",
+      "request": "autotiles-stump",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b5e5bae7c47759364d820c878b1243cb9e934755d580a9a22e78bad4c0e1c09",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2016,
+      "worldHeight": 2016,
+      "additionalSources": [
+        "/workspace/generated_images/exec-3eb9dec0-77bd-4a33-81ab-77c729d1ec22.png"
+      ]
+    },
+    {
+      "id": "world/iso-shelltown-floor",
+      "target": "site/assets/world/iso-shelltown-floor.png",
+      "source": "/workspace/generated_images/exec-36cd5875-7c49-4124-b6bd-e4f6bcfeadef.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "bf84c8b812854f4da97fe3117b0c54a69a35c5fb4865a58b52204646593e267a",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-shelltown-props",
+      "target": "site/assets/world/iso-shelltown-props.png",
+      "source": "/workspace/generated_images/exec-52fa5800-bdf4-4773-b140-cc24e639eda5.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "15b0cb975220d0de6e8bfcab92a2b37b66694ddb5a9120e1cfaa152bc5d01b23",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/shelltown",
+      "target": "site/assets/maps/shelltown.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-36cd5875-7c49-4124-b6bd-e4f6bcfeadef.png",
+      "request": "autotiles-shelltown",
+      "width": 768,
+      "height": 418,
+      "sha256": "dac878c55bc670634d4e5cbfae2221aeb5341e3dc45579f963a5f9e7c29e0196",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2464,
+      "worldHeight": 1344,
+      "additionalSources": [
+        "/workspace/generated_images/exec-52fa5800-bdf4-4773-b140-cc24e639eda5.png"
+      ]
+    },
+    {
+      "id": "world/iso-saltwood-floor",
+      "target": "site/assets/world/iso-saltwood-floor.png",
+      "source": "/workspace/generated_images/exec-efd208ae-6bf6-4075-a049-a8cc16a0cec1.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "df997d0134bae157b2faa2a8d031e12964458b20dd2a04ff4784a45812f1a31d",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-saltwood-props",
+      "target": "site/assets/world/iso-saltwood-props.png",
+      "source": "/workspace/generated_images/exec-eeaa7672-33ca-463f-bbfe-c554226b874c.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "27db5ceae83879d720bd782da3e053c79820f39c49eb3e6fa9efe012f3bd4283",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/saltwood",
+      "target": "site/assets/maps/saltwood.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-efd208ae-6bf6-4075-a049-a8cc16a0cec1.png",
+      "request": "autotiles-saltwood",
+      "width": 768,
+      "height": 330,
+      "sha256": "e3095bb4ef882df78295f735f276dc16543fdcd0a6441e3e6b392a523fa6bda6",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 3136,
+      "worldHeight": 1344,
+      "additionalSources": [
+        "/workspace/generated_images/exec-eeaa7672-33ca-463f-bbfe-c554226b874c.png"
+      ]
+    },
+    {
+      "id": "world/iso-glassbeach-floor",
+      "target": "site/assets/world/iso-glassbeach-floor.png",
+      "source": "/workspace/generated_images/exec-74829827-9fbc-48c6-bdc8-e330caaafd15.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "2f7d2da75925057ef17b3b172f21cab78e01cb916eaa0bcccac2cd6e7cce0793",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-glassbeach-props",
+      "target": "site/assets/world/iso-glassbeach-props.png",
+      "source": "/workspace/generated_images/exec-df5c9e3c-e49e-4acf-a27f-a8b1620f3a82.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "6f15c0240e62e272dadcc792b3d2ff6688142850e606eb05b3ef073d2aaf7920",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/glassbeach",
+      "target": "site/assets/maps/glassbeach.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-74829827-9fbc-48c6-bdc8-e330caaafd15.png",
+      "request": "autotiles-glassbeach",
+      "width": 768,
+      "height": 256,
+      "sha256": "5d9bb0b416a11f7a555e30423bf0c1de8bd3fac48088a9015df5319f37ccf9fb",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 3360,
+      "worldHeight": 1120,
+      "additionalSources": [
+        "/workspace/generated_images/exec-df5c9e3c-e49e-4acf-a27f-a8b1620f3a82.png"
+      ]
+    },
+    {
+      "id": "world/iso-tideroot-floor",
+      "target": "site/assets/world/iso-tideroot-floor.png",
+      "source": "/workspace/generated_images/exec-afe33b9c-0fe2-4d69-b9ad-72cda2a0a6d0.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "6fa30a8b27846bf31a2e78343724affdde895d019c7fd3aef6f3523c96fb4fb6",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-tideroot-props",
+      "target": "site/assets/world/iso-tideroot-props.png",
+      "source": "/workspace/generated_images/exec-88e6c067-4b30-4267-8b08-e453a625b926.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "222e3d2643f1352bd6fc3e90e1f6c31d5575663f080b4bfb121bf161e7f99bc1",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/tideroot",
+      "target": "site/assets/maps/tideroot.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-afe33b9c-0fe2-4d69-b9ad-72cda2a0a6d0.png",
+      "request": "autotiles-tideroot",
+      "width": 768,
+      "height": 480,
+      "sha256": "c1917161024142d1ef246942ecfbefbcc5c55e6866b97c6f19b510ae51d8e555",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2688,
+      "worldHeight": 1680,
+      "additionalSources": [
+        "/workspace/generated_images/exec-88e6c067-4b30-4267-8b08-e453a625b926.png"
+      ]
+    },
+    {
+      "id": "world/iso-seacave-floor",
+      "target": "site/assets/world/iso-seacave-floor.png",
+      "source": "/workspace/generated_images/exec-ed2ce7ca-83a1-4195-bd1c-928e9357fad9.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 3584,
+      "height": 896,
+      "sha256": "da0213a5f696f20a930b7a00b61daa58e6d2e2296000be0e3132bb3861c23db4",
+      "cols": 8,
+      "rows": 4,
+      "tileWidth": 448,
+      "tileHeight": 224,
+      "projection": "native-2:1-diamond"
+    },
+    {
+      "id": "world/iso-seacave-props",
+      "target": "site/assets/world/iso-seacave-props.png",
+      "source": "/workspace/generated_images/exec-0bd107f5-4c0a-42da-9c1b-e73e4d810c88.png",
+      "additionalSources": [],
+      "tool": "image_gen",
+      "width": 1536,
+      "height": 1536,
+      "sha256": "e6c4f8f729d99762a9806c10c83944ee42c1a6a5d00da5b0a68acefc04975e3a",
+      "cols": 4,
+      "rows": 4,
+      "size": 384
+    },
+    {
+      "id": "maps/seacave",
+      "target": "site/assets/maps/seacave.png",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-ed2ce7ca-83a1-4195-bd1c-928e9357fad9.png",
+      "request": "autotiles-seacave",
+      "width": 704,
+      "height": 512,
+      "sha256": "ee3b0ffa14a7cf9fe07e5d74d802d5814bf1c103f1421a53935f6333417cfccb",
+      "processing": "Native corner autotile extraction; matching shared edge pixels; shared palette; no new art drawing",
+      "worldWidth": 2464,
+      "worldHeight": 1792,
+      "additionalSources": [
+        "/workspace/generated_images/exec-0bd107f5-4c0a-42da-9c1b-e73e4d810c88.png"
+      ]
     }
   ]
 }

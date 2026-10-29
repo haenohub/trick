@@ -37,8 +37,9 @@ const setup = (cls = "warden", map = "village", level = 1) => {
 };
 test("click movement routes around the generated village fountain", () => {
   const { w, p } = setup();
-  const start = NAVIGATION.village.worldAt(6, 5),
-    end = NAVIGATION.village.worldAt(8, 5);
+  const center = NAVIGATION.village.worldAt(...NAVIGATION.village.fountain),
+    start = { x: center.x - 4.3, y: center.y },
+    end = { x: center.x + 4.3, y: center.y };
   Object.assign(p, start);
   assert.ok(w.act("local", { type: "moveTo", ...end }));
   assert.ok(p.route.length > 1);
@@ -52,12 +53,17 @@ test("combat awards XP, quest progress and real loot exactly once per death", ()
   m.x = p.x + 0.5;
   m.y = p.y;
   m.hp = 1;
-  Object.assign(m,{homeX:m.x,homeY:m.y,rootUntil:Infinity,nextAttack:Infinity});
+  Object.assign(m, {
+    homeX: m.x,
+    homeY: m.y,
+    rootUntil: Infinity,
+    nextAttack: Infinity,
+  });
   w.rng = () => 0;
   const before = p.inventory.fiber;
   assert.equal(w.act("local", { type: "attack", target: m.uid }), true);
   assert.equal(m.hp, 1, "attack preparation cannot deal immediate damage");
-  for(let n=0;n<60&&p.action;n++) w.step(.01);
+  for (let n = 0; n < 60 && p.action; n++) w.step(0.01);
   assert.equal(m.hp, 0);
   assert.equal(p.kills, 1);
   assert.equal(questProgress(p), 1);

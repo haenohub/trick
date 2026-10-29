@@ -206,7 +206,7 @@ export function hydrateSave(raw) {
   )
     p.map = "village";
   if (
-    Number(raw.layoutVersion) >= 2 &&
+    Number(raw.layoutVersion) === LAYOUT_VERSION &&
     !blocked(p.map, Number(raw.x), Number(raw.y))
   ) {
     p.x = Number(raw.x);
