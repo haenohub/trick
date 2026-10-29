@@ -39,6 +39,7 @@ with sync_playwright() as pw:
  p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');confirm_attack(p,'a')
  p.wait_for_function('__leaftale.snapshot().drops.length>=3');p.wait_for_timeout(150)
+ p.keyboard.press('a');p.mouse.click(30,700) # Keep this nearby-pickup fixture stationary after the kill.
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(1100)
  assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
  p.evaluate('''()=>{window.flightSamples=[];window.flightCapture=true;function sample(){const s=__leaftale.snapshot();flightSamples.push(s.drops.filter(d=>d.pickupEnds>s.time).length);if(flightCapture)requestAnimationFrame(sample);}requestAnimationFrame(sample);}''')
@@ -47,6 +48,7 @@ with sync_playwright() as pw:
  print('PASS: tapping Space collects exactly one item; holding collects all nearby drops with overlapping 600ms flights without OS key-repeat')
  # Make another pile through real combat, then interrupt a held pickup with UI.
  p.keyboard.press('Tab');confirm_attack(p,'a');p.wait_for_function('__leaftale.snapshot().drops.length>=3')
+ p.keyboard.press('a');p.mouse.click(30,700) # Ongoing pursuit can leave an older pile outside the three-unit radius.
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('Space');p.keyboard.press('i');p.wait_for_timeout(1700)
  assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
  p.keyboard.up('Space');p.keyboard.press('i')
