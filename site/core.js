@@ -76,7 +76,7 @@ export function stats(p) {
       p,
       gear.filter((i) => canEquip(p, i)),
     ),
-    range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 7.5 : 6,
+    range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 11.25 : 6,
     speed: (c.id === "ranger" ? 3.7 : 3.3) * TEST_BALANCE.speed,
   };
 }
@@ -1233,6 +1233,18 @@ export class World {
       map: p.map,
       released: false,
     };
+    if (kind === "skill" && p.classId === "warden" && slot === 2 && target) {
+      const landAt = p.action.hitAt + 0.36;
+      p.action.leap = {
+        from: { x: p.x, y: p.y },
+        to: { x: target.x, y: target.y },
+        start: p.action.strikeAt,
+        landAt,
+      };
+      p.action.hitAt = landAt;
+      p.action.strikeEnd = landAt + 2 / 30;
+      p.action.endAt = p.action.strikeEnd + RECOVERY_DURATION;
+    }
     p.anim = "windup";
     p.animAt = this.time;
     p.animDuration = p.action.strikeAt - this.time;
@@ -1251,6 +1263,15 @@ export class World {
       this.cancelAction(p);
       return;
     }
+    if (a.leap && this.time >= a.leap.start) {
+      const t = clamp(
+        (this.time - a.leap.start) / (a.leap.landAt - a.leap.start),
+        0,
+        1,
+      );
+      p.x = a.leap.from.x + (a.leap.to.x - a.leap.from.x) * t;
+      p.y = a.leap.from.y + (a.leap.to.y - a.leap.from.y) * t;
+    }
     if (!a.released && this.time + 1e-9 >= a.hitAt) {
       a.released = true;
       const target =
@@ -1258,12 +1279,13 @@ export class World {
         this.map(p.map).mobs.find((m) => m.uid === a.target && m.hp > 0);
       const range = a.aim
         ? combatAim({ ...p, stats: stats(p) }, a.slot).range
-        : stats(p).range + (a.kind === "basic" ? 0.6 : 2);
+        : stats(p).range +
+          (a.kind === "basic" ? 0.6 : p.classId === "ranger" ? 3 : 2);
       const valid =
         target &&
         this.sight(p.map, p, target) &&
         distance(p, target) <=
-          (a.slot === 3 && p.branch === "hawk" ? 11 : range);
+          (a.slot === 3 && p.branch === "hawk" ? 16.5 : range);
       if (a.kind === "basic" && valid) this.releaseBasic(p, target);
       if (a.kind === "skill" && (a.selfCast || valid))
         this.releaseSkill(p, a.slot, valid ? target : null);
@@ -1279,7 +1301,7 @@ export class World {
     } else if (this.time < a.strikeEnd) {
       p.anim = "attack";
       p.animAt = a.strikeAt;
-      p.animDuration = STRIKE_DURATION;
+      p.animDuration = a.strikeEnd - a.strikeAt;
     } else {
       p.anim = "recover";
       p.animAt = a.strikeEnd;
@@ -1492,13 +1514,13 @@ export class World {
     }
     const selfCast =
       (p.classId === "herbalist" && [0, 2].includes(slot)) ||
-      (slot === 1 && ["warden", "ranger"].includes(p.classId)) ||
+      (slot === 1 && p.classId === "warden") ||
       (slot === 3 && ["antler", "flower", "mist"].includes(p.branch));
     if (t && !selfCast && !this.sight(p.map, p, t)) return false;
     if (
       !t &&
       !(p.classId === "herbalist" && (slot === 0 || slot === 2)) &&
-      !(slot === 1 && ["warden", "ranger"].includes(p.classId)) &&
+      !(slot === 1 && p.classId === "warden") &&
       !(slot === 3 && ["antler", "flower", "mist"].includes(p.branch))
     )
       return false;
@@ -1506,21 +1528,12 @@ export class World {
       t &&
       !selfCast &&
       !point &&
-      distance(t, p) > s.range + 2 &&
+      distance(t, p) > rule.range &&
       !(slot === 3 && p.branch === "hawk")
     )
       return false;
     p.focus -= SKILL_COSTS[slot];
     p.cooldowns[slot] = this.time + SKILL_COOLDOWNS[slot];
-    if (p.classId === "ranger" && slot === 1) {
-      p.moveTarget = null;
-      p.queuedAttack = null;
-      this.releaseSkill(p, slot, t);
-      p.anim = "recover";
-      p.animAt = this.time;
-      p.animDuration = RECOVERY_DURATION;
-      return true;
-    }
     return this.beginAction(p, "skill", t, slot, selfCast);
   }
   releaseSkill(p, slot, t) {
@@ -1590,7 +1603,13 @@ export class World {
             mob.nextAttack = this.time + 1.2;
             mob.rootUntil = this.time + 0.6;
           }
-        this.effect(p.map, "slash", (t || p).x, (t || p).y, { radius: 3 });
+        this.effect(p.map, "leaf-landing", (t || p).x, (t || p).y, {
+          radius: 3,
+          duration: 0.55,
+          owner: p.id,
+          cue: "slam",
+          impact: 2,
+        });
       }
     }
     if (p.classId === "mage") {
@@ -1615,15 +1634,26 @@ export class World {
     if (p.classId === "ranger") {
       if (slot === 0 && t) this.damage(p, t, s.power * 2.2);
       if (slot === 1) {
-        const dx = t ? (t.uid ? p.x - t.x : t.x - p.x) : p.move.x || 1,
-          dy = t ? (t.uid ? p.y - t.y : t.y - p.y) : p.move.y;
-        for (let n = 0; n < 8; n++) this.moveEntity(p, p.map, dx, dy, 0.075, 5);
-        p.evadeUntil = this.time + 0.45;
-        p.precisionUntil = this.time + 4;
-        this.effect(p.map, "dash", p.x, p.y, {
-          text: "회피 · 정조준",
-          cue: "dodge",
+        if (!t) return;
+        this.pendingAreas ||= [];
+        const area = {
           owner: p.id,
+          map: p.map,
+          x: t.x,
+          y: t.y,
+          radius: 3.4,
+          power: s.power * 0.8,
+          waves: [0.55, 0.72, 0.89].map((delay) => this.time + delay),
+        };
+        this.pendingAreas.push(area);
+        this.effect(p.map, "arrow-rain", p.x, p.y, {
+          tx: t.x,
+          ty: t.y,
+          radius: 3.4,
+          owner: p.id,
+          dir: p.dir,
+          duration: 1.2,
+          cue: "ranger",
         });
       }
       if (slot === 2 && t) {
@@ -2147,6 +2177,24 @@ export class World {
     dt = clamp(dt, 0, 0.1);
     this.time += dt;
     this.advanceProjectiles();
+    for (const area of this.pendingAreas || []) {
+      const owner = this.players.get(area.owner);
+      if (!owner || owner.map !== area.map || owner.hp <= 0) {
+        area.waves = [];
+        continue;
+      }
+      while (area.waves.length && area.waves[0] <= this.time + 1e-9) {
+        area.waves.shift();
+        for (const m of this.map(area.map).mobs)
+          if (
+            m.hp > 0 &&
+            distance(m, area) <= area.radius &&
+            this.sight(area.map, area, m)
+          )
+            this.damage(owner, m, area.power, "burst");
+      }
+    }
+    this.pendingAreas = (this.pendingAreas || []).filter((a) => a.waves.length);
     this.effects = this.effects.filter((e) => e.until > this.time);
     for (const p of this.players.values()) {
       this.explore(p);
@@ -2380,6 +2428,9 @@ export class World {
           anim: a.anim,
           animAt: a.animAt,
           animDuration: a.animDuration,
+          action: a.action
+            ? { kind: a.action.kind, slot: a.action.slot, leap: a.action.leap }
+            : null,
           combatTarget: a.combatTarget,
           queuedSkill: a.queuedSkill
             ? { slot: a.queuedSkill.slot, point: a.queuedSkill.point }

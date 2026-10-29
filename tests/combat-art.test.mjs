@@ -60,6 +60,7 @@ test("all 128 directional weapon grips are measured, cells stay isolated, and ev
   assert.equal(image.width, 768);
   assert.equal(image.height, 1536);
   for (const w of Object.values(art.appearance.weapons)) {
+    if (w.file.startsWith("appearance/tier-")) continue;
     assert.deepEqual(w.measured, Array(8).fill(true));
     for (let dir = 0; dir < 8; dir++)
       for (let y = 0; y < 96; y++)

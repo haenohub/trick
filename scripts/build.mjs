@@ -75,6 +75,7 @@ for (const name of [
   "view-projection.js",
   "pickup-hold.js",
   "equipment-appearance.js",
+  "equipment-tiers.js",
   "ecology.js",
   "exploration.js",
 ]) {

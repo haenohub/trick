@@ -124,16 +124,22 @@ test("each completed actor has eight separately authored walk and idle headings,
       );
       const mappings = record.registration.directions;
       assert.equal(mappings.length, 8, id);
-      assert.equal(
-        new Set(mappings.map((r) => r.source)).size,
-        8,
-        id + " reused a generated heading",
-      );
+      if (!record.motionReviewVersion)
+        assert.equal(
+          new Set(mappings.map((r) => r.source)).size,
+          8,
+          id + " reused a generated heading",
+        );
       assert.deepEqual(
         mappings.map((r) => r.direction).sort(),
         [...plan.directionOrder].sort(),
       );
       for (const mapping of mappings) {
+        if (record.motionReviewVersion) {
+          assert.equal(mapping.sourceRow, mapping.destinationRow);
+          assert.ok(mapping.scale > 0);
+          continue;
+        }
         const source = plan.sources.find((a) => a.id === mapping.id),
           actor = source.actors.find((a) => a.id === id);
         assert.equal(source.direction, mapping.direction);

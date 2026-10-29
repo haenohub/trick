@@ -2,7 +2,7 @@
 export function combatAim(p, slot = null) {
   const range =
     p.stats?.range ||
-    { warden: 1.9, ranger: 7.5, mage: 6, herbalist: 6 }[p.classId] ||
+    { warden: 1.9, ranger: 11.25, mage: 6, herbalist: 6 }[p.classId] ||
     6;
   if (slot === null) return { mode: "enemy", range, radius: 0 };
   if (p.classId === "warden" && slot === 0)
@@ -26,7 +26,7 @@ export function combatAim(p, slot = null) {
   if (p.classId === "mage" && slot === 2)
     return { mode: "ground", range: 8, radius: 3 };
   if (p.classId === "ranger" && slot === 1)
-    return { mode: "ground", shape: "line", length: 3, range: 5, radius: 0.4 };
+    return { mode: "ground", range: 12, radius: 3.4 };
   if (p.classId === "herbalist" && slot === 0)
     return { mode: "ground", range: 6, radius: 4 };
   if (p.classId === "herbalist" && slot === 2)
@@ -37,7 +37,10 @@ export function combatAim(p, slot = null) {
   }
   return {
     mode: "enemy",
-    range: slot === 3 && p.branch === "hawk" ? 11 : range + 2,
+    range:
+      slot === 3 && p.branch === "hawk"
+        ? 16.5
+        : range + (p.classId === "ranger" ? 3 : 2),
     radius: 0,
   };
 }

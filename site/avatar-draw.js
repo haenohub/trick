@@ -38,7 +38,9 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
   // long axis is perpendicular to its shot; the mage casts up, not sideways.
   const aimed =
     weapon.kind === "bow"
-      ? (dir * Math.PI) / 4 - Math.PI / 2
+      ? motion?.skyshot
+        ? -Math.PI / 2
+        : (dir * Math.PI) / 4 - Math.PI / 2
       : weapon.kind === "staff"
         ? side * 0.12
         : (dir * Math.PI) / 4;

@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "status": "complete",
+  "directions": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "sources": [
+    {
+      "id": "m36-walk",
+      "monster": "m36",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-4fcc87fb-2eb2-4c05-8d30-7fcb4f2d5444.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m36-idle",
+      "monster": "m36",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-613de8c6-88d6-4cc4-b2a2-4abbc1cc7b3c.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m37-combat",
+      "monster": "m37",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-c99bf6c8-8a00-4046-bb3c-e98df9dc6a12.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m50-combat",
+      "monster": "m50",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-a6b4ae65-0531-4852-bf0d-0e0bd05aefa2.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m35-combat",
+      "monster": "m35",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-e4298c76-db37-40f1-9d11-ab6370ee8b59.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m22-combat",
+      "monster": "m22",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-53745f63-83d0-4a17-b9ce-5f570860133c.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m24-combat",
+      "monster": "m24",
+      "motion": "combat",
+      "source": "/workspace/generated_images/exec-897cac2b-c216-424f-9328-632dd0bd8179.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m27-walk",
+      "monster": "m27",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-1b1013af-8c64-448d-b7a4-a1bcaa1bcfcd.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m11-walk",
+      "monster": "m11",
+      "motion": "walk",
+      "source": "/workspace/generated_images/exec-388bff5b-19a1-49b9-8b55-9d2a567e39a1.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m33-idle",
+      "monster": "m33",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-c9b5e21e-7f09-487d-9c48-2cc95d3e4047.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "m59-idle",
+      "monster": "m59",
+      "motion": "idle",
+      "source": "/workspace/generated_images/exec-14870353-af5d-4e06-b567-0455bbaa5d8b.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "weapon-icons",
+      "source": "/workspace/generated_images/exec-85529cea-62dc-4267-b2f1-7f3503bdaf01.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "armor-icons",
+      "source": "/workspace/generated_images/exec-3d0534bc-eaf7-4ea2-b409-089c05f09828.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "skill-fx",
+      "source": "/workspace/generated_images/exec-1f7c5318-c1b5-4a63-9c79-d173056c3554.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "held-spear",
+      "source": "/workspace/generated_images/exec-c6bb373b-4150-407d-82a5-27f52d986cf7.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "held-staff",
+      "source": "/workspace/generated_images/exec-b547bc5b-f8d2-471f-aff6-805a3119a0cc.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "held-bow",
+      "source": "/workspace/generated_images/exec-cd2ec42b-7d59-4ec8-8894-9c06e50712d7.png",
+      "tool": "image_gen"
+    },
+    {
+      "id": "held-wand",
+      "source": "/workspace/generated_images/exec-3faa044b-ee7b-4054-b369-aa1ec5be1e6e.png",
+      "tool": "image_gen"
+    }
+  ]
+}

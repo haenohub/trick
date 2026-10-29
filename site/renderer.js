@@ -489,6 +489,7 @@ export class Renderer {
     actorKey = name,
     equipment = null,
     combatReady = false,
+    skyshot = false,
   ) {
     const originalLayout = /^m\d+$/.test(name)
       ? ART.monsters[name]
@@ -528,7 +529,7 @@ export class Renderer {
         x - 48 * this.zoom,
         y - 96 * anchor * this.zoom,
         this.zoom,
-        { anim, time, start, duration: duration || 0.2, combatReady },
+        { anim, time, start, duration: duration || 0.2, combatReady, skyshot },
       );
       if (anim === "death") c.restore();
       return;
@@ -913,16 +914,27 @@ export class Renderer {
         s.x += (v.x / n) * k;
         s.y += (v.y / n) * k;
       }
-      const jump = o.windup?.jump
+      const leap = o.action?.leap;
+      const jump = leap
         ? Math.sin(
-            Math.min(
-              1,
-              (time - o.windup.start) / (o.windup.at - o.windup.start),
-            ) * Math.PI,
+            Math.PI *
+              Math.max(
+                0,
+                Math.min(1, (time - leap.start) / (leap.landAt - leap.start)),
+              ),
           ) *
-          22 *
+          76 *
           this.zoom
-        : 0;
+        : o.windup?.jump
+          ? Math.sin(
+              Math.min(
+                1,
+                (time - o.windup.start) / (o.windup.at - o.windup.start),
+              ) * Math.PI,
+            ) *
+            22 *
+            this.zoom
+          : 0;
       c.save();
       if (recoil && hitAge < 2 / 30) c.filter = "brightness(1.55)";
       this.sprite(
@@ -942,6 +954,9 @@ export class Renderer {
         o.kind + ":" + (o.uid || o.id || name),
         o.equipment,
         !!o.combatTarget && !o.queuedSkill,
+        o.classId === "ranger" &&
+          o.action?.kind === "skill" &&
+          o.action.slot === 1,
       );
       c.restore();
       if (monster && o.hitUntil > time)
@@ -1034,6 +1049,8 @@ export class Renderer {
       this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
     }
     for (const e of state.effects) {
+      if (["arrow-rain", "leaf-landing"].includes(e.kind))
+        this.classSkillEffect(e, state);
       if (["arrow-shot", "starfall", "herb-shot"].includes(e.kind))
         this.targetedCombatEffect(e, state);
       const s = this.worldToScreen(e.x, e.y),
@@ -1144,6 +1161,52 @@ export class Renderer {
       );
     } else path({ ...point, radius: a.radius || 0.45 }, true);
     c.restore();
+  }
+  classSkillEffect(e, state) {
+    const a = ART.skillMotion,
+      image = a && IMAGES.get(a.file);
+    if (!image) return;
+    const c = this.ctx,
+      z = this.zoom,
+      age = state.time - e.started,
+      origin = this.worldToScreen(e.x, e.y),
+      end = this.worldToScreen(e.tx ?? e.x, e.ty ?? e.y);
+    const cell = (row, t, x, y, w, h) => {
+      c.drawImage(
+        image,
+        Math.min(7, Math.max(0, Math.floor(t * 8))) * 128,
+        row * 128,
+        128,
+        128,
+        Math.round(x - (w * z) / 2),
+        Math.round(y - (h * z) / 2),
+        w * z,
+        h * z,
+      );
+    };
+    if (e.kind === "leaf-landing") {
+      cell(3, age / 0.55, end.x, end.y - 15 * z, 220, 130);
+      return;
+    }
+    const actor =
+        e.owner === state.player.id
+          ? state.player
+          : state.peers.find((p) => p.id === e.owner),
+      base = ART.appearance?.bases?.[actor?.classId],
+      weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon];
+    const hand =
+      base && weapon
+        ? heldWeaponTip(base, weapon, 4, e.dir || 0, { skyshot: true })
+        : null;
+    const launch = hand
+      ? { x: origin.x + (hand[0] - 48) * z, y: origin.y - (92 - hand[1]) * z }
+      : origin;
+    if (age < 0.38)
+      cell(0, age / 0.38, launch.x, launch.y - 50 * z - age * 220 * z, 80, 130);
+    if (age >= 0.32 && age < 1.05)
+      cell(1, (age - 0.32) / 0.73, end.x, end.y - 100 * z, 240, 230);
+    if (age >= 0.55)
+      cell(2, (age - 0.55) / 0.6, end.x, end.y - 12 * z, 230, 125);
   }
   targetedCombatEffect(e, state) {
     const file = ART.targetCombat?.file,

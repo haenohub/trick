@@ -126,26 +126,27 @@ test("ranged monsters retreat during cooldown and roots prevent the retreat", ()
   assert.equal(m.x, at.x);
   assert.equal(m.y, at.y);
 });
-test("ranger roll has a short dodge window and exactly one empowered follow-up shot", () => {
+test("arrow rain releases upward, then deals three delayed area waves without dodge or precision bonuses", () => {
   const { w, p } = setup("ranger"),
-    m = enemy(w, p);
+    m = enemy(w, p),
+    before = m.hp;
   assert.ok(w.skill(p, 1, m.uid));
   finishAction(w, p);
-  const hp = p.hp;
-  w.hurtPlayer(p, 25);
-  assert.equal(p.hp, hp);
-  w.time = 0.5;
-  w.hurtPlayer(p, 25);
-  assert.equal(p.hp, hp - 25);
-  const before = m.hp;
-  assert.ok(w.attack(p, m.uid));
-  finishAction(w, p);
+  assert.equal(p.evadeUntil, 0);
   assert.equal(p.precisionUntil, 0);
-  const def = MONSTERS.find((d) => d.id === m.def);
-  assert.equal(
-    before - m.hp,
-    Math.round((stats(p).attack * 1.55 - def.defense * 0.4) * 0.5),
-  );
+  const e = w.effects.find((e) => e.kind === "arrow-rain");
+  assert.ok(e);
+  const areas = w.pendingAreas[0];
+  assert.equal(areas.waves.length, 3);
+  const release = e.started;
+  while (w.time < release + 0.53) w.step(0.01);
+  assert.equal(m.hp, before);
+  while (w.time < release + 0.57) w.step(0.01);
+  const once = m.hp;
+  assert.ok(once < before);
+  while (w.time < release + 0.92) w.step(0.01);
+  assert.equal(before - m.hp, (before - once) * 3);
+  assert.equal(w.pendingAreas.length, 0);
 });
 test("herbalist stacks poison and a stationary garden heals allies rather than following its caster", () => {
   const { w, p } = setup("herbalist"),

@@ -2,7 +2,8 @@ import { NAVIGATION, NPC_POSITIONS } from "./art-layout.js";
 import { VERDANT } from "./verdant.js";
 import { TROPHIES } from "./trophies.js";
 import { equipmentProfile } from "./progression.js";
-export const VERSION = "0.22.0";
+import { addEquipmentTiers } from "./equipment-tiers.js";
+export const VERSION = "0.23.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -62,7 +63,7 @@ export const CLASSES = [
     color: "#a8cb7d",
     description:
       "바람과 발자국을 읽는 궁수. 멀리서 약점을 노리고 가볍게 움직입니다.",
-    skills: ["깃끝 사격", "옆구르기", "추적 표식"],
+    skills: ["깃끝 사격", "화살비", "추적 표식"],
     branches: [
       {
         id: "hawk",
@@ -999,7 +1000,9 @@ for (const trophy of TROPHIES) {
     color: monster.color,
   });
 }
-for (const i of Object.values(ITEMS)) if (i.type === 'equipment') Object.assign(i,equipmentProfile(i));
+addEquipmentTiers(ITEMS, CLASSES);
+for (const i of Object.values(ITEMS))
+  if (i.type === "equipment") Object.assign(i, equipmentProfile(i));
 export const RECIPES = Object.values(ITEMS).filter((i) => i.recipe);
 export const QUESTS = [
   {

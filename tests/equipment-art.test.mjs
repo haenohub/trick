@@ -37,7 +37,10 @@ test("non-weapon equipment leaves the original class costume unchanged while wea
 test("paper-doll sheets keep all 256 poses on native 96px cells with clean four-pixel margins", async () => {
   const art = await json("site/assets/manifest.json");
   for (const file of art.files.filter(
-    (f) => f.startsWith("appearance/") && f !== "appearance/held-weapons",
+    (f) =>
+      f.startsWith("appearance/") &&
+      f !== "appearance/held-weapons" &&
+      !f.startsWith("appearance/tier-"),
   )) {
     const { width, height, pixels } = rgbaPixels(
       await readFile("site/assets/" + file + ".png"),

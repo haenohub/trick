@@ -61,7 +61,8 @@ test("all four professions gain their own attributes through multiple level-ups 
 });
 test("equipment has real combat bonuses and requirements are enforced without its own bonuses", () => {
   for (const i of Object.values(ITEMS).filter((i) => i.type === "equipment")) {
-    assert.ok(Object.keys(i.requirements).length);
+    if (i.level === 0) assert.deepEqual(i.requirements, {});
+    else assert.ok(Object.keys(i.requirements).length);
     for (const key of [
       "attack",
       "magicPower",

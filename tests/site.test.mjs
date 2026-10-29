@@ -26,7 +26,7 @@ test("two complete regions contain ten maps, sixty documented enemies and valid 
   assert.ok(MONSTERS[39].hp > MONSTERS[19].hp * 2);
 });
 test("all items have lore and every recipe resolves to existing materials", () => {
-  assert.equal(Object.keys(ITEMS).length, 102);
+  assert.equal(Object.keys(ITEMS).length, 157);
   for (const i of Object.values(ITEMS)) {
     assert.ok(i.lore.length > 20, i.id);
     for (const [id, n] of Object.entries(i.recipe || {})) {
@@ -161,11 +161,25 @@ test("native pixel assets have the required grids, shared palette and binary alp
   const appearanceFiles = art.files.filter((f) => f.startsWith("appearance/"));
   assert.equal(
     art.files.length,
-    102 + art.locomotion.actors * 2 + appearanceFiles.length + (art.combat?.actors || 0) + (art.ambient ? 1 : 0)+(art.targetCombat ? 1 : 0)+(art.world.isometric?.files?.length||0),
+    102 +
+      art.locomotion.actors * 2 +
+      appearanceFiles.length +
+      (art.combat?.actors || 0) +
+      (art.ambient ? 1 : 0) +
+      (art.targetCombat ? 1 : 0) +
+      (art.world.isometric?.files?.length || 0) +
+      (art.expansionArt?.length || 0),
   );
   assert.equal(
     records.assets.length,
-    738 + art.locomotion.actors * 2 + appearanceFiles.length + (art.combat?.actors || 0) + (art.ambient ? 1 : 0)+(art.targetCombat ? 1 : 0)+(art.world.isometric?.files?.length||0),
+    738 +
+      art.locomotion.actors * 2 +
+      appearanceFiles.length +
+      (art.combat?.actors || 0) +
+      (art.ambient ? 1 : 0) +
+      (art.targetCombat ? 1 : 0) +
+      (art.world.isometric?.files?.length || 0) +
+      (art.expansionArt?.length || 0),
   );
   assert.ok(art.palette.length >= 128 && art.palette.length <= 256);
   assert.deepEqual(art.pixelGrid, {
@@ -238,8 +252,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
       [16, 8, 96],
     );
   }
-  assert.equal(Object.keys(art.items).length, 102);
-  assert.equal(Object.keys(art.itemOverrides).length, 60);
+  assert.equal(Object.keys(art.items).length, 157);
+  assert.equal(Object.keys(art.itemOverrides).length, 137);
   for (const size of [32, 48, 64]) {
     const file = art.effects.variants[size];
     const png = await readFile(

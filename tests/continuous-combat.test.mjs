@@ -176,13 +176,16 @@ test("invalid or cancelled queued casts never charge focus or cooldown and canno
   assert.equal(p.action, null);
 });
 
-test("a dodge finishes its recovery before automatic shooting resumes", () => {
+test("arrow rain uses a normal preparation and resumes automatic basics after recovery", () => {
   const { w, p, m } = scene("ranger");
-  assert.ok(w.act(p.id, { type: "skill", slot: 1, point: { x: m.x, y: m.y } }));
-  assert.equal(p.anim, "recover");
   assert.ok(w.act(p.id, { type: "attack", target: m.uid }));
-  advance(w, 0.1);
-  assert.equal(p.action, null);
-  advance(w, 0.3);
+  const basic = { ...p.action };
+  assert.ok(w.act(p.id, { type: "skill", slot: 1, point: { x: m.x, y: m.y } }));
+  advance(w, basic.endAt + 0.02);
+  assert.equal(p.anim, "windup");
+  const cast = { ...p.action };
+  advance(w, w.time + 0.1);
+  assert.equal(p.action.kind, "skill");
+  advance(w, cast.endAt + 0.1);
   assert.equal(p.action?.kind, "basic");
 });

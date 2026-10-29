@@ -647,7 +647,14 @@
     "world/iso-tideroot-floor",
     "world/iso-tideroot-props",
     "world/iso-seacave-floor",
-    "world/iso-seacave-props"
+    "world/iso-seacave-props",
+    "tier-weapon-icons",
+    "tier-armor-icons",
+    "appearance/tier-spear",
+    "appearance/tier-staff",
+    "appearance/tier-bow",
+    "appearance/tier-wand",
+    "class-skills-v23"
   ],
   "monsters": {
     "m1": {
@@ -2463,7 +2470,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m12": {
       "file": "creatures/m12",
@@ -4278,7 +4286,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m23": {
       "file": "creatures/m23",
@@ -4608,7 +4617,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m25": {
       "file": "creatures/m25",
@@ -5103,7 +5113,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m28": {
       "file": "creatures/m28",
@@ -6093,7 +6104,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m34": {
       "file": "creatures/m34",
@@ -6423,7 +6435,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m36": {
       "file": "creatures/m36",
@@ -6588,7 +6601,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m37": {
       "file": "creatures/m37",
@@ -6753,7 +6767,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m38": {
       "file": "creatures/m38",
@@ -8898,7 +8913,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m51": {
       "file": "creatures/m51",
@@ -10383,7 +10399,8 @@
           "duration": 0.56
         }
       },
-      "locomotionVersion": 3
+      "locomotionVersion": 3,
+      "reviewVersion": 1
     },
     "m60": {
       "file": "creatures/m60",
@@ -10653,7 +10670,62 @@
     "trophy57": 0,
     "trophy58": 0,
     "trophy59": 0,
-    "trophy60": 0
+    "trophy60": 0,
+    "spearlv5": 0,
+    "spearlv10": 0,
+    "spearlv20": 0,
+    "spearlv25": 0,
+    "spearlv30": 0,
+    "stafflv5": 0,
+    "stafflv10": 0,
+    "stafflv20": 0,
+    "stafflv25": 0,
+    "stafflv30": 0,
+    "bowlv5": 0,
+    "bowlv10": 0,
+    "bowlv20": 0,
+    "bowlv25": 0,
+    "bowlv30": 0,
+    "wandlv5": 0,
+    "wandlv10": 0,
+    "wandlv20": 0,
+    "wandlv25": 0,
+    "wandlv30": 0,
+    "wardenarmorlv5": 0,
+    "wardenarmorlv10": 0,
+    "wardenarmorlv20": 0,
+    "wardenarmorlv25": 0,
+    "wardenarmorlv30": 0,
+    "magearmorlv5": 0,
+    "magearmorlv10": 0,
+    "magearmorlv20": 0,
+    "magearmorlv25": 0,
+    "magearmorlv30": 0,
+    "rangerarmorlv5": 0,
+    "rangerarmorlv10": 0,
+    "rangerarmorlv20": 0,
+    "rangerarmorlv25": 0,
+    "rangerarmorlv30": 0,
+    "herbalistarmorlv5": 0,
+    "herbalistarmorlv10": 0,
+    "herbalistarmorlv20": 0,
+    "herbalistarmorlv25": 0,
+    "herbalistarmorlv30": 0,
+    "hoodlv5": 0,
+    "hoodlv10": 0,
+    "hoodlv20": 0,
+    "hoodlv25": 0,
+    "hoodlv30": 0,
+    "bootslv5": 0,
+    "bootslv10": 0,
+    "bootslv20": 0,
+    "bootslv25": 0,
+    "bootslv30": 0,
+    "charmlv5": 0,
+    "charmlv10": 0,
+    "charmlv20": 0,
+    "charmlv25": 0,
+    "charmlv30": 0
   },
   "itemOverrides": {
     "trophy1": {
@@ -11075,6 +11147,468 @@
       "rows": 5,
       "index": 19,
       "size": 32
+    },
+    "spear1": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 0
+    },
+    "spearlv5": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 1
+    },
+    "spearlv10": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 2
+    },
+    "spear2": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 3
+    },
+    "spearlv20": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 4
+    },
+    "spearlv25": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 5
+    },
+    "spearlv30": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 6
+    },
+    "staff1": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 7
+    },
+    "stafflv5": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 8
+    },
+    "stafflv10": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 9
+    },
+    "staff2": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 10
+    },
+    "stafflv20": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 11
+    },
+    "stafflv25": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 12
+    },
+    "stafflv30": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 13
+    },
+    "bow1": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 14
+    },
+    "bowlv5": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 15
+    },
+    "bowlv10": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 16
+    },
+    "bow2": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 17
+    },
+    "bowlv20": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 18
+    },
+    "bowlv25": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 19
+    },
+    "bowlv30": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 20
+    },
+    "wand1": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 21
+    },
+    "wandlv5": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 22
+    },
+    "wandlv10": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 23
+    },
+    "wand2": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 24
+    },
+    "wandlv20": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 25
+    },
+    "wandlv25": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 26
+    },
+    "wandlv30": {
+      "file": "tier-weapon-icons",
+      "cols": 7,
+      "rows": 4,
+      "index": 27
+    },
+    "wardenarmor1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 0
+    },
+    "wardenarmorlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 1
+    },
+    "wardenarmorlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 2
+    },
+    "wardenarmor2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 3
+    },
+    "wardenarmorlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 4
+    },
+    "wardenarmorlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 5
+    },
+    "wardenarmorlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 6
+    },
+    "magearmor1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 7
+    },
+    "magearmorlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 8
+    },
+    "magearmorlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 9
+    },
+    "magearmor2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 10
+    },
+    "magearmorlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 11
+    },
+    "magearmorlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 12
+    },
+    "magearmorlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 13
+    },
+    "rangerarmor1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 14
+    },
+    "rangerarmorlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 15
+    },
+    "rangerarmorlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 16
+    },
+    "rangerarmor2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 17
+    },
+    "rangerarmorlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 18
+    },
+    "rangerarmorlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 19
+    },
+    "rangerarmorlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 20
+    },
+    "herbalistarmor1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 21
+    },
+    "herbalistarmorlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 22
+    },
+    "herbalistarmorlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 23
+    },
+    "herbalistarmor2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 24
+    },
+    "herbalistarmorlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 25
+    },
+    "herbalistarmorlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 26
+    },
+    "herbalistarmorlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 27
+    },
+    "hood1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 28
+    },
+    "hoodlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 29
+    },
+    "hoodlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 30
+    },
+    "hood2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 31
+    },
+    "hoodlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 32
+    },
+    "hoodlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 33
+    },
+    "hoodlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 34
+    },
+    "boots1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 35
+    },
+    "bootslv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 36
+    },
+    "bootslv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 37
+    },
+    "boots2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 38
+    },
+    "bootslv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 39
+    },
+    "bootslv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 40
+    },
+    "bootslv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 41
+    },
+    "charm1": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 42
+    },
+    "charmlv5": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 43
+    },
+    "charmlv10": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 44
+    },
+    "charm2": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 45
+    },
+    "charmlv20": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 46
+    },
+    "charmlv25": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 47
+    },
+    "charmlv30": {
+      "file": "tier-armor-icons",
+      "cols": 7,
+      "rows": 7,
+      "index": 48
     }
   },
   "characterLayouts": {
@@ -34416,55 +34950,86 @@
     },
     "weapons": {
       "spear1": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 0,
+        "file": "appearance/tier-spear",
         "kind": "spear",
+        "index": 0,
         "grips": [
           [
             42,
-            66
+            68
           ],
           [
             41,
-            64
-          ],
-          [
-            35,
             66
           ],
           [
-            34,
-            62
+            38,
+            67
+          ],
+          [
+            38,
+            65
+          ],
+          [
+            46,
+            65
           ],
           [
             56,
-            63
+            66
           ],
           [
-            36,
-            64
+            59,
+            66
           ],
           [
-            39,
-            68
-          ],
-          [
-            34,
-            70
+            53,
+            66
           ]
         ],
         "axes": [
-          0.5548309193413973,
-          0.6473921397399288,
-          0.636508215787951,
-          0.7266423406817256,
-          -0.01824615006458911,
-          0.6931497151818906,
-          0.5939397687298992,
-          0.6685243260379145
+          0.3289176911722565,
+          0.479486229451467,
+          0.569873400795655,
+          0.5735845591095675,
+          0.014803832877175639,
+          -0.4852418738216896,
+          -0.6116600220534181,
+          -0.32535952627116715
+        ],
+        "tips": [
+          [
+            61.6,
+            11.2
+          ],
+          [
+            69.6,
+            11.2
+          ],
+          [
+            73.6,
+            11
+          ],
+          [
+            73,
+            11.6
+          ],
+          [
+            47,
+            11.2
+          ],
+          [
+            27,
+            11.6
+          ],
+          [
+            21,
+            11.6
+          ],
+          [
+            34.4,
+            12.2
+          ]
         ],
         "measured": [
           true,
@@ -34476,91 +35041,91 @@
           true,
           true
         ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "spear2": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 3,
+        "grips": [
+          [
+            45,
+            67
+          ],
+          [
+            39,
+            67
+          ],
+          [
+            36,
+            68
+          ],
+          [
+            38,
+            68
+          ],
+          [
+            51,
+            68
+          ],
+          [
+            57,
+            67
+          ],
+          [
+            60,
+            68
+          ],
+          [
+            54,
+            67
+          ]
+        ],
+        "axes": [
+          0.3343561368137812,
+          0.5157771627585497,
+          0.5892399603509857,
+          0.5349749134981909,
+          0.0041452198100275,
+          -0.48174874106673077,
+          -0.5756858034255059,
+          -0.35194567755792744
+        ],
         "tips": [
           [
+            64.6,
+            11.2
+          ],
+          [
+            70.6,
+            11.2
+          ],
+          [
             74.6,
-            13.4
-          ],
-          [
-            78.2,
-            14.8
-          ],
-          [
-            75.8,
             10.8
           ],
           [
-            77.2,
-            13.4
+            71.2,
+            11.2
           ],
           [
-            55,
-            8.2
+            51.2,
+            11.6
           ],
           [
-            77.2,
-            14.4
+            27.4,
+            11.2
           ],
           [
-            75.6,
-            13.8
+            23,
+            11.6
           ],
           [
-            77.6,
-            14.8
+            33.4,
+            11.2
           ]
-        ]
-      },
-      "spear2": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 1,
-        "kind": "spear",
-        "grips": [
-          [
-            44,
-            66
-          ],
-          [
-            44,
-            64
-          ],
-          [
-            37,
-            66
-          ],
-          [
-            37,
-            62
-          ],
-          [
-            48,
-            63
-          ],
-          [
-            36,
-            64
-          ],
-          [
-            39,
-            68
-          ],
-          [
-            34,
-            70
-          ]
-        ],
-        "axes": [
-          0.5596162641455337,
-          0.6422198795135701,
-          0.6518691143055768,
-          0.7328151017865066,
-          -0.01470482237785138,
-          0.7010004252594803,
-          0.6226707887570673,
-          0.6716626757811768
         ],
         "measured": [
           true,
@@ -34572,40 +35137,9 @@
           true,
           true
         ],
-        "tips": [
-          [
-            77.2,
-            13
-          ],
-          [
-            81.4,
-            14
-          ],
-          [
-            77.6,
-            12.8
-          ],
-          [
-            80.2,
-            14
-          ],
-          [
-            47.2,
-            8.6
-          ],
-          [
-            78.2,
-            14
-          ],
-          [
-            78.2,
-            13.4
-          ],
-          [
-            78.2,
-            14.4
-          ]
-        ]
+        "size": 96,
+        "cols": 8,
+        "rows": 7
       },
       "antlerweapon": {
         "file": "appearance/held-weapons",
@@ -34800,196 +35334,196 @@
         ]
       },
       "staff1": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 4,
+        "file": "appearance/tier-staff",
         "kind": "staff",
+        "index": 0,
         "grips": [
           [
-            41,
-            61
+            43,
+            69
           ],
           [
-            41,
-            62
-          ],
-          [
-            36,
-            63
-          ],
-          [
-            39,
-            60
-          ],
-          [
-            55,
-            56
+            35,
+            69
           ],
           [
             36,
-            63
-          ],
-          [
-            39,
-            66
-          ],
-          [
-            36,
-            65
-          ]
-        ],
-        "axes": [
-          0.7049271521319874,
-          0.8327442998542226,
-          0.7731137690807486,
-          0.8548307369076633,
-          -0.007999829339886607,
-          0.8419416003422656,
-          0.7219540132012692,
-          0.829249940707773
-        ],
-        "measured": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "tips": [
-          [
-            75.2,
-            20.8
-          ],
-          [
-            83,
-            23.8
-          ],
-          [
-            76.2,
-            21.8
-          ],
-          [
-            83.6,
-            21.2
-          ],
-          [
-            54.6,
-            6
-          ],
-          [
-            80.8,
-            23
-          ],
-          [
-            78.8,
-            20.8
-          ],
-          [
-            81.2,
-            23.6
-          ]
-        ]
-      },
-      "staff2": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 5,
-        "kind": "staff",
-        "grips": [
-          [
-            44,
-            61
-          ],
-          [
-            42,
-            62
-          ],
-          [
-            39,
-            63
+            69
           ],
           [
             38,
-            61
+            69
           ],
           [
-            48,
-            56
+            49,
+            69
           ],
           [
-            36,
-            63
+            61,
+            69
           ],
           [
-            39,
-            67
+            61,
+            69
           ],
           [
-            38,
-            65
+            51,
+            69
           ]
         ],
         "axes": [
-          0.47191188366045717,
-          0.5851830621470204,
-          0.6021234654415771,
-          0.6618476739064046,
-          -0.007842976437825706,
-          0.6459581063061106,
-          0.5522441419262082,
-          0.6429104414077533
-        ],
-        "measured": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
+          0.05756619681962058,
+          0.46812885680505517,
+          0.5024929115366932,
+          0.42168566394749163,
+          -0.037163616516852696,
+          -0.503585416242983,
+          -0.48075006428598877,
+          -0.032074334499542764
         ],
         "tips": [
           [
-            68.6,
-            12.8
+            46.8,
+            10.4
           ],
           [
-            74.6,
-            12.8
+            64.2,
+            11.4
           ],
           [
-            74.6,
+            66.8,
+            12.4
+          ],
+          [
+            64,
             11.2
           ],
           [
-            78.2,
-            9.4
-          ],
-          [
-            47.6,
-            5
-          ],
-          [
-            75.2,
-            11
-          ],
-          [
-            74,
+            47,
             10.2
           ],
           [
-            78.6,
-            10.8
+            29.8,
+            12.6
+          ],
+          [
+            30.8,
+            11.4
+          ],
+          [
+            49,
+            10
           ]
-        ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "staff2": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 3,
+        "grips": [
+          [
+            39,
+            71
+          ],
+          [
+            38,
+            72
+          ],
+          [
+            35,
+            72
+          ],
+          [
+            41,
+            71
+          ],
+          [
+            43,
+            71
+          ],
+          [
+            59,
+            71
+          ],
+          [
+            58,
+            72
+          ],
+          [
+            57,
+            71
+          ]
+        ],
+        "axes": [
+          0.4621598137079606,
+          0.4000208663803211,
+          0.4715864188446719,
+          0.37242557380536523,
+          -0.12001417133449141,
+          -0.44283825514006825,
+          -0.495452806827613,
+          -0.49771768443983766
+        ],
+        "tips": [
+          [
+            67.6,
+            13
+          ],
+          [
+            62.6,
+            13
+          ],
+          [
+            65,
+            13.4
+          ],
+          [
+            64.2,
+            12.8
+          ],
+          [
+            35.8,
+            10.6
+          ],
+          [
+            31.8,
+            13.4
+          ],
+          [
+            27,
+            13.8
+          ],
+          [
+            26.2,
+            14.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
       },
       "moonweapon": {
         "file": "appearance/held-weapons",
@@ -35184,55 +35718,86 @@
         ]
       },
       "bow1": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 8,
+        "file": "appearance/tier-bow",
         "kind": "bow",
+        "index": 0,
         "grips": [
           [
-            48,
-            49
+            29,
+            63
           ],
           [
-            45,
-            56
+            32,
+            63
           ],
           [
-            48,
-            51
+            38,
+            63
           ],
           [
-            52,
-            47
+            34,
+            63
           ],
           [
-            55,
-            48
+            47,
+            63
           ],
           [
-            37,
-            56
+            60,
+            63
           ],
           [
-            37,
-            52
+            64,
+            63
           ],
           [
-            48,
-            48
+            66,
+            63
           ]
         ],
         "axes": [
-          -0.424621880092035,
-          0.5639591415062626,
-          -0.4654559252937485,
-          0.34029336468288257,
-          0.17985349979247828,
-          0.7132624728614976,
-          0.7853981633974484,
-          0.7441517284746252
+          0.6608825043374276,
+          0.5993897115162983,
+          0.40239523332186633,
+          0.524986378567257,
+          0.051218756201283626,
+          -0.46949498750029484,
+          -0.5918011038720243,
+          -0.670808527111381
+        ],
+        "tips": [
+          [
+            69.4,
+            10.8
+          ],
+          [
+            67,
+            11
+          ],
+          [
+            60.4,
+            10.8
+          ],
+          [
+            64.2,
+            10.8
+          ],
+          [
+            50,
+            10.4
+          ],
+          [
+            33,
+            10.6
+          ],
+          [
+            28.6,
+            10.8
+          ],
+          [
+            25.6,
+            12
+          ]
         ],
         "measured": [
           true,
@@ -35244,91 +35809,91 @@
           true,
           true
         ],
-        "tips": [
-          [
-            31,
-            11.4
-          ],
-          [
-            74.6,
-            9.2
-          ],
-          [
-            25.8,
-            6.8
-          ],
-          [
-            66.8,
-            5.2
-          ],
-          [
-            63,
-            4
-          ],
-          [
-            76.8,
-            10
-          ],
-          [
-            76.4,
-            12.6
-          ],
-          [
-            78.2,
-            15.2
-          ]
-        ]
-      },
-      "bow2": {
-        "file": "appearance/held-weapons",
         "size": 96,
         "cols": 8,
-        "rows": 16,
-        "index": 9,
+        "rows": 7
+      },
+      "bow2": {
+        "file": "appearance/tier-bow",
         "kind": "bow",
+        "index": 3,
         "grips": [
           [
-            49,
-            49
+            35,
+            57
           ],
           [
-            47,
+            36,
             56
+          ],
+          [
+            37,
+            55
+          ],
+          [
+            41,
+            57
           ],
           [
             48,
             57
           ],
           [
-            50,
-            46
+            57,
+            55
           ],
           [
-            48,
-            48
-          ],
-          [
-            40,
+            59,
             56
           ],
           [
-            39,
-            52
-          ],
-          [
-            48,
-            48
+            60,
+            57
           ]
         ],
         "axes": [
-          0.5252435996542051,
-          0.4729785979032656,
-          0.3928092423398966,
-          0.4226549607555423,
-          0.3258544985247184,
-          0.5579022084505586,
-          0.6776378054991209,
-          0.4675235585834931
+          0.6499021161492593,
+          0.6620221173287392,
+          0.5526469752927802,
+          0.5389029786776334,
+          0.06155397280788585,
+          -0.5064492616653817,
+          -0.6602018202498311,
+          -0.6559325359657705
+        ],
+        "tips": [
+          [
+            70.4,
+            10.8
+          ],
+          [
+            71.2,
+            10.8
+          ],
+          [
+            64.6,
+            10.4
+          ],
+          [
+            68.6,
+            10.4
+          ],
+          [
+            50.6,
+            10.4
+          ],
+          [
+            32.4,
+            10.4
+          ],
+          [
+            24.8,
+            11.4
+          ],
+          [
+            24.6,
+            10.8
+          ]
         ],
         "measured": [
           true,
@@ -35340,40 +35905,9 @@
           true,
           true
         ],
-        "tips": [
-          [
-            69.4,
-            13.8
-          ],
-          [
-            73.2,
-            4.8
-          ],
-          [
-            68.8,
-            6.8
-          ],
-          [
-            68.8,
-            4.2
-          ],
-          [
-            62.8,
-            4.2
-          ],
-          [
-            72.2,
-            4.4
-          ],
-          [
-            72.8,
-            10
-          ],
-          [
-            68.8,
-            6.8
-          ]
-        ]
+        "size": 96,
+        "cols": 8,
+        "rows": 7
       },
       "hawkweapon": {
         "file": "appearance/held-weapons",
@@ -35568,151 +36102,86 @@
         ]
       },
       "wand1": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 12,
+        "file": "appearance/tier-wand",
         "kind": "wand",
+        "index": 0,
         "grips": [
           [
-            44,
-            57
-          ],
-          [
-            44,
-            54
-          ],
-          [
             43,
-            55
-          ],
-          [
-            40,
-            53
-          ],
-          [
-            55,
-            55
-          ],
-          [
-            37,
-            53
-          ],
-          [
-            40,
-            55
-          ],
-          [
-            43,
-            56
-          ]
-        ],
-        "axes": [
-          0.3541581568562275,
-          0.42084016815691944,
-          0.5143035370884765,
-          0.6661509564394393,
-          0,
-          0.5851481869421429,
-          0.3465388644339419,
-          0.5061106877890381
-        ],
-        "measured": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "tips": [
-          [
-            61.6,
-            9.4
-          ],
-          [
-            66.2,
-            4.4
-          ],
-          [
-            68.2,
-            10.4
-          ],
-          [
-            78.2,
-            4.4
-          ],
-          [
-            55,
-            6.4
-          ],
-          [
-            69.2,
-            4.4
-          ],
-          [
-            58.2,
-            4.6
-          ],
-          [
-            71.6,
-            4.4
-          ]
-        ]
-      },
-      "wand2": {
-        "file": "appearance/held-weapons",
-        "size": 96,
-        "cols": 8,
-        "rows": 16,
-        "index": 13,
-        "kind": "wand",
-        "grips": [
-          [
-            45,
-            57
-          ],
-          [
-            47,
-            55
-          ],
-          [
-            43,
-            55
+            70
           ],
           [
             39,
-            53
-          ],
-          [
-            48,
-            55
+            71
           ],
           [
             37,
-            53
+            72
           ],
           [
             40,
-            55
+            72
           ],
           [
-            43,
-            56
+            46,
+            70
+          ],
+          [
+            57,
+            72
+          ],
+          [
+            61,
+            72
+          ],
+          [
+            57,
+            72
           ]
         ],
         "axes": [
-          0.7389200320464453,
-          0.7336309841183901,
-          0.7389200320464453,
-          0.7456181649264215,
-          0.09536204690240896,
-          0.8288490587889792,
-          0.5953093628647379,
-          0.7240501805889523
+          0.0469871955791834,
+          0.3369070603477614,
+          0.3709409708224109,
+          0.27829965900511133,
+          0.06450880790876481,
+          -0.32708773954686915,
+          -0.3181791410097427,
+          -0.17387073491637656
+        ],
+        "tips": [
+          [
+            46,
+            10.6
+          ],
+          [
+            59.6,
+            12.6
+          ],
+          [
+            60.6,
+            10.4
+          ],
+          [
+            57.8,
+            10.6
+          ],
+          [
+            49.6,
+            10.4
+          ],
+          [
+            36.8,
+            11
+          ],
+          [
+            41.2,
+            10.6
+          ],
+          [
+            46,
+            12
+          ]
         ],
         "measured": [
           true,
@@ -35724,40 +36193,105 @@
           true,
           true
         ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wand2": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 3,
+        "grips": [
+          [
+            42,
+            75
+          ],
+          [
+            36,
+            74
+          ],
+          [
+            42,
+            74
+          ],
+          [
+            38,
+            75
+          ],
+          [
+            49,
+            74
+          ],
+          [
+            52,
+            75
+          ],
+          [
+            59,
+            74
+          ],
+          [
+            54,
+            74
+          ]
+        ],
+        "axes": [
+          0.2832270519545117,
+          0.4415020581584715,
+          0.27795201804575514,
+          0.40917585377943205,
+          -0.027523130760360268,
+          -0.28704231783126943,
+          -0.4312671781376394,
+          -0.241939154349841
+        ],
         "tips": [
           [
-            77.8,
-            21
+            60.4,
+            10.4
           ],
           [
-            83.6,
-            14.4
-          ],
-          [
-            75.8,
-            19
-          ],
-          [
-            77.6,
+            65.6,
             11.2
           ],
           [
-            52.4,
-            9
+            60.6,
+            10.4
           ],
           [
-            80.2,
-            13.4
+            65.6,
+            11.4
           ],
           [
-            69.8,
-            11
+            47,
+            10.4
           ],
           [
-            81.2,
-            12.8
+            33.4,
+            10.4
+          ],
+          [
+            30,
+            11.8
+          ],
+          [
+            37.8,
+            10.2
           ]
-        ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
       },
       "flowerweapon": {
         "file": "appearance/held-weapons",
@@ -35950,6 +36484,1926 @@
             5.8
           ]
         ]
+      },
+      "spearlv5": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 1,
+        "grips": [
+          [
+            41,
+            68
+          ],
+          [
+            41,
+            68
+          ],
+          [
+            38,
+            68
+          ],
+          [
+            39,
+            69
+          ],
+          [
+            50,
+            68
+          ],
+          [
+            56,
+            69
+          ],
+          [
+            58,
+            68
+          ],
+          [
+            55,
+            68
+          ]
+        ],
+        "axes": [
+          0.3192218500016535,
+          0.46466600826259746,
+          0.5527379527036224,
+          0.48965214216909525,
+          0.003660359894768371,
+          -0.44771560223728774,
+          -0.5275920527668236,
+          -0.324132817248036
+        ],
+        "tips": [
+          [
+            59.6,
+            11.2
+          ],
+          [
+            69.2,
+            11
+          ],
+          [
+            72.8,
+            11.2
+          ],
+          [
+            69.6,
+            11.2
+          ],
+          [
+            49.8,
+            11.6
+          ],
+          [
+            28.2,
+            11.6
+          ],
+          [
+            25,
+            11.6
+          ],
+          [
+            36.4,
+            12
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "spearlv10": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 2,
+        "grips": [
+          [
+            44,
+            68
+          ],
+          [
+            41,
+            68
+          ],
+          [
+            37,
+            69
+          ],
+          [
+            38,
+            69
+          ],
+          [
+            48,
+            69
+          ],
+          [
+            57,
+            69
+          ],
+          [
+            58,
+            69
+          ],
+          [
+            54,
+            68
+          ]
+        ],
+        "axes": [
+          0.3055367812774446,
+          0.4315519273760238,
+          0.5381400209015559,
+          0.5224736062471869,
+          0.017428514014970056,
+          -0.46780883421147657,
+          -0.5193606144577334,
+          -0.30715390841088874
+        ],
+        "tips": [
+          [
+            61.6,
+            11.2
+          ],
+          [
+            67.6,
+            11.2
+          ],
+          [
+            72.2,
+            11.2
+          ],
+          [
+            71.4,
+            11
+          ],
+          [
+            49,
+            11.2
+          ],
+          [
+            27.4,
+            11.2
+          ],
+          [
+            24.8,
+            11.2
+          ],
+          [
+            35.4,
+            11.2
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "spearlv20": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 4,
+        "grips": [
+          [
+            44,
+            68
+          ],
+          [
+            41,
+            67
+          ],
+          [
+            37,
+            68
+          ],
+          [
+            37,
+            68
+          ],
+          [
+            49,
+            68
+          ],
+          [
+            55,
+            67
+          ],
+          [
+            59,
+            68
+          ],
+          [
+            54,
+            68
+          ]
+        ],
+        "axes": [
+          0.3469698895993333,
+          0.4882776134363753,
+          0.5827519127420467,
+          0.5655602523906488,
+          -0.016305870022942016,
+          -0.46713319073459786,
+          -0.5686701242760865,
+          -0.3298577741498368
+        ],
+        "tips": [
+          [
+            64.6,
+            11.2
+          ],
+          [
+            70.6,
+            11.2
+          ],
+          [
+            74,
+            11.6
+          ],
+          [
+            73,
+            11.6
+          ],
+          [
+            47.6,
+            11.2
+          ],
+          [
+            26.8,
+            11.2
+          ],
+          [
+            23,
+            11.6
+          ],
+          [
+            34.8,
+            11.6
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "spearlv25": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 5,
+        "grips": [
+          [
+            39,
+            70
+          ],
+          [
+            40,
+            66
+          ],
+          [
+            37,
+            68
+          ],
+          [
+            39,
+            68
+          ],
+          [
+            49,
+            69
+          ],
+          [
+            56,
+            67
+          ],
+          [
+            58,
+            67
+          ],
+          [
+            56,
+            70
+          ]
+        ],
+        "axes": [
+          0.38135956042060665,
+          0.5157256022295866,
+          0.5618688069483136,
+          0.48781846560369213,
+          0.00794264988291082,
+          -0.4561315223158021,
+          -0.5501754177547393,
+          -0.39910752356765855
+        ],
+        "tips": [
+          [
+            62.6,
+            11.2
+          ],
+          [
+            71.2,
+            11.2
+          ],
+          [
+            72.8,
+            11.2
+          ],
+          [
+            69.6,
+            11.2
+          ],
+          [
+            49,
+            11.4
+          ],
+          [
+            29.2,
+            11.2
+          ],
+          [
+            24,
+            11.6
+          ],
+          [
+            32,
+            12
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "spearlv30": {
+        "file": "appearance/tier-spear",
+        "kind": "spear",
+        "index": 6,
+        "grips": [
+          [
+            39,
+            68
+          ],
+          [
+            39,
+            68
+          ],
+          [
+            38,
+            69
+          ],
+          [
+            40,
+            68
+          ],
+          [
+            48,
+            68
+          ],
+          [
+            56,
+            68
+          ],
+          [
+            59,
+            69
+          ],
+          [
+            56,
+            68
+          ]
+        ],
+        "axes": [
+          0.38751665961881776,
+          0.5091982186304901,
+          0.5389950690298583,
+          0.47154607645530766,
+          -0.009407429063639684,
+          -0.46928748082109617,
+          -0.5389499860844267,
+          -0.4029529311134586
+        ],
+        "tips": [
+          [
+            62.6,
+            11.2
+          ],
+          [
+            70.6,
+            11.8
+          ],
+          [
+            72.6,
+            11.2
+          ],
+          [
+            68.6,
+            11.2
+          ],
+          [
+            47,
+            12.2
+          ],
+          [
+            27.4,
+            11.2
+          ],
+          [
+            24.6,
+            11
+          ],
+          [
+            31.4,
+            11.2
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "stafflv5": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 1,
+        "grips": [
+          [
+            48,
+            70
+          ],
+          [
+            36,
+            70
+          ],
+          [
+            37,
+            70
+          ],
+          [
+            39,
+            70
+          ],
+          [
+            48,
+            70
+          ],
+          [
+            61,
+            69
+          ],
+          [
+            59,
+            70
+          ],
+          [
+            47,
+            70
+          ]
+        ],
+        "axes": [
+          0.03872169694197111,
+          0.436947124367347,
+          0.44581898970401884,
+          0.41549209594089065,
+          -0.05826420559444041,
+          -0.3768823333499258,
+          -0.46996093506753084,
+          -0.031653950802197794
+        ],
+        "tips": [
+          [
+            50,
+            10
+          ],
+          [
+            62.8,
+            12.4
+          ],
+          [
+            64.6,
+            11.4
+          ],
+          [
+            64,
+            12.4
+          ],
+          [
+            44.8,
+            10.2
+          ],
+          [
+            37.2,
+            10.2
+          ],
+          [
+            31.4,
+            14.4
+          ],
+          [
+            45,
+            10
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "stafflv10": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 2,
+        "grips": [
+          [
+            46,
+            70
+          ],
+          [
+            35,
+            70
+          ],
+          [
+            36,
+            70
+          ],
+          [
+            38,
+            69
+          ],
+          [
+            48,
+            70
+          ],
+          [
+            61,
+            69
+          ],
+          [
+            62,
+            70
+          ],
+          [
+            50,
+            70
+          ]
+        ],
+        "axes": [
+          0.22724767926120024,
+          0.5098513264046007,
+          0.4583048627604024,
+          0.4038534387829415,
+          -0.030741093390790897,
+          -0.5017277184327926,
+          -0.5124294336855443,
+          -0.2264049256079953
+        ],
+        "tips": [
+          [
+            59.6,
+            10.8
+          ],
+          [
+            67.2,
+            12.4
+          ],
+          [
+            64.6,
+            11.4
+          ],
+          [
+            62.2,
+            11.8
+          ],
+          [
+            46.2,
+            11.2
+          ],
+          [
+            29.2,
+            10.6
+          ],
+          [
+            28.8,
+            11
+          ],
+          [
+            36,
+            11
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "stafflv20": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 4,
+        "grips": [
+          [
+            38,
+            71
+          ],
+          [
+            32,
+            72
+          ],
+          [
+            36,
+            71
+          ],
+          [
+            39,
+            71
+          ],
+          [
+            50,
+            71
+          ],
+          [
+            60,
+            71
+          ],
+          [
+            62,
+            72
+          ],
+          [
+            57,
+            71
+          ]
+        ],
+        "axes": [
+          0.36618866567245806,
+          0.503785661627311,
+          0.4227573092203155,
+          0.38022276963273105,
+          -0.13419147296887413,
+          -0.42282608541419037,
+          -0.44901477055559313,
+          -0.3676907204489099
+        ],
+        "tips": [
+          [
+            61.8,
+            10.2
+          ],
+          [
+            65.4,
+            11.4
+          ],
+          [
+            63.6,
+            10.4
+          ],
+          [
+            62.8,
+            10.2
+          ],
+          [
+            42,
+            10.2
+          ],
+          [
+            32.4,
+            10.4
+          ],
+          [
+            33.2,
+            11
+          ],
+          [
+            33.2,
+            10.2
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "stafflv25": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 5,
+        "grips": [
+          [
+            34,
+            73
+          ],
+          [
+            30,
+            73
+          ],
+          [
+            34,
+            71
+          ],
+          [
+            42,
+            71
+          ],
+          [
+            49,
+            71
+          ],
+          [
+            62,
+            71
+          ],
+          [
+            65,
+            73
+          ],
+          [
+            62,
+            73
+          ]
+        ],
+        "axes": [
+          0.3886705239493209,
+          0.5991897488663146,
+          0.486750298172893,
+          0.271901437619946,
+          -0.15456087046487518,
+          -0.48668810004759727,
+          -0.5892424977631523,
+          -0.39670239605030755
+        ],
+        "tips": [
+          [
+            59.4,
+            11.4
+          ],
+          [
+            71.4,
+            13
+          ],
+          [
+            65.6,
+            12
+          ],
+          [
+            59,
+            10.4
+          ],
+          [
+            39,
+            10.4
+          ],
+          [
+            30.4,
+            12
+          ],
+          [
+            24.6,
+            13
+          ],
+          [
+            36.4,
+            11.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "stafflv30": {
+        "file": "appearance/tier-staff",
+        "kind": "staff",
+        "index": 6,
+        "grips": [
+          [
+            35,
+            71
+          ],
+          [
+            32,
+            70
+          ],
+          [
+            37,
+            70
+          ],
+          [
+            38,
+            71
+          ],
+          [
+            54,
+            70
+          ],
+          [
+            60,
+            70
+          ],
+          [
+            63,
+            70
+          ],
+          [
+            62,
+            70
+          ]
+        ],
+        "axes": [
+          0.4654913939001932,
+          0.548707137653538,
+          0.43008471532158965,
+          0.3351112933690729,
+          -0.271832182926018,
+          -0.41444367767691653,
+          -0.5259644752389642,
+          -0.48510359063943476
+        ],
+        "tips": [
+          [
+            64.2,
+            12
+          ],
+          [
+            68.2,
+            11
+          ],
+          [
+            63.4,
+            12
+          ],
+          [
+            58.8,
+            10.2
+          ],
+          [
+            37.4,
+            10.6
+          ],
+          [
+            33.8,
+            11
+          ],
+          [
+            28.4,
+            10.4
+          ],
+          [
+            31.2,
+            12
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "bowlv5": {
+        "file": "appearance/tier-bow",
+        "kind": "bow",
+        "index": 1,
+        "grips": [
+          [
+            35,
+            60
+          ],
+          [
+            34,
+            61
+          ],
+          [
+            38,
+            61
+          ],
+          [
+            36,
+            61
+          ],
+          [
+            47,
+            61
+          ],
+          [
+            58,
+            61
+          ],
+          [
+            62,
+            61
+          ],
+          [
+            61,
+            60
+          ]
+        ],
+        "axes": [
+          0.6275148819994855,
+          0.6485680462860343,
+          0.5792942482892158,
+          0.5500532040988065,
+          0.039060371956815616,
+          -0.5507053579319456,
+          -0.6493563548250956,
+          -0.6185841480019181
+        ],
+        "tips": [
+          [
+            70.4,
+            10.8
+          ],
+          [
+            72.2,
+            10.8
+          ],
+          [
+            71,
+            11
+          ],
+          [
+            67.2,
+            10.4
+          ],
+          [
+            48.8,
+            10.6
+          ],
+          [
+            27.8,
+            10.8
+          ],
+          [
+            23.8,
+            10.8
+          ],
+          [
+            25.8,
+            10.8
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "bowlv10": {
+        "file": "appearance/tier-bow",
+        "kind": "bow",
+        "index": 2,
+        "grips": [
+          [
+            34,
+            66
+          ],
+          [
+            37,
+            66
+          ],
+          [
+            40,
+            66
+          ],
+          [
+            38,
+            66
+          ],
+          [
+            47,
+            66
+          ],
+          [
+            57,
+            66
+          ],
+          [
+            59,
+            66
+          ],
+          [
+            62,
+            66
+          ]
+        ],
+        "axes": [
+          0.6160190840346473,
+          0.5780364455577104,
+          0.43960216796660956,
+          0.48455082085813667,
+          0.028668362783848017,
+          -0.45845279883781104,
+          -0.581024328580099,
+          -0.5974830878323449
+        ],
+        "tips": [
+          [
+            73.2,
+            10.8
+          ],
+          [
+            72.6,
+            10.4
+          ],
+          [
+            65.8,
+            10.6
+          ],
+          [
+            67.2,
+            10.8
+          ],
+          [
+            48.4,
+            10.6
+          ],
+          [
+            29.4,
+            10.4
+          ],
+          [
+            22.8,
+            10.8
+          ],
+          [
+            24.8,
+            11.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "bowlv20": {
+        "file": "appearance/tier-bow",
+        "kind": "bow",
+        "index": 4,
+        "grips": [
+          [
+            39,
+            56
+          ],
+          [
+            37,
+            56
+          ],
+          [
+            39,
+            55
+          ],
+          [
+            40,
+            55
+          ],
+          [
+            45,
+            55
+          ],
+          [
+            58,
+            56
+          ],
+          [
+            59,
+            56
+          ],
+          [
+            57,
+            56
+          ]
+        ],
+        "axes": [
+          0.6811298429187548,
+          0.6325150487869511,
+          0.5275437590669174,
+          0.5547395887372432,
+          0.12263622349846087,
+          -0.5392520995471859,
+          -0.6403952704770919,
+          -0.6675615253181156
+        ],
+        "tips": [
+          [
+            75.6,
+            10.2
+          ],
+          [
+            70.6,
+            10.2
+          ],
+          [
+            65.6,
+            10.2
+          ],
+          [
+            68.2,
+            10.4
+          ],
+          [
+            51,
+            10
+          ],
+          [
+            30.4,
+            10.2
+          ],
+          [
+            24.8,
+            10.4
+          ],
+          [
+            21.4,
+            10.2
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "bowlv25": {
+        "file": "appearance/tier-bow",
+        "kind": "bow",
+        "index": 5,
+        "grips": [
+          [
+            37,
+            68
+          ],
+          [
+            39,
+            66
+          ],
+          [
+            40,
+            68
+          ],
+          [
+            41,
+            67
+          ],
+          [
+            45,
+            67
+          ],
+          [
+            56,
+            66
+          ],
+          [
+            59,
+            68
+          ],
+          [
+            59,
+            68
+          ]
+        ],
+        "axes": [
+          0.5672219590217397,
+          0.5459083187056009,
+          0.4410717858428587,
+          0.4256279122707527,
+          0.029694413061038635,
+          -0.4449288781916435,
+          -0.5474558164439634,
+          -0.5557977096597242
+        ],
+        "tips": [
+          [
+            73.6,
+            10.2
+          ],
+          [
+            73.2,
+            10.4
+          ],
+          [
+            66.8,
+            10.2
+          ],
+          [
+            66.6,
+            10.2
+          ],
+          [
+            47,
+            10
+          ],
+          [
+            29.4,
+            10.2
+          ],
+          [
+            23.8,
+            10.4
+          ],
+          [
+            22.8,
+            10.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "bowlv30": {
+        "file": "appearance/tier-bow",
+        "kind": "bow",
+        "index": 6,
+        "grips": [
+          [
+            36,
+            60
+          ],
+          [
+            39,
+            60
+          ],
+          [
+            39,
+            59
+          ],
+          [
+            38,
+            60
+          ],
+          [
+            48,
+            58
+          ],
+          [
+            58,
+            60
+          ],
+          [
+            58,
+            60
+          ],
+          [
+            59,
+            59
+          ]
+        ],
+        "axes": [
+          0.5928557254843432,
+          0.5796967704164462,
+          0.5048795599757582,
+          0.5422080653896625,
+          0.0416992197535411,
+          -0.511911376586273,
+          -0.5622329490760982,
+          -0.6030363247502518
+        ],
+        "tips": [
+          [
+            69.2,
+            10.4
+          ],
+          [
+            71.2,
+            10.4
+          ],
+          [
+            66.2,
+            10.4
+          ],
+          [
+            67.6,
+            10.2
+          ],
+          [
+            49.8,
+            10
+          ],
+          [
+            30.4,
+            10.2
+          ],
+          [
+            26.4,
+            10.2
+          ],
+          [
+            25.8,
+            10.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wandlv5": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 1,
+        "grips": [
+          [
+            41,
+            72
+          ],
+          [
+            38,
+            73
+          ],
+          [
+            39,
+            73
+          ],
+          [
+            39,
+            73
+          ],
+          [
+            50,
+            73
+          ],
+          [
+            57,
+            73
+          ],
+          [
+            58,
+            72
+          ],
+          [
+            56,
+            73
+          ]
+        ],
+        "axes": [
+          0.18989920736551738,
+          0.3708700485964402,
+          0.31767310992146486,
+          0.263267343205634,
+          -0.009606499600923779,
+          -0.298949179191954,
+          -0.30000239767136244,
+          -0.21768458478407937
+        ],
+        "tips": [
+          [
+            52.6,
+            10.8
+          ],
+          [
+            62.2,
+            10.6
+          ],
+          [
+            59.6,
+            11
+          ],
+          [
+            55.8,
+            10.6
+          ],
+          [
+            49,
+            11.6
+          ],
+          [
+            37.4,
+            11.4
+          ],
+          [
+            39.4,
+            10.8
+          ],
+          [
+            42.2,
+            10.6
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wandlv10": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 2,
+        "grips": [
+          [
+            40,
+            73
+          ],
+          [
+            39,
+            75
+          ],
+          [
+            40,
+            73
+          ],
+          [
+            36,
+            73
+          ],
+          [
+            50,
+            73
+          ],
+          [
+            58,
+            73
+          ],
+          [
+            57,
+            74
+          ],
+          [
+            56,
+            74
+          ]
+        ],
+        "axes": [
+          0.19088585630568414,
+          0.29387922662066074,
+          0.2948270875416872,
+          0.34104820187514623,
+          0.02515442742198115,
+          -0.24970641214896727,
+          -0.2958034631163412,
+          -0.17483881800713694
+        ],
+        "tips": [
+          [
+            51.8,
+            10.6
+          ],
+          [
+            58.2,
+            10.6
+          ],
+          [
+            59.2,
+            10.4
+          ],
+          [
+            58.4,
+            10.8
+          ],
+          [
+            51.4,
+            10.6
+          ],
+          [
+            42.2,
+            10.6
+          ],
+          [
+            37.4,
+            10.8
+          ],
+          [
+            45.2,
+            10.6
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wandlv20": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 4,
+        "grips": [
+          [
+            43,
+            72
+          ],
+          [
+            39,
+            72
+          ],
+          [
+            40,
+            73
+          ],
+          [
+            40,
+            74
+          ],
+          [
+            50,
+            73
+          ],
+          [
+            55,
+            74
+          ],
+          [
+            54,
+            74
+          ],
+          [
+            53,
+            73
+          ]
+        ],
+        "axes": [
+          0.38070450368032965,
+          0.48769257487198153,
+          0.3411142548676074,
+          0.3107726230098932,
+          -0.01136203663313091,
+          -0.32918576454516185,
+          -0.390429712828544,
+          -0.3449646942554765
+        ],
+        "tips": [
+          [
+            67.2,
+            10.6
+          ],
+          [
+            71.6,
+            10.8
+          ],
+          [
+            62.8,
+            10.6
+          ],
+          [
+            60.6,
+            11
+          ],
+          [
+            49.6,
+            10.8
+          ],
+          [
+            33.2,
+            10.8
+          ],
+          [
+            27.8,
+            10.6
+          ],
+          [
+            30.8,
+            10.6
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wandlv25": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 5,
+        "grips": [
+          [
+            37,
+            72
+          ],
+          [
+            36,
+            72
+          ],
+          [
+            39,
+            72
+          ],
+          [
+            36,
+            72
+          ],
+          [
+            48,
+            72
+          ],
+          [
+            56,
+            71
+          ],
+          [
+            59,
+            72
+          ],
+          [
+            58,
+            72
+          ]
+        ],
+        "axes": [
+          0.3583649785849923,
+          0.39017157666943647,
+          0.35536538315671073,
+          0.4262255322181442,
+          -0.015074488305068228,
+          -0.34339751584568035,
+          -0.37918814514138,
+          -0.3518878308496286
+        ],
+        "tips": [
+          [
+            60.2,
+            10.6
+          ],
+          [
+            61.2,
+            10.4
+          ],
+          [
+            61.4,
+            11
+          ],
+          [
+            63.6,
+            11.4
+          ],
+          [
+            46.8,
+            11
+          ],
+          [
+            35,
+            11.2
+          ],
+          [
+            35.2,
+            11.6
+          ],
+          [
+            36.2,
+            10.8
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
+      },
+      "wandlv30": {
+        "file": "appearance/tier-wand",
+        "kind": "wand",
+        "index": 6,
+        "grips": [
+          [
+            34,
+            78
+          ],
+          [
+            35,
+            78
+          ],
+          [
+            36,
+            79
+          ],
+          [
+            33,
+            79
+          ],
+          [
+            47,
+            79
+          ],
+          [
+            61,
+            78
+          ],
+          [
+            62,
+            79
+          ],
+          [
+            63,
+            78
+          ]
+        ],
+        "axes": [
+          0.3896226308936702,
+          0.442757766757916,
+          0.3845987316633102,
+          0.43478117197010724,
+          0.026294174942869813,
+          -0.43134931136212196,
+          -0.4505517129200121,
+          -0.4207069891785071
+        ],
+        "tips": [
+          [
+            62.2,
+            10.6
+          ],
+          [
+            67.2,
+            11
+          ],
+          [
+            63.6,
+            11.2
+          ],
+          [
+            65.2,
+            10.6
+          ],
+          [
+            48.4,
+            11.2
+          ],
+          [
+            29.8,
+            10.4
+          ],
+          [
+            29.4,
+            11
+          ],
+          [
+            32.8,
+            10.4
+          ]
+        ],
+        "measured": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": 96,
+        "cols": 8,
+        "rows": 7
       }
     },
     "rigVersion": 1,
@@ -35977,5 +38431,16 @@
     "cols": 8,
     "rows": 4,
     "size": 96
-  }
+  },
+  "skillMotion": {
+    "file": "class-skills-v23",
+    "size": 128,
+    "cols": 8,
+    "rows": 4
+  },
+  "expansionArt": [
+    "tier-weapon-icons",
+    "tier-armor-icons",
+    "class-skills-v23"
+  ]
 }

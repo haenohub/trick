@@ -89,6 +89,78 @@ export function attributes(p) {
   return Object.fromEntries(keys.map((k, i) => [k, g.base[i] + a[k]]));
 }
 export function equipmentProfile(i) {
+  if (i.progressionEquipment) {
+    const n = i.level / 5,
+      magic = ["mage", "herbalist"].includes(i.classId),
+      weapon = i.slot === "weapon",
+      armor = i.slot === "armor";
+    const s = {
+      attack: 0,
+      magicPower: 0,
+      defense: 0,
+      magicDefense: 0,
+      accuracy: 0,
+      evasion: 0,
+      critChance: 0,
+      critDamage: 0,
+      maxHp: 0,
+      requirements: {},
+    };
+    if (weapon) {
+      s.attack = magic ? 1 + n * 2 : 2 + n * 8;
+      s.magicPower = magic ? 3 + n * 10 : 0;
+      s.accuracy = 1 + n * 4;
+      s.critChance = n * 0.006;
+      s.critDamage = n * 0.025;
+    }
+    if (armor) {
+      s.defense = 1 + n * (magic ? 3 : 4);
+      s.magicDefense = 1 + n * (magic ? 5 : 2);
+      s.maxHp = n * 15;
+      if (magic) s.magicPower = n * 2;
+    }
+    if (i.slot === "head") {
+      s.defense = n * 2;
+      s.magicDefense = n * 2;
+      s.accuracy = n;
+    }
+    if (i.slot === "boots") {
+      s.defense = n;
+      s.evasion = n * 0.009;
+      s.accuracy = n * 2;
+    }
+    if (i.slot === "charm") {
+      s.attack = n * 2;
+      s.magicPower = n * 2;
+      s.critChance = n * 0.009;
+      s.critDamage = n * 0.025;
+    }
+    if (n) {
+      const key = weapon
+        ? magic
+          ? "intelligence"
+          : i.classId === "ranger"
+            ? "dexterity"
+            : "strength"
+        : armor
+          ? magic
+            ? "spirit"
+            : "vitality"
+          : i.slot === "boots"
+            ? "dexterity"
+            : i.slot === "head"
+              ? "intelligence"
+              : "spirit";
+      const expected = legacyAttributes({
+        classId: i.classId || "warden",
+        level: i.level,
+      });
+      s.requirements = {
+        [key]: Math.floor(expected[key] * (weapon ? 0.6 : 0.45)),
+      };
+    }
+    return s;
+  }
   const t = i.tier || 1,
     high = t > 1,
     magic = ["mage", "herbalist"].includes(i.classId);
@@ -172,9 +244,9 @@ export function equipRequirements(p, item) {
     checks = [
       {
         label: "레벨",
-        required: item.level || 1,
+        required: item.level ?? 0,
         current: p.level,
-        met: p.level >= (item.level || 1),
+        met: p.level >= (item.level ?? 0),
       },
     ];
   if (item.classId)

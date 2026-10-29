@@ -206,7 +206,7 @@ const skillDescriptions = {
   warden: [
     "앞의 적과 뒤쪽 적을 관통해 210% 피해를 줍니다. 반격 1회마다 35%가 추가됩니다.",
     "최대 체력의 28% 보호막을 얻어 7초 동안 몸을 지킵니다.",
-    "지정한 지역에 190% 피해를 주고 일반 몬스터의 공격 준비를 끊습니다.",
+    "지정한 지역으로 도약해 착지 시 190% 피해를 주고 일반 몬스터의 공격 준비를 끊습니다.",
   ],
   mage: [
     "220% 피해를 주고 달씨앗을 하나 얻습니다. 최대 3개까지 모읍니다.",
@@ -215,7 +215,7 @@ const skillDescriptions = {
   ],
   ranger: [
     "긴 사거리에서 220% 피해를 줍니다.",
-    "뒤로 굴러 0.45초간 공격을 회피합니다. 4초 안의 다음 공격이 55% 강해집니다.",
+    "하늘로 화살을 쏘아 지정한 범위에 세 차례 화살비를 내립니다. 각 타격은 80% 피해입니다.",
     "9초 동안 적이 받는 피해를 30% 늘리고 120% 피해를 줍니다.",
   ],
   herbalist: [
@@ -386,6 +386,11 @@ function itemIcon(id) {
 function abilityIcon(index) {
   return atlasIcon("items", 8, 8, index);
 }
+function skillIcon(slot) {
+  return cls().id === "ranger" && slot === 1
+    ? itemIcon("bow2")
+    : abilityIcon(artMeta.skillIcons[cls().id][slot]);
+}
 function skillName(slot) {
   return slot === 3
     ? cls().branches.find((b) => b.id === state?.player.branch)?.skill ||
@@ -399,7 +404,7 @@ function buildSkillbar() {
     [0, 1, 2, 3]
       .map(
         (n) =>
-          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${bindingLabel("skill" + n)}]"><kbd>${bindingLabel("skill" + n)}</kbd><span class="glyph">${abilityIcon(artMeta.skillIcons[cls().id][n])}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
+          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${bindingLabel("skill" + n)}]"><kbd>${bindingLabel("skill" + n)}</kbd><span class="glyph">${skillIcon(n)}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
       )
       .join("") +
     `<button class="skill potion" data-action="potion" title="보들잎 연고 [${bindingLabel("potion")}]"><kbd>${bindingLabel("potion")}</kbd><span class="glyph">${abilityIcon(59)}</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
@@ -416,7 +421,7 @@ function hud() {
   const traits = {
     warden: `반격 ${p.guardPower || 0}/3`,
     mage: `달씨앗 ${p.spellCharge || 0}/3`,
-    ranger: p.evading ? "회피 중" : p.precise ? "정조준 준비" : "바람결 정조준",
+    ranger: "화살비 · 사거리 +50%",
     herbalist: "독 중첩 · 정원 회복",
   };
   $("combat-trait").textContent = traits[p.classId];
@@ -889,7 +894,7 @@ function renderPanel() {
           .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${abilityIcon(artMeta.skillIcons[c.id][n])}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${skillIcon(n)}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -1621,7 +1626,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.22.0",
+  version: "0.23.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

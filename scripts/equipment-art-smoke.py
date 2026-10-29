@@ -12,7 +12,7 @@ with sync_playwright() as pw:
  result=p.evaluate('''async()=>{
   const {loadArt,prepareEquipmentArt,Renderer,drawCharacterPreview}=await import('./renderer.js');
   const {starterEquipment}=await import('./equipment-appearance.js');
-  const {ITEMS,CLASSES}=await import('./data.js');await loadArt();
+  const {ITEMS,CLASSES}=await import('./data.js');await loadArt();const art=await(await fetch('./assets/manifest.json')).json();
   if(performance.getEntriesByType('resource').some(e=>e.name.includes('/appearance/')))throw Error('unused wardrobe downloaded during initial load');
   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=512;canvas.id='outfits';document.body.append(canvas);
   const r=new Renderer(canvas,document.createElement('canvas'));r.dpr=1;r.zoom=1;
@@ -27,11 +27,11 @@ with sync_playwright() as pw:
     for(const anim of ['idle','walk','windup','attack','recover','hurt','death'])for(let dir=0;dir<8;dir++)for(const time of [0,.1,.2,.4]){
      calls.length=0;r.sprite(cls.id,64,112,anim,dir,time,0,96,null,cls.id+anim+dir,equipment);
      if(calls.length!==3)throw Error(cls.id+' '+item.id+' wrong layer count '+calls.length);
-     if(!calls.some(c=>c.file.includes(item.slot==='weapon'?'/appearance/held-weapons.png':'/appearance/base/'+cls.id+'.png')))throw Error('equipped item is invisible');
-     const frame=calls.find(c=>!c.file.endsWith('/appearance/held-weapons.png')).args.slice(0,4).join(',');
+     if(!calls.some(c=>c.file.includes(item.slot==='weapon'?'/'+art.appearance.weapons[item.id].file+'.png':'/appearance/base/'+cls.id+'.png')))throw Error('equipped item is invisible');
+     const frame=calls.find(c=>c.file.includes('/appearance/base/')).args.slice(0,4).join(',');
      for(const c of calls){
       const [sx,sy,sw,sh]=c.args;
-      if(c.file.endsWith('/appearance/held-weapons.png')){if(sx!==dir*96||sw!==96||sh!==96||sy%96||sy<0||sy+sh>c.height)throw Error('wrong held weapon cell');continue;}
+      if((c.file.endsWith('/appearance/held-weapons.png')||c.file.includes('/appearance/tier-'))){if(sx!==dir*96||sw!==96||sh!==96||sy%96||sy<0||sy+sh>c.height)throw Error('wrong held weapon cell');continue;}
       if(!c.file.includes('/appearance/')||sw!==96||sh!==96||sy!==dir*96||sx<0||sx+sw>c.width||sy+sh>c.height||c.args.slice(0,4).join(',')!==frame)throw Error('gear/body frame or heading mismatch '+JSON.stringify(c));
      }checked++;
     }variants++;
@@ -44,9 +44,9 @@ with sync_playwright() as pw:
   }
   return {variants,checked};
  }''')
- assert result=={'variants':48,'checked':10752},result
+ assert result=={'variants':148,'checked':33152},result
  p.locator('#outfits').screenshot(path='/tmp/leaftale-all-classes-equipped.png')
- print('PASS: lazy wardrobe loading; all 48 fitted class/item variants × 8 directions × 7 motions × 4 times draw integrated clothed bodies and independently held weapons')
+ print('PASS: lazy wardrobe loading; all 148 fitted class/item variants × 8 directions × 7 motions × 4 times draw integrated clothed bodies and independently held weapons')
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden')
  p.evaluate('''async()=>{
   const {createPlayer}=await import('./core.js');const q=createPlayer('warden');q.level=30;q.branch='antler';
@@ -55,13 +55,13 @@ with sync_playwright() as pw:
  }''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()
  p.evaluate('''()=>{window.gearCalls=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(image,...args){if(image.src?.includes('/appearance/')){gearCalls.push(image.src);if(gearCalls.length>1000)gearCalls.shift();}return draw.call(this,image,...args);};}''')
- p.wait_for_function("gearCalls.some(f=>f.includes('/appearance/held-weapons.png'))")
+ p.wait_for_function("gearCalls.some(f=>f.includes('/appearance/tier-spear.png'))")
  for slot,item in [('weapon','spear2'),('armor','wardenarmor2'),('head','hood2'),('boots','boots2'),('charm','charm2')]:
   if p.locator('#menu-panel').get_attribute('hidden') is not None:p.keyboard.press('i')
   p.locator('[data-inventory-item='+item+']').hover()
   p.locator('#item-tooltip [data-action=equip]').click()
   p.wait_for_function('(q)=>__leaftale.snapshot().player.equipment[q.slot]===q.item',arg={'slot':slot,'item':item})
-  p.wait_for_function('(item)=>gearCalls.some(f=>f.includes(item.startsWith("spear")?"/appearance/held-weapons.png":"/appearance/base/warden.png"))',arg=item)
+  p.wait_for_function('(item)=>gearCalls.some(f=>f.includes(item.startsWith("spear")?"/appearance/tier-spear.png":"/appearance/base/warden.png"))',arg=item)
  p.keyboard.press('i');p.wait_for_timeout(5500)
  p.screenshot(path='/tmp/leaftale-equipped-in-game.png')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()
