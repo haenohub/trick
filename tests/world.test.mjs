@@ -130,7 +130,7 @@ test("NPCs face their service buildings, species disperse through overlapping ha
     for (const [i, d] of defs.entries()) {
       const center = d.type === "boss" ? n.boss : n.habitats[i];
       const group = mobs.filter((m) => m.def === d.id);
-      assert.equal(group.length, d.type === "normal" ? 6 : 1);
+      assert.ok(group.length >= 1 && group.length <= 2);
       if (d.type === "boss")
         assert.ok(
           group.every((m) => Math.hypot(m.x - center.x, m.y - center.y) < 0.1),

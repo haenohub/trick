@@ -2858,14 +2858,170 @@ body.in-game .player-info .pocket-leaf {
 }
 
 /* Equipment and automatic level growth use the existing readable UI font. */
-.item-stat-grid,.player-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;margin:12px 0}
-.item-stat-grid span,.equipment-requirements span{display:block;overflow-wrap:anywhere}
-.equipment-requirements{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:9px;margin-top:9px}
-.equipment-requirements strong{display:block}.equipment-requirements .met{color:#c7e8ae}
-.player-stat-grid>div{display:grid;gap:4px;background:#122f3b80;border:1px solid #b6c8d34a;padding:10px}
-.player-stat-grid b{color:#ffe7ad}.player-stat-grid small{color:#b8c8c3}
-@media(min-width:760px){.player-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.stat-allocate{display:flex;gap:4px;align-items:center;margin-top:8px}.stat-allocate input{width:62px;min-width:0;background:#132b4c;color:#fff;border:1px solid #a2b3cb;padding:6px}.stat-allocate button{padding:6px 8px;min-height:34px}.stat-points{position:sticky;top:0;background:#223c65;padding:10px;border:1px solid #e3d492;z-index:2}.stat-points b{color:#ffdc8c;font-size:1.2em}.player-stat-grid>div{min-width:0}@media(max-width:420px){.player-stat-grid{grid-template-columns:1fr}.stat-allocate input{flex:1}}
-#world-phase{display:block;color:#f1e5ac;font-size:11px;line-height:1.4;max-width:174px;margin:2px 0}.glass{backdrop-filter:none}.map-card,.player-card{box-shadow:inset 0 1px #cad9f0,0 2px 4px #071c3c66}.menu-panel{border-radius:2px}button{touch-action:manipulation}.stat-allocate button:focus-visible,.stat-allocate input:focus-visible{outline:2px solid #ffe298;outline-offset:2px}
-#panel-backdrop{backdrop-filter:none;background:#10243924}.menu-panel>header{background:linear-gradient(#92a9cf,#4c6996);border-bottom:1px solid #c1d1ea}.menu-panel{box-shadow:inset 0 0 0 1px #ced9ec,0 3px 10px #08162f66}
-canvas.aiming{cursor:crosshair}
+.item-stat-grid,
+.player-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 12px;
+  margin: 12px 0;
+}
+.item-stat-grid span,
+.equipment-requirements span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.equipment-requirements {
+  display: grid;
+  gap: 4px;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  margin-top: 9px;
+}
+.equipment-requirements strong {
+  display: block;
+}
+.equipment-requirements .met {
+  color: #c7e8ae;
+}
+.player-stat-grid > div {
+  display: grid;
+  gap: 4px;
+  background: #122f3b80;
+  border: 1px solid #b6c8d34a;
+  padding: 10px;
+}
+.player-stat-grid b {
+  color: #ffe7ad;
+}
+.player-stat-grid small {
+  color: #b8c8c3;
+}
+@media (min-width: 760px) {
+  .player-stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.stat-allocate {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 8px;
+}
+.stat-allocate input {
+  width: 62px;
+  min-width: 0;
+  background: #132b4c;
+  color: #fff;
+  border: 1px solid #a2b3cb;
+  padding: 6px;
+}
+.stat-allocate button {
+  padding: 6px 8px;
+  min-height: 34px;
+}
+.stat-points {
+  position: sticky;
+  top: 0;
+  background: #223c65;
+  padding: 10px;
+  border: 1px solid #e3d492;
+  z-index: 2;
+}
+.stat-points b {
+  color: #ffdc8c;
+  font-size: 1.2em;
+}
+.player-stat-grid > div {
+  min-width: 0;
+}
+@media (max-width: 420px) {
+  .player-stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-allocate input {
+    flex: 1;
+  }
+}
+#world-phase {
+  display: block;
+  color: #f1e5ac;
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 174px;
+  margin: 2px 0;
+}
+.glass {
+  backdrop-filter: none;
+}
+.map-card,
+.player-card {
+  box-shadow:
+    inset 0 1px #cad9f0,
+    0 2px 4px #071c3c66;
+}
+.menu-panel {
+  border-radius: 2px;
+}
+button {
+  touch-action: manipulation;
+}
+.stat-allocate button:focus-visible,
+.stat-allocate input:focus-visible {
+  outline: 2px solid #ffe298;
+  outline-offset: 2px;
+}
+#panel-backdrop {
+  backdrop-filter: none;
+  background: #10243924;
+}
+.menu-panel > header {
+  background: linear-gradient(#92a9cf, #4c6996);
+  border-bottom: 1px solid #c1d1ea;
+}
+.menu-panel {
+  box-shadow:
+    inset 0 0 0 1px #ced9ec,
+    0 3px 10px #08162f66;
+}
+canvas.aiming {
+  cursor: crosshair;
+}
+
+#consumable-buffs {
+  position: absolute;
+  bottom: 228px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 190px;
+  pointer-events: auto;
+}
+.active-consumable {
+  position: relative;
+  background: #162a31dc;
+  border: 1px solid #8cae79;
+  border-radius: 5px;
+  padding: 2px;
+  display: inline-flex;
+}
+.active-consumable .item-icon {
+  width: 30px;
+  height: 30px;
+}
+.active-consumable b {
+  position: absolute;
+  bottom: 0;
+  right: 1px;
+  font-size: 11px;
+  color: #fff6c9;
+  text-shadow: 1px 1px #111;
+}
+@media (max-width: 600px) {
+  #consumable-buffs {
+    bottom: 218px;
+    right: 8px;
+    max-width: 150px;
+  }
+}

@@ -1,6 +1,7 @@
 import { floorTileCode } from "./isometric-layouts.js";
 import { animationFrame, LocomotionClocks } from "./animation.js";
 import { drawPaperDoll, heldWeaponTip } from "./avatar-draw.js";
+import { SKILL_VISUALS } from "./skill-visuals.js";
 import {
   equippedAppearance,
   orderedEquipmentLayers,
@@ -696,11 +697,7 @@ export class Renderer {
       const label = this.worldToScreen(m.x, m.y);
       this.text(a.name || "공격 준비", label.x, label.y - 105, "#ffe5c4", 11);
     }
-    for (const e of state.effects.filter((e) =>
-      ["garden", "vine", "shield", "magic", "poison", "slash", "slow"].includes(
-        e.kind,
-      ),
-    )) {
+    for (const e of state.effects.filter((e) => ["slow"].includes(e.kind))) {
       const s = this.worldToScreen(e.x, e.y),
         age = e.until - time;
       const row = {
@@ -1049,6 +1046,8 @@ export class Renderer {
       this.lootIcon({ ...drop, spinTime: time }, x, y, t * Math.PI * 4);
     }
     for (const e of state.effects) {
+      if (e.kind === "skill-vfx") this.skillEffect(e, state);
+      if (e.kind === "attack-impact") this.attackImpact(e, state);
       if (["arrow-rain", "leaf-landing"].includes(e.kind))
         this.classSkillEffect(e, state);
       if (["arrow-shot", "starfall", "herb-shot"].includes(e.kind))
@@ -1063,7 +1062,7 @@ export class Renderer {
           e.color || "#fff1c8",
           e.crit ? 22 : e.kind === "level" ? 24 : 16,
         );
-      if (["projectile", "beam"].includes(e.kind)) {
+      if (["projectile"].includes(e.kind)) {
         const end = this.worldToScreen(e.tx, e.ty),
           dx = end.x - s.x,
           dy = end.y - s.y;
@@ -1081,8 +1080,6 @@ export class Renderer {
       }
       if (
         [
-          "hit",
-          "burst",
           "heal",
           "level",
           "enemy",
@@ -1163,50 +1160,126 @@ export class Renderer {
     c.restore();
   }
   classSkillEffect(e, state) {
-    const a = ART.skillMotion,
-      image = a && IMAGES.get(a.file);
+    this.skillEffect(
+      { ...e, key: e.kind === "arrow-rain" ? "ranger-1" : "warden-2" },
+      state,
+    );
+  }
+  vfxCell(atlas, row, frame, x, y, w, h, angle = 0, alpha = 1) {
+    const image = atlas && IMAGES.get(atlas.file);
     if (!image) return;
     const c = this.ctx,
       z = this.zoom,
-      age = state.time - e.started,
-      origin = this.worldToScreen(e.x, e.y),
-      end = this.worldToScreen(e.tx ?? e.x, e.ty ?? e.y);
-    const cell = (row, t, x, y, w, h) => {
-      c.drawImage(
-        image,
-        Math.min(7, Math.max(0, Math.floor(t * 8))) * 128,
-        row * 128,
-        128,
-        128,
-        Math.round(x - (w * z) / 2),
-        Math.round(y - (h * z) / 2),
-        w * z,
-        h * z,
+      s = atlas.size;
+    c.save();
+    c.globalAlpha = alpha;
+    c.translate(Math.round(x), Math.round(y));
+    c.rotate(angle);
+    c.drawImage(
+      image,
+      Math.max(0, Math.min(atlas.cols - 1, Math.floor(frame))) * s,
+      row * s,
+      s,
+      s,
+      (-w * z) / 2,
+      (-h * z) / 2,
+      w * z,
+      h * z,
+    );
+    c.restore();
+  }
+  attackImpact(e, state) {
+    const a = ART.attackImpacts,
+      s = this.worldToScreen(e.x, e.y),
+      row = ["warden", "mage", "ranger", "herbalist"].indexOf(e.classId),
+      t = Math.min(0.999, (state.time - e.started) / (e.until - e.started));
+    this.vfxCell(
+      a,
+      Math.max(0, row),
+      t * (a?.cols || 12),
+      s.x,
+      s.y - 28 * this.zoom,
+      e.crit ? 100 : 76,
+      e.crit ? 100 : 76,
+    );
+  }
+  skillEffect(e, state) {
+    const v = SKILL_VISUALS[e.key];
+    if (!v) return;
+    const a = ART.skillEffects?.[v.classId];
+    if (!a) return;
+    const age = state.time - e.started,
+      duration = e.until - e.started,
+      z = this.zoom,
+      end = this.worldToScreen(e.tx ?? e.x, e.ty ?? e.y),
+      origin = this.worldToScreen(e.fromX ?? e.x, e.fromY ?? e.y);
+    let t = Math.min(0.999, Math.max(0, age / duration)),
+      x = end.x,
+      y = end.y - 24 * z,
+      w = v.width,
+      h = v.height,
+      angle = 0;
+    if (v.mode === "ground" || v.mode === "field") y = end.y - 20 * z;
+    if (v.mode === "field") {
+      // Grow once, then breathe through the settled garden frames. Never
+      // replay the opening pop on every persistent healing tick.
+      const frame =
+        age < 0.8 ? (age / 0.8) * 7 : 7 + (Math.sin((age - 0.8) * 3) + 1) * 1.8;
+      this.vfxCell(
+        a,
+        v.row,
+        frame,
+        x,
+        y,
+        w,
+        h,
+        0,
+        Math.min(1, (e.until - state.time) * 2),
       );
-    };
-    if (e.kind === "leaf-landing") {
-      cell(3, age / 0.55, end.x, end.y - 15 * z, 220, 130);
       return;
     }
-    const actor =
-        e.owner === state.player.id
-          ? state.player
-          : state.peers.find((p) => p.id === e.owner),
-      base = ART.appearance?.bases?.[actor?.classId],
-      weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon];
-    const hand =
-      base && weapon
-        ? heldWeaponTip(base, weapon, 4, e.dir || 0, { skyshot: true })
-        : null;
-    const launch = hand
-      ? { x: origin.x + (hand[0] - 48) * z, y: origin.y - (92 - hand[1]) * z }
-      : origin;
-    if (age < 0.38)
-      cell(0, age / 0.38, launch.x, launch.y - 50 * z - age * 220 * z, 80, 130);
-    if (age >= 0.32 && age < 1.05)
-      cell(1, (age - 0.32) / 0.73, end.x, end.y - 100 * z, 240, 230);
-    if (age >= 0.55)
-      cell(2, (age - 0.55) / 0.6, end.x, end.y - 12 * z, 230, 125);
+    if (v.mode === "self") {
+      x = origin.x;
+      y = origin.y - 58 * z;
+    }
+    if (v.mode === "line") {
+      const dx = end.x - origin.x,
+        dy = end.y - origin.y;
+      angle = Math.atan2(dy, dx);
+      x = (origin.x + end.x) / 2;
+      y = (origin.y + end.y) / 2 - 32 * z;
+      w = Math.min(340, Math.max(v.width, Math.hypot(dx, dy) / z));
+    }
+    if (v.mode === "beam") y = end.y - 100 * z;
+    if (v.mode === "rain") {
+      // Generated sequence has upward anticipation, falling flight, impact.
+      // The ground anchor stays locked to the original selected area.
+      if (age < 0.32) {
+        const actor =
+            e.owner === state.player.id
+              ? state.player
+              : state.peers.find((p) => p.id === e.owner),
+          base = ART.appearance?.bases?.[actor?.classId],
+          weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon],
+          hand =
+            base && weapon
+              ? heldWeaponTip(base, weapon, 4, e.dir || 0, { skyshot: true })
+              : null;
+        this.vfxCell(
+          a,
+          v.row,
+          (age / 0.32) * 3,
+          origin.x + (hand ? hand[0] - 48 : 0) * z,
+          origin.y - (hand ? 92 - hand[1] : 40) * z - age * 210 * z,
+          100,
+          150,
+        );
+      }
+      if (age < 0.32) return;
+      t = 0.25 + ((age - 0.32) / Math.max(0.01, duration - 0.32)) * 0.749;
+      y = end.y - 90 * z;
+    }
+    this.vfxCell(a, v.row, t * a.cols, x, y, w, h, angle);
   }
   targetedCombatEffect(e, state) {
     const file = ART.targetCombat?.file,

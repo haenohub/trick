@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "release": "0.24.0",
+  "status": "complete",
+  "directions": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "sources": [
+    {
+      "id": "fx-warden",
+      "kind": "fx",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-5df83554-7bbc-4fcb-b258-72ade3620b54.png"
+    },
+    {
+      "id": "fx-mage",
+      "kind": "fx",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c86f0a5d-3480-4df9-9d14-c562153fc312.png"
+    },
+    {
+      "id": "fx-ranger",
+      "kind": "fx",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a478d896-aef5-429f-9ab0-b36ab7b80028.png"
+    },
+    {
+      "id": "fx-herbalist",
+      "kind": "fx",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-a8c3d12f-c339-4c65-8001-22387b567c68.png"
+    },
+    {
+      "id": "basic-impacts",
+      "kind": "hit",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-f6888df9-fa68-4031-85da-5ad9c0f6a94f.png"
+    },
+    {
+      "id": "consumable-icons",
+      "kind": "icons",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-c61e93ed-9e47-4756-89c6-96d3885915d5.png"
+    },
+    {
+      "id": "warden-0",
+      "actor": "warden",
+      "half": 0,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-428050cb-5301-4b6b-8cce-638c6eced432.png"
+    },
+    {
+      "id": "warden-1",
+      "actor": "warden",
+      "half": 1,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-4276f19e-686f-4d3a-b062-c72819fd9e46.png"
+    },
+    {
+      "id": "mage-0",
+      "actor": "mage",
+      "half": 0,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-be97ffaa-a186-4172-b555-8269ff47023d.png"
+    },
+    {
+      "id": "mage-1",
+      "actor": "mage",
+      "half": 1,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-f7c40858-a793-4501-b36c-a0e73c0344f0.png"
+    },
+    {
+      "id": "ranger-0",
+      "actor": "ranger",
+      "half": 0,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-3bbb824f-7620-49be-90d3-3dbedeade656.png"
+    },
+    {
+      "id": "ranger-1",
+      "actor": "ranger",
+      "half": 1,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-3d45b6c3-5eb7-4df5-9042-2c5344cf9bc5.png"
+    },
+    {
+      "id": "herbalist-0",
+      "actor": "herbalist",
+      "half": 0,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-77cdd1eb-45d6-4e49-b400-fc199909d872.png"
+    },
+    {
+      "id": "herbalist-1",
+      "actor": "herbalist",
+      "half": 1,
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9360cd21-a83b-47c1-97ba-7d8dc9296f13.png"
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "warden",
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-db384023-ff1b-4b27-80e4-d25ac7aae3b8.png",
+      "reason": "Rejected on inspection: only seven authored rows and inconsistent heading; replaced with two four-heading originals."
+    },
+    {
+      "id": "mage",
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-dba18123-4bd0-420b-ba05-6952be8f9d02.png",
+      "reason": "Rejected on inspection: only seven authored rows and inconsistent heading; replaced with two four-heading originals."
+    },
+    {
+      "id": "ranger",
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-dcf8c2a5-98be-43a0-8e54-1dc11a56b322.png",
+      "reason": "Rejected on inspection: only seven authored rows and inconsistent heading; replaced with two four-heading originals."
+    },
+    {
+      "id": "herbalist",
+      "kind": "body",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-04a92775-8dec-447f-86e3-ecf94c5d7c42.png",
+      "reason": "Rejected on inspection: only seven authored rows and inconsistent heading; replaced with two four-heading originals."
+    }
+  ],
+  "notes": [
+    "20 skills each have a dedicated 12-frame row; basic impacts retain all 13 authored source phases.",
+    "Four fully clothed player bodies have eight real headings, independently authored as two four-heading originals; every weapon palm is registered.",
+    "Rejected originals are recorded for audit and are not shipped."
+  ]
+}

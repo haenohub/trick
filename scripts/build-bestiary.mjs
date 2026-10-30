@@ -1,4 +1,5 @@
 import { mapsForSpecies } from "../site/ecology.js";
+import { consumableLines } from "../site/consumables.js";
 import { createPlayer } from "../site/core.js";
 import { STAT_NAMES, ATTRIBUTE_NAMES, statValue } from "../site/progression.js";
 import { CHESTS } from "../site/exploration.js";
@@ -82,6 +83,7 @@ export async function buildBestiary() {
   };
   const items = Object.values(ITEMS).map((item, index) => ({
     ...item,
+    effectLines: consumableLines(item),
     statLines: Object.entries(STAT_NAMES)
       .filter(([key]) => item[key])
       .map(([key, label]) => ({

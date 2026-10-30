@@ -15,7 +15,7 @@ test("two complete regions contain ten maps, sixty documented enemies and valid 
   for (const m of MONSTERS) {
     assert.ok(m.lore.length > 20);
     assert.ok(MAPS.some((map) => map.id === m.map));
-    assert.equal(m.drops.length, 5);
+    assert.ok(m.drops.length >= 10 && m.drops.length <= 12);
     for (const d of m.drops) {
       assert.ok(ITEMS[d.item]);
       assert.ok(d.chance > 0 && d.chance <= 1);
@@ -26,7 +26,7 @@ test("two complete regions contain ten maps, sixty documented enemies and valid 
   assert.ok(MONSTERS[39].hp > MONSTERS[19].hp * 2);
 });
 test("all items have lore and every recipe resolves to existing materials", () => {
-  assert.equal(Object.keys(ITEMS).length, 157);
+  assert.equal(Object.keys(ITEMS).length, 177);
   for (const i of Object.values(ITEMS)) {
     assert.ok(i.lore.length > 20, i.id);
     for (const [id, n] of Object.entries(i.recipe || {})) {
@@ -252,8 +252,8 @@ test("native pixel assets have the required grids, shared palette and binary alp
       [16, 8, 96],
     );
   }
-  assert.equal(Object.keys(art.items).length, 157);
-  assert.equal(Object.keys(art.itemOverrides).length, 137);
+  assert.equal(Object.keys(art.items).length, 177);
+  assert.equal(Object.keys(art.itemOverrides).length, 157);
   for (const size of [32, 48, 64]) {
     const file = art.effects.variants[size];
     const png = await readFile(

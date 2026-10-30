@@ -1,0 +1,670 @@
+{
+  "version": 1,
+  "status": "complete",
+  "sources": [
+    {
+      "id": "warden",
+      "source": "/workspace/generated_images/exec-428050cb-5301-4b6b-8cce-638c6eced432.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-4276f19e-686f-4d3a-b062-c72819fd9e46.png"
+      ],
+      "packedSource": "/tmp/v24-body-warden.png",
+      "tool": "image_gen",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 0,
+          "sourcePalm": {
+            "x": 150,
+            "y": 147
+          }
+        },
+        {
+          "dir": 0,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2451,
+            "y": 148
+          }
+        },
+        {
+          "dir": 1,
+          "col": 0,
+          "sourcePalm": {
+            "x": 146,
+            "y": 528
+          }
+        },
+        {
+          "dir": 1,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1754,
+            "y": 484
+          }
+        },
+        {
+          "dir": 1,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2450,
+            "y": 526
+          }
+        },
+        {
+          "dir": 2,
+          "col": 0,
+          "sourcePalm": {
+            "x": 128,
+            "y": 914
+          }
+        },
+        {
+          "dir": 2,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2430,
+            "y": 915
+          }
+        },
+        {
+          "dir": 3,
+          "col": 0,
+          "sourcePalm": {
+            "x": 138,
+            "y": 1294
+          }
+        },
+        {
+          "dir": 3,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2446,
+            "y": 1293
+          }
+        },
+        {
+          "dir": 5,
+          "col": 5,
+          "sourcePalm": {
+            "x": 1939,
+            "y": 2039
+          }
+        },
+        {
+          "dir": 6,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1170,
+            "y": 2411
+          }
+        },
+        {
+          "dir": 6,
+          "col": 5,
+          "sourcePalm": {
+            "x": 1958,
+            "y": 2401
+          }
+        },
+        {
+          "dir": 7,
+          "col": 2,
+          "sourcePalm": {
+            "x": 799,
+            "y": 2809
+          }
+        },
+        {
+          "dir": 7,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1168,
+            "y": 2785
+          }
+        },
+        {
+          "dir": 7,
+          "col": 5,
+          "sourcePalm": {
+            "x": 1947,
+            "y": 2803
+          }
+        }
+      ],
+      "correctedHandSwitches": [
+        {
+          "dir": 0,
+          "col": 1,
+          "hand": [
+            75,
+            70
+          ]
+        },
+        {
+          "dir": 1,
+          "col": 1,
+          "hand": [
+            72,
+            70
+          ]
+        },
+        {
+          "dir": 1,
+          "col": 5,
+          "hand": [
+            85,
+            58
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 3,
+          "hand": [
+            4,
+            66
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 4,
+          "hand": [
+            12,
+            71
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 5,
+          "hand": [
+            5,
+            73
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 1,
+          "hand": [
+            27,
+            69
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 2,
+          "hand": [
+            21,
+            70
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 5,
+          "hand": [
+            19,
+            77
+          ]
+        },
+        {
+          "dir": 5,
+          "col": 1,
+          "hand": [
+            26,
+            66
+          ]
+        },
+        {
+          "dir": 5,
+          "col": 2,
+          "hand": [
+            23,
+            68
+          ]
+        },
+        {
+          "dir": 6,
+          "col": 1,
+          "hand": [
+            30,
+            56
+          ]
+        },
+        {
+          "dir": 6,
+          "col": 2,
+          "hand": [
+            25,
+            67
+          ]
+        },
+        {
+          "dir": 7,
+          "col": 1,
+          "hand": [
+            27,
+            67
+          ]
+        }
+      ],
+      "measuredCombatPalms": 64
+    },
+    {
+      "id": "mage",
+      "source": "/workspace/generated_images/exec-be97ffaa-a186-4172-b555-8269ff47023d.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-f7c40858-a793-4501-b36c-a0e73c0344f0.png"
+      ],
+      "packedSource": "/tmp/v24-body-mage.png",
+      "tool": "image_gen",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 0,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1697,
+            "y": 170
+          }
+        },
+        {
+          "dir": 1,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1695,
+            "y": 557
+          }
+        },
+        {
+          "dir": 2,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1688,
+            "y": 935
+          }
+        },
+        {
+          "dir": 3,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1694,
+            "y": 1325
+          }
+        },
+        {
+          "dir": 4,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1563,
+            "y": 1690
+          }
+        },
+        {
+          "dir": 5,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1557,
+            "y": 2072
+          }
+        },
+        {
+          "dir": 6,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1563,
+            "y": 2465
+          }
+        },
+        {
+          "dir": 7,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1589,
+            "y": 2855
+          }
+        }
+      ],
+      "correctedHandSwitches": [
+        {
+          "dir": 4,
+          "col": 3,
+          "hand": [
+            14,
+            56
+          ]
+        }
+      ],
+      "measuredCombatPalms": 64
+    },
+    {
+      "id": "ranger",
+      "source": "/workspace/generated_images/exec-3bbb824f-7620-49be-90d3-3dbedeade656.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-3d45b6c3-5eb7-4df5-9042-2c5344cf9bc5.png"
+      ],
+      "packedSource": "/tmp/v24-body-ranger.png",
+      "tool": "image_gen",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 3,
+          "col": 7,
+          "sourcePalm": {
+            "x": 2849,
+            "y": 1237
+          }
+        }
+      ],
+      "correctedHandSwitches": [
+        {
+          "dir": 4,
+          "col": 3,
+          "hand": [
+            82,
+            64
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 4,
+          "hand": [
+            83,
+            69
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 5,
+          "hand": [
+            72,
+            69
+          ]
+        }
+      ],
+      "measuredCombatPalms": 64
+    },
+    {
+      "id": "herbalist",
+      "source": "/workspace/generated_images/exec-77cdd1eb-45d6-4e49-b400-fc199909d872.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-9360cd21-a83b-47c1-97ba-7d8dc9296f13.png"
+      ],
+      "packedSource": "/tmp/v24-body-herbalist.png",
+      "tool": "image_gen",
+      "visiblePalmCalibrations": [
+        {
+          "dir": 4,
+          "col": 0,
+          "sourcePalm": {
+            "x": 73,
+            "y": 1691
+          }
+        },
+        {
+          "dir": 4,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1232,
+            "y": 1682
+          }
+        },
+        {
+          "dir": 4,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1616,
+            "y": 1685
+          }
+        },
+        {
+          "dir": 4,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2377,
+            "y": 1690
+          }
+        },
+        {
+          "dir": 4,
+          "col": 7,
+          "sourcePalm": {
+            "x": 2764,
+            "y": 1679
+          }
+        },
+        {
+          "dir": 5,
+          "col": 0,
+          "sourcePalm": {
+            "x": 55,
+            "y": 2074
+          }
+        },
+        {
+          "dir": 5,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1221,
+            "y": 2062
+          }
+        },
+        {
+          "dir": 5,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1592,
+            "y": 2067
+          }
+        },
+        {
+          "dir": 5,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2359,
+            "y": 2074
+          }
+        },
+        {
+          "dir": 5,
+          "col": 7,
+          "sourcePalm": {
+            "x": 2750,
+            "y": 2061
+          }
+        },
+        {
+          "dir": 6,
+          "col": 0,
+          "sourcePalm": {
+            "x": 52,
+            "y": 2452
+          }
+        },
+        {
+          "dir": 6,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1208,
+            "y": 2438
+          }
+        },
+        {
+          "dir": 6,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1590,
+            "y": 2451
+          }
+        },
+        {
+          "dir": 6,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2357,
+            "y": 2453
+          }
+        },
+        {
+          "dir": 6,
+          "col": 7,
+          "sourcePalm": {
+            "x": 2751,
+            "y": 2424
+          }
+        },
+        {
+          "dir": 7,
+          "col": 0,
+          "sourcePalm": {
+            "x": 51,
+            "y": 2839
+          }
+        },
+        {
+          "dir": 7,
+          "col": 3,
+          "sourcePalm": {
+            "x": 1208,
+            "y": 2832
+          }
+        },
+        {
+          "dir": 7,
+          "col": 4,
+          "sourcePalm": {
+            "x": 1585,
+            "y": 2836
+          }
+        },
+        {
+          "dir": 7,
+          "col": 6,
+          "sourcePalm": {
+            "x": 2356,
+            "y": 2839
+          }
+        },
+        {
+          "dir": 7,
+          "col": 7,
+          "sourcePalm": {
+            "x": 2744,
+            "y": 2825
+          }
+        }
+      ],
+      "correctedHandSwitches": [
+        {
+          "dir": 2,
+          "col": 3,
+          "hand": [
+            16,
+            63
+          ]
+        },
+        {
+          "dir": 3,
+          "col": 3,
+          "hand": [
+            17,
+            67
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 1,
+          "hand": [
+            9,
+            56
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 2,
+          "hand": [
+            6,
+            71
+          ]
+        },
+        {
+          "dir": 4,
+          "col": 5,
+          "hand": [
+            15,
+            52
+          ]
+        },
+        {
+          "dir": 5,
+          "col": 1,
+          "hand": [
+            15,
+            52
+          ]
+        },
+        {
+          "dir": 5,
+          "col": 2,
+          "hand": [
+            5,
+            68
+          ]
+        },
+        {
+          "dir": 5,
+          "col": 5,
+          "hand": [
+            13,
+            58
+          ]
+        },
+        {
+          "dir": 6,
+          "col": 1,
+          "hand": [
+            24,
+            72
+          ]
+        },
+        {
+          "dir": 6,
+          "col": 2,
+          "hand": [
+            5,
+            71
+          ]
+        },
+        {
+          "dir": 6,
+          "col": 5,
+          "hand": [
+            17,
+            53
+          ]
+        },
+        {
+          "dir": 7,
+          "col": 1,
+          "hand": [
+            22,
+            46
+          ]
+        },
+        {
+          "dir": 7,
+          "col": 2,
+          "hand": [
+            13,
+            73
+          ]
+        },
+        {
+          "dir": 7,
+          "col": 5,
+          "hand": [
+            17,
+            54
+          ]
+        }
+      ],
+      "measuredCombatPalms": 64
+    }
+  ]
+}

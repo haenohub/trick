@@ -17,17 +17,19 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
       motion.anim === "windup"
         ? t * 2
         : motion.anim === "attack"
-          ? 3 + t
-          : 4 + t * 2;
+          ? t < 0.5
+            ? 2 + t * 4
+            : 4 + (t - 0.5) * 2
+          : 5 + t;
   }
   const keys =
     weapon.kind === "spear"
-      ? [0, -0.08, -0.12, -0.03, 0, 0.04, 0]
+      ? [0, -0.18, -0.38, -0.12, 0, 0.18, 0]
       : weapon.kind === "bow"
-        ? [0, -0.04, -0.07, -0.025, 0.025, 0.035, 0]
+        ? [0, -0.1, -0.2, -0.05, 0, 0.08, 0]
         : weapon.kind === "staff"
-          ? [0, -0.08, -0.16, -0.1, 0.03, 0.06, 0]
-          : [0, -0.1, -0.18, -0.04, 0.12, 0.05, 0];
+          ? [0, -0.35, -0.6, -0.4, 0, 0.2, 0]
+          : [0, -0.5, -0.8, -0.3, 0, 0.3, 0];
   const lo = Math.min(6, Math.floor(pose)),
     hi = Math.min(6, lo + 1),
     mix = pose - Math.floor(pose),

@@ -22,6 +22,7 @@ import {
   actionForEvent,
 } from "./controls.js";
 import { CLASS_TACTICS } from "./combat.js";
+import { consumableLines } from "./consumables.js";
 import { DISCOVERIES, CHESTS } from "./exploration.js";
 import { CombatAudio } from "./audio.js";
 import {
@@ -340,7 +341,7 @@ function send(action, quiet = false) {
       action.type === "craft"
         ? "마을에서 재료·리프·레벨을 확인해 주세요."
         : action.type === "travel"
-          ? "이동 지점에 가까이 가거나, 방문한 마을을 선택해 주세요."
+          ? "월드맵에서 이동할 지역을 선택해 주세요."
           : "지금은 사용할 수 없습니다. 조건을 확인해 주세요.",
     );
   if (ok) {
@@ -350,6 +351,7 @@ function send(action, quiet = false) {
         "allocateStat",
         "craft",
         "equip",
+        "potion",
         "buy",
         "sell",
         "subclass",
@@ -495,6 +497,17 @@ function hud() {
   }
   $("potion-cooldown").hidden = p.potionCooldown <= 0;
   $("potion-cooldown").textContent = Math.ceil(p.potionCooldown);
+  const buffs = p.consumableBuffs || [],
+    buffKey = buffs.map((b) => b.item + ":" + Math.ceil(b.remaining)).join(",");
+  if ($("consumable-buffs").dataset.key !== buffKey) {
+    $("consumable-buffs").dataset.key = buffKey;
+    $("consumable-buffs").innerHTML = buffs
+      .map(
+        (b) =>
+          `<span class="active-consumable" title="${esc(ITEMS[b.item].name + " · " + consumableLines(ITEMS[b.item]).join(" / "))}">${itemIcon(b.item)}<b>${Math.ceil(b.remaining)}s</b></span>`,
+      )
+      .join("");
+  }
   const mob = state.mobs.find((m) => m.uid === target && m.hp > 0);
   $("target-card").hidden = !mob || !!boss;
   if (mob) {
@@ -637,6 +650,14 @@ function closePanel() {
     previousPanelFocus.focus();
 }
 function equipmentStats(i) {
+  if (i.type === "consumable")
+    return (
+      '<div class="item-stat-grid">' +
+      consumableLines(i)
+        .map((s) => "<span>" + esc(s) + "</span>")
+        .join("") +
+      "</div>"
+    );
   if (!i.slot) return "";
   return (
     '<div class="item-stat-grid">' +
@@ -792,7 +813,7 @@ function renderPanel() {
             Object.entries(i.recipe).every(
               ([id, n]) => (p.inventory[id] || 0) >= n,
             );
-        return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.level ? "Lv." + i.level + " · " : ""}${i.branch ? "전직 전용" : i.type === "consumable" ? "연금술" : "장비 제작"}</small></div></div><p>${i.lore}</p>${Object.entries(
+        return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.level ? "Lv." + i.level + " · " : ""}${i.branch ? "전직 전용" : i.type === "consumable" ? "연금술" : "장비 제작"}</small></div></div><p>${i.lore}</p>${equipmentStats(i)}${Object.entries(
           i.recipe,
         )
           .map(
@@ -808,7 +829,7 @@ function renderPanel() {
     // All regions share the game’s native isometric scenery atlas.
     title = "잎새 너머의 지도";
     html =
-      `<p class="panel-intro">길 끝의 빛나는 표식에서 ${bindingLabel("interact")}를 눌러 다음 맵으로 이동합니다. 방문한 마을에는 전투가 끝난 뒤 빠르게 돌아갈 수 있습니다.</p>` +
+      `<p class="panel-intro">테스트 서버: 아래의 맵을 누르면 방문·레벨·보스 처치 여부와 관계없이 즉시 이동합니다. 길 끝의 포탈도 이용할 수 있습니다.</p>` +
       `<article class="content-card"><h3>현재 지역 · ${NAVIGATION[p.map].shape}</h3><p>${NAVIGATION[p.map].routeCount}갈래 동선을 따라 합류터와 굽은 샛길을 탐험하세요.</p>${
         NAVIGATION[p.map].gatherSites.length
           ? "<h4>채집 군락</h4><p>" +
@@ -829,7 +850,7 @@ function renderPanel() {
           )
             .map(
               (m) =>
-                `<button class="map-row ${p.map === m.id ? "current" : ""}" data-action="travel" data-map="${m.id}" data-fast="${m.town ? "true" : "false"}" ${p.map === m.id ? "disabled" : ""}><div><h4>${m.town ? "⌂" : "◇"} ${m.name} ${p.map === m.id ? "· 현재 위치" : ""}</h4><p>${m.description}</p><small>${m.shape}</small></div><small>${m.town ? (p.visited.includes(m.id) ? "마을 귀환" : "미방문") : `Lv.${m.level}–${m.level + 3}`}</small></button>`,
+                `<button class="map-row ${p.map === m.id ? "current" : ""}" data-action="travel" data-map="${m.id}" data-fast="true" ${p.map === m.id ? "disabled" : ""}><div><h4>${m.town ? "⌂" : "◇"} ${m.name} ${p.map === m.id ? "· 현재 위치" : ""}</h4><p>${m.description}</p><small>${m.shape}</small></div><small>즉시 이동 · Lv.${m.level}</small></button>`,
             )
             .join("")}</div></section>`,
       ).join("") +
@@ -873,7 +894,7 @@ function renderPanel() {
     } else
       html =
         catalogueTabs +
-        `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 각 아이템의 드롭은 독립적으로 추첨되므로 확률의 합이 100%일 필요는 없습니다. 경험치는 처치 시 획득하며, 리프와 아이템은 바닥에 떨어집니다. 클릭하면 플레이어에게 날아와 획득됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">리프테일 도감 전체 보기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / ${MONSTERS.length}</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
+        `<p class="panel-intro">모든 생명에게는 이곳에 머무는 이유가 있습니다. 재료 10% · 고유 전리품 60% · 장비 40% · 소비 아이템 5%. 각 아이템을 독립 추첨하므로 장비가 여러 개 나올 수 있습니다. 경험치는 처치 시 획득하며, 리프와 아이템은 바닥에 떨어집니다. 클릭하면 플레이어에게 날아와 획득됩니다.</p><p class="panel-intro"><a class="small-button" href="./bestiary.html?v=${ART_REVISION}" target="_blank" rel="noopener">리프테일 도감 전체 보기 ↗</a></p><div class="panel-meta"><span class="tag">만난 생명 ${p.discovered.length} / ${MONSTERS.length}</span><span class="tag">진정시킨 횟수 ${p.kills}</span></div>${tabs(
           [
             ["0", "햇살잎 숲 · 30종"],
             ["1", "은물결 해안림 · 30종"],
@@ -904,7 +925,7 @@ function renderPanel() {
       .filter((i) => i.type === "consumable")
       .map(
         (i) =>
-          `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.price} 리프 · 보유 ${p.inventory[i.id] || 0}</small></div></div><p>${i.lore}</p><div class="actions"><button data-action="buy" data-item="${i.id}" ${p.gold < i.price ? "disabled" : ""}>구입</button></div></article>`,
+          `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.price} 리프 · 보유 ${p.inventory[i.id] || 0}</small></div></div><p>${i.lore}</p>${equipmentStats(i)}<div class="actions"><button data-action="buy" data-item="${i.id}" ${p.gold < i.price ? "disabled" : ""}>구입</button></div></article>`,
       )
       .join("")}</div>`;
   } else if (panel === "settings") {
@@ -1626,7 +1647,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.23.0",
+  version: "0.24.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

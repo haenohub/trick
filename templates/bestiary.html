@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#203f35" />
     <meta
       name="description"
-      content="리프테일 지역 1·2 몬스터 60종과 아이템 102종의 이야기, 제작법, 획득처와 드롭 확률을 확인하세요."
+      content="리프테일 지역 1·2 몬스터 60종과 아이템 177종의 이야기, 제작법, 획득처와 드롭 확률을 확인하세요."
     />
     <title>리프테일 도감 · 몬스터와 아이템</title>
     <style>
@@ -1463,8 +1463,8 @@
             <b>드롭 확률을 읽는 법</b> · 표의 확률은 몬스터 한 마리를 처치할 때
             아이템별로 따로 판정됩니다. 여러 아이템이 함께 나오거나 아무것도
             나오지 않을 수 있으므로 확률의 합은 100%가 아닙니다. 수량은 해당
-            아이템이 나왔을 때의 범위이며, 100%로 표시된 고유 전리품과
-            경험치·리프는 확정 보상입니다.
+            아이템이 나왔을 때의 범위입니다. 재료 10% · 고유 전리품 60% · 장비
+            40% · 소비 아이템 5%이며, 경험치·리프는 확정 보상입니다.
           </p>
         </section>
       </main>
@@ -1598,7 +1598,7 @@
           if (source.chests.length)
             parts.push("보물함: " + source.chests.join(", "));
           if (item.ingredients.length) parts.push("마을에서 제작 · 연금술");
-          return `<article class="item-guide-card" id="item-${item.id}" data-item-id="${item.id}"><div class="card-top"><span class="entry-id">ITEM ${String(item.index + 1).padStart(3, "0")}</span><span class="badge">${esc(item.typeName)}</span></div><div class="card-body"><div class="item-guide-heading"><canvas class="loot-icon" width="32" height="32" data-drop="${item.id}" aria-label="${esc(item.name)}"></canvas><div><h3>${esc(item.name)}</h3><small>${esc(item.slotName)}${item.level ? " · Lv." + item.level : ""} · ${esc(item.className)} ${esc(item.branchName)}</small></div></div><p class="lore">${esc(item.lore)}</p><div class="item-metrics">${(item.statLines || []).map(s => "<span>" + esc(s.label) + " " + esc(s.value) + "</span>").join("")}<span>판매 ${fmt(item.sellPrice)} 리프</span></div>${item.type === "equipment" ? "<h4>장착 요구 스탯</h4><p>레벨 " + item.level + " · " + (item.requirementLines || []).map(s => esc(s.label) + " " + s.value).join(" · ") + "</p>" : ""}<h4>획득 방법</h4>${parts.map((part) => '<p class="source-note">' + esc(part) + "</p>").join("")}${source.monsters.length ? `<ul class="item-monster-sources">${source.monsters.map((m) => `<li>${esc(m.name)} <small>${esc(m.mapName)}</small> · <b class="item-drop-chance">${percent(m.chance)}</b> · ×${m.min}${m.max !== m.min ? "–" + m.max : ""}</li>`).join("")}</ul>` : ""}${item.ingredients.length ? '<h4>제작 재료</h4><div class="recipe-items">' + item.ingredients.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)} ×${i.count}</button>`).join("") + "</div>" : ""}${item.usedBy.length ? '<h4>이 재료로 만들 수 있어요</h4><div class="recipe-items">' + item.usedBy.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)}</button>`).join("") + "</div>" : ""}</div></article>`;
+          return `<article class="item-guide-card" id="item-${item.id}" data-item-id="${item.id}"><div class="card-top"><span class="entry-id">ITEM ${String(item.index + 1).padStart(3, "0")}</span><span class="badge">${esc(item.typeName)}</span></div><div class="card-body"><div class="item-guide-heading"><canvas class="loot-icon" width="32" height="32" data-drop="${item.id}" aria-label="${esc(item.name)}"></canvas><div><h3>${esc(item.name)}</h3><small>${esc(item.slotName)}${item.level ? " · Lv." + item.level : ""} · ${esc(item.className)} ${esc(item.branchName)}</small></div></div><p class="lore">${esc(item.lore)}</p>${(item.effectLines || []).length ? "<h4>사용 효과</h4><p>" + item.effectLines.map(esc).join("<br>") + "</p>" : ""}<div class="item-metrics">${(item.statLines || []).map((s) => "<span>" + esc(s.label) + " " + esc(s.value) + "</span>").join("")}<span>판매 ${fmt(item.sellPrice)} 리프</span></div>${item.type === "equipment" ? "<h4>장착 요구 스탯</h4><p>레벨 " + item.level + " · " + (item.requirementLines || []).map((s) => esc(s.label) + " " + s.value).join(" · ") + "</p>" : ""}<h4>획득 방법</h4>${parts.map((part) => '<p class="source-note">' + esc(part) + "</p>").join("")}${source.monsters.length ? `<ul class="item-monster-sources">${source.monsters.map((m) => `<li>${esc(m.name)} <small>${esc(m.mapName)}</small> · <b class="item-drop-chance">${percent(m.chance)}</b> · ×${m.min}${m.max !== m.min ? "–" + m.max : ""}</li>`).join("")}</ul>` : ""}${item.ingredients.length ? '<h4>제작 재료</h4><div class="recipe-items">' + item.ingredients.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)} ×${i.count}</button>`).join("") + "</div>" : ""}${item.usedBy.length ? '<h4>이 재료로 만들 수 있어요</h4><div class="recipe-items">' + item.usedBy.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)}</button>`).join("") + "</div>" : ""}</div></article>`;
         }
         function getImage(file) {
           if (!images.has(file))

@@ -9,7 +9,7 @@ with sync_playwright() as pw:
  b=pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  p=b.new_page(viewport={'width':1440,'height':900},accept_downloads=True);p.on('pageerror',lambda e:errors.append(str(e)))
  p.goto(BASE);p.locator('#loading').wait_for(state='hidden')
- for w,h in [(1440,900),(1366,768),(1574,768),(390,844),(360,640),(320,568),(844,390)]:
+ for w,h in [(1440,900),(1366,768),(1774,768),(390,844),(360,640),(320,568),(844,390)]:
   p.set_viewport_size({'width':w,'height':h});p.wait_for_timeout(60)
   assert p.locator('#lobby').evaluate('e=>e.scrollHeight<=e.clientHeight+1'),(w,h)
   for selector in ['#class-select','#class-description','#adventurer-name','#start-game','.lobby-footer']:
@@ -46,16 +46,16 @@ with sync_playwright() as pw:
  # 200ms boundary. A frame can award loot just before the key timer expires.
  p.wait_for_timeout(220);p.keyboard.press('Space');p.wait_for_function('__leaftale.snapshot().player.lootNotices.length===2')
  before=p.evaluate('__leaftale.snapshot().player.inventory.salve');p.keyboard.press('t');assert p.evaluate('__leaftale.snapshot().player.inventory.salve')==before-1
- p.keyboard.press('k');p.locator('[data-catalogue=items]').click();assert p.locator('.item-entry').count()==157;p.keyboard.press('k')
+ p.keyboard.press('k');p.locator('[data-catalogue=items]').click();assert p.locator('.item-entry').count()==177;p.keyboard.press('k')
  print('PASS: keyboard-shaped settings, conflict rejection, persisted remapping, QWER labels, Q skill, one pickup per Space press, T potion and in-game item guide')
  p.goto(BASE+'bestiary.html');assert '리프테일 도감' in p.title()
- p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='157종'
+ p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='177종'
  p.locator('#search').fill('소금꽃 해독제');assert p.locator('.item-guide-card').count()==1;assert '마을 상점' in p.locator('.item-guide-card').inner_text()
  p.locator('#search').fill('');p.locator('#item-type').select_option('equipment');p.locator('#item-class').select_option('mage')
  assert p.locator('.item-guide-card').count()>0
  p.locator('#reset').click();p.locator('#item-type').select_option('trophy');p.locator('#search').fill('콩잎')
- assert p.locator('.item-guide-card').count()==1;assert p.locator('.item-drop-chance').inner_text()=='100%'
- p.locator('#reset').click();p.evaluate("dispatchEvent(new Event('beforeprint'))");assert p.locator('.item-guide-card').count()==157;p.evaluate("dispatchEvent(new Event('afterprint'))")
+ assert p.locator('.item-guide-card').count()==1;assert p.locator('.item-drop-chance').inner_text()=='60%'
+ p.locator('#reset').click();p.evaluate("dispatchEvent(new Event('beforeprint'))");assert p.locator('.item-guide-card').count()==177;p.evaluate("dispatchEvent(new Event('afterprint'))")
  p.wait_for_function("document.querySelector('canvas[data-drop]').dataset.loaded==='true'")
  p.screenshot(path='/tmp/leaftale-combined-item-guide.png',full_page=True)
  with p.expect_download() as info:p.locator('#download').click()
@@ -63,9 +63,9 @@ with sync_playwright() as pw:
  assert info.value.suggested_filename=='리프테일-도감.html'
  offline=b.new_context(offline=True);q=offline.new_page();q.on('pageerror',lambda e:errors.append(str(e)))
  url='http://127.0.0.1:8093/downloaded-guide.html';q.route(url,lambda route:route.fulfill(body=exported.read_text(),content_type='text/html'));q.goto(url+'#items')
- assert q.locator('#result-count').inner_text()=='157종';q.locator('#search').fill('소금꽃 해독제');assert q.locator('.item-guide-card').count()==1
+ assert q.locator('#result-count').inner_text()=='177종';q.locator('#search').fill('소금꽃 해독제');assert q.locator('.item-guide-card').count()==1
  p.goto(BASE+'bestiary.html#items');p.set_viewport_size({'width':320,'height':844});p.wait_for_timeout(100)
  assert p.evaluate('document.documentElement.scrollWidth<=innerWidth')
  assert not errors,errors
- print('PASS: 157-item catalogue, class/type filters, live drop chances, 157-entry print, renamed HTML export, offline item lore and 320px layout')
+ print('PASS: 177-item catalogue, class/type filters, live drop chances, 177-entry print, renamed HTML export, offline item lore and 320px layout')
  b.close()

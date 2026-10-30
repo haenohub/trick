@@ -1,8 +1,8 @@
 // Temporary playtest bonuses; base content stays intact for a normal release.
 export const TEST_BALANCE = Object.freeze({
-  speed: 5,
+  speed: 2.5,
   experience: 10,
-  drops: 10,
+  drops: 1,
 });
 export const CURRENCY_NAME = "리프";
 export const PICKUP_RANGE = 24;

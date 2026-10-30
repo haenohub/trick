@@ -47,6 +47,43 @@ test("all four corrected combat sheets have calibrated palms, planted registrati
       }
   }
 });
+test("weapon windup, release and recovery meet continuously and the contact pose aims at the target", async () => {
+  const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
+  for (const cls of ["warden", "mage", "ranger", "herbalist"]) {
+    const a = equippedAppearance(art, cls, starterEquipment(cls)),
+      w = a.layers.find((l) => l.held),
+      t = attackTimeline(0, cls);
+    for (let dir = 0; dir < 8; dir++) {
+      const angle = (anim, time, start, duration) =>
+          heldWeaponPose(a.layout, w, 4, dir, { anim, time, start, duration })
+            .angle,
+        delta = (a, b) =>
+          Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
+      assert.ok(
+        delta(
+          angle("windup", t.strikeAt, 0, t.strikeAt),
+          angle("attack", t.strikeAt, t.strikeAt, STRIKE_DURATION),
+        ) < 1e-8,
+      );
+      assert.ok(
+        delta(
+          angle("attack", t.strikeEnd, t.strikeAt, STRIKE_DURATION),
+          angle("recover", t.strikeEnd, t.strikeEnd, RECOVERY_DURATION),
+        ) < 1e-8,
+      );
+      const contact =
+          angle("attack", t.hitAt, t.strikeAt, STRIKE_DURATION) + w.axes[dir],
+        heading = (dir * Math.PI) / 4;
+      assert.ok(
+        cls === "ranger"
+          ? Math.abs(Math.cos(contact - heading)) < 0.04
+          : cls === "mage"
+            ? Math.cos(contact) > 0.95
+            : Math.cos(contact - heading) > 0.98,
+      );
+    }
+  }
+});
 test("weapons point in the actor direction, bows stay perpendicular, mage staffs release upward, and all use the measured palm", async () => {
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
   for (const cls of ["warden", "ranger", "mage", "herbalist"]) {
@@ -110,7 +147,7 @@ test("weapon angles vary continuously within each stage and use the same contact
                   Math.sin(pose.angle - prev),
                   Math.cos(pose.angle - prev),
                 ),
-              ) < 0.03,
+              ) < 0.11,
             );
           prev = pose.angle;
         }

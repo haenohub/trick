@@ -37,7 +37,11 @@ with sync_playwright() as pw:
  print('PASS: descriptions covering adjacent slots pass mouse input through and update to the underlying item at four viewport widths')
  p.set_viewport_size({'width':1440,'height':900});p.locator('[data-panel=settings]').click();p.locator('[data-special=title]').click()
  p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const raw=createPlayer('warden');Object.assign(raw,{level:30,map:'sprout'});const w=new World(),q=w.addPlayer(raw),m=w.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;raw.hp=stats(raw).maxHp;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
- p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');confirm_attack(p,'a')
+ p.reload();p.locator('#loading').wait_for(state='hidden')
+ # Pickup cadence tests use a deterministic full pile; category probabilities
+ # are verified separately against the live tables.
+ p.evaluate('''async()=>{const rev=document.querySelector('meta[name=leaftale-revision]').content,{World}=await import('./core.js?v='+rev),add=World.prototype.addPlayer;World.prototype.addPlayer=function(...args){const p=add.apply(this,args);this.rng=()=>0;return p;};}''')
+ p.locator('#continue-game').click();p.keyboard.press('Tab');confirm_attack(p,'a')
  p.wait_for_function('__leaftale.snapshot().drops.length>=3');p.wait_for_timeout(150)
  p.keyboard.press('a');p.mouse.click(30,700) # Keep this nearby-pickup fixture stationary after the kill.
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(1100)

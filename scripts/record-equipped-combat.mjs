@@ -21,13 +21,27 @@ for (const id of ["warden", "mage", "ranger", "herbalist"]) {
     .update(await readFile(target))
     .digest("hex");
   record.compositedStarterEquipment = true;
-  const weapon = records.assets.find((r) => r.id === "appearance/held-weapons");
+  const starter = {
+    warden: "spear1",
+    mage: "staff1",
+    ranger: "bow1",
+    herbalist: "wand1",
+  }[id];
+  const weapon = records.assets.find(
+    (r) => r.id === art.appearance.weapons[starter].file,
+  );
   record.additionalSources = [
     ...new Set([
       ...record.additionalSources,
-      ...(art.appearance.bases[id].costumeFile ? [records.assets.find(r=>r.id===art.appearance.bases[id].costumeFile).source] : []),
+      ...(art.appearance.bases[id].costumeFile
+        ? [
+            records.assets.find(
+              (r) => r.id === art.appearance.bases[id].costumeFile,
+            ).source,
+          ]
+        : []),
       weapon.source,
-      ...weapon.additionalSources,
+      ...(weapon.additionalSources || []),
     ]),
   ];
 }

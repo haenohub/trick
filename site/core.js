@@ -1,6 +1,8 @@
 import { combatAim } from "./targeting.js";
 import { worldPulse } from "./living-world.js";
 import { speciesForMap, encounterPoint } from "./ecology.js";
+import { applyConsumableStats } from "./consumables.js";
+import { skillVisual } from "./skill-visuals.js";
 import {
   derivedStats,
   normalizeAllocation,
@@ -71,14 +73,14 @@ export function stats(p) {
   const gear = Object.values(p.equipment || {})
     .map((id) => ITEMS[id])
     .filter(Boolean);
-  return {
+  return applyConsumableStats(p, {
     ...derivedStats(
       p,
       gear.filter((i) => canEquip(p, i)),
     ),
     range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 11.25 : 6,
     speed: (c.id === "ranger" ? 3.7 : 3.3) * TEST_BALANCE.speed,
-  };
+  });
 }
 export function createPlayer(classId = "warden", name = "새잎 모험가") {
   const cls = CLASSES.find((c) => c.id === classId) || CLASSES[0];
@@ -200,11 +202,6 @@ export function hydrateSave(raw) {
     MONSTERS.some((m) => m.id === id),
   );
   p.map = MAPS.some((m) => m.id === raw.map) ? raw.map : "village";
-  if (
-    MAPS.find((m) => m.id === p.map).region === 1 &&
-    !p.defeatedBosses.includes("m20")
-  )
-    p.map = "village";
   if (
     Number(raw.layoutVersion) === LAYOUT_VERSION &&
     !blocked(p.map, Number(raw.x), Number(raw.y))
@@ -507,6 +504,7 @@ export class World {
       poisonUntil: 0,
       poisonTick: 0,
       regenUntil: 0,
+      buffs: [],
       guardPower: 0,
       spellCharge: 0,
       precisionUntil: 0,
@@ -552,8 +550,35 @@ export class World {
       mobs = [],
       herbs = [];
     const definitions = speciesForMap(id);
-    for (const { habitat, def, guest } of definitions) {
-      const count = def.type === "normal" ? (guest ? 3 : 6) : 1;
+    const oldPopulation = definitions.reduce(
+        (n, { def, guest }) =>
+          n + (def.type === "normal" ? (guest ? 3 : 6) : 1),
+        0,
+      ),
+      counts = definitions.map(() => 1),
+      targetPopulation = Math.max(
+        definitions.length,
+        Math.round(oldPopulation * 0.3),
+      );
+    // Keep every species and unique boss; allocate the remaining sparse slots
+    // across ordinary residents before guest species.
+    for (let n = definitions.length; n < targetPopulation; n++) {
+      const candidates = definitions
+        .map((d, i) => ({ ...d, i }))
+        .filter((d) => d.def.type === "normal");
+      candidates.sort(
+        (a, b) =>
+          counts[a.i] +
+            (a.guest ? 0.5 : 0) -
+            (counts[b.i] + (b.guest ? 0.5 : 0)) || a.i - b.i,
+      );
+      if (candidates.length) counts[candidates[0].i]++;
+    }
+    for (const [
+      speciesIndex,
+      { habitat, def, guest },
+    ] of definitions.entries()) {
+      const count = counts[speciesIndex];
       for (let j = 0; j < count; j++) {
         let { x, y } = encounterPoint(id, habitat, j, rng);
         if (def.type === "boss") {
@@ -570,6 +595,23 @@ export class World {
           trial++
         )
           ({ x, y } = encounterPoint(id, habitat, j, rng));
+        if (def.type !== "boss") {
+          // Best-candidate placement spreads all species together instead of
+          // keeping little same-species packs at habitat centers.
+          let best = { x, y },
+            score = -1;
+          for (let attempt = 0; attempt < 64; attempt++) {
+            const point = encounterPoint(id, habitat, j + attempt, rng),
+              separation = Math.min(20, ...mobs.map((m) => distance(m, point)));
+            if (safe.some((a) => distance(a, point) < 5)) continue;
+            if (separation > score) {
+              best = point;
+              score = separation;
+            }
+            if (score >= 8) break;
+          }
+          ({ x, y } = best);
+        }
         mobs.push({
           uid: `${def.id}-${guest ? "guest-" : ""}${j}`,
           def: def.id,
@@ -1439,6 +1481,14 @@ export class World {
       color: crit ? "#ffe7a1" : "#fff1ce",
       duration: 0.85,
     });
+    if (!dot)
+      this.effect(p.map, "attack-impact", m.x, m.y, {
+        classId: p.classId,
+        owner: p.id,
+        dir: p.dir,
+        duration: 0.42,
+        crit,
+      });
     if (m.hp <= 0) {
       m.anim = "death";
       m.animAt = this.time;
@@ -1538,6 +1588,20 @@ export class World {
   }
   releaseSkill(p, slot, t) {
     const s = stats(p);
+    const visual = skillVisual(p, slot);
+    if (
+      visual &&
+      !(p.classId === "ranger" && slot === 1) &&
+      !(p.classId === "warden" && slot === 2)
+    )
+      this.effect(p.map, "skill-vfx", (t || p).x, (t || p).y, {
+        key: visual.key,
+        owner: p.id,
+        fromX: p.x,
+        fromY: p.y,
+        dir: p.dir,
+        duration: visual.duration,
+      });
     const aoe = (center, r, mult, root = 0) => {
       for (const m of this.map(p.map).mobs)
         if (
@@ -1764,11 +1828,26 @@ export class World {
       return false;
     p.inventory[id]--;
     p.potionReady = this.time + 3;
+    p.buffs = (p.buffs || []).filter(
+      (b) => b.until > this.time && b.item !== id,
+    );
+    if (i.duration)
+      p.buffs.push({
+        item: id,
+        until: this.time + i.duration,
+        buff: i.buff,
+        flatBuff: i.flatBuff,
+        speedBonus: i.speedBonus,
+        regen: i.regen,
+      });
     if (i.heal) p.hp = Math.min(stats(p).maxHp, p.hp + stats(p).maxHp * i.heal);
     if (i.focus) p.focus = Math.min(100, p.focus + i.focus);
     if (i.cleanse) p.poisonUntil = 0;
     this.log(p, `${i.name} 사용`, "heal");
-    this.effect(p.map, "heal", p.x, p.y, { text: "회복", color: "#b8efaf" });
+    this.effect(p.map, "heal", p.x, p.y, {
+      text: i.duration ? i.name : "회복",
+      color: "#b8efaf",
+    });
     return true;
   }
   craft(p, id) {
@@ -1797,14 +1876,11 @@ export class World {
   travel(p, dest, fast) {
     const next = MAPS.find((m) => m.id === dest);
     if (!next || dest === p.map) return false;
-    if (next.region === 1 && !p.defeatedBosses.includes("m20")) {
+    if (!fast && next.region === 1 && !p.defeatedBosses.includes("m20")) {
       this.log(p, "그루터기 할아범을 진정시키면 해안으로 가는 길이 열립니다.");
       return false;
     }
-    if (fast) {
-      if (!next.town || !p.visited.includes(dest) || this.time - p.lastHit < 5)
-        return false;
-    } else {
+    if (!fast) {
       const portal = PORTALS(p.map).find((a) => a.to === dest);
       if (!portal || distance(p, portal) > 2.5) return false;
     }
@@ -2198,8 +2274,12 @@ export class World {
     this.effects = this.effects.filter((e) => e.until > this.time);
     for (const p of this.players.values()) {
       this.explore(p);
+      p.buffs = (p.buffs || []).filter((b) => b.until > this.time);
       const s = stats(p),
         map = this.map(p.map);
+      p.hp = Math.min(p.hp, s.maxHp);
+      for (const b of p.buffs)
+        if (b.regen) p.hp = Math.min(s.maxHp, p.hp + dt * s.maxHp * b.regen);
       p.focus = Math.min(100, p.focus + dt * 4);
       if (map.config.town || this.time - p.lastHit > 8)
         p.hp = Math.min(s.maxHp, p.hp + dt * (map.config.town ? 12 : 1.8));
@@ -2404,6 +2484,10 @@ export class World {
         shield: p.shieldUntil > this.time ? p.shield : 0,
         cooldowns: p.cooldowns.map((t) => Math.max(0, t - this.time)),
         potionCooldown: Math.max(0, p.potionReady - this.time),
+        consumableBuffs: (p.buffs || []).map((b) => ({
+          item: b.item,
+          remaining: Math.max(0, b.until - this.time),
+        })),
         logs: p.logs,
         lootNotices: p.lootNotices,
         poisoned: p.poisonUntil > this.time,

@@ -11,7 +11,7 @@ with sync_playwright() as pw:
   p.reload();p.locator('#loading').wait_for(state='hidden')
   p.evaluate('''async()=>{const rev=document.querySelector('meta[name=leaftale-revision]').content,{World}=await import('./core.js?v='+rev),add=World.prototype.addPlayer;
    World.prototype.addPlayer=function(...args){const p=add.apply(this,args);this.rng=()=>.5;const mobs=this.map(p.map).mobs;for(const m of mobs){m.hp=0;m.respawn=Infinity;}Object.assign(mobs[0],{x:p.x+4,y:p.y,homeX:p.x+4,homeY:p.y,hp:1000000,maxHp:1000000,ai:'idle'});return p;};World.prototype.updateMob=function(){};
-   window.skillDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(im,...args){if(im.src?.includes('class-skills-v23'))skillDraws.push(args);return draw.call(this,im,...args);};
+   window.skillDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(im,...args){if(im.src?.includes('skills/'))skillDraws.push(args);return draw.call(this,im,...args);};
   }''')
   p.locator('#continue-game').click();p.wait_for_timeout(150)
   start=p.evaluate('__leaftale.snapshot().player');assert start['stats']['range']==(11.25 if cls=='ranger' else 1.9)
@@ -42,15 +42,15 @@ with sync_playwright() as pw:
    assert any(start['x']+.2<s['x']<goal['x']-.2 for s in data)
    assert abs(p.evaluate('__leaftale.snapshot().player.x')-goal['x'])<.05
   assert p.evaluate('skillDraws.length')>0
-  assert p.evaluate('skillDraws.every(a=>a[0]>=0&&a[1]>=0&&a[0]+a[2]<=1024&&a[1]+a[3]<=512&&a[2]===128&&a[3]===128)')
+  assert p.evaluate('skillDraws.every(a=>a[0]>=0&&a[1]>=0&&a[0]+a[2]<=1536&&a[1]+a[3]<=640&&a[2]===128&&a[3]===128)')
   p.keyboard.press('a');p.mouse.click(30,700);p.keyboard.press('i')
   item='bowlv30' if cls=='ranger' else 'spearlv30'
   p.locator('[data-inventory-item='+item+']').hover();p.locator('#item-tooltip [data-action=equip]').click()
   assert p.evaluate('__leaftale.snapshot().player.equipment.weapon')==item
   p.keyboard.press('i');p.wait_for_timeout(100);p.screenshot(path='/tmp/v23-'+cls+'-level30.png')
   p.goto(BASE+'bestiary.html#items')
-  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='157종'
-  print('PASS: '+cls+' real skill input, delayed/landing damage, native effect crops, level30 equipment and 157-item catalogue',flush=True)
+  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='177종'
+  print('PASS: '+cls+' real skill input, delayed/landing damage, native effect crops, level30 equipment and 177-item catalogue',flush=True)
   p.close()
  assert not errors,errors
  b.close()

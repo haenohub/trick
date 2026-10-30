@@ -13,7 +13,7 @@ with sync_playwright() as pw:
  page.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const p=createPlayer('mage');Object.assign(p,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});p.hp=stats(p).maxHp;const w=new World(),q=w.addPlayer(p),m=w.map('sprout').mobs[0];p.x=m.x-.9;p.y=m.y;localStorage.setItem('leaftale:save:v1',JSON.stringify(p));}''')
  page.reload();page.locator('#loading').wait_for(state='hidden');page.locator('#continue-game').click();page.wait_for_timeout(100)
  assert page.evaluate('__leaftale.view().zoom')==1/1.2
- assert page.evaluate('__leaftale.snapshot().player.stats.speed')==16.5
+ assert page.evaluate('__leaftale.snapshot().player.stats.speed')==8.25
  before=page.evaluate('__leaftale.snapshot().player.gold')
  page.keyboard.press('Tab');confirm_attack(page,'q');page.wait_for_function('__leaftale.snapshot().drops.some(d=>d.kind==="currency")')
  assert page.evaluate('__leaftale.snapshot().player.gold')==before

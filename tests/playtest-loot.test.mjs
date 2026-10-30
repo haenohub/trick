@@ -26,26 +26,31 @@ function setup() {
 function kill(w, p) {
   const m = w.map(p.map).mobs[0];
   Object.assign(m, { x: p.x + 0.7, y: p.y, hp: 1 });
-  Object.assign(m,{homeX:m.x,homeY:m.y,rootUntil:Infinity,nextAttack:Infinity});
+  Object.assign(m, {
+    homeX: m.x,
+    homeY: m.y,
+    rootUntil: Infinity,
+    nextAttack: Infinity,
+  });
   w.rng = () => 0;
   w.attack(p, m.uid);
-  for(let n=0;n<60&&p.action;n++)w.step(.01);
+  for (let n = 0; n < 60 && p.action; n++) w.step(0.01);
   return m;
 }
 const tick = (w, t) => {
   for (let n = 0; n < Math.ceil(t / 0.05); n++) w.step(0.05);
 };
-test("playtest speed is exactly fivefold for players, with tenfold XP and capped independent loot chances", () => {
-  assert.equal(stats(createPlayer()).speed, 3.3 * 5);
-  assert.equal(stats(createPlayer("ranger")).speed, 3.7 * 5);
+test("playtest speed is half the previous speed, with tenfold XP and unmultiplied independent loot chances", () => {
+  assert.equal(stats(createPlayer()).speed, 3.3 * 2.5);
+  assert.equal(stats(createPlayer("ranger")).speed, 3.7 * 2.5);
   assert.equal(xpReward(37), 370);
-  assert.equal(dropChance(0.012), 0.12);
-  assert.equal(dropChance(0.38), 1);
+  assert.equal(dropChance(0.012), 0.012);
+  assert.equal(dropChance(0.38), 0.38);
   const p = createPlayer();
   grantXp(p, 37);
   assert.equal(p.level, 3);
   assert.equal(p.xp, 115);
-  assert.deepEqual(TEST_BALANCE, { speed: 5, experience: 10, drops: 10 });
+  assert.deepEqual(TEST_BALANCE, { speed: 2.5, experience: 10, drops: 1 });
 });
 test("monster death leaves items and currency on the floor until clicked and fully flown to the owner", () => {
   const { w, p } = setup(),
@@ -56,7 +61,10 @@ test("monster death leaves items and currency on the floor until clicked and ful
   assert.equal(p.gold, before);
   tick(w, 0.4);
   const drops = w.snapshot(p.id).drops;
-  assert.equal(drops.length, 6);
+  assert.equal(
+    drops.length,
+    MONSTERS.find((m) => m.id === w.map(p.map).mobs[0].def).drops.length + 1,
+  );
   const money = drops.find((d) => d.kind === "currency");
   assert.ok(money.count > 0);
   assert.equal(w.act(p.id, { type: "pickup", drop: money.id }), true);
@@ -100,7 +108,7 @@ test("pickup authority rejects unknown, distant, expired and other-owner drops a
   another.until = w.time;
   assert.equal(w.act(p.id, { type: "pickup", drop: another.id }), false);
 });
-test("fivefold click movement follows curved corners without tunneling and preserves saved leaf balances", () => {
+test("halved playtest click movement follows curved corners without tunneling and preserves saved leaf balances", () => {
   const { w, p } = setup(),
     n = NAVIGATION.sprout;
   for (const m of w.map(p.map).mobs) {
