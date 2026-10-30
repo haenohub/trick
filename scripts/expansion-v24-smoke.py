@@ -41,6 +41,8 @@ with sync_playwright() as pw:
     p.keyboard.press('i');p.keyboard.press('m')
     assert p.locator('.map-row[data-fast=true]').count()==10
     p.locator('.map-row[data-map=seacave]').click();p.wait_for_function('__leaftale.snapshot().player.map==="seacave"')
+    assert 'current' in p.locator('.map-row[data-map=seacave]').get_attribute('class')
+    assert p.locator('.map-row[data-map=village]').is_enabled()
     assert p.evaluate('__leaftale.snapshot().player.defeatedBosses')==[]
     p.keyboard.press('m');p.wait_for_function('async()=>{const rev=document.querySelector("meta[name=leaftale-revision]").content;return(await import("./renderer.js?v="+rev)).worldArtReady("seacave");}');p.wait_for_timeout(250);p.screenshot(path='/tmp/v24-free-seacave.png')
    print('PASS: '+cls+'/'+branch+' real skill inputs, dedicated generated rows, basic impact and bounded native crops',flush=True)

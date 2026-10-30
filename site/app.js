@@ -352,6 +352,7 @@ function send(action, quiet = false) {
         "craft",
         "equip",
         "potion",
+        "travel",
         "buy",
         "sell",
         "subclass",

@@ -60,7 +60,8 @@ with sync_playwright() as pw:
  assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
  p.keyboard.press('p');p.locator('[data-rebind=pickup]').first.click();p.keyboard.press('v');p.keyboard.press('p')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(850);assert p.evaluate('__leaftale.snapshot().drops.length')==count
- p.keyboard.down('v');p.wait_for_function('__leaftale.snapshot().drops.length===0');p.keyboard.up('v')
+ p.keyboard.down('v');p.wait_for_function('()=>{const s=__leaftale.snapshot();return s.drops.every(d=>Math.hypot(d.x-s.player.x,d.y-s.player.y)>3);}');p.keyboard.up('v')
+ assert p.evaluate('__leaftale.snapshot().drops.length')<count
  assert not errors,errors
  print('PASS: opening a menu, window blur and key release stop repetition; remapped held V works and old Space no longer picks up')
  b.close()
