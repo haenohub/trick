@@ -4,8 +4,9 @@ import { TROPHIES } from "./trophies.js";
 import { equipmentProfile } from "./progression.js";
 import { addEquipmentTiers } from "./equipment-tiers.js";
 import { addConsumables } from "./consumables.js";
+import { addCraftingContent } from "./crafting.js";
 import { assignDropTables } from "./drop-tables.js";
-export const VERSION = "0.25.0";
+export const VERSION = "0.26.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -1004,6 +1005,7 @@ for (const trophy of TROPHIES) {
 }
 addEquipmentTiers(ITEMS, CLASSES);
 addConsumables(ITEMS);
+addCraftingContent(ITEMS, MONSTERS);
 for (const i of Object.values(ITEMS))
   if (i.type === "equipment") Object.assign(i, equipmentProfile(i));
 assignDropTables(MONSTERS, ITEMS);

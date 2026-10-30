@@ -42,7 +42,11 @@ test("all sixty species have exact independent category chances and distinct ran
     MONSTERS.some((m) => m.drops.some((d) => ITEMS[d.item].level === 30)),
   );
   for (const i of NEW_CONSUMABLES)
-    assert.ok(covered.has(i.id), i.id + " must be obtainable");
+    assert.equal(
+      covered.has(i.id),
+      !ITEMS[i.id].craftOnly,
+      i.id + " respects crafting exclusivity",
+    );
 });
 test("each map keeps every species and boss while restoring original population and separating homes", () => {
   const w = new World();
@@ -79,7 +83,7 @@ test("twenty additional consumables have distinct icons, lore, real effects, sho
   assert.equal(NEW_CONSUMABLES.length, 20);
   assert.equal(
     Object.values(ITEMS).filter((i) => i.type === "consumable").length,
-    24,
+    44,
   );
   for (const i of NEW_CONSUMABLES) {
     assert.ok(i.lore.length > 20);

@@ -77,6 +77,7 @@ for (const name of [
   "equipment-appearance.js",
   "equipment-tiers.js",
   "consumables.js",
+  "crafting.js",
   "drop-tables.js",
   "skill-visuals.js",
   "display-mode.js",

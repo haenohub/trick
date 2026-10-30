@@ -127,7 +127,7 @@ export async function buildBestiary() {
             })),
           ),
       ),
-      shop: item.type === "consumable",
+      shop: item.type === "consumable" && !item.craftOnly,
       starting: CLASSES.filter(
         (c) => createPlayer(c.id).inventory[item.id],
       ).map((c) => c.name),

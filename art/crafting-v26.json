@@ -1,0 +1,22 @@
+{
+  "release": "0.26.0",
+  "status": "complete",
+  "sources": [
+    {
+      "id": "consumables-v26",
+      "kind": "consumables",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-9ea5525d-492b-4c90-9611-cb30ef98c3ec.png",
+      "cols": 5,
+      "rows": 4
+    },
+    {
+      "id": "craft-materials-v26",
+      "kind": "materials",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-b1298875-f27e-4990-af5b-7f56fc0628f6.png",
+      "cols": 4,
+      "rows": 2
+    }
+  ]
+}

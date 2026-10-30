@@ -212,6 +212,7 @@ export function consumableLines(i) {
     lines.push(`${i.duration}초 동안 이동속도 +${i.speedBonus * 100}%`);
   lines.push("소비 아이템 공용 재사용 대기시간 3초");
   if (i.duration) lines.push("같은 효과는 중첩되지 않고 지속시간 갱신");
+  if (i.craftOnly) lines.push("제작 전용 · 몬스터 드롭 / 상점 구매 불가");
   return lines;
 }
 export function addConsumables(items) {

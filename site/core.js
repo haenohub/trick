@@ -910,6 +910,7 @@ export class World {
           !map.config.town ||
           !i ||
           i.type !== "consumable" ||
+          i.craftOnly ||
           p.gold < i.price
         )
           return false;

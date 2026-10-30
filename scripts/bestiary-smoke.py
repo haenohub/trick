@@ -10,13 +10,15 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={"width": 1440, "height": 1000}, accept_downloads=True)
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.goto(BASE)
+    data=page.evaluate("JSON.parse(document.querySelector('#bestiary-data').textContent)")
+    def chances(id):return [str(round(d["chance"]*100))+"%" for d in next(m for m in data["monsters"] if m["id"]==id)["drops"]]
     assert page.locator(".monster-card").count() == 8
     assert page.locator("#result-count").inner_text() == "60종"
     page.wait_for_function("document.querySelector('canvas[data-monster]').dataset.loaded === 'true'")
     page.screenshot(path="/tmp/leaftale-bestiary-desktop.png", full_page=True)
     page.locator("#search").fill("콩잎폴짝")
     assert page.locator(".monster-card").count() == 1
-    assert page.locator(".chance").all_inner_texts() == ["60%", "10%", "10%", "10%", "40%", "40%", "40%", "40%", "5%", "5%"]
+    assert page.locator(".chance").all_inner_texts() == chances("m1")
     page.locator(".drop-item summary").first.click()
     assert "콩잎" in page.locator(".drop-item[open]").inner_text()
     page.locator("#search").fill("버들섬유")
@@ -29,7 +31,7 @@ with sync_playwright() as p:
     assert page.locator("#result-count").inner_text() == "8종"
     page.locator('[data-rank="boss"]').click()
     assert page.locator(".monster-card").get_attribute("data-id") == "m40"
-    assert page.locator(".chance").all_inner_texts() == ["60%", "10%", "10%", "10%", "40%", "40%", "40%", "40%", "5%", "5%"]
+    assert page.locator(".chance").all_inner_texts() == chances("m40")
     page.locator("#reset").click()
     page.locator("#sort").select_option("level-desc")
     assert page.locator(".monster-card").first.get_attribute("data-id") in ["m40","m60"]
@@ -40,7 +42,7 @@ with sync_playwright() as p:
     page.locator("#empty-reset").click()
     page.evaluate("dispatchEvent(new Event('beforeprint'))")
     assert page.locator(".monster-card").count() == 60
-    assert page.locator(".drop-table tbody tr").count() == 660
+    assert page.locator(".drop-table tbody tr").count() == sum(len(m["drops"]) for m in data["monsters"])
     page.evaluate("dispatchEvent(new Event('afterprint'))")
     assert page.locator(".monster-card").count() == 8
     with page.expect_download() as download:
@@ -59,14 +61,14 @@ with sync_playwright() as p:
     assert file_page.locator("#result-count").inner_text() == "60종"
     file_page.locator("#search").fill("푸른숨 뿌리해룡")
     assert file_page.locator(".monster-card").count() == 1
-    assert file_page.locator(".chance").all_inner_texts() == ["60%", "10%", "10%", "10%", "40%", "40%", "40%", "40%", "5%", "5%"]
+    assert file_page.locator(".chance").all_inner_texts() == chances("m40")
     for width in [390, 768, 320]:
         mobile = browser.new_page(viewport={"width": width, "height": 844}, is_mobile=True, has_touch=True)
         mobile.on("pageerror", lambda e: errors.append(str(e)))
         mobile.goto(BASE)
         assert mobile.evaluate("document.documentElement.scrollWidth <= innerWidth"), width
         mobile.locator("#search").fill("콩잎폴짝")
-        assert mobile.locator(".chance").all_inner_texts() == ["60%", "10%", "10%", "10%", "40%", "40%", "40%", "40%", "5%", "5%"]
+        assert mobile.locator(".chance").all_inner_texts() == chances("m1")
         if width == 390:
             mobile.wait_for_function("document.querySelector('canvas[data-monster]').dataset.loaded === 'true'")
             mobile.screenshot(path="/tmp/leaftale-bestiary-mobile.png", full_page=True)

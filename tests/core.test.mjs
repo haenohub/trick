@@ -110,6 +110,7 @@ test("loot chances are independent and match tables across all sixty species", (
 });
 test("crafting consumes the exact recipe atomically and equipped gear cannot be destroyed", () => {
   const { w, p } = setup();
+  p.inventory.trophy1 = 1;
   const before = p.inventory.salve;
   assert.equal(w.act("local", { type: "craft", item: "salve" }), true);
   assert.equal(p.inventory.salve, before + 1);

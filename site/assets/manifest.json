@@ -660,7 +660,9 @@
     "skills/ranger",
     "skills/herbalist",
     "combat-impacts-v24",
-    "consumables-v24"
+    "consumables-v24",
+    "consumables-v26",
+    "craft-materials-v26"
   ],
   "monsters": {
     "m1": {
@@ -10751,7 +10753,34 @@
     "thornjam": 0,
     "sunpepper": 0,
     "windnectar": 0,
-    "heartroot": 0
+    "heartroot": 0,
+    "seedcrunch": 0,
+    "sproutcongee": 0,
+    "sporesteambun": 0,
+    "pinecoilcandy": 0,
+    "riverjelly": 0,
+    "amberpudding": 0,
+    "mooncapstew": 0,
+    "ringstock": 0,
+    "saltcrystaltaffy": 0,
+    "silverleaftea": 0,
+    "glassfruitjam": 0,
+    "foamparfait": 0,
+    "reedscrolltea": 0,
+    "pearldrop": 0,
+    "mossbarkstew": 0,
+    "whiteantlerelixir": 0,
+    "blueshellbroth": 0,
+    "crystalbloomcordial": 0,
+    "coralward": 0,
+    "starbreath": 0,
+    "seedmeal": 0,
+    "wildhoney": 0,
+    "springwater": 0,
+    "gelagar": 0,
+    "spiceberry": 0,
+    "moonyeast": 0,
+    "prismsalt": 0
   },
   "itemOverrides": {
     "trophy1": {
@@ -11755,6 +11784,168 @@
       "cols": 5,
       "rows": 4,
       "index": 19
+    },
+    "seedcrunch": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 0
+    },
+    "sproutcongee": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 1
+    },
+    "sporesteambun": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 2
+    },
+    "pinecoilcandy": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 3
+    },
+    "riverjelly": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 4
+    },
+    "amberpudding": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 5
+    },
+    "mooncapstew": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 6
+    },
+    "ringstock": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 7
+    },
+    "saltcrystaltaffy": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 8
+    },
+    "silverleaftea": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 9
+    },
+    "glassfruitjam": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 10
+    },
+    "foamparfait": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 11
+    },
+    "reedscrolltea": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 12
+    },
+    "pearldrop": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 13
+    },
+    "mossbarkstew": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 14
+    },
+    "whiteantlerelixir": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 15
+    },
+    "blueshellbroth": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 16
+    },
+    "crystalbloomcordial": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 17
+    },
+    "coralward": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 18
+    },
+    "starbreath": {
+      "file": "consumables-v26",
+      "cols": 5,
+      "rows": 4,
+      "index": 19
+    },
+    "seedmeal": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 0
+    },
+    "wildhoney": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 1
+    },
+    "springwater": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 2
+    },
+    "gelagar": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 3
+    },
+    "spiceberry": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 4
+    },
+    "moonyeast": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 5
+    },
+    "prismsalt": {
+      "file": "craft-materials-v26",
+      "cols": 4,
+      "rows": 2,
+      "index": 6
     }
   },
   "characterLayouts": {
@@ -38729,7 +38920,9 @@
     "skills/ranger",
     "skills/herbalist",
     "combat-impacts-v24",
-    "consumables-v24"
+    "consumables-v24",
+    "consumables-v26",
+    "craft-materials-v26"
   ],
   "skillEffects": {
     "warden": {

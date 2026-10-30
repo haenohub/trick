@@ -49,8 +49,8 @@ with sync_playwright() as pw:
   assert p.evaluate('__leaftale.snapshot().player.equipment.weapon')==item
   p.keyboard.press('i');p.wait_for_timeout(100);p.screenshot(path='/tmp/v23-'+cls+'-level30.png')
   p.goto(BASE+'bestiary.html#items')
-  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='177종'
-  print('PASS: '+cls+' real skill input, delayed/landing damage, native effect crops, level30 equipment and 177-item catalogue',flush=True)
+  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='204종'
+  print('PASS: '+cls+' real skill input, delayed/landing damage, native effect crops, level30 equipment and 204-item catalogue',flush=True)
   p.close()
  assert not errors,errors
  b.close()

@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#203f35" />
     <meta
       name="description"
-      content="리프테일 지역 1·2 몬스터 60종과 아이템 177종의 이야기, 제작법, 획득처와 드롭 확률을 확인하세요."
+      content="리프테일 지역 1·2 몬스터 60종, 아이템 204종과 소비 아이템 제작법 40종. 재료 아이콘 조합, 전리품 획득처와 드롭 확률을 확인하세요."
     />
-    <title>리프테일 도감 · 몬스터와 아이템</title>
+    <title>리프테일 도감 · 몬스터·아이템·제작</title>
     <style>
       :root {
         --font-increase: 2pt;
@@ -1209,6 +1209,123 @@
       body[data-catalogue-mode="items"] .filters-inline {
         display: none;
       }
+      body[data-catalogue-mode="crafting"] #region-options,
+      body[data-catalogue-mode="crafting"] .filters-inline {
+        display: none;
+      }
+      body[data-catalogue-mode="crafting"] .cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .craft-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        min-width: 0;
+        break-inside: avoid;
+      }
+      .craft-card h3 {
+        margin: 0;
+        font-size: calc(18px + var(--font-increase));
+      }
+      .craft-card h4 {
+        margin: 16px 0 8px;
+      }
+      .craft-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px 6px;
+        margin: 24px 0;
+        padding: 18px 6px;
+        border-radius: 8px;
+        background: #eff1e4;
+      }
+      .recipe-step {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .recipe-node {
+        width: 94px;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 2px;
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      .recipe-node:hover,
+      .recipe-node:focus-visible {
+        background: #fff9e5;
+        border-color: #9eb399;
+      }
+      .recipe-node .loot-icon {
+        width: 48px;
+        height: 48px;
+        image-rendering: pixelated;
+      }
+      .recipe-node .recipe-name {
+        font-size: calc(11px + var(--font-increase));
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+        word-break: keep-all;
+      }
+      .recipe-node .recipe-quantity {
+        font-size: calc(10px + var(--font-increase));
+        color: var(--green);
+        font-weight: 700;
+      }
+      .recipe-result {
+        background: #fff5d2;
+        border-color: #d7bc76;
+      }
+      .recipe-operator {
+        width: 18px;
+        flex: 0 0 auto;
+        text-align: center;
+        font-size: 22px;
+        color: var(--green);
+      }
+      .craft-description,
+      .craft-effects,
+      .craft-sources {
+        font-size: calc(12px + var(--font-increase));
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+      }
+      .craft-sources summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .craft-sources li {
+        margin: 8px 0;
+      }
+      .craft-sources ul {
+        padding-left: 20px;
+      }
+      #craft-filters select {
+        width: 100%;
+        min-width: 0;
+      }
+      @media (max-width: 600px) {
+        .recipe-node {
+          width: 76px;
+        }
+        .craft-flow {
+          gap: 12px 3px;
+          padding: 12px 0;
+        }
+        .recipe-step {
+          gap: 3px;
+        }
+      }
       .item-guide-card {
         background: var(--paper);
         border: 1px solid var(--line);
@@ -1359,7 +1476,10 @@
         <button data-catalogue="monsters" aria-pressed="true">
           몬스터 도감 · 60종</button
         ><button data-catalogue="items" aria-pressed="false">
-          아이템 도감 · 102종
+          아이템 도감 · 204종
+        </button>
+        <button data-catalogue="crafting" aria-pressed="false">
+          제작 도감 · 40종
         </button>
       </div>
       <main class="catalogue" id="catalogue">
@@ -1409,6 +1529,30 @@
                 <option value="herbalist">약초술사</option>
               </select>
             </div>
+          </div>
+          <div id="craft-filters" hidden>
+            <div class="filter-group">
+              <label for="craft-category">사용 효과</label
+              ><select id="craft-category">
+                <option value="all">모든 제작법</option>
+                <option value="recovery">회복 · 해독</option>
+                <option value="enhancement">능력 강화</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="craft-source">결과물 획득</label
+              ><select id="craft-source">
+                <option value="all">모든 획득 방식</option>
+                <option value="only">제작 전용</option>
+                <option value="drop">드롭도 가능</option>
+              </select>
+            </div>
+            <p class="field-note">
+              아이콘 아래 이름과 수량대로 재료를 모으세요. 재료를 누르면
+              획득처를 볼 수 있어요. 모든 제작은 마을에서 하며, 소비 아이템은
+              1회에 1개 · 비용 2리프입니다. 기본 보급약 4종은 아이템 도감에
+              별도로 기록되어 있어요.
+            </p>
           </div>
           <button class="reset" id="reset" type="button">필터 초기화 ↺</button>
           <p class="field-note">
@@ -1521,8 +1665,15 @@
           sort = "level-asc",
           page = 1,
           filtered = [],
-          catalogue = location.hash === "#items" ? "items" : "monsters",
+          catalogue = ["items", "crafting"].includes(
+            location.hash.slice(1) || document.body.dataset.catalogueMode,
+          )
+            ? location.hash.slice(1) || document.body.dataset.catalogueMode
+            : "monsters",
+          craftCategory = "all",
+          craftSource = "all",
           itemType = "all",
+          focusedItem = null,
           itemClass = "all";
         const mapOf = (id) => data.maps.find((m) => m.id === id),
           typeOf = (d) =>
@@ -1545,6 +1696,10 @@
         );
         $("version-note").textContent =
           `지역 1–2 · v${data.version} 게임 데이터 기준 · 이미지 불러오기는 인터넷 연결 필요`;
+        document.querySelector('[data-catalogue="items"]').textContent =
+          `아이템 도감 · ${data.items.length}종`;
+        document.querySelector('[data-catalogue="crafting"]').textContent =
+          `제작 도감 · ${data.items.filter((i) => i.craftGuide).length}종`;
         $("region-options").innerHTML = [
           ["all", "모든 지역", data.monsters.length],
           ...data.regions.map((r, i) => [
@@ -1598,8 +1753,34 @@
           if (source.chests.length)
             parts.push("보물함: " + source.chests.join(", "));
           if (item.ingredients.length) parts.push("마을에서 제작 · 연금술");
+          if (item.craftOnly)
+            parts.push("제작 전용 · 몬스터 드롭 및 상점 판매 없음");
           return `<article class="item-guide-card" id="item-${item.id}" data-item-id="${item.id}"><div class="card-top"><span class="entry-id">ITEM ${String(item.index + 1).padStart(3, "0")}</span><span class="badge">${esc(item.typeName)}</span></div><div class="card-body"><div class="item-guide-heading"><canvas class="loot-icon" width="32" height="32" data-drop="${item.id}" aria-label="${esc(item.name)}"></canvas><div><h3>${esc(item.name)}</h3><small>${esc(item.slotName)}${item.level ? " · Lv." + item.level : ""} · ${esc(item.className)} ${esc(item.branchName)}</small></div></div><p class="lore">${esc(item.lore)}</p>${(item.effectLines || []).length ? "<h4>사용 효과</h4><p>" + item.effectLines.map(esc).join("<br>") + "</p>" : ""}<div class="item-metrics">${(item.statLines || []).map((s) => "<span>" + esc(s.label) + " " + esc(s.value) + "</span>").join("")}<span>판매 ${fmt(item.sellPrice)} 리프</span></div>${item.type === "equipment" ? "<h4>장착 요구 스탯</h4><p>레벨 " + item.level + " · " + (item.requirementLines || []).map((s) => esc(s.label) + " " + s.value).join(" · ") + "</p>" : ""}<h4>획득 방법</h4>${parts.map((part) => '<p class="source-note">' + esc(part) + "</p>").join("")}${source.monsters.length ? `<ul class="item-monster-sources">${source.monsters.map((m) => `<li>${esc(m.name)} <small>${esc(m.mapName)}</small> · <b class="item-drop-chance">${percent(m.chance)}</b> · ×${m.min}${m.max !== m.min ? "–" + m.max : ""}</li>`).join("")}</ul>` : ""}${item.ingredients.length ? '<h4>제작 재료</h4><div class="recipe-items">' + item.ingredients.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)} ×${i.count}</button>`).join("") + "</div>" : ""}${item.usedBy.length ? '<h4>이 재료로 만들 수 있어요</h4><div class="recipe-items">' + item.usedBy.map((i) => `<button class="item-link" data-item-link="${i.id}">${esc(i.name)}</button>`).join("") + "</div>" : ""}</div></article>`;
         }
+        function recipeNode(id, count, result = false) {
+          const item = data.items.find((i) => i.id === id);
+          return `<button class="recipe-node ${result ? "recipe-result" : ""}" data-item-link="${id}" aria-label="${esc(item.name)} ${count}개 · 아이템 도감에서 보기"><canvas class="loot-icon" width="32" height="32" data-drop="${id}" aria-hidden="true"></canvas><span class="recipe-name">${esc(item.name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ""}</span></button>`;
+        }
+        function craftCard(item) {
+          const ingredients = item.ingredients.map((i) =>
+            data.items.find((a) => a.id === i.id),
+          );
+          const sources = ingredients
+            .map((i) => {
+              const species = [
+                ...new Map(i.sources.monsters.map((m) => [m.id, m])).values(),
+              ];
+              return `<li><b>${esc(i.name)}</b>: ${species.map((m) => `<button class="item-link" data-monster-link="${m.id}">${esc(m.name)} · Lv.${data.monsters.find((a) => a.id === m.id).level}</button> ${percent(m.chance)}`).join(" · ")}${i.sources.herbs.length ? ` · 채집: ${esc(i.sources.herbs.join(" / "))}` : ""}</li>`;
+            })
+            .join("");
+          return `<article class="craft-card" data-recipe-id="${item.id}"><div class="card-top"><h3>${esc(item.name)}</h3><span class="badge">Lv.${item.level} · ${item.craftOnly ? "제작 전용" : "제작 · 드롭 가능"}</span></div><div class="card-body"><div class="craft-flow" role="group" aria-label="${esc(item.name)} 제작 재료와 결과">${item.ingredients.map((i, n) => `<span class="recipe-step">${n ? '<span class="recipe-operator" aria-label="더하기">+</span>' : ""}${recipeNode(i.id, i.count)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator" aria-label="제작 결과">→</span>${recipeNode(item.id, 1, true)}</span></div><p class="craft-description">${esc(item.recipeNote)}</p><div class="craft-effects"><b>사용 효과</b><br>${item.effectLines.map(esc).join("<br>")}</div><p class="source-note">마을 제작 · 제작 레벨 ${item.level} · 비용 2리프 · 결과 1개${item.craftOnly ? " · 몬스터 드롭 / 상점 구매 불가" : " · 완제품 드롭 확률 5%"}</p><p class="craft-description">${esc(item.lore)}</p><details class="craft-sources"><summary>재료 획득처 보기</summary><ul>${sources}</ul></details></div></article>`;
+        }
+        const entryCard = (entry) =>
+          catalogue === "crafting"
+            ? craftCard(entry)
+            : catalogue === "items"
+              ? itemCard(entry)
+              : card(entry);
         function getImage(file) {
           if (!images.has(file))
             images.set(
@@ -1709,10 +1890,13 @@
             .toLocaleLowerCase("ko-KR");
           document.body.dataset.catalogueMode = catalogue;
           $("search").placeholder =
-            catalogue === "items"
-              ? "아이템, 획득 몬스터, 제작 재료 검색"
-              : "몬스터, 드롭 아이템, 이야기 검색";
+            catalogue === "crafting"
+              ? "완성품, 재료, 전리품 몬스터 검색"
+              : catalogue === "items"
+                ? "아이템, 획득 몬스터, 제작 재료 검색"
+                : "몬스터, 드롭 아이템, 이야기 검색";
           $("item-filters").hidden = catalogue !== "items";
+          $("craft-filters").hidden = catalogue !== "crafting";
           document
             .querySelectorAll("[data-catalogue]")
             .forEach((b) =>
@@ -1727,39 +1911,56 @@
               item.slotName,
               ...item.sources.monsters.map((m) => m.name),
               ...item.ingredients.map((i) => i.name),
+              ...item.ingredients.flatMap((i) =>
+                data.items
+                  .find((a) => a.id === i.id)
+                  .sources.monsters.map((m) => m.name),
+              ),
             ]
               .join(" ")
               .normalize("NFKC")
               .toLocaleLowerCase("ko-KR");
           filtered =
-            catalogue === "items"
+            catalogue === "crafting"
               ? data.items.filter(
                   (i) =>
-                    (itemType === "all" || i.type === itemType) &&
-                    (itemClass === "all" ||
-                      !i.classId ||
-                      i.classId === itemClass) &&
+                    i.craftGuide &&
+                    (craftCategory === "all" ||
+                      i.craftCategory === craftCategory) &&
+                    (craftSource === "all" ||
+                      Boolean(i.craftOnly) === (craftSource === "only")) &&
                     (!needle || itemNeedle(i).includes(needle)),
                 )
-              : data.monsters.filter(
-                  (m) =>
-                    (region === "all" || m.region === Number(region)) &&
-                    (map === "all" || (m.spawnMaps || [m.map]).includes(map)) &&
-                    (rank === "all" || m.type === rank) &&
-                    (!needle ||
-                      [
-                        m.name,
-                        m.id,
-                        m.lore,
-                        mapOf(m.map).name,
-                        data.regions[m.region].name,
-                        ...m.drops.map((d) => d.name),
-                      ]
-                        .join(" ")
-                        .normalize("NFKC")
-                        .toLocaleLowerCase("ko-KR")
-                        .includes(needle)),
-                );
+              : catalogue === "items"
+                ? data.items.filter(
+                    (i) =>
+                      (!focusedItem || i.id === focusedItem) &&
+                      (itemType === "all" || i.type === itemType) &&
+                      (itemClass === "all" ||
+                        !i.classId ||
+                        i.classId === itemClass) &&
+                      (!needle || itemNeedle(i).includes(needle)),
+                  )
+                : data.monsters.filter(
+                    (m) =>
+                      (region === "all" || m.region === Number(region)) &&
+                      (map === "all" ||
+                        (m.spawnMaps || [m.map]).includes(map)) &&
+                      (rank === "all" || m.type === rank) &&
+                      (!needle ||
+                        [
+                          m.name,
+                          m.id,
+                          m.lore,
+                          mapOf(m.map).name,
+                          data.regions[m.region].name,
+                          ...m.drops.map((d) => d.name),
+                        ]
+                          .join(" ")
+                          .normalize("NFKC")
+                          .toLocaleLowerCase("ko-KR")
+                          .includes(needle)),
+                  );
           filtered.sort(
             sort === "name"
               ? (a, b) => a.name.localeCompare(b.name, "ko")
@@ -1773,14 +1974,16 @@
           const start = (page - 1) * pageSize;
           $("cards").innerHTML = filtered
             .slice(start, start + pageSize)
-            .map(catalogue === "items" ? itemCard : card)
+            .map(entryCard)
             .join("");
           $("result-label").textContent =
-            catalogue === "items"
-              ? "전체 아이템"
-              : region === "all"
-                ? "전체 몬스터"
-                : data.regions[Number(region)].name;
+            catalogue === "crafting"
+              ? "소비 아이템 제작법"
+              : catalogue === "items"
+                ? "전체 아이템"
+                : region === "all"
+                  ? "전체 몬스터"
+                  : data.regions[Number(region)].name;
           $("result-count").textContent = `${filtered.length}종`;
           $("page-range").textContent = filtered.length
             ? `${start + 1}–${Math.min(start + pageSize, filtered.length)} / ${filtered.length}`
@@ -1817,8 +2020,11 @@
         }
         function reset() {
           region = map = rank = itemType = itemClass = "all";
+          craftCategory = craftSource = "all";
+          $("craft-category").value = $("craft-source").value = "all";
           $("item-type").value = $("item-class").value = "all";
           query = "";
+          focusedItem = null;
           sort = "level-asc";
           page = 1;
           $("search").value = "";
@@ -1848,11 +2054,13 @@
           render();
         });
         $("search").addEventListener("input", (e) => {
+          focusedItem = null;
           query = e.target.value;
           page = 1;
           render();
         });
         $("clear-search").addEventListener("click", () => {
+          focusedItem = null;
           query = "";
           $("search").value = "";
           page = 1;
@@ -1894,9 +2102,7 @@
         });
         window.addEventListener("beforeprint", () => {
           observer?.disconnect();
-          $("cards").innerHTML = filtered
-            .map(catalogue === "items" ? itemCard : card)
-            .join("");
+          $("cards").innerHTML = filtered.map(entryCard).join("");
           document.querySelectorAll("canvas[data-monster]").forEach(paint);
           document.querySelectorAll("canvas[data-drop]").forEach(paintItem);
         });
@@ -1922,11 +2128,37 @@
         );
         $("item-type").addEventListener("change", (e) => {
           itemType = e.target.value;
+          focusedItem = null;
           page = 1;
           render();
         });
+        $("craft-category").addEventListener("change", (e) => {
+          craftCategory = e.target.value;
+          page = 1;
+          render();
+        });
+        $("craft-source").addEventListener("change", (e) => {
+          craftSource = e.target.value;
+          page = 1;
+          render();
+        });
+        document.addEventListener("click", (e) => {
+          const b = e.target.closest("[data-monster-link]");
+          if (!b) return;
+          catalogue = "monsters";
+          location.hash = "monsters";
+          region = map = rank = "all";
+          updateMaps();
+          query = data.monsters.find(
+            (m) => m.id === b.dataset.monsterLink,
+          ).name;
+          $("search").value = query;
+          page = 1;
+          render(true);
+        });
         $("item-class").addEventListener("change", (e) => {
           itemClass = e.target.value;
+          focusedItem = null;
           page = 1;
           render();
         });
@@ -1938,12 +2170,15 @@
           itemType = itemClass = "all";
           $("item-type").value = $("item-class").value = "all";
           query = data.items.find((i) => i.id === b.dataset.itemLink).name;
+          focusedItem = b.dataset.itemLink;
           $("search").value = query;
           page = 1;
           render(true);
         });
         window.addEventListener("hashchange", () => {
-          const mode = location.hash === "#items" ? "items" : "monsters";
+          const mode = ["items", "crafting"].includes(location.hash.slice(1))
+            ? location.hash.slice(1)
+            : "monsters";
           if (mode !== catalogue) {
             catalogue = mode;
             reset();

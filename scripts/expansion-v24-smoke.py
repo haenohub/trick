@@ -12,7 +12,7 @@ with sync_playwright() as pw:
    p.reload();p.locator('#loading').wait_for(state='hidden')
    p.evaluate(r'''async()=>{const rev=document.querySelector('meta[name=leaftale-revision]').content,{World}=await import('./core.js?v='+rev),add=World.prototype.addPlayer;World.prototype.addPlayer=function(...args){const p=add.apply(this,args);this.rng=()=>.5;for(const m of this.map(p.map).mobs){m.hp=0;m.respawn=Infinity;}const m=this.map(p.map).mobs[0];Object.assign(m,{hp:1e7,maxHp:1e7,x:p.x+1.3,y:p.y-.3,homeX:p.x+1.3,homeY:p.y-.3});return p;};World.prototype.updateMob=function(){};window.vfxDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(im,...args){if(im.src?.match(/assets\/(skills\/|combat-impacts-v24)/))vfxDraws.push({file:im.src,width:im.width,height:im.height,args});return draw.call(this,im,...args);};}''')
    p.locator('#continue-game').click();p.wait_for_timeout(200)
-   assert p.evaluate('__leaftale.version')=='0.25.0'
+   assert p.evaluate('__leaftale.version')=='0.26.0'
    for slot,key in ([(0,'q'),(1,'w'),(2,'e'),(3,'r')] if bi==0 else [(3,'r')]):
     goal=p.evaluate('''()=>{const m=__leaftale.snapshot().mobs.find(m=>m.hp>0),s=__leaftale.worldToScreen(m.x,m.y);return{x:s.x,y:s.y};}''')
     p.keyboard.press(key);p.mouse.click(goal['x'],goal['y'])
@@ -50,8 +50,8 @@ with sync_playwright() as pw:
  p=b.new_page();p.goto(BASE+'bestiary.html');p.locator('#search').fill('콩잎폴짝');p.wait_for_timeout(250)
  chances=p.locator('.chance').all_inner_texts();assert '60%' in chances and '10%' in chances and '40%' in chances and '5%' in chances
  p.locator('[data-catalogue=items]').click();p.locator('#search').fill('');p.locator('#item-type').select_option('consumable')
- assert p.locator('#result-count').inner_text()=='24종'
+ assert p.locator('#result-count').inner_text()=='44종'
  p.locator('#search').fill('붉은수피 강장제');assert '90초 동안 공격력 +20%' in p.locator('.item-guide-card').inner_text()
  assert not errors,errors
- print('PASS: free unvisited coast travel, consumable actual combat stats/HUD and 24-consumable codex with exact drop rates',flush=True)
+ print('PASS: free unvisited coast travel, consumable actual combat stats/HUD and 44-consumable codex with exact drop rates',flush=True)
  b.close()

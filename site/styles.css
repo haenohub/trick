@@ -3093,6 +3093,89 @@ canvas.aiming {
 .slot-boots {
   grid-area: boots;
 }
+.craft-guide-list {
+  display: grid;
+  gap: 16px;
+}
+.craft-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 6px;
+  margin: 16px 0;
+  padding: 14px 4px;
+  background: #192f39;
+  border-radius: 6px;
+}
+.recipe-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.recipe-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 94px;
+  flex: 0 0 auto;
+  padding: 7px 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: inherit;
+}
+.recipe-node .item-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+}
+.recipe-name {
+  font-size: calc(11px + var(--font-increase));
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+.recipe-quantity {
+  font-size: calc(10px + var(--font-increase));
+  color: #b9d9af;
+}
+.recipe-operator {
+  width: 18px;
+  text-align: center;
+  flex: 0 0 auto;
+  font-size: 22px;
+  color: #dfcd9b;
+}
+.recipe-result {
+  background: #435345;
+  border-color: #b3a374;
+}
+.recipe-missing .recipe-quantity {
+  color: #ffb5a9;
+}
+.craft-sources {
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.craft-sources summary {
+  cursor: pointer;
+}
+.craft-sources ul {
+  padding-left: 18px;
+}
+.craft-sources li {
+  margin: 8px 0;
+}
+@media (max-width: 600px) {
+  .recipe-node {
+    width: 76px;
+  }
+  .craft-flow,
+  .recipe-step {
+    gap: 4px;
+  }
+}
 @media (max-width: 420px) {
   .equipment-body {
     gap: 5px;

@@ -232,13 +232,40 @@ function codexItemCard(item) {
   const sources = MONSTERS.filter((m) =>
     m.drops.some((d) => d.item === item.id),
   );
-  return `<article class="content-card item-entry"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${equipmentStats(item)}${state?.player ? equipmentRequirements(item, state.player) : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
+  return `<article class="content-card item-entry" data-guide-entry="${item.id}"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${equipmentStats(item)}${state?.player ? equipmentRequirements(item, state.player) : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
     item.recipe
       ? `<p>제작 재료: ${Object.entries(item.recipe)
           .map(([id, n]) => ITEMS[id].name + " ×" + n)
           .join(" · ")}</p>`
       : ""
   }</article>`;
+}
+function craftGuideCard(item, p) {
+  const entries = Object.entries(item.recipe),
+    town = MAPS.find((m) => m.id === p.map).town;
+  const can =
+    town &&
+    p.level >= item.level &&
+    p.gold >= 2 &&
+    entries.every(([id, n]) => (p.inventory[id] || 0) >= n);
+  const node = (id, count, result = false) =>
+    `<button class="recipe-node ${result ? "recipe-result" : (p.inventory[id] || 0) < count ? "recipe-missing" : ""}" data-guide-item="${id}" title="${esc(ITEMS[id].name)} · 보유 ${p.inventory[id] || 0}">${itemIcon(id)}<span class="recipe-name">${esc(ITEMS[id].name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ` · 보유 ${p.inventory[id] || 0}`}</span></button>`;
+  const sources = entries
+    .map(
+      ([id]) =>
+        `<li><b>${ITEMS[id].name}</b>: ${MONSTERS.filter((m) =>
+          m.drops.some((d) => d.item === id),
+        )
+          .map(
+            (m) =>
+              `${m.name} Lv.${m.level} (${mapsForSpecies(m.id)
+                .map((a) => a.name)
+                .join(" / ")})`,
+          )
+          .join(" · ")}</li>`,
+    )
+    .join("");
+  return `<article class="content-card craft-guide-card" data-recipe-id="${item.id}"><h3>${item.name}</h3><small>제작 Lv.${item.level} · ${item.craftOnly ? "제작 전용 · 드롭/상점 없음" : "제작 · 완제품 드롭 5%"}</small><div class="craft-flow">${entries.map(([id, n], at) => `<span class="recipe-step">${at ? '<span class="recipe-operator">+</span>' : ""}${node(id, n)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator">→</span>${node(item.id, 1, true)}</span></div><p>${item.recipeNote}</p>${equipmentStats(item)}<details class="craft-sources"><summary>재료 획득처 보기</summary><ul>${sources}</ul></details><div class="actions"><button data-action="craft" data-item="${item.id}" ${can ? "" : "disabled"}>${can ? "2리프로 1개 제작" : !town ? "마을에서 제작" : p.level < item.level ? "제작 레벨 부족" : "재료 또는 리프 부족"}</button></div></article>`;
 }
 const skillDescriptions = {
   warden: [
@@ -668,7 +695,7 @@ function openPanel(name) {
   $("menu-panel").dataset.panel = name;
   filter =
     name === "codex"
-      ? codexMode === "items"
+      ? codexMode !== "monsters"
         ? "all"
         : "0"
       : name === "craft"
@@ -928,8 +955,28 @@ function renderPanel() {
     ).join("")}`;
   } else if (panel === "codex") {
     title = "리프테일 도감";
-    const catalogueTabs = `<div class="tabs catalogue-tabs"><button data-catalogue="monsters" aria-pressed="${codexMode === "monsters"}">몬스터 ${MONSTERS.length}</button><button data-catalogue="items" aria-pressed="${codexMode === "items"}">아이템 ${Object.keys(ITEMS).length}</button></div>`;
-    if (codexMode === "items") {
+    const catalogueTabs = `<div class="tabs catalogue-tabs"><button data-catalogue="monsters" aria-pressed="${codexMode === "monsters"}">몬스터 ${MONSTERS.length}</button><button data-catalogue="items" aria-pressed="${codexMode === "items"}">아이템 ${Object.keys(ITEMS).length}</button><button data-catalogue="crafting" aria-pressed="${codexMode === "crafting"}">제작 도감 40</button></div>`;
+    if (codexMode === "crafting") {
+      html =
+        catalogueTabs +
+        `<p class="panel-intro">재료 아이콘 아래의 수량을 모아 마을에서 제작하세요. 아이콘을 누르면 아이템 도감에서 획득처를 볼 수 있습니다. 기본 보급약 4종은 아이템 도감에서 따로 확인할 수 있습니다. <a href="./bestiary.html?v=${ART_REVISION}#crafting" target="_blank" rel="noopener">제작 도감 전체 보기 ↗</a></p>` +
+        tabs([
+          ["all", "전체 40종"],
+          ["recovery", "회복 · 해독"],
+          ["enhancement", "능력 강화"],
+          ["only", "제작 전용"],
+        ]) +
+        `<div class="craft-guide-list">${Object.values(ITEMS)
+          .filter(
+            (i) =>
+              i.craftGuide &&
+              (filter === "all" ||
+                (filter === "only" ? i.craftOnly : i.craftCategory === filter)),
+          )
+          .sort((a, b) => a.level - b.level)
+          .map((i) => craftGuideCard(i, p))
+          .join("")}</div>`;
+    } else if (codexMode === "items") {
       html =
         catalogueTabs +
         `<p class="panel-intro"><a href="./bestiary.html?v=${ART_REVISION}#items" target="_blank" rel="noopener">리프테일 아이템 도감 전체 보기 ↗</a></p>` +
@@ -975,7 +1022,7 @@ function renderPanel() {
     html = `<p class="npc-dialog">“${n.text}”</p><div class="actions"><button data-open="journal">이야기 보기</button><button data-open="craft">제작 · 연금술</button><button data-open="skills">직업과 전직</button><button data-action="rest">기운 회복 · 무료</button></div><h3 class="panel-section">여행을 위한 작은 준비</h3><div class="card-grid">${Object.values(
       ITEMS,
     )
-      .filter((i) => i.type === "consumable")
+      .filter((i) => i.type === "consumable" && !i.craftOnly)
       .map(
         (i) =>
           `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name}</h3><small>${i.price} 리프 · 보유 ${p.inventory[i.id] || 0}</small></div></div><p>${i.lore}</p>${equipmentStats(i)}<div class="actions"><button data-action="buy" data-item="${i.id}" ${p.gold < i.price ? "disabled" : ""}>구입</button></div></article>`,
@@ -1197,8 +1244,19 @@ function panelClick(e) {
   const catalogue = e.target.closest("[data-catalogue]");
   if (catalogue) {
     codexMode = catalogue.dataset.catalogue;
-    filter = codexMode === "items" ? "all" : "0";
+    filter = codexMode === "monsters" ? "0" : "all";
     renderPanel();
+    return;
+  }
+  const guideItem = e.target.closest("[data-guide-item]");
+  if (guideItem) {
+    const id = guideItem.dataset.guideItem;
+    codexMode = "items";
+    filter = ITEMS[id].type;
+    renderPanel();
+    $("panel-body")
+      .querySelector(`[data-guide-entry="${id}"]`)
+      ?.scrollIntoView({ block: "start" });
     return;
   }
   const slot = e.target.closest("[data-inventory-item]");
@@ -1713,7 +1771,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.25.0",
+  version: "0.26.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

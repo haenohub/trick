@@ -21,7 +21,7 @@ const advance = (w, t) => {
 };
 test("each class has a complete seven-step equipment ladder and level-zero starters are weaker", () => {
   assert.deepEqual(EQUIPMENT_LEVELS, [0, 5, 10, 15, 20, 25, 30]);
-  assert.equal(Object.keys(ITEMS).length, 177);
+  assert.equal(Object.keys(ITEMS).length, 204);
   for (const cls of CLASSES) {
     const p = createPlayer(cls.id);
     for (const slot of ["weapon", "armor", "head", "boots", "charm"]) {

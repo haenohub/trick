@@ -88883,6 +88883,223 @@
       "cols": 5,
       "rows": 4,
       "size": 32
+    },
+    {
+      "id": "consumables-v26",
+      "target": "site/assets/consumables-v26.png",
+      "source": "/workspace/generated_images/exec-9ea5525d-492b-4c90-9611-cb30ef98c3ec.png",
+      "tool": "image_gen",
+      "width": 160,
+      "height": 128,
+      "sha256": "eab532591185f686ba5ace9d2abfeff50b5fa757aa7423e2e012053ffbb28d8c",
+      "cols": 5,
+      "rows": 4,
+      "size": 32,
+      "cuts": [
+        {
+          "item": "seedcrunch",
+          "sx": 18,
+          "sy": 51,
+          "sw": 262,
+          "sh": 200
+        },
+        {
+          "item": "sproutcongee",
+          "sx": 317,
+          "sy": 58,
+          "sw": 229,
+          "sh": 199
+        },
+        {
+          "item": "sporesteambun",
+          "sx": 581,
+          "sy": 31,
+          "sw": 244,
+          "sh": 231
+        },
+        {
+          "item": "pinecoilcandy",
+          "sx": 871,
+          "sy": 39,
+          "sw": 225,
+          "sh": 228
+        },
+        {
+          "item": "riverjelly",
+          "sx": 1130,
+          "sy": 68,
+          "sw": 252,
+          "sh": 183
+        },
+        {
+          "item": "amberpudding",
+          "sx": 44,
+          "sy": 295,
+          "sw": 208,
+          "sh": 237
+        },
+        {
+          "item": "mooncapstew",
+          "sx": 302,
+          "sy": 314,
+          "sw": 259,
+          "sh": 206
+        },
+        {
+          "item": "ringstock",
+          "sx": 589,
+          "sy": 297,
+          "sw": 237,
+          "sh": 232
+        },
+        {
+          "item": "saltcrystaltaffy",
+          "sx": 869,
+          "sy": 320,
+          "sw": 232,
+          "sh": 205
+        },
+        {
+          "item": "silverleaftea",
+          "sx": 1157,
+          "sy": 282,
+          "sw": 222,
+          "sh": 254
+        },
+        {
+          "item": "glassfruitjam",
+          "sx": 44,
+          "sy": 561,
+          "sw": 236,
+          "sh": 234
+        },
+        {
+          "item": "foamparfait",
+          "sx": 318,
+          "sy": 562,
+          "sw": 229,
+          "sh": 238
+        },
+        {
+          "item": "reedscrolltea",
+          "sx": 602,
+          "sy": 561,
+          "sw": 200,
+          "sh": 281
+        },
+        {
+          "item": "pearldrop",
+          "sx": 904,
+          "sy": 561,
+          "sw": 172,
+          "sh": 262
+        },
+        {
+          "item": "mossbarkstew",
+          "sx": 1127,
+          "sy": 577,
+          "sw": 250,
+          "sh": 221
+        },
+        {
+          "item": "whiteantlerelixir",
+          "sx": 50,
+          "sy": 842,
+          "sw": 191,
+          "sh": 248
+        },
+        {
+          "item": "blueshellbroth",
+          "sx": 306,
+          "sy": 843,
+          "sw": 255,
+          "sh": 229
+        },
+        {
+          "item": "crystalbloomcordial",
+          "sx": 601,
+          "sy": 842,
+          "sw": 204,
+          "sh": 248
+        },
+        {
+          "item": "coralward",
+          "sx": 865,
+          "sy": 861,
+          "sw": 240,
+          "sh": 212
+        },
+        {
+          "item": "starbreath",
+          "sx": 1145,
+          "sy": 842,
+          "sw": 225,
+          "sh": 249
+        }
+      ]
+    },
+    {
+      "id": "craft-materials-v26",
+      "target": "site/assets/craft-materials-v26.png",
+      "source": "/workspace/generated_images/exec-b1298875-f27e-4990-af5b-7f56fc0628f6.png",
+      "tool": "image_gen",
+      "width": 128,
+      "height": 64,
+      "sha256": "51d97df73fb52ce5f1944bdf37986df290b6f54770c2f68736b52e8ee48abd52",
+      "cols": 4,
+      "rows": 2,
+      "size": 32,
+      "cuts": [
+        {
+          "item": "seedmeal",
+          "sx": 59,
+          "sy": 173,
+          "sw": 321,
+          "sh": 271
+        },
+        {
+          "item": "wildhoney",
+          "sx": 456,
+          "sy": 150,
+          "sw": 265,
+          "sh": 311
+        },
+        {
+          "item": "springwater",
+          "sx": 829,
+          "sy": 115,
+          "sw": 249,
+          "sh": 363
+        },
+        {
+          "item": "gelagar",
+          "sx": 1160,
+          "sy": 160,
+          "sw": 333,
+          "sh": 323
+        },
+        {
+          "item": "spiceberry",
+          "sx": 49,
+          "sy": 554,
+          "sw": 313,
+          "sh": 358
+        },
+        {
+          "item": "moonyeast",
+          "sx": 423,
+          "sy": 579,
+          "sw": 316,
+          "sh": 324
+        },
+        {
+          "item": "prismsalt",
+          "sx": 798,
+          "sy": 624,
+          "sw": 332,
+          "sh": 273
+        }
+      ]
     }
   ]
 }
