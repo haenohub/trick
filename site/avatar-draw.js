@@ -35,14 +35,18 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
     mix = pose - Math.floor(pose),
     flick = (keys[lo] + (keys[hi] - keys[lo]) * mix) * side;
   const active =
-    phase || motion?.combatReady || frame < 7 || (frame >= 8 && frame < 15);
+    phase ||
+    motion?.combatReady ||
+    Number.isInteger(motion?.aimDir) ||
+    frame < 7 ||
+    (frame >= 8 && frame < 15);
   // Measured axes are clockwise from UP, like the direction rows. A bow's
   // long axis is perpendicular to its shot; the mage casts up, not sideways.
   const aimed =
     weapon.kind === "bow"
       ? motion?.skyshot
         ? -Math.PI / 2
-        : (dir * Math.PI) / 4 - Math.PI / 2
+        : ((motion?.aimDir ?? dir) * Math.PI) / 4 - Math.PI / 2
       : weapon.kind === "staff"
         ? side * 0.12
         : (dir * Math.PI) / 4;

@@ -58,6 +58,7 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "consumables.js",
       "drop-tables.js",
       "skill-visuals.js",
+      "display-mode.js",
       "assets/skills/warden.png",
       "assets/skills/mage.png",
       "assets/skills/ranger.png",

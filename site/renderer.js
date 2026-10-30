@@ -491,6 +491,7 @@ export class Renderer {
     equipment = null,
     combatReady = false,
     skyshot = false,
+    aimDir = null,
   ) {
     const originalLayout = /^m\d+$/.test(name)
       ? ART.monsters[name]
@@ -530,7 +531,15 @@ export class Renderer {
         x - 48 * this.zoom,
         y - 96 * anchor * this.zoom,
         this.zoom,
-        { anim, time, start, duration: duration || 0.2, combatReady, skyshot },
+        {
+          anim,
+          time,
+          start,
+          duration: duration || 0.2,
+          combatReady,
+          skyshot,
+          aimDir,
+        },
       );
       if (anim === "death") c.restore();
       return;
@@ -954,6 +963,14 @@ export class Renderer {
         o.classId === "ranger" &&
           o.action?.kind === "skill" &&
           o.action.slot === 1,
+        o.mobileAction
+          ? (() => {
+              const target = state.mobs.find(
+                (m) => m.uid === o.mobileAction.target,
+              );
+              return target ? direction(target.x - o.x, target.y - o.y) : null;
+            })()
+          : null,
       );
       c.restore();
       if (monster && o.hitUntil > time)
@@ -1171,18 +1188,20 @@ export class Renderer {
     const c = this.ctx,
       z = this.zoom,
       s = atlas.size;
+    const pivot = atlas.registration?.[row]?.pivot || [s / 2, s / 2],
+      count = atlas.rowFrames?.[row] || atlas.cols;
     c.save();
     c.globalAlpha = alpha;
     c.translate(Math.round(x), Math.round(y));
     c.rotate(angle);
     c.drawImage(
       image,
-      Math.max(0, Math.min(atlas.cols - 1, Math.floor(frame))) * s,
+      Math.max(0, Math.min(count - 1, Math.floor(frame))) * s,
       row * s,
       s,
       s,
-      (-w * z) / 2,
-      (-h * z) / 2,
+      -(pivot[0] / s) * w * z,
+      -(pivot[1] / s) * h * z,
       w * z,
       h * z,
     );
@@ -1219,12 +1238,32 @@ export class Renderer {
       w = v.width,
       h = v.height,
       angle = 0;
-    if (v.mode === "ground" || v.mode === "field") y = end.y - 20 * z;
+    const registration = a.registration?.[v.row],
+      frames = a.rowFrames?.[v.row] || a.cols;
+    if (["ground", "field", "rain"].includes(v.mode) && e.radius) {
+      const fraction = Math.max(
+        ...(registration?.frames || []).map(
+          (f) => (f.bounds.maxX - f.bounds.minX + 1) / 128,
+        ),
+        0.5,
+      );
+      w = (e.radius * 64 * Math.SQRT2) / fraction;
+      h =
+        w *
+        ({
+          "herbalist-0": 0.62,
+          "herbalist-2": 0.75,
+          venom: 0.8,
+          mist: 0.8,
+          bloom: 0.85,
+        }[v.key] || 1);
+    }
+    if (registration?.ground) y = end.y;
     if (v.mode === "field") {
       // Grow once, then breathe through the settled garden frames. Never
       // replay the opening pop on every persistent healing tick.
       const frame =
-        age < 0.8 ? (age / 0.8) * 7 : 7 + (Math.sin((age - 0.8) * 3) + 1) * 1.8;
+        age < 0.8 ? (age / 0.8) * 6 : 5 + (Math.sin((age - 0.8) * 3) + 1) * 0.9;
       this.vfxCell(
         a,
         v.row,
@@ -1240,17 +1279,23 @@ export class Renderer {
     }
     if (v.mode === "self") {
       x = origin.x;
-      y = origin.y - 58 * z;
+      y = origin.y;
     }
     if (v.mode === "line") {
       const dx = end.x - origin.x,
         dy = end.y - origin.y;
       angle = Math.atan2(dy, dx);
-      x = (origin.x + end.x) / 2;
-      y = (origin.y + end.y) / 2 - 32 * z;
-      w = Math.min(340, Math.max(v.width, Math.hypot(dx, dy) / z));
+      if (v.classId === "warden") {
+        x = (origin.x + end.x) / 2;
+        y = (origin.y + end.y) / 2 - 30 * z;
+        w = Math.min(210, Math.max(90, Math.hypot(dx, dy) / z));
+        h = w;
+      } else {
+        w = v.key === "hawk" ? 145 : 110;
+        h = w;
+      }
     }
-    if (v.mode === "beam") y = end.y - 100 * z;
+    if (v.mode === "beam") y = end.y;
     if (v.mode === "rain") {
       // Generated sequence has upward anticipation, falling flight, impact.
       // The ground anchor stays locked to the original selected area.
@@ -1277,9 +1322,9 @@ export class Renderer {
       }
       if (age < 0.32) return;
       t = 0.25 + ((age - 0.32) / Math.max(0.01, duration - 0.32)) * 0.749;
-      y = end.y - 90 * z;
+      y = end.y;
     }
-    this.vfxCell(a, v.row, t * a.cols, x, y, w, h, angle);
+    this.vfxCell(a, v.row, t * frames, x, y, w, h, angle);
   }
   targetedCombatEffect(e, state) {
     const file = ART.targetCombat?.file,
@@ -1297,7 +1342,30 @@ export class Renderer {
           : state.peers.find((p) => p.id === e.owner),
       base = ART.appearance?.bases?.[actor?.classId],
       weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon],
-      hand = base && weapon ? heldWeaponTip(base, weapon, 4, e.dir || 0) : null;
+      ordinaryHand =
+        base && weapon ? heldWeaponTip(base, weapon, 4, e.dir || 0) : null;
+    let hand = ordinaryHand;
+    if (e.mobile && base && weapon) {
+      this.projectileHands ??= new Map();
+      if (!this.projectileHands.has(e.id)) {
+        const start =
+            this.locomotion.actors.get("player:" + actor.id)?.start ??
+            e.started,
+          frame = animationFrame(base, "walk", e.started, start);
+        this.projectileHands.set(
+          e.id,
+          heldWeaponTip(base, weapon, frame, e.bodyDir ?? e.dir, {
+            aimDir: e.dir,
+          }),
+        );
+      }
+      hand = this.projectileHands.get(e.id);
+      if (this.projectileHands.size > 256) {
+        const live = new Set(state.effects.map((f) => f.id));
+        for (const id of this.projectileHands.keys())
+          if (!live.has(id)) this.projectileHands.delete(id);
+      }
+    }
     const start = {
         x: origin.x + (hand ? hand[0] - 48 : 0) * z,
         y: origin.y - (hand ? 92 - hand[1] : 42) * z,

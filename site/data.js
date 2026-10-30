@@ -5,7 +5,7 @@ import { equipmentProfile } from "./progression.js";
 import { addEquipmentTiers } from "./equipment-tiers.js";
 import { addConsumables } from "./consumables.js";
 import { assignDropTables } from "./drop-tables.js";
-export const VERSION = "0.24.0";
+export const VERSION = "0.25.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [

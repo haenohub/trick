@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "source": "/workspace/generated_images/exec-bcdcd9e0-3cec-44e6-a0c4-4e842f244e6a.png",
+  "tool": "image_gen",
+  "cols": 4,
+  "rows": 3,
+  "destination": {
+    "file": "skills/warden",
+    "row": 4
+  }
+}

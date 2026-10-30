@@ -18,7 +18,7 @@ import {
 import { MAPS, NPCS, MONSTERS, PORTALS } from "../site/data.js";
 
 test("all ten maps have expanded bounds and connected two-dimensional exploration layouts", () => {
-  assert.equal(WORLD_ZOOM, (1 / 1.2) * 1.1);
+  assert.equal(WORLD_ZOOM, 1.21 / 1.2);
   assert.equal(new Set(MAPS.map((m) => m.shape)).size, 10);
   for (const n of Object.values(NAVIGATION)) {
     assert.ok(n.areaScale >= 5 && n.areaScale <= 10, n.id + " bounds");
@@ -130,7 +130,7 @@ test("NPCs face their service buildings, species disperse through overlapping ha
     for (const [i, d] of defs.entries()) {
       const center = d.type === "boss" ? n.boss : n.habitats[i];
       const group = mobs.filter((m) => m.def === d.id);
-      assert.ok(group.length >= 1 && group.length <= 2);
+      assert.ok(group.length === (d.type === "normal" ? 6 : 1));
       if (d.type === "boss")
         assert.ok(
           group.every((m) => Math.hypot(m.x - center.x, m.y - center.y) < 0.1),

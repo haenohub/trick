@@ -11,6 +11,7 @@ export const CONTROL_ACTIONS = [
   ["target", "다음 적 선택", "Tab"],
   ["inventory", "인벤토리", "KeyI"],
   ["skills", "직업 · 스킬", "KeyC"],
+  ["character", "캐릭터 상태 · 장착 장비", "KeyV"],
   ["craft", "제작 · 연금술", "KeyB"],
   ["map", "지도 · 발견 기록", "KeyM"],
   ["journal", "이야기", "KeyL"],
@@ -162,6 +163,13 @@ export function keyLabel(code) {
 }
 export function restoreBindings(raw) {
   if (!raw || typeof raw !== "object") return { ...DEFAULT_BINDINGS };
+  if (!raw.character)
+    raw = {
+      ...raw,
+      character: ["KeyV", "KeyJ", ...KEYBOARD_ROWS.flat()].find(
+        (code) => isAssignable(code) && !Object.values(raw).includes(code),
+      ),
+    };
   // Migrate the previous default pair while retaining custom skill/menu keys.
   if (raw.pickup === "KeyA" && raw.attack === "Space")
     raw = { ...raw, pickup: "Space", attack: "KeyA" };

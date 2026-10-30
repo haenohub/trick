@@ -40,9 +40,9 @@ function kill(w, p) {
 const tick = (w, t) => {
   for (let n = 0; n < Math.ceil(t / 0.05); n++) w.step(0.05);
 };
-test("playtest speed is half the previous speed, with tenfold XP and unmultiplied independent loot chances", () => {
-  assert.equal(stats(createPlayer()).speed, 3.3 * 2.5);
-  assert.equal(stats(createPlayer("ranger")).speed, 3.7 * 2.5);
+test("playtest speed is restored to its previous speed, with tenfold XP and unmultiplied independent loot chances", () => {
+  assert.equal(stats(createPlayer()).speed, 3.3 * 5);
+  assert.equal(stats(createPlayer("ranger")).speed, 3.7 * 5);
   assert.equal(xpReward(37), 370);
   assert.equal(dropChance(0.012), 0.012);
   assert.equal(dropChance(0.38), 0.38);
@@ -50,7 +50,7 @@ test("playtest speed is half the previous speed, with tenfold XP and unmultiplie
   grantXp(p, 37);
   assert.equal(p.level, 3);
   assert.equal(p.xp, 115);
-  assert.deepEqual(TEST_BALANCE, { speed: 2.5, experience: 10, drops: 1 });
+  assert.deepEqual(TEST_BALANCE, { speed: 5, experience: 10, drops: 1 });
 });
 test("monster death leaves items and currency on the floor until clicked and fully flown to the owner", () => {
   const { w, p } = setup(),
@@ -108,7 +108,7 @@ test("pickup authority rejects unknown, distant, expired and other-owner drops a
   another.until = w.time;
   assert.equal(w.act(p.id, { type: "pickup", drop: another.id }), false);
 });
-test("halved playtest click movement follows curved corners without tunneling and preserves saved leaf balances", () => {
+test("restored playtest click movement follows curved corners without tunneling and preserves saved leaf balances", () => {
   const { w, p } = setup(),
     n = NAVIGATION.sprout;
   for (const m of w.map(p.map).mobs) {

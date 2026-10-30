@@ -44,7 +44,7 @@ test("all sixty species have exact independent category chances and distinct ran
   for (const i of NEW_CONSUMABLES)
     assert.ok(covered.has(i.id), i.id + " must be obtainable");
 });
-test("each map keeps every species and boss while reducing population to thirty percent and separating homes", () => {
+test("each map keeps every species and boss while restoring original population and separating homes", () => {
   const w = new World();
   let before = 0,
     after = 0;
@@ -56,11 +56,7 @@ test("each map keeps every species and boss while reducing population to thirty 
         0,
       ),
       mobs = w.map(map.id).mobs;
-    assert.equal(
-      mobs.length,
-      Math.max(definitions.length, Math.round(old * 0.3)),
-      map.id,
-    );
+    assert.equal(mobs.length, old, map.id);
     assert.equal(new Set(mobs.map((m) => m.def)).size, definitions.length);
     for (const m of mobs) {
       assert.ok(isWalkable(map.id, m.x, m.y));
@@ -75,9 +71,9 @@ test("each map keeps every species and boss while reducing population to thirty 
     before += old;
     after += mobs.length;
   }
-  assert.ok(after / before >= 0.28 && after / before <= 0.32);
-  assert.equal(stats(createPlayer()).speed, 8.25);
-  assert.equal(stats(createPlayer("ranger")).speed, 9.25);
+  assert.equal(after, before);
+  assert.equal(stats(createPlayer()).speed, 16.5);
+  assert.equal(stats(createPlayer("ranger")).speed, 18.5);
 });
 test("twenty additional consumables have distinct icons, lore, real effects, shop prices and valid recipes", () => {
   assert.equal(NEW_CONSUMABLES.length, 20);

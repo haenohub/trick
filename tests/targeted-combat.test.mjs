@@ -88,5 +88,5 @@ test("all player damage paths share half scaling and viewport is ten percent lar
   const after = m.hp;
   w.damage(p, m, 1000, "poison");
   assert.equal(after - m.hp, Math.round((1000 - def.defense * 0.4) * 0.5));
-  assert.equal(WORLD_ZOOM, (1 / 1.2) * 1.1);
+  assert.equal(WORLD_ZOOM, 1.21 / 1.2);
 });

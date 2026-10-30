@@ -486,6 +486,9 @@ export class World {
       queuedAttack: null,
       combatTarget: null,
       queuedSkill: null,
+      trackingTarget: null,
+      trackingUntil: 0,
+      mobileAction: null,
       autoCombatArmed: false,
       autoAttackSuppressed: false,
       cooldowns: [0, 0, 0, 0],
@@ -550,35 +553,11 @@ export class World {
       mobs = [],
       herbs = [];
     const definitions = speciesForMap(id);
-    const oldPopulation = definitions.reduce(
-        (n, { def, guest }) =>
-          n + (def.type === "normal" ? (guest ? 3 : 6) : 1),
-        0,
-      ),
-      counts = definitions.map(() => 1),
-      targetPopulation = Math.max(
-        definitions.length,
-        Math.round(oldPopulation * 0.3),
-      );
-    // Keep every species and unique boss; allocate the remaining sparse slots
-    // across ordinary residents before guest species.
-    for (let n = definitions.length; n < targetPopulation; n++) {
-      const candidates = definitions
-        .map((d, i) => ({ ...d, i }))
-        .filter((d) => d.def.type === "normal");
-      candidates.sort(
-        (a, b) =>
-          counts[a.i] +
-            (a.guest ? 0.5 : 0) -
-            (counts[b.i] + (b.guest ? 0.5 : 0)) || a.i - b.i,
-      );
-      if (candidates.length) counts[candidates[0].i]++;
-    }
     for (const [
       speciesIndex,
       { habitat, def, guest },
     ] of definitions.entries()) {
-      const count = counts[speciesIndex];
+      const count = def.type === "normal" ? (guest ? 3 : 6) : 1;
       for (let j = 0; j < count; j++) {
         let { x, y } = encounterPoint(id, habitat, j, rng);
         if (def.type === "boss") {
@@ -766,7 +745,7 @@ export class World {
         const x = Number(action.x),
           y = Number(action.y);
         if (!Number.isFinite(x) || !Number.isFinite(y)) return false;
-        this.stopCombat(p, p.autoAttackSuppressed);
+        this.stopCombat(p, p.autoAttackSuppressed, Math.hypot(x, y) > 0);
         p.move = { x: clamp(x, -1, 1), y: clamp(y, -1, 1) };
         p.moveTarget = null;
         p.route = [];
@@ -780,7 +759,7 @@ export class World {
           return false;
         const route = findRoute(p.map, p, { x, y });
         if (!route.length) return false;
-        this.stopCombat(p, p.autoAttackSuppressed);
+        this.stopCombat(p, p.autoAttackSuppressed, true);
         p.route = route;
         p.moveTarget = { x, y };
         p.move = { x: 0, y: 0 };
@@ -1102,7 +1081,7 @@ export class World {
     }
     return this.beginAction(p, "basic", t);
   }
-  stopCombat(p, suppress = true) {
+  stopCombat(p, suppress = true, keepTracking = false) {
     this.cancelAction(p);
     p.combatTarget = null;
     p.queuedAttack = null;
@@ -1110,6 +1089,11 @@ export class World {
     p.autoCombatArmed = false;
     // Explicit cancellation remains effective even when an enemy hits again.
     p.autoAttackSuppressed = suppress;
+    if (!keepTracking) {
+      p.trackingTarget = null;
+      p.trackingUntil = 0;
+      p.mobileAction = null;
+    }
     p.moveTarget = null;
     p.move = { x: 0, y: 0 };
     p.route = [];
@@ -1131,6 +1115,11 @@ export class World {
       (m) => m.uid === uid && m.hp > 0 && m.ai !== "return",
     );
     if (!t) return false;
+    if (p.trackingTarget && p.trackingTarget !== uid) {
+      p.trackingTarget = null;
+      p.trackingUntil = 0;
+      p.mobileAction = null;
+    }
     if (
       (distance(p, t) > stats(p).range || !this.sight(p.map, p, t)) &&
       !findRoute(p.map, p, t).length
@@ -1260,11 +1249,60 @@ export class World {
       if (this.time >= p.attackReady) this.attack(p, t.uid);
     }
   }
+  advanceTracking(p) {
+    if (p.classId !== "ranger" || !p.trackingTarget) return;
+    const t = this.map(p.map).mobs.find(
+      (m) => m.uid === p.trackingTarget && m.hp > 0 && m.ai !== "return",
+    );
+    if (
+      p.hp <= 0 ||
+      p.trackingUntil <= this.time ||
+      !t ||
+      t.markedOwner !== p.id ||
+      t.markedUntil <= this.time
+    ) {
+      p.trackingTarget = null;
+      p.trackingUntil = 0;
+      p.mobileAction = null;
+      return;
+    }
+    const a = p.mobileAction,
+      s = stats(p),
+      inRange = distance(p, t) <= s.range && this.sight(p.map, p, t);
+    if (a) {
+      if (!a.released && this.time + 1e-9 >= a.hitAt) {
+        a.released = true;
+        if (inRange) this.releaseBasic(p, t, { mobile: true });
+      }
+      if (this.time >= a.endAt) p.mobileAction = null;
+      return;
+    }
+    if (p.action || this.time < p.attackReady || !inRange || p.queuedSkill)
+      return;
+    const moving = !!p.moveTarget || Math.hypot(p.move.x, p.move.y) > 0.01;
+    if (!moving) {
+      p.combatTarget = t.uid;
+      p.autoCombatArmed = true;
+      p.autoAttackSuppressed = false;
+      this.beginAction(p, "basic", t);
+    } else {
+      // An independent upper-body release clock keeps the clicked route and
+      // walk heading intact. It never steers toward an out-of-range target.
+      p.mobileAction = {
+        ...attackTimeline(this.time, "ranger"),
+        target: t.uid,
+        map: p.map,
+        released: false,
+      };
+      p.attackReady = p.mobileAction.endAt + 2 / 30;
+    }
+  }
   cancelAction(p) {
     p.action = null;
     if (["windup", "attack", "recover"].includes(p.anim)) p.anim = "idle";
   }
   beginAction(p, kind, target, slot = null, selfCast = false) {
+    p.mobileAction = null;
     p.action = {
       ...attackTimeline(this.time, p.classId),
       kind,
@@ -1350,7 +1388,7 @@ export class World {
       p.animDuration = RECOVERY_DURATION;
     }
   }
-  releaseBasic(p, t) {
+  releaseBasic(p, t, { mobile = false } = {}) {
     const s = stats(p);
     if (["ranger", "mage", "herbalist"].includes(p.classId)) {
       const travel = { ranger: 0.26, mage: 0.48, herbalist: 0.22 }[p.classId];
@@ -1367,7 +1405,9 @@ export class World {
           ty: t.y,
           target: t.uid,
           owner: p.id,
-          dir: p.dir,
+          dir: mobile ? direction(t.x - p.x, t.y - p.y) : p.dir,
+          mobile,
+          bodyDir: p.dir,
           hitAt: this.time + travel,
           duration: travel + 0.2,
         },
@@ -1596,6 +1636,7 @@ export class World {
     )
       this.effect(p.map, "skill-vfx", (t || p).x, (t || p).y, {
         key: visual.key,
+        radius: combatAim({ ...p, stats: s }, slot).radius,
         owner: p.id,
         fromX: p.x,
         fromY: p.y,
@@ -1721,9 +1762,13 @@ export class World {
         });
       }
       if (slot === 2 && t) {
-        t.markedUntil = this.time + 9;
-        this.damage(p, t, s.power * 1.2);
-        this.effect(p.map, "mark", t.x, t.y, { duration: 1 });
+        if (this.damage(p, t, s.power * 1.2)) {
+          t.markedUntil = this.time + 9;
+          t.markedOwner = p.id;
+          p.trackingTarget = t.uid;
+          p.trackingUntil = t.markedUntil;
+          this.effect(p.map, "mark", t.x, t.y, { duration: 1 });
+        }
       }
     }
     if (p.classId === "herbalist") {
@@ -2293,6 +2338,7 @@ export class World {
       }
       this.advanceAction(p);
       this.advanceCombat(p);
+      this.advanceTracking(p);
       let dx = p.move.x,
         dy = p.move.y;
       if (p.moveTarget) {
@@ -2479,6 +2525,9 @@ export class World {
         animDuration: p.animDuration,
         action: p.action ? { ...p.action } : null,
         combatTarget: p.combatTarget,
+        trackingTarget: p.trackingTarget,
+        trackingRemaining: Math.max(0, p.trackingUntil - this.time),
+        mobileAction: p.mobileAction ? { ...p.mobileAction } : null,
         queuedSkill: p.queuedSkill ? structuredClone(p.queuedSkill) : null,
         dir: p.dir,
         shield: p.shieldUntil > this.time ? p.shield : 0,
@@ -2516,6 +2565,7 @@ export class World {
             ? { kind: a.action.kind, slot: a.action.slot, leap: a.action.leap }
             : null,
           combatTarget: a.combatTarget,
+          mobileAction: a.mobileAction ? { ...a.mobileAction } : null,
           queuedSkill: a.queuedSkill
             ? { slot: a.queuedSkill.slot, point: a.queuedSkill.point }
             : null,

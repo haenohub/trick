@@ -58,10 +58,10 @@ with sync_playwright() as pw:
  p.keyboard.up('Space');p.keyboard.press('i')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.down('Space');p.evaluate('window.dispatchEvent(new Event("blur"))');p.wait_for_timeout(1700);p.keyboard.up('Space')
  assert p.evaluate('__leaftale.snapshot().drops.length')==count-1
- p.keyboard.press('p');p.locator('[data-rebind=pickup]').first.click();p.keyboard.press('v');p.keyboard.press('p')
+ p.keyboard.press('p');p.locator('[data-rebind=pickup]').first.click();p.keyboard.press('g');p.keyboard.press('p')
  count=p.evaluate('__leaftale.snapshot().drops.length');p.keyboard.press('Space');p.wait_for_timeout(850);assert p.evaluate('__leaftale.snapshot().drops.length')==count
- p.keyboard.down('v');p.wait_for_function('()=>{const s=__leaftale.snapshot();return s.drops.every(d=>Math.hypot(d.x-s.player.x,d.y-s.player.y)>3);}');p.keyboard.up('v')
+ p.keyboard.down('g');p.wait_for_function('()=>{const s=__leaftale.snapshot();return s.drops.every(d=>Math.hypot(d.x-s.player.x,d.y-s.player.y)>3);}');p.keyboard.up('g')
  assert p.evaluate('__leaftale.snapshot().drops.length')<count
  assert not errors,errors
- print('PASS: opening a menu, window blur and key release stop repetition; remapped held V works and old Space no longer picks up')
+ print('PASS: opening a menu, window blur and key release stop repetition; remapped held G works and old Space no longer picks up')
  b.close()

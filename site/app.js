@@ -23,6 +23,11 @@ import {
 } from "./controls.js";
 import { CLASS_TACTICS } from "./combat.js";
 import { consumableLines } from "./consumables.js";
+import {
+  FULLSCREEN_KEY,
+  fullscreenSupported,
+  setFullscreen,
+} from "./display-mode.js";
 import { DISCOVERIES, CHESTS } from "./exploration.js";
 import { CombatAudio } from "./audio.js";
 import {
@@ -115,6 +120,38 @@ try {
   bindings = { ...DEFAULT_BINDINGS };
 }
 const bindingLabel = (id) => keyLabel(bindings[id]);
+let preferFullscreen = readSetting(FULLSCREEN_KEY) === "true";
+$("start-fullscreen").checked = preferFullscreen;
+$("start-fullscreen").disabled = !fullscreenSupported(
+  document,
+  $("game-shell"),
+);
+$("start-fullscreen").onchange = (e) => {
+  preferFullscreen = e.target.checked;
+  writeSetting(FULLSCREEN_KEY, String(preferFullscreen));
+};
+function chooseDisplayMode(enabled) {
+  preferFullscreen = enabled;
+  writeSetting(FULLSCREEN_KEY, String(enabled));
+  return setFullscreen(enabled, $("game-shell")).catch((error) => {
+    preferFullscreen = false;
+    writeSetting(FULLSCREEN_KEY, "false");
+    $("start-fullscreen").checked = false;
+    if (panel === "settings") renderPanel();
+    toast(
+      error.message ||
+        "전체화면으로 전환하지 못했습니다. 설정에서 다시 선택해 주세요.",
+    );
+  });
+}
+document.addEventListener("fullscreenchange", () => {
+  const active = !!document.fullscreenElement;
+  preferFullscreen = active;
+  writeSetting(FULLSCREEN_KEY, String(active));
+  $("start-fullscreen").checked = active;
+  if (running && !active && panel !== "settings") openPanel("settings");
+  else if (panel === "settings") renderPanel();
+});
 function persistBindings() {
   pickupHold.cancel();
   writeSetting(CONTROLS_KEY, JSON.stringify(bindings));
@@ -134,7 +171,7 @@ function refreshBindingLabels() {
 }
 function keyboardPanel() {
   const selected = CONTROL_ACTIONS.find((a) => a.id === rebindAction);
-  return `<p class="panel-intro">키에 표시된 기능을 누른 뒤 원하는 새 키를 누르세요. P는 이 창 열기·닫기, Esc는 창 닫기입니다. Shift + ${bindingLabel("interact")}로 약초 포기를 수확합니다.</p><p id="binding-status" class="binding-status" role="status">${esc(bindingMessage || (selected ? selected.label + "의 새 키를 누르세요. Esc로 취소합니다." : "변경한 단축키는 이 브라우저에 저장됩니다."))}</p><div class="keyboard-scroll"><div class="keyboard-layout">${KEYBOARD_ROWS.map(
+  return `<p class="panel-intro">키에 표시된 기능을 누른 뒤 원하는 새 키를 누르세요. P는 이 창 열기·닫기, Esc는 게임 설정 열기·닫기입니다. Shift + ${bindingLabel("interact")}로 약초 포기를 수확합니다.</p><p id="binding-status" class="binding-status" role="status">${esc(bindingMessage || (selected ? selected.label + "의 새 키를 누르세요. Esc로 취소합니다." : "변경한 단축키는 이 브라우저에 저장됩니다."))}</p><div class="keyboard-scroll"><div class="keyboard-layout">${KEYBOARD_ROWS.map(
     (row) =>
       `<div class="keyboard-row">${row
         .map((code) => {
@@ -147,7 +184,7 @@ function keyboardPanel() {
                 : code === "KeyP"
                   ? "단축키 설정"
                   : code === "Escape"
-                    ? "닫기"
+                    ? "설정 / 닫기"
                     : code === "Enter"
                       ? "채팅"
                       : "";
@@ -217,7 +254,7 @@ const skillDescriptions = {
   ranger: [
     "긴 사거리에서 220% 피해를 줍니다.",
     "하늘로 화살을 쏘아 지정한 범위에 세 차례 화살비를 내립니다. 각 타격은 80% 피해입니다.",
-    "9초 동안 적이 받는 피해를 30% 늘리고 120% 피해를 줍니다.",
+    "120% 피해와 9초 표식. 표식 대상이 받는 피해를 30% 늘리고 사거리·시야 안에서 이동 중에도 자동으로 화살을 발사합니다.",
   ],
   herbalist: [
     "지정한 범위에 있는 아군의 체력을 최대 체력의 32%만큼 회복합니다.",
@@ -424,7 +461,10 @@ function hud() {
   const traits = {
     warden: `반격 ${p.guardPower || 0}/3`,
     mage: `달씨앗 ${p.spellCharge || 0}/3`,
-    ranger: "화살비 · 사거리 +50%",
+    ranger:
+      p.trackingRemaining > 0
+        ? `추적 이동 사격 · ${Math.ceil(p.trackingRemaining)}초`
+        : "화살비 · 사거리 +50%",
     herbalist: "독 중첩 · 정원 회복",
   };
   $("combat-trait").textContent = traits[p.classId];
@@ -614,6 +654,8 @@ function interact(whole = false) {
 function openPanel(name) {
   clearAim();
   pickupHold.cancel();
+  clearTimeout(toastTimer);
+  $("toast").hidden = true;
   if (panel === name) {
     closePanel();
     return;
@@ -758,7 +800,7 @@ function renderPanel() {
         ["journal", "codex", "help"].map(bindingLabel).join(" · "),
         "이야기 · 도감 · 도움말",
       ],
-      ["Esc", "창 닫기"],
+      ["Esc", "설정 열기 · 닫기"],
     ]
       .map(
         ([a, b]) =>
@@ -772,7 +814,7 @@ function renderPanel() {
     html = '<p class="panel-intro">모험을 시작한 뒤 이용할 수 있습니다.</p>';
   } else if (panel === "inventory") {
     title = "여행자의 가방";
-    html = `<div class="panel-meta"><span class="tag">${p.gold.toLocaleString()} 리프</span><span class="tag">${Object.values(p.inventory).filter((n) => n > 0).length}종 보유</span></div>${tabs(
+    html = `<p class="panel-intro">아이콘에 마우스를 올리면 정보를 보고, 장비를 더블 클릭하면 장착합니다.</p><div class="panel-meta"><span class="tag">${p.gold.toLocaleString()} 리프</span><span class="tag">${Object.values(p.inventory).filter((n) => n > 0).length}종 보유</span></div>${tabs(
       [
         ["all", "전체"],
         ["equipment", "장비"],
@@ -788,6 +830,16 @@ function renderPanel() {
         .map(([id]) => inventorySlot(ITEMS[id], p))
         .join("") || '<p class="panel-intro">아직 가방이 비어 있습니다.</p>'
     }</div>`;
+  } else if (panel === "character") {
+    title = "캐릭터 상태";
+    html = `<p class="panel-intro">${esc(p.name)} · Lv.${p.level} · ${esc(displayClass())}</p><div class="equipment-body"><div class="equipment-avatar"><canvas id="equipment-avatar" width="192" height="192" aria-label="현재 장비를 든 캐릭터"></canvas></div>${Object.entries(
+      SLOT_NAMES,
+    )
+      .map(([slot, label]) => {
+        const item = ITEMS[p.equipment[slot]];
+        return `<button class="equipped-slot slot-${slot}" data-equipment-slot="${slot}" ${item ? `data-inventory-item="${item.id}"` : ""}><strong>${label}</strong>${item ? itemIcon(item.id) + "<span>" + esc(item.name) + "</span><small>Lv." + item.level + "</small>" : "<span>미장착</span>"}</button>`;
+      })
+      .join("")}</div>${playerStats(p)}`;
   } else if (panel === "craft") {
     title = "숲의 작업대";
     const town = MAPS.find((m) => m.id === p.map).town;
@@ -931,7 +983,7 @@ function renderPanel() {
       .join("")}</div>`;
   } else if (panel === "settings") {
     title = "모험의 작은 설정";
-    html = `<section class="setting-row"><h3>단축키</h3><p>P 키로 전체 조작을 확인하고 원하는 키로 바꿀 수 있습니다.</p><button data-open="bindings">키보드 단축키 설정</button></section><section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
+    html = `<section class="setting-row"><h3>화면 모드</h3><label class="fullscreen-choice"><input type="checkbox" data-fullscreen ${document.fullscreenElement ? "checked" : ""} ${fullscreenSupported(document, $("game-shell")) ? "" : "disabled"}> 전체화면으로 플레이</label><p>창 모드와 전체화면을 즉시 전환합니다. Esc는 설정을 열거나 닫습니다.</p></section><section class="setting-row"><h3>단축키</h3><p>P 키로 전체 조작을 확인하고 원하는 키로 바꿀 수 있습니다.</p><button data-open="bindings">키보드 단축키 설정</button></section><section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
   }
   if (panel === "craft" && filter === "garden") {
     html =
@@ -950,6 +1002,8 @@ function renderPanel() {
       '<p><a href="./maps.html" target="_blank" rel="noopener">지역 풍경 둘러보기 ↗</a></p>' +
       html;
   body.innerHTML = html;
+  if (panel === "character")
+    drawCharacterPreview($("equipment-avatar"), p.classId, false, p.equipment);
   for (const node of body.querySelectorAll("[data-monster-preview]"))
     drawMonsterPreview(node, node.dataset.monsterPreview);
   const importer = $("import-file");
@@ -1209,6 +1263,19 @@ function panelClick(e) {
     });
 }
 $("panel-body").addEventListener("click", panelClick);
+$("panel-body").addEventListener("dblclick", (e) => {
+  const slot = e.target.closest("[data-inventory-item]"),
+    id = slot?.dataset.inventoryItem,
+    item = ITEMS[id];
+  if (item?.slot && state.player.equipment[item.slot] !== id) {
+    e.preventDefault();
+    send({ type: "equip", item: id });
+  }
+});
+$("panel-body").addEventListener("change", (e) => {
+  if (e.target.matches("[data-fullscreen]"))
+    chooseDisplayMode(e.target.checked);
+});
 $("item-tooltip").addEventListener("click", panelClick);
 
 $("skillbar").addEventListener("click", (e) => {
@@ -1288,11 +1355,15 @@ $("start-game").onclick = () => {
     )
   )
     return;
+  chooseDisplayMode($("start-fullscreen").checked);
   start();
 };
 $("continue-game").onclick = () => {
   const p = readSave();
-  if (p) start(p);
+  if (p) {
+    chooseDisplayMode($("start-fullscreen").checked);
+    start(p);
+  }
 };
 canvas.addEventListener("pointerdown", (e) => {
   if (!running || panel || (e.pointerType === "mouse" && e.button !== 0))
@@ -1429,23 +1500,17 @@ window.addEventListener("keydown", (e) => {
     return;
   }
   if (e.key === "Escape") {
-    if (aimedAction) {
-      clearAim();
-      e.preventDefault();
-      return;
-    }
-    if (panel) {
-      closePanel();
-      e.preventDefault();
-    } else {
-      $("chat-box").hidden = true;
-      canvas.focus();
-    }
+    e.preventDefault();
+    if (e.repeat) return;
+    clearAim();
+    if (running) openPanel("settings");
+    else if (panel) closePanel();
     return;
   }
   if (typing) return;
   const action = actionForEvent(e, bindings);
   const panelActions = [
+    "character",
     "inventory",
     "craft",
     "map",
@@ -1648,7 +1713,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.24.0",
+  version: "0.25.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

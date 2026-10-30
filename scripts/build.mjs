@@ -79,6 +79,7 @@ for (const name of [
   "consumables.js",
   "drop-tables.js",
   "skill-visuals.js",
+  "display-mode.js",
   "ecology.js",
   "exploration.js",
 ]) {

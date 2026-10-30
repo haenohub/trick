@@ -1,6 +1,6 @@
 // Temporary playtest bonuses; base content stays intact for a normal release.
 export const TEST_BALANCE = Object.freeze({
-  speed: 2.5,
+  speed: 5,
   experience: 10,
   drops: 1,
 });
