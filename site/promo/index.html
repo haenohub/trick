@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="리프테일 30초 홍보 영상. 영상을 재생하거나 MP4 파일을 다운로드하세요."
+    />
+    <title>리프테일 · 홍보 영상 다운로드</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Noto Sans KR",
+          sans-serif;
+        color: #fff8dc;
+        background: #143b30;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+        min-height: 100svh;
+        padding: 48px 32px;
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        align-items: center;
+        gap: 60px;
+      }
+      .eyebrow {
+        color: #c9e98b;
+        font-size: 15px;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        font-size: clamp(34px, 5vw, 50px);
+        line-height: 1.25;
+        letter-spacing: -0.04em;
+        margin: 16px 0 24px;
+      }
+      .description {
+        color: #d6e2d5;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+      .spec {
+        color: #c9d9c9;
+        line-height: 1.8;
+        font-size: 15px;
+        margin: 24px 0;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 18px;
+      }
+      button {
+        font: inherit;
+        font-weight: 700;
+        border: 0;
+        border-radius: 8px;
+        padding: 17px 26px;
+        color: #143b30;
+        background: #c9e98b;
+        cursor: pointer;
+        font-size: 18px;
+        min-height: 58px;
+      }
+      button:hover {
+        background: #e1f2b9;
+      }
+      button:disabled {
+        cursor: progress;
+        opacity: 0.7;
+      }
+      a {
+        color: #e1f2b9;
+        text-underline-offset: 5px;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #fff8dc;
+        outline-offset: 5px;
+      }
+      #status {
+        min-height: 54px;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #c9d9c9;
+        margin: 18px 0 24px;
+      }
+      .back {
+        font-size: 15px;
+      }
+      figure {
+        margin: 0;
+        max-width: 100%;
+      }
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 9/16;
+        background: #102a23;
+        border: 1px solid #7d9a8750;
+        border-radius: 12px;
+      }
+      figcaption {
+        color: #c9d9c9;
+        text-align: center;
+        margin: 12px 0 0;
+        font-size: 13px;
+      }
+      @media (max-width: 760px) {
+        main {
+          grid-template-columns: 1fr;
+          padding: 30px 22px;
+          gap: 30px;
+        }
+        figure {
+          width: min(100%, 360px);
+          justify-self: center;
+        }
+        h1 {
+          margin-bottom: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section aria-labelledby="title">
+        <p class="eyebrow">LEAFTALE · PROMO</p>
+        <h1 id="title">리프테일<br />30초 홍보 영상</h1>
+        <p class="description">
+          네 직업의 전투, 숲과 해안의 모험,<br />전리품과 제작, 그리고 보스와의
+          만남.
+        </p>
+        <p class="spec">
+          세로형 1080 × 1920 · 30초 · MP4<br />배경음악·게임 효과음 포함 · 약
+          25MB
+        </p>
+        <div class="actions">
+          <button id="save-video" type="button">영상 파일 저장</button>
+          <a
+            id="direct-download"
+            href="./leaftale-30s.mp4"
+            download="리프테일_30초_홍보영상.mp4"
+            >일반 MP4 다운로드</a
+          >
+        </div>
+        <p id="status" role="status" aria-live="polite">
+          저장 창에서 바탕화면을 선택할 수 있습니다.<br />저장 창이 열리지
+          않으면 브라우저 다운로드 목록을 확인해 주세요.
+        </p>
+        <a class="back" href="../">리프테일 플레이하기 ↗</a>
+      </section>
+      <figure>
+        <video
+          id="promo-video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="./poster.jpg"
+          aria-label="리프테일 30초 홍보 영상"
+        >
+          <source src="./leaftale-30s.mp4" type="video/mp4" />
+          <p>
+            영상을 재생할 수 없으면
+            <a href="./leaftale-30s.mp4" download>MP4 파일을 다운로드하세요.</a>
+          </p>
+        </video>
+        <figcaption>재생 버튼을 누르면 영상을 볼 수 있습니다.</figcaption>
+      </figure>
+    </main>
+    <script>
+      const button = document.getElementById("save-video");
+      const status = document.getElementById("status");
+      const direct = document.getElementById("direct-download");
+      button.addEventListener("click", async () => {
+        if (typeof window.showSaveFilePicker !== "function") {
+          direct.click();
+          status.textContent =
+            "다운로드를 시작했습니다. 브라우저 다운로드 목록에서 파일을 확인해 주세요.";
+          return;
+        }
+        let writable = null;
+        button.disabled = true;
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: "리프테일_30초_홍보영상.mp4",
+            startIn: "desktop",
+            types: [
+              { description: "MP4 동영상", accept: { "video/mp4": [".mp4"] } },
+            ],
+          });
+          status.textContent = "영상 파일을 준비하고 있습니다…";
+          const response = await fetch(direct.href);
+          if (!response.ok || !response.body)
+            throw new Error("영상 파일을 불러오지 못했습니다.");
+          writable = await handle.createWritable();
+          const reader = response.body.getReader();
+          const total = 26471583;
+          let received = 0;
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            await writable.write(value);
+            received += value.byteLength;
+            status.textContent = `영상 저장 중… ${Math.min(100, Math.round((received / total) * 100))}%`;
+          }
+          if (received !== total)
+            throw new Error(
+              "파일을 끝까지 받지 못했습니다. 다시 시도해 주세요.",
+            );
+          await writable.close();
+          writable = null;
+          status.textContent = "선택한 위치에 영상을 저장했습니다.";
+        } catch (error) {
+          if (writable) await writable.abort().catch(() => {});
+          status.textContent =
+            error.name === "AbortError"
+              ? "저장을 취소했습니다."
+              : "저장하지 못했습니다. ‘일반 MP4 다운로드’를 눌러 다시 받아 주세요.";
+        } finally {
+          button.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
