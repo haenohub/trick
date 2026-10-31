@@ -253,7 +253,7 @@ test("native pixel assets have the required grids, shared palette and binary alp
     );
   }
   assert.equal(Object.keys(art.items).length, 204);
-  assert.equal(Object.keys(art.itemOverrides).length, 184);
+  assert.equal(Object.keys(art.itemOverrides).length, 204);
   for (const size of [32, 48, 64]) {
     const file = art.effects.variants[size];
     const png = await readFile(

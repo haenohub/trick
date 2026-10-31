@@ -315,11 +315,14 @@ export class Renderer {
     if (!image || col < 0 || col >= cols || row < 0 || row >= rows) return;
     const { sx, sy, sw, sh } = sourceRect(file, cols, rows, col, row),
       c = this.ctx;
-    // All doubled-resolution artwork shares one native pixel per world display unit.
-    // Resolution changes do not alter the logical world or camera coverage.
-    // World item/effect requests choose an atlas; they never stretch its cells.
-    width = sw * ART.pixelScale;
-    height = sh * ART.pixelScale;
+    // Item icons carry additional native detail inside their existing world
+    // footprint. Other sprite/effect cells retain their native display scale.
+    // Neither atlas resolution nor item quality changes the world or camera.
+    const itemDisplay = ART.iconQuality?.files.includes(file)
+      ? ART.iconQuality.defaultDisplaySize
+      : null;
+    width = (itemDisplay ?? sw) * ART.pixelScale;
+    height = (itemDisplay ?? sh) * ART.pixelScale;
     const snap = (v) => Math.round(v * (this.dpr || 1)) / (this.dpr || 1);
     const left = snap(x - (width * this.zoom) / 2),
       top = snap(y - height * anchor * this.zoom),

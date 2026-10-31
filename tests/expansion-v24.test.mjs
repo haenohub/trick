@@ -202,7 +202,8 @@ test("new effects and all item icons have isolated native frames with no adjacen
       }
   }
   for (const i of NEW_CONSUMABLES) {
-    assert.equal(art.itemOverrides[i.id].file, "consumables-v24");
+    assert.equal(art.itemOverrides[i.id].file, "icons-v27/forest-consumables");
+    assert.equal(art.itemOverrides[i.id].size, 64);
   }
 });
 test("every class and heading has a newly authored lower anticipation pose and registered weapon palms", async () => {

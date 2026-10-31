@@ -14,7 +14,7 @@ with sync_playwright() as pw:
  for page in range(1,6):
   if page>1:p.locator(f'#pagination [data-page="{page}"]').first.click()
   p.wait_for_function("[...document.querySelectorAll('canvas[data-drop]')].every(e=>e.dataset.loaded==='true')")
-  rows=p.locator('.craft-card').evaluate_all('''cards=>cards.map(e=>({id:e.dataset.recipeId,nodes:[...e.querySelectorAll('.recipe-node')].map(n=>({id:n.dataset.itemLink,name:n.querySelector('.recipe-name').textContent,count:n.querySelector('.recipe-quantity').textContent,alpha:[...n.querySelector('canvas').getContext('2d').getImageData(0,0,32,32).data].filter((v,i)=>i%4===3&&v>0).length}))}))''')
+  rows=p.locator('.craft-card').evaluate_all('''cards=>cards.map(e=>({id:e.dataset.recipeId,nodes:[...e.querySelectorAll('.recipe-node')].map(n=>({id:n.dataset.itemLink,name:n.querySelector('.recipe-name').textContent,count:n.querySelector('.recipe-quantity').textContent,alpha:[...n.querySelector('canvas').getContext('2d').getImageData(0,0,n.querySelector('canvas').width,n.querySelector('canvas').height).data].filter((v,i)=>i%4===3&&v>0).length}))}))''')
   for row in rows:
    seen.add(row['id']);item=next(i for i in data['items'] if i['id']==row['id'])
    assert [n['id'] for n in row['nodes']]==list(item['recipe'])+[row['id']]
@@ -26,7 +26,7 @@ with sync_playwright() as pw:
  p.locator('#search').blur();p.screenshot(path='/tmp/v26-craft-guide-desktop.png',full_page=True)
  card.locator('[data-item-link=trophy6]').click();assert p.locator('.item-guide-card').count()==1
  assert '도토리투구 다람쥐' in p.locator('.item-guide-card').inner_text()
- p.locator('[data-catalogue=crafting]').click();p.locator('#search').fill('도토리 속빵');p.locator('.craft-sources summary').click()
+ p.locator('[data-catalogue=crafting]').click();p.locator('#search').fill('도토리 속빵');p.locator('.craft-details > summary').click()
  p.locator('[data-monster-link=m6]').first.click();assert p.locator('.monster-card').get_attribute('data-id')=='m6'
  assert '60%' in p.locator('tr[data-item=trophy6]').inner_text()
  p.locator('[data-catalogue=crafting]').click();p.locator('#craft-source').select_option('only');assert p.locator('#result-count').inner_text()=='10종'

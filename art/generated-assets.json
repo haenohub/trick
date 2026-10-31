@@ -89100,6 +89100,1962 @@
           "sh": 273
         }
       ]
+    },
+    {
+      "id": "icons-v27/basics",
+      "target": "site/assets/icons-v27/basics.png",
+      "source": "/workspace/generated_images/exec-ff065714-96b4-4e64-9251-e460fb4007e2.png",
+      "tool": "image_gen",
+      "width": 320,
+      "height": 256,
+      "sha256": "8eb095a80584a5bc1fe1e9de6533a87ea7ba7ef837565aa977e00ffc1cea624f",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "softleaf",
+          "sx": 25,
+          "sy": 48,
+          "sw": 228,
+          "sh": 219,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "mint",
+          "sx": 309,
+          "sy": 31,
+          "sw": 230,
+          "sh": 226,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "fiber",
+          "sx": 587,
+          "sy": 35,
+          "sw": 226,
+          "sh": 229,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "ironstone",
+          "sx": 864,
+          "sy": 47,
+          "sw": 239,
+          "sh": 210,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "saltflower",
+          "sx": 1149,
+          "sy": 47,
+          "sw": 234,
+          "sh": 214,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "breathgrass",
+          "sx": 25,
+          "sy": 308,
+          "sw": 236,
+          "sh": 232,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "seawood",
+          "sx": 299,
+          "sy": 310,
+          "sw": 239,
+          "sh": 223,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "shellore",
+          "sx": 584,
+          "sy": 307,
+          "sw": 240,
+          "sh": 226,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "salve",
+          "sx": 876,
+          "sy": 311,
+          "sw": 224,
+          "sh": 222,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "mintpotion",
+          "sx": 1159,
+          "sy": 308,
+          "sw": 217,
+          "sh": 232,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "antidote",
+          "sx": 47,
+          "sy": 581,
+          "sw": 194,
+          "sh": 231,
+          "width": 47,
+          "height": 56
+        },
+        {
+          "item": "bluepotion",
+          "sx": 333,
+          "sy": 579,
+          "sw": 180,
+          "sh": 231,
+          "width": 44,
+          "height": 56
+        },
+        {
+          "item": "antlerweapon",
+          "sx": 586,
+          "sy": 569,
+          "sw": 230,
+          "sh": 247,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "thornweapon",
+          "sx": 863,
+          "sy": 572,
+          "sw": 248,
+          "sh": 244,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "moonweapon",
+          "sx": 1156,
+          "sy": 576,
+          "sw": 207,
+          "sh": 241,
+          "width": 48,
+          "height": 56
+        },
+        {
+          "item": "bloomweapon",
+          "sx": 21,
+          "sy": 846,
+          "sw": 241,
+          "sh": 235,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "hawkweapon",
+          "sx": 315,
+          "sy": 840,
+          "sw": 227,
+          "sh": 242,
+          "width": 53,
+          "height": 56
+        },
+        {
+          "item": "mistweapon",
+          "sx": 586,
+          "sy": 842,
+          "sw": 234,
+          "sh": 240,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "flowerweapon",
+          "sx": 863,
+          "sy": 846,
+          "sw": 248,
+          "sh": 235,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "venomweapon",
+          "sx": 1156,
+          "sy": 842,
+          "sw": 226,
+          "sh": 241,
+          "width": 53,
+          "height": 56
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/weapons",
+      "target": "site/assets/icons-v27/weapons.png",
+      "source": "/workspace/generated_images/exec-ff0067ab-2760-4660-a5d2-9e4043f82e0a.png",
+      "tool": "image_gen",
+      "width": 448,
+      "height": 256,
+      "sha256": "4357160eb9dfa6be54e2e2defbfddb0a6638174d5075548e8cb9e64581606821",
+      "cols": 7,
+      "rows": 4,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "spear1",
+          "sx": 26,
+          "sy": 20,
+          "sw": 188,
+          "sh": 199,
+          "width": 53,
+          "height": 56
+        },
+        {
+          "item": "spearlv5",
+          "sx": 268,
+          "sy": 22,
+          "sw": 193,
+          "sh": 197,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "spearlv10",
+          "sx": 505,
+          "sy": 22,
+          "sw": 191,
+          "sh": 197,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "spear2",
+          "sx": 743,
+          "sy": 20,
+          "sw": 193,
+          "sh": 199,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "spearlv20",
+          "sx": 981,
+          "sy": 19,
+          "sw": 193,
+          "sh": 200,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "spearlv25",
+          "sx": 1219,
+          "sy": 19,
+          "sw": 187,
+          "sh": 200,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "spearlv30",
+          "sx": 1444,
+          "sy": 19,
+          "sw": 199,
+          "sh": 203,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "staff1",
+          "sx": 23,
+          "sy": 254,
+          "sw": 187,
+          "sh": 201,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "stafflv5",
+          "sx": 268,
+          "sy": 258,
+          "sw": 183,
+          "sh": 197,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "stafflv10",
+          "sx": 505,
+          "sy": 255,
+          "sw": 188,
+          "sh": 200,
+          "width": 53,
+          "height": 56
+        },
+        {
+          "item": "staff2",
+          "sx": 742,
+          "sy": 254,
+          "sw": 180,
+          "sh": 201,
+          "width": 50,
+          "height": 56
+        },
+        {
+          "item": "stafflv20",
+          "sx": 980,
+          "sy": 256,
+          "sw": 177,
+          "sh": 199,
+          "width": 50,
+          "height": 56
+        },
+        {
+          "item": "stafflv25",
+          "sx": 1219,
+          "sy": 257,
+          "sw": 179,
+          "sh": 198,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "stafflv30",
+          "sx": 1446,
+          "sy": 255,
+          "sw": 196,
+          "sh": 204,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "bow1",
+          "sx": 35,
+          "sy": 486,
+          "sw": 172,
+          "sh": 201,
+          "width": 48,
+          "height": 56
+        },
+        {
+          "item": "bowlv5",
+          "sx": 274,
+          "sy": 483,
+          "sw": 181,
+          "sh": 207,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "bowlv10",
+          "sx": 506,
+          "sy": 478,
+          "sw": 184,
+          "sh": 212,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "bow2",
+          "sx": 742,
+          "sy": 482,
+          "sw": 182,
+          "sh": 208,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "bowlv20",
+          "sx": 980,
+          "sy": 482,
+          "sw": 183,
+          "sh": 207,
+          "width": 50,
+          "height": 56
+        },
+        {
+          "item": "bowlv25",
+          "sx": 1219,
+          "sy": 488,
+          "sw": 187,
+          "sh": 202,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "bowlv30",
+          "sx": 1466,
+          "sy": 487,
+          "sw": 175,
+          "sh": 203,
+          "width": 48,
+          "height": 56
+        },
+        {
+          "item": "wand1",
+          "sx": 19,
+          "sy": 710,
+          "sw": 203,
+          "sh": 202,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "wandlv5",
+          "sx": 254,
+          "sy": 722,
+          "sw": 206,
+          "sh": 190,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "wandlv10",
+          "sx": 491,
+          "sy": 716,
+          "sw": 207,
+          "sh": 196,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "wand2",
+          "sx": 731,
+          "sy": 716,
+          "sw": 200,
+          "sh": 196,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "wandlv20",
+          "sx": 970,
+          "sy": 719,
+          "sw": 200,
+          "sh": 193,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "wandlv25",
+          "sx": 1208,
+          "sy": 719,
+          "sw": 203,
+          "sh": 194,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "wandlv30",
+          "sx": 1443,
+          "sy": 717,
+          "sw": 201,
+          "sh": 196,
+          "width": 56,
+          "height": 55
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/armor",
+      "target": "site/assets/icons-v27/armor.png",
+      "source": "/workspace/generated_images/exec-de5e69f1-8364-4ca5-911d-f05421761041.png",
+      "tool": "image_gen",
+      "width": 448,
+      "height": 448,
+      "sha256": "619913d1f3cb163a4c587e60e9a926530836bbcb01cb989f97bbee029823c28a",
+      "cols": 7,
+      "rows": 7,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "wardenarmor1",
+          "sx": 28,
+          "sy": 23,
+          "sw": 130,
+          "sh": 155,
+          "width": 47,
+          "height": 56
+        },
+        {
+          "item": "wardenarmorlv5",
+          "sx": 191,
+          "sy": 19,
+          "sw": 153,
+          "sh": 160,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "wardenarmorlv10",
+          "sx": 371,
+          "sy": 22,
+          "sw": 153,
+          "sh": 155,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "wardenarmor2",
+          "sx": 546,
+          "sy": 24,
+          "sw": 156,
+          "sh": 150,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "wardenarmorlv20",
+          "sx": 729,
+          "sy": 26,
+          "sw": 156,
+          "sh": 148,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "wardenarmorlv25",
+          "sx": 903,
+          "sy": 26,
+          "sw": 168,
+          "sh": 148,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "wardenarmorlv30",
+          "sx": 1085,
+          "sy": 29,
+          "sw": 159,
+          "sh": 145,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "magearmor1",
+          "sx": 15,
+          "sy": 200,
+          "sw": 154,
+          "sh": 160,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "magearmorlv5",
+          "sx": 189,
+          "sy": 203,
+          "sw": 160,
+          "sh": 157,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "magearmorlv10",
+          "sx": 367,
+          "sy": 202,
+          "sw": 162,
+          "sh": 152,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "magearmor2",
+          "sx": 544,
+          "sy": 203,
+          "sw": 165,
+          "sh": 152,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "magearmorlv20",
+          "sx": 724,
+          "sy": 202,
+          "sw": 169,
+          "sh": 152,
+          "width": 56,
+          "height": 50
+        },
+        {
+          "item": "magearmorlv25",
+          "sx": 904,
+          "sy": 203,
+          "sw": 168,
+          "sh": 152,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "magearmorlv30",
+          "sx": 1083,
+          "sy": 203,
+          "sw": 162,
+          "sh": 152,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "rangerarmor1",
+          "sx": 25,
+          "sy": 378,
+          "sw": 134,
+          "sh": 164,
+          "width": 46,
+          "height": 56
+        },
+        {
+          "item": "rangerarmorlv5",
+          "sx": 197,
+          "sy": 379,
+          "sw": 146,
+          "sh": 158,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "rangerarmorlv10",
+          "sx": 371,
+          "sy": 378,
+          "sw": 154,
+          "sh": 166,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "rangerarmor2",
+          "sx": 545,
+          "sy": 381,
+          "sw": 163,
+          "sh": 159,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "rangerarmorlv20",
+          "sx": 726,
+          "sy": 379,
+          "sw": 160,
+          "sh": 162,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "rangerarmorlv25",
+          "sx": 901,
+          "sy": 382,
+          "sw": 170,
+          "sh": 159,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "rangerarmorlv30",
+          "sx": 1081,
+          "sy": 380,
+          "sw": 166,
+          "sh": 157,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "herbalistarmor1",
+          "sx": 11,
+          "sy": 558,
+          "sw": 162,
+          "sh": 160,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "herbalistarmorlv5",
+          "sx": 188,
+          "sy": 559,
+          "sw": 164,
+          "sh": 153,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "herbalistarmorlv10",
+          "sx": 362,
+          "sy": 559,
+          "sw": 169,
+          "sh": 154,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "herbalistarmor2",
+          "sx": 539,
+          "sy": 559,
+          "sw": 172,
+          "sh": 153,
+          "width": 56,
+          "height": 50
+        },
+        {
+          "item": "herbalistarmorlv20",
+          "sx": 724,
+          "sy": 560,
+          "sw": 166,
+          "sh": 153,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "herbalistarmorlv25",
+          "sx": 903,
+          "sy": 559,
+          "sw": 168,
+          "sh": 156,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "herbalistarmorlv30",
+          "sx": 1079,
+          "sy": 559,
+          "sw": 167,
+          "sh": 158,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "hood1",
+          "sx": 12,
+          "sy": 742,
+          "sw": 162,
+          "sh": 127,
+          "width": 56,
+          "height": 44
+        },
+        {
+          "item": "hoodlv5",
+          "sx": 187,
+          "sy": 740,
+          "sw": 156,
+          "sh": 142,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "hoodlv10",
+          "sx": 358,
+          "sy": 747,
+          "sw": 171,
+          "sh": 113,
+          "width": 56,
+          "height": 37
+        },
+        {
+          "item": "hood2",
+          "sx": 539,
+          "sy": 750,
+          "sw": 174,
+          "sh": 124,
+          "width": 56,
+          "height": 40
+        },
+        {
+          "item": "hoodlv20",
+          "sx": 722,
+          "sy": 745,
+          "sw": 171,
+          "sh": 124,
+          "width": 56,
+          "height": 41
+        },
+        {
+          "item": "hoodlv25",
+          "sx": 899,
+          "sy": 745,
+          "sw": 171,
+          "sh": 128,
+          "width": 56,
+          "height": 42
+        },
+        {
+          "item": "hoodlv30",
+          "sx": 1076,
+          "sy": 747,
+          "sw": 172,
+          "sh": 130,
+          "width": 56,
+          "height": 42
+        },
+        {
+          "item": "boots1",
+          "sx": 15,
+          "sy": 908,
+          "sw": 156,
+          "sh": 142,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "bootslv5",
+          "sx": 190,
+          "sy": 904,
+          "sw": 153,
+          "sh": 150,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "bootslv10",
+          "sx": 369,
+          "sy": 900,
+          "sw": 157,
+          "sh": 150,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "boots2",
+          "sx": 545,
+          "sy": 902,
+          "sw": 159,
+          "sh": 148,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "bootslv20",
+          "sx": 728,
+          "sy": 900,
+          "sw": 164,
+          "sh": 150,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "bootslv25",
+          "sx": 909,
+          "sy": 904,
+          "sw": 153,
+          "sh": 143,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "bootslv30",
+          "sx": 1084,
+          "sy": 907,
+          "sw": 156,
+          "sh": 143,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "charm1",
+          "sx": 16,
+          "sy": 1077,
+          "sw": 154,
+          "sh": 149,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "charmlv5",
+          "sx": 190,
+          "sy": 1077,
+          "sw": 159,
+          "sh": 160,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "charmlv10",
+          "sx": 371,
+          "sy": 1077,
+          "sw": 149,
+          "sh": 155,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "charm2",
+          "sx": 545,
+          "sy": 1085,
+          "sw": 157,
+          "sh": 141,
+          "width": 56,
+          "height": 50
+        },
+        {
+          "item": "charmlv20",
+          "sx": 724,
+          "sy": 1086,
+          "sw": 163,
+          "sh": 140,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "charmlv25",
+          "sx": 906,
+          "sy": 1086,
+          "sw": 159,
+          "sh": 135,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "charmlv30",
+          "sx": 1081,
+          "sy": 1085,
+          "sw": 160,
+          "sh": 136,
+          "width": 56,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/forest-trophies",
+      "target": "site/assets/icons-v27/forest-trophies.png",
+      "source": "/workspace/generated_images/exec-97632481-bac3-42a8-8516-d76ad2a82efa.png",
+      "tool": "image_gen",
+      "width": 512,
+      "height": 320,
+      "sha256": "703fd72ef5497206711aa2bf77737da03bb5f883c7a3fb6559d6ef915a32d62f",
+      "cols": 8,
+      "rows": 5,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "trophy1",
+          "sx": 36,
+          "sy": 23,
+          "sw": 127,
+          "sh": 157,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "trophy2",
+          "sx": 217,
+          "sy": 28,
+          "sw": 157,
+          "sh": 149,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "trophy3",
+          "sx": 431,
+          "sy": 18,
+          "sw": 130,
+          "sh": 163,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "trophy4",
+          "sx": 613,
+          "sy": 31,
+          "sw": 159,
+          "sh": 145,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "trophy5",
+          "sx": 812,
+          "sy": 29,
+          "sw": 165,
+          "sh": 150,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "trophy6",
+          "sx": 1019,
+          "sy": 19,
+          "sw": 142,
+          "sh": 161,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "trophy7",
+          "sx": 1210,
+          "sy": 22,
+          "sw": 163,
+          "sh": 156,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "trophy8",
+          "sx": 1425,
+          "sy": 23,
+          "sw": 127,
+          "sh": 162,
+          "width": 44,
+          "height": 56
+        },
+        {
+          "item": "trophy9",
+          "sx": 25,
+          "sy": 218,
+          "sw": 152,
+          "sh": 149,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "trophy10",
+          "sx": 212,
+          "sy": 221,
+          "sw": 163,
+          "sh": 151,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "trophy11",
+          "sx": 410,
+          "sy": 230,
+          "sw": 168,
+          "sh": 133,
+          "width": 56,
+          "height": 44
+        },
+        {
+          "item": "trophy12",
+          "sx": 616,
+          "sy": 226,
+          "sw": 158,
+          "sh": 143,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "trophy13",
+          "sx": 814,
+          "sy": 215,
+          "sw": 154,
+          "sh": 154,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "trophy14",
+          "sx": 1009,
+          "sy": 218,
+          "sw": 159,
+          "sh": 158,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "trophy15",
+          "sx": 1210,
+          "sy": 240,
+          "sw": 159,
+          "sh": 122,
+          "width": 56,
+          "height": 43
+        },
+        {
+          "item": "trophy16",
+          "sx": 1410,
+          "sy": 218,
+          "sw": 149,
+          "sh": 161,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "trophy17",
+          "sx": 31,
+          "sy": 413,
+          "sw": 138,
+          "sh": 161,
+          "width": 48,
+          "height": 56
+        },
+        {
+          "item": "trophy18",
+          "sx": 228,
+          "sy": 410,
+          "sw": 133,
+          "sh": 166,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "trophy19",
+          "sx": 413,
+          "sy": 411,
+          "sw": 162,
+          "sh": 167,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "trophy20",
+          "sx": 625,
+          "sy": 412,
+          "sw": 137,
+          "sh": 164,
+          "width": 47,
+          "height": 56
+        },
+        {
+          "item": "trophy21",
+          "sx": 816,
+          "sy": 423,
+          "sw": 159,
+          "sh": 153,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "trophy22",
+          "sx": 1020,
+          "sy": 413,
+          "sw": 139,
+          "sh": 165,
+          "width": 47,
+          "height": 56
+        },
+        {
+          "item": "trophy23",
+          "sx": 1214,
+          "sy": 409,
+          "sw": 154,
+          "sh": 170,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "trophy24",
+          "sx": 1418,
+          "sy": 397,
+          "sw": 142,
+          "sh": 181,
+          "width": 44,
+          "height": 56
+        },
+        {
+          "item": "trophy25",
+          "sx": 27,
+          "sy": 611,
+          "sw": 143,
+          "sh": 164,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "trophy26",
+          "sx": 224,
+          "sy": 610,
+          "sw": 144,
+          "sh": 165,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "trophy27",
+          "sx": 409,
+          "sy": 615,
+          "sw": 170,
+          "sh": 156,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "trophy28",
+          "sx": 617,
+          "sy": 614,
+          "sw": 156,
+          "sh": 156,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "trophy29",
+          "sx": 820,
+          "sy": 606,
+          "sw": 133,
+          "sh": 169,
+          "width": 44,
+          "height": 56
+        },
+        {
+          "item": "trophy30",
+          "sx": 1009,
+          "sy": 613,
+          "sw": 157,
+          "sh": 161,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "trophy31",
+          "sx": 1204,
+          "sy": 611,
+          "sw": 171,
+          "sh": 164,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "trophy32",
+          "sx": 1419,
+          "sy": 611,
+          "sw": 132,
+          "sh": 166,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "trophy33",
+          "sx": 27,
+          "sy": 810,
+          "sw": 147,
+          "sh": 163,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "trophy34",
+          "sx": 214,
+          "sy": 819,
+          "sw": 164,
+          "sh": 141,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "trophy35",
+          "sx": 411,
+          "sy": 802,
+          "sw": 165,
+          "sh": 168,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "trophy36",
+          "sx": 615,
+          "sy": 806,
+          "sw": 159,
+          "sh": 166,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "trophy37",
+          "sx": 814,
+          "sy": 809,
+          "sw": 159,
+          "sh": 155,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "trophy38",
+          "sx": 1015,
+          "sy": 806,
+          "sw": 154,
+          "sh": 168,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "trophy39",
+          "sx": 1203,
+          "sy": 814,
+          "sw": 171,
+          "sh": 146,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "trophy40",
+          "sx": 1418,
+          "sy": 810,
+          "sw": 129,
+          "sh": 160,
+          "width": 45,
+          "height": 56
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/verdant-trophies",
+      "target": "site/assets/icons-v27/verdant-trophies.png",
+      "source": "/workspace/generated_images/exec-a7d900c9-e40c-4f6a-abcc-c15b266fa3ef.png",
+      "tool": "image_gen",
+      "width": 320,
+      "height": 256,
+      "sha256": "7435a8bddc825349b4b35e91009aede72dacf9105b18df92ee5624bb97aa79d0",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "trophy41",
+          "sx": 29,
+          "sy": 54,
+          "sw": 231,
+          "sh": 204,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "trophy42",
+          "sx": 326,
+          "sy": 54,
+          "sw": 198,
+          "sh": 200,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "trophy43",
+          "sx": 587,
+          "sy": 55,
+          "sw": 227,
+          "sh": 197,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "trophy44",
+          "sx": 876,
+          "sy": 59,
+          "sw": 221,
+          "sh": 195,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "trophy45",
+          "sx": 1154,
+          "sy": 48,
+          "sw": 222,
+          "sh": 206,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "trophy46",
+          "sx": 34,
+          "sy": 304,
+          "sw": 213,
+          "sh": 232,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "trophy47",
+          "sx": 307,
+          "sy": 367,
+          "sw": 224,
+          "sh": 164,
+          "width": 56,
+          "height": 41
+        },
+        {
+          "item": "trophy48",
+          "sx": 594,
+          "sy": 309,
+          "sw": 215,
+          "sh": 227,
+          "width": 53,
+          "height": 56
+        },
+        {
+          "item": "trophy49",
+          "sx": 868,
+          "sy": 330,
+          "sw": 230,
+          "sh": 201,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "trophy50",
+          "sx": 1153,
+          "sy": 316,
+          "sw": 222,
+          "sh": 220,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "trophy51",
+          "sx": 20,
+          "sy": 597,
+          "sw": 240,
+          "sh": 211,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "trophy52",
+          "sx": 307,
+          "sy": 567,
+          "sw": 220,
+          "sh": 241,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "trophy53",
+          "sx": 589,
+          "sy": 600,
+          "sw": 234,
+          "sh": 202,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "trophy54",
+          "sx": 880,
+          "sy": 581,
+          "sw": 198,
+          "sh": 221,
+          "width": 50,
+          "height": 56
+        },
+        {
+          "item": "trophy55",
+          "sx": 1143,
+          "sy": 636,
+          "sw": 239,
+          "sh": 166,
+          "width": 56,
+          "height": 39
+        },
+        {
+          "item": "trophy56",
+          "sx": 28,
+          "sy": 853,
+          "sw": 223,
+          "sh": 227,
+          "width": 55,
+          "height": 56
+        },
+        {
+          "item": "trophy57",
+          "sx": 319,
+          "sy": 840,
+          "sw": 208,
+          "sh": 240,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "trophy58",
+          "sx": 626,
+          "sy": 850,
+          "sw": 147,
+          "sh": 230,
+          "width": 36,
+          "height": 56
+        },
+        {
+          "item": "trophy59",
+          "sx": 880,
+          "sy": 846,
+          "sw": 201,
+          "sh": 233,
+          "width": 48,
+          "height": 56
+        },
+        {
+          "item": "trophy60",
+          "sx": 1154,
+          "sy": 841,
+          "sw": 220,
+          "sh": 239,
+          "width": 52,
+          "height": 56
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/forest-consumables",
+      "target": "site/assets/icons-v27/forest-consumables.png",
+      "source": "/workspace/generated_images/exec-4668afcc-17d4-4c34-81f4-7c6ee4055913.png",
+      "tool": "image_gen",
+      "width": 320,
+      "height": 256,
+      "sha256": "d5ad3c812bbe817686e58c9182e151b7b71933b8946748c9b8007c325c1d8ac6",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "dewjelly",
+          "sx": 26,
+          "sy": 40,
+          "sw": 248,
+          "sh": 242,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "acornbread",
+          "sx": 316,
+          "sy": 35,
+          "sw": 229,
+          "sh": 247,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "brooktea",
+          "sx": 650,
+          "sy": 30,
+          "sw": 129,
+          "sh": 252,
+          "width": 29,
+          "height": 56
+        },
+        {
+          "item": "moonnectar",
+          "sx": 904,
+          "sy": 35,
+          "sw": 164,
+          "sh": 247,
+          "width": 37,
+          "height": 56
+        },
+        {
+          "item": "rootbroth",
+          "sx": 1127,
+          "sy": 61,
+          "sw": 254,
+          "sh": 221,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "saltmousse",
+          "sx": 32,
+          "sy": 304,
+          "sw": 237,
+          "sh": 244,
+          "width": 54,
+          "height": 56
+        },
+        {
+          "item": "breathdrop",
+          "sx": 333,
+          "sy": 304,
+          "sw": 184,
+          "sh": 250,
+          "width": 41,
+          "height": 56
+        },
+        {
+          "item": "leafcompress",
+          "sx": 573,
+          "sy": 326,
+          "sw": 261,
+          "sh": 222,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "tideelixir",
+          "sx": 890,
+          "sy": 303,
+          "sw": 204,
+          "sh": 251,
+          "width": 46,
+          "height": 56
+        },
+        {
+          "item": "springphial",
+          "sx": 1174,
+          "sy": 304,
+          "sw": 200,
+          "sh": 250,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "barktonic",
+          "sx": 49,
+          "sy": 573,
+          "sw": 194,
+          "sh": 254,
+          "width": 43,
+          "height": 56
+        },
+        {
+          "item": "starcordial",
+          "sx": 339,
+          "sy": 573,
+          "sw": 184,
+          "sh": 254,
+          "width": 41,
+          "height": 56
+        },
+        {
+          "item": "stonebiscuit",
+          "sx": 586,
+          "sy": 579,
+          "sw": 242,
+          "sh": 236,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "shellsyrup",
+          "sx": 893,
+          "sy": 577,
+          "sw": 213,
+          "sh": 244,
+          "width": 49,
+          "height": 56
+        },
+        {
+          "item": "hawkseed",
+          "sx": 1176,
+          "sy": 573,
+          "sw": 183,
+          "sh": 255,
+          "width": 40,
+          "height": 56
+        },
+        {
+          "item": "mistlozenge",
+          "sx": 26,
+          "sy": 859,
+          "sw": 248,
+          "sh": 225,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "thornjam",
+          "sx": 313,
+          "sy": 841,
+          "sw": 235,
+          "sh": 252,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "sunpepper",
+          "sx": 627,
+          "sy": 844,
+          "sw": 195,
+          "sh": 245,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "windnectar",
+          "sx": 898,
+          "sy": 833,
+          "sw": 198,
+          "sh": 261,
+          "width": 42,
+          "height": 56
+        },
+        {
+          "item": "heartroot",
+          "sx": 1174,
+          "sy": 847,
+          "sw": 199,
+          "sh": 247,
+          "width": 45,
+          "height": 56
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/materials",
+      "target": "site/assets/icons-v27/materials.png",
+      "source": "/workspace/generated_images/exec-2819df28-2b8a-4550-b063-47c8873b9fdf.png",
+      "tool": "image_gen",
+      "width": 256,
+      "height": 128,
+      "sha256": "c4538aecdd6a6ee2e8685a5dc996a4aedb8c6af444b899da9162703345bcc47d",
+      "cols": 4,
+      "rows": 2,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "seedmeal",
+          "sx": 23,
+          "sy": 66,
+          "sw": 405,
+          "sh": 342,
+          "width": 56,
+          "height": 47
+        },
+        {
+          "item": "wildhoney",
+          "sx": 513,
+          "sy": 44,
+          "sw": 335,
+          "sh": 369,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "springwater",
+          "sx": 988,
+          "sy": 33,
+          "sw": 277,
+          "sh": 384,
+          "width": 40,
+          "height": 56
+        },
+        {
+          "item": "gelagar",
+          "sx": 1377,
+          "sy": 34,
+          "sw": 384,
+          "sh": 383,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "spiceberry",
+          "sx": 47,
+          "sy": 487,
+          "sw": 381,
+          "sh": 372,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "moonyeast",
+          "sx": 484,
+          "sy": 482,
+          "sw": 379,
+          "sh": 372,
+          "width": 56,
+          "height": 55
+        },
+        {
+          "item": "prismsalt",
+          "sx": 928,
+          "sy": 520,
+          "sw": 403,
+          "sh": 317,
+          "width": 56,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "id": "icons-v27/coast-consumables",
+      "target": "site/assets/icons-v27/coast-consumables.png",
+      "source": "/workspace/generated_images/exec-58cb6d01-b133-400e-84d5-f4bcdbb07040.png",
+      "tool": "image_gen",
+      "width": 320,
+      "height": 256,
+      "sha256": "db0f0b47aec0e75d5d26553d5f42f4f4bc825d88548d84cb39c783832f87218a",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "qualityVersion": 27,
+      "frames": [
+        {
+          "item": "seedcrunch",
+          "sx": 16,
+          "sy": 48,
+          "sw": 257,
+          "sh": 202,
+          "width": 56,
+          "height": 44
+        },
+        {
+          "item": "sproutcongee",
+          "sx": 298,
+          "sy": 34,
+          "sw": 251,
+          "sh": 222,
+          "width": 56,
+          "height": 50
+        },
+        {
+          "item": "sporesteambun",
+          "sx": 576,
+          "sy": 23,
+          "sw": 259,
+          "sh": 239,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "pinecoilcandy",
+          "sx": 855,
+          "sy": 30,
+          "sw": 251,
+          "sh": 242,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "riverjelly",
+          "sx": 1136,
+          "sy": 51,
+          "sw": 253,
+          "sh": 196,
+          "width": 56,
+          "height": 43
+        },
+        {
+          "item": "amberpudding",
+          "sx": 23,
+          "sy": 289,
+          "sw": 231,
+          "sh": 254,
+          "width": 51,
+          "height": 56
+        },
+        {
+          "item": "mooncapstew",
+          "sx": 293,
+          "sy": 307,
+          "sw": 258,
+          "sh": 219,
+          "width": 56,
+          "height": 48
+        },
+        {
+          "item": "ringstock",
+          "sx": 579,
+          "sy": 300,
+          "sw": 249,
+          "sh": 242,
+          "width": 56,
+          "height": 54
+        },
+        {
+          "item": "saltcrystaltaffy",
+          "sx": 857,
+          "sy": 306,
+          "sw": 251,
+          "sh": 232,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "silverleaftea",
+          "sx": 1150,
+          "sy": 286,
+          "sw": 237,
+          "sh": 256,
+          "width": 52,
+          "height": 56
+        },
+        {
+          "item": "glassfruitjam",
+          "sx": 17,
+          "sy": 570,
+          "sw": 251,
+          "sh": 250,
+          "width": 56,
+          "height": 56
+        },
+        {
+          "item": "foamparfait",
+          "sx": 290,
+          "sy": 576,
+          "sw": 259,
+          "sh": 244,
+          "width": 56,
+          "height": 53
+        },
+        {
+          "item": "reedscrolltea",
+          "sx": 603,
+          "sy": 570,
+          "sw": 193,
+          "sh": 242,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "item": "pearldrop",
+          "sx": 890,
+          "sy": 573,
+          "sw": 183,
+          "sh": 252,
+          "width": 41,
+          "height": 56
+        },
+        {
+          "item": "mossbarkstew",
+          "sx": 1135,
+          "sy": 584,
+          "sw": 252,
+          "sh": 228,
+          "width": 56,
+          "height": 51
+        },
+        {
+          "item": "whiteantlerelixir",
+          "sx": 40,
+          "sy": 843,
+          "sw": 215,
+          "sh": 254,
+          "width": 47,
+          "height": 56
+        },
+        {
+          "item": "blueshellbroth",
+          "sx": 291,
+          "sy": 858,
+          "sw": 264,
+          "sh": 230,
+          "width": 56,
+          "height": 49
+        },
+        {
+          "item": "crystalbloomcordial",
+          "sx": 595,
+          "sy": 837,
+          "sw": 212,
+          "sh": 260,
+          "width": 46,
+          "height": 56
+        },
+        {
+          "item": "coralward",
+          "sx": 860,
+          "sy": 859,
+          "sw": 250,
+          "sh": 232,
+          "width": 56,
+          "height": 52
+        },
+        {
+          "item": "starbreath",
+          "sx": 1143,
+          "sy": 827,
+          "sw": 226,
+          "sh": 270,
+          "width": 47,
+          "height": 56
+        }
+      ]
     }
   ]
 }

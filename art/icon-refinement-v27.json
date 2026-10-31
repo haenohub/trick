@@ -1,0 +1,2741 @@
+{
+  "release": "0.27.0",
+  "status": "complete",
+  "nativeSize": 64,
+  "displaySize": 32,
+  "sources": [
+    {
+      "id": "basics",
+      "file": "icons-v27/basics",
+      "reference": "/tmp/leaftale-icon-reference/basics.png",
+      "source": "/workspace/generated_images/exec-ff065714-96b4-4e64-9251-e460fb4007e2.png",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "softleaf",
+          "name": "보들잎",
+          "type": "material",
+          "lore": "다친 새끼 짐승이 몸을 비비는 풀. 마을의 첫 약은 이 잎에서 시작됩니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 0
+          }
+        },
+        {
+          "id": "mint",
+          "name": "이슬박하",
+          "type": "material",
+          "lore": "새벽에 따면 차가운 향이 오래 남습니다. 밤새 길을 지킨 이들에게 차로 내주었습니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 1
+          }
+        },
+        {
+          "id": "fiber",
+          "name": "버들섬유",
+          "type": "material",
+          "lore": "어린 가지에서 얻은 유연한 섬유. 서툰 손으로 엮어도 쉽게 끊어지지 않습니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 2
+          }
+        },
+        {
+          "id": "ironstone",
+          "name": "개울철석",
+          "type": "material",
+          "lore": "물에 오래 씻겨 모서리가 둥급니다. 견습 장인이 처음 다루는 돌입니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 3
+          }
+        },
+        {
+          "id": "saltflower",
+          "name": "소금꽃",
+          "type": "material",
+          "lore": "바닷물을 머금고 피는 작은 꽃. 먼 여행을 기다리는 창가에 놓입니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 4
+          }
+        },
+        {
+          "id": "breathgrass",
+          "name": "푸른숨풀",
+          "type": "material",
+          "lore": "파도가 물러난 바위틈에서 자랍니다. 잎을 찢으면 시원한 향이 퍼집니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 5
+          }
+        },
+        {
+          "id": "seawood",
+          "name": "해풍목",
+          "type": "material",
+          "lore": "바람에 비틀리며 자란 단단한 목재. 곧지 않아도 쉽게 꺾이지 않습니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 6
+          }
+        },
+        {
+          "id": "shellore",
+          "name": "조개광석",
+          "type": "material",
+          "lore": "조개층 사이에서 굳은 광물. 얇은 판을 여러 겹 만드는 데 알맞습니다.",
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 7
+          }
+        },
+        {
+          "id": "salve",
+          "name": "보들잎 연고",
+          "type": "consumable",
+          "lore": "마을의 첫 여행에는 누구나 이 작은 연고를 하나씩 받습니다.",
+          "level": 1,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 8
+          }
+        },
+        {
+          "id": "mintpotion",
+          "name": "이슬박하 물약",
+          "type": "consumable",
+          "lore": "밤샘 경비를 마친 이들이 마시던 음료에서 시작되었습니다.",
+          "level": 1,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 9
+          }
+        },
+        {
+          "id": "antidote",
+          "name": "소금꽃 해독제",
+          "type": "consumable",
+          "lore": "낯선 바다 생물에게 쏘였을 때 쓰던 해안 주민들의 약입니다.",
+          "level": 13,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 10
+          }
+        },
+        {
+          "id": "bluepotion",
+          "name": "푸른숨 정수",
+          "type": "consumable",
+          "lore": "거친 파도 속에서도 호흡을 잃지 않기를 바라는 마음으로 이름 붙였습니다.",
+          "level": 18,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 11
+          }
+        },
+        {
+          "id": "antlerweapon",
+          "name": "녹각 새싹창",
+          "type": "equipment",
+          "lore": "처음 세운 방벽을 기억하는 창. 보호하려는 방향으로 어린 가지가 돋습니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 34
+          }
+        },
+        {
+          "id": "thornweapon",
+          "name": "갈고리 가시창",
+          "type": "equipment",
+          "lore": "돌아오지 않은 이를 찾던 추적자의 방식으로 깎았습니다. 날을 뒤로 당길 때 가시가 열립니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 35
+          }
+        },
+        {
+          "id": "moonweapon",
+          "name": "달고리 가지장",
+          "type": "equipment",
+          "lore": "해안의 둥근 달을 담은 고리. 고요히 기다린 빛에 힘을 더합니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 36
+          }
+        },
+        {
+          "id": "bloomweapon",
+          "name": "별꽃 파종장",
+          "type": "equipment",
+          "lore": "피지 못한 봉오리를 버리지 않고 품었습니다. 제때 피어날 순간을 기다립니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 37
+          }
+        },
+        {
+          "id": "hawkweapon",
+          "name": "흰깃 매눈궁",
+          "type": "equipment",
+          "lore": "가장 먼 잎의 흔들림을 보던 사수의 활. 먼 표적에 대한 집중을 돕습니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 38
+          }
+        },
+        {
+          "id": "mistweapon",
+          "name": "안개잎 단궁",
+          "type": "equipment",
+          "lore": "막힌 길 대신 바람 사이의 길을 택한 궁수의 활입니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 39
+          }
+        },
+        {
+          "id": "flowerweapon",
+          "name": "꽃숨 순환봉",
+          "type": "equipment",
+          "lore": "오늘 낫지 않은 상처를 내일까지 돌보겠다는 약속을 새겼습니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 40
+          }
+        },
+        {
+          "id": "venomweapon",
+          "name": "쓴향 가시봉",
+          "type": "equipment",
+          "lore": "약과 독이 같은 뿌리에서 나온다는 가르침을 새겼습니다.",
+          "level": 25,
+          "original": {
+            "file": "items",
+            "cols": 8,
+            "rows": 8,
+            "index": 41
+          }
+        }
+      ]
+    },
+    {
+      "id": "weapons",
+      "file": "icons-v27/weapons",
+      "reference": "/tmp/leaftale-icon-reference/weapons.png",
+      "source": "/workspace/generated_images/exec-ff0067ab-2760-4660-a5d2-9e4043f82e0a.png",
+      "cols": 7,
+      "rows": 4,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "spear1",
+          "name": "해진 창",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 0
+          }
+        },
+        {
+          "id": "spearlv5",
+          "name": "새순 매듭 창",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 1
+          }
+        },
+        {
+          "id": "spearlv10",
+          "name": "호박 도토리 창",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 2
+          }
+        },
+        {
+          "id": "spear2",
+          "name": "조개빛 창",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 3
+          }
+        },
+        {
+          "id": "spearlv20",
+          "name": "밀물뿌리 창",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 4
+          }
+        },
+        {
+          "id": "spearlv25",
+          "name": "은달잎 창",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 5
+          }
+        },
+        {
+          "id": "spearlv30",
+          "name": "별결정 창",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 창에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 6
+          }
+        },
+        {
+          "id": "staff1",
+          "name": "해진 지팡이",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 7
+          }
+        },
+        {
+          "id": "stafflv5",
+          "name": "새순 매듭 지팡이",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 8
+          }
+        },
+        {
+          "id": "stafflv10",
+          "name": "호박 도토리 지팡이",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 9
+          }
+        },
+        {
+          "id": "staff2",
+          "name": "조개빛 지팡이",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 10
+          }
+        },
+        {
+          "id": "stafflv20",
+          "name": "밀물뿌리 지팡이",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 11
+          }
+        },
+        {
+          "id": "stafflv25",
+          "name": "은달잎 지팡이",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 12
+          }
+        },
+        {
+          "id": "stafflv30",
+          "name": "별결정 지팡이",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 지팡이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 13
+          }
+        },
+        {
+          "id": "bow1",
+          "name": "해진 활",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 14
+          }
+        },
+        {
+          "id": "bowlv5",
+          "name": "새순 매듭 활",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 15
+          }
+        },
+        {
+          "id": "bowlv10",
+          "name": "호박 도토리 활",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 16
+          }
+        },
+        {
+          "id": "bow2",
+          "name": "조개빛 활",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 17
+          }
+        },
+        {
+          "id": "bowlv20",
+          "name": "밀물뿌리 활",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 18
+          }
+        },
+        {
+          "id": "bowlv25",
+          "name": "은달잎 활",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 19
+          }
+        },
+        {
+          "id": "bowlv30",
+          "name": "별결정 활",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 활에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 20
+          }
+        },
+        {
+          "id": "wand1",
+          "name": "해진 약초봉",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 21
+          }
+        },
+        {
+          "id": "wandlv5",
+          "name": "새순 매듭 약초봉",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 22
+          }
+        },
+        {
+          "id": "wandlv10",
+          "name": "호박 도토리 약초봉",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 23
+          }
+        },
+        {
+          "id": "wand2",
+          "name": "조개빛 약초봉",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 24
+          }
+        },
+        {
+          "id": "wandlv20",
+          "name": "밀물뿌리 약초봉",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 25
+          }
+        },
+        {
+          "id": "wandlv25",
+          "name": "은달잎 약초봉",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 26
+          }
+        },
+        {
+          "id": "wandlv30",
+          "name": "별결정 약초봉",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 약초봉에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-weapon-icons",
+            "cols": 7,
+            "rows": 4,
+            "index": 27
+          }
+        }
+      ]
+    },
+    {
+      "id": "armor",
+      "file": "icons-v27/armor",
+      "reference": "/tmp/leaftale-icon-reference/armor.png",
+      "source": "/workspace/generated_images/exec-de5e69f1-8364-4ca5-911d-f05421761041.png",
+      "cols": 7,
+      "rows": 7,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "wardenarmor1",
+          "name": "해진 호위 조끼",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 0
+          }
+        },
+        {
+          "id": "wardenarmorlv5",
+          "name": "새순 매듭 호위 조끼",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 1
+          }
+        },
+        {
+          "id": "wardenarmorlv10",
+          "name": "호박 도토리 호위 조끼",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 2
+          }
+        },
+        {
+          "id": "wardenarmor2",
+          "name": "조개빛 호위 조끼",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 3
+          }
+        },
+        {
+          "id": "wardenarmorlv20",
+          "name": "밀물뿌리 호위 조끼",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 4
+          }
+        },
+        {
+          "id": "wardenarmorlv25",
+          "name": "은달잎 호위 조끼",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 5
+          }
+        },
+        {
+          "id": "wardenarmorlv30",
+          "name": "별결정 호위 조끼",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 호위 조끼에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 6
+          }
+        },
+        {
+          "id": "magearmor1",
+          "name": "해진 법의",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 7
+          }
+        },
+        {
+          "id": "magearmorlv5",
+          "name": "새순 매듭 법의",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 8
+          }
+        },
+        {
+          "id": "magearmorlv10",
+          "name": "호박 도토리 법의",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 9
+          }
+        },
+        {
+          "id": "magearmor2",
+          "name": "조개빛 법의",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 10
+          }
+        },
+        {
+          "id": "magearmorlv20",
+          "name": "밀물뿌리 법의",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 11
+          }
+        },
+        {
+          "id": "magearmorlv25",
+          "name": "은달잎 법의",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 12
+          }
+        },
+        {
+          "id": "magearmorlv30",
+          "name": "별결정 법의",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 법의에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 13
+          }
+        },
+        {
+          "id": "rangerarmor1",
+          "name": "해진 사냥복",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 14
+          }
+        },
+        {
+          "id": "rangerarmorlv5",
+          "name": "새순 매듭 사냥복",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 15
+          }
+        },
+        {
+          "id": "rangerarmorlv10",
+          "name": "호박 도토리 사냥복",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 16
+          }
+        },
+        {
+          "id": "rangerarmor2",
+          "name": "조개빛 사냥복",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 17
+          }
+        },
+        {
+          "id": "rangerarmorlv20",
+          "name": "밀물뿌리 사냥복",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 18
+          }
+        },
+        {
+          "id": "rangerarmorlv25",
+          "name": "은달잎 사냥복",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 19
+          }
+        },
+        {
+          "id": "rangerarmorlv30",
+          "name": "별결정 사냥복",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 사냥복에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 20
+          }
+        },
+        {
+          "id": "herbalistarmor1",
+          "name": "해진 약초 외투",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 21
+          }
+        },
+        {
+          "id": "herbalistarmorlv5",
+          "name": "새순 매듭 약초 외투",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 22
+          }
+        },
+        {
+          "id": "herbalistarmorlv10",
+          "name": "호박 도토리 약초 외투",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 23
+          }
+        },
+        {
+          "id": "herbalistarmor2",
+          "name": "조개빛 약초 외투",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 24
+          }
+        },
+        {
+          "id": "herbalistarmorlv20",
+          "name": "밀물뿌리 약초 외투",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 25
+          }
+        },
+        {
+          "id": "herbalistarmorlv25",
+          "name": "은달잎 약초 외투",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 26
+          }
+        },
+        {
+          "id": "herbalistarmorlv30",
+          "name": "별결정 약초 외투",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 약초 외투에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 27
+          }
+        },
+        {
+          "id": "hood1",
+          "name": "해진 두건",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 28
+          }
+        },
+        {
+          "id": "hoodlv5",
+          "name": "새순 매듭 두건",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 29
+          }
+        },
+        {
+          "id": "hoodlv10",
+          "name": "호박 도토리 두건",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 30
+          }
+        },
+        {
+          "id": "hood2",
+          "name": "조개빛 두건",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 31
+          }
+        },
+        {
+          "id": "hoodlv20",
+          "name": "밀물뿌리 두건",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 32
+          }
+        },
+        {
+          "id": "hoodlv25",
+          "name": "은달잎 두건",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 33
+          }
+        },
+        {
+          "id": "hoodlv30",
+          "name": "별결정 두건",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 두건에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 34
+          }
+        },
+        {
+          "id": "boots1",
+          "name": "해진 장화",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 35
+          }
+        },
+        {
+          "id": "bootslv5",
+          "name": "새순 매듭 장화",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 36
+          }
+        },
+        {
+          "id": "bootslv10",
+          "name": "호박 도토리 장화",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 37
+          }
+        },
+        {
+          "id": "boots2",
+          "name": "조개빛 장화",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 38
+          }
+        },
+        {
+          "id": "bootslv20",
+          "name": "밀물뿌리 장화",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 39
+          }
+        },
+        {
+          "id": "bootslv25",
+          "name": "은달잎 장화",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 40
+          }
+        },
+        {
+          "id": "bootslv30",
+          "name": "별결정 장화",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 장화에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 41
+          }
+        },
+        {
+          "id": "charm1",
+          "name": "해진 목걸이",
+          "type": "equipment",
+          "lore": "떠나는 견습생에게 창고의 남은 재료로 쥐여준 물건. 닳은 모서리와 서툰 매듭이 첫 여행을 기다립니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 0,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 42
+          }
+        },
+        {
+          "id": "charmlv5",
+          "name": "새순 매듭 목걸이",
+          "type": "equipment",
+          "lore": "울타리의 새순을 다치지 않게 묶던 매듭에서 시작되었습니다. 작은 손질이 첫 장비를 한결 믿음직하게 바꿉니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 5,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 43
+          }
+        },
+        {
+          "id": "charmlv10",
+          "name": "호박 도토리 목걸이",
+          "type": "equipment",
+          "lore": "도토리 저장터의 호박빛 수액으로 결을 굳혔습니다. 가을 숲을 지킨 이들의 인내가 재료 사이에 남습니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 10,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 44
+          }
+        },
+        {
+          "id": "charm2",
+          "name": "조개빛 목걸이",
+          "type": "equipment",
+          "lore": "해안 장인이 조개의 얇은 층을 겹쳤습니다. 숲을 떠나 처음 마주한 파도의 힘을 흘려보냅니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 15,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 45
+          }
+        },
+        {
+          "id": "charmlv20",
+          "name": "밀물뿌리 목걸이",
+          "type": "equipment",
+          "lore": "밀물에도 흙을 놓지 않는 뿌리의 결을 따랐습니다. 흔들리는 길 위에서 중심을 지키라는 뜻입니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 46
+          }
+        },
+        {
+          "id": "charmlv25",
+          "name": "은달잎 목걸이",
+          "type": "equipment",
+          "lore": "밤길을 건넌 여행자들이 모은 은빛 잎맥을 이었습니다. 어둠 속에서도 동료의 발걸음을 알아봅니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 25,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 47
+          }
+        },
+        {
+          "id": "charmlv30",
+          "name": "별결정 목걸이",
+          "type": "equipment",
+          "lore": "푸른숨 동굴 깊은 곳에서 자란 별결정을 세공했습니다. 긴 숲길과 바다를 건너온 흔적이 단단한 빛으로 모입니다. 목걸이에 남은 손질은 다음 여행을 위한 약속입니다.",
+          "level": 30,
+          "original": {
+            "file": "tier-armor-icons",
+            "cols": 7,
+            "rows": 7,
+            "index": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "forest-trophies",
+      "file": "icons-v27/forest-trophies",
+      "reference": "/tmp/leaftale-icon-reference/forest-trophies.png",
+      "source": "/workspace/generated_images/exec-97632481-bac3-42a8-8516-d76ad2a82efa.png",
+      "cols": 8,
+      "rows": 5,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "trophy1",
+          "name": "콩잎 날개맥",
+          "type": "trophy",
+          "lore": "등에 붙인 콩잎에서 떨어진 가느다란 잎맥. 풀벌레는 이것으로 씨앗 자루를 묶으려 했습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 0,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy2",
+          "name": "볼주머니 씨앗뭉치",
+          "type": "trophy",
+          "lore": "솜털씨앗쥐가 볼 안에 숨겨 둔 씨앗 꾸러미. 쏟아지지 않게 솜털로 몇 번이나 감쌌습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 1,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy3",
+          "name": "새순 뿌리매듭",
+          "type": "trophy",
+          "lore": "새순이의 발끝에서 풀려난 작은 뿌리 매듭. 흙을 털어도 처음 싹튼 땅의 냄새가 남습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 2,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy4",
+          "name": "속 빈 밤송이 가시",
+          "type": "trophy",
+          "lore": "밤송이등 벌레의 갑옷에서 빠진 속 빈 가시. 겁을 먹으면 가시 끝으로 땅을 두드렸다고 합니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 3,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy5",
+          "name": "해진 꼬리리본",
+          "type": "trophy",
+          "lore": "리본꼬리 족제비가 아끼던 천 조각. 색은 바랬지만 마을 축제 때 매듭지은 모양은 그대로입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 4,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy6",
+          "name": "금 간 도토리투구",
+          "type": "trophy",
+          "lore": "다람쥐가 벗어 놓은 작은 도토리 껍질. 안쪽에 부딪힌 나무를 센 듯한 흠집이 줄지어 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 5,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy7",
+          "name": "낙엽귀 솜털",
+          "type": "trophy",
+          "lore": "낙엽귀 토끼가 덤불에 남긴 털 한 줌. 마른 잎과 닮아서 바람에 날려도 좀처럼 눈에 띄지 않습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 6,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy8",
+          "name": "솔방울 솜고치",
+          "type": "trophy",
+          "lore": "애벌레가 솔방울 조각을 엮어 만든 고치 껍질. 구름처럼 가벼워도 안쪽의 작은 방은 단단합니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 7,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy9",
+          "name": "울타리 옹이단추",
+          "type": "trophy",
+          "lore": "꼬마목인의 가슴에서 떨어진 나무 옹이. 한때 밭 주인이 울타리에 박아 두었던 표식입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 8,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy10",
+          "name": "세 알의 도토리주머니",
+          "type": "trophy",
+          "lore": "파수꾼이 평생 지키던 도토리 세 알. 주머니 밑에 새끼 다람쥐의 서툰 발자국이 수놓아져 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 9,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy11",
+          "name": "이슬방울 등막",
+          "type": "trophy",
+          "lore": "물방개의 등에서 벗겨진 투명한 막. 물방울을 받치던 얕은 홈이 작은 그릇처럼 남아 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 10,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy12",
+          "name": "갈대발 고리",
+          "type": "trophy",
+          "lore": "개구리의 발에 걸려 있던 갈대 마디. 개울을 뛰어넘을 때마다 물높이를 기억하는 자국이 늘었습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 11,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy13",
+          "name": "물잠자리 빈 허물",
+          "type": "trophy",
+          "lore": "개울 돌에 붙어 있던 유충의 빈 허물. 아직 날지 못한 시간까지 얇은 껍질 속에 남아 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 12,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy14",
+          "name": "징검돌 집게덮개",
+          "type": "trophy",
+          "lore": "가재가 탈피하며 남긴 집게 껍질. 오래 등에 얹었던 징검돌의 모래가 틈마다 끼어 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 13,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy15",
+          "name": "수달 영감의 잠돌",
+          "type": "trophy",
+          "lore": "수달 영감이 베개로 쓰던 납작한 돌. 한쪽 면만 반질반질해서 얼마나 오래 졸았는지 짐작됩니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 14,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy16",
+          "name": "삭은 나무가루 주머니",
+          "type": "trophy",
+          "lore": "진드기가 먹이를 모아 둔 나무껍질 주머니. 숲을 다시 흙으로 돌려보내는 작은 일꾼의 흔적입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 15,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy17",
+          "name": "버섯모자 포자주름",
+          "type": "trophy",
+          "lore": "달팽이의 버섯모자에서 떨어진 얇은 주름. 햇빛을 피했던 자리마다 은은한 포자 무늬가 남았습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 16,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy18",
+          "name": "굳은 수액방울",
+          "type": "trophy",
+          "lore": "딱정벌레의 등에서 굳어 떨어진 수액. 안에 갇힌 잎 조각이 운반하던 숲길의 방향을 가리킵니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 17,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy19",
+          "name": "뿌리멧돼지의 뒤틀린 엄니",
+          "type": "trophy",
+          "lore": "굴 입구에 남은 오래된 엄니 조각. 새 뿌리가 자란 방향으로 휘어 멧돼지가 겪은 계절을 보여줍니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 18,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy20",
+          "name": "그루터기의 지킴나이테",
+          "type": "trophy",
+          "lore": "할아범이 내어 준 작은 나이테 조각. 가장 좁은 고리에도 이웃을 지키려 한 한 해가 새겨져 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 19,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy21",
+          "name": "소금털 뭉치",
+          "type": "trophy",
+          "lore": "들토끼가 몸을 털 때 남긴 하얀 털. 털끝의 소금 결정이 달빛 아래에서 작은 별처럼 반짝입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 20,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy22",
+          "name": "은잎 꼬리비늘",
+          "type": "trophy",
+          "lore": "은잎도마뱀의 꼬리에서 자연스레 빠진 비늘. 잎의 은빛과 바다의 푸른빛을 번갈아 비춥니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 21,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy23",
+          "name": "소라게의 이사조각",
+          "type": "trophy",
+          "lore": "소라게가 집을 옮기며 남긴 조개껍질 조각. 안쪽의 둥근 흔적은 몸에 꼭 맞았던 옛집의 크기입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 22,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy24",
+          "name": "왜가리 바람깃",
+          "type": "trophy",
+          "lore": "숲의 가지에 걸린 긴 깃털. 먹이터를 찾아온 바닷바람의 짠 냄새가 끝에 조금 남아 있습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 23,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy25",
+          "name": "은여우의 길잡이 수염",
+          "type": "trophy",
+          "lore": "은여우가 바람길에 남긴 수염. 주민들은 길을 잃은 밤에 이 수염이 바다 쪽을 향한다고 믿습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 24,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy26",
+          "name": "유리열매 등조각",
+          "type": "trophy",
+          "lore": "딱정벌레가 먹던 투명한 열매껍질. 빛을 비추면 속에 남은 씨앗 그림자가 바닥에 맺힙니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 25,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy27",
+          "name": "젖은 모래주머니",
+          "type": "trophy",
+          "lore": "모래주머니 게가 옆구리에 차고 다니던 자루. 짜내도 한 번의 밀물만큼 물이 더 나오는 듯합니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 26,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy28",
+          "name": "파도거품 구슬",
+          "type": "trophy",
+          "lore": "해파리가 사라진 뒤 남은 단단한 거품. 귀에 대면 멀리 밀려오는 파도 한 겹이 들립니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 27,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy29",
+          "name": "조개칼 날조각",
+          "type": "trophy",
+          "lore": "사마귀가 갈아낸 낡은 조개날. 바깥쪽은 무뎌졌지만 안쪽의 진주층은 아직 매끈합니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 28,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy30",
+          "name": "도둑원숭이 씨앗지갑",
+          "type": "trophy",
+          "lore": "푸른원숭이가 훔친 열매씨를 감춘 지갑. 닳은 손잡이를 보면 먹이를 나눠 주기도 했던 모양입니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 29,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy31",
+          "name": "물뿌리 흙고리",
+          "type": "trophy",
+          "lore": "지렁이가 통로를 굳혀 남긴 둥근 흙고리. 속의 가는 뿌리들이 물길을 기억하듯 한 방향으로 누웠습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 30,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy32",
+          "name": "진주눈 눈물돌",
+          "type": "trophy",
+          "lore": "망둑어의 물줄기에서 굴러 나온 작은 진주. 오래된 조개 가루가 눈물 모양으로 굳었습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 31,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy33",
+          "name": "이끼등 묵은 비늘",
+          "type": "trophy",
+          "lore": "악어붙이가 벗어 놓은 큰 비늘. 자란 이끼를 떼어 내면 아래에 지난 물높이의 선이 나타납니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 32,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy34",
+          "name": "갈대가면의 웃음매듭",
+          "type": "trophy",
+          "lore": "목령의 가면을 묶던 갈대 매듭. 풀려도 웃는 입 모양만은 남아서 누군가를 계속 맞아 줍니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 33,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy35",
+          "name": "흰사슴의 물길뿔",
+          "type": "trophy",
+          "lore": "밀물의 흰사슴이 남긴 어린 뿔가지. 젖으면 한때 길이었던 자리에 닮은 푸른 줄이 떠오릅니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 34,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy36",
+          "name": "동굴새우의 푸른등껍질",
+          "type": "trophy",
+          "lore": "동료를 부르던 새우의 빈 등껍질. 깊은 어둠에서도 한동안 가느다란 푸른 줄이 빛납니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 35,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy37",
+          "name": "박쥐 소금별",
+          "type": "trophy",
+          "lore": "날개 끝에서 떨어진 소금 결정. 동굴의 바람이 여러 번 깎아 작은 별 모양을 만들었습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 36,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy38",
+          "name": "말미잘 해초술",
+          "type": "trophy",
+          "lore": "말미잘이 오래된 촉수를 감싸 내보낸 해초 다발. 만지면 파도에 흔들리던 리듬이 손끝에 남습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 37,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy39",
+          "name": "수문게의 산호빗장",
+          "type": "trophy",
+          "lore": "수문게가 탈피하며 남긴 두꺼운 갑각. 막힌 물길을 지켰던 세월만큼 작은 산호 가지가 돋았습니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 38,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy40",
+          "name": "뿌리해룡의 숨비늘",
+          "type": "trophy",
+          "lore": "해룡이 물길을 다시 열며 남긴 푸른 비늘. 손바닥에 올리면 숲과 바다 사이의 맥박이 전해집니다.",
+          "original": {
+            "file": "loot",
+            "cols": 8,
+            "rows": 5,
+            "index": 39,
+            "size": 32
+          }
+        }
+      ]
+    },
+    {
+      "id": "verdant-trophies",
+      "file": "icons-v27/verdant-trophies",
+      "reference": "/tmp/leaftale-icon-reference/verdant-trophies.png",
+      "source": "/workspace/generated_images/exec-a7d900c9-e40c-4f6a-abcc-c15b266fa3ef.png",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "trophy41",
+          "name": "이슬잔 잎받침",
+          "type": "trophy",
+          "lore": "이슬받이가 접어 두었던 오목한 떡잎. 마른 뒤에도 가장자리에는 맑은 물방울 자국이 남습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 0,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy42",
+          "name": "속빈 씨앗 종추",
+          "type": "trophy",
+          "lore": "빈씨앗 안에서 흔들리던 단단한 씨 한 알. 귓가에 대면 바람 없는 날에도 아주 작은 소리가 납니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 1,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy43",
+          "name": "포자 편지조각",
+          "type": "trophy",
+          "lore": "접힌 갓 안쪽에서 떨어진 얇은 막. 글씨 대신 포자 무늬가 남아 받는 이 없는 편지처럼 보입니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 2,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy44",
+          "name": "수액 찻잔손잡이",
+          "type": "trophy",
+          "lore": "도토리 찻잔에서 떨어진 굽은 나뭇가지 손잡이. 손끝을 대면 오래 식지 않는 차의 온기가 느껴집니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 3,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy45",
+          "name": "되감긴 솔잎고리",
+          "type": "trophy",
+          "lore": "태엽의 중심에서 풀려난 솔잎 한 겹. 힘을 주어 펴도 손을 놓으면 서서히 원래의 고리로 돌아갑니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 4,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy46",
+          "name": "지워진 화살돌",
+          "type": "trophy",
+          "lore": "이정표의 끝에서 떨어진 납작한 돌 조각. 화살표는 닳았지만 한쪽 모서리만 유난히 따뜻합니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 5,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy47",
+          "name": "겹물결 조약돌",
+          "type": "trophy",
+          "lore": "징검돌 사이에서 빠져나온 푸른 조약돌. 표면의 둥근 무늬는 돌이 물을 튀겼던 횟수와 같다고 합니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 6,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy48",
+          "name": "제방 항아리귀",
+          "type": "trophy",
+          "lore": "물항아리의 두꺼운 옆 손잡이. 안쪽에 남은 붉은 흙은 옛 제방이 무너진 해의 강바닥에서 왔습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 7,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy49",
+          "name": "달빛 갓주름",
+          "type": "trophy",
+          "lore": "광채버섯의 안쪽에서 떨어진 은보라색 주름. 어두운 주머니 속에서는 잊고 있던 길을 그리는 듯 빛납니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 8,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy50",
+          "name": "닫히지 않는 나이테",
+          "type": "trophy",
+          "lore": "석문 중심에서 떨어진 고리 모양 돌. 안쪽의 마지막 나이테만 이어지지 않아 문틈 같은 작은 틈이 남습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 9,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy51",
+          "name": "첫소금 꽃턱",
+          "type": "trophy",
+          "lore": "소금꽃 아래를 받치던 분홍빛 꽃턱. 모서리의 하얀 결정은 첫 밀물이 남긴 소금이라 쉽게 녹지 않습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 10,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy52",
+          "name": "푸른 부표매듭",
+          "type": "trophy",
+          "lore": "부표의 유리목을 감쌌던 그물 매듭. 젖지 않아도 바다에서 건져 올린 직후의 차가운 감촉이 남습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 11,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy53",
+          "name": "겹바람 수피띠",
+          "type": "trophy",
+          "lore": "바람접이의 몸에서 벗겨진 은빛 껍질. 겹 사이마다 서로 다른 계절의 바람 냄새가 갇혀 있습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 12,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy54",
+          "name": "가라앉지 않는 모래",
+          "type": "trophy",
+          "lore": "병속 노을이 흘리고 간 살구빛 모래. 바닥에 놓아도 몇 알은 작은 그림자 위에 떠 있습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 13,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy55",
+          "name": "멈춘 밀물눈금",
+          "type": "trophy",
+          "lore": "모래시계 틀에서 빠진 푸른 눈금판. 아무 물에 담가도 마지막 밀물이 닿았던 선까지만 짙어집니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 14,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy56",
+          "name": "풀리지 않는 해초끈",
+          "type": "trophy",
+          "lore": "보물석을 감쌌던 짙은 청록색 끈. 끊어진 끝을 맞대면 파도에 밀리듯 다시 같은 매듭을 만들려 합니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 15,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy57",
+          "name": "마디 속 잎두루마리",
+          "type": "trophy",
+          "lore": "갈대의 빈 마디 안에 보관되던 잎 조각. 글자는 없고 물이 흘렀던 자리만 가느다란 맥으로 남아 있습니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 16,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy58",
+          "name": "오래된 수문 못",
+          "type": "trophy",
+          "lore": "수문판을 붙들던 푸른 녹의 못. 머리에 새겨진 수위 선은 해안 마을의 가장 오래된 기록보다 앞섭니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 17,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy59",
+          "name": "수정꽃 맥침",
+          "type": "trophy",
+          "lore": "수정꽃의 중심에서 떨어진 가느다란 푸른 침. 돌벽에 대면 보이지 않는 뿌리의 진동이 손끝으로 전해집니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 18,
+            "size": 32
+          }
+        },
+        {
+          "id": "trophy60",
+          "name": "별빛 종유껍질",
+          "type": "trophy",
+          "lore": "종유심이 벗어 놓은 속 빈 돌껍질. 안쪽에 박힌 작은 결정들이 오래된 밤하늘처럼 서로 다른 깊이에서 빛납니다.",
+          "original": {
+            "file": "verdant-trophies",
+            "cols": 4,
+            "rows": 5,
+            "index": 19,
+            "size": 32
+          }
+        }
+      ]
+    },
+    {
+      "id": "forest-consumables",
+      "file": "icons-v27/forest-consumables",
+      "reference": "/tmp/leaftale-icon-reference/forest-consumables.png",
+      "source": "/workspace/generated_images/exec-4668afcc-17d4-4c34-81f4-7c6ee4055913.png",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "dewjelly",
+          "name": "새벽이슬 젤리",
+          "type": "consumable",
+          "lore": "새벽 잎끝의 이슬을 굳힌 투명한 젤리. 넘어져 울던 묘목지기의 아이에게 나눠 주던 간식입니다.",
+          "level": 1,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 0
+          }
+        },
+        {
+          "id": "acornbread",
+          "name": "도토리 속빵",
+          "type": "consumable",
+          "lore": "속을 비운 도토리 껍질에서 천천히 구웠습니다. 돌아오는 길을 잃지 말라는 작은 잎 표식이 찍혀 있습니다.",
+          "level": 3,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 1
+          }
+        },
+        {
+          "id": "brooktea",
+          "name": "개울돌 냉차",
+          "type": "consumable",
+          "lore": "차가운 개울돌 곁에서 하룻밤 식힌 박하차. 잠들지 못하는 별잎 견습생들의 책상에 놓이던 병입니다.",
+          "level": 8,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 2
+          }
+        },
+        {
+          "id": "moonnectar",
+          "name": "달씨앗 꿀물",
+          "type": "consumable",
+          "lore": "달빛 아래에서만 단맛을 내는 씨앗을 우렸습니다. 쓰디쓴 주문 암기를 마친 밤에 조금씩 마십니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 3
+          }
+        },
+        {
+          "id": "rootbroth",
+          "name": "따뜻한 뿌리수프",
+          "type": "consumable",
+          "lore": "잘린 뿌리 대신 스스로 떨어진 잔뿌리만 고아 냅니다. 숲의 치유사들은 빨리 낫는 것보다 오래 돌보기를 배웠습니다.",
+          "level": 3,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 4
+          }
+        },
+        {
+          "id": "saltmousse",
+          "name": "소금꽃 무스",
+          "type": "consumable",
+          "lore": "독한 해초를 만진 뱃사람에게 건네던 부드러운 약. 혀끝에 남는 짠맛이 무사히 돌아왔다는 신호입니다.",
+          "level": 13,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 5
+          }
+        },
+        {
+          "id": "breathdrop",
+          "name": "푸른숨 방울약",
+          "type": "consumable",
+          "lore": "파도가 잠시 멎는 순간에 뚜껑을 닫는 약입니다. 깊은 동굴에서 숨이 가빠질 때 해안의 바람을 떠올리게 합니다.",
+          "level": 24,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 6
+          }
+        },
+        {
+          "id": "leafcompress",
+          "name": "온실잎 습포",
+          "type": "consumable",
+          "lore": "온실의 가장 두꺼운 잎으로 상처를 감쌉니다. 잎이 서서히 마를 때까지 온기가 상처 곁을 지킵니다.",
+          "level": 4,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 7
+          }
+        },
+        {
+          "id": "tideelixir",
+          "name": "밀물빛 비약",
+          "type": "consumable",
+          "lore": "밀물과 썰물이 바뀌는 짧은 틈에만 섞이는 약. 멈추지 않고 되돌아오는 파도의 힘을 빌렸습니다.",
+          "level": 23,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 8
+          }
+        },
+        {
+          "id": "springphial",
+          "name": "첫봄 유리병",
+          "type": "consumable",
+          "lore": "긴 겨울 뒤 첫 꽃이 피던 날의 향을 담았습니다. 모두가 돌아와야 열기로 약속했던 마을의 마지막 비상약입니다.",
+          "level": 27,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 9
+          }
+        },
+        {
+          "id": "barktonic",
+          "name": "붉은수피 강장제",
+          "type": "consumable",
+          "lore": "바람에 버틴 나무껍질의 붉은 즙. 창사들이 첫 보초를 서기 전, 손이 떨리지 않기를 바라며 나눠 마십니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 10
+          }
+        },
+        {
+          "id": "starcordial",
+          "name": "별꽃 농축액",
+          "type": "consumable",
+          "lore": "밤에 모은 꽃가루를 한 방울로 줄였습니다. 작은 별 하나라도 끝까지 밝히라는 스승의 말이 병목에 새겨져 있습니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 11
+          }
+        },
+        {
+          "id": "stonebiscuit",
+          "name": "돌밤 방패과자",
+          "type": "consumable",
+          "lore": "돌처럼 단단한 밤을 여러 번 쪄서 만든 과자. 겁 많은 경비에게 마을 아이들이 방패 모양으로 구워 주었습니다.",
+          "level": 6,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 12
+          }
+        },
+        {
+          "id": "shellsyrup",
+          "name": "진주막 시럽",
+          "type": "consumable",
+          "lore": "조개가 상처를 감싸는 얇은 막에서 배운 시럽. 보이지 않는 바다의 찬 기운을 부드럽게 흘려보냅니다.",
+          "level": 21,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 13
+          }
+        },
+        {
+          "id": "hawkseed",
+          "name": "매눈 씨앗차",
+          "type": "consumable",
+          "lore": "작은 씨앗을 셀 수 있을 만큼 정신이 맑아지는 차. 숲그늘궁수의 첫 수업은 과녁보다 바람을 바라보는 일이었습니다.",
+          "level": 6,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 14
+          }
+        },
+        {
+          "id": "mistlozenge",
+          "name": "안개박하 사탕",
+          "type": "consumable",
+          "lore": "입안에서 녹는 동안 몸에 힘을 빼게 하는 사탕. 갈대 사이로 소리 없이 빠져나가는 정찰병들의 주머니에 들어 있습니다.",
+          "level": 7,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 15
+          }
+        },
+        {
+          "id": "thornjam",
+          "name": "가시딸기 잼",
+          "type": "consumable",
+          "lore": "가시에 찔리지 않고 딴 열매만 담습니다. 아주 짧은 빈틈을 기다리던 추격자들이 아끼는 붉은 잼입니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 16
+          }
+        },
+        {
+          "id": "sunpepper",
+          "name": "햇살고추 절임",
+          "type": "consumable",
+          "lore": "한 입 깨물면 졸린 숲도 눈을 뜬다는 절임. 마지막 한 번의 힘이 필요한 이에게 작은 조각만 건네줍니다.",
+          "level": 25,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 17
+          }
+        },
+        {
+          "id": "windnectar",
+          "name": "바람결 꽃청",
+          "type": "consumable",
+          "lore": "줄기가 휘어도 떨어지지 않는 꽃의 꿀. 먼 길의 배달부가 숨을 고르고 다시 걷기 전에 마시는 한 모금입니다.",
+          "level": 16,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 18
+          }
+        },
+        {
+          "id": "heartroot",
+          "name": "심장뿌리 진액",
+          "type": "consumable",
+          "lore": "속이 빈 고목의 새 뿌리에서 얻은 진액. 오래된 몸에도 새 계절을 버틸 자리가 남아 있다는 약속입니다.",
+          "level": 20,
+          "original": {
+            "file": "consumables-v24",
+            "cols": 5,
+            "rows": 4,
+            "index": 19
+          }
+        }
+      ]
+    },
+    {
+      "id": "materials",
+      "file": "icons-v27/materials",
+      "reference": "/tmp/leaftale-icon-reference/materials.png",
+      "source": "/workspace/generated_images/exec-2819df28-2b8a-4550-b063-47c8873b9fdf.png",
+      "cols": 4,
+      "rows": 2,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "seedmeal",
+          "name": "씨앗 고운가루",
+          "type": "material",
+          "lore": "씨앗을 저장하는 생물들의 자루에서 얻는 고운 가루. 마을 제빵사는 바람에 날리기 전에 도토리 껍질에 담아 둡니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 0
+          }
+        },
+        {
+          "id": "wildhoney",
+          "name": "숲꽃 벌꿀",
+          "type": "material",
+          "lore": "꽃과 수액을 찾아다니던 작은 생물에게 묻어 온 꿀. 서로 다른 숲꽃의 향이 한 병 안에서 계절을 나눠 가집니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 1
+          }
+        },
+        {
+          "id": "springwater",
+          "name": "맑은 샘물",
+          "type": "material",
+          "lore": "물가의 생물이 껍질과 잎그릇에 담아 둔 샘물. 숲의 연금술사는 가장 먼저 물의 냄새부터 확인합니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 2
+          }
+        },
+        {
+          "id": "gelagar",
+          "name": "바다한천",
+          "type": "material",
+          "lore": "해초를 타고 다니던 생물에게서 얻는 투명한 응고질. 파도처럼 흩어지던 약효를 젤리 안에 천천히 붙잡아 둡니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 3
+          }
+        },
+        {
+          "id": "spiceberry",
+          "name": "햇가시 향신열매",
+          "type": "material",
+          "lore": "볕 좋은 가시덤불에서 동물과 바람수피가 옮겨 온 붉은 열매. 해안의 요리사들은 짠 국물에 딱 한 알을 띄웁니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 4
+          }
+        },
+        {
+          "id": "moonyeast",
+          "name": "달빛 발효종",
+          "type": "material",
+          "lore": "밤버섯과 오래된 나무에 자라는 보랏빛 발효종. 달이 차는 밤마다 작은 항아리의 뚜껑을 한 번씩 밀어 올립니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 5
+          }
+        },
+        {
+          "id": "prismsalt",
+          "name": "푸른 결정염",
+          "type": "material",
+          "lore": "깊은 바다동굴의 생물들이 품은 푸른 소금 결정. 아주 적은 양만으로도 서로 밀어내던 마력 성분을 한데 묶습니다.",
+          "original": {
+            "file": "craft-materials-v26",
+            "cols": 4,
+            "rows": 2,
+            "index": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "coast-consumables",
+      "file": "icons-v27/coast-consumables",
+      "reference": "/tmp/leaftale-icon-reference/coast-consumables.png",
+      "source": "/workspace/generated_images/exec-58cb6d01-b133-400e-84d5-f4bcdbb07040.png",
+      "cols": 5,
+      "rows": 4,
+      "size": 64,
+      "tool": "image_gen",
+      "entries": [
+        {
+          "id": "seedcrunch",
+          "name": "볼주머니 씨앗강정",
+          "type": "consumable",
+          "lore": "솜털씨앗쥐가 모아 둔 씨앗을 구운 작은 강정. 길 위에서 나눠 먹을 수 있도록 세 조각의 홈을 냈습니다.",
+          "level": 2,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 0
+          }
+        },
+        {
+          "id": "sproutcongee",
+          "name": "새순 매듭죽",
+          "type": "consumable",
+          "lore": "흙묻은 새순이가 남긴 연한 뿌리를 달인 죽. 묘목을 돌보다 끼니를 놓친 사람에게 가장 먼저 내어 주는 음식입니다.",
+          "level": 3,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 1
+          }
+        },
+        {
+          "id": "sporesteambun",
+          "name": "포자편지 찐빵",
+          "type": "consumable",
+          "lore": "접힌편지 버섯의 이야기를 모자 주름과 함께 찐 빵. 반죽이 부풀 때 접힌 잎이 열려 작은 봉투처럼 보입니다.",
+          "level": 9,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 2
+          }
+        },
+        {
+          "id": "pinecoilcandy",
+          "name": "솔잎 태엽엿",
+          "type": "consumable",
+          "lore": "되감긴 솔잎고리를 본떠 만든 나선형 엿. 서두르는 배달부도 한 바퀴씩 풀어 먹으며 호흡을 고릅니다.",
+          "level": 7,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 3
+          }
+        },
+        {
+          "id": "riverjelly",
+          "name": "물결 조약젤리",
+          "type": "consumable",
+          "lore": "겹물결 조약돌의 잔물결을 찍은 푸른 젤리. 다 먹은 뒤에도 물수제비의 둥근 자국을 떠올리게 합니다.",
+          "level": 8,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 4
+          }
+        },
+        {
+          "id": "amberpudding",
+          "name": "수액 호박푸딩",
+          "type": "consumable",
+          "lore": "수액방울 딱정벌레가 모은 호박빛 단맛. 도토리 찻잔의 작은 손잡이가 있어 뜨거운 숲 간식도 천천히 들 수 있습니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 5
+          }
+        },
+        {
+          "id": "mooncapstew",
+          "name": "달접시 버섯스튜",
+          "type": "consumable",
+          "lore": "숲의 밤을 밝히던 두 버섯을 함께 끓인 스튜. 견습 술사는 식기 전에 자신의 첫 주문을 한 번 더 읽습니다.",
+          "level": 10,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 6
+          }
+        },
+        {
+          "id": "ringstock",
+          "name": "연륜 뿌리곰탕",
+          "type": "consumable",
+          "lore": "닫히지 않는 나이테와 지킴나이테를 한 솥에 우렸습니다. 오래 버티는 법을 아는 숲의 두 어른이 남긴 겨울 음식입니다.",
+          "level": 12,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 7
+          }
+        },
+        {
+          "id": "saltcrystaltaffy",
+          "name": "첫소금 눈꽃엿",
+          "type": "consumable",
+          "lore": "소금꽃 접시의 첫 결정으로 만든 하얀 엿. 먼 숲에 돌아갈 뱃사람이 바다의 첫눈이라 부르며 챙깁니다.",
+          "level": 13,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 8
+          }
+        },
+        {
+          "id": "silverleaftea",
+          "name": "은잎 비늘차",
+          "type": "consumable",
+          "lore": "바다를 비추던 은잎 비늘을 차로 옮겼습니다. 푸른 부표매듭을 풀면 물결에 몸을 맡기던 항해사의 향이 납니다.",
+          "level": 14,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 9
+          }
+        },
+        {
+          "id": "glassfruitjam",
+          "name": "유리열매 보석잼",
+          "type": "consumable",
+          "lore": "딱정벌레가 먹던 유리열매와 원숭이가 숨긴 씨앗의 잼. 빵 위에 올리면 작은 약점 하나까지 환하게 비춘다는 속설이 있습니다.",
+          "level": 19,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 10
+          }
+        },
+        {
+          "id": "foamparfait",
+          "name": "파도거품 파르페",
+          "type": "consumable",
+          "lore": "해파리의 거품 구슬을 층층이 쌓은 차가운 간식. 조개집을 떠난 소라게에게도 여행의 기쁨이 남도록 빈 껍질에 담았습니다.",
+          "level": 18,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 11
+          }
+        },
+        {
+          "id": "reedscrolltea",
+          "name": "갈대 두루마리차",
+          "type": "consumable",
+          "lore": "숨쉬는 갈대서가의 오래된 잎 문장을 우린 차. 끝까지 읽은 여행자에게 흔들리지 않는 눈과 또렷한 주문을 빌려 줍니다.",
+          "level": 22,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 12
+          }
+        },
+        {
+          "id": "pearldrop",
+          "name": "진주눈 응축약",
+          "type": "consumable",
+          "lore": "진주눈 망둑어가 바다 밑에서 삼켰던 눈물의 약. 빈 병에 마지막 진주빛 한 점이 오래 남습니다.",
+          "level": 21,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 13
+          }
+        },
+        {
+          "id": "mossbarkstew",
+          "name": "이끼비늘 장수탕",
+          "type": "consumable",
+          "lore": "늪에서 오래 살아남은 등비늘과 물길을 지킨 수문 못의 탕. 뜨거운 김이 식어도 어깨를 감싼 든든함은 남습니다.",
+          "level": 22,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 14
+          }
+        },
+        {
+          "id": "whiteantlerelixir",
+          "name": "흰물길 순환약",
+          "type": "consumable",
+          "lore": "흰사슴의 물길처럼 몸 안의 지친 흐름을 잇는 약. 길이 끊겼던 갈대숲에서 치유사들이 처음 완성했습니다.",
+          "level": 23,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 15
+          }
+        },
+        {
+          "id": "blueshellbroth",
+          "name": "푸른등 해초수프",
+          "type": "consumable",
+          "lore": "동굴새우 껍질이 우러난 짙푸른 국물. 긴 잠수 뒤 조개등 마을로 돌아온 이들이 말없이 두 손으로 받쳐 듭니다.",
+          "level": 26,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 16
+          }
+        },
+        {
+          "id": "crystalbloomcordial",
+          "name": "수정꽃 맥동액",
+          "type": "consumable",
+          "lore": "푸른맥 수정꽃의 고동을 한 방울에 겹쳤습니다. 병을 연 술사의 주문 끝에 잠든 별의 잔상이 잠깐 따라옵니다.",
+          "level": 25,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 17
+          }
+        },
+        {
+          "id": "coralward",
+          "name": "산호빗장 수호환",
+          "type": "consumable",
+          "lore": "바닷문을 잠그던 산호빗장의 힘을 접어 만든 약환. 돌아갈 문을 끝까지 지키는 수문게의 고집이 담겨 있습니다.",
+          "level": 26,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 18
+          }
+        },
+        {
+          "id": "starbreath",
+          "name": "별숨 용린비약",
+          "type": "consumable",
+          "lore": "뿌리해룡의 숨과 종유심이 삼킨 별빛을 함께 깨운 비약. 깊은 동굴에서 모두를 데리고 돌아오겠다는 마지막 약속을 위해 빚습니다.",
+          "level": 27,
+          "original": {
+            "file": "consumables-v26",
+            "cols": 5,
+            "rows": 4,
+            "index": 19
+          }
+        }
+      ]
+    }
+  ]
+}

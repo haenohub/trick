@@ -45,7 +45,7 @@ export async function buildBestiary() {
           ? {
               ...art.itemOverrides[d.item],
               file: `assets/${art.itemOverrides[d.item].file}.png`,
-              size: art.iconLayout.size,
+              size: art.itemOverrides[d.item].size || art.iconLayout.size,
             }
           : {
               file: "assets/items.png",
@@ -66,7 +66,7 @@ export async function buildBestiary() {
       ? {
           ...art.itemOverrides[id],
           file: `assets/${art.itemOverrides[id].file}.png`,
-          size: art.iconLayout.size,
+          size: art.itemOverrides[id].size || art.iconLayout.size,
         }
       : {
           file: "assets/items.png",

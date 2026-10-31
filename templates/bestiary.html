@@ -1267,8 +1267,8 @@
         border-color: #9eb399;
       }
       .recipe-node .loot-icon {
-        width: 48px;
-        height: 48px;
+        width: 64px;
+        height: 64px;
         image-rendering: pixelated;
       }
       .recipe-node .recipe-name {
@@ -1309,6 +1309,33 @@
       }
       .craft-sources ul {
         padding-left: 20px;
+      }
+      .craft-details {
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+      .craft-details > summary {
+        cursor: pointer;
+        color: var(--green);
+        font-weight: 700;
+        padding: 8px 0;
+      }
+      .craft-details > summary:focus-visible {
+        outline: 2px solid #8a7845;
+        outline-offset: 4px;
+      }
+      .craft-details .details-open,
+      .craft-details[open] .details-closed {
+        display: none;
+      }
+      .craft-details[open] .details-open {
+        display: inline;
+      }
+      .craft-details-body {
+        padding: 4px 0 8px;
+      }
+      .craft-details-body .craft-description:first-child {
+        margin-top: 8px;
       }
       #craft-filters select {
         width: 100%;
@@ -1759,7 +1786,7 @@
         }
         function recipeNode(id, count, result = false) {
           const item = data.items.find((i) => i.id === id);
-          return `<button class="recipe-node ${result ? "recipe-result" : ""}" data-item-link="${id}" aria-label="${esc(item.name)} ${count}개 · 아이템 도감에서 보기"><canvas class="loot-icon" width="32" height="32" data-drop="${id}" aria-hidden="true"></canvas><span class="recipe-name">${esc(item.name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ""}</span></button>`;
+          return `<button class="recipe-node ${result ? "recipe-result" : ""}" data-item-link="${id}" aria-label="${esc(item.name)} ${count}개 · 아이템 도감에서 보기"><canvas class="loot-icon" width="64" height="64" data-drop="${id}" aria-hidden="true"></canvas><span class="recipe-name">${esc(item.name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ""}</span></button>`;
         }
         function craftCard(item) {
           const ingredients = item.ingredients.map((i) =>
@@ -1773,7 +1800,7 @@
               return `<li><b>${esc(i.name)}</b>: ${species.map((m) => `<button class="item-link" data-monster-link="${m.id}">${esc(m.name)} · Lv.${data.monsters.find((a) => a.id === m.id).level}</button> ${percent(m.chance)}`).join(" · ")}${i.sources.herbs.length ? ` · 채집: ${esc(i.sources.herbs.join(" / "))}` : ""}</li>`;
             })
             .join("");
-          return `<article class="craft-card" data-recipe-id="${item.id}"><div class="card-top"><h3>${esc(item.name)}</h3><span class="badge">Lv.${item.level} · ${item.craftOnly ? "제작 전용" : "제작 · 드롭 가능"}</span></div><div class="card-body"><div class="craft-flow" role="group" aria-label="${esc(item.name)} 제작 재료와 결과">${item.ingredients.map((i, n) => `<span class="recipe-step">${n ? '<span class="recipe-operator" aria-label="더하기">+</span>' : ""}${recipeNode(i.id, i.count)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator" aria-label="제작 결과">→</span>${recipeNode(item.id, 1, true)}</span></div><p class="craft-description">${esc(item.recipeNote)}</p><div class="craft-effects"><b>사용 효과</b><br>${item.effectLines.map(esc).join("<br>")}</div><p class="source-note">마을 제작 · 제작 레벨 ${item.level} · 비용 2리프 · 결과 1개${item.craftOnly ? " · 몬스터 드롭 / 상점 구매 불가" : " · 완제품 드롭 확률 5%"}</p><p class="craft-description">${esc(item.lore)}</p><details class="craft-sources"><summary>재료 획득처 보기</summary><ul>${sources}</ul></details></div></article>`;
+          return `<article class="craft-card" data-recipe-id="${item.id}"><div class="card-top"><h3>${esc(item.name)}</h3><span class="badge">Lv.${item.level} · ${item.craftOnly ? "제작 전용" : "제작 · 드롭 가능"}</span></div><div class="card-body"><div class="craft-flow" role="group" aria-label="${esc(item.name)} 제작 재료와 결과">${item.ingredients.map((i, n) => `<span class="recipe-step">${n ? '<span class="recipe-operator" aria-label="더하기">+</span>' : ""}${recipeNode(i.id, i.count)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator" aria-label="제작 결과">→</span>${recipeNode(item.id, 1, true)}</span></div><details class="craft-details"><summary><span class="details-closed">상세정보 보기</span><span class="details-open">상세정보 접기</span></summary><div class="craft-details-body"><p class="craft-description">${esc(item.recipeNote)}</p><div class="craft-effects"><b>사용 효과</b><br>${item.effectLines.map(esc).join("<br>")}</div><p class="source-note">마을 제작 · 제작 레벨 ${item.level} · 비용 2리프 · 결과 1개${item.craftOnly ? " · 몬스터 드롭 / 상점 구매 불가" : " · 완제품 드롭 확률 5%"}</p><p class="craft-description">${esc(item.lore)}</p><section class="craft-sources"><h4>재료 획득처</h4><ul>${sources}</ul></section></div></details></div></article>`;
         }
         const entryCard = (entry) =>
           catalogue === "crafting"
@@ -1857,7 +1884,7 @@
             const c = canvas.getContext("2d"),
               size = icon.size;
             c.imageSmoothingEnabled = false;
-            c.clearRect(0, 0, 32, 32);
+            c.clearRect(0, 0, canvas.width, canvas.height);
             c.drawImage(
               image,
               (icon.index % icon.cols) * size,
@@ -1866,8 +1893,8 @@
               size,
               0,
               0,
-              32,
-              32,
+              canvas.width,
+              canvas.height,
             );
             canvas.dataset.loaded = "true";
           } catch {

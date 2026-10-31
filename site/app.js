@@ -249,7 +249,7 @@ function craftGuideCard(item, p) {
     p.gold >= 2 &&
     entries.every(([id, n]) => (p.inventory[id] || 0) >= n);
   const node = (id, count, result = false) =>
-    `<button class="recipe-node ${result ? "recipe-result" : (p.inventory[id] || 0) < count ? "recipe-missing" : ""}" data-guide-item="${id}" title="${esc(ITEMS[id].name)} · 보유 ${p.inventory[id] || 0}">${itemIcon(id)}<span class="recipe-name">${esc(ITEMS[id].name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ` · 보유 ${p.inventory[id] || 0}`}</span></button>`;
+    `<button class="recipe-node ${result ? "recipe-result" : (p.inventory[id] || 0) < count ? "recipe-missing" : ""}" data-guide-item="${id}" title="${esc(ITEMS[id].name)} · 보유 ${p.inventory[id] || 0}">${itemIcon(id, 64)}<span class="recipe-name">${esc(ITEMS[id].name)}</span><span class="recipe-quantity">×${count}${result ? " 완성" : ` · 보유 ${p.inventory[id] || 0}`}</span></button>`;
   const sources = entries
     .map(
       ([id]) =>
@@ -265,7 +265,7 @@ function craftGuideCard(item, p) {
           .join(" · ")}</li>`,
     )
     .join("");
-  return `<article class="content-card craft-guide-card" data-recipe-id="${item.id}"><h3>${item.name}</h3><small>제작 Lv.${item.level} · ${item.craftOnly ? "제작 전용 · 드롭/상점 없음" : "제작 · 완제품 드롭 5%"}</small><div class="craft-flow">${entries.map(([id, n], at) => `<span class="recipe-step">${at ? '<span class="recipe-operator">+</span>' : ""}${node(id, n)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator">→</span>${node(item.id, 1, true)}</span></div><p>${item.recipeNote}</p>${equipmentStats(item)}<details class="craft-sources"><summary>재료 획득처 보기</summary><ul>${sources}</ul></details><div class="actions"><button data-action="craft" data-item="${item.id}" ${can ? "" : "disabled"}>${can ? "2리프로 1개 제작" : !town ? "마을에서 제작" : p.level < item.level ? "제작 레벨 부족" : "재료 또는 리프 부족"}</button></div></article>`;
+  return `<article class="content-card craft-guide-card" data-recipe-id="${item.id}"><h3>${item.name}</h3><small>제작 Lv.${item.level} · ${item.craftOnly ? "제작 전용 · 드롭/상점 없음" : "제작 · 완제품 드롭 5%"}</small><div class="craft-flow">${entries.map(([id, n], at) => `<span class="recipe-step">${at ? '<span class="recipe-operator">+</span>' : ""}${node(id, n)}</span>`).join("")}<span class="recipe-step"><span class="recipe-operator">→</span>${node(item.id, 1, true)}</span></div><details class="craft-details"><summary><span class="details-closed">상세정보 보기</span><span class="details-open">상세정보 접기</span></summary><div class="craft-details-body"><p>${item.recipeNote}</p>${equipmentStats(item)}<p>${item.lore}</p><p>마을 제작 · 제작 레벨 ${item.level} · 비용 2리프 · 결과 1개</p><section class="craft-sources"><h4>재료 획득처</h4><ul>${sources}</ul></section></div></details><div class="actions"><button data-action="craft" data-item="${item.id}" ${can ? "" : "disabled"}>${can ? "2리프로 1개 제작" : !town ? "마을에서 제작" : p.level < item.level ? "제작 레벨 부족" : "재료 또는 리프 부족"}</button></div></article>`;
 }
 const skillDescriptions = {
   warden: [
@@ -441,14 +441,20 @@ function displayClass() {
   const c = cls();
   return c.branches.find((b) => b.id === state?.player.branch)?.name || c.name;
 }
-function atlasIcon(file, cols, rows, index) {
-  return `<span class="item-icon" style="background-image:url('./assets/${file}.png?v=${ART_REVISION}');background-size:${cols * 32}px ${rows * 32}px;background-position:-${(index % cols) * 32}px -${Math.floor(index / cols) * 32}px" aria-hidden="true"></span>`;
+function atlasIcon(file, cols, rows, index, displaySize = 32) {
+  return `<span class="item-icon" style="--icon-size:${displaySize}px;background-image:url('./assets/${file}.png?v=${ART_REVISION}');background-size:${cols * displaySize}px ${rows * displaySize}px;background-position:-${(index % cols) * displaySize}px -${Math.floor(index / cols) * displaySize}px" aria-hidden="true"></span>`;
 }
-function itemIcon(id) {
+function itemIcon(id, displaySize = 32) {
   const special = artMeta.itemOverrides?.[id];
   return special
-    ? atlasIcon(special.file, special.cols, special.rows, special.index)
-    : atlasIcon("items", 8, 8, iconIds[id] || 0);
+    ? atlasIcon(
+        special.file,
+        special.cols,
+        special.rows,
+        special.index,
+        displaySize,
+      )
+    : atlasIcon("items", 8, 8, iconIds[id] || 0, displaySize);
 }
 function abilityIcon(index) {
   return atlasIcon("items", 8, 8, index);
@@ -1771,7 +1777,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.26.0",
+  version: "0.27.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

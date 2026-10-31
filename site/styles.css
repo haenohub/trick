@@ -3126,9 +3126,9 @@ canvas.aiming {
   color: inherit;
 }
 .recipe-node .item-icon {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: var(--icon-size, 32px);
+  height: var(--icon-size, 32px);
+  flex: 0 0 var(--icon-size, 32px);
 }
 .recipe-name {
   font-size: calc(11px + var(--font-increase));
@@ -3166,6 +3166,30 @@ canvas.aiming {
 }
 .craft-sources li {
   margin: 8px 0;
+}
+.craft-details {
+  border-top: 1px solid #668176;
+  padding-top: 8px;
+}
+.craft-details > summary {
+  cursor: pointer;
+  color: #e6d9a6;
+  padding: 8px 0;
+  font-weight: 700;
+}
+.craft-details > summary:focus-visible {
+  outline: 2px solid #e6d9a6;
+  outline-offset: 3px;
+}
+.craft-details .details-open,
+.craft-details[open] .details-closed {
+  display: none;
+}
+.craft-details[open] .details-open {
+  display: inline;
+}
+.craft-details-body {
+  padding: 4px 0 8px;
 }
 @media (max-width: 600px) {
   .recipe-node {
