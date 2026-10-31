@@ -1,5 +1,11 @@
 import { floorTileCode } from "./isometric-layouts.js";
-import { animationFrame, LocomotionClocks } from "./animation.js";
+import {
+  animationFrame,
+  LocomotionClocks,
+  MONSTER_HIT_DURATION,
+  IMPACT_DURATION,
+} from "./animation.js";
+import { skillPlacement, impactFrame } from "./skill-effects.js";
 import { drawPaperDoll, heldWeaponTip } from "./avatar-draw.js";
 import { SKILL_VISUALS } from "./skill-visuals.js";
 import {
@@ -681,7 +687,13 @@ export class Renderer {
     for (const m of state.mobs) {
       if (!m.windup || m.hp <= 0) continue;
       const a = m.windup,
-        t = Math.min(1, (time - a.start) / (a.at - a.start));
+        t = Math.max(
+          0,
+          Math.min(
+            1,
+            (Math.max(time, m.hitUntil || 0) - a.start) / (a.at - a.start),
+          ),
+        );
       for (const zone of attackZones(a)) {
         const points = zoneOutline(zone);
         for (const [i, q] of points.entries()) {
@@ -917,7 +929,10 @@ export class Renderer {
         const v = project(o.hitDx || 0, o.hitDy || 0),
           n = Math.hypot(v.x, v.y) || 1;
         const k =
-          Math.max(0, Math.sin(Math.min(1, hitAge / 0.12) * Math.PI)) *
+          Math.max(
+            0,
+            Math.sin(Math.min(1, hitAge / MONSTER_HIT_DURATION) * Math.PI),
+          ) *
           3 *
           this.zoom;
         s.x += (v.x / n) * k;
@@ -938,14 +953,15 @@ export class Renderer {
           ? Math.sin(
               Math.min(
                 1,
-                (time - o.windup.start) / (o.windup.at - o.windup.start),
+                (Math.max(time, o.hitUntil || 0) - o.windup.start) /
+                  (o.windup.at - o.windup.start),
               ) * Math.PI,
             ) *
             22 *
             this.zoom
           : 0;
       c.save();
-      if (recoil && hitAge < 2 / 30) c.filter = "brightness(1.55)";
+      if (recoil && hitAge < 1 / 30) c.filter = "brightness(1.4)";
       this.sprite(
         name,
         s.x,
@@ -976,8 +992,6 @@ export class Renderer {
           : null,
       );
       c.restore();
-      if (monster && o.hitUntil > time)
-        this.fx(6, 1, s.x, s.y - height * 0.4, 32, 32, 0.45);
       if (monster && o.ai === "return")
         this.text("귀환 중", s.x, s.y - height - 18, "#cbd8d9", 9);
       if (monster && o.toxinStacks && o.dotUntil > time)
@@ -1107,7 +1121,8 @@ export class Renderer {
           "discovery",
           "phase",
           "evade",
-        ].includes(e.kind)
+        ].includes(e.kind) &&
+        (e.kind !== "enemy" || time - e.started < IMPACT_DURATION)
       )
         this.fx(
           e.kind === "heal"
@@ -1117,14 +1132,16 @@ export class Renderer {
               : e.kind === "burst"
                 ? 1
                 : 0,
-          this.effectFrame(
-            time - (e.started ?? e.until - 0.75),
-            e.until - (e.started ?? e.until - 0.75),
-          ),
+          e.kind === "enemy"
+            ? impactFrame("warden", time - e.started)
+            : this.effectFrame(
+                time - (e.started ?? e.until - 0.75),
+                e.until - (e.started ?? e.until - 0.75),
+              ),
           s.x,
           s.y - 25,
-          e.kind === "level" ? 130 : 75,
-          80,
+          e.kind === "enemy" ? 64 : e.kind === "level" ? 130 : 75,
+          e.kind === "enemy" ? 64 : 80,
           0.85,
         );
     }
@@ -1185,15 +1202,16 @@ export class Renderer {
       state,
     );
   }
-  vfxCell(atlas, row, frame, x, y, w, h, angle = 0, alpha = 1) {
+  vfxCell(atlas, row, frame, x, y, w, h, angle = 0, alpha = 1, anchor = null) {
     const image = atlas && IMAGES.get(atlas.file);
     if (!image) return;
     const c = this.ctx,
       z = this.zoom,
       s = atlas.size;
-    const pivot = atlas.registration?.[row]?.pivot || [s / 2, s / 2],
+    const pivot = anchor || atlas.registration?.[row]?.pivot || [s / 2, s / 2],
       count = atlas.rowFrames?.[row] || atlas.cols;
     c.save();
+    c.imageSmoothingEnabled = false;
     c.globalAlpha = alpha;
     c.translate(Math.round(x), Math.round(y));
     c.rotate(angle);
@@ -1203,26 +1221,28 @@ export class Renderer {
       row * s,
       s,
       s,
-      -(pivot[0] / s) * w * z,
-      -(pivot[1] / s) * h * z,
-      w * z,
-      h * z,
+      Math.round(-(pivot[0] / s) * w * z),
+      Math.round(-(pivot[1] / s) * h * z),
+      Math.round(w * z),
+      Math.round(h * z),
     );
     c.restore();
   }
   attackImpact(e, state) {
+    const age = state.time - e.started;
+    if (age < 0 || age >= IMPACT_DURATION) return;
     const a = ART.attackImpacts,
       s = this.worldToScreen(e.x, e.y),
       row = ["warden", "mage", "ranger", "herbalist"].indexOf(e.classId),
-      t = Math.min(0.999, (state.time - e.started) / (e.until - e.started));
+      size = (64 * Math.max(1, Math.floor(this.zoom))) / this.zoom;
     this.vfxCell(
       a,
       Math.max(0, row),
-      t * (a?.cols || 12),
+      impactFrame(e.classId, age),
       s.x,
       s.y - 28 * this.zoom,
-      e.crit ? 100 : 76,
-      e.crit ? 100 : 76,
+      size,
+      size,
     );
   }
   skillEffect(e, state) {
@@ -1233,110 +1253,31 @@ export class Renderer {
         ? ART.expandedSkillEffects?.[v.classId]
         : ART.skillEffects?.[v.classId];
     if (!a) return;
-    const age = state.time - e.started,
-      duration = e.until - e.started,
-      z = this.zoom,
-      end = this.worldToScreen(e.tx ?? e.x, e.ty ?? e.y),
-      origin = this.worldToScreen(e.fromX ?? e.x, e.fromY ?? e.y);
-    let t = Math.min(0.999, Math.max(0, age / duration)),
-      x = end.x,
-      y = end.y - 24 * z,
-      w = v.width,
-      h = v.height,
-      angle = 0;
-    const registration = a.registration?.[v.row],
-      frames = a.rowFrames?.[v.row] || a.cols;
-    if (["ground", "field", "rain"].includes(v.mode) && e.radius) {
-      const fraction = Math.max(
-        ...(registration?.frames || []).map(
-          (f) => (f.bounds.maxX - f.bounds.minX + 1) / 128,
-        ),
-        0.5,
-      );
-      w = (e.radius * 64 * Math.SQRT2) / fraction;
-      h =
-        w *
-        ({
-          "herbalist-0": 0.62,
-          "herbalist-2": 0.75,
-          venom: 0.8,
-          mist: 0.8,
-          bloom: 0.85,
-        }[v.key] || 1);
-    }
-    if (registration?.ground) y = end.y;
-    if (v.mode === "field") {
-      // Grow once, then breathe through the settled garden frames. Never
-      // replay the opening pop on every persistent healing tick.
-      const frame =
-        age < 0.8 ? (age / 0.8) * 6 : 5 + (Math.sin((age - 0.8) * 3) + 1) * 0.9;
-      this.vfxCell(
-        a,
-        v.row,
-        frame,
-        x,
-        y,
-        w,
-        h,
-        0,
-        Math.min(1, (e.until - state.time) * 2),
-      );
-      return;
-    }
-    if (v.mode === "self") {
-      x = origin.x;
-      y = origin.y;
-    }
-    if (v.mode === "line") {
-      const dx = end.x - origin.x,
-        dy = end.y - origin.y;
-      angle = Math.atan2(dy, dx);
-      if (v.atlas === "expanded") {
-        x = (origin.x + end.x) / 2;
-        y = (origin.y + end.y) / 2 - 18 * z;
-        w = Math.max(90, Math.hypot(dx, dy) / z);
-        h = Math.min(110, w * 0.3);
-      } else if (v.classId === "warden") {
-        x = (origin.x + end.x) / 2;
-        y = (origin.y + end.y) / 2 - 30 * z;
-        w = Math.min(210, Math.max(90, Math.hypot(dx, dy) / z));
-        h = w;
-      } else {
-        w = v.key === "hawk" ? 145 : 110;
-        h = w;
-      }
-    }
-    if (v.mode === "beam") y = end.y;
-    if (v.mode === "rain") {
-      // Generated sequence has upward anticipation, falling flight, impact.
-      // The ground anchor stays locked to the original selected area.
-      if (age < 0.32) {
-        const actor =
-            e.owner === state.player.id
-              ? state.player
-              : state.peers.find((p) => p.id === e.owner),
-          base = ART.appearance?.bases?.[actor?.classId],
-          weapon = ART.appearance?.weapons?.[actor?.equipment?.weapon],
-          hand =
-            base && weapon
-              ? heldWeaponTip(base, weapon, 4, e.dir || 0, { skyshot: true })
-              : null;
-        this.vfxCell(
-          a,
-          v.row,
-          (age / 0.32) * 3,
-          origin.x + (hand ? hand[0] - 48 : 0) * z,
-          origin.y - (hand ? 92 - hand[1] : 40) * z - age * 210 * z,
-          100,
-          150,
-        );
-      }
-      if (age < 0.32) return;
-      t = 0.25 + ((age - 0.32) / Math.max(0.01, duration - 0.32)) * 0.749;
-      y = end.y;
-    }
-    this.vfxCell(a, v.row, t * frames, x, y, w, h, angle);
+    const application = ART.skillApplication?.[e.key];
+    if (!application) return;
+    const p = skillPlacement(
+      application,
+      v,
+      e,
+      state,
+      (x, y) => this.worldToScreen(x, y),
+      this.zoom,
+    );
+    if (!p) return;
+    this.vfxCell(
+      a,
+      v.row,
+      p.frame,
+      p.x,
+      p.y,
+      p.size / this.zoom,
+      p.size / this.zoom,
+      p.angle,
+      p.alpha,
+      p.pivot,
+    );
   }
+
   targetedCombatEffect(e, state) {
     const file = ART.targetCombat?.file,
       image = file && IMAGES.get(file);

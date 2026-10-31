@@ -5,6 +5,8 @@ export const STRIKE_DURATION = 4 / 30;
 export const HIT_OFFSET = STRIKE_DURATION / 2;
 export const RECOVERY_DURATION = 8 / 30;
 export const WALK_DURATION = 1.28;
+export const MONSTER_HIT_DURATION = 0.1;
+export const IMPACT_DURATION = 3 / 30;
 export const WINDUP_DURATION = {
   warden: 6 / 30,
   mage: 8 / 30,
@@ -33,7 +35,7 @@ export function animationFrame(layout, anim, time, start, duration) {
         attack: STRIKE_DURATION,
         windup: 0.24,
         recover: RECOVERY_DURATION,
-        hurt: 0.3,
+        hurt: MONSTER_HIT_DURATION,
         death: 0.85,
       }[anim];
     return frames[

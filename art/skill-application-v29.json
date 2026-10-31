@@ -1,0 +1,4204 @@
+{
+  "version": 29,
+  "method": "native-cell placement with measured ground contact; fixed clip scale and integer anchors; no pixel changes",
+  "skills": {
+    "warden-0": {
+      "file": "skills/warden",
+      "row": 0,
+      "count": 12,
+      "sha256": "7a5a7a6e644e715c6453b475dd18813b93bebd43fd9c6e625ba0450d8fdd43cb",
+      "profile": {
+        "kind": "line",
+        "scale": 1,
+        "travel": 0.22
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "line",
+        "scale": 1,
+        "travel": 0.22,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "warden-1": {
+      "file": "skills/warden",
+      "row": 1,
+      "count": 12,
+      "sha256": "7a5a7a6e644e715c6453b475dd18813b93bebd43fd9c6e625ba0450d8fdd43cb",
+      "profile": {
+        "kind": "self",
+        "scale": 1,
+        "fixed": [
+          64,
+          94
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "self",
+        "scale": 1,
+        "anchors": [
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            94
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "warden-2": {
+      "file": "skills/warden",
+      "row": 2,
+      "count": 11,
+      "sha256": "7a5a7a6e644e715c6453b475dd18813b93bebd43fd9c6e625ba0450d8fdd43cb",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          98,
+          122
+        ],
+        "depth": 10
+      },
+      "measurements": [
+        {
+          "width": 26,
+          "ink": 19,
+          "anchor": null
+        },
+        {
+          "width": 31,
+          "ink": 173,
+          "anchor": [
+            64,
+            109
+          ]
+        },
+        {
+          "width": 40,
+          "ink": 450,
+          "anchor": [
+            64,
+            109
+          ]
+        },
+        {
+          "width": 54,
+          "ink": 746,
+          "anchor": [
+            66,
+            109
+          ]
+        },
+        {
+          "width": 74,
+          "ink": 957,
+          "anchor": [
+            68,
+            108
+          ]
+        },
+        {
+          "width": 92,
+          "ink": 1487,
+          "anchor": [
+            73,
+            109
+          ]
+        },
+        {
+          "width": 74,
+          "ink": 927,
+          "anchor": [
+            83,
+            108
+          ]
+        },
+        {
+          "width": 50,
+          "ink": 670,
+          "anchor": [
+            71,
+            108
+          ]
+        },
+        {
+          "width": 42,
+          "ink": 442,
+          "anchor": [
+            66,
+            109
+          ]
+        },
+        {
+          "width": 32,
+          "ink": 118,
+          "anchor": [
+            62,
+            109
+          ]
+        },
+        {
+          "width": 30,
+          "ink": 28,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            66,
+            109
+          ],
+          [
+            64,
+            109
+          ],
+          [
+            64,
+            109
+          ],
+          [
+            66,
+            109
+          ],
+          [
+            68,
+            108
+          ],
+          [
+            73,
+            109
+          ],
+          [
+            83,
+            108
+          ],
+          [
+            71,
+            108
+          ],
+          [
+            71,
+            108
+          ],
+          [
+            71,
+            108
+          ],
+          [
+            71,
+            108
+          ]
+        ],
+        "footprint": 92,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "antler": {
+      "file": "skills/warden",
+      "row": 3,
+      "count": 12,
+      "sha256": "7a5a7a6e644e715c6453b475dd18813b93bebd43fd9c6e625ba0450d8fdd43cb",
+      "profile": {
+        "kind": "body",
+        "scale": 1,
+        "fixed": [
+          64,
+          105
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "body",
+        "scale": 1,
+        "anchors": [
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "thorn": {
+      "file": "skills/warden",
+      "row": 4,
+      "count": 12,
+      "sha256": "7a5a7a6e644e715c6453b475dd18813b93bebd43fd9c6e625ba0450d8fdd43cb",
+      "profile": {
+        "kind": "impact",
+        "scale": 1,
+        "fixed": [
+          64,
+          64
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "impact",
+        "scale": 1,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mage-0": {
+      "file": "skills/mage",
+      "row": 0,
+      "count": 12,
+      "sha256": "238ce2249acc15e971d17d1a6cd788f1bffec44d949695ad53120180ca3c30f6",
+      "profile": {
+        "kind": "impact",
+        "scale": 0.75
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "impact",
+        "scale": 0.75,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mage-1": {
+      "file": "skills/mage",
+      "row": 1,
+      "count": 12,
+      "sha256": "238ce2249acc15e971d17d1a6cd788f1bffec44d949695ad53120180ca3c30f6",
+      "profile": {
+        "kind": "impact",
+        "scale": 1.25
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "impact",
+        "scale": 1.25,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mage-2": {
+      "file": "skills/mage",
+      "row": 2,
+      "count": 12,
+      "sha256": "238ce2249acc15e971d17d1a6cd788f1bffec44d949695ad53120180ca3c30f6",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          105,
+          122
+        ],
+        "depth": 12
+      },
+      "measurements": [
+        {
+          "width": 37,
+          "ink": 431,
+          "anchor": [
+            65,
+            107
+          ]
+        },
+        {
+          "width": 53,
+          "ink": 767,
+          "anchor": [
+            57,
+            108
+          ]
+        },
+        {
+          "width": 59,
+          "ink": 879,
+          "anchor": [
+            53,
+            107
+          ]
+        },
+        {
+          "width": 65,
+          "ink": 952,
+          "anchor": [
+            52,
+            107
+          ]
+        },
+        {
+          "width": 71,
+          "ink": 1033,
+          "anchor": [
+            60,
+            107
+          ]
+        },
+        {
+          "width": 81,
+          "ink": 1201,
+          "anchor": [
+            62,
+            108
+          ]
+        },
+        {
+          "width": 75,
+          "ink": 1120,
+          "anchor": [
+            71,
+            108
+          ]
+        },
+        {
+          "width": 77,
+          "ink": 1125,
+          "anchor": [
+            77,
+            107
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 1076,
+          "anchor": [
+            82,
+            107
+          ]
+        },
+        {
+          "width": 63,
+          "ink": 928,
+          "anchor": [
+            82,
+            107
+          ]
+        },
+        {
+          "width": 54,
+          "ink": 750,
+          "anchor": [
+            71,
+            107
+          ]
+        },
+        {
+          "width": 44,
+          "ink": 493,
+          "anchor": [
+            65,
+            108
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            65,
+            107
+          ],
+          [
+            57,
+            108
+          ],
+          [
+            53,
+            107
+          ],
+          [
+            52,
+            107
+          ],
+          [
+            60,
+            107
+          ],
+          [
+            62,
+            108
+          ],
+          [
+            71,
+            108
+          ],
+          [
+            77,
+            107
+          ],
+          [
+            77,
+            107
+          ],
+          [
+            77,
+            107
+          ],
+          [
+            77,
+            107
+          ],
+          [
+            77,
+            107
+          ]
+        ],
+        "footprint": 81,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "moon": {
+      "file": "skills/mage",
+      "row": 3,
+      "count": 12,
+      "sha256": "238ce2249acc15e971d17d1a6cd788f1bffec44d949695ad53120180ca3c30f6",
+      "profile": {
+        "kind": "beam",
+        "scale": 1.5,
+        "band": [
+          105,
+          122
+        ],
+        "depth": 10
+      },
+      "measurements": [
+        {
+          "width": 25,
+          "ink": 171,
+          "anchor": [
+            75,
+            110
+          ]
+        },
+        {
+          "width": 26,
+          "ink": 304,
+          "anchor": [
+            63,
+            110
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 425,
+          "anchor": [
+            62,
+            110
+          ]
+        },
+        {
+          "width": 87,
+          "ink": 471,
+          "anchor": [
+            57,
+            110
+          ]
+        },
+        {
+          "width": 84,
+          "ink": 1139,
+          "anchor": [
+            56,
+            109
+          ]
+        },
+        {
+          "width": 97,
+          "ink": 1311,
+          "anchor": [
+            60,
+            109
+          ]
+        },
+        {
+          "width": 88,
+          "ink": 1167,
+          "anchor": [
+            72,
+            109
+          ]
+        },
+        {
+          "width": 39,
+          "ink": 498,
+          "anchor": [
+            76,
+            110
+          ]
+        },
+        {
+          "width": 49,
+          "ink": 342,
+          "anchor": [
+            60,
+            110
+          ]
+        },
+        {
+          "width": 34,
+          "ink": 76,
+          "anchor": [
+            57,
+            109
+          ]
+        },
+        {
+          "width": 70,
+          "ink": 87,
+          "anchor": [
+            61,
+            110
+          ]
+        },
+        {
+          "width": 54,
+          "ink": 32,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "beam",
+        "scale": 1.5,
+        "anchors": [
+          [
+            75,
+            110
+          ],
+          [
+            63,
+            110
+          ],
+          [
+            62,
+            110
+          ],
+          [
+            57,
+            110
+          ],
+          [
+            56,
+            109
+          ],
+          [
+            60,
+            109
+          ],
+          [
+            72,
+            109
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            76,
+            110
+          ]
+        ],
+        "footprint": 97,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "bloom": {
+      "file": "skills/mage",
+      "row": 4,
+      "count": 12,
+      "sha256": "238ce2249acc15e971d17d1a6cd788f1bffec44d949695ad53120180ca3c30f6",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          105,
+          122
+        ],
+        "depth": 8
+      },
+      "measurements": [
+        {
+          "width": 34,
+          "ink": 408,
+          "anchor": [
+            66,
+            111
+          ]
+        },
+        {
+          "width": 49,
+          "ink": 574,
+          "anchor": [
+            57,
+            111
+          ]
+        },
+        {
+          "width": 63,
+          "ink": 707,
+          "anchor": [
+            67,
+            112
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 846,
+          "anchor": [
+            55,
+            111
+          ]
+        },
+        {
+          "width": 79,
+          "ink": 1044,
+          "anchor": [
+            70,
+            111
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 699,
+          "anchor": [
+            60,
+            111
+          ]
+        },
+        {
+          "width": 89,
+          "ink": 557,
+          "anchor": [
+            65,
+            112
+          ]
+        },
+        {
+          "width": 63,
+          "ink": 301,
+          "anchor": [
+            80,
+            111
+          ]
+        },
+        {
+          "width": 70,
+          "ink": 289,
+          "anchor": [
+            71,
+            112
+          ]
+        },
+        {
+          "width": 66,
+          "ink": 207,
+          "anchor": [
+            76,
+            111
+          ]
+        },
+        {
+          "width": 47,
+          "ink": 130,
+          "anchor": [
+            63,
+            112
+          ]
+        },
+        {
+          "width": 43,
+          "ink": 36,
+          "anchor": [
+            59,
+            112
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            66,
+            111
+          ],
+          [
+            57,
+            111
+          ],
+          [
+            67,
+            112
+          ],
+          [
+            55,
+            111
+          ],
+          [
+            70,
+            111
+          ],
+          [
+            60,
+            111
+          ],
+          [
+            65,
+            112
+          ],
+          [
+            80,
+            111
+          ],
+          [
+            80,
+            111
+          ],
+          [
+            80,
+            111
+          ],
+          [
+            80,
+            111
+          ],
+          [
+            80,
+            111
+          ]
+        ],
+        "footprint": 89,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "ranger-0": {
+      "file": "skills/ranger",
+      "row": 0,
+      "count": 12,
+      "sha256": "ff045c07b0fedb4ea50a7cf1457e1aecc535798816fa1ae1648fc3236af48850",
+      "profile": {
+        "kind": "line",
+        "scale": 0.75,
+        "travel": 0.22
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "line",
+        "scale": 0.75,
+        "travel": 0.22,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "ranger-1": {
+      "file": "skills/ranger",
+      "row": 1,
+      "count": 11,
+      "sha256": "ff045c07b0fedb4ea50a7cf1457e1aecc535798816fa1ae1648fc3236af48850",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 2,
+        "band": [
+          110,
+          122
+        ],
+        "depth": 5
+      },
+      "measurements": [
+        {
+          "width": 13,
+          "ink": 34,
+          "anchor": null
+        },
+        {
+          "width": 42,
+          "ink": 59,
+          "anchor": [
+            63,
+            114
+          ]
+        },
+        {
+          "width": 51,
+          "ink": 61,
+          "anchor": [
+            61,
+            114
+          ]
+        },
+        {
+          "width": 53,
+          "ink": 43,
+          "anchor": [
+            60,
+            115
+          ]
+        },
+        {
+          "width": 72,
+          "ink": 96,
+          "anchor": [
+            58,
+            115
+          ]
+        },
+        {
+          "width": 42,
+          "ink": 432,
+          "anchor": [
+            70,
+            115
+          ]
+        },
+        {
+          "width": 58,
+          "ink": 594,
+          "anchor": [
+            71,
+            115
+          ]
+        },
+        {
+          "width": 56,
+          "ink": 546,
+          "anchor": [
+            67,
+            114
+          ]
+        },
+        {
+          "width": 44,
+          "ink": 410,
+          "anchor": [
+            55,
+            114
+          ]
+        },
+        {
+          "width": 94,
+          "ink": 401,
+          "anchor": [
+            73,
+            114
+          ]
+        },
+        {
+          "width": 3,
+          "ink": 10,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 2,
+        "anchors": [
+          [
+            60,
+            115
+          ],
+          [
+            63,
+            114
+          ],
+          [
+            61,
+            114
+          ],
+          [
+            60,
+            115
+          ],
+          [
+            58,
+            115
+          ],
+          [
+            70,
+            115
+          ],
+          [
+            71,
+            115
+          ],
+          [
+            67,
+            114
+          ],
+          [
+            67,
+            114
+          ],
+          [
+            67,
+            114
+          ],
+          [
+            67,
+            114
+          ]
+        ],
+        "footprint": 94,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "ranger-2": {
+      "file": "skills/ranger",
+      "row": 2,
+      "count": 12,
+      "sha256": "ff045c07b0fedb4ea50a7cf1457e1aecc535798816fa1ae1648fc3236af48850",
+      "profile": {
+        "kind": "impact",
+        "scale": 0.75
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "impact",
+        "scale": 0.75,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "hawk": {
+      "file": "skills/ranger",
+      "row": 3,
+      "count": 11,
+      "sha256": "ff045c07b0fedb4ea50a7cf1457e1aecc535798816fa1ae1648fc3236af48850",
+      "profile": {
+        "kind": "line",
+        "scale": 1.25,
+        "travel": 0.32
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "line",
+        "scale": 1.25,
+        "travel": 0.32,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mist": {
+      "file": "skills/ranger",
+      "row": 4,
+      "count": 11,
+      "sha256": "ff045c07b0fedb4ea50a7cf1457e1aecc535798816fa1ae1648fc3236af48850",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          103,
+          122
+        ],
+        "depth": 10
+      },
+      "measurements": [
+        {
+          "width": 19,
+          "ink": 175,
+          "anchor": [
+            60,
+            110
+          ]
+        },
+        {
+          "width": 32,
+          "ink": 319,
+          "anchor": [
+            64,
+            110
+          ]
+        },
+        {
+          "width": 45,
+          "ink": 566,
+          "anchor": [
+            64,
+            110
+          ]
+        },
+        {
+          "width": 61,
+          "ink": 927,
+          "anchor": [
+            60,
+            109
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 1134,
+          "anchor": [
+            55,
+            109
+          ]
+        },
+        {
+          "width": 65,
+          "ink": 1060,
+          "anchor": [
+            56,
+            109
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 1249,
+          "anchor": [
+            56,
+            109
+          ]
+        },
+        {
+          "width": 66,
+          "ink": 948,
+          "anchor": [
+            57,
+            110
+          ]
+        },
+        {
+          "width": 59,
+          "ink": 436,
+          "anchor": [
+            54,
+            110
+          ]
+        },
+        {
+          "width": 78,
+          "ink": 236,
+          "anchor": [
+            68,
+            110
+          ]
+        },
+        {
+          "width": 43,
+          "ink": 57,
+          "anchor": [
+            38,
+            110
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            60,
+            110
+          ],
+          [
+            64,
+            110
+          ],
+          [
+            64,
+            110
+          ],
+          [
+            60,
+            109
+          ],
+          [
+            55,
+            109
+          ],
+          [
+            56,
+            109
+          ],
+          [
+            56,
+            109
+          ],
+          [
+            57,
+            110
+          ],
+          [
+            57,
+            110
+          ],
+          [
+            57,
+            110
+          ],
+          [
+            57,
+            110
+          ]
+        ],
+        "footprint": 78,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "herbalist-0": {
+      "file": "skills/herbalist",
+      "row": 0,
+      "count": 12,
+      "sha256": "5a43671b5d0a28569d28a95cac3e3c4418163688e26a906c92c98b8a19c876d2",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          105,
+          122
+        ],
+        "depth": 12
+      },
+      "measurements": [
+        {
+          "width": 53,
+          "ink": 736,
+          "anchor": [
+            65,
+            108
+          ]
+        },
+        {
+          "width": 68,
+          "ink": 942,
+          "anchor": [
+            66,
+            107
+          ]
+        },
+        {
+          "width": 71,
+          "ink": 998,
+          "anchor": [
+            63,
+            108
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 1003,
+          "anchor": [
+            62,
+            107
+          ]
+        },
+        {
+          "width": 80,
+          "ink": 1015,
+          "anchor": [
+            60,
+            106
+          ]
+        },
+        {
+          "width": 80,
+          "ink": 1047,
+          "anchor": [
+            64,
+            107
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 972,
+          "anchor": [
+            66,
+            107
+          ]
+        },
+        {
+          "width": 72,
+          "ink": 1043,
+          "anchor": [
+            68,
+            107
+          ]
+        },
+        {
+          "width": 77,
+          "ink": 1095,
+          "anchor": [
+            68,
+            107
+          ]
+        },
+        {
+          "width": 70,
+          "ink": 867,
+          "anchor": [
+            70,
+            107
+          ]
+        },
+        {
+          "width": 63,
+          "ink": 490,
+          "anchor": [
+            71,
+            108
+          ]
+        },
+        {
+          "width": 79,
+          "ink": 131,
+          "anchor": [
+            65,
+            108
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            65,
+            108
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            63,
+            108
+          ],
+          [
+            62,
+            107
+          ],
+          [
+            60,
+            106
+          ],
+          [
+            64,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            68,
+            107
+          ],
+          [
+            68,
+            107
+          ],
+          [
+            68,
+            107
+          ],
+          [
+            68,
+            107
+          ],
+          [
+            68,
+            107
+          ]
+        ],
+        "footprint": 80,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "herbalist-1": {
+      "file": "skills/herbalist",
+      "row": 1,
+      "count": 12,
+      "sha256": "5a43671b5d0a28569d28a95cac3e3c4418163688e26a906c92c98b8a19c876d2",
+      "profile": {
+        "kind": "impact",
+        "scale": 0.75
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "impact",
+        "scale": 0.75,
+        "anchors": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "herbalist-2": {
+      "file": "skills/herbalist",
+      "row": 2,
+      "count": 12,
+      "sha256": "5a43671b5d0a28569d28a95cac3e3c4418163688e26a906c92c98b8a19c876d2",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 2,
+        "band": [
+          82,
+          122
+        ],
+        "depth": 20,
+        "hold": [
+          5,
+          6,
+          7,
+          6
+        ]
+      },
+      "measurements": [
+        {
+          "width": 48,
+          "ink": 776,
+          "anchor": [
+            68,
+            99
+          ]
+        },
+        {
+          "width": 62,
+          "ink": 1545,
+          "anchor": [
+            65,
+            99
+          ]
+        },
+        {
+          "width": 70,
+          "ink": 1946,
+          "anchor": [
+            63,
+            98
+          ]
+        },
+        {
+          "width": 74,
+          "ink": 2192,
+          "anchor": [
+            62,
+            98
+          ]
+        },
+        {
+          "width": 80,
+          "ink": 2466,
+          "anchor": [
+            60,
+            98
+          ]
+        },
+        {
+          "width": 89,
+          "ink": 2762,
+          "anchor": [
+            65,
+            98
+          ]
+        },
+        {
+          "width": 89,
+          "ink": 2711,
+          "anchor": [
+            70,
+            98
+          ]
+        },
+        {
+          "width": 81,
+          "ink": 2359,
+          "anchor": [
+            76,
+            98
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 1878,
+          "anchor": [
+            83,
+            98
+          ]
+        },
+        {
+          "width": 68,
+          "ink": 1173,
+          "anchor": [
+            83,
+            99
+          ]
+        },
+        {
+          "width": 61,
+          "ink": 693,
+          "anchor": [
+            78,
+            99
+          ]
+        },
+        {
+          "width": 21,
+          "ink": 7,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 2,
+        "hold": [
+          5,
+          6,
+          7,
+          6
+        ],
+        "anchors": [
+          [
+            68,
+            99
+          ],
+          [
+            65,
+            99
+          ],
+          [
+            63,
+            98
+          ],
+          [
+            62,
+            98
+          ],
+          [
+            60,
+            98
+          ],
+          [
+            65,
+            98
+          ],
+          [
+            70,
+            98
+          ],
+          [
+            76,
+            98
+          ],
+          [
+            76,
+            98
+          ],
+          [
+            76,
+            98
+          ],
+          [
+            76,
+            98
+          ],
+          [
+            76,
+            98
+          ]
+        ],
+        "footprint": 89,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "flower": {
+      "file": "skills/herbalist",
+      "row": 3,
+      "count": 12,
+      "sha256": "5a43671b5d0a28569d28a95cac3e3c4418163688e26a906c92c98b8a19c876d2",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          105,
+          122
+        ],
+        "depth": 12
+      },
+      "measurements": [
+        {
+          "width": 40,
+          "ink": 470,
+          "anchor": [
+            72,
+            107
+          ]
+        },
+        {
+          "width": 52,
+          "ink": 728,
+          "anchor": [
+            66,
+            107
+          ]
+        },
+        {
+          "width": 66,
+          "ink": 935,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 70,
+          "ink": 898,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 946,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 996,
+          "anchor": [
+            70,
+            107
+          ]
+        },
+        {
+          "width": 76,
+          "ink": 959,
+          "anchor": [
+            76,
+            107
+          ]
+        },
+        {
+          "width": 71,
+          "ink": 916,
+          "anchor": [
+            81,
+            107
+          ]
+        },
+        {
+          "width": 67,
+          "ink": 913,
+          "anchor": [
+            81,
+            107
+          ]
+        },
+        {
+          "width": 56,
+          "ink": 712,
+          "anchor": [
+            79,
+            107
+          ]
+        },
+        {
+          "width": 48,
+          "ink": 545,
+          "anchor": [
+            73,
+            107
+          ]
+        },
+        {
+          "width": 47,
+          "ink": 291,
+          "anchor": [
+            65,
+            106
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            72,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            63,
+            107
+          ],
+          [
+            63,
+            107
+          ],
+          [
+            63,
+            107
+          ],
+          [
+            70,
+            107
+          ],
+          [
+            76,
+            107
+          ],
+          [
+            81,
+            107
+          ],
+          [
+            81,
+            107
+          ],
+          [
+            81,
+            107
+          ],
+          [
+            81,
+            107
+          ],
+          [
+            81,
+            107
+          ]
+        ],
+        "footprint": 76,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "venom": {
+      "file": "skills/herbalist",
+      "row": 4,
+      "count": 12,
+      "sha256": "5a43671b5d0a28569d28a95cac3e3c4418163688e26a906c92c98b8a19c876d2",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          100,
+          122
+        ],
+        "depth": 12
+      },
+      "measurements": [
+        {
+          "width": 51,
+          "ink": 465,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 54,
+          "ink": 539,
+          "anchor": [
+            61,
+            106
+          ]
+        },
+        {
+          "width": 79,
+          "ink": 695,
+          "anchor": [
+            60,
+            107
+          ]
+        },
+        {
+          "width": 65,
+          "ink": 807,
+          "anchor": [
+            61,
+            106
+          ]
+        },
+        {
+          "width": 75,
+          "ink": 698,
+          "anchor": [
+            60,
+            107
+          ]
+        },
+        {
+          "width": 64,
+          "ink": 530,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 72,
+          "ink": 419,
+          "anchor": [
+            73,
+            107
+          ]
+        },
+        {
+          "width": 91,
+          "ink": 376,
+          "anchor": [
+            66,
+            107
+          ]
+        },
+        {
+          "width": 85,
+          "ink": 323,
+          "anchor": [
+            77,
+            106
+          ]
+        },
+        {
+          "width": 19,
+          "ink": 175,
+          "anchor": [
+            70,
+            108
+          ]
+        },
+        {
+          "width": 72,
+          "ink": 134,
+          "anchor": [
+            48,
+            108
+          ]
+        },
+        {
+          "width": 8,
+          "ink": 20,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            63,
+            107
+          ],
+          [
+            61,
+            106
+          ],
+          [
+            60,
+            107
+          ],
+          [
+            61,
+            106
+          ],
+          [
+            60,
+            107
+          ],
+          [
+            63,
+            107
+          ],
+          [
+            73,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            66,
+            107
+          ],
+          [
+            66,
+            107
+          ]
+        ],
+        "footprint": 91,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "warden-4": {
+      "file": "skills/expanded-warden",
+      "row": 0,
+      "count": 12,
+      "sha256": "06c6860d4fa29b3ec564a0eacd6c452a9b42b13c927e2b089bed6d81f963d53f",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          85,
+          117
+        ],
+        "depth": 18,
+        "burstFrom": 7,
+        "burstAnchor": [
+          64,
+          85
+        ]
+      },
+      "measurements": [
+        {
+          "width": 71,
+          "ink": 415,
+          "anchor": [
+            62,
+            88
+          ]
+        },
+        {
+          "width": 80,
+          "ink": 932,
+          "anchor": [
+            63,
+            91
+          ]
+        },
+        {
+          "width": 87,
+          "ink": 1381,
+          "anchor": [
+            64,
+            93
+          ]
+        },
+        {
+          "width": 91,
+          "ink": 1855,
+          "anchor": [
+            64,
+            94
+          ]
+        },
+        {
+          "width": 84,
+          "ink": 1452,
+          "anchor": [
+            64,
+            93
+          ]
+        },
+        {
+          "width": 79,
+          "ink": 1702,
+          "anchor": [
+            63,
+            94
+          ]
+        },
+        {
+          "width": 81,
+          "ink": 1545,
+          "anchor": [
+            60,
+            96
+          ]
+        },
+        {
+          "width": 65,
+          "ink": 959,
+          "anchor": [
+            65,
+            93
+          ]
+        },
+        {
+          "width": 53,
+          "ink": 790,
+          "anchor": [
+            63,
+            90
+          ]
+        },
+        {
+          "width": 38,
+          "ink": 508,
+          "anchor": [
+            61,
+            88
+          ]
+        },
+        {
+          "width": 40,
+          "ink": 343,
+          "anchor": [
+            64,
+            83
+          ]
+        },
+        {
+          "width": 55,
+          "ink": 45,
+          "anchor": [
+            52,
+            88
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            62,
+            88
+          ],
+          [
+            63,
+            91
+          ],
+          [
+            64,
+            93
+          ],
+          [
+            64,
+            94
+          ],
+          [
+            64,
+            93
+          ],
+          [
+            63,
+            94
+          ],
+          [
+            60,
+            96
+          ],
+          [
+            64,
+            85
+          ],
+          [
+            64,
+            85
+          ],
+          [
+            64,
+            85
+          ],
+          [
+            64,
+            85
+          ],
+          [
+            64,
+            85
+          ]
+        ],
+        "footprint": 91,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "warden-5": {
+      "file": "skills/expanded-warden",
+      "row": 1,
+      "count": 12,
+      "sha256": "06c6860d4fa29b3ec564a0eacd6c452a9b42b13c927e2b089bed6d81f963d53f",
+      "profile": {
+        "kind": "self",
+        "scale": 1,
+        "fixed": [
+          64,
+          75
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "self",
+        "scale": 1,
+        "anchors": [
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            64,
+            75
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mage-4": {
+      "file": "skills/expanded-mage",
+      "row": 0,
+      "count": 12,
+      "sha256": "c0de8a462f772814d7cefd42cef48c63ed1301bfab309bbc60d947f05ef21fd3",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          99,
+          123
+        ],
+        "depth": 11
+      },
+      "measurements": [
+        {
+          "width": 56,
+          "ink": 878,
+          "anchor": [
+            68,
+            108
+          ]
+        },
+        {
+          "width": 55,
+          "ink": 906,
+          "anchor": [
+            65,
+            107
+          ]
+        },
+        {
+          "width": 55,
+          "ink": 930,
+          "anchor": [
+            63,
+            107
+          ]
+        },
+        {
+          "width": 53,
+          "ink": 965,
+          "anchor": [
+            61,
+            108
+          ]
+        },
+        {
+          "width": 60,
+          "ink": 1071,
+          "anchor": [
+            68,
+            111
+          ]
+        },
+        {
+          "width": 61,
+          "ink": 1153,
+          "anchor": [
+            66,
+            111
+          ]
+        },
+        {
+          "width": 61,
+          "ink": 1344,
+          "anchor": [
+            65,
+            112
+          ]
+        },
+        {
+          "width": 64,
+          "ink": 1283,
+          "anchor": [
+            64,
+            111
+          ]
+        },
+        {
+          "width": 57,
+          "ink": 942,
+          "anchor": [
+            69,
+            111
+          ]
+        },
+        {
+          "width": 57,
+          "ink": 739,
+          "anchor": [
+            65,
+            111
+          ]
+        },
+        {
+          "width": 54,
+          "ink": 726,
+          "anchor": [
+            66,
+            111
+          ]
+        },
+        {
+          "width": 55,
+          "ink": 729,
+          "anchor": [
+            63,
+            111
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            68,
+            108
+          ],
+          [
+            65,
+            107
+          ],
+          [
+            63,
+            107
+          ],
+          [
+            61,
+            108
+          ],
+          [
+            68,
+            111
+          ],
+          [
+            66,
+            111
+          ],
+          [
+            65,
+            112
+          ],
+          [
+            64,
+            111
+          ],
+          [
+            64,
+            111
+          ],
+          [
+            64,
+            111
+          ],
+          [
+            64,
+            111
+          ],
+          [
+            64,
+            111
+          ]
+        ],
+        "footprint": 64,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "mage-5": {
+      "file": "skills/expanded-mage",
+      "row": 1,
+      "count": 12,
+      "sha256": "c0de8a462f772814d7cefd42cef48c63ed1301bfab309bbc60d947f05ef21fd3",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1,
+        "band": [
+          101,
+          122
+        ],
+        "depth": 12
+      },
+      "measurements": [
+        {
+          "width": 57,
+          "ink": 705,
+          "anchor": [
+            69,
+            103
+          ]
+        },
+        {
+          "width": 57,
+          "ink": 730,
+          "anchor": [
+            65,
+            103
+          ]
+        },
+        {
+          "width": 60,
+          "ink": 801,
+          "anchor": [
+            66,
+            104
+          ]
+        },
+        {
+          "width": 63,
+          "ink": 874,
+          "anchor": [
+            62,
+            104
+          ]
+        },
+        {
+          "width": 60,
+          "ink": 763,
+          "anchor": [
+            69,
+            103
+          ]
+        },
+        {
+          "width": 58,
+          "ink": 730,
+          "anchor": [
+            66,
+            103
+          ]
+        },
+        {
+          "width": 60,
+          "ink": 805,
+          "anchor": [
+            65,
+            103
+          ]
+        },
+        {
+          "width": 61,
+          "ink": 812,
+          "anchor": [
+            63,
+            103
+          ]
+        },
+        {
+          "width": 4,
+          "ink": 5,
+          "anchor": null
+        },
+        {
+          "width": 3,
+          "ink": 5,
+          "anchor": null
+        },
+        {
+          "width": 3,
+          "ink": 5,
+          "anchor": null
+        },
+        {
+          "width": 1,
+          "ink": 1,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1,
+        "anchors": [
+          [
+            69,
+            103
+          ],
+          [
+            65,
+            103
+          ],
+          [
+            66,
+            104
+          ],
+          [
+            62,
+            104
+          ],
+          [
+            69,
+            103
+          ],
+          [
+            66,
+            103
+          ],
+          [
+            65,
+            103
+          ],
+          [
+            63,
+            103
+          ],
+          [
+            63,
+            103
+          ],
+          [
+            63,
+            103
+          ],
+          [
+            63,
+            103
+          ],
+          [
+            63,
+            103
+          ]
+        ],
+        "footprint": 63,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "ranger-4": {
+      "file": "skills/expanded-ranger",
+      "row": 0,
+      "count": 12,
+      "sha256": "d561afc7f0834fb7d897fea41446f57a396829fb15f0f43ec49269f110c93ac8",
+      "profile": {
+        "kind": "line",
+        "scale": 1,
+        "travel": 0.32,
+        "fixed": [
+          64,
+          79
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "line",
+        "scale": 1,
+        "travel": 0.32,
+        "anchors": [
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ],
+          [
+            64,
+            79
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "ranger-5": {
+      "file": "skills/expanded-ranger",
+      "row": 1,
+      "count": 12,
+      "sha256": "d561afc7f0834fb7d897fea41446f57a396829fb15f0f43ec49269f110c93ac8",
+      "profile": {
+        "kind": "body",
+        "scale": 1,
+        "fixed": [
+          64,
+          86
+        ]
+      },
+      "measurements": [
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        },
+        {
+          "width": 0,
+          "ink": 0,
+          "anchor": null
+        }
+      ],
+      "application": {
+        "kind": "body",
+        "scale": 1,
+        "anchors": [
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ],
+          [
+            64,
+            86
+          ]
+        ],
+        "footprint": 32,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "herbalist-4": {
+      "file": "skills/expanded-herbalist",
+      "row": 0,
+      "count": 12,
+      "sha256": "da6f930a3a2db98f8e4d79639b3af99e04819b4ae2ea0e6e474e9d64753d43f5",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "band": [
+          108,
+          123
+        ],
+        "depth": 8
+      },
+      "measurements": [
+        {
+          "width": 47,
+          "ink": 570,
+          "anchor": [
+            65,
+            112
+          ]
+        },
+        {
+          "width": 44,
+          "ink": 535,
+          "anchor": [
+            65,
+            112
+          ]
+        },
+        {
+          "width": 47,
+          "ink": 561,
+          "anchor": [
+            62,
+            112
+          ]
+        },
+        {
+          "width": 55,
+          "ink": 615,
+          "anchor": [
+            65,
+            112
+          ]
+        },
+        {
+          "width": 50,
+          "ink": 721,
+          "anchor": [
+            66,
+            115
+          ]
+        },
+        {
+          "width": 65,
+          "ink": 749,
+          "anchor": [
+            72,
+            115
+          ]
+        },
+        {
+          "width": 84,
+          "ink": 863,
+          "anchor": [
+            62,
+            115
+          ]
+        },
+        {
+          "width": 66,
+          "ink": 734,
+          "anchor": [
+            74,
+            115
+          ]
+        },
+        {
+          "width": 49,
+          "ink": 658,
+          "anchor": [
+            65,
+            114
+          ]
+        },
+        {
+          "width": 49,
+          "ink": 664,
+          "anchor": [
+            64,
+            114
+          ]
+        },
+        {
+          "width": 48,
+          "ink": 647,
+          "anchor": [
+            64,
+            114
+          ]
+        },
+        {
+          "width": 48,
+          "ink": 644,
+          "anchor": [
+            65,
+            114
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1.5,
+        "anchors": [
+          [
+            65,
+            112
+          ],
+          [
+            65,
+            112
+          ],
+          [
+            62,
+            112
+          ],
+          [
+            65,
+            112
+          ],
+          [
+            66,
+            115
+          ],
+          [
+            72,
+            115
+          ],
+          [
+            62,
+            115
+          ],
+          [
+            74,
+            115
+          ],
+          [
+            74,
+            115
+          ],
+          [
+            74,
+            115
+          ],
+          [
+            74,
+            115
+          ],
+          [
+            74,
+            115
+          ]
+        ],
+        "footprint": 84,
+        "size": 128,
+        "version": 29
+      }
+    },
+    "herbalist-5": {
+      "file": "skills/expanded-herbalist",
+      "row": 1,
+      "count": 12,
+      "sha256": "da6f930a3a2db98f8e4d79639b3af99e04819b4ae2ea0e6e474e9d64753d43f5",
+      "profile": {
+        "kind": "ground",
+        "maxScale": 1,
+        "band": [
+          102,
+          120
+        ],
+        "depth": 11
+      },
+      "measurements": [
+        {
+          "width": 56,
+          "ink": 554,
+          "anchor": [
+            65,
+            102
+          ]
+        },
+        {
+          "width": 62,
+          "ink": 677,
+          "anchor": [
+            64,
+            103
+          ]
+        },
+        {
+          "width": 67,
+          "ink": 784,
+          "anchor": [
+            62,
+            104
+          ]
+        },
+        {
+          "width": 85,
+          "ink": 936,
+          "anchor": [
+            62,
+            103
+          ]
+        },
+        {
+          "width": 75,
+          "ink": 999,
+          "anchor": [
+            64,
+            105
+          ]
+        },
+        {
+          "width": 73,
+          "ink": 983,
+          "anchor": [
+            64,
+            104
+          ]
+        },
+        {
+          "width": 77,
+          "ink": 1108,
+          "anchor": [
+            62,
+            105
+          ]
+        },
+        {
+          "width": 60,
+          "ink": 857,
+          "anchor": [
+            64,
+            105
+          ]
+        },
+        {
+          "width": 44,
+          "ink": 232,
+          "anchor": [
+            65,
+            96
+          ]
+        },
+        {
+          "width": 42,
+          "ink": 210,
+          "anchor": [
+            65,
+            96
+          ]
+        },
+        {
+          "width": 42,
+          "ink": 215,
+          "anchor": [
+            64,
+            96
+          ]
+        },
+        {
+          "width": 48,
+          "ink": 370,
+          "anchor": [
+            64,
+            101
+          ]
+        }
+      ],
+      "application": {
+        "kind": "ground",
+        "maxScale": 1,
+        "anchors": [
+          [
+            65,
+            102
+          ],
+          [
+            64,
+            103
+          ],
+          [
+            62,
+            104
+          ],
+          [
+            62,
+            103
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            104
+          ],
+          [
+            62,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ],
+          [
+            64,
+            105
+          ]
+        ],
+        "footprint": 85,
+        "size": 128,
+        "version": 29
+      }
+    }
+  }
+}

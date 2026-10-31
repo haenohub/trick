@@ -18,6 +18,8 @@ import {
   HIT_OFFSET,
   STRIKE_DURATION,
   RECOVERY_DURATION,
+  MONSTER_HIT_DURATION,
+  IMPACT_DURATION,
 } from "./animation.js";
 import {
   attackZones,
@@ -617,6 +619,7 @@ export class World {
           respawn: 0,
           windup: null,
           rootUntil: 0,
+          hitUntil: 0,
           dotUntil: 0,
           dotTick: 0,
           markedUntil: 0,
@@ -1583,18 +1586,30 @@ export class World {
       !this.map(p.map).mobs.some((t) => t.uid === p.combatTarget && t.hp > 0)
     )
       p.combatTarget = m.uid;
-    m.hitUntil = this.time + 0.12;
-    m.hitAt = this.time;
-    m.hitDx = m.x - p.x;
-    m.hitDy = m.y - p.y;
-    m.anim = "hurt";
-    m.animAt = this.time;
+    if (!dot) {
+      const until = this.time + MONSTER_HIT_DURATION,
+        pause = Math.max(0, until - Math.max(this.time, m.hitUntil || 0));
+      m.hitUntil = until;
+      m.hitAt = this.time;
+      m.hitDx = m.x - p.x;
+      m.hitDy = m.y - p.y;
+      m.anim = "hurt";
+      m.animAt = this.time;
+      m.animDuration = MONSTER_HIT_DURATION;
+      // Pause an existing attack rather than release it invisibly during hurt.
+      // Simultaneous hits share one pause; rapid hits only add the extension.
+      if (m.windup)
+        for (const key of ["start", "strikeAt", "at"])
+          if (Number.isFinite(m.windup[key])) m.windup[key] += pause;
+      for (const key of ["attackEnd", "recoverUntil", "nextAttack"])
+        if (m[key] > this.time) m[key] += pause;
+    }
     if (!p.discovered.includes(def.id)) p.discovered.push(def.id);
     this.effect(p.map, kind, m.x, m.y, {
       text: String(n),
       crit,
       owner: p.id,
-      impact: crit ? 2 : 1,
+      impact: dot ? 0 : crit ? 2 : 1,
       cue: kind === "poison" ? null : crit ? "critical" : "hit",
       color: crit ? "#ffe7a1" : "#fff1ce",
       duration: 0.85,
@@ -1604,7 +1619,7 @@ export class World {
         classId: p.classId,
         owner: p.id,
         dir: p.dir,
-        duration: 0.42,
+        duration: IMPACT_DURATION,
         crit,
       });
     if (m.hp <= 0) {
@@ -2184,7 +2199,7 @@ export class World {
     if (!p.action) {
       p.anim = "hurt";
       p.animAt = this.time;
-      p.animDuration = 0.3;
+      p.animDuration = MONSTER_HIT_DURATION;
     }
     this.effect(p.map, "hurt", p.x, p.y, {
       text: n > 0 ? "-" + n : "방어",
@@ -2232,7 +2247,7 @@ export class World {
     return true;
   }
   moveMob(m, map, target, dt, speed) {
-    if (m.rootUntil > this.time) return false;
+    if (m.rootUntil > this.time || m.hitUntil > this.time + 1e-9) return false;
     if (this.sight(map, m, target))
       return this.moveEntity(
         m,
@@ -2266,6 +2281,12 @@ export class World {
     );
   }
   updateMob(m, id, players, dt) {
+    if (m.hitUntil > this.time + 1e-9) {
+      m.anim = "hurt";
+      m.animAt = m.hitAt;
+      m.animDuration = MONSTER_HIT_DURATION;
+      return;
+    }
     const def = MONSTERS.find((d) => d.id === m.def),
       boss = def.type === "boss";
     const home = { x: m.homeX, y: m.homeY };
@@ -2340,7 +2361,7 @@ export class World {
       for (const [i, zone] of attackZones(w).entries()) {
         this.effect(id, "enemy", zone.x, zone.y, {
           radius: zone.radius || 2,
-          duration: 0.45,
+          duration: IMPACT_DURATION,
           cue: i === 0 ? (boss ? "slam" : "enemy") : null,
           impact: boss ? 2 : 0,
         });
@@ -2592,7 +2613,8 @@ export class World {
       const moving = this.moveEntity(p, p.map, dx, dy, dt, moveSpeed);
       if (
         !p.action &&
-        (this.time - p.animAt > 0.5 ||
+        (this.time - p.animAt >
+          (p.anim === "hurt" ? MONSTER_HIT_DURATION : 0.5) ||
           !["attack", "hurt", "recover"].includes(p.anim))
       )
         p.anim = moving ? "walk" : "idle";
@@ -2699,6 +2721,7 @@ export class World {
             m.windup = null;
             m.dotUntil = 0;
             m.rootUntil = 0;
+            m.hitUntil = 0;
             m.toxinStacks = 0;
             m.ai = "idle";
             m.phase = 1;
@@ -2722,7 +2745,7 @@ export class World {
           m.trailAt = this.time + 3;
           this.effect(id, "slow", m.x, m.y, { radius: 1.2, duration: 5 });
         }
-        if (m.anim === "hurt" && this.time - m.animAt > 0.3) m.anim = "idle";
+        if (m.anim === "hurt" && m.hitUntil <= this.time) m.anim = "idle";
       }
     }
   }

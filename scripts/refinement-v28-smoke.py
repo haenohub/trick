@@ -30,7 +30,7 @@ with sync_playwright() as pw:
    World.prototype.addPlayer=function(...args){const p=add.apply(this,args);window.testWorld=this;this.rng=()=>.5;const nav=NAVIGATION.sprout,v=facingVector(2);let found=false;for(let r=2;r<nav.rows-2&&!found;r++)for(let c=2;c<nav.cols-2;c++){const a=nav.worldAt(c,r),end={x:a.x+v.x*9,y:a.y+v.y*9};if(this.sight(p.map,a,end)){Object.assign(p,a);found=true;break;}}if(!found)throw Error('no lane');for(const m of this.map(p.map).mobs){m.hp=0;m.respawn=Infinity;}const m=this.map(p.map).mobs[0];Object.assign(m,{x:p.x+v.x*2,y:p.y+v.y*2,homeX:p.x+v.x*2,homeY:p.y+v.y*2,hp:1e7,maxHp:1e7});return p;};World.prototype.updateMob=function(){};
    window.skillDraws=[];window.weaponDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(im,...a){if(im.src?.includes('/skills/expanded-'))skillDraws.push({file:im.src,width:im.width,height:im.height,a});if(im.src?.includes('/appearance/tier-'))weaponDraws.push({file:im.src,a});return draw.call(this,im,...a);};
   }''')
-  p.locator('#continue-game').click();assert p.evaluate('__leaftale.version')=='0.28.0'
+  p.locator('#continue-game').click();assert p.evaluate('__leaftale.version')=='0.29.0'
   assert p.locator('#skillbar [data-slot]').count()==6
   assert p.locator('#skillbar [data-slot] kbd').all_inner_texts()==['Q','W','E','R','D','G']
   goal=p.evaluate('''()=>{const m=__leaftale.snapshot().mobs.find(m=>m.hp>0);return __leaftale.worldToScreen(m.x,m.y);}''')
