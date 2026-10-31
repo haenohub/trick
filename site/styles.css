@@ -631,15 +631,6 @@ kbd {
   letter-spacing: 3px;
   color: #d3d7ad;
 }
-.lobby-content > h1 {
-  font-family: Georgia, "Noto Serif KR", serif;
-  font-size: calc(clamp(52px, 7vw, 86px) + var(--font-increase));
-  font-weight: 700;
-  letter-spacing: -4px;
-  color: #f1eccf;
-  margin: 8px 0 16px;
-  text-shadow: 0 3px 30px #133323;
-}
 .lobby-tagline {
   font-size: calc(17px + var(--font-increase));
   line-height: 1.9;
@@ -1682,14 +1673,6 @@ kbd {
   display: block;
   margin: auto;
 }
-.menu-panel,
-.create-card {
-  border: 14px solid transparent;
-  border-image-source: url("./assets/interface.png");
-  border-image-slice: 145 fill;
-  border-image-width: 22px;
-  border-image-repeat: stretch;
-}
 #world {
   image-rendering: auto;
 }
@@ -1755,10 +1738,6 @@ kbd {
 .class-preview {
   width: 96px;
   height: 96px;
-}
-.menu-panel,
-.create-card {
-  border-image-slice: 32 fill;
 }
 @media (max-width: 600px) {
   .class-preview {
@@ -1882,23 +1861,6 @@ body {
   }
 }
 
-/* Compact silver-blue windows accompany the bright generated world artwork. */
-:root {
-  --ink: #f5f5e9;
-  --muted: #c0d2d8;
-  --panel: rgba(37, 63, 79, 0.94);
-}
-.glass,
-.map-card,
-.player-card,
-.quest-card,
-.target-card {
-  border-color: #b8d3d0a6;
-  background: linear-gradient(145deg, #355b72ed, #243e50e8);
-  box-shadow:
-    inset 0 1px #d6e9e633,
-    0 3px 12px #14364533;
-}
 .bottom-dock {
   background: linear-gradient(#385970f5, #253f52f5);
   border-color: #b9ceccb3;
@@ -2702,17 +2664,6 @@ body.in-game #chat-toggle {
 body.in-game #panel-backdrop {
   inset: 15px 0 30px;
 }
-body.in-game .menu-panel {
-  top: 36px;
-  bottom: 48px;
-  background: linear-gradient(#344c76f5, #1d2d50f7);
-  border: 1px solid #c5d2eb;
-  border-radius: 2px;
-}
-body.in-game .menu-panel > header {
-  background: linear-gradient(#a8b7d2, #526f9f);
-  border-bottom: 1px solid #d3dded;
-}
 @media (max-width: 760px) {
   body.in-game #hud .player-card {
     width: 204px;
@@ -2959,9 +2910,6 @@ body.in-game .player-info .pocket-leaf {
     inset 0 1px #cad9f0,
     0 2px 4px #071c3c66;
 }
-.menu-panel {
-  border-radius: 2px;
-}
 button {
   touch-action: manipulation;
 }
@@ -2973,15 +2921,6 @@ button {
 #panel-backdrop {
   backdrop-filter: none;
   background: #10243924;
-}
-.menu-panel > header {
-  background: linear-gradient(#92a9cf, #4c6996);
-  border-bottom: 1px solid #c1d1ea;
-}
-.menu-panel {
-  box-shadow:
-    inset 0 0 0 1px #ced9ec,
-    0 3px 10px #08162f66;
 }
 canvas.aiming {
   cursor: crosshair;
@@ -3212,9 +3151,4 @@ canvas.aiming {
     padding: 8px 3px;
     font-size: calc(9px + var(--font-increase));
   }
-}
-body.in-game #menu-panel #panel-title {
-  color: #fff5d0;
-  -webkit-text-fill-color: #fff5d0;
-  opacity: 1;
 }

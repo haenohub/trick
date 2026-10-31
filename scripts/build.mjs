@@ -21,6 +21,7 @@ html = html
     `<head>\n<meta name="leaftale-revision" content="${revision}">`,
   )
   .replace("./styles.css", `./styles.css?v=${revision}`)
+  .replace("./interface.css", `./interface.css?v=${revision}`)
   .replace("./app.js", `./app.js?v=${revision}`);
 await writeFile(htmlFile, html);
 for (const name of [
@@ -53,6 +54,7 @@ for (const name of [
 }
 for (const name of [
   "app.js",
+  "ui-icons.js",
   "map-atlas.js",
   "renderer.js",
   "core.js",

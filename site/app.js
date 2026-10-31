@@ -1,4 +1,5 @@
 import { combatAim } from "./targeting.js";
+import { mountUIIcons } from "./ui-icons.js";
 import {
   extraSkill,
   SKILL_SLOTS,
@@ -88,6 +89,7 @@ const $ = (id) => document.getElementById(id),
           "'": "&#39;",
         })[c],
     );
+mountUIIcons();
 const ART_REVISION =
   document.querySelector('meta[name="leaftale-revision"]')?.content || "local";
 const canvas = $("world"),
@@ -801,12 +803,13 @@ function itemCard(i, p) {
   return `<article class="item-card"><div class="item-heading">${itemIcon(i.id)}<div><h3>${i.name} ${equipped ? '<span class="equipped">장착 중</span>' : ""}</h3><small>${i.slot ? `${SLOT_NAMES[i.slot]} · Lv.${i.level}` : i.type === "consumable" ? "소비 아이템" : i.type === "trophy" ? "기타 전리품" : "제작 재료"} · 보유 ${n}</small></div></div><p>${i.lore}</p>${equipmentStats(i)}${equipmentRequirements(i, p)}<div class="actions">${i.slot ? `<button data-action="equip" data-item="${i.id}" ${!usable || equipped ? "disabled" : ""}>${equipped ? "장착됨" : usable ? "장착" : "조건 미충족"}</button>` : ""}${i.type === "consumable" ? `<button data-action="potion" data-item="${i.id}">사용</button>` : ""}${i.slot && MAPS.find((m) => m.id === p.map).town ? `<button data-action="dismantle" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>분해</button>` : ""}${MAPS.find((m) => m.id === p.map).town ? `<button data-action="sell" data-item="${i.id}" ${equipped && n < 2 ? "disabled" : ""}>판매 +${Math.max(1, Math.floor(i.price * 0.25))} 리프</button>` : ""}</div></article>`;
 }
 function tabs(names) {
-  return `<div class="tabs">${names.map(([id, label]) => `<button data-filter="${id}" class="${filter === id ? "active" : ""}">${label}</button>`).join("")}</div>`;
+  return `<div class="tabs" role="group" aria-label="분류 선택">${names.map(([id, label]) => `<button data-filter="${id}" aria-pressed="${filter === id}" class="${filter === id ? "active" : ""}">${label}</button>`).join("")}</div>`;
 }
 function renderPanel() {
   const p = state?.player,
     c = cls(),
     body = $("panel-body");
+  const growthWasOpen = body.querySelector(".skill-stat-details")?.open || false;
   hideItemTooltip();
   let title = "",
     html = "";
@@ -868,7 +871,7 @@ function renderPanel() {
           ([id, n]) => n > 0 && (filter === "all" || ITEMS[id].type === filter),
         )
         .map(([id]) => inventorySlot(ITEMS[id], p))
-        .join("") || '<p class="panel-intro">아직 가방이 비어 있습니다.</p>'
+        .join("") || '<p class="panel-intro inventory-empty">이 분류의 아이템이 없습니다.</p>'
     }</div>`;
   } else if (panel === "character") {
     title = "캐릭터 상태";
@@ -1028,7 +1031,7 @@ function renderPanel() {
           .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${SKILL_SLOTS.map((n) => `<div class="skill-row"><span class="skill-glyph">${skillIcon(n)}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${extraSkill(c.id, n)?.description || (n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다.")}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${SKILL_LEVELS[n]} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">테스트 서버에서는 레벨 25부터 어디서든 전직을 선택하거나 변경할 수 있습니다. 변경해도 체력·집중력·재사용 시간은 충전되지 않습니다. 이전 전직 전용 장비는 해제하고 가방에 보관합니다.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.level < 25 || p.branch === b.id ? "disabled" : ""}>${p.branch === b.id ? "현재 전직" : p.level < 25 ? "레벨 25 필요" : p.branch ? "이 전직으로 변경" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div><details class="skill-stat-details"><summary>성장 능력치 · 남은 포인트 ${unspentPoints(p)}</summary>${playerStats(p)}</details><h3 class="panel-section">전투 기술</h3>${SKILL_SLOTS.map((n) => `<div class="skill-row"><span class="skill-glyph">${skillIcon(n)}</span><div><h3>${skillName(n)} <kbd>${bindingLabel("skill" + n)}</kbd></h3><p>${extraSkill(c.id, n)?.description || (n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다.")}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${SKILL_LEVELS[n]} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">테스트 서버에서는 레벨 25부터 어디서든 전직을 선택하거나 변경할 수 있습니다. 변경해도 체력·집중력·재사용 시간은 충전되지 않습니다. 이전 전직 전용 장비는 해제하고 가방에 보관합니다.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.level < 25 || p.branch === b.id ? "disabled" : ""}>${p.branch === b.id ? "현재 전직" : p.level < 25 ? "레벨 25 필요" : p.branch ? "이 전직으로 변경" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -1062,6 +1065,8 @@ function renderPanel() {
       '<p><a href="./maps.html" target="_blank" rel="noopener">지역 풍경 둘러보기 ↗</a></p>' +
       html;
   body.innerHTML = html;
+  const growthDetails = body.querySelector(".skill-stat-details");
+  if (growthDetails) growthDetails.open = growthWasOpen;
   if (panel === "character")
     drawCharacterPreview($("equipment-avatar"), p.classId, false, p.equipment);
   for (const node of body.querySelectorAll("[data-monster-preview]"))
@@ -1362,7 +1367,8 @@ $("panel-backdrop").onclick = closePanel;
 $("lobby-help").onclick = () => openPanel("help");
 $("sound-toggle").onclick = () => {
   sound = !sound;
-  $("sound-toggle").textContent = sound ? "♫" : "♪";
+  $("sound-toggle").setAttribute("aria-pressed", String(sound));
+  $("sound-toggle").title = sound ? "소리 끄기" : "소리 켜기";
   $("sound-toggle").setAttribute(
     "aria-label",
     sound ? "소리 끄기" : "소리 켜기",
@@ -1399,7 +1405,7 @@ function showLobby() {
       `${saved.name} · Lv.${saved.level} 이어서 →`;
   $("class-select").innerHTML = CLASSES.map(
     (c) =>
-      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}"><canvas class="class-preview" data-class-preview="${c.id}" width="48" height="48" aria-hidden="true"></canvas><strong>${c.name}</strong><small>${c.role}</small></button>`,
+      `<button class="class-choice" data-class="${c.id}" aria-pressed="${c.id === selectedClass}" aria-describedby="class-description"><canvas class="class-preview" data-class-preview="${c.id}" width="96" height="96" aria-hidden="true"></canvas><strong>${c.name}</strong><small>${c.role}</small></button>`,
   ).join("");
   for (const node of $("class-select").querySelectorAll("[data-class-preview]"))
     drawCharacterPreview(node, node.dataset.classPreview);
@@ -1411,7 +1417,11 @@ $("class-select").onclick = (e) => {
   const b = e.target.closest("[data-class]");
   if (!b) return;
   selectedClass = b.dataset.class;
-  showLobby();
+  for (const button of $("class-select").querySelectorAll("[data-class]"))
+    button.setAttribute("aria-pressed", String(button === b));
+  $("class-description").textContent = CLASSES.find(
+    (c) => c.id === selectedClass,
+  ).description;
 };
 $("start-game").onclick = () => {
   if (

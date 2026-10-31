@@ -13,11 +13,12 @@
     />
     <title>리프테일 · 숲이 들려주는 작은 모험</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./interface.css" />
     <script type="module" src="./app.js"></script>
   </head>
   <body>
     <div id="loading">
-      <div class="loading-leaf">❧</div>
+      <div class="loading-leaf" data-ui-icon="leaf"></div>
       <h1>리프테일</h1>
       <p id="loading-text">숲의 이야기를 펼치는 중…</p>
       <div class="load-track"><span id="loading-progress"></span></div>
@@ -30,18 +31,18 @@
       ></canvas>
       <header class="topbar">
         <a class="wordmark" href="./" aria-label="리프테일 첫 화면"
-          >❧ <strong>리프테일</strong><span>LEAFTALE</span></a
+          ><span class="brand-leaf" data-ui-icon="leaf"></span><strong>리프테일</strong><span>LEAFTALE</span></a
         ><span class="chapter-pill"
           >THE FOREST & THE SEA <i>지역 01 — 02</i></span
         >
         <nav aria-label="게임 메뉴">
-          <button data-panel="journal" title="이야기 [L]">이야기</button
-          ><button data-panel="codex" title="도감 [K]">도감</button
-          ><button data-panel="help" title="도움말 [H]">도움말</button
-          ><button id="sound-toggle" aria-label="소리 켜기" title="소리 켜기">
-            ♪</button
-          ><button data-panel="character" title="캐릭터 상태 [V]">상태</button
-          ><button data-panel="settings" aria-label="설정">⚙</button>
+          <a class="lobby-guide" href="./bestiary.html"><span data-ui-icon="book"></span>도감</a>
+          <button data-panel="journal" title="이야기 [L]" aria-label="이야기"><span data-ui-icon="book"></span><span class="nav-label">이야기</span></button
+          ><button data-panel="codex" title="도감 [K]" aria-label="도감"><span data-ui-icon="book"></span><span class="nav-label">도감</span></button
+          ><button data-panel="help" title="도움말 [H]" aria-label="도움말"><span data-ui-icon="help"></span><span class="nav-label">도움말</span></button
+          ><button id="sound-toggle" aria-label="소리 켜기" aria-pressed="false" title="소리 켜기"><span data-ui-icon="sound"></span></button
+          ><button data-panel="character" title="캐릭터 상태 [V]" aria-label="캐릭터 상태"><span data-ui-icon="user"></span><span class="nav-label">상태</span></button
+          ><button data-panel="settings" aria-label="설정" title="설정 [Esc]"><span data-ui-icon="settings"></span></button>
         </nav>
       </header>
       <div id="hud" hidden>
@@ -70,8 +71,9 @@
             data-panel="character"
             class="character-open"
             title="캐릭터 상태 [V]"
+            aria-label="캐릭터 상태 열기"
           >
-            ＋
+            <span data-ui-icon="user"></span>
           </button>
         </section>
         <div
@@ -91,7 +93,7 @@
         <section class="quest-card glass">
           <div class="small-heading">
             <span>진행 중인 이야기</span
-            ><button data-panel="journal" title="이야기 보기">↗</button>
+            ><button data-panel="journal" title="이야기 보기" aria-label="이야기 보기"><span data-ui-icon="external"></span></button>
           </div>
           <h2 id="quest-title"></h2>
           <p id="quest-summary"></p>
@@ -103,7 +105,7 @@
         <section class="map-card glass">
           <div class="map-heading">
             <span id="region-name"></span
-            ><button data-panel="map" title="세계 지도 [M]">↗</button>
+            ><button data-panel="map" title="세계 지도 [M]" aria-label="세계 지도 열기"><span data-ui-icon="external"></span></button>
           </div>
           <h2 id="map-name"></h2>
           <small id="world-phase" aria-live="off"></small>
@@ -146,19 +148,19 @@
         </div>
         <nav class="field-menu" aria-label="모험 메뉴">
           <button data-panel="inventory" title="가방 [I]">
-            가방 <kbd data-keybind="inventory">I</kbd>
+            <span data-ui-icon="bag"></span>가방 <kbd data-keybind="inventory">I</kbd>
           </button>
           <button data-panel="craft" title="제작 [B]">
-            제작 <kbd data-keybind="craft">B</kbd>
+            <span data-ui-icon="craft"></span>제작 <kbd data-keybind="craft">B</kbd>
           </button>
           <button data-panel="map" title="지도 [M]">
-            지도 <kbd data-keybind="map">M</kbd>
+            <span data-ui-icon="map"></span>지도 <kbd data-keybind="map">M</kbd>
           </button>
           <button data-panel="skills" title="직업 [C]">
-            직업 <kbd data-keybind="skills">C</kbd>
+            <span data-ui-icon="user"></span>직업 <kbd data-keybind="skills">C</kbd>
           </button>
           <button data-panel="bindings" title="단축키 [P]">
-            단축키 <kbd>P</kbd>
+            <span data-ui-icon="keyboard"></span>단축키 <kbd>P</kbd>
           </button>
         </nav>
         <div class="experience">
@@ -186,25 +188,23 @@
         <div class="lobby-shade"></div>
         <div class="lobby-content">
           <div class="lobby-intro">
-            <p class="eyebrow">A LITTLE JOURNEY BEYOND THE LEAVES</p>
             <h1>리프테일</h1>
             <p class="lobby-tagline">
               바람이 부르는 쪽으로,<br />우리의 작은 모험이 시작돼요.
             </p>
             <div class="lobby-caption">
-              <span>❧ 햇살잎 숲</span><i></i><span>은물결 해안림 ≈</span>
+              <span>햇살잎 숲</span><i></i><span>은물결 해안림</span>
             </div>
           </div>
           <div class="create-card">
             <div class="create-heading">
               <div>
-                <small>YOUR FIRST FOOTSTEP</small>
                 <h2>어떤 숲길을 걸어볼까요?</h2>
               </div>
               <span>4가지 시작 · 8가지 성장</span>
             </div>
             <div id="class-select"></div>
-            <div id="class-description"></div>
+            <div id="class-description" role="status" aria-live="polite"></div>
             <div class="name-input">
               <label for="adventurer-name">모험가 이름</label
               ><input
@@ -220,7 +220,7 @@
             >
             <div class="start-actions">
               <button id="start-game" class="primary">
-                새로운 모험 시작 <span>→</span></button
+                새로운 모험 시작 <span data-ui-icon="arrow"></span></button
               ><button id="continue-game" hidden>이어서 걷기 →</button>
             </div>
             <p class="save-note">
@@ -241,17 +241,16 @@
       <section
         id="menu-panel"
         class="menu-panel"
-        aria-label="게임 메뉴 창"
+        aria-labelledby="panel-title"
         role="dialog"
         aria-modal="true"
         hidden
       >
         <header>
           <div>
-            <small id="panel-eyebrow">LEAFTALE FIELD NOTES</small>
             <h2 id="panel-title"></h2>
           </div>
-          <button id="close-panel" aria-label="창 닫기">✕</button>
+          <button id="close-panel" aria-label="창 닫기"><span data-ui-icon="close"></span></button>
         </header>
         <div id="panel-body"></div>
       </section>

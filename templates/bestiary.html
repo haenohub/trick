@@ -15,7 +15,7 @@
         font-size: calc(100% + var(--font-increase));
         color-scheme: light;
         --ink: #253e33;
-        --muted: #68796a;
+        --muted: #586d66;
         --line: #dce1d3;
         --green: #315746;
         --paper: #fbfaf4;
@@ -297,7 +297,7 @@
       .field-note {
         font-size: calc(11px + var(--font-increase));
         line-height: 1.8;
-        color: #819075;
+        color: #52684f;
         border-top: 1px solid var(--line);
         padding-top: 18px;
         margin: 22px 0 0;
@@ -406,7 +406,7 @@
       .entry-id {
         font-size: calc(10px + var(--font-increase));
         letter-spacing: 1.5px;
-        color: #98a18a;
+        color: #52684f;
         font-variant-numeric: tabular-nums;
       }
       .badges {
@@ -420,7 +420,7 @@
         border-radius: 4px;
         padding: 2px 7px;
         background: #e9eddf;
-        color: #61714d;
+        color: #49623c;
       }
       .badge.level {
         background: #e3eadd;
@@ -436,7 +436,7 @@
       }
       .badge.elite {
         background: #eee1d3;
-        color: #97674b;
+        color: #754b32;
       }
       .card-body {
         padding: 0 21px 18px;
@@ -482,7 +482,7 @@
       }
       .habitat {
         font-size: calc(11px + var(--font-increase));
-        color: #76876a;
+        color: #52684f;
         line-height: 1.8;
         margin: 0;
       }
@@ -510,7 +510,7 @@
       }
       .stat small {
         display: block;
-        color: #96a087;
+        color: #52684f;
         font-size: calc(9px + var(--font-increase));
         margin-bottom: 5px;
       }
@@ -528,7 +528,7 @@
         justify-content: space-between;
         gap: 8px;
         font-size: calc(11px + var(--font-increase));
-        color: #7f8a70;
+        color: #52684f;
         margin-bottom: 18px;
       }
       .rewards strong {
@@ -536,7 +536,7 @@
         font-weight: 600;
       }
       .rewards .gold strong {
-        color: #9d7e3f;
+        color: #806020;
       }
       .drop-heading {
         display: flex;
@@ -552,7 +552,7 @@
       }
       .drop-heading span {
         font-size: calc(9px + var(--font-increase));
-        color: #9da58f;
+        color: #52684f;
       }
       .drop-table {
         border-collapse: collapse;
@@ -564,7 +564,7 @@
         text-align: left;
         font-size: calc(9px + var(--font-increase));
         font-weight: 500;
-        color: #929c85;
+        color: #52684f;
         padding: 8px 0;
         border-top: 1px solid #e0e5d7;
         border-bottom: 1px solid #e0e5d7;
@@ -583,7 +583,7 @@
         vertical-align: top;
         padding: 9px 0;
         border-bottom: 1px solid #e9ecdf;
-        color: #7e8b71;
+        color: #52684f;
         line-height: 1.6;
       }
       .drop-table tr:last-child td {
@@ -686,7 +686,7 @@
       }
       .probability-note {
         font-size: calc(11px + var(--font-increase));
-        color: #87937b;
+        color: #52684f;
         line-height: 1.9;
         margin: 24px 0 0;
         padding-top: 20px;
@@ -695,7 +695,7 @@
       .footer {
         border-top: 1px solid #d8dfcf;
         padding: 23px 0 28px;
-        color: #8e9b81;
+        color: #52684f;
         font-size: calc(10px + var(--font-increase));
       }
       .footer .wrap {
@@ -706,7 +706,7 @@
       }
       .footer b {
         font-weight: 500;
-        color: #617553;
+        color: #425e35;
       }
       .skip {
         position: fixed;
@@ -1460,6 +1460,8 @@
         }
       }
     </style>
+    <style id="guide-theme">/* GUIDE_THEME */</style>
+    <style>/* TITLE_FONT */</style>
   </head>
   <body>
     <a class="skip" href="#catalogue">도감 목록으로 건너뛰기</a>
@@ -1479,7 +1481,6 @@
       <img class="hero-image" data-asset="assets/title-forest.png" alt="" />
       <div class="wrap">
         <div>
-          <p class="eyebrow">THE LEAFTALE FIELD GUIDE · VOL. 01–02</p>
           <h1 id="page-title">리프테일 도감</h1>
           <p class="intro">
             콩잎 아래의 작은 풀벌레부터, 푸른 바다의 오래된 수호자까지.<br />리프테일에
@@ -1516,7 +1517,8 @@
       </div>
       <main class="catalogue" id="catalogue">
         <aside class="sidebar" aria-label="도감 필터">
-          <p class="filter-title">EXPLORE THE WORLD</p>
+          <details class="guide-filters" open>
+          <summary>검색 필터</summary>
           <div
             class="region-options"
             id="region-options"
@@ -1592,10 +1594,12 @@
             남기는 몬스터를 찾을 수 있어요. 아이템 이름을 누르면 물건에 깃든
             이야기도 펼쳐집니다.
           </p>
+          </details>
         </aside>
         <section aria-labelledby="results-title">
           <div class="toolbar">
             <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>
               <input
                 id="search"
                 type="search"
@@ -1608,7 +1612,7 @@
                 aria-label="검색어 지우기"
                 hidden
               >
-                ×
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
               </button>
             </div>
             <select class="sort" id="sort" aria-label="정렬">
@@ -1669,6 +1673,12 @@
             document.getElementById("bestiary-data").textContent,
           ),
           $ = (id) => document.getElementById(id);
+        const compactFilters = matchMedia("(max-width: 760px)");
+        const filterDisclosure = document.querySelector(".guide-filters");
+        filterDisclosure.open = !compactFilters.matches;
+        compactFilters.addEventListener("change", (event) => {
+          filterDisclosure.open = !event.matches;
+        });
         const esc = (value) =>
           String(value ?? "").replace(
             /[&<>"']/g,

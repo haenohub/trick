@@ -158,7 +158,12 @@ export async function buildBestiary() {
     new URL("../templates/bestiary.html", import.meta.url),
     "utf8",
   );
-  const html = template.replace("<!-- BESTIARY_DATA -->", data);
+  const guideTheme = await readFile(new URL("../templates/guide-theme.css", import.meta.url), "utf8");
+  const titleFont = await readFile(new URL("../site/assets/fonts/leaftale-title.woff", import.meta.url));
+  const html = template
+    .replace("<!-- BESTIARY_DATA -->", data)
+    .replace("/* GUIDE_THEME */", guideTheme)
+    .replace("/* TITLE_FONT */", `@font-face{font-family:LeafTitle;src:url(data:font/woff;base64,${titleFont.toString("base64")}) format("woff");font-weight:700;font-display:swap}`);
   await writeFile(new URL("../site/bestiary.html", import.meta.url), html);
   return html;
 }

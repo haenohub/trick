@@ -26,6 +26,9 @@ for (let attempt = 1; attempt <= 12; attempt++) {
     for (const file of [
       "",
       "styles.css",
+      "interface.css",
+      "ui-icons.js",
+      "assets/fonts/leaftale-title.woff",
       "bestiary.html",
       "directions.html",
       "maps.html",
