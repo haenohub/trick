@@ -170,12 +170,12 @@ test("all seven equipment ranks have real icons and matching eight-direction hel
       for (const slot of ["weapon", "armor", "head", "boots", "charm"])
         assert.ok(art.itemOverrides[tierItemId(cls, slot, level)]);
       const w = art.appearance.weapons[tierItemId(cls, "weapon", level)];
-      assert.equal(w.rows, 7);
+      assert.equal(w.rows, cls.id === "ranger" ? 9 : 7);
       assert.equal(w.grips.length, 8);
       assert.equal(w.tips.length, 8);
       const im = rgbaPixels(await readFile("site/assets/" + w.file + ".png"));
       assert.equal(im.width, 768);
-      assert.equal(im.height, 672);
+      assert.equal(im.height, w.rows * 96);
       for (let d = 0; d < 8; d++)
         assert.ok(
           w.grips[d].every((n) => Number.isFinite(n) && n >= 4 && n < 92),

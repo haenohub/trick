@@ -1,0 +1,46 @@
+{
+  "release": "0.28.0",
+  "sources": [
+    {
+      "id": "bow-0",
+      "reference": "/tmp/bow-direction-reference-0.png",
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "items": [
+        "bow1",
+        "bowlv5",
+        "bowlv10",
+        "bow2"
+      ],
+      "cols": 8,
+      "rows": 4
+    },
+    {
+      "id": "bow-1",
+      "reference": "/tmp/bow-direction-reference-1.png",
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "items": [
+        "bowlv20",
+        "bowlv25",
+        "bowlv30",
+        "hawkweapon",
+        "mistweapon"
+      ],
+      "cols": 8,
+      "rows": 5
+    },
+    {
+      "id": "north",
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "items": [
+        "bowlv20",
+        "bowlv25",
+        "bowlv30",
+        "hawkweapon",
+        "mistweapon"
+      ],
+      "cols": 5,
+      "rows": 1
+    }
+  ],
+  "status": "complete"
+}

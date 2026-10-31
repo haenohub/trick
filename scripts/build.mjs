@@ -80,6 +80,7 @@ for (const name of [
   "crafting.js",
   "drop-tables.js",
   "skill-visuals.js",
+  "skill-expansion.js",
   "display-mode.js",
   "ecology.js",
   "exploration.js",

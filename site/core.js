@@ -3,6 +3,7 @@ import { worldPulse } from "./living-world.js";
 import { speciesForMap, encounterPoint } from "./ecology.js";
 import { applyConsumableStats } from "./consumables.js";
 import { skillVisual } from "./skill-visuals.js";
+import { extraSkill, skillUnlocked, SKILL_SLOTS } from "./skill-expansion.js";
 import {
   derivedStats,
   normalizeAllocation,
@@ -73,7 +74,7 @@ export function stats(p) {
   const gear = Object.values(p.equipment || {})
     .map((id) => ITEMS[id])
     .filter(Boolean);
-  return applyConsumableStats(p, {
+  const result = applyConsumableStats(p, {
     ...derivedStats(
       p,
       gear.filter((i) => canEquip(p, i)),
@@ -81,6 +82,9 @@ export function stats(p) {
     range: c.id === "warden" ? 1.9 : c.id === "ranger" ? 11.25 : 6,
     speed: (c.id === "ranger" ? 3.7 : 3.3) * TEST_BALANCE.speed,
   });
+  if (p.featherBonus)
+    result.evasion = Math.min(0.55, result.evasion + p.featherBonus);
+  return result;
 }
 export function createPlayer(classId = "warden", name = "새잎 모험가") {
   const cls = CLASSES.find((c) => c.id === classId) || CLASSES[0];
@@ -491,7 +495,7 @@ export class World {
       mobileAction: null,
       autoCombatArmed: false,
       autoAttackSuppressed: false,
-      cooldowns: [0, 0, 0, 0],
+      cooldowns: SKILL_SLOTS.map(() => 0),
       attackReady: 0,
       potionReady: 0,
       anim: "idle",
@@ -512,6 +516,12 @@ export class World {
       spellCharge: 0,
       precisionUntil: 0,
       evadeUntil: 0,
+      counterGuardUntil: 0,
+      counterCharges: 0,
+      counterReady: 0,
+      featherUntil: 0,
+      featherBonus: 0,
+      quickRegenUntil: 0,
     };
     if (blocked(p.map, p.x, p.y)) {
       Object.assign(p, NAVIGATION[p.map].spawn);
@@ -963,15 +973,40 @@ export class World {
       case "subclass": {
         const c = CLASSES.find((c) => c.id === p.classId);
         if (
-          p.branch ||
           p.level < 25 ||
-          p.map !== "shelltown" ||
+          p.branch === action.branch ||
           !c.branches.some((b) => b.id === action.branch)
         )
           return false;
+        const oldBranch = p.branch;
+        this.stopCombat(p, false);
         p.branch = action.branch;
-        this.gain(p, 0);
-        p.hp = stats(p).maxHp;
+        for (const [slot, id] of Object.entries(p.equipment))
+          if (id && !canEquip(p, ITEMS[id])) {
+            p.equipment[slot] = null;
+            if (slot === "weapon") {
+              const replacement = Object.values(ITEMS)
+                .filter(
+                  (i) =>
+                    i.slot === "weapon" && p.inventory[i.id] && canEquip(p, i),
+                )
+                .sort((a, b) => b.level - a.level)[0];
+              p.equipment[slot] = replacement?.id || null;
+            }
+          }
+        if (oldBranch) {
+          p.shield = 0;
+          p.shieldUntil = 0;
+          p.regenUntil = 0;
+          this.effects = this.effects.filter(
+            (e) =>
+              e.owner !== p.id || !(e.kind === "garden" || e.key === oldBranch),
+          );
+        }
+        this.pendingAreas = (this.pendingAreas || []).filter(
+          (a) => a.owner !== p.id,
+        );
+        p.hp = Math.min(p.hp, stats(p).maxHp);
         this.log(
           p,
           `${c.branches.find((b) => b.id === p.branch).name}의 길을 선택했습니다!`,
@@ -1101,14 +1136,9 @@ export class World {
   }
   skillAvailable(p, slot) {
     return (
-      Number.isInteger(slot) &&
-      slot >= 0 &&
-      slot <= 3 &&
+      skillUnlocked(p, slot) &&
       p.cooldowns[slot] <= this.time &&
-      p.focus >= SKILL_COSTS[slot] &&
-      (slot !== 1 || p.level >= 4) &&
-      (slot !== 2 || p.level >= 8) &&
-      (slot !== 3 || !!p.branch)
+      p.focus >= SKILL_COSTS[slot]
     );
   }
   requestAttack(p, uid) {
@@ -1299,6 +1329,8 @@ export class World {
     }
   }
   cancelAction(p) {
+    if (p.action?.extraVisual && !p.action.released)
+      this.effects = this.effects.filter((e) => e.castId !== p.action.castId);
     p.action = null;
     if (["windup", "attack", "recover"].includes(p.anim)) p.anim = "idle";
   }
@@ -1326,6 +1358,20 @@ export class World {
       p.action.strikeEnd = landAt + 2 / 30;
       p.action.endAt = p.action.strikeEnd + RECOVERY_DURATION;
     }
+    if (kind === "skill" && extraSkill(p.classId, slot)?.mobility && target) {
+      p.action.strikeAt = this.time + 0.1;
+      const landAt = p.action.strikeAt + 0.16;
+      p.action.leap = {
+        from: { x: p.x, y: p.y },
+        to: { x: target.x, y: target.y },
+        start: p.action.strikeAt,
+        landAt,
+        height: p.classId === "ranger" ? 24 : p.classId === "mage" ? 0 : 6,
+      };
+      p.action.hitAt = landAt;
+      p.action.strikeEnd = landAt + 2 / 30;
+      p.action.endAt = p.action.strikeEnd + 0.1;
+    }
     p.anim = "windup";
     p.animAt = this.time;
     p.animDuration = p.action.strikeAt - this.time;
@@ -1335,6 +1381,25 @@ export class World {
     p.route = [];
     p.queuedAttack = null;
     if (target) p.dir = direction(target.x - p.x, target.y - p.y);
+    const extra = kind === "skill" && extraSkill(p.classId, slot);
+    if (extra && (slot === 4 || extra.mode === "self")) {
+      let center = target || p;
+      if (extra.shape === "line" && target) {
+        const dx = target.x - p.x,
+          dy = target.y - p.y,
+          n = Math.hypot(dx, dy) || 1;
+        center = {
+          x: p.x + (dx / n) * extra.length,
+          y: p.y + (dy / n) * extra.length,
+        };
+      }
+      p.action.extraVisual = true;
+      p.action.castId = ++this.sequence;
+      this.extraEffect(p, slot, center, null, {
+        castId: p.action.castId,
+        ...(extra.shape === "line" ? { tx: center.x, ty: center.y } : {}),
+      });
+    }
     return true;
   }
   advanceAction(p) {
@@ -1345,13 +1410,25 @@ export class World {
       return;
     }
     if (a.leap && this.time >= a.leap.start) {
+      if (!a.leap.departed && a.slot >= 4) {
+        a.leap.departed = true;
+        this.extraEffect(p, a.slot, a.leap.from, 0.4);
+      }
       const t = clamp(
         (this.time - a.leap.start) / (a.leap.landAt - a.leap.start),
         0,
         1,
       );
-      p.x = a.leap.from.x + (a.leap.to.x - a.leap.from.x) * t;
-      p.y = a.leap.from.y + (a.leap.to.y - a.leap.from.y) * t;
+      const next = {
+        x: a.leap.from.x + (a.leap.to.x - a.leap.from.x) * t,
+        y: a.leap.from.y + (a.leap.to.y - a.leap.from.y) * t,
+      };
+      if (blocked(p.map, next.x, next.y) || !this.sight(p.map, p, next)) {
+        this.cancelAction(p);
+        return;
+      }
+      p.x = next.x;
+      p.y = next.y;
     }
     if (!a.released && this.time + 1e-9 >= a.hitAt) {
       a.released = true;
@@ -1386,7 +1463,7 @@ export class World {
     } else {
       p.anim = "recover";
       p.animAt = a.strikeEnd;
-      p.animDuration = RECOVERY_DURATION;
+      p.animDuration = a.endAt - a.strikeEnd;
     }
   }
   releaseBasic(p, t, { mobile = false } = {}) {
@@ -1574,18 +1651,7 @@ export class World {
     return true;
   }
   skill(p, slot, uid, point = null) {
-    if (
-      p.action ||
-      !Number.isInteger(slot) ||
-      slot < 0 ||
-      slot > 3 ||
-      p.cooldowns[slot] > this.time ||
-      p.focus < SKILL_COSTS[slot] ||
-      (slot === 1 && p.level < 4) ||
-      (slot === 2 && p.level < 8) ||
-      (slot === 3 && !p.branch)
-    )
-      return false;
+    if (p.action || !this.skillAvailable(p, slot)) return false;
     const s = stats(p),
       rule = combatAim({ ...p, stats: s }, slot);
     let t = uid
@@ -1604,12 +1670,14 @@ export class World {
       t = { x: point.x, y: point.y };
     }
     const selfCast =
+      rule.mode === "self" ||
       (p.classId === "herbalist" && [0, 2].includes(slot)) ||
       (slot === 1 && p.classId === "warden") ||
       (slot === 3 && ["antler", "flower", "mist"].includes(p.branch));
     if (t && !selfCast && !this.sight(p.map, p, t)) return false;
     if (
       !t &&
+      !selfCast &&
       !(p.classId === "herbalist" && (slot === 0 || slot === 2)) &&
       !(slot === 1 && p.classId === "warden") &&
       !(slot === 3 && ["antler", "flower", "mist"].includes(p.branch))
@@ -1627,7 +1695,131 @@ export class World {
     p.cooldowns[slot] = this.time + SKILL_COOLDOWNS[slot];
     return this.beginAction(p, "skill", t, slot, selfCast);
   }
+  extraEffect(p, slot, point = p, duration = null, extra = {}) {
+    const v = skillVisual(p, slot);
+    if (!v) return;
+    this.effect(p.map, "skill-vfx", point.x, point.y, {
+      key: v.key,
+      radius: extraSkill(p.classId, slot)?.radius || 0,
+      owner: p.id,
+      fromX: p.x,
+      fromY: p.y,
+      dir: p.dir,
+      duration: duration || v.duration,
+      cue: p.classId,
+      ...extra,
+    });
+  }
+  releaseExtraSkill(p, slot, target) {
+    const def = extraSkill(p.classId, slot),
+      s = stats(p),
+      center = target || p;
+    if (slot === 5) {
+      if (p.classId === "warden") {
+        p.counterGuardUntil = this.time + 3;
+        p.counterCharges = 2;
+        p.counterReady = this.time;
+      } else if (p.classId === "mage") {
+        if (p.shieldUntil <= this.time || p.shield <= s.maxHp * 0.12) {
+          p.shield = s.maxHp * 0.12;
+          p.shieldUntil = this.time + 3;
+        }
+      } else if (p.classId === "ranger") {
+        p.featherUntil = this.time + 2;
+        p.featherBonus = 0.1;
+      } else {
+        p.poisonUntil = 0;
+        p.quickRegenUntil = this.time + 3;
+      }
+      if (!p.action?.extraVisual) this.extraEffect(p, slot, p);
+      return true;
+    }
+    let end = center;
+    if (def.shape === "line") {
+      const dx = center.x - p.x,
+        dy = center.y - p.y,
+        n = Math.hypot(dx, dy) || 1;
+      end = { x: p.x + (dx / n) * def.length, y: p.y + (dy / n) * def.length };
+    }
+    const foes = this.map(p.map)
+      .mobs.filter(
+        (m) =>
+          m.hp > 0 &&
+          m.ai !== "return" &&
+          (def.shape === "line"
+            ? segmentDistance(m, p, end) <= def.radius
+            : distance(m, center) <= def.radius) &&
+          this.sight(p.map, def.shape === "line" ? p : center, m),
+      )
+      .sort(
+        (a, b) =>
+          distance(a, def.shape === "line" ? p : center) -
+          distance(b, def.shape === "line" ? p : center),
+      )
+      .slice(0, 5);
+    for (const m of foes) {
+      const stacks =
+        p.classId === "herbalist" &&
+        m.dotOwner === p.id &&
+        m.dotUntil > this.time
+          ? m.toxinStacks || 0
+          : 0;
+      const landed = this.damage(
+        p,
+        m,
+        s.power * (def.power + stacks * (def.toxinPower || 0)),
+        "burst",
+      );
+      if (!landed) continue;
+      const boss = MONSTERS.find((d) => d.id === m.def).type === "boss";
+      if (def.pull && !boss && m.hp > 0) {
+        const d = distance(m, center);
+        if (d > 0.01)
+          this.moveEntity(
+            m,
+            p.map,
+            (center.x - m.x) / d,
+            (center.y - m.y) / d,
+            1,
+            Math.min(d, def.pull),
+          );
+      }
+      if (def.root)
+        m.rootUntil = Math.max(
+          m.rootUntil,
+          this.time + (boss ? Math.min(0.4, def.root) : def.root),
+        );
+      if (stacks) {
+        m.toxinStacks = 0;
+        m.dotUntil = 0;
+        m.dotPower = 0;
+      }
+    }
+    if (def.waves) {
+      this.pendingAreas ||= [];
+      this.pendingAreas.push({
+        owner: p.id,
+        map: p.map,
+        x: center.x,
+        y: center.y,
+        radius: def.radius,
+        power: s.power * def.power,
+        waves: def.waves.slice(1).map((delay) => this.time + delay),
+        limit: 5,
+      });
+    }
+    if (!p.action?.extraVisual)
+      this.extraEffect(
+        p,
+        slot,
+        end,
+        null,
+        def.shape === "line" ? { tx: end.x, ty: end.y } : {},
+      );
+    return true;
+  }
   releaseSkill(p, slot, t) {
+    if (extraSkill(p.classId, slot)) return this.releaseExtraSkill(p, slot, t);
     const s = stats(p);
     const visual = skillVisual(p, slot);
     if (
@@ -1968,6 +2160,8 @@ export class World {
       return false;
     }
     if (p.shieldUntil <= this.time) p.shield = 0;
+    if (avoidable && source && p.counterGuardUntil > this.time)
+      n = Math.max(1, Math.round(n * 0.75));
     const absorbed = Math.min(n, p.shield);
     p.shield -= absorbed;
     if (absorbed > 0 && p.classId === "warden")
@@ -1999,6 +2193,22 @@ export class World {
       cue: absorbed > 0 ? "guard" : "hurt",
       impact: n > 0 ? 2 : 0,
     });
+    if (
+      p.hp > 0 &&
+      avoidable &&
+      source?.hp > 0 &&
+      p.counterGuardUntil > this.time &&
+      p.counterCharges > 0 &&
+      p.counterReady <= this.time &&
+      distance(p, source) <= 3 &&
+      this.sight(p.map, p, source) &&
+      this.map(p.map).mobs.includes(source)
+    ) {
+      p.counterCharges--;
+      p.counterReady = this.time + 0.45;
+      this.damage(p, source, stats(p).power * 1.1, "burst");
+      this.extraEffect(p, 5, p, 0.45);
+    }
     if (p.hp <= 0) {
       this.stopCombat(p);
       const town = MAPS.find(
@@ -2307,13 +2517,16 @@ export class World {
       }
       while (area.waves.length && area.waves[0] <= this.time + 1e-9) {
         area.waves.shift();
-        for (const m of this.map(area.map).mobs)
-          if (
+        const targets = this.map(area.map).mobs.filter(
+          (m) =>
             m.hp > 0 &&
             distance(m, area) <= area.radius &&
-            this.sight(area.map, area, m)
-          )
-            this.damage(owner, m, area.power, "burst");
+            this.sight(area.map, area, m),
+        );
+        if (area.limit)
+          targets.sort((a, b) => distance(a, area) - distance(b, area));
+        for (const m of targets.slice(0, area.limit || targets.length))
+          this.damage(owner, m, area.power, "burst");
       }
     }
     this.pendingAreas = (this.pendingAreas || []).filter((a) => a.waves.length);
@@ -2321,6 +2534,7 @@ export class World {
     for (const p of this.players.values()) {
       this.explore(p);
       p.buffs = (p.buffs || []).filter((b) => b.until > this.time);
+      if (p.featherUntil <= this.time) p.featherBonus = 0;
       const s = stats(p),
         map = this.map(p.map);
       p.hp = Math.min(p.hp, s.maxHp);
@@ -2331,6 +2545,8 @@ export class World {
         p.hp = Math.min(s.maxHp, p.hp + dt * (map.config.town ? 12 : 1.8));
       if (p.regenUntil > this.time)
         p.hp = Math.min(s.maxHp, p.hp + dt * s.maxHp * 0.03);
+      if (p.quickRegenUntil > this.time)
+        p.hp = Math.min(s.maxHp, p.hp + dt * s.maxHp * 0.02);
       if (p.poisonUntil > this.time && this.time > p.poisonTick) {
         p.poisonTick = this.time + 1;
         this.hurtPlayer(p, Math.max(1, Math.round(s.maxHp * 0.015)), {
@@ -2545,6 +2761,9 @@ export class World {
         spellCharge: p.spellCharge,
         precise: p.precisionUntil > this.time,
         evading: p.evadeUntil > this.time,
+        counterRemaining: Math.max(0, p.counterGuardUntil - this.time),
+        counterCharges: p.counterGuardUntil > this.time ? p.counterCharges : 0,
+        featherRemaining: Math.max(0, p.featherUntil - this.time),
       },
       peers: [...this.players.values()]
         .filter((a) => a.id !== id && a.map === p.map)

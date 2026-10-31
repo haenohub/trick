@@ -932,7 +932,7 @@ export class Renderer {
                 Math.min(1, (time - leap.start) / (leap.landAt - leap.start)),
               ),
           ) *
-          76 *
+          (leap.height ?? 76) *
           this.zoom
         : o.windup?.jump
           ? Math.sin(
@@ -1228,7 +1228,10 @@ export class Renderer {
   skillEffect(e, state) {
     const v = SKILL_VISUALS[e.key];
     if (!v) return;
-    const a = ART.skillEffects?.[v.classId];
+    const a =
+      v.atlas === "expanded"
+        ? ART.expandedSkillEffects?.[v.classId]
+        : ART.skillEffects?.[v.classId];
     if (!a) return;
     const age = state.time - e.started,
       duration = e.until - e.started,
@@ -1288,7 +1291,12 @@ export class Renderer {
       const dx = end.x - origin.x,
         dy = end.y - origin.y;
       angle = Math.atan2(dy, dx);
-      if (v.classId === "warden") {
+      if (v.atlas === "expanded") {
+        x = (origin.x + end.x) / 2;
+        y = (origin.y + end.y) / 2 - 18 * z;
+        w = Math.max(90, Math.hypot(dx, dy) / z);
+        h = Math.min(110, w * 0.3);
+      } else if (v.classId === "warden") {
         x = (origin.x + end.x) / 2;
         y = (origin.y + end.y) / 2 - 30 * z;
         w = Math.min(210, Math.max(90, Math.hypot(dx, dy) / z));

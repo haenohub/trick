@@ -1,11 +1,24 @@
 // The same measured palm/grip transform is used in the field and previews.
+export const HELD_WEAPON_SCALE = 0.8;
 export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
-  const a = layout.anchors?.[dir]?.[frame];
+  const a = layout.anchors?.[dir]?.[frame] || layout.anchors?.[dir]?.[0];
   if (!a) return null;
-  const grip = weapon.grips[dir],
-    axis = weapon.axes?.[dir] || 0;
+  const sourceDir =
+    weapon.kind === "bow"
+      ? motion?.skyshot
+        ? 0
+        : (motion?.aimDir ?? dir)
+      : dir;
+  const grip = weapon.grips[sourceDir],
+    axis =
+      weapon.kind === "bow" && weapon.forwardAxes
+        ? weapon.forwardAxes[sourceDir]
+        : weapon.axes?.[sourceDir] || 0;
   const side = a.hand[0] < 48 ? -1 : 1,
-    rest = side * 0.18 - axis;
+    rest =
+      weapon.kind === "bow" && weapon.forwardAxes
+        ? (sourceDir * Math.PI) / 4 - axis
+        : side * 0.18 - axis;
   const phase = ["windup", "attack", "recover"].includes(motion?.anim);
   let pose = frame < 8 ? frame : frame < 16 ? frame - 8 : 0;
   if (phase) {
@@ -45,8 +58,11 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
   const aimed =
     weapon.kind === "bow"
       ? motion?.skyshot
-        ? -Math.PI / 2
-        : ((motion?.aimDir ?? dir) * Math.PI) / 4 - Math.PI / 2
+        ? weapon.forwardAxes
+          ? 0
+          : -Math.PI / 2
+        : ((motion?.aimDir ?? dir) * Math.PI) / 4 -
+          (weapon.forwardAxes ? 0 : Math.PI / 2)
       : weapon.kind === "staff"
         ? side * 0.12
         : (dir * Math.PI) / 4;
@@ -58,10 +74,11 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
     grip,
     angle: rotation,
     weaponScale:
-      active && ["spear", "wand"].includes(weapon.kind)
+      HELD_WEAPON_SCALE *
+      (active && ["spear", "wand"].includes(weapon.kind)
         ? 1 - 0.3 * Math.abs(Math.cos((dir * Math.PI) / 4))
-        : 1,
-    col: dir,
+        : 1),
+    col: sourceDir,
     row: weapon.index,
     size: 96,
   };

@@ -35,7 +35,7 @@ with sync_playwright() as pw:
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click()
  assert p.locator('#skillbar [data-slot="0"] kbd').inner_text()=='Z'
  p.keyboard.press('p');p.locator('[data-reset-bindings]').click();p.keyboard.press('p')
- assert p.locator('#skillbar [data-slot] kbd').all_inner_texts()==['Q','W','E','R']
+ assert p.locator('#skillbar [data-slot] kbd').all_inner_texts()==['Q','W','E','R','D','G']
  p.locator('[data-panel=settings]').click();p.locator('[data-special=title]').click()
  p.evaluate('''async()=>{const{World,createPlayer,stats}=await import('./core.js');const{NAVIGATION}=await import('./world-layout.js');const raw=createPlayer('mage');Object.assign(raw,{level:30,map:'sprout',...NAVIGATION.sprout.spawn});raw.hp=stats(raw).maxHp;const world=new World(),q=world.addPlayer(raw),m=world.map('sprout').mobs[0];raw.x=m.x-.9;raw.y=m.y;delete raw.allocationVersion;delete raw.allocated;localStorage.setItem('leaftale:save:v1',JSON.stringify(raw));}''')
  p.reload();p.locator('#loading').wait_for(state='hidden');p.locator('#continue-game').click();p.keyboard.press('Tab');confirm_attack(p,'q')
@@ -50,11 +50,11 @@ with sync_playwright() as pw:
  print('PASS: keyboard-shaped settings, conflict rejection, persisted remapping, QWER labels, Q skill, one pickup per Space press, T potion and in-game item guide')
  p.goto(BASE+'bestiary.html');assert '리프테일 도감' in p.title()
  p.locator('[data-catalogue=items]').click();assert p.locator('#result-count').inner_text()=='204종'
- p.locator('#search').fill('소금꽃 해독제');assert p.locator('.item-guide-card').count()==1;assert '마을 상점' in p.locator('.item-guide-card').inner_text()
+ p.locator('#search').fill('소금꽃 해독제');assert p.locator('.item-guide-card').count()==1;p.locator('.item-details > summary').click();assert '마을 상점' in p.locator('.item-guide-card').inner_text()
  p.locator('#search').fill('');p.locator('#item-type').select_option('equipment');p.locator('#item-class').select_option('mage')
  assert p.locator('.item-guide-card').count()>0
  p.locator('#reset').click();p.locator('#item-type').select_option('trophy');p.locator('#search').fill('콩잎')
- assert p.locator('.item-guide-card').count()==1;assert p.locator('.item-drop-chance').inner_text()=='60%'
+ assert p.locator('.item-guide-card').count()==1;p.locator('.item-details > summary').click();assert p.locator('.item-drop-chance').inner_text()=='60%'
  p.locator('#reset').click();p.evaluate("dispatchEvent(new Event('beforeprint'))");assert p.locator('.item-guide-card').count()==204;p.evaluate("dispatchEvent(new Event('afterprint'))")
  p.wait_for_function("document.querySelector('canvas[data-drop]').dataset.loaded==='true'")
  p.screenshot(path='/tmp/leaftale-combined-item-guide.png',full_page=True)

@@ -1,0 +1,4544 @@
+{
+  "version": 28,
+  "scale": 0.8,
+  "bowFrames": [
+    {
+      "item": "bow1",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.25996211167202,
+        10.280307924792766
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 116.47368421052632,
+          "y": 133.26315789473685,
+          "n": 57
+        },
+        "tip": {
+          "x": 117.13829787234043,
+          "y": 36.829787234042556,
+          "n": 94
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3911477097272259
+    },
+    {
+      "item": "bow1",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        85.09081726064585,
+        10.899923187811055
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 83.15384615384616,
+          "y": 134.53846153846155,
+          "n": 65
+        },
+        "tip": {
+          "x": 168.9620253164557,
+          "y": 48.70886075949367,
+          "n": 79
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.43225270157938483
+    },
+    {
+      "item": "bow1",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        71.65356944132606,
+        47.10010835716866
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 124.859375,
+          "y": 125.921875,
+          "n": 64
+        },
+        "tip": {
+          "x": 178.03370786516854,
+          "y": 123.89887640449439,
+          "n": 89
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4448305821025195
+    },
+    {
+      "item": "bow1",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        71.32997510548029,
+        55.893970383702865
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 129.83928571428572,
+          "y": 134.875,
+          "n": 56
+        },
+        "tip": {
+          "x": 182.25882352941176,
+          "y": 152.61176470588236,
+          "n": 85
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.44506258692628653
+    },
+    {
+      "item": "bow1",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.960009843730774,
+        80.0198105081826
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 111.2987012987013,
+          "y": 126.54545454545455,
+          "n": 77
+        },
+        "tip": {
+          "x": 111.19318181818181,
+          "y": 211.0340909090909,
+          "n": 88
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3789836347975883
+    },
+    {
+      "item": "bow1",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        27.905361526886832,
+        56.50439534331194
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 87.6140350877193,
+          "y": 133.31578947368422,
+          "n": 57
+        },
+        "tip": {
+          "x": 39.22826086956522,
+          "y": 153.79347826086956,
+          "n": 92
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4153005464480874
+    },
+    {
+      "item": "bow1",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        24.173109701364584,
+        47.49027241278454
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 93.49333333333334,
+          "y": 125.17333333333333,
+          "n": 75
+        },
+        "tip": {
+          "x": 39.18390804597701,
+          "y": 124.01149425287356,
+          "n": 87
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4387247733255338
+    },
+    {
+      "item": "bow1",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        10.59266171792153,
+        10.970010604453876
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 140.2622950819672,
+          "y": 134.88524590163934,
+          "n": 61
+        },
+        "tip": {
+          "x": 52.109756097560975,
+          "y": 47.6219512195122,
+          "n": 82
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.42434782608695654
+    },
+    {
+      "item": "bowlv5",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.29894447617362,
+        10.479462318545309
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 115.89024390243902,
+          "y": 122.64634146341463,
+          "n": 82
+        },
+        "tip": {
+          "x": 116.71717171717172,
+          "y": 18.858585858585858,
+          "n": 99
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.36151217899261545
+    },
+    {
+      "item": "bowlv5",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        82.13735957066189,
+        11.881846153846155
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 82.07228915662651,
+          "y": 128.89156626506025,
+          "n": 83
+        },
+        "tip": {
+          "x": 165.61627906976744,
+          "y": 40.5,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4086153846153846
+    },
+    {
+      "item": "bowlv5",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        70.49430350903843,
+        47.610378543402625
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 128.55882352941177,
+          "y": 120.80882352941177,
+          "n": 68
+        },
+        "tip": {
+          "x": 183,
+          "y": 119.86585365853658,
+          "n": 82
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41318547774570863
+    },
+    {
+      "item": "bowlv5",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        65.40489619977858,
+        52.95804099601045
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 133.64473684210526,
+          "y": 127.64473684210526,
+          "n": 76
+        },
+        "tip": {
+          "x": 175.26190476190476,
+          "y": 139.5,
+          "n": 84
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4182143348466089
+    },
+    {
+      "item": "bowlv5",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.93603226006918,
+        78.2944698010675
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 110.44303797468355,
+          "y": 122.83544303797468,
+          "n": 79
+        },
+        "tip": {
+          "x": 110.27058823529411,
+          "y": 204.50588235294117,
+          "n": 85
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.37093555581641036
+    },
+    {
+      "item": "bowlv5",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        30.71992655698171,
+        54.34473686914879
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 90.95588235294117,
+          "y": 128.83823529411765,
+          "n": 68
+        },
+        "tip": {
+          "x": 47.825581395348834,
+          "y": 144.67441860465115,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4006481072322875
+    },
+    {
+      "item": "bowlv5",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        25.880783984573753,
+        47.743097070961
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 90.4186046511628,
+          "y": 120.45348837209302,
+          "n": 86
+        },
+        "tip": {
+          "x": 36.52873563218391,
+          "y": 119.82758620689656,
+          "n": 87
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41045221333969695
+    },
+    {
+      "item": "bowlv5",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        13.142769635739803,
+        10.110648019767147
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 139.86885245901638,
+          "y": 128.60655737704917,
+          "n": 61
+        },
+        "tip": {
+          "x": 55.68292682926829,
+          "y": 37.09756097560975,
+          "n": 82
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4140505684710674
+    },
+    {
+      "item": "bowlv10",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.474850235030836,
+        9.854886784524119
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 115.51948051948052,
+          "y": 122.55844155844156,
+          "n": 77
+        },
+        "tip": {
+          "x": 116.8913043478261,
+          "y": 12.358695652173912,
+          "n": 92
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.346145201168802
+    },
+    {
+      "item": "bowlv10",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        80.43303233617515,
+        11.757700090243098
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 82.525,
+          "y": 126.725,
+          "n": 80
+        },
+        "tip": {
+          "x": 166.62790697674419,
+          "y": 32.74418604651163,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3856350927934442
+    },
+    {
+      "item": "bowlv10",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        70.28020052014624,
+        47.752742075308134
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 130.61666666666667,
+          "y": 117.83333333333333,
+          "n": 60
+        },
+        "tip": {
+          "x": 187.8953488372093,
+          "y": 117.19767441860465,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3889789303079417
+    },
+    {
+      "item": "bowlv10",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        66.27855045959863,
+        54.181996933717414
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 140.73239436619718,
+          "y": 123.4225352112676,
+          "n": 71
+        },
+        "tip": {
+          "x": 189.36363636363637,
+          "y": 139.87012987012986,
+          "n": 77
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.37586024351508734
+    },
+    {
+      "item": "bowlv10",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.12415609983698,
+        77.28302981851701
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 109.98666666666666,
+          "y": 122.30666666666667,
+          "n": 75
+        },
+        "tip": {
+          "x": 110.34146341463415,
+          "y": 205.9878048780488,
+          "n": 82
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.34993584509506587
+    },
+    {
+      "item": "bowlv10",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        30.488433508024894,
+        54.08581722895512
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 82.17857142857143,
+          "y": 123.19047619047619,
+          "n": 84
+        },
+        "tip": {
+          "x": 34.81395348837209,
+          "y": 139.65116279069767,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.36971830985915494
+    },
+    {
+      "item": "bowlv10",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        26.232784092530032,
+        47.965005087575584
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 87.3012048192771,
+          "y": 116.93975903614458,
+          "n": 83
+        },
+        "tip": {
+          "x": 31.82758620689655,
+          "y": 116.85057471264368,
+          "n": 87
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.39238860654768937
+    },
+    {
+      "item": "bowlv10",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        15.67391948984595,
+        11.628153598177349
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 139.56578947368422,
+          "y": 127.22368421052632,
+          "n": 76
+        },
+        "tip": {
+          "x": 55.33720930232558,
+          "y": 32.45348837209303,
+          "n": 86
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.38378992551445523
+    },
+    {
+      "item": "bow2",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.551101325877504,
+        10.131827879472766
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 115.29113924050633,
+          "y": 115.9873417721519,
+          "n": 79
+        },
+        "tip": {
+          "x": 116.84782608695652,
+          "y": 9.021739130434783,
+          "n": 92
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.35402195832399735
+    },
+    {
+      "item": "bow2",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        82.32294172586533,
+        11.25955905244389
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 80.43939393939394,
+          "y": 115.24242424242425,
+          "n": 66
+        },
+        "tip": {
+          "x": 163.02247191011236,
+          "y": 26.84269662921348,
+          "n": 89
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41561712846347604
+    },
+    {
+      "item": "bow2",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        70.864849436278,
+        47.61044669616098
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 132.91139240506328,
+          "y": 108.53164556962025,
+          "n": 79
+        },
+        "tip": {
+          "x": 188.62637362637363,
+          "y": 107.58241758241758,
+          "n": 91
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41038961038961036
+    },
+    {
+      "item": "bow2",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        68.33608698722023,
+        56.82157734943162
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 138.46938775510205,
+          "y": 110.34693877551021,
+          "n": 98
+        },
+        "tip": {
+          "x": 187.45238095238096,
+          "y": 131.5952380952381,
+          "n": 84
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41516627833086206
+    },
+    {
+      "item": "bow2",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.10044008154195,
+        79.0369850977216
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 109.8375,
+          "y": 117.5375,
+          "n": 80
+        },
+        "tip": {
+          "x": 110.10752688172043,
+          "y": 200.9784946236559,
+          "n": 93
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.37196326862722306
+    },
+    {
+      "item": "bow2",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        28.528289811500482,
+        56.72262366327571
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 86.43939393939394,
+          "y": 110.12121212121212,
+          "n": 66
+        },
+        "tip": {
+          "x": 38.674698795180724,
+          "y": 131.51807228915663,
+          "n": 83
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4076590487955528
+    },
+    {
+      "item": "bow2",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        25.502006420545747,
+        47.70971975185458
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 85.98823529411764,
+          "y": 108.49411764705883,
+          "n": 85
+        },
+        "tip": {
+          "x": 31.146067415730336,
+          "y": 107.78651685393258,
+          "n": 89
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.41023166023166024
+    },
+    {
+      "item": "bow2",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        13.280569036281541,
+        11.34701443135178
+      ],
+      "source": "/workspace/generated_images/exec-73dbc284-3aea-4c3e-8a57-14676f29ca58.png",
+      "marker": {
+        "grip": {
+          "x": 140.84810126582278,
+          "y": 114.60759493670886,
+          "n": 79
+        },
+        "tip": {
+          "x": 57.86206896551724,
+          "y": 27,
+          "n": 87
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4183768039189726
+    },
+    {
+      "item": "bowlv20",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.42510651107444,
+        9.284632566898814
+      ],
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "marker": {
+        "grip": {
+          "x": 278.00522648083626,
+          "y": 362.89198606271776,
+          "n": 574
+        },
+        "tip": {
+          "x": 273.1345565749235,
+          "y": 34.883792048929664,
+          "n": 327
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.118031708169686
+    },
+    {
+      "item": "bowlv20",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        72.90154380335078,
+        36.56626214519477
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 106.87179487179488,
+          "y": 114.38461538461539,
+          "n": 78
+        },
+        "tip": {
+          "x": 170.61016949152543,
+          "y": 85.11864406779661,
+          "n": 59
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.39068369646882045
+    },
+    {
+      "item": "bowlv20",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        76.86582086277123,
+        44.62233697506315
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 120.17283950617283,
+          "y": 109.5679012345679,
+          "n": 81
+        },
+        "tip": {
+          "x": 190.58227848101265,
+          "y": 101.32911392405063,
+          "n": 79
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.40997089712767304
+    },
+    {
+      "item": "bowlv20",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        65.40511634629281,
+        57.51698222286458
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 129.01315789473685,
+          "y": 118.10526315789474,
+          "n": 76
+        },
+        "tip": {
+          "x": 175.61764705882354,
+          "y": 143.58823529411765,
+          "n": 68
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.37346437346437344
+    },
+    {
+      "item": "bowlv20",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.09591078066914,
+        74.97718044037748
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 94.70886075949367,
+          "y": 111.15189873417721,
+          "n": 79
+        },
+        "tip": {
+          "x": 92.4,
+          "y": 180.04615384615386,
+          "n": 65
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3915737298636927
+    },
+    {
+      "item": "bowlv20",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        29.264616545234357,
+        58.718071906454114
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 89.28571428571429,
+          "y": 115.82142857142857,
+          "n": 84
+        },
+        "tip": {
+          "x": 39.720588235294116,
+          "y": 144.1764705882353,
+          "n": 68
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3779952750590618
+    },
+    {
+      "item": "bowlv20",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        19.3225553714472,
+        44.55272441832499
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 114.70238095238095,
+          "y": 112.13095238095238,
+          "n": 84
+        },
+        "tip": {
+          "x": 41.48101265822785,
+          "y": 103.32911392405063,
+          "n": 79
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3916540389322765
+    },
+    {
+      "item": "bowlv20",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        25.212617212850375,
+        34.555292599803366
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 110.39240506329114,
+          "y": 113.07594936708861,
+          "n": 79
+        },
+        "tip": {
+          "x": 50.53225806451613,
+          "y": 77.75806451612904,
+          "n": 62
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3806770268642332
+    },
+    {
+      "item": "bowlv25",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.09576206017164,
+        9.306482937822437
+      ],
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "marker": {
+        "grip": {
+          "x": 253.92760942760944,
+          "y": 362.83838383838383,
+          "n": 594
+        },
+        "tip": {
+          "x": 254.73880597014926,
+          "y": 35.06716417910448,
+          "n": 402
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.11805038008645104
+    },
+    {
+      "item": "bowlv25",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        77.54054101405094,
+        32.26898279547286
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 100.04477611940298,
+          "y": 119.17910447761194,
+          "n": 67
+        },
+        "tip": {
+          "x": 179.93650793650792,
+          "y": 76.63492063492063,
+          "n": 63
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.369757174392936
+    },
+    {
+      "item": "bowlv25",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        76.44864364551991,
+        38.54940898972574
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 115.65853658536585,
+          "y": 123.73170731707317,
+          "n": 41
+        },
+        "tip": {
+          "x": 193.70149253731344,
+          "y": 97.80597014925372,
+          "n": 67
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.36452545010002224
+    },
+    {
+      "item": "bowlv25",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        55.321077014995545,
+        53.88283690999736
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 137.65333333333334,
+          "y": 118.37333333333333,
+          "n": 75
+        },
+        "tip": {
+          "x": 159.31884057971016,
+          "y": 135.7826086956522,
+          "n": 69
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3379139445821131
+    },
+    {
+      "item": "bowlv25",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.7286355181092,
+        71.7443921654448
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 92.70454545454545,
+          "y": 116.85227272727273,
+          "n": 88
+        },
+        "tip": {
+          "x": 92,
+          "y": 178.5,
+          "n": 58
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3851624904256483
+    },
+    {
+      "item": "bowlv25",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        31.123759832404442,
+        56.72919878256058
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 84.175,
+          "y": 117.125,
+          "n": 80
+        },
+        "tip": {
+          "x": 34.75925925925926,
+          "y": 142.6851851851852,
+          "n": 54
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3415154749199573
+    },
+    {
+      "item": "bowlv25",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        22.401034698064404,
+        40.51271073053251
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 117.7,
+          "y": 121.2,
+          "n": 30
+        },
+        "tip": {
+          "x": 40.13513513513514,
+          "y": 98.51351351351352,
+          "n": 74
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.33003300330033003
+    },
+    {
+      "item": "bowlv25",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        26.978583196046127,
+        36.038165842943435
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 115.8923076923077,
+          "y": 112.06153846153846,
+          "n": 65
+        },
+        "tip": {
+          "x": 57,
+          "y": 78.55,
+          "n": 60
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.35694673256452497
+    },
+    {
+      "item": "bowlv30",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.15025999357406,
+        9.573522510234007
+      ],
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "marker": {
+        "grip": {
+          "x": 217.5549915397631,
+          "y": 362.88832487309645,
+          "n": 591
+        },
+        "tip": {
+          "x": 218.828025477707,
+          "y": 37.3312101910828,
+          "n": 471
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.11803298332859004
+    },
+    {
+      "item": "bowlv30",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        79.55096493612396,
+        35.37449557781169
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 94.05633802816901,
+          "y": 107.63380281690141,
+          "n": 71
+        },
+        "tip": {
+          "x": 175.8,
+          "y": 74.92307692307692,
+          "n": 65
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.38597444957868987
+    },
+    {
+      "item": "bowlv30",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        81.45724713242961,
+        44.75078206465068
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 110.24675324675324,
+          "y": 105.63636363636364,
+          "n": 77
+        },
+        "tip": {
+          "x": 193.5857142857143,
+          "y": 97.54285714285714,
+          "n": 70
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.40145985401459855
+    },
+    {
+      "item": "bowlv30",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        59.066761701116654,
+        57.48918983131385
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 134.74683544303798,
+          "y": 111.55696202531645,
+          "n": 79
+        },
+        "tip": {
+          "x": 164.22784810126583,
+          "y": 136.83544303797467,
+          "n": 79
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3753860774530767
+    },
+    {
+      "item": "bowlv30",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.00000000000001,
+        70.93663366336634
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 92.14102564102564,
+          "y": 109.58974358974359,
+          "n": 78
+        },
+        "tip": {
+          "x": 92.14102564102565,
+          "y": 168.9897435897436,
+          "n": 0
+        }
+      },
+      "method": "authored-markers/direction-calibration",
+      "scale": 0.38613861386138615
+    },
+    {
+      "item": "bowlv30",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        28.822276627251956,
+        59.76904816829511
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 89.47619047619048,
+          "y": 111.9047619047619,
+          "n": 84
+        },
+        "tip": {
+          "x": 39.18032786885246,
+          "y": 142.7704918032787,
+          "n": 61
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3812982296867908
+    },
+    {
+      "item": "bowlv30",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        15.891909376625534,
+        45.27890918575053
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 122.94117647058823,
+          "y": 105.68235294117648,
+          "n": 85
+        },
+        "tip": {
+          "x": 42.925925925925924,
+          "y": 98.90123456790124,
+          "n": 81
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.40127463708249733
+    },
+    {
+      "item": "bowlv30",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        26.489660142510107,
+        36.87218475724124
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 126.89393939393939,
+          "y": 106.4090909090909,
+          "n": 66
+        },
+        "tip": {
+          "x": 71.8225806451613,
+          "y": 77.91935483870968,
+          "n": 62
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3905903240124279
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.939941317573705,
+        9.596693580119862
+      ],
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "marker": {
+        "grip": {
+          "x": 185.27179487179487,
+          "y": 362.85128205128206,
+          "n": 585
+        },
+        "tip": {
+          "x": 184.76302083333334,
+          "y": 37.526041666666664,
+          "n": 384
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.1180458865548762
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        72.13727286608642,
+        37.44189952664529
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 100.14285714285714,
+          "y": 124.74285714285715,
+          "n": 70
+        },
+        "tip": {
+          "x": 175.41666666666666,
+          "y": 91.81666666666666,
+          "n": 60
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.32065964269354097
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        73.15499585749792,
+        45.30458989229494
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 112.81159420289855,
+          "y": 123.18840579710145,
+          "n": 69
+        },
+        "tip": {
+          "x": 190.28169014084506,
+          "y": 114.88732394366197,
+          "n": 71
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3247058823529412
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        57.08125550014667,
+        57.30478146083896
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 131.0875,
+          "y": 121.75,
+          "n": 80
+        },
+        "tip": {
+          "x": 158.72857142857143,
+          "y": 150.07142857142858,
+          "n": 70
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.32854209445585214
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.56216216216217,
+        69.27135135135136
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 90.91025641025641,
+          "y": 118.58974358974359,
+          "n": 78
+        },
+        "tip": {
+          "x": 92.57692307692308,
+          "y": 181.65384615384616,
+          "n": 26
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3372972972972973
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        29.322594464913035,
+        59.7193042584183
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 88,
+          "y": 122.42307692307692,
+          "n": 78
+        },
+        "tip": {
+          "x": 30.836363636363636,
+          "y": 158.29090909090908,
+          "n": 55
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3267357838517122
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        20.612166679556914,
+        46.27064373920442
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 120.66666666666667,
+          "y": 122.75,
+          "n": 84
+        },
+        "tip": {
+          "x": 36.620253164556964,
+          "y": 117.44303797468355,
+          "n": 79
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3258655804480652
+    },
+    {
+      "item": "hawkweapon",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        27.995643775620533,
+        38.48704936228266
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 115.65882352941176,
+          "y": 123.56470588235294,
+          "n": 85
+        },
+        "tip": {
+          "x": 53.863013698630134,
+          "y": 94.17808219178082,
+          "n": 73
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.32371703322860135
+    },
+    {
+      "item": "mistweapon",
+      "direction": 0,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        48.95510111167703,
+        9.304781992198762
+      ],
+      "source": "/workspace/generated_images/exec-122f5eec-67bb-4d43-af1d-a1197ac46552.png",
+      "marker": {
+        "grip": {
+          "x": 156.18480138169258,
+          "y": 362.8894645941278,
+          "n": 579
+        },
+        "tip": {
+          "x": 164.2766439909297,
+          "y": 35.054421768707485,
+          "n": 441
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.11803258637121147
+    },
+    {
+      "item": "mistweapon",
+      "direction": 1,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        79.50849150849152,
+        35.172827172827176
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 101,
+          "y": 91,
+          "n": 71
+        },
+        "tip": {
+          "x": 172.6818181818182,
+          "y": 61.81818181818182,
+          "n": 66
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.43956043956043955
+    },
+    {
+      "item": "mistweapon",
+      "direction": 2,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        76.64647951268529,
+        46.55905635490832
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 126.63291139240506,
+          "y": 93.37974683544304,
+          "n": 79
+        },
+        "tip": {
+          "x": 193.5079365079365,
+          "y": 90.01587301587301,
+          "n": 63
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4283584112782974
+    },
+    {
+      "item": "mistweapon",
+      "direction": 3,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        50.660835494906806,
+        53.86584243652349
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 134.06944444444446,
+          "y": 105.65277777777777,
+          "n": 72
+        },
+        "tip": {
+          "x": 141.09756097560975,
+          "y": 121.14634146341463,
+          "n": 82
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.37859865912974894
+    },
+    {
+      "item": "mistweapon",
+      "direction": 4,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        47.11935838968391,
+        77.43230067620695
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 95,
+          "y": 92.15714285714286,
+          "n": 70
+        },
+        "tip": {
+          "x": 93,
+          "y": 159,
+          "n": 1
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4403208051580437
+    },
+    {
+      "item": "mistweapon",
+      "direction": 5,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        27.676675081335336,
+        58.138085876153134
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 81.04109589041096,
+          "y": 105.45205479452055,
+          "n": 73
+        },
+        "tip": {
+          "x": 27.46268656716418,
+          "y": 132.17910447761193,
+          "n": 67
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.3793193037152507
+    },
+    {
+      "item": "mistweapon",
+      "direction": 6,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        19.067708634828744,
+        46.92978292329957
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 109.5945945945946,
+          "y": 93.37837837837837,
+          "n": 74
+        },
+        "tip": {
+          "x": 42.053333333333335,
+          "y": 90.88,
+          "n": 75
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4283646888567294
+    },
+    {
+      "item": "mistweapon",
+      "direction": 7,
+      "grip": [
+        48,
+        48
+      ],
+      "forward": [
+        24.73370163767091,
+        36.831782813857075
+      ],
+      "source": "/workspace/generated_images/exec-578e7a61-e25c-48ac-a868-d58567467863.png",
+      "marker": {
+        "grip": {
+          "x": 115.82089552238806,
+          "y": 93.91044776119404,
+          "n": 67
+        },
+        "tip": {
+          "x": 61.19718309859155,
+          "y": 67.69014084507042,
+          "n": 71
+        }
+      },
+      "method": "authored-markers",
+      "scale": 0.4259376986649714
+    }
+  ],
+  "contacts": [
+    {
+      "item": "spear1",
+      "direction": 0,
+      "previous": [
+        42,
+        68
+      ],
+      "handGrip": [
+        42,
+        70
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 1,
+      "previous": [
+        41,
+        66
+      ],
+      "handGrip": [
+        41,
+        69
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 2,
+      "previous": [
+        38,
+        67
+      ],
+      "handGrip": [
+        37,
+        70
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 3,
+      "previous": [
+        38,
+        65
+      ],
+      "handGrip": [
+        38,
+        62
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 4,
+      "previous": [
+        46,
+        65
+      ],
+      "handGrip": [
+        46,
+        68
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 5,
+      "previous": [
+        56,
+        66
+      ],
+      "handGrip": [
+        59,
+        66
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 6,
+      "previous": [
+        59,
+        66
+      ],
+      "handGrip": [
+        59,
+        69
+      ]
+    },
+    {
+      "item": "spear1",
+      "direction": 7,
+      "previous": [
+        53,
+        66
+      ],
+      "handGrip": [
+        55,
+        68
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 0,
+      "previous": [
+        45,
+        67
+      ],
+      "handGrip": [
+        47,
+        65
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 1,
+      "previous": [
+        39,
+        67
+      ],
+      "handGrip": [
+        39,
+        64
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 2,
+      "previous": [
+        36,
+        68
+      ],
+      "handGrip": [
+        34,
+        70
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 3,
+      "previous": [
+        38,
+        68
+      ],
+      "handGrip": [
+        37,
+        71
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 4,
+      "previous": [
+        51,
+        68
+      ],
+      "handGrip": [
+        50,
+        70
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 5,
+      "previous": [
+        57,
+        67
+      ],
+      "handGrip": [
+        59,
+        66
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 6,
+      "previous": [
+        60,
+        68
+      ],
+      "handGrip": [
+        61,
+        70
+      ]
+    },
+    {
+      "item": "spear2",
+      "direction": 7,
+      "previous": [
+        54,
+        67
+      ],
+      "handGrip": [
+        56,
+        69
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 0,
+      "previous": [
+        47,
+        66
+      ],
+      "handGrip": [
+        49,
+        66
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 1,
+      "previous": [
+        43,
+        64
+      ],
+      "handGrip": [
+        43,
+        66
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 2,
+      "previous": [
+        38,
+        66
+      ],
+      "handGrip": [
+        38,
+        68
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 3,
+      "previous": [
+        36,
+        63
+      ],
+      "handGrip": [
+        36,
+        62
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        63
+      ],
+      "handGrip": [
+        49,
+        61
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 5,
+      "previous": [
+        36,
+        64
+      ],
+      "handGrip": [
+        37,
+        65
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 6,
+      "previous": [
+        41,
+        68
+      ],
+      "handGrip": [
+        42,
+        66
+      ]
+    },
+    {
+      "item": "antlerweapon",
+      "direction": 7,
+      "previous": [
+        33,
+        70
+      ],
+      "handGrip": [
+        31,
+        70
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 0,
+      "previous": [
+        45,
+        66
+      ],
+      "handGrip": [
+        47,
+        66
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 1,
+      "previous": [
+        42,
+        64
+      ],
+      "handGrip": [
+        43,
+        65
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 2,
+      "previous": [
+        37,
+        66
+      ],
+      "handGrip": [
+        37,
+        68
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 3,
+      "previous": [
+        38,
+        63
+      ],
+      "handGrip": [
+        39,
+        62
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        63
+      ],
+      "handGrip": [
+        50,
+        63
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 5,
+      "previous": [
+        36,
+        64
+      ],
+      "handGrip": [
+        34,
+        64
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 6,
+      "previous": [
+        40,
+        68
+      ],
+      "handGrip": [
+        42,
+        67
+      ]
+    },
+    {
+      "item": "thornweapon",
+      "direction": 7,
+      "previous": [
+        32,
+        70
+      ],
+      "handGrip": [
+        30,
+        70
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 0,
+      "previous": [
+        43,
+        69
+      ],
+      "handGrip": [
+        44,
+        72
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 1,
+      "previous": [
+        35,
+        69
+      ],
+      "handGrip": [
+        35,
+        72
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 2,
+      "previous": [
+        36,
+        69
+      ],
+      "handGrip": [
+        35,
+        72
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 3,
+      "previous": [
+        38,
+        69
+      ],
+      "handGrip": [
+        37,
+        72
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 4,
+      "previous": [
+        49,
+        69
+      ],
+      "handGrip": [
+        50,
+        72
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 5,
+      "previous": [
+        61,
+        69
+      ],
+      "handGrip": [
+        63,
+        71
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 6,
+      "previous": [
+        61,
+        69
+      ],
+      "handGrip": [
+        63,
+        71
+      ]
+    },
+    {
+      "item": "staff1",
+      "direction": 7,
+      "previous": [
+        51,
+        69
+      ],
+      "handGrip": [
+        50,
+        73
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 0,
+      "previous": [
+        39,
+        71
+      ],
+      "handGrip": [
+        40,
+        68
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 1,
+      "previous": [
+        38,
+        72
+      ],
+      "handGrip": [
+        36,
+        74
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 2,
+      "previous": [
+        35,
+        72
+      ],
+      "handGrip": [
+        34,
+        74
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 3,
+      "previous": [
+        41,
+        71
+      ],
+      "handGrip": [
+        41,
+        68
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 4,
+      "previous": [
+        43,
+        71
+      ],
+      "handGrip": [
+        43,
+        74
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 5,
+      "previous": [
+        59,
+        71
+      ],
+      "handGrip": [
+        61,
+        73
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 6,
+      "previous": [
+        58,
+        72
+      ],
+      "handGrip": [
+        59,
+        74
+      ]
+    },
+    {
+      "item": "staff2",
+      "direction": 7,
+      "previous": [
+        57,
+        71
+      ],
+      "handGrip": [
+        58,
+        73
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 0,
+      "previous": [
+        45,
+        61
+      ],
+      "handGrip": [
+        46,
+        62
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 1,
+      "previous": [
+        43,
+        62
+      ],
+      "handGrip": [
+        43,
+        60
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 2,
+      "previous": [
+        44,
+        63
+      ],
+      "handGrip": [
+        44,
+        65
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 3,
+      "previous": [
+        40,
+        61
+      ],
+      "handGrip": [
+        39,
+        62
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        56
+      ],
+      "handGrip": [
+        49,
+        54
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 5,
+      "previous": [
+        36,
+        63
+      ],
+      "handGrip": [
+        37,
+        64
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 6,
+      "previous": [
+        40,
+        67
+      ],
+      "handGrip": [
+        38,
+        68
+      ]
+    },
+    {
+      "item": "moonweapon",
+      "direction": 7,
+      "previous": [
+        42,
+        65
+      ],
+      "handGrip": [
+        44,
+        65
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 0,
+      "previous": [
+        42,
+        61
+      ],
+      "handGrip": [
+        42,
+        63
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 1,
+      "previous": [
+        41,
+        62
+      ],
+      "handGrip": [
+        41,
+        60
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 2,
+      "previous": [
+        40,
+        63
+      ],
+      "handGrip": [
+        42,
+        64
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 3,
+      "previous": [
+        39,
+        60
+      ],
+      "handGrip": [
+        40,
+        61
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        56
+      ],
+      "handGrip": [
+        50,
+        56
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 5,
+      "previous": [
+        36,
+        63
+      ],
+      "handGrip": [
+        34,
+        63
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 6,
+      "previous": [
+        39,
+        67
+      ],
+      "handGrip": [
+        37,
+        68
+      ]
+    },
+    {
+      "item": "bloomweapon",
+      "direction": 7,
+      "previous": [
+        39,
+        64
+      ],
+      "handGrip": [
+        40,
+        65
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 0,
+      "previous": [
+        43,
+        70
+      ],
+      "handGrip": [
+        43,
+        70
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 1,
+      "previous": [
+        39,
+        71
+      ],
+      "handGrip": [
+        39,
+        71
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 2,
+      "previous": [
+        37,
+        72
+      ],
+      "handGrip": [
+        37,
+        72
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 3,
+      "previous": [
+        40,
+        72
+      ],
+      "handGrip": [
+        40,
+        72
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 4,
+      "previous": [
+        46,
+        70
+      ],
+      "handGrip": [
+        46,
+        70
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 5,
+      "previous": [
+        57,
+        72
+      ],
+      "handGrip": [
+        57,
+        72
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 6,
+      "previous": [
+        61,
+        72
+      ],
+      "handGrip": [
+        60,
+        72
+      ]
+    },
+    {
+      "item": "wand1",
+      "direction": 7,
+      "previous": [
+        57,
+        72
+      ],
+      "handGrip": [
+        56,
+        72
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 0,
+      "previous": [
+        42,
+        75
+      ],
+      "handGrip": [
+        42,
+        75
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 1,
+      "previous": [
+        36,
+        74
+      ],
+      "handGrip": [
+        36,
+        74
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 2,
+      "previous": [
+        42,
+        74
+      ],
+      "handGrip": [
+        42,
+        74
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 3,
+      "previous": [
+        38,
+        75
+      ],
+      "handGrip": [
+        38,
+        75
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 4,
+      "previous": [
+        49,
+        74
+      ],
+      "handGrip": [
+        49,
+        74
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 5,
+      "previous": [
+        52,
+        75
+      ],
+      "handGrip": [
+        52,
+        75
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 6,
+      "previous": [
+        59,
+        74
+      ],
+      "handGrip": [
+        59,
+        74
+      ]
+    },
+    {
+      "item": "wand2",
+      "direction": 7,
+      "previous": [
+        54,
+        74
+      ],
+      "handGrip": [
+        54,
+        74
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 0,
+      "previous": [
+        46,
+        57
+      ],
+      "handGrip": [
+        47,
+        58
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 1,
+      "previous": [
+        46,
+        54
+      ],
+      "handGrip": [
+        48,
+        54
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 2,
+      "previous": [
+        41,
+        55
+      ],
+      "handGrip": [
+        43,
+        54
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 3,
+      "previous": [
+        36,
+        53
+      ],
+      "handGrip": [
+        37,
+        54
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        55
+      ],
+      "handGrip": [
+        49,
+        56
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 5,
+      "previous": [
+        35,
+        53
+      ],
+      "handGrip": [
+        36,
+        54
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 6,
+      "previous": [
+        41,
+        55
+      ],
+      "handGrip": [
+        42,
+        53
+      ]
+    },
+    {
+      "item": "flowerweapon",
+      "direction": 7,
+      "previous": [
+        44,
+        56
+      ],
+      "handGrip": [
+        45,
+        57
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 0,
+      "previous": [
+        43,
+        57
+      ],
+      "handGrip": [
+        43,
+        59
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 1,
+      "previous": [
+        42,
+        54
+      ],
+      "handGrip": [
+        43,
+        55
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 2,
+      "previous": [
+        42,
+        55
+      ],
+      "handGrip": [
+        41,
+        53
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 3,
+      "previous": [
+        38,
+        53
+      ],
+      "handGrip": [
+        39,
+        54
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 4,
+      "previous": [
+        48,
+        55
+      ],
+      "handGrip": [
+        48,
+        57
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 5,
+      "previous": [
+        36,
+        53
+      ],
+      "handGrip": [
+        36,
+        55
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 6,
+      "previous": [
+        41,
+        55
+      ],
+      "handGrip": [
+        43,
+        55
+      ]
+    },
+    {
+      "item": "venomweapon",
+      "direction": 7,
+      "previous": [
+        42,
+        56
+      ],
+      "handGrip": [
+        43,
+        57
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 0,
+      "previous": [
+        41,
+        68
+      ],
+      "handGrip": [
+        41,
+        71
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 1,
+      "previous": [
+        41,
+        68
+      ],
+      "handGrip": [
+        41,
+        70
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 2,
+      "previous": [
+        38,
+        68
+      ],
+      "handGrip": [
+        38,
+        71
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 3,
+      "previous": [
+        39,
+        69
+      ],
+      "handGrip": [
+        37,
+        71
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 4,
+      "previous": [
+        50,
+        68
+      ],
+      "handGrip": [
+        52,
+        68
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 5,
+      "previous": [
+        56,
+        69
+      ],
+      "handGrip": [
+        56,
+        71
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 6,
+      "previous": [
+        58,
+        68
+      ],
+      "handGrip": [
+        58,
+        71
+      ]
+    },
+    {
+      "item": "spearlv5",
+      "direction": 7,
+      "previous": [
+        55,
+        68
+      ],
+      "handGrip": [
+        55,
+        71
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 0,
+      "previous": [
+        44,
+        68
+      ],
+      "handGrip": [
+        44,
+        71
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 1,
+      "previous": [
+        41,
+        68
+      ],
+      "handGrip": [
+        41,
+        71
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 2,
+      "previous": [
+        37,
+        69
+      ],
+      "handGrip": [
+        37,
+        66
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 3,
+      "previous": [
+        38,
+        69
+      ],
+      "handGrip": [
+        38,
+        72
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 4,
+      "previous": [
+        48,
+        69
+      ],
+      "handGrip": [
+        48,
+        72
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 5,
+      "previous": [
+        57,
+        69
+      ],
+      "handGrip": [
+        59,
+        68
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 6,
+      "previous": [
+        58,
+        69
+      ],
+      "handGrip": [
+        58,
+        71
+      ]
+    },
+    {
+      "item": "spearlv10",
+      "direction": 7,
+      "previous": [
+        54,
+        68
+      ],
+      "handGrip": [
+        54,
+        71
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 0,
+      "previous": [
+        44,
+        68
+      ],
+      "handGrip": [
+        43,
+        71
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 1,
+      "previous": [
+        41,
+        67
+      ],
+      "handGrip": [
+        39,
+        69
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 2,
+      "previous": [
+        37,
+        68
+      ],
+      "handGrip": [
+        35,
+        70
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 3,
+      "previous": [
+        37,
+        68
+      ],
+      "handGrip": [
+        37,
+        71
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 4,
+      "previous": [
+        49,
+        68
+      ],
+      "handGrip": [
+        49,
+        65
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 5,
+      "previous": [
+        55,
+        67
+      ],
+      "handGrip": [
+        57,
+        69
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 6,
+      "previous": [
+        59,
+        68
+      ],
+      "handGrip": [
+        61,
+        69
+      ]
+    },
+    {
+      "item": "spearlv20",
+      "direction": 7,
+      "previous": [
+        54,
+        68
+      ],
+      "handGrip": [
+        54,
+        71
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 0,
+      "previous": [
+        39,
+        70
+      ],
+      "handGrip": [
+        42,
+        70
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 1,
+      "previous": [
+        40,
+        66
+      ],
+      "handGrip": [
+        40,
+        63
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 2,
+      "previous": [
+        37,
+        68
+      ],
+      "handGrip": [
+        36,
+        70
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 3,
+      "previous": [
+        39,
+        68
+      ],
+      "handGrip": [
+        37,
+        70
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 4,
+      "previous": [
+        49,
+        69
+      ],
+      "handGrip": [
+        49,
+        72
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 5,
+      "previous": [
+        56,
+        67
+      ],
+      "handGrip": [
+        58,
+        69
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 6,
+      "previous": [
+        58,
+        67
+      ],
+      "handGrip": [
+        58,
+        70
+      ]
+    },
+    {
+      "item": "spearlv25",
+      "direction": 7,
+      "previous": [
+        56,
+        70
+      ],
+      "handGrip": [
+        53,
+        70
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 0,
+      "previous": [
+        39,
+        68
+      ],
+      "handGrip": [
+        41,
+        66
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 1,
+      "previous": [
+        39,
+        68
+      ],
+      "handGrip": [
+        39,
+        70
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 2,
+      "previous": [
+        38,
+        69
+      ],
+      "handGrip": [
+        40,
+        67
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 3,
+      "previous": [
+        40,
+        68
+      ],
+      "handGrip": [
+        40,
+        70
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 4,
+      "previous": [
+        48,
+        68
+      ],
+      "handGrip": [
+        50,
+        68
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 5,
+      "previous": [
+        56,
+        68
+      ],
+      "handGrip": [
+        57,
+        70
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 6,
+      "previous": [
+        59,
+        69
+      ],
+      "handGrip": [
+        59,
+        71
+      ]
+    },
+    {
+      "item": "spearlv30",
+      "direction": 7,
+      "previous": [
+        56,
+        68
+      ],
+      "handGrip": [
+        58,
+        67
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 0,
+      "previous": [
+        48,
+        70
+      ],
+      "handGrip": [
+        48,
+        73
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 1,
+      "previous": [
+        36,
+        70
+      ],
+      "handGrip": [
+        38,
+        72
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 2,
+      "previous": [
+        37,
+        70
+      ],
+      "handGrip": [
+        37,
+        73
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 3,
+      "previous": [
+        39,
+        70
+      ],
+      "handGrip": [
+        41,
+        72
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 4,
+      "previous": [
+        48,
+        70
+      ],
+      "handGrip": [
+        49,
+        73
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 5,
+      "previous": [
+        61,
+        69
+      ],
+      "handGrip": [
+        61,
+        66
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 6,
+      "previous": [
+        59,
+        70
+      ],
+      "handGrip": [
+        57,
+        72
+      ]
+    },
+    {
+      "item": "stafflv5",
+      "direction": 7,
+      "previous": [
+        47,
+        70
+      ],
+      "handGrip": [
+        47,
+        73
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 0,
+      "previous": [
+        46,
+        70
+      ],
+      "handGrip": [
+        46,
+        67
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 1,
+      "previous": [
+        35,
+        70
+      ],
+      "handGrip": [
+        34,
+        72
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 2,
+      "previous": [
+        36,
+        70
+      ],
+      "handGrip": [
+        35,
+        72
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 3,
+      "previous": [
+        38,
+        69
+      ],
+      "handGrip": [
+        40,
+        67
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 4,
+      "previous": [
+        48,
+        70
+      ],
+      "handGrip": [
+        48,
+        73
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 5,
+      "previous": [
+        61,
+        69
+      ],
+      "handGrip": [
+        62,
+        72
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 6,
+      "previous": [
+        62,
+        70
+      ],
+      "handGrip": [
+        62,
+        72
+      ]
+    },
+    {
+      "item": "stafflv10",
+      "direction": 7,
+      "previous": [
+        50,
+        70
+      ],
+      "handGrip": [
+        50,
+        73
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 0,
+      "previous": [
+        38,
+        71
+      ],
+      "handGrip": [
+        40,
+        73
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 1,
+      "previous": [
+        32,
+        72
+      ],
+      "handGrip": [
+        32,
+        74
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 2,
+      "previous": [
+        36,
+        71
+      ],
+      "handGrip": [
+        34,
+        69
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 3,
+      "previous": [
+        39,
+        71
+      ],
+      "handGrip": [
+        41,
+        72
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 4,
+      "previous": [
+        50,
+        71
+      ],
+      "handGrip": [
+        47,
+        71
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 5,
+      "previous": [
+        60,
+        71
+      ],
+      "handGrip": [
+        62,
+        70
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 6,
+      "previous": [
+        62,
+        72
+      ],
+      "handGrip": [
+        62,
+        74
+      ]
+    },
+    {
+      "item": "stafflv20",
+      "direction": 7,
+      "previous": [
+        57,
+        71
+      ],
+      "handGrip": [
+        59,
+        70
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 0,
+      "previous": [
+        34,
+        73
+      ],
+      "handGrip": [
+        36,
+        75
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 1,
+      "previous": [
+        30,
+        73
+      ],
+      "handGrip": [
+        28,
+        75
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 2,
+      "previous": [
+        34,
+        71
+      ],
+      "handGrip": [
+        32,
+        73
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 3,
+      "previous": [
+        42,
+        71
+      ],
+      "handGrip": [
+        44,
+        72
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 4,
+      "previous": [
+        49,
+        71
+      ],
+      "handGrip": [
+        51,
+        71
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 5,
+      "previous": [
+        62,
+        71
+      ],
+      "handGrip": [
+        64,
+        70
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 6,
+      "previous": [
+        65,
+        73
+      ],
+      "handGrip": [
+        67,
+        75
+      ]
+    },
+    {
+      "item": "stafflv25",
+      "direction": 7,
+      "previous": [
+        62,
+        73
+      ],
+      "handGrip": [
+        62,
+        70
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 0,
+      "previous": [
+        35,
+        71
+      ],
+      "handGrip": [
+        35,
+        73
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 1,
+      "previous": [
+        32,
+        70
+      ],
+      "handGrip": [
+        34,
+        71
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 2,
+      "previous": [
+        37,
+        70
+      ],
+      "handGrip": [
+        36,
+        72
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 3,
+      "previous": [
+        38,
+        71
+      ],
+      "handGrip": [
+        40,
+        71
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 4,
+      "previous": [
+        54,
+        70
+      ],
+      "handGrip": [
+        55,
+        72
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 5,
+      "previous": [
+        60,
+        70
+      ],
+      "handGrip": [
+        60,
+        72
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 6,
+      "previous": [
+        63,
+        70
+      ],
+      "handGrip": [
+        65,
+        71
+      ]
+    },
+    {
+      "item": "stafflv30",
+      "direction": 7,
+      "previous": [
+        62,
+        70
+      ],
+      "handGrip": [
+        63,
+        72
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 0,
+      "previous": [
+        41,
+        72
+      ],
+      "handGrip": [
+        41,
+        72
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 1,
+      "previous": [
+        38,
+        73
+      ],
+      "handGrip": [
+        38,
+        73
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 2,
+      "previous": [
+        39,
+        73
+      ],
+      "handGrip": [
+        39,
+        73
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 3,
+      "previous": [
+        39,
+        73
+      ],
+      "handGrip": [
+        39,
+        73
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 4,
+      "previous": [
+        50,
+        73
+      ],
+      "handGrip": [
+        50,
+        73
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 5,
+      "previous": [
+        57,
+        73
+      ],
+      "handGrip": [
+        57,
+        73
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 6,
+      "previous": [
+        58,
+        72
+      ],
+      "handGrip": [
+        58,
+        72
+      ]
+    },
+    {
+      "item": "wandlv5",
+      "direction": 7,
+      "previous": [
+        56,
+        73
+      ],
+      "handGrip": [
+        56,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 0,
+      "previous": [
+        40,
+        73
+      ],
+      "handGrip": [
+        40,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 1,
+      "previous": [
+        39,
+        75
+      ],
+      "handGrip": [
+        39,
+        75
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 2,
+      "previous": [
+        40,
+        73
+      ],
+      "handGrip": [
+        40,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 3,
+      "previous": [
+        36,
+        73
+      ],
+      "handGrip": [
+        36,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 4,
+      "previous": [
+        50,
+        73
+      ],
+      "handGrip": [
+        50,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 5,
+      "previous": [
+        58,
+        73
+      ],
+      "handGrip": [
+        58,
+        73
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 6,
+      "previous": [
+        57,
+        74
+      ],
+      "handGrip": [
+        57,
+        74
+      ]
+    },
+    {
+      "item": "wandlv10",
+      "direction": 7,
+      "previous": [
+        56,
+        74
+      ],
+      "handGrip": [
+        56,
+        74
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 0,
+      "previous": [
+        43,
+        72
+      ],
+      "handGrip": [
+        42,
+        72
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 1,
+      "previous": [
+        39,
+        72
+      ],
+      "handGrip": [
+        39,
+        72
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 2,
+      "previous": [
+        40,
+        73
+      ],
+      "handGrip": [
+        40,
+        73
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 3,
+      "previous": [
+        40,
+        74
+      ],
+      "handGrip": [
+        40,
+        73
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 4,
+      "previous": [
+        50,
+        73
+      ],
+      "handGrip": [
+        50,
+        73
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 5,
+      "previous": [
+        55,
+        74
+      ],
+      "handGrip": [
+        55,
+        74
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 6,
+      "previous": [
+        54,
+        74
+      ],
+      "handGrip": [
+        54,
+        74
+      ]
+    },
+    {
+      "item": "wandlv20",
+      "direction": 7,
+      "previous": [
+        53,
+        73
+      ],
+      "handGrip": [
+        53,
+        73
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 0,
+      "previous": [
+        37,
+        72
+      ],
+      "handGrip": [
+        37,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 1,
+      "previous": [
+        36,
+        72
+      ],
+      "handGrip": [
+        36,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 2,
+      "previous": [
+        39,
+        72
+      ],
+      "handGrip": [
+        39,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 3,
+      "previous": [
+        36,
+        72
+      ],
+      "handGrip": [
+        36,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 4,
+      "previous": [
+        48,
+        72
+      ],
+      "handGrip": [
+        48,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 5,
+      "previous": [
+        56,
+        71
+      ],
+      "handGrip": [
+        56,
+        71
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 6,
+      "previous": [
+        59,
+        72
+      ],
+      "handGrip": [
+        59,
+        72
+      ]
+    },
+    {
+      "item": "wandlv25",
+      "direction": 7,
+      "previous": [
+        58,
+        72
+      ],
+      "handGrip": [
+        58,
+        72
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 0,
+      "previous": [
+        34,
+        78
+      ],
+      "handGrip": [
+        34,
+        78
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 1,
+      "previous": [
+        35,
+        78
+      ],
+      "handGrip": [
+        35,
+        78
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 2,
+      "previous": [
+        36,
+        79
+      ],
+      "handGrip": [
+        36,
+        79
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 3,
+      "previous": [
+        33,
+        79
+      ],
+      "handGrip": [
+        33,
+        79
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 4,
+      "previous": [
+        47,
+        79
+      ],
+      "handGrip": [
+        47,
+        79
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 5,
+      "previous": [
+        61,
+        78
+      ],
+      "handGrip": [
+        61,
+        78
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 6,
+      "previous": [
+        62,
+        79
+      ],
+      "handGrip": [
+        62,
+        79
+      ]
+    },
+    {
+      "item": "wandlv30",
+      "direction": 7,
+      "previous": [
+        63,
+        78
+      ],
+      "handGrip": [
+        63,
+        78
+      ]
+    }
+  ]
+}

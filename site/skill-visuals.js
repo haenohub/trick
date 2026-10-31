@@ -1,4 +1,5 @@
 // One authored row per skill, including every second profession.
+import { EXTRA_SKILLS } from "./skill-expansion.js";
 const group = (cls, entries) =>
   entries.map(([key, name, mode, width, height, duration], row) => ({
     key,
@@ -9,6 +10,7 @@ const group = (cls, entries) =>
     width,
     height,
     duration,
+    slot: row < 3 ? row : 3,
   }));
 export const SKILL_VISUALS = Object.fromEntries(
   [
@@ -40,6 +42,21 @@ export const SKILL_VISUALS = Object.fromEntries(
       ["flower", "봄비 정원", "ground", 250, 230, 1.6],
       ["venom", "독꽃 반응", "ground", 240, 200, 0.95],
     ]),
+    ...Object.entries(EXTRA_SKILLS).flatMap(([classId, skills]) =>
+      skills.map((s, n) => ({
+        key: classId + "-" + (n + 4),
+        name: s.name,
+        classId,
+        slot: n + 4,
+        row: n,
+        atlas: "expanded",
+        mode:
+          s.shape === "line" ? "line" : s.mode === "self" ? "self" : "ground",
+        width: n === 0 ? 220 : 155,
+        height: n === 0 ? 170 : 145,
+        duration: n === 0 ? (classId === "mage" ? 1.5 : 1.05) : 0.85,
+      })),
+    ),
   ].map((v) => [v.key, v]),
 );
 export const skillVisual = (p, slot) =>

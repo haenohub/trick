@@ -6,7 +6,7 @@ import { addEquipmentTiers } from "./equipment-tiers.js";
 import { addConsumables } from "./consumables.js";
 import { addCraftingContent } from "./crafting.js";
 import { assignDropTables } from "./drop-tables.js";
-export const VERSION = "0.27.0";
+export const VERSION = "0.28.0";
 export const SAVE_KEY = "leaftale:save:v1";
 export const MAX_LEVEL = 80;
 export const CLASSES = [
@@ -1116,8 +1116,8 @@ export const QUESTS = [
     count: 1,
   },
 ].map((q, i) => ({ ...q, xp: 250 + i * 120, gold: 60 + i * 30 }));
-export const SKILL_COOLDOWNS = [3.2, 7, 10, 16];
-export const SKILL_COSTS = [12, 20, 25, 35];
+export const SKILL_COOLDOWNS = [3.2, 7, 10, 16, 11, 14];
+export const SKILL_COSTS = [12, 20, 25, 35, 24, 24];
 export const SLOT_NAMES = {
   weapon: "무기",
   armor: "방어구",

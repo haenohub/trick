@@ -41,21 +41,19 @@ export function equippedAppearance(art, classId, equipment) {
     item = ITEMS[id],
     held = art.appearance.weapons?.[id];
   if (
-    !item ||
-    item.slot !== "weapon" ||
-    (item.classId && item.classId !== classId) ||
-    !held ||
-    !available.has(held.file)
+    item?.slot === "weapon" &&
+    (!item.classId || item.classId === classId) &&
+    held &&
+    available.has(held.file)
   )
-    return null;
-  layers.push({
-    ...held,
-    held: true,
-    order: 50,
-    orderByDirection: [-10, -10, 50, 50, 50, 50, 50, -10],
-    slot: "weapon",
-    item: id,
-  });
+    layers.push({
+      ...held,
+      held: true,
+      order: 50,
+      orderByDirection: [-10, -10, 50, 50, 50, 50, 50, -10],
+      slot: "weapon",
+      item: id,
+    });
   if (base.handFile) {
     if (!available.has(base.handFile)) return null;
     layers.push({ file: base.handFile, order: 60, hands: true });

@@ -155,8 +155,8 @@ test("world map test travel reaches all ten unvisited maps during combat and sur
   assert.deepEqual(p.defeatedBosses, []);
   assert.equal(w.travel(p, "invalid", true), false);
 });
-test("each of twenty skills releases its dedicated generated animation at its actual effect point", () => {
-  assert.equal(Object.keys(SKILL_VISUALS).length, 20);
+test("each of twenty-eight skills releases its dedicated generated animation at its actual effect point", () => {
+  assert.equal(Object.keys(SKILL_VISUALS).length, 28);
   for (const visual of Object.values(SKILL_VISUALS)) {
     const w = new World(),
       p = w.addPlayer(createPlayer(visual.classId)),
@@ -186,6 +186,7 @@ test("new effects and all item icons have isolated native frames with no adjacen
   assert.equal(art.attackImpacts.cols, 13);
   for (const layout of [
     ...Object.values(art.skillEffects),
+    ...Object.values(art.expandedSkillEffects || {}),
     art.attackImpacts,
   ]) {
     const { pixels, width, height } = rgbaPixels(

@@ -4,6 +4,8 @@ export const CONTROL_ACTIONS = [
   ["skill1", "스킬 2", "KeyW"],
   ["skill2", "스킬 3", "KeyE"],
   ["skill3", "스킬 4", "KeyR"],
+  ["skill4", "스킬 5", "KeyD"],
+  ["skill5", "스킬 6", "KeyG"],
   ["pickup", "전리품 줍기 · 길게 누르면 연속", "Space"],
   ["attack", "기본 공격", "KeyA"],
   ["interact", "대화 · 채집 · 이동", "KeyF"],
@@ -170,6 +172,17 @@ export function restoreBindings(raw) {
         (code) => isAssignable(code) && !Object.values(raw).includes(code),
       ),
     };
+  for (const [action, preferred] of [
+    ["skill4", "KeyD"],
+    ["skill5", "KeyG"],
+  ])
+    if (!raw[action])
+      raw = {
+        ...raw,
+        [action]: [preferred, "KeyS", "KeyZ", ...KEYBOARD_ROWS.flat()].find(
+          (code) => isAssignable(code) && !Object.values(raw).includes(code),
+        ),
+      };
   // Migrate the previous default pair while retaining custom skill/menu keys.
   if (raw.pickup === "KeyA" && raw.attack === "Space")
     raw = { ...raw, pickup: "Space", attack: "KeyA" };

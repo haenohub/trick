@@ -1,0 +1,36 @@
+{
+  "release": "0.28.0",
+  "status": "complete",
+  "sources": [
+    {
+      "id": "warden",
+      "kind": "effects",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-e4c116c4-a474-406b-8a04-af4ecf8c3ae8.png"
+    },
+    {
+      "id": "mage",
+      "kind": "effects",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-950cec93-b89b-490b-bd8b-cb879d9209ba.png"
+    },
+    {
+      "id": "ranger",
+      "kind": "effects",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-07f12846-29ae-4b2a-8576-87c526ed2762.png"
+    },
+    {
+      "id": "herbalist",
+      "kind": "effects",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-378174ee-d4cf-4f4b-ac2c-af7acd73e3f9.png"
+    },
+    {
+      "id": "icons",
+      "kind": "icons",
+      "tool": "image_gen",
+      "source": "/workspace/generated_images/exec-7269dab2-0d39-4bde-be01-14ac7ffceee1.png"
+    }
+  ]
+}

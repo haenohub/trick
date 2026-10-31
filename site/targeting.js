@@ -1,5 +1,15 @@
 // One shared targeting contract for cursor previews and authoritative placement.
+import { extraSkill } from "./skill-expansion.js";
 export function combatAim(p, slot = null) {
+  const extra = extraSkill(p.classId, slot);
+  if (extra)
+    return {
+      mode: extra.mode,
+      range: extra.range,
+      radius: extra.radius,
+      ...(extra.shape ? { shape: extra.shape, length: extra.length } : {}),
+      ...(extra.mobility ? { mobility: true } : {}),
+    };
   const range =
     p.stats?.range ||
     { warden: 1.9, ranger: 11.25, mage: 6, herbalist: 6 }[p.classId] ||

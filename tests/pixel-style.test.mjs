@@ -33,6 +33,9 @@ test("all assets originate from generated artwork with clean transparent native 
       ...JSON.parse(await readFile("art/crafting-v26.json", "utf8")).sources,
       ...JSON.parse(await readFile("art/icon-refinement-v27.json", "utf8"))
         .sources,
+      ...JSON.parse(await readFile("art/skills-v28.json", "utf8")).sources,
+      ...JSON.parse(await readFile("art/bow-directions-v28.json", "utf8"))
+        .sources,
       ...JSON.parse(await readFile("art/diagonal-walk-v25.json", "utf8"))
         .sources,
       JSON.parse(await readFile("art/thorn-effect-v25.json", "utf8")),

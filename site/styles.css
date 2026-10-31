@@ -3191,6 +3191,10 @@ canvas.aiming {
 .craft-details-body {
   padding: 4px 0 8px;
 }
+.item-entry > .item-heading .item-icon {
+  width: 64px;
+  height: 64px;
+}
 @media (max-width: 600px) {
   .recipe-node {
     width: 76px;

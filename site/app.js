@@ -1,4 +1,10 @@
 import { combatAim } from "./targeting.js";
+import {
+  extraSkill,
+  SKILL_SLOTS,
+  SKILL_LEVELS,
+  skillUnlocked,
+} from "./skill-expansion.js";
 import { NAVIGATION } from "./world-layout.js";
 import { PickupHold } from "./pickup-hold.js";
 import {
@@ -232,13 +238,13 @@ function codexItemCard(item) {
   const sources = MONSTERS.filter((m) =>
     m.drops.some((d) => d.item === item.id),
   );
-  return `<article class="content-card item-entry" data-guide-entry="${item.id}"><div class="item-heading">${itemIcon(item.id)}<h3>${item.name}</h3></div><p>${item.lore}</p><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${equipmentStats(item)}${state?.player ? equipmentRequirements(item, state.player) : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
+  return `<article class="content-card item-entry" data-guide-entry="${item.id}"><div class="item-heading">${itemIcon(item.id, 64)}<h3>${item.name}</h3></div><p>${item.lore}</p><details class="craft-details item-details"><summary><span class="details-closed">상세정보 보기</span><span class="details-open">상세정보 접기</span></summary><div class="craft-details-body"><small>${item.slot ? SLOT_NAMES[item.slot] + " · Lv." + item.level : item.type === "trophy" ? "고유 전리품" : item.type === "consumable" ? "소비 아이템" : "제작 재료"}</small>${equipmentStats(item)}${state?.player ? equipmentRequirements(item, state.player) : ""}<p>${sources.length ? "드롭: " + sources.map((m) => m.name).join(", ") : item.recipe ? "제작 · 연금술로 획득" : item.type === "consumable" ? "마을 상점 · 시작 보급품" : "채집 · 시작 보급품"}</p>${
     item.recipe
       ? `<p>제작 재료: ${Object.entries(item.recipe)
           .map(([id, n]) => ITEMS[id].name + " ×" + n)
           .join(" · ")}</p>`
       : ""
-  }</article>`;
+  }</div></details></article>`;
 }
 function craftGuideCard(item, p) {
   const entries = Object.entries(item.recipe),
@@ -460,11 +466,17 @@ function abilityIcon(index) {
   return atlasIcon("items", 8, 8, index);
 }
 function skillIcon(slot) {
+  if (slot >= 4) {
+    const a = artMeta.expandedSkillIcons?.[cls().id]?.[slot - 4];
+    return a ? atlasIcon(a.file, a.cols, a.rows, a.index) : abilityIcon(44);
+  }
   return cls().id === "ranger" && slot === 1
     ? itemIcon("bow2")
     : abilityIcon(artMeta.skillIcons[cls().id][slot]);
 }
 function skillName(slot) {
+  const extra = extraSkill(cls().id, slot);
+  if (extra) return extra.name;
   return slot === 3
     ? cls().branches.find((b) => b.id === state?.player.branch)?.skill ||
         "전직 스킬"
@@ -474,12 +486,10 @@ function buildSkillbar() {
   if (!state) return;
   $("skillbar").innerHTML =
     `<button class="skill basic" data-action="attack" title="기본 공격 대상 지정 [${bindingLabel("attack")}]"><kbd>${bindingLabel("attack")}</kbd><span class="glyph">${abilityIcon(58)}</span><span class="skill-name">기본 공격</span></button>` +
-    [0, 1, 2, 3]
-      .map(
-        (n) =>
-          `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${bindingLabel("skill" + n)}]"><kbd>${bindingLabel("skill" + n)}</kbd><span class="glyph">${skillIcon(n)}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
-      )
-      .join("") +
+    SKILL_SLOTS.map(
+      (n) =>
+        `<button class="skill" data-action="skill" data-slot="${n}" title="${skillName(n)} [${bindingLabel("skill" + n)}]"><kbd>${bindingLabel("skill" + n)}</kbd><span class="glyph">${skillIcon(n)}</span><span class="skill-name">${skillName(n)}</span><span class="cooldown" id="cooldown-${n}" hidden></span></button>`,
+    ).join("") +
     `<button class="skill potion" data-action="potion" title="보들잎 연고 [${bindingLabel("potion")}]"><kbd>${bindingLabel("potion")}</kbd><span class="glyph">${abilityIcon(59)}</span><span class="skill-name">연고</span><span class="count" id="salve-count"></span><span class="cooldown" id="potion-cooldown" hidden></span></button>`;
 }
 function hud() {
@@ -555,18 +565,15 @@ function hud() {
   $("xp-text").textContent =
     `Lv.${p.level} · ${p.xp} / ${xpNeeded(p.level)} EXP`;
   $("salve-count").textContent = p.inventory.salve || 0;
-  for (let i = 0; i < 4; i++) {
+  for (const i of SKILL_SLOTS) {
     const e = $("cooldown-" + i),
-      locked =
-        (i === 1 && p.level < 4) ||
-        (i === 2 && p.level < 8) ||
-        (i === 3 && !p.branch);
+      locked = !skillUnlocked(p, i);
     e.parentElement.classList.toggle("is-locked", locked);
     e.hidden = !locked && p.cooldowns[i] <= 0;
     e.textContent = locked
       ? i === 3
         ? "전직"
-        : `Lv.${i === 1 ? 4 : 8}`
+        : `Lv.${SKILL_LEVELS[i]}`
       : Math.ceil(p.cooldowns[i]);
   }
   $("potion-cooldown").hidden = p.potionCooldown <= 0;
@@ -814,7 +821,7 @@ function renderPanel() {
       [bindingLabel("attack") + " → 몬스터 클릭", "대상에게 연속 기본공격"],
       [bindingLabel("attack") + " → 바닥 클릭", "공격·추적·시전 예약 중단"],
       [
-        [0, 1, 2, 3].map((n) => bindingLabel("skill" + n)).join(" · "),
+        SKILL_SLOTS.map((n) => bindingLabel("skill" + n)).join(" · "),
         "직업 스킬",
       ],
       [
@@ -841,7 +848,7 @@ function renderPanel() {
       )
       .join(
         "",
-      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 ${bindingLabel("interact")} → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">숨은 숲길</h3><p class="panel-intro">길가의 반짝이는 기록을 조사하면 샛길의 단서를 얻습니다. 보물함은 클릭하거나 가까이에서 ${bindingLabel("interact")}로 열고, 떨어진 보물을 클릭해 가져가세요. 지도(M)에 발견 기록이 남습니다. 보스 맵의 보물함은 수호자를 진정시킨 뒤 열립니다.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 레벨 25에는 조개등 마을의 은잎의 스승에게 2차 전직을 선택하세요.</p>`;
+      )}</div><h3 class="panel-section">첫 번째 모험</h3><p class="panel-intro">마을 오른쪽의 새싹 울타리 표식에서 ${bindingLabel("interact")} → 몬스터 3마리 진정시키기 → 이야기 보상 받기 → 반짝이는 약초 채집 → 마을에서 연고 제작. 보스의 붉은 공격 범위는 발을 옮겨 피하세요.</p><h3 class="panel-section">숨은 숲길</h3><p class="panel-intro">길가의 반짝이는 기록을 조사하면 샛길의 단서를 얻습니다. 보물함은 클릭하거나 가까이에서 ${bindingLabel("interact")}로 열고, 떨어진 보물을 클릭해 가져가세요. 지도(M)에 발견 기록이 남습니다. 보스 맵의 보물함은 수호자를 진정시킨 뒤 열립니다.</p><h3 class="panel-section">함께 걷기와 저장</h3><p class="panel-intro">기본 모험은 이 브라우저에 자동 저장됩니다. 설정에서 파일로 내보내 보관할 수 있습니다. 실시간 동행은 별도 게임 서버 연결이 필요하며 설정에서 연결할 수 있습니다. 이 사이트 자체는 GitHub Pages에서 실행됩니다.</p><h3 class="panel-section">재료와 전직</h3><p class="panel-intro">모든 직업이 채집·제작·연금술을 이용합니다. 마을에서 기운을 무료로 회복할 수 있습니다. 테스트 서버에서는 레벨 25부터 장소에 관계없이 직업 창(C)에서 2차 전직을 선택하거나 변경할 수 있습니다.</p>`;
   } else if (!p) {
     title = "잠시만요";
     html = '<p class="panel-intro">모험을 시작한 뒤 이용할 수 있습니다.</p>';
@@ -1021,7 +1028,7 @@ function renderPanel() {
           .join("")}</div>`;
   } else if (panel === "skills") {
     title = displayClass();
-    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${[0, 1, 2, 3].map((n) => `<div class="skill-row"><span class="skill-glyph">${skillIcon(n)}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다."}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${n === 1 ? 4 : 8} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">레벨 25에 조개등 마을에서 선택합니다. 선택한 길은 되돌릴 수 없으니 천천히 살펴보세요.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.branch || p.level < 25 || p.map !== "shelltown" ? "disabled" : ""}>${p.branch === b.id ? "선택한 길" : p.branch ? "다른 길" : p.level < 25 ? "레벨 25 필요" : p.map !== "shelltown" ? "조개등 마을에서 선택" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
+    html = `<p class="panel-intro">${c.description}</p><h3 class="panel-section">${CLASS_TACTICS[c.id].name}</h3><p class="panel-intro">${CLASS_TACTICS[c.id].text}</p><div class="panel-meta"><span class="tag">Lv.${p.level}</span><span class="tag">공격 ${Math.floor(p.stats.attack)}</span><span class="tag">방어 ${Math.floor(p.stats.defense)}</span><span class="tag">약초 숙련 ${Math.floor(p.herbXp / 40) + 1}</span></div>${playerStats(p)}<h3 class="panel-section">전투 기술</h3>${SKILL_SLOTS.map((n) => `<div class="skill-row"><span class="skill-glyph">${skillIcon(n)}</span><div><h3>${n + 1}. ${skillName(n)}</h3><p>${extraSkill(c.id, n)?.description || (n < 3 ? skillDescriptions[c.id][n] : c.branches.find((b) => b.id === p.branch)?.description || "레벨 25에 전직하면 각자의 길을 대표하는 기술을 배웁니다.")}</p><small>집중 ${SKILL_COSTS[n]} · 재사용 ${SKILL_COOLDOWNS[n]}초 · ${n === 0 ? "처음부터 사용" : n === 3 ? "2차 전직 후 사용" : `레벨 ${SKILL_LEVELS[n]} 해금`}</small></div></div>`).join("")}<h3 class="panel-section">두 번째 숲길 · 2차 전직</h3><p class="panel-intro">테스트 서버에서는 레벨 25부터 어디서든 전직을 선택하거나 변경할 수 있습니다. 변경해도 체력·집중력·재사용 시간은 충전되지 않습니다. 이전 전직 전용 장비는 해제하고 가방에 보관합니다.</p><div class="card-grid">${c.branches.map((b) => `<article class="content-card branch-card ${p.branch === b.id ? "chosen" : ""}"><h3>${b.name}</h3><p>${b.description}</p><small class="equipped">전용 기술 · ${b.skill}</small><div class="actions"><button data-action="subclass" data-branch="${b.id}" ${p.level < 25 || p.branch === b.id ? "disabled" : ""}>${p.branch === b.id ? "현재 전직" : p.level < 25 ? "레벨 25 필요" : p.branch ? "이 전직으로 변경" : "이 길을 선택"}</button></div></article>`).join("")}</div>`;
   } else if (panel?.startsWith("npc:")) {
     const n = NPCS.find((n) => n.id === panel.split(":")[1]);
     title = n.name;
@@ -1286,11 +1293,6 @@ function panelClick(e) {
     special(b.dataset.special);
     return;
   }
-  if (
-    b.dataset.action === "subclass" &&
-    !confirm("이 길을 선택하면 바꿀 수 없습니다. 전직할까요?")
-  )
-    return;
   if (b.dataset.action === "allocateStat") {
     const amount = Number(
       b.dataset.amount ??
@@ -1777,7 +1779,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.27.0",
+  version: "0.28.0",
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },
