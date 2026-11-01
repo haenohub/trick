@@ -679,7 +679,8 @@
     "appearance/tier-bow-v28",
     "appearance/registered-spear-v31",
     "appearance/registered-wand-v31",
-    "appearance/registered-bow-v31"
+    "appearance/registered-bow-v31",
+    "appearance/registered-bow-diagonals-v32"
   ],
   "monsters": {
     "m1": {
@@ -35764,7 +35765,7 @@
             {
               "hand": [
                 26,
-                67
+                66
               ],
               "angle": 0,
               "head": [
@@ -35785,7 +35786,7 @@
             {
               "hand": [
                 11,
-                45
+                44
               ],
               "angle": 0,
               "head": [
@@ -35806,7 +35807,7 @@
             {
               "hand": [
                 7,
-                45
+                44
               ],
               "angle": 0,
               "head": [
@@ -35827,7 +35828,7 @@
             {
               "hand": [
                 22,
-                65
+                64
               ],
               "angle": 0,
               "head": [
@@ -35847,8 +35848,8 @@
             },
             {
               "hand": [
-                31,
-                91
+                26,
+                66
               ],
               "angle": 0,
               "head": [
@@ -35868,8 +35869,8 @@
             },
             {
               "hand": [
-                29,
-                91
+                26,
+                67
               ],
               "angle": 0,
               "head": [
@@ -35890,7 +35891,7 @@
             {
               "hand": [
                 26,
-                67
+                66
               ],
               "angle": 0,
               "head": [
@@ -35952,8 +35953,8 @@
             },
             {
               "hand": [
-                29,
-                91
+                28,
+                67
               ],
               "angle": 0,
               "head": [
@@ -36268,7 +36269,49 @@
             {
               "hand": [
                 27,
-                70
+                68
+              ],
+              "angle": 0,
+              "head": [
+                49,
+                33
+              ],
+              "torso": [
+                49,
+                62
+              ],
+              "feet": [
+                48,
+                92
+              ],
+              "measured": true,
+              "calibration": "authored-palm-marker"
+            },
+            {
+              "hand": [
+                28,
+                69
+              ],
+              "angle": 0,
+              "head": [
+                49,
+                32
+              ],
+              "torso": [
+                49,
+                62
+              ],
+              "feet": [
+                48,
+                92
+              ],
+              "measured": true,
+              "calibration": "authored-palm-marker"
+            },
+            {
+              "hand": [
+                28,
+                68
               ],
               "angle": 0,
               "head": [
@@ -36309,8 +36352,50 @@
             },
             {
               "hand": [
+                27,
+                68
+              ],
+              "angle": 0,
+              "head": [
+                49,
+                32
+              ],
+              "torso": [
+                49,
+                62
+              ],
+              "feet": [
+                48,
+                92
+              ],
+              "measured": true,
+              "calibration": "authored-palm-marker"
+            },
+            {
+              "hand": [
                 28,
-                70
+                69
+              ],
+              "angle": 0,
+              "head": [
+                49,
+                32
+              ],
+              "torso": [
+                49,
+                62
+              ],
+              "feet": [
+                48,
+                92
+              ],
+              "measured": true,
+              "calibration": "authored-palm-marker"
+            },
+            {
+              "hand": [
+                28,
+                68
               ],
               "angle": 0,
               "head": [
@@ -36332,90 +36417,6 @@
               "hand": [
                 28,
                 70
-              ],
-              "angle": 0,
-              "head": [
-                49,
-                32
-              ],
-              "torso": [
-                49,
-                62
-              ],
-              "feet": [
-                48,
-                92
-              ],
-              "measured": true,
-              "calibration": "authored-palm-marker"
-            },
-            {
-              "hand": [
-                32,
-                91
-              ],
-              "angle": 0,
-              "head": [
-                49,
-                32
-              ],
-              "torso": [
-                49,
-                62
-              ],
-              "feet": [
-                48,
-                92
-              ],
-              "measured": true,
-              "calibration": "authored-palm-marker"
-            },
-            {
-              "hand": [
-                30,
-                91
-              ],
-              "angle": 0,
-              "head": [
-                49,
-                32
-              ],
-              "torso": [
-                49,
-                62
-              ],
-              "feet": [
-                48,
-                92
-              ],
-              "measured": true,
-              "calibration": "authored-palm-marker"
-            },
-            {
-              "hand": [
-                29,
-                91
-              ],
-              "angle": 0,
-              "head": [
-                49,
-                33
-              ],
-              "torso": [
-                49,
-                62
-              ],
-              "feet": [
-                48,
-                92
-              ],
-              "measured": true,
-              "calibration": "authored-palm-marker"
-            },
-            {
-              "hand": [
-                29,
-                91
               ],
               "angle": 0,
               "head": [
@@ -45896,7 +45897,7 @@
                 ],
                 "hand": [
                   26,
-                  67
+                  66
                 ],
                 "pose": "ready",
                 "depth": "behind",
@@ -45907,17 +45908,17 @@
                     0,
                     573,
                     268,
-                    256
+                    265
                   ],
                   "sourceGround": [
-                    142.1578947368421,
-                    250.09022556390977
+                    142.22424242424242,
+                    251.9151515151515
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     -1,
-                    6
+                    5
                   ]
                 },
                 "reviewed": true
@@ -45943,7 +45944,7 @@
                 ],
                 "hand": [
                   11,
-                  45
+                  44
                 ],
                 "pose": "windup",
                 "depth": "behind",
@@ -45954,17 +45955,17 @@
                     268,
                     573,
                     252,
-                    256
+                    265
                   ],
                   "sourceGround": [
-                    124.98620689655172,
-                    250.17241379310346
+                    124.94475138121547,
+                    251.98342541436463
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     5,
-                    6
+                    5
                   ]
                 },
                 "reviewed": true
@@ -45990,7 +45991,7 @@
                 ],
                 "hand": [
                   7,
-                  45
+                  44
                 ],
                 "pose": "windup",
                 "depth": "behind",
@@ -46001,17 +46002,17 @@
                     520,
                     573,
                     264,
-                    256
+                    265
                   ],
                   "sourceGround": [
-                    123.85135135135135,
-                    250.24324324324326
+                    123.78888888888889,
+                    251.88888888888889
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     5,
-                    6
+                    5
                   ]
                 },
                 "reviewed": true
@@ -46037,7 +46038,7 @@
                 ],
                 "hand": [
                   22,
-                  65
+                  64
                 ],
                 "pose": "strike",
                 "depth": "behind",
@@ -46048,17 +46049,17 @@
                     784,
                     573,
                     240,
-                    256
+                    265
                   ],
                   "sourceGround": [
-                    112.72027972027972,
-                    250.32167832167832
+                    112.68,
+                    252
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     9,
-                    6
+                    5
                   ]
                 },
                 "reviewed": true
@@ -46083,8 +46084,8 @@
                   92
                 ],
                 "hand": [
-                  31,
-                  91
+                  26,
+                  66
                 ],
                 "pose": "strike",
                 "depth": "behind",
@@ -46093,66 +46094,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     0,
-                    829,
+                    838,
                     268,
-                    242
+                    263
                   ],
                   "sourceGround": [
-                    128,
-                    181
+                    142.10588235294117,
+                    248.1
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    4,
-                    30
-                  ]
-                },
-                "reviewed": true
-              },
-              {
-                "sourceSize": [
-                  96,
-                  96
-                ],
-                "trim": [
-                  0,
-                  0,
-                  96,
-                  96
-                ],
-                "offset": [
-                  0,
-                  0
-                ],
-                "ground": [
-                  48,
-                  92
-                ],
-                "hand": [
-                  29,
-                  91
-                ],
-                "pose": "follow",
-                "depth": "behind",
-                "handMask": true,
-                "registration": {
-                  "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
-                  "sourceRect": [
-                    268,
-                    829,
-                    252,
-                    242
-                  ],
-                  "sourceGround": [
-                    116,
-                    181
-                  ],
-                  "groundMethod": "logical-canvas-guide",
-                  "scale": 0.34375,
-                  "offset": [
-                    8,
-                    30
+                    -1,
+                    7
                   ]
                 },
                 "reviewed": true
@@ -46180,6 +46134,53 @@
                   26,
                   67
                 ],
+                "pose": "follow",
+                "depth": "behind",
+                "handMask": true,
+                "registration": {
+                  "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
+                  "sourceRect": [
+                    268,
+                    838,
+                    252,
+                    263
+                  ],
+                  "sourceGround": [
+                    124.77707006369427,
+                    247.9936305732484
+                  ],
+                  "groundMethod": "marker",
+                  "scale": 0.34375,
+                  "offset": [
+                    5,
+                    7
+                  ]
+                },
+                "reviewed": true
+              },
+              {
+                "sourceSize": [
+                  96,
+                  96
+                ],
+                "trim": [
+                  0,
+                  0,
+                  96,
+                  96
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "ground": [
+                  48,
+                  92
+                ],
+                "hand": [
+                  26,
+                  66
+                ],
                 "pose": "ready",
                 "depth": "behind",
                 "handMask": true,
@@ -46189,17 +46190,17 @@
                     0,
                     573,
                     268,
-                    256
+                    265
                   ],
                   "sourceGround": [
-                    142.1578947368421,
-                    250.09022556390977
+                    142.22424242424242,
+                    251.9151515151515
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     -1,
-                    6
+                    5
                   ]
                 },
                 "reviewed": true
@@ -46278,8 +46279,8 @@
                   92
                 ],
                 "hand": [
-                  29,
-                  91
+                  28,
+                  67
                 ],
                 "pose": "recover",
                 "depth": "behind",
@@ -46288,19 +46289,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     520,
-                    829,
+                    838,
                     264,
-                    242
+                    263
                   ],
                   "sourceGround": [
-                    120,
-                    181
+                    123.53703703703704,
+                    248.0493827160494
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    7,
-                    30
+                    6,
+                    7
                   ]
                 },
                 "reviewed": true
@@ -46864,7 +46865,7 @@
                 ],
                 "hand": [
                   27,
-                  70
+                  68
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -46873,19 +46874,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     0,
-                    1071,
+                    1101,
                     268,
-                    270
+                    249
                   ],
                   "sourceGround": [
-                    142,
-                    262.3888888888889
+                    141.99428571428572,
+                    234.2
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     -1,
-                    2
+                    11
                   ]
                 },
                 "reviewed": true
@@ -46911,7 +46912,7 @@
                 ],
                 "hand": [
                   28,
-                  70
+                  69
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -46920,19 +46921,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     268,
-                    1071,
+                    1101,
                     252,
-                    270
+                    249
                   ],
                   "sourceGround": [
-                    124.43382352941177,
-                    262.49264705882354
+                    124.44375,
+                    233.99375
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     5,
-                    2
+                    12
                   ]
                 },
                 "reviewed": true
@@ -46958,7 +46959,7 @@
                 ],
                 "hand": [
                   28,
-                  70
+                  68
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -46967,19 +46968,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     520,
-                    1071,
+                    1101,
                     264,
-                    270
+                    249
                   ],
                   "sourceGround": [
-                    123.35606060606061,
-                    262.59090909090907
+                    123.38125,
+                    234.4125
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     6,
-                    2
+                    11
                   ]
                 },
                 "reviewed": true
@@ -47014,19 +47015,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     784,
-                    1071,
+                    1101,
                     240,
-                    270
+                    249
                   ],
                   "sourceGround": [
-                    112.16541353383458,
-                    262.5563909774436
+                    112.21656050955414,
+                    234.0764331210191
                   ],
                   "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
                     9,
-                    2
+                    12
                   ]
                 },
                 "reviewed": true
@@ -47051,8 +47052,8 @@
                   92
                 ],
                 "hand": [
-                  32,
-                  91
+                  27,
+                  68
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -47061,19 +47062,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     0,
-                    1341,
+                    1101,
                     268,
-                    195
+                    249
                   ],
                   "sourceGround": [
-                    128,
-                    181
+                    141.99428571428572,
+                    234.2
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    4,
-                    30
+                    -1,
+                    11
                   ]
                 },
                 "reviewed": true
@@ -47098,8 +47099,8 @@
                   92
                 ],
                 "hand": [
-                  30,
-                  91
+                  28,
+                  69
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -47108,19 +47109,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     268,
-                    1341,
+                    1101,
                     252,
-                    195
+                    249
                   ],
                   "sourceGround": [
-                    116,
-                    181
+                    124.44375,
+                    233.99375
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    8,
-                    30
+                    5,
+                    12
                   ]
                 },
                 "reviewed": true
@@ -47145,8 +47146,8 @@
                   92
                 ],
                 "hand": [
-                  29,
-                  91
+                  28,
+                  68
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -47155,19 +47156,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     520,
-                    1341,
+                    1101,
                     264,
-                    195
+                    249
                   ],
                   "sourceGround": [
-                    120,
-                    181
+                    123.38125,
+                    234.4125
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    7,
-                    30
+                    6,
+                    11
                   ]
                 },
                 "reviewed": true
@@ -47192,8 +47193,8 @@
                   92
                 ],
                 "hand": [
-                  29,
-                  91
+                  28,
+                  70
                 ],
                 "pose": "carry",
                 "depth": "behind",
@@ -47202,19 +47203,19 @@
                   "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png",
                   "sourceRect": [
                     784,
-                    1341,
+                    1101,
                     240,
-                    195
+                    249
                   ],
                   "sourceGround": [
-                    112,
-                    181
+                    112.21656050955414,
+                    234.0764331210191
                   ],
-                  "groundMethod": "logical-canvas-guide",
+                  "groundMethod": "marker",
                   "scale": 0.34375,
                   "offset": [
-                    10,
-                    30
+                    9,
+                    12
                   ]
                 },
                 "reviewed": true
@@ -87834,119 +87835,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.9055229705130753
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.00012480711562701252
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.00012480711562701252
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.00012480711562701252
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.00012480711562701252
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                85.09081726064585,
-                10.899923187811055
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.00012480711562701252
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
               "row": 0,
               "size": 96,
               "scale": 0.8,
-              "angle": -0.10669058601730019,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
               "grip": [
-                32.80724120346762,
-                50.55328913819479
+                51,
+                47
               ],
               "tip": [
-                70.8301886792453,
-                19.88679245283019
+                65.60674797674683,
+                36.758235495269574
               ],
               "nock": [
-                26.40449087790426,
-                53.78387650085763
+                32,
+                47
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                65.60674797674683,
+                36.758235495269574
+              ],
+              "nock": [
+                32,
+                47
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                65.60674797674683,
+                36.758235495269574
+              ],
+              "nock": [
+                32,
+                47
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                65.60674797674683,
+                36.758235495269574
+              ],
+              "nock": [
+                32,
+                47
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                65.60674797674683,
+                36.758235495269574
+              ],
+              "nock": [
+                32,
+                47
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.18674249310810706,
+              "forwardAxis": 0.9721406565055554,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                65.60674797674683,
+                36.758235495269574
+              ],
+              "nock": [
+                32,
+                47
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 1,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3388828015759864,
+              "forwardAxis": 1.1242809649734347,
+              "grip": [
+                63,
+                47
+              ],
+              "tip": [
+                77.5555703713581,
+                39.82665511034069
+              ],
+              "nock": [
+                19,
+                49
               ]
             }
           },
@@ -88542,125 +88574,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 2.2412637970299922
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.288254614017234
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.288254614017234
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.288254614017234
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.288254614017234
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 0,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                10.59266171792153,
-                10.970010604453876
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.288254614017234
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
               "row": 0,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.039082422274548924,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
               "grip": [
-                67.51854261548472,
-                51.7534157449577
+                46,
+                47
               ],
               "tip": [
-                25.3132075471698,
-                12.72452830188679
+                28.583891799683197,
+                36.0584866577312
               ],
               "nock": [
-                58.95849056603775,
-                50.0377358490566
+                66,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.583891799683197,
+                36.0584866577312
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.583891799683197,
+                36.0584866577312
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.583891799683197,
+                36.0584866577312
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.583891799683197,
+                36.0584866577312
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 0,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2326662772707617,
+              "forwardAxis": -1.0180644406682102,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.583891799683197,
+                36.0584866577312
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 1,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.35899568951942457,
+              "forwardAxis": -1.1443938529168727,
+              "grip": [
+                33,
+                47
+              ],
+              "tip": [
+                17.48458632874376,
+                39.55745095650056
+              ],
+              "nock": [
+                78,
+                49
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "bow2": {
         "file": "appearance/tier-bow-v28",
@@ -88889,119 +88953,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
+              "row": 2,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.9394039649504405
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 3,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
               "grip": [
-                48,
-                48
+                54,
+                47
               ],
               "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.034005801552992265
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.034005801552992265
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.034005801552992265
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.034005801552992265
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.32294172586533,
-                11.25955905244389
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.034005801552992265
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 1,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3536538939537244,
-              "grip": [
-                33.00752858072311,
-                51.0683148991542
-              ],
-              "tip": [
-                77.10463121783876,
-                30.751286449399657
+                67.32651321398126,
+                39.012787723785166
               ],
               "nock": [
-                17.55551142005959,
-                58.620059582919566
+                30,
+                47
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
+              "grip": [
+                54,
+                47
+              ],
+              "tip": [
+                67.32651321398126,
+                39.012787723785166
+              ],
+              "nock": [
+                30,
+                47
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
+              "grip": [
+                54,
+                47
+              ],
+              "tip": [
+                67.32651321398126,
+                39.012787723785166
+              ],
+              "nock": [
+                30,
+                47
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
+              "grip": [
+                54,
+                47
+              ],
+              "tip": [
+                67.32651321398126,
+                39.012787723785166
+              ],
+              "nock": [
+                30,
+                47
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
+              "grip": [
+                54,
+                47
+              ],
+              "tip": [
+                67.32651321398126,
+                39.012787723785166
+              ],
+              "nock": [
+                30,
+                47
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.24244327126869747,
+              "forwardAxis": 1.0278414346661457,
+              "grip": [
+                54,
+                47
+              ],
+              "tip": [
+                67.32651321398126,
+                39.012787723785166
+              ],
+              "nock": [
+                30,
+                47
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 3,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3401831430836706,
+              "forwardAxis": 1.1255813064811189,
+              "grip": [
+                65,
+                47
+              ],
+              "tip": [
+                79.83311374615721,
+                40.263504611330696
+              ],
+              "nock": [
+                17,
+                48
               ]
             }
           },
@@ -89597,125 +89692,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 3,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
               "grip": [
-                48,
+                41,
                 48
               ],
               "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 2.209110052273818
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.25610086926106
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.25610086926106
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.25610086926106
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.25610086926106
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 3,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.280569036281541,
-                11.34701443135178
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.25610086926106
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 1,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.07379194673636279,
-              "grip": [
-                61.79874213836476,
-                49.46483704974272
-              ],
-              "tip": [
-                22.206208155812522,
-                15.323189287888011
+                27.030814689742506,
+                38.80118193330519
               ],
               "nock": [
-                74.36801107841438,
-                59.62818071663494
+                65,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
+              "grip": [
+                41,
+                48
+              ],
+              "tip": [
+                27.030814689742506,
+                38.80118193330519
+              ],
+              "nock": [
+                65,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
+              "grip": [
+                41,
+                48
+              ],
+              "tip": [
+                27.030814689742506,
+                38.80118193330519
+              ],
+              "nock": [
+                65,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
+              "grip": [
+                41,
+                48
+              ],
+              "tip": [
+                27.030814689742506,
+                38.80118193330519
+              ],
+              "nock": [
+                65,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
+              "grip": [
+                41,
+                48
+              ],
+              "tip": [
+                27.030814689742506,
+                38.80118193330519
+              ],
+              "nock": [
+                65,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 2,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2270025774478863,
+              "forwardAxis": -1.012400740845335,
+              "grip": [
+                41,
+                48
+              ],
+              "tip": [
+                27.030814689742506,
+                38.80118193330519
+              ],
+              "nock": [
+                65,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 3,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.3319020987894772,
+              "forwardAxis": -1.117300262186926,
+              "grip": [
+                31,
+                48
+              ],
+              "tip": [
+                16.956521739130434,
+                40.608695652173914
+              ],
+              "nock": [
+                78,
+                48
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "hawkweapon": {
         "file": "appearance/tier-bow-v28",
@@ -89944,119 +90071,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
+              "row": 4,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.5323424079523659
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 7,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
               "grip": [
-                48,
-                48
+                53,
+                47
               ],
               "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3730557554450824
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3730557554450824
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3730557554450824
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3730557554450824
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.13727286608642,
-                37.44189952664529
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3730557554450824
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 2,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.20298110332309846,
-              "grip": [
-                39.451395671618776,
-                53.249575900889326
-              ],
-              "tip": [
-                81.35300467794171,
-                25.6519816994808
+                66.07266435986159,
+                37.5304003954523
               ],
               "nock": [
-                14.302523160995595,
-                61.401528412244375
+                30,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
+              "grip": [
+                53,
+                47
+              ],
+              "tip": [
+                66.07266435986159,
+                37.5304003954523
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
+              "grip": [
+                53,
+                47
+              ],
+              "tip": [
+                66.07266435986159,
+                37.5304003954523
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
+              "grip": [
+                53,
+                47
+              ],
+              "tip": [
+                66.07266435986159,
+                37.5304003954523
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
+              "grip": [
+                53,
+                47
+              ],
+              "tip": [
+                66.07266435986159,
+                37.5304003954523
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.16659261471828024,
+              "forwardAxis": 0.9519907781157285,
+              "grip": [
+                53,
+                47
+              ],
+              "tip": [
+                66.07266435986159,
+                37.5304003954523
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 5,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2377946616680675,
+              "forwardAxis": 1.0231928250655158,
+              "grip": [
+                64,
+                47
+              ],
+              "tip": [
+                77.52739558074272,
+                38.746042557829064
+              ],
+              "nock": [
+                19,
+                48
               ]
             }
           },
@@ -90652,125 +90810,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
+              "row": 4,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.577700593850234
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 7,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
               "grip": [
-                48,
-                48
+                43,
+                47
               ],
               "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.6246914108374755
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.6246914108374755
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.6246914108374755
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.6246914108374755
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 7,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                27.995643775620533,
-                38.48704936228266
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.6246914108374755
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 2,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.15146808114629604,
-              "grip": [
-                54.65485990287985,
-                51.70199174219014
-              ],
-              "tip": [
-                16.25700953875377,
-                23.47375810381138
+                28.52179930795848,
+                37.63875432525952
               ],
               "nock": [
-                79.5100603927043,
-                61.36529999089557
+                67,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
+              "grip": [
+                43,
+                47
+              ],
+              "tip": [
+                28.52179930795848,
+                37.63875432525952
+              ],
+              "nock": [
+                67,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
+              "grip": [
+                43,
+                47
+              ],
+              "tip": [
+                28.52179930795848,
+                37.63875432525952
+              ],
+              "nock": [
+                67,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
+              "grip": [
+                43,
+                47
+              ],
+              "tip": [
+                28.52179930795848,
+                37.63875432525952
+              ],
+              "nock": [
+                67,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
+              "grip": [
+                43,
+                47
+              ],
+              "tip": [
+                28.52179930795848,
+                37.63875432525952
+              ],
+              "nock": [
+                67,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 4,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.22626720562878308,
+              "forwardAxis": -1.011665369026232,
+              "grip": [
+                43,
+                47
+              ],
+              "tip": [
+                28.52179930795848,
+                37.63875432525952
+              ],
+              "nock": [
+                67,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 5,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.24093534007844017,
+              "forwardAxis": -1.0263335034758891,
+              "grip": [
+                32,
+                48
+              ],
+              "tip": [
+                17.804340987732,
+                38.72664359861591
+              ],
+              "nock": [
+                78,
+                49
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "mistweapon": {
         "file": "appearance/tier-bow-v28",
@@ -90999,119 +91189,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
+              "row": 6,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.5066138374364565
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
               "grip": [
-                48,
-                48
+                52,
+                47
               ],
               "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3987843259609918
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3987843259609918
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3987843259609918
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3987843259609918
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.50849150849152,
-                35.172827172827176
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3987843259609918
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 3,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.4128503537950565,
-              "grip": [
-                38.1287428373189,
-                50.384697283265346
-              ],
-              "tip": [
-                72.7659245117515,
-                36.848584917829776
+                66.03519981905313,
+                36.959301092749406
               ],
               "nock": [
-                22.86256804520007,
-                55.797941229586435
+                31,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.03519981905313,
+                36.959301092749406
+              ],
+              "nock": [
+                31,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.03519981905313,
+                36.959301092749406
+              ],
+              "nock": [
+                31,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.03519981905313,
+                36.959301092749406
+              ],
+              "nock": [
+                31,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.03519981905313,
+                36.959301092749406
+              ],
+              "nock": [
+                31,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.1758375536655082,
+              "forwardAxis": 0.9612357170629565,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.03519981905313,
+                36.959301092749406
+              ],
+              "nock": [
+                31,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 7,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3341655278091553,
+              "forwardAxis": 1.1195636912066036,
+              "grip": [
+                63,
+                47
+              ],
+              "tip": [
+                77.8485584539022,
+                39.51293695215968
+              ],
+              "nock": [
+                18,
+                49
               ]
             }
           },
@@ -91707,125 +91928,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
+              "row": 6,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.574058916192832
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
               "grip": [
-                48,
-                48
+                44,
+                47
               ],
               "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.621049733180073
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.621049733180073
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.621049733180073
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.621049733180073
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 8,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                24.73370163767091,
-                36.831782813857075
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.621049733180073
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 3,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.1861161366744619,
-              "grip": [
-                58.37216274089935,
-                52.29764453961456
-              ],
-              "tip": [
-                24.96782482558542,
-                29.479698832631065
+                28.09335727109515,
+                37.291432675044895
               ],
               "nock": [
-                70.8044119429518,
-                57.061128843279064
+                66,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
+              "grip": [
+                44,
+                47
+              ],
+              "tip": [
+                28.09335727109515,
+                37.291432675044895
+              ],
+              "nock": [
+                66,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
+              "grip": [
+                44,
+                47
+              ],
+              "tip": [
+                28.09335727109515,
+                37.291432675044895
+              ],
+              "nock": [
+                66,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
+              "grip": [
+                44,
+                47
+              ],
+              "tip": [
+                28.09335727109515,
+                37.291432675044895
+              ],
+              "nock": [
+                66,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
+              "grip": [
+                44,
+                47
+              ],
+              "tip": [
+                28.09335727109515,
+                37.291432675044895
+              ],
+              "nock": [
+                66,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 6,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.25276060258910577,
+              "forwardAxis": -1.0381587659865545,
+              "grip": [
+                44,
+                47
+              ],
+              "tip": [
+                28.09335727109515,
+                37.291432675044895
+              ],
+              "nock": [
+                66,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 7,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.3766624799661267,
+              "forwardAxis": -1.162060643363575,
+              "grip": [
+                32,
+                47
+              ],
+              "tip": [
+                17.201260973437574,
+                40.39819618597945
+              ],
+              "nock": [
+                78,
+                50
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "wand1": {
         "file": "appearance/tier-wand",
@@ -104439,119 +104692,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
+              "row": 14,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.9335848433938739
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 1,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
               "grip": [
-                48,
-                48
+                51,
+                47
               ],
               "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.028186679996425656
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.028186679996425656
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.028186679996425656
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.028186679996425656
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                82.13735957066189,
-                11.881846153846155
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.028186679996425656
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 4,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.016322554938039132,
-              "grip": [
-                39.66506520247083,
-                49.35072065888813
-              ],
-              "tip": [
-                73.71621926460637,
-                16.393413038574327
+                66.33110276916382,
+                37.0382460149067
               ],
               "nock": [
-                23.35483870967741,
-                67.5963606286187
+                30,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                66.33110276916382,
+                37.0382460149067
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                66.33110276916382,
+                37.0382460149067
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                66.33110276916382,
+                37.0382460149067
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                66.33110276916382,
+                37.0382460149067
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.22790783097183942,
+              "forwardAxis": 1.0133059943692877,
+              "grip": [
+                51,
+                47
+              ],
+              "tip": [
+                66.33110276916382,
+                37.0382460149067
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 15,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3526435596693711,
+              "forwardAxis": 1.1380417230668194,
+              "grip": [
+                63,
+                47
+              ],
+              "tip": [
+                78.4462682739164,
+                39.97794306232368
+              ],
+              "nock": [
+                18,
+                49
               ]
             }
           },
@@ -105147,125 +105431,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
+              "row": 14,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.1945379962091187
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 1,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
               "grip": [
-                48,
-                48
+                46,
+                47
               ],
               "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.24152881319636
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.24152881319636
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.24152881319636
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.24152881319636
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 1,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                13.142769635739803,
-                10.110648019767147
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.24152881319636
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 4,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.0403102992197135,
-              "grip": [
-                56.45657568238214,
-                48.71464019851117
-              ],
-              "tip": [
-                21.63771712158807,
-                16.595533498759295
+                28.705696895389064,
+                36.39987739195167
               ],
               "nock": [
-                72.02066136628349,
-                64.24712614574365
+                67,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.705696895389064,
+                36.39987739195167
+              ],
+              "nock": [
+                67,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.705696895389064,
+                36.39987739195167
+              ],
+              "nock": [
+                67,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.705696895389064,
+                36.39987739195167
+              ],
+              "nock": [
+                67,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.705696895389064,
+                36.39987739195167
+              ],
+              "nock": [
+                67,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 14,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.23282308765245283,
+              "forwardAxis": -1.0182212510499011,
+              "grip": [
+                46,
+                47
+              ],
+              "tip": [
+                28.705696895389064,
+                36.39987739195167
+              ],
+              "nock": [
+                67,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 15,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.3729574842586831,
+              "forwardAxis": -1.1583556476561316,
+              "grip": [
+                33,
+                47
+              ],
+              "tip": [
+                17.474757630161577,
+                39.840861759425486
+              ],
+              "nock": [
+                78,
+                50
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "bowlv10": {
         "file": "appearance/tier-bow-v28",
@@ -105494,119 +105810,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 2,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
               "grip": [
-                48,
+                53,
                 48
               ],
               "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.9608091533508144
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.05541098995336613
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.05541098995336613
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.05541098995336613
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.05541098995336613
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                80.43303233617515,
-                11.757700090243098
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.05541098995336613
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 5,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.03220483021231202,
-              "grip": [
-                33.54842342342343,
-                52.62837837837838
-              ],
-              "tip": [
-                75.42827868852459,
-                13.362704918032785
+                65.65568836821791,
+                40.99012123170048
               ],
               "nock": [
-                21.24289772727272,
-                57.87784090909091
+                32,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
+              "grip": [
+                53,
+                48
+              ],
+              "tip": [
+                65.65568836821791,
+                40.99012123170048
+              ],
+              "nock": [
+                32,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
+              "grip": [
+                53,
+                48
+              ],
+              "tip": [
+                65.65568836821791,
+                40.99012123170048
+              ],
+              "nock": [
+                32,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
+              "grip": [
+                53,
+                48
+              ],
+              "tip": [
+                65.65568836821791,
+                40.99012123170048
+              ],
+              "nock": [
+                32,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
+              "grip": [
+                53,
+                48
+              ],
+              "tip": [
+                65.65568836821791,
+                40.99012123170048
+              ],
+              "nock": [
+                32,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.30480717502743054,
+              "forwardAxis": 1.0902053384248789,
+              "grip": [
+                53,
+                48
+              ],
+              "tip": [
+                65.65568836821791,
+                40.99012123170048
+              ],
+              "nock": [
+                32,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 9,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3480795090779021,
+              "forwardAxis": 1.1334776724753504,
+              "grip": [
+                62,
+                47
+              ],
+              "tip": [
+                75.52979019979269,
+                40.69852389291969
+              ],
+              "nock": [
+                21,
+                48
               ]
             }
           },
@@ -106202,125 +106549,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 2,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
               "grip": [
-                48,
+                44,
                 48
               ],
               "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 2.1773703233115462
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.224361140298788
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.224361140298788
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.224361140298788
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.224361140298788
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 2,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                15.67391948984595,
-                11.628153598177349
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.224361140298788
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 5,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.04029782428413029,
-              "grip": [
-                63.9296875,
-                52.65290178571428
-              ],
-              "tip": [
-                21.31470588235294,
-                13.341176470588238
+                30.411951821008618,
+                40.82547625004468
               ],
               "nock": [
-                74.19912790697674,
-                61.03052325581396
+                64,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
+              "grip": [
+                44,
+                48
+              ],
+              "tip": [
+                30.411951821008618,
+                40.82547625004468
+              ],
+              "nock": [
+                64,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
+              "grip": [
+                44,
+                48
+              ],
+              "tip": [
+                30.411951821008618,
+                40.82547625004468
+              ],
+              "nock": [
+                64,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
+              "grip": [
+                44,
+                48
+              ],
+              "tip": [
+                30.411951821008618,
+                40.82547625004468
+              ],
+              "nock": [
+                64,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
+              "grip": [
+                44,
+                48
+              ],
+              "tip": [
+                30.411951821008618,
+                40.82547625004468
+              ],
+              "nock": [
+                64,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 8,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31308101111536923,
+              "forwardAxis": -1.098479174512818,
+              "grip": [
+                44,
+                48
+              ],
+              "tip": [
+                30.411951821008618,
+                40.82547625004468
+              ],
+              "nock": [
+                64,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 9,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.2815893114838912,
+              "forwardAxis": -1.0669874748813397,
+              "grip": [
+                34,
+                47
+              ],
+              "tip": [
+                20.280860129633304,
+                39.521765035116545
+              ],
+              "nock": [
+                75,
+                49
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "bowlv20": {
         "file": "appearance/tier-bow-v28",
@@ -106549,119 +106928,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
+              "row": 10,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.5504433974808632
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 4,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
               "grip": [
-                48,
-                48
+                51,
+                49
               ],
               "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.35495476591658504
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.35495476591658504
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.35495476591658504
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.35495476591658504
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                72.90154380335078,
-                36.56626214519477
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.35495476591658504
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 6,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.3385074947871225,
-              "grip": [
-                40.5131195335277,
-                52.231778425655975
-              ],
-              "tip": [
-                75.37987012987013,
-                35.52272727272727
+                68.52440587269825,
+                39.937225981968204
               ],
               "nock": [
-                28.036688832836514,
-                57.56340288924558
+                28,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
+              "grip": [
+                51,
+                49
+              ],
+              "tip": [
+                68.52440587269825,
+                39.937225981968204
+              ],
+              "nock": [
+                28,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
+              "grip": [
+                51,
+                49
+              ],
+              "tip": [
+                68.52440587269825,
+                39.937225981968204
+              ],
+              "nock": [
+                28,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
+              "grip": [
+                51,
+                49
+              ],
+              "tip": [
+                68.52440587269825,
+                39.937225981968204
+              ],
+              "nock": [
+                28,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
+              "grip": [
+                51,
+                49
+              ],
+              "tip": [
+                68.52440587269825,
+                39.937225981968204
+              ],
+              "nock": [
+                28,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.32599850745869374,
+              "forwardAxis": 1.111396670856142,
+              "grip": [
+                51,
+                49
+              ],
+              "tip": [
+                68.52440587269825,
+                39.937225981968204
+              ],
+              "nock": [
+                28,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 11,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.3625873983975995,
+              "forwardAxis": 1.1479855617950478,
+              "grip": [
+                62,
+                49
+              ],
+              "tip": [
+                79.59287868148208,
+                40.72336734272378
+              ],
+              "nock": [
+                17,
+                50
               ]
             }
           },
@@ -107257,125 +107667,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
+              "row": 10,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.4885536099174583
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 4,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
               "grip": [
-                48,
-                48
+                47,
+                49
               ],
               "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.5355444269047
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.5355444269047
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.5355444269047
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.5355444269047
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 4,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                25.212617212850375,
-                34.555292599803366
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.5355444269047
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 6,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.12386632249534356,
-              "grip": [
-                53.36676384839653,
-                52.0806997084548
-              ],
-              "tip": [
-                23.155322009043147,
-                28.55920811438348
+                26.829590768470702,
+                40.23591685977439
               ],
               "nock": [
-                66.0715432240312,
-                59.534969043797304
+                68,
+                50
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
+              "grip": [
+                47,
+                49
+              ],
+              "tip": [
+                26.829590768470702,
+                40.23591685977439
+              ],
+              "nock": [
+                68,
+                50
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
+              "grip": [
+                47,
+                49
+              ],
+              "tip": [
+                26.829590768470702,
+                40.23591685977439
+              ],
+              "nock": [
+                68,
+                50
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
+              "grip": [
+                47,
+                49
+              ],
+              "tip": [
+                26.829590768470702,
+                40.23591685977439
+              ],
+              "nock": [
+                68,
+                50
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
+              "grip": [
+                47,
+                49
+              ],
+              "tip": [
+                26.829590768470702,
+                40.23591685977439
+              ],
+              "nock": [
+                68,
+                50
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 10,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38798533897974763,
+              "forwardAxis": -1.1733835023771961,
+              "grip": [
+                47,
+                49
+              ],
+              "tip": [
+                26.829590768470702,
+                40.23591685977439
+              ],
+              "nock": [
+                68,
+                50
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 11,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.38522298085071577,
+              "forwardAxis": -1.170621144248164,
+              "grip": [
+                36,
+                49
+              ],
+              "tip": [
+                15.488454706927183,
+                40.4348134991119
+              ],
+              "nock": [
+                80,
+                51
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "bowlv25": {
         "file": "appearance/tier-bow-v28",
@@ -107604,115 +108046,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.6093262232558577
+              "nock": [
+                30,
+                49
+              ]
             },
             "ready": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.29607194014159055
+              "nock": [
+                30,
+                49
+              ]
             },
             "windup": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.29607194014159055
+              "nock": [
+                30,
+                49
+              ]
             },
             "strike": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.29607194014159055
+              "nock": [
+                30,
+                49
+              ]
             },
             "follow": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.29607194014159055
+              "nock": [
+                30,
+                49
+              ]
             },
             "recover": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 5,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2882246124450756,
+              "forwardAxis": 1.0736227758425239,
               "grip": [
-                48,
+                50,
                 48
               ],
               "tip": [
-                77.54054101405094,
-                32.26898279547286
+                68.21632653061224,
+                37.55510204081633
               ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.29607194014159055
+              "nock": [
+                30,
+                49
+              ]
             },
             "draw": {
-              "file": "appearance/registered-bow-v31",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 8,
+              "row": 13,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.20489760532653364,
+              "angle": -0.4285609683863889,
+              "forwardAxis": 1.2139591317838372,
               "grip": [
-                41.30875576036866,
-                54.58064516129032
+                62,
+                47
               ],
               "tip": [
-                61.615975422427034,
-                23.619047619047617
+                78.74057142857141,
+                40.498285714285714
+              ],
+              "nock": [
+                18,
+                49
               ]
             }
           },
@@ -108308,125 +108785,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 5,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
+              "row": 12,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.50425593780235
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 5,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
               "grip": [
-                48,
-                48
+                47,
+                47
               ],
               "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.551246754789592
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 5,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.551246754789592
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 5,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.551246754789592
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 5,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.551246754789592
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 5,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.978583196046127,
-                36.038165842943435
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.551246754789592
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 8,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.12086402000763362,
-              "grip": [
-                51.703892538484155,
-                54.668889106775175
-              ],
-              "tip": [
-                21.77221856484527,
-                31.220539828834752
+                27.176280323450136,
+                38.047439353099726
               ],
               "nock": [
-                72.43256528417818,
-                64.5689708141321
+                66,
+                49
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
+              "grip": [
+                47,
+                47
+              ],
+              "tip": [
+                27.176280323450136,
+                38.047439353099726
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
+              "grip": [
+                47,
+                47
+              ],
+              "tip": [
+                27.176280323450136,
+                38.047439353099726
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
+              "grip": [
+                47,
+                47
+              ],
+              "tip": [
+                27.176280323450136,
+                38.047439353099726
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
+              "grip": [
+                47,
+                47
+              ],
+              "tip": [
+                27.176280323450136,
+                38.047439353099726
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 12,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.34863505118249427,
+              "forwardAxis": -1.134033214579943,
+              "grip": [
+                47,
+                47
+              ],
+              "tip": [
+                27.176280323450136,
+                38.047439353099726
+              ],
+              "nock": [
+                66,
+                49
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 13,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.45263837121563255,
+              "forwardAxis": -1.2380365346130806,
+              "grip": [
+                35,
+                46
+              ],
+              "tip": [
+                17.414555256064684,
+                39.79407008086254
+              ],
+              "nock": [
+                78,
+                49
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "bowlv30": {
         "file": "appearance/tier-bow-v28",
@@ -108655,119 +109164,150 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 1,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
+              "row": 16,
               "size": 96,
               "scale": 0.8,
-              "angle": 0.5006462209524972
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 6,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
               "grip": [
-                48,
-                48
+                52,
+                47
               ],
               "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.40475194244495105
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.40475194244495105
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.40475194244495105
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.40475194244495105
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 1,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                79.55096493612396,
-                35.37449557781169
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.40475194244495105
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 1,
-              "row": 7,
-              "size": 96,
-              "scale": 0.8,
-              "angle": -0.4123461931622241,
-              "grip": [
-                36.70056497175141,
-                51.12994350282486
-              ],
-              "tip": [
-                75.23224919835089,
-                36.04947320201558
+                66.11769633507853,
+                38.7317277486911
               ],
               "nock": [
-                28.208962154631998,
-                54.74158346877177
+                30,
+                48
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.11769633507853,
+                38.7317277486911
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.11769633507853,
+                38.7317277486911
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.11769633507853,
+                38.7317277486911
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.11769633507853,
+                38.7317277486911
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.2794434490506932,
+              "forwardAxis": 1.0648416124481415,
+              "grip": [
+                52,
+                47
+              ],
+              "tip": [
+                66.11769633507853,
+                38.7317277486911
+              ],
+              "nock": [
+                30,
+                48
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 1,
+              "row": 17,
+              "size": 96,
+              "scale": 0.8,
+              "angle": -0.35519280365704425,
+              "forwardAxis": 1.1405909670544925,
+              "grip": [
+                63,
+                46
+              ],
+              "tip": [
+                78.70524478736105,
+                39.468724166437035
+              ],
+              "nock": [
+                18,
+                48
               ]
             }
           },
@@ -109363,125 +109903,157 @@
           },
           {
             "carry": {
-              "file": "appearance/tier-bow-v28",
+              "file": "appearance/registered-bow-diagonals-v32",
               "col": 7,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
+              "row": 16,
               "size": 96,
               "scale": 0.8,
-              "angle": 2.5441820845917364
-            },
-            "ready": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 6,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
               "grip": [
-                48,
-                48
+                44,
+                46
               ],
               "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.591172901578978
-            },
-            "windup": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.591172901578978
-            },
-            "strike": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.591172901578978
-            },
-            "follow": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.591172901578978
-            },
-            "recover": {
-              "file": "appearance/tier-bow-v28",
-              "col": 7,
-              "row": 6,
-              "grip": [
-                48,
-                48
-              ],
-              "tip": [
-                26.489660142510107,
-                36.87218475724124
-              ],
-              "size": 96,
-              "scale": 0.8,
-              "angle": 6.591172901578978
-            },
-            "draw": {
-              "file": "appearance/registered-bow-v31",
-              "col": 7,
-              "row": 7,
-              "size": 96,
-              "scale": 0.8,
-              "angle": 0.29404936036227597,
-              "grip": [
-                56.193704600484246,
-                47.447941888619866
-              ],
-              "tip": [
-                25.197375615090234,
-                30.861126298523786
+                27.435576554718427,
+                37.85978802196399
               ],
               "nock": [
-                67.28117433414043,
-                54.8771186440678
+                67,
+                47
+              ]
+            },
+            "ready": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
+              "grip": [
+                44,
+                46
+              ],
+              "tip": [
+                27.435576554718427,
+                37.85978802196399
+              ],
+              "nock": [
+                67,
+                47
+              ]
+            },
+            "windup": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
+              "grip": [
+                44,
+                46
+              ],
+              "tip": [
+                27.435576554718427,
+                37.85978802196399
+              ],
+              "nock": [
+                67,
+                47
+              ]
+            },
+            "strike": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
+              "grip": [
+                44,
+                46
+              ],
+              "tip": [
+                27.435576554718427,
+                37.85978802196399
+              ],
+              "nock": [
+                67,
+                47
+              ]
+            },
+            "follow": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
+              "grip": [
+                44,
+                46
+              ],
+              "tip": [
+                27.435576554718427,
+                37.85978802196399
+              ],
+              "nock": [
+                67,
+                47
+              ]
+            },
+            "recover": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 16,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.31551439560653427,
+              "forwardAxis": -1.1009125590039823,
+              "grip": [
+                44,
+                46
+              ],
+              "tip": [
+                27.435576554718427,
+                37.85978802196399
+              ],
+              "nock": [
+                67,
+                47
+              ]
+            },
+            "draw": {
+              "file": "appearance/registered-bow-diagonals-v32",
+              "col": 7,
+              "row": 17,
+              "size": 96,
+              "scale": 0.8,
+              "angle": 0.39347155556638186,
+              "forwardAxis": -1.1788697189638302,
+              "grip": [
+                33,
+                47
+              ],
+              "tip": [
+                17.35253054101221,
+                40.67015706806283
+              ],
+              "nock": [
+                78,
+                49
               ]
             }
           }
         ],
         "poseRigVersion": 31,
-        "perspectiveArtVersion": 31
+        "perspectiveArtVersion": 31,
+        "diagonalStringVersion": 32
       },
       "wandlv5": {
         "file": "appearance/tier-wand",

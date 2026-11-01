@@ -16,7 +16,8 @@ export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
     return {
       hand:binding.hand,grip:source.grip,angle:source.angle,
       weaponScale:source.scale,col:source.col,row:source.row,size:source.size,
-      file:source.file,tip:source.tip,depth:binding.depth,
+      file:source.file,tip:source.tip,nock:source.nock,
+      forwardAxis:source.forwardAxis??weapon.forwardAxes?.[sourceDir],depth:binding.depth,
       frame,pose:binding.pose,registered:true,
     };
   }

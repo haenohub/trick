@@ -12,7 +12,7 @@ import {
   RECOVERY_DURATION,
 } from "../site/animation.js";
 const forwardAngle=(weapon,pose,dir)=>pose.angle+(weapon.kind==="bow"
-  ?weapon.forwardAxes[dir]
+  ?(pose.forwardAxis??weapon.forwardAxes[dir])
   :Math.atan2(pose.tip[0]-pose.grip[0],pose.grip[1]-pose.tip[1]));
 test("all four corrected combat sheets have calibrated palms, planted registration and genuine new image sources", async () => {
   const plan = JSON.parse(await readFile("art/registered-motion-v31.json", "utf8")),

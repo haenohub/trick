@@ -317,7 +317,7 @@ test("all nine bows use solid central contacts and real forward axes at 80% scal
       bows++;
       for (let d = 0; d < 8; d++) {
         const pose = heldWeaponPose(body, w, 4, d),
-          angle = pose.angle + w.forwardAxes[pose.col],
+          angle = pose.angle + (pose.forwardAxis ?? w.forwardAxes[pose.col]),
           wanted = (d * Math.PI) / 4;
         assert.ok(Math.cos(angle - wanted) > 0.999, id + ":" + d);
         assert.equal(pose.weaponScale, 0.8);

@@ -66,7 +66,10 @@ for(const kind of ['spear','wand','bow']){
    const p={file,col:dir,row,size:96,scale:.8,angle,grip:map(grip),tip:map(tip)};
    if(nocks.length)p.nock=map(nocks[0]);
    blit(frame,atlas,dir*96,row*96);views.push(p);
-   if(kind==='bow')weapon.poseSets[dir].draw=p;
+   if(kind==='bow'){
+    // Preserve the subsequently authored, correctly strung diagonal artwork.
+    if(!(weapon.diagonalStringVersion===32&&[1,7].includes(dir)))weapon.poseSets[dir].draw=p;
+   }
    else for(const tag of ['ready','windup','strike','follow','recover'])weapon.poseSets[dir][tag]=structuredClone(p);
    receipt.push({id:job.id,dir,source:job.source,sourceRect:crop,sourceGrip:[grip.x,grip.y],sourceTip:[tip.x,tip.y],scale:96/size,grip:p.grip,tip:p.tip,agreement});
   }

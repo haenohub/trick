@@ -10,6 +10,10 @@ const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
 const records = JSON.parse(await readFile("art/generated-assets.json", "utf8"));
 const planFile = "art/registered-motion-v31.json";
 const plan = JSON.parse(await readFile(planFile, "utf8"));
+const actorFilter=process.argv.find(a=>a.startsWith("--actor="))?.split("=")[1];
+const directionFilter=process.argv.find(a=>a.startsWith("--direction="))?.split("=")[1];
+const jobs=plan.sources.filter(j=>["pilot","direction"].includes(j.kind)&&(!actorFilter||j.id===actorFilter)&&(directionFilter===undefined||(j.dir??5)===Number(directionFilter)));
+if(!jobs.length)throw Error("No matching registered originals");
 const packedImages=new Map(),sourceRecords=new Map();
 function workingImage(file){if(!packedImages.has(file))packedImages.set(file,decode("site/assets/"+file+".png"));return packedImages.get(file);}
 const isMark = (r,g,b,a,type) => a > 110 && (type === "root"
@@ -98,7 +102,7 @@ for(const weapon of Object.values(art.appearance.weapons)){
   weapon.poseRigVersion=31;
 }
 
-for(const job of plan.sources.filter(j=>["pilot","direction"].includes(j.kind))){
+for(const job of jobs){
   const defaultSource=decode(job.source),attackSource=job.attackSource?decode(job.attackSource):null,base=art.appearance.bases[job.id];
   const body=workingImage(base.file),hands=workingImage(base.handFile);
   if(!base.legacyGroundVersion){
@@ -113,7 +117,7 @@ for(const job of plan.sources.filter(j=>["pilot","direction"].includes(j.kind)))
     base.legacyGroundVersion=31;
   }
   configureRig(base,job.id);
-  const cellRects=directionalRects(defaultSource,4,job.gridRows||6,{cellsOnly:true}).flat();
+  const cellRects=directionalRects(defaultSource,4,job.gridRows||6,{cellsOnly:true,...job.sourceGrid}).flat();
   const attackRects=attackSource?directionalRects(attackSource,4,6,{cellsOnly:true}).flat():null;
   const registeredSource=job.armedSource?decode(job.armedSource):null;
   const mappings=[],combat=[0,1,2,3,4,5,9,6];
@@ -124,7 +128,7 @@ for(const job of plan.sources.filter(j=>["pilot","direction"].includes(j.kind)))
     const sourcePath=alternate?job.attackSource:job.source;
     if(at%8===0)previousHand=null;
     const logicalAt=job.combatOrder&&at>=8&&at<16?8+job.combatOrder[at-8]:at;
-    const sourceAt=job.gridRows===5&&logicalAt>=20?16+logicalAt%4:logicalAt;
+    const sourceAt=job.sourceIndices?.[logicalAt]??(job.gridRows===5&&logicalAt>=20?16+logicalAt%4:logicalAt);
     const rect=(alternate?attackRects:cellRects)[sourceAt],{sx,sy,sw:cw,sh:ch}=rect,cell=crop(source,sx,sy,cw,ch);
     const roots=components(cell,"root");
     const allPalms=components(cell,"hand");

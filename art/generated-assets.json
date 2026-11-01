@@ -12746,7 +12746,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "45f0cbab9f2307ad3baa90438864e2419d9f72b33ab983f0a39323d6ff1dc20f",
+      "sha256": "7df09726e0877922063f3592b7d3dbd9b143227ea360fb010125dc56971428dc",
       "motionVersion": 3,
       "registration": {
         "method": "one-scale-body-root",
@@ -13226,7 +13226,7 @@
       ],
       "width": 768,
       "height": 768,
-      "sha256": "fd27ce46aea067e8799de24c29fda888ae004ba18238f0dd6101dfd0028c7726",
+      "sha256": "625ae1acf310c6ba5cef84fe653c317db658dc543fbbcf73b1e480f89c046a23",
       "motionVersion": 3,
       "registration": {
         "method": "one-scale-body-root",
@@ -78234,7 +78234,7 @@
       "source": "/workspace/generated_images/exec-77cdd1eb-45d6-4e49-b400-fc199909d872.png",
       "width": 3072,
       "height": 768,
-      "sha256": "ff489337e9c97612dc293d79cac5bddc0a508a0ad0c381c71f55988f28c592d2",
+      "sha256": "793faec4d68a7b176798decef1e3bb690b94e2f12085733db9fa9917eefd7235",
       "appearanceVersion": 1,
       "additionalSources": [
         "/workspace/generated_images/exec-ce6ff379-e5f0-47b9-974d-1576bdea4940.png",
@@ -78286,7 +78286,7 @@
       ],
       "width": 3072,
       "height": 768,
-      "sha256": "6beaa5dec8c97603dc995ae603d671a5da3b4ea8e02fd3060615b6ec66f59b03",
+      "sha256": "fcbd576a421c573fccf089f5aa5b2a7728924ff97da462cac06851a9f8bb6cd0",
       "rigVersion": 1,
       "cols": 32,
       "rows": 8,
@@ -92920,6 +92920,29 @@
       "cols": 8,
       "rows": 9,
       "directionVersion": 31
+    },
+    {
+      "id": "appearance/registered-bow-diagonals-v32",
+      "target": "site/assets/appearance/registered-bow-diagonals-v32.png",
+      "source": "/workspace/generated_images/exec-f17fa699-056e-4701-857e-140426047465.png",
+      "additionalSources": [
+        "/workspace/generated_images/exec-b871043a-6630-453d-bee6-53b10274ff0b.png",
+        "/workspace/generated_images/exec-ccc38db3-1851-4ac9-9a0c-4d74123df85b.png",
+        "/workspace/generated_images/exec-e066d6c0-5e79-414b-9feb-732f5a3bdb60.png",
+        "/workspace/generated_images/exec-ceae34a7-e8ba-4fed-a7a9-d34f0d3f39f2.png",
+        "/workspace/generated_images/exec-59fec13c-eb74-424d-aa95-9e05533d0dbb.png",
+        "/workspace/generated_images/exec-468e00e9-2c2c-4d4f-9afe-88ef0214c661.png",
+        "/workspace/generated_images/exec-c1136bdf-7813-4487-90a6-882a601c5b86.png",
+        "/workspace/generated_images/exec-67824182-a1f9-45f9-a0f3-4c00df0f39b8.png"
+      ],
+      "tool": "image_gen",
+      "width": 768,
+      "height": 1728,
+      "size": 96,
+      "cols": 8,
+      "rows": 18,
+      "directionVersion": 32,
+      "sha256": "97e1ac00119b929a45419127a421941a8d2c4551f0130e16096db3533a28a43e"
     }
   ]
 }
