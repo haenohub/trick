@@ -22,6 +22,7 @@ export async function buildDirections() {
             ...art.appearance.bases[a.id],
             views: art.characterLayouts[a.id].views,
             clips: {
+              ...art.appearance.bases[a.id].clips,
               walk: {
                 file: art.appearance.bases[a.id].file,
                 cols: 32,
@@ -29,6 +30,7 @@ export async function buildDirections() {
                 size: 96,
                 frames: [16, 17, 18, 19, 20, 21, 22, 23],
                 duration: 1.28,
+                durationsMs: art.appearance.bases[a.id].clips?.walk?.durationsMs,
               },
               idle: {
                 file: art.appearance.bases[a.id].file,
@@ -36,7 +38,8 @@ export async function buildDirections() {
                 rows: 8,
                 size: 96,
                 frames: [24, 25, 26, 27, 28, 29, 30, 31],
-                duration: 0.72,
+                duration: art.appearance.bases[a.id].clips?.idle?.duration || 0.72,
+                durationsMs: art.appearance.bases[a.id].clips?.idle?.durationsMs,
               },
             },
           }

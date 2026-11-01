@@ -176,7 +176,7 @@ test("the authoritative world accepts five nearby pickups per second, supports o
   assert.equal(p.inventory.fiber, initial + 5);
   assert.equal(w.map(p.map).drops.filter((d) => !d.collected).length, 5);
 });
-test("all native walk sheets play at half the previous rate without changing idle cadence", async () => {
+test("native walk sheets keep their reference cycle and registered players use slower breathing exposures", async () => {
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
   assert.equal(WALK_DURATION, 1.28);
   for (const l of Object.values({
@@ -187,6 +187,7 @@ test("all native walk sheets play at half the previous rate without changing idl
     assert.equal(l.clips.walk.duration, 1.28);
     assert.equal(animationFrame(l, "walk", 0.64, 0), 4);
     assert.equal(animationFrame(l, "walk", 1.28, 0), 0);
-    assert.equal(l.clips.idle.duration, 0.72);
+    const registered=new Set(Object.keys(art.appearance.bases).map(id=>`locomotion/${id}-idle`));
+    assert.equal(l.clips.idle.duration, registered.has(l.clips.idle.file)?1.44:0.72);
   }
 });

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ranger",
+    "heading": "N",
+    "dir": 0,
+    "ref": "/tmp/motion-refs/ranger-N.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-c99aba80-cdbd-4f6b-a1f6-ea5603fd3dff.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "NE",
+    "dir": 1,
+    "ref": "/tmp/motion-refs/ranger-NE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-634e9e6c-6e7d-40dd-bdad-2aaec6d8e19c.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "E",
+    "dir": 2,
+    "ref": "/tmp/motion-refs/ranger-E.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-8f938655-7410-49ca-8aad-9347179f3cbd.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "SE",
+    "dir": 3,
+    "ref": "/tmp/motion-refs/ranger-SE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-d5c32104-a309-401f-97fa-edfa759cb38f.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "S",
+    "dir": 4,
+    "ref": "/tmp/motion-refs/ranger-S.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-ab00a3af-05bc-4c74-bbd0-48574d6cfab0.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "SW",
+    "dir": 5,
+    "ref": "/tmp/motion-refs/ranger-SW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-ca60cd4b-e34e-44dc-bbd8-996482c42b29.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "W",
+    "dir": 6,
+    "ref": "/tmp/motion-refs/ranger-W.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-f3693442-6224-42ca-9b2b-807e4a90e7e5.png"
+  },
+  {
+    "id": "ranger",
+    "heading": "NW",
+    "dir": 7,
+    "ref": "/tmp/motion-refs/ranger-NW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-ff7a32de-134a-4b6b-ab15-7a585b88f491.png"
+  }
+]

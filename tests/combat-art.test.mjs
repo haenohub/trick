@@ -122,16 +122,16 @@ test("all 128 directional weapon grips are measured, cells stay isolated, and ev
         drawPaperDoll(
           ctx,
           { layout: l, layers: [{ ...w, held: true }] },
-          new Map([[w.file, {}]]),
+          new Map([...new Set([w.file,...(w.poseSets||[]).flatMap(set=>Object.values(set).map(p=>p.file))])].map(file=>[file,{}])),
           frame,
           dir,
           11,
           17,
           1.5,
         );
-        assert.deepEqual(
-          contact,
-          [Math.round(11 + x * 1.5), Math.round(17 + y * 1.5)],
+        const expected=l.frameRig?[11+x*1.5,17+y*1.5]:[Math.round(11+x*1.5),Math.round(17+y*1.5)];
+        assert.ok(
+          contact && Math.hypot(contact[0]-expected[0],contact[1]-expected[1])<1e-9,
           "runtime weapon handle must land on palm at actual rendering scale",
         );
         if (w.kind === "spear") {

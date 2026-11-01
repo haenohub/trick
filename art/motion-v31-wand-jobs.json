@@ -1,0 +1,56 @@
+[
+  {
+    "id": "wand1",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wand1.png",
+    "source": "/workspace/generated_images/exec-03a19f6a-46c6-4e22-baa7-6afe37c5f12b.png"
+  },
+  {
+    "id": "wand2",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wand2.png",
+    "source": "/workspace/generated_images/exec-021c95d2-3eda-4b1b-8e09-a96e8c46c78d.png"
+  },
+  {
+    "id": "flowerweapon",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/flowerweapon.png",
+    "source": "/workspace/generated_images/exec-eac3c07d-c2fc-4f35-8b35-e6087874d7d7.png"
+  },
+  {
+    "id": "venomweapon",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/venomweapon.png",
+    "source": "/workspace/generated_images/exec-367727eb-178c-4e49-ae51-d630a69bf930.png"
+  },
+  {
+    "id": "wandlv5",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wandlv5.png",
+    "source": "/workspace/generated_images/exec-e859403c-d66b-4b7b-a197-390788aeb68d.png"
+  },
+  {
+    "id": "wandlv10",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wandlv10.png",
+    "source": "/workspace/generated_images/exec-60081e79-e7a6-4d34-be9f-161985ccfa67.png"
+  },
+  {
+    "id": "wandlv20",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wandlv20.png",
+    "source": "/workspace/generated_images/exec-eaf03822-c08f-4f14-99b2-ab08af18069e.png"
+  },
+  {
+    "id": "wandlv25",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wandlv25.png",
+    "source": "/workspace/generated_images/exec-b3882c98-6c7b-48a2-b442-f0eae1973801.png"
+  },
+  {
+    "id": "wandlv30",
+    "kind": "wand",
+    "ref": "/tmp/weapon-motion-refs/wandlv30.png",
+    "source": "/workspace/generated_images/exec-eb342ff9-7a7e-4b0c-8371-0678420891af.png"
+  }
+]

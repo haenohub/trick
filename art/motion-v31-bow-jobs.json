@@ -1,0 +1,56 @@
+[
+  {
+    "id": "bow1",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bow1.png",
+    "source": "/workspace/generated_images/exec-7ad75c43-7040-4f72-b759-e82eed58e944.png"
+  },
+  {
+    "id": "bow2",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bow2.png",
+    "source": "/workspace/generated_images/exec-72f701f9-8982-4cf2-bd90-30d2111a5a91.png"
+  },
+  {
+    "id": "hawkweapon",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/hawkweapon.png",
+    "source": "/workspace/generated_images/exec-1d64ea37-5ba6-4301-98ce-eedc2b2787b2.png"
+  },
+  {
+    "id": "mistweapon",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/mistweapon.png",
+    "source": "/workspace/generated_images/exec-0688267e-e383-40b8-bfbb-aed939489345.png"
+  },
+  {
+    "id": "bowlv5",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bowlv5.png",
+    "source": "/workspace/generated_images/exec-00a9048a-23a2-488c-bde8-691a77a09878.png"
+  },
+  {
+    "id": "bowlv10",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bowlv10.png",
+    "source": "/workspace/generated_images/exec-f405772d-08cd-4945-a820-f600d86731f5.png"
+  },
+  {
+    "id": "bowlv20",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bowlv20.png",
+    "source": "/workspace/generated_images/exec-c688a21a-3e6a-4642-af17-95ca0c50c6ed.png"
+  },
+  {
+    "id": "bowlv30",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bowlv30.png",
+    "source": "/workspace/generated_images/exec-f77b41b4-69e2-4cd0-8996-a99111e9d9f2.png"
+  },
+  {
+    "id": "bowlv25",
+    "kind": "bow",
+    "ref": "/tmp/weapon-motion-refs/bowlv25.png",
+    "source": "/workspace/generated_images/exec-b877b5e5-1255-41f2-811d-e2f5d3224130.png"
+  }
+]

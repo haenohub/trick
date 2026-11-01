@@ -1,0 +1,66 @@
+[
+  {
+    "id": "herbalist",
+    "heading": "N",
+    "dir": 0,
+    "ref": "/tmp/motion-refs/herbalist-N.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-be4090f3-7a2f-4812-ac6c-ddab7d6d9f5b.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "NE",
+    "dir": 1,
+    "ref": "/tmp/motion-refs/herbalist-NE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-acfd35f2-b7b6-4c0a-a66d-58b13ac858af.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "E",
+    "dir": 2,
+    "ref": "/tmp/motion-refs/herbalist-E.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-eb1eefbe-09f4-4059-babe-39a84a23320a.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "SE",
+    "dir": 3,
+    "ref": "/tmp/motion-refs/herbalist-SE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-80791c7a-e54b-4907-a085-9314fc84b568.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "S",
+    "dir": 4,
+    "ref": "/tmp/motion-refs/herbalist-S.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-56b10945-0d5a-4966-bba7-92cfc676502f.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "SW",
+    "dir": 5,
+    "ref": "/tmp/motion-refs/herbalist-SW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-8fda4e59-0c72-4688-93b5-588d12f5db9f.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "W",
+    "dir": 6,
+    "ref": "/tmp/motion-refs/herbalist-W.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-c7e3db58-5874-4e83-bd14-9cc10399acd5.png"
+  },
+  {
+    "id": "herbalist",
+    "heading": "NW",
+    "dir": 7,
+    "ref": "/tmp/motion-refs/herbalist-NW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-02c240ac-bfd0-403a-a7d1-d367010c894b.png"
+  }
+]

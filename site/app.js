@@ -44,6 +44,7 @@ import {
   NEARBY_PICKUP_RANGE,
 } from "./balance.js";
 import {
+  VERSION,
   CLASSES,
   REGIONS,
   MAPS,
@@ -1046,7 +1047,7 @@ function renderPanel() {
       .join("")}</div>`;
   } else if (panel === "settings") {
     title = "모험의 작은 설정";
-    html = `<section class="setting-row"><h3>화면 모드</h3><label class="fullscreen-choice"><input type="checkbox" data-fullscreen ${document.fullscreenElement ? "checked" : ""} ${fullscreenSupported(document, $("game-shell")) ? "" : "disabled"}> 전체화면으로 플레이</label><p>창 모드와 전체화면을 즉시 전환합니다. Esc는 설정을 열거나 닫습니다.</p></section><section class="setting-row"><h3>단축키</h3><p>P 키로 전체 조작을 확인하고 원하는 키로 바꿀 수 있습니다.</p><button data-open="bindings">키보드 단축키 설정</button></section><section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
+    html = `<section class="setting-row"><h3>화면 모드</h3><label class="fullscreen-choice"><input type="checkbox" data-fullscreen ${document.fullscreenElement ? "checked" : ""} ${fullscreenSupported(document, $("game-shell")) ? "" : "disabled"}> 전체화면으로 플레이</label><p>창 모드와 전체화면을 즉시 전환합니다. Esc는 설정을 열거나 닫습니다.</p></section><section class="setting-row"><h3>동작 검수</h3><p>방향별 걷기와 공격을 느리게 재생하고 손잡이와 지면 기준점을 확인합니다.</p><a href="./animation-lab.html" target="_blank" rel="noopener">애니메이션 검수 화면 열기</a></section><section class="setting-row"><h3>단축키</h3><p>P 키로 전체 조작을 확인하고 원하는 키로 바꿀 수 있습니다.</p><button data-open="bindings">키보드 단축키 설정</button></section><section class="setting-row"><h3>이 브라우저의 모험</h3><p>기본 모험은 5초마다 자동 저장됩니다. 브라우저 데이터를 지우면 저장도 없어지므로 파일로 보관하세요.</p><div class="actions"><button data-special="save">지금 저장</button><button data-special="export">저장 파일 내보내기</button><button data-special="import">저장 파일 가져오기</button></div><input type="file" id="import-file" accept="application/json,.json" hidden></section><section class="setting-row"><h3>함께 걷는 숲 · 실시간 서버</h3><p>GitHub Pages는 게임 화면을 제공합니다. 실시간 동행과 서버 저장에는 별도 배포한 리프테일 서버가 필요합니다. 연결 전의 모험과 서버의 모험은 별도로 저장됩니다.</p><label for="server-url" class="panel-intro">게임 서버 주소</label><input id="server-url" placeholder="wss://게임서버주소/ws" value="${esc(readSetting("leaftale:server") || "")}"><div class="actions"><button data-special="connect">서버에 연결</button><button data-special="disconnect" ${online ? "" : "disabled"}>나의 모험으로 돌아오기</button></div><p>${online ? "실시간 서버에 연결되어 있습니다." : "현재는 브라우저에서 혼자 모험하고 있습니다."}</p></section><section class="setting-row"><h3>숲의 소리</h3><p>직접 합성한 가벼운 전투 효과음을 켜거나 끕니다.</p><button data-special="sound">효과음 ${sound ? "끄기" : "켜기"}</button></section><section class="setting-row"><h3>첫 화면</h3><p>지금 모험을 저장하고 처음 화면으로 돌아갑니다.</p><button data-special="title">모험 저장 후 첫 화면</button></section>`;
   }
   if (panel === "craft" && filter === "garden") {
     html =
@@ -1789,7 +1790,7 @@ function frame(now) {
 }
 window.__leaftale = {
   snapshot: () => (state ? structuredClone(state) : null),
-  version: "0.29.0",
+  version: VERSION,
   view: () => ({
     zoom: renderer.zoom,
     camera: { ...renderer.camera },

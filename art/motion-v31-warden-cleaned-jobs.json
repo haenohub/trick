@@ -1,0 +1,65 @@
+[
+  {
+    "id": "warden",
+    "heading": "N",
+    "dir": 0,
+    "ref": "/tmp/motion-refs/warden-N.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-e43d8a96-2172-4f91-9737-9e52957ab375.png",
+    "armedSource": "/workspace/generated_images/exec-e4414372-76fc-4bfc-809b-8177a0ba3ad1.png"
+  },
+  {
+    "id": "warden",
+    "heading": "NE",
+    "dir": 1,
+    "ref": "/tmp/motion-refs/warden-NE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-dc3acb8f-07fb-411f-9535-a52fab34902e.png",
+    "armedSource": "/workspace/generated_images/exec-b78c7b07-68b0-4bf7-9c29-166cc828d3ca.png"
+  },
+  {
+    "id": "warden",
+    "heading": "E",
+    "dir": 2,
+    "ref": "/tmp/motion-refs/warden-E.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-f449bc3a-62ed-4c0e-ba39-16bf96a1f16a.png",
+    "armedSource": "/workspace/generated_images/exec-46f06944-7294-4a02-961d-49644df3cc10.png"
+  },
+  {
+    "id": "warden",
+    "heading": "SE",
+    "dir": 3,
+    "ref": "/tmp/motion-refs/warden-SE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-e402bce4-80b0-463e-b998-92a0186d60db.png",
+    "armedSource": "/workspace/generated_images/exec-81b7da07-8d14-46ad-b980-1fcb3b63626c.png"
+  },
+  {
+    "id": "warden",
+    "heading": "S",
+    "dir": 4,
+    "ref": "/tmp/motion-refs/warden-S.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-79fb9adf-ba9e-4524-9271-715c976a566c.png",
+    "armedSource": "/workspace/generated_images/exec-301082e5-32e3-45b0-88f2-eb782ae7ffc0.png"
+  },
+  {
+    "id": "warden",
+    "heading": "W",
+    "dir": 6,
+    "ref": "/tmp/motion-refs/warden-W.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-45073c9e-50eb-472f-b543-c61397e6a68c.png",
+    "armedSource": "/workspace/generated_images/exec-2cb9d02f-3ba7-44a4-bd04-46078e1f46b6.png"
+  },
+  {
+    "id": "warden",
+    "heading": "NW",
+    "dir": 7,
+    "ref": "/tmp/motion-refs/warden-NW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-ad40a631-dabd-4386-8d56-d3d10939c174.png",
+    "armedSource": "/workspace/generated_images/exec-fb1159f7-55a8-4630-8b5e-8bd1321b7201.png"
+  }
+]

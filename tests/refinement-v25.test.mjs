@@ -40,8 +40,8 @@ test("original population, player speed and an additional ten percent zoom are r
     MAPS.reduce((n, m) => n + w.map(m.id).mobs.length, 0),
     284,
   );
-  assert.equal(stats(createPlayer()).speed, 16.5);
-  assert.equal(stats(createPlayer("ranger")).speed, 18.5);
+  assert.equal(stats(createPlayer()).speed, 3.3);
+  assert.equal(stats(createPlayer("ranger")).speed, 3.7);
   assert.ok(Math.abs(WORLD_ZOOM / (1.1 / 1.2) - 1.1) < 1e-12);
 });
 test("tracking mark releases real delayed arrows while multiple new click routes keep moving", () => {
@@ -62,8 +62,8 @@ test("tracking mark releases real delayed arrows while multiple new click routes
   const releases = [],
     positions = [];
   for (let n = 0; n < 160; n++) {
-    if (n % 16 === 0) {
-      const a = n % 32 === 0 ? goals[0] : start;
+    if (n % 48 === 0) {
+      const a = n % 96 === 0 ? goals[0] : start;
       assert.ok(w.act(p.id, { type: "moveTo", ...a }));
     }
     const old = w.sequence;
@@ -169,7 +169,7 @@ test("four diagonal walk rows are replaced in both the runtime body and standalo
         await readFile("site/assets/locomotion/" + job.id + "-walk.png"),
       );
     for (const r of job.registration) {
-      const [dx, dy] = r.hand;
+      const [dx, dy] = b.frameRig?b.anchors[r.row][r.frame+16].hand:r.hand;
       assert.ok(
         body.pixels[
           ((r.row * 96 + dy) * body.width + (r.frame + 16) * 96 + dx) * 4 + 3

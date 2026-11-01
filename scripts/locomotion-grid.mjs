@@ -36,6 +36,8 @@ export function directionalRects(source, count = 8, rowCount = count, options = 
   };
   const xs = options.xs || cuts("x"),
     ys = options.ys || cuts("y");
+  if(options.cellsOnly)return Array.from({length:rowCount},(_,row)=>
+    Array.from({length:count},(_,col)=>({sx:xs[col],sy:ys[row],sw:xs[col+1]-xs[col],sh:ys[row+1]-ys[row]})));
   return Array.from({ length: rowCount }, (_, row) =>
     Array.from({ length: count }, (_, col) => {
       const x0 = xs[col],
@@ -95,7 +97,7 @@ export function directionalRects(source, count = 8, rowCount = count, options = 
       if (!parts.length || parts[0].area < w * h * (options.minArea ?? 0.08))
         throw Error("Missing complete actor at " + row + ":" + col);
       const keep = parts.filter(
-        (p) => p.area >= Math.max(8, parts[0].area * 0.035),
+        (p) => p.area >= Math.max(8, parts[0].area * (options.componentRatio ?? 0.035)),
       );
       const sx = Math.min(...keep.map((p) => p.minX)),
         sy = Math.min(...keep.map((p) => p.minY));

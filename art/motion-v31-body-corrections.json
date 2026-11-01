@@ -1,0 +1,29 @@
+[
+  {
+    "id": "mage",
+    "heading": "W",
+    "dir": 6,
+    "ref": "/tmp/motion-refs/mage-W.png",
+    "prompt": "Mage casting EMPTY-HANDED: marked palm pulls to waist, lifts above head, reaches high on contact, settles. Fixed LEFT SIDE PROFILE.",
+    "source": "/workspace/generated_images/exec-f9257dc9-615d-424f-ac31-659472acb513.png",
+    "kind": "direction"
+  },
+  {
+    "id": "warden",
+    "heading": "SE",
+    "dir": 3,
+    "ref": "/workspace/generated_images/exec-e402bce4-80b0-463e-b998-92a0186d60db.png",
+    "prompt": "Edit this EXACT 4x6 sheet. Erase the short brown diagonal ROD still joining the two hands across the chest in walk and idle. Remove ALL handheld props. Keep both empty gloved fists and armor shapes distinct. Do not erase character limbs. No equipment, no brown handle. Preserve exact character placements, poses, heading and magenta palm marks. Restore tiny cyan ground cross centered at x=50%, y=94% inside EVERY256x256cell. NO other edits.",
+    "source": "/workspace/generated_images/exec-624b8c51-8a56-418a-954b-3841d5a5c64c.png",
+    "kind": "direction"
+  },
+  {
+    "id": "herbalist",
+    "heading": "NE",
+    "dir": 1,
+    "ref": "/tmp/motion-refs/herbalist-NE.png",
+    "prompt": "ONLY BACK-RIGHT THREE QUARTER VIEW facing NORTH EAST away/up-right. Back of hat and red hair dominate. Very little cheek visible. The face NEVER turns into a right side profile. EMPTY-HANDED casting, palm pulls back to chest then presses forward and returns.",
+    "source": "/workspace/generated_images/exec-a75e7ae5-4c4d-4d78-8ee8-93ebd3afd7ad.png",
+    "kind": "direction"
+  }
+]

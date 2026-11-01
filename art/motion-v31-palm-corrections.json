@@ -1,0 +1,26 @@
+[
+  {
+    "id": "herbalist",
+    "dir": 0,
+    "source": "/workspace/generated_images/exec-64df714f-7d93-4286-8063-2b3e7ff1d60a.png",
+    "heading": "N",
+    "kind": "direction",
+    "previousSource": "/workspace/generated_images/exec-be4090f3-7a2f-4812-ac6c-ddab7d6d9f5b.png"
+  },
+  {
+    "id": "mage",
+    "dir": 0,
+    "source": "/workspace/generated_images/exec-ede43e3d-b3e4-4750-9471-91f7d3b4ea40.png",
+    "heading": "N",
+    "kind": "direction",
+    "previousSource": "/workspace/generated_images/exec-98139c78-1865-4c2e-a6b9-7afecbeea214.png"
+  },
+  {
+    "id": "ranger",
+    "dir": 0,
+    "source": "/workspace/generated_images/exec-1be9c7b6-60c6-4fe6-921f-16d0a30d24aa.png",
+    "heading": "N",
+    "kind": "direction",
+    "previousSource": "/workspace/generated_images/exec-c99aba80-cdbd-4f6b-a1f6-ea5603fd3dff.png"
+  }
+]

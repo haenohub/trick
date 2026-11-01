@@ -29,9 +29,11 @@ for (const name of [
   "bestiary.html",
   "directions.html",
   "maps.html",
+  "animation-lab.html",
 ]) {
   const file = new URL(name, output);
   const page = (await readFile(file, "utf8"))
+    .replace("./animation-lab.js", `./animation-lab.js?v=${revision}`)
     .replace("./map-atlas.js", `./map-atlas.js?v=${revision}`)
     .replaceAll(
       'href="./directions.html"',
@@ -55,6 +57,7 @@ for (const name of [
 for (const name of [
   "app.js",
   "ui-icons.js",
+  "animation-lab.js",
   "map-atlas.js",
   "renderer.js",
   "core.js",

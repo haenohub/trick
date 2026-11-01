@@ -36,6 +36,8 @@ test("all assets originate from generated artwork with clean transparent native 
       ...JSON.parse(await readFile("art/skills-v28.json", "utf8")).sources,
       ...JSON.parse(await readFile("art/bow-directions-v28.json", "utf8"))
         .sources,
+      ...JSON.parse(await readFile("art/registered-motion-v31.json", "utf8")).sources,
+      ...JSON.parse(await readFile("art/registered-weapons-v31.json", "utf8")).views,
       ...JSON.parse(await readFile("art/diagonal-walk-v25.json", "utf8"))
         .sources,
       JSON.parse(await readFile("art/thorn-effect-v25.json", "utf8")),
@@ -54,7 +56,7 @@ test("all assets originate from generated artwork with clean transparent native 
       ...JSON.parse(await readFile("art/combat-cycles.json", "utf8")).sources,
       ...JSON.parse(await readFile("art/held-weapons.json", "utf8")).sources,
       ...equipment.sources.map((s) => ({ source: s.path })),
-    ].flatMap((s) => [s.source, ...(s.deathSource ? [s.deathSource] : [])]),
+    ].flatMap((s) => [s.source, ...(s.deathSource ? [s.deathSource] : []),...(s.attackSource?[s.attackSource]:[])]),
   );
   for (const actor of repaint.sources.filter((a) =>
     ["monster", "character", "npc"].includes(a.kind),

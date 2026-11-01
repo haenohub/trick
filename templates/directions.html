@@ -388,7 +388,7 @@
         <h1>리프테일 · 8방향 아틀리에</h1>
       </div>
       <nav>
-        <a href="./">게임으로 ↗</a><a href="./bestiary.html">몬스터 도감 ↗</a>
+        <a href="./">게임으로 ↗</a><a href="./bestiary.html">리프테일 도감 ↗</a><a href="./animation-lab.html">동작 검수실 ↗</a>
       </nav>
     </header>
     <main class="wrap">
@@ -604,14 +604,13 @@
           sheet = image;
           clipSheets = { walk, idle };
           for (const [anim, clip] of Object.entries(actor.layout.clips || {}))
-            clipSheets[anim] = await load(clip.file);
+            clipSheets[anim] = await load(clip.file || actor.layout.file);
           if (actor.appearance?.layout.anchors) {
             const api = await import("./avatar-draw.js");
             const entries = await Promise.all(
-              actor.appearance.layers.map(async (layer) => [
-                layer.file,
-                await load(layer.file),
-              ]),
+              [...new Set(actor.appearance.layers.flatMap(layer=>[
+                layer.file,...(layer.poseSets||[]).flatMap(set=>Object.values(set).map(p=>p.file)),
+              ]))].map(async file => [file,await load(file)]),
             );
             if (current !== ticket) return;
             avatarImages = new Map(entries);

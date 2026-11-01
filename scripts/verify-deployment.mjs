@@ -28,6 +28,8 @@ for (let attempt = 1; attempt <= 12; attempt++) {
       "styles.css",
       "interface.css",
       "ui-icons.js",
+      "animation-lab.html",
+      "animation-lab.js",
       "assets/fonts/leaftale-title.woff",
       "bestiary.html",
       "directions.html",

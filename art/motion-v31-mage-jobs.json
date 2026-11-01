@@ -1,0 +1,66 @@
+[
+  {
+    "id": "mage",
+    "heading": "N",
+    "dir": 0,
+    "ref": "/tmp/motion-refs/mage-N.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-98139c78-1865-4c2e-a6b9-7afecbeea214.png"
+  },
+  {
+    "id": "mage",
+    "heading": "NE",
+    "dir": 1,
+    "ref": "/tmp/motion-refs/mage-NE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-3a4165c1-9a12-4d65-8032-ad86d3bc6296.png"
+  },
+  {
+    "id": "mage",
+    "heading": "E",
+    "dir": 2,
+    "ref": "/tmp/motion-refs/mage-E.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-2f103f24-f8a5-4615-9c44-c57034e62ce3.png"
+  },
+  {
+    "id": "mage",
+    "heading": "SE",
+    "dir": 3,
+    "ref": "/tmp/motion-refs/mage-SE.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-538e5e7a-6058-4253-9d5f-de8aa6ec2a98.png"
+  },
+  {
+    "id": "mage",
+    "heading": "S",
+    "dir": 4,
+    "ref": "/tmp/motion-refs/mage-S.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-f0a54adf-8950-42f6-a095-8bfffed1bd22.png"
+  },
+  {
+    "id": "mage",
+    "heading": "SW",
+    "dir": 5,
+    "ref": "/tmp/motion-refs/mage-SW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-a386d4fa-f4c9-47a2-9c0b-4ea21c508139.png"
+  },
+  {
+    "id": "mage",
+    "heading": "W",
+    "dir": 6,
+    "ref": "/tmp/motion-refs/mage-W.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-095beb19-cdde-4fc7-ad78-74a3169f4d5d.png"
+  },
+  {
+    "id": "mage",
+    "heading": "NW",
+    "dir": 7,
+    "ref": "/tmp/motion-refs/mage-NW.png",
+    "kind": "direction",
+    "source": "/workspace/generated_images/exec-b0f0b447-9c11-47bb-a1b5-71a1d677d954.png"
+  }
+]

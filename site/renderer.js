@@ -124,13 +124,17 @@ export async function loadArt(progress = () => {}) {
 export async function prepareEquipmentArt(classId, equipment) {
   const appearance = equippedAppearance(ART, classId, equipment);
   if (!appearance) return null;
-  await Promise.all(appearance.layers.map((layer) => load(layer.file)));
+  const files=new Set(appearance.layers.flatMap(layer=>[layer.file,
+    ...(layer.poseSets||[]).flatMap(set=>Object.values(set).map(p=>p.file))]));
+  await Promise.all([...files].map(load));
   return appearance;
 }
 function readyAppearance(classId, equipment) {
   const appearance = equippedAppearance(ART, classId, equipment);
   if (!appearance) return null;
-  if (appearance.layers.every((layer) => IMAGES.has(layer.file)))
+  const files=appearance.layers.flatMap(layer=>[layer.file,
+    ...(layer.poseSets||[]).flatMap(set=>Object.values(set).map(p=>p.file))]);
+  if (files.every((file) => IMAGES.has(file)))
     return appearance;
   prepareEquipmentArt(classId, equipment).catch(() => {});
   return null;
@@ -501,6 +505,7 @@ export class Renderer {
     combatReady = false,
     skyshot = false,
     aimDir = null,
+    position = null,
   ) {
     const originalLayout = /^m\d+$/.test(name)
       ? ART.monsters[name]
@@ -515,6 +520,10 @@ export class Renderer {
       age = Math.max(0, time - start),
       c = this.ctx;
     const loopStart = this.locomotion.start(actorKey, anim, time);
+    const walkTime=anim==="walk"&&layout.frameRig
+      ? this.locomotion.walkTime(actorKey,time,position,layout.clips?.walk?.stridePxByDirection?.[dir]||layout.clips?.walk?.stridePx||48,layout.clips?.walk?.duration)
+      : null;
+    if(anim!=="walk")this.locomotion.stopWalk(actorKey);
     if (anim === "death") {
       c.save();
       c.globalAlpha = Math.max(0, 1 - age / 0.85);
@@ -525,20 +534,21 @@ export class Renderer {
         : animationFrame(
             layout,
             anim,
-            time,
-            ["idle", "walk"].includes(anim) ? loopStart : start,
+            walkTime??time,
+            walkTime!==null?0:["idle", "walk"].includes(anim) ? loopStart : start,
             duration,
           );
     if (appearance && layout.anchors) {
       const anchor = 1 - 2 / (layout.size / (ART.resolutionScale || 1));
+      const ground=layout.frameRig?.ground||[48,96*anchor];
       drawPaperDoll(
         c,
         appearance,
         IMAGES,
         frame,
         dir,
-        x - 48 * this.zoom,
-        y - 96 * anchor * this.zoom,
+        x - ground[0] * this.zoom,
+        y - ground[1] * this.zoom,
         this.zoom,
         {
           anim,
@@ -990,6 +1000,7 @@ export class Renderer {
               return target ? direction(target.x - o.x, target.y - o.y) : null;
             })()
           : null,
+        {x:o.x,y:o.y,map:o.map},
       );
       c.restore();
       if (monster && o.ai === "return")

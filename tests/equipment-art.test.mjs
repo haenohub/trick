@@ -40,7 +40,8 @@ test("paper-doll sheets keep all 256 poses on native 96px cells with clean four-
     (f) =>
       f.startsWith("appearance/") &&
       f !== "appearance/held-weapons" &&
-      !f.startsWith("appearance/tier-"),
+      !f.startsWith("appearance/tier-") &&
+      !f.startsWith("appearance/registered-"),
   )) {
     const { width, height, pixels } = rgbaPixels(
       await readFile("site/assets/" + file + ".png"),

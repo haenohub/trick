@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>리프테일 · 동작 검수실</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.6 system-ui,sans-serif;color:#eff0df;background:#142635}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button,input,select{border:1px solid #839aae;border-radius:3px;background:#233d52;color:#f1f1df;padding:8px 12px;min-height:40px}button:hover{background:#3d5a6e}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #ffe58e;outline-offset:3px}a{color:#d5e6ad}header{border-bottom:1px solid #61798e;padding:18px max(20px,calc((100vw - 1320px)/2));display:flex;justify-content:space-between;gap:16px;align-items:center}h1{font-size:22px;margin:0;color:#ffe7b6}header nav{display:flex;gap:18px}.layout{max-width:1320px;margin:auto;padding:24px 20px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:24px}.controls{display:grid;gap:16px;align-content:start}.controls label{display:grid;gap:6px}.controls small{color:#c5d3df}.checks label{display:flex;align-items:center;gap:8px}.checks input{min-height:20px;width:18px;height:18px;accent-color:#b8d59d}.stage{background:#1d3448;border:1px solid #7e98ac;border-radius:4px;padding:16px;min-width:0}canvas{display:block;width:100%;height:auto;image-rendering:pixelated;background:#223e47}.transport{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.transport button{flex:1;white-space:nowrap}.transport button[aria-pressed=true]{background:#ceddb4;color:#20382c;border-color:#e6e9c5}.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.readout dt{color:#c3d2dc;font-size:13px}.readout dd{margin:3px 0;color:#ffe7b6;font-variant-numeric:tabular-nums;font-weight:650}.legend{display:flex;gap:16px;flex-wrap:wrap;color:#cfdee2;font-size:13px}.legend span:before{content:"";display:inline-block;border:2px solid var(--dot);width:9px;height:9px;border-radius:50%;margin-right:6px}.timeline{display:flex;gap:4px;margin-top:18px;flex-wrap:wrap}.timeline button{min-width:44px;font-size:12px;padding:6px 9px}.timeline button[aria-pressed=true]{background:#bcd3ab;color:#223a2b;border-color:#f2e8b3}#status{color:#d0dfc7;min-height:24px;font-size:14px}#events{font-size:13px;color:#dfd8b5}.notes{max-width:1320px;margin:0 auto 32px;padding:0 20px;color:#bcceda}.notes summary{cursor:pointer;color:#e7d4a5;min-height:40px}.notes p{max-width:78ch}.step-input{width:100%}@media(max-width:800px){header{align-items:start}header nav{font-size:12px;gap:10px}.layout{grid-template-columns:minmax(0,1fr);padding:16px 12px;gap:16px}.controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.checks{grid-column:1/-1;display:flex;gap:16px;flex-wrap:wrap}.stage{padding:10px}.readout{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.transport button{font-size:13px;padding:8px}h1{font-size:19px}header{padding:14px 12px}.timeline button{min-width:40px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <script type="module" src="./animation-lab.js"></script>
+</head>
+<body>
+<header><h1>리프테일 · 동작 검수실</h1><nav aria-label="검수 메뉴"><a href="./">게임으로</a><a href="./directions.html">8방향 아틀리에</a></nav></header>
+<main class="layout">
+  <section class="controls" aria-label="동작 선택">
+    <label>캐릭터<select id="actor"></select></label>
+    <label>장착 무기<select id="weapon"></select></label>
+    <label>방향<select id="direction"></select></label>
+    <label>동작<select id="animation"><option value="combo">공격 전체 연결</option><option value="walk">걷기</option><option value="idle">대기</option><option value="windup">준비</option><option value="attack">휘두르기 · 타격</option><option value="recover">마무리 · 회복</option></select></label>
+    <label>재생 속도<select id="speed"><option value="1">정상 · 1배속</option><option value="0.25">느리게 · 0.25배속</option></select></label>
+    <label>표시 배율<select id="zoom"><option value="3">3배 · 도트 확인</option><option value="1">1배 · 실제 도트</option><option value="2">2배</option></select></label>
+    <div class="checks">
+      <label><input id="debug" type="checkbox" checked>기준점 표시</label>
+      <label><input id="flip" type="checkbox">좌우 반전 검수</label>
+      <label><input id="trail" type="checkbox">무기 끝 궤적 표시</label>
+      <label><input id="audio" type="checkbox">타격 시점 효과음</label>
+    </div>
+    <small>기본 상태는 궤적 효과 없이 몸과 장착 무기만 표시합니다. 정지한 뒤 방향을 바꿔도 같은 프레임을 비교할 수 있습니다.</small>
+  </section>
+  <section class="stage" aria-label="애니메이션 검수 화면" aria-busy="true">
+    <canvas id="stage" width="900" height="600" aria-label="캐릭터·무기·지면 기준점 미리보기"></canvas>
+    <div class="transport"><button id="prev">이전 프레임</button><button id="play" aria-pressed="true">일시정지</button><button id="next">다음 프레임</button><button id="restart">처음부터</button></div>
+    <dl class="readout"><div><dt>방향 · 동작</dt><dd id="pose-label"></dd></div><div><dt>프레임</dt><dd id="frame-label"></dd></div><div><dt>프레임 지속시간</dt><dd id="duration-label"></dd></div><div><dt>가림 순서</dt><dd id="order-label"></dd></div></dl>
+    <div class="legend"><span style="--dot:#48e9ee">지면 기준점</span><span style="--dot:#ff69d5">손 부착점</span><span style="--dot:#ffe58e">무기 grip pivot</span></div>
+    <div id="timeline" class="timeline" role="group" aria-label="프레임 선택"></div>
+    <p id="status" role="status">원본을 읽는 중…</p><p id="events" aria-live="off"></p>
+  </section>
+</main>
+<details class="notes"><summary>검수 기준과 조작</summary><p>손의 분홍 원과 손잡이의 노란 점은 항상 같은 중심에 있어야 합니다. 청록 지면점은 모든 프레임에서 같은 논리 캔버스 위치입니다. 준비 → 빠른 타격 → 마무리 → 회복을 확인하고, 걷기에서는 움직이는 바닥과 발의 접촉을 비교하세요. 공격의 타격 표식은 실제 게임 판정 시점과 같은 노출표를 사용합니다.</p><p>이전·다음 또는 프레임 번호를 누르면 즉시 정지합니다. 일시정지는 현재 프레임과 경과시간을 보존합니다. 궤적을 꺼도 손잡이와 손의 결합을 확인할 수 있습니다. 장착 조건을 적용하지 않는 아트 검수 화면입니다.</p></details>
+</body></html>

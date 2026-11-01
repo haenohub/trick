@@ -1,0 +1,16 @@
+[
+  {
+    "id": "mage",
+    "heading": "E",
+    "dir": 2,
+    "source": "/workspace/generated_images/exec-a2d74490-4b29-4140-bb74-f4e5c9e0ea9b.png",
+    "kind": "direction"
+  },
+  {
+    "id": "ranger",
+    "heading": "SE",
+    "dir": 3,
+    "source": "/workspace/generated_images/exec-45206bce-1952-4431-9748-75c73d177d9a.png",
+    "kind": "direction"
+  }
+]

@@ -1,6 +1,25 @@
 // The same measured palm/grip transform is used in the field and previews.
 export const HELD_WEAPON_SCALE = 0.8;
+export function heldWeaponTransform(pose, left, top, scale=1) {
+  const s=scale*pose.weaponScale,c=Math.cos(pose.angle),n=Math.sin(pose.angle);
+  const a=s*c,b=s*n,d=s*c,e=-s*n;
+  const tx=left+pose.hand[0]*scale,ty=top+pose.hand[1]*scale;
+  const matrix=[a,b,e,d,tx-pose.grip[0]*a-pose.grip[1]*e,ty-pose.grip[0]*b-pose.grip[1]*d];
+  return {matrix,hand:[tx,ty],point([x,y]){return[matrix[0]*x+matrix[2]*y+matrix[4],matrix[1]*x+matrix[3]*y+matrix[5]];}};
+}
 export function heldWeaponPose(layout, weapon, frame, dir, motion = null) {
+  const binding=layout.frameRig?.frames?.[dir]?.[frame];
+  if(binding && weapon.poseSets){
+    const sourceDir=weapon.kind==="bow"?(motion?.skyshot?0:motion?.aimDir??dir):dir;
+    const source=weapon.poseSets[sourceDir]?.[binding.pose]||weapon.poseSets[sourceDir]?.ready;
+    if(!source)return null;
+    return {
+      hand:binding.hand,grip:source.grip,angle:source.angle,
+      weaponScale:source.scale,col:source.col,row:source.row,size:source.size,
+      file:source.file,tip:source.tip,depth:binding.depth,
+      frame,pose:binding.pose,registered:true,
+    };
+  }
   const a = layout.anchors?.[dir]?.[frame] || layout.anchors?.[dir]?.[0];
   if (!a) return null;
   const sourceDir =
@@ -87,7 +106,7 @@ export function heldWeaponTip(layout, weapon, frame, dir, motion = null) {
   const pose = heldWeaponPose(layout, weapon, frame, dir, motion);
   if (!pose) return null;
   if (weapon.kind === "bow") return pose.hand;
-  const tip = weapon.tips?.[dir] || [
+  const tip = pose.tip || weapon.tips?.[dir] || [
     pose.grip[0] + Math.sin(weapon.axes?.[dir] || 0) * 36,
     pose.grip[1] - Math.cos(weapon.axes?.[dir] || 0) * 36,
   ];
@@ -110,18 +129,24 @@ export function drawPaperDoll(
   motion = null,
 ) {
   const layout = appearance.layout,
-    order = (l) => l.orderByDirection?.[dir] ?? l.order ?? 10;
+    binding=layout.frameRig?.frames?.[dir]?.[frame],
+    order = (l) => l.held && binding
+      ? (binding.depth==="behind"?-10:50)
+      : l.orderByDirection?.[dir] ?? l.order ?? 10;
   const layers = appearance.layers.toSorted((a, b) => order(a) - order(b));
+  const originX=Math.round(left),originY=Math.round(top);
+  if(motion?.flipX){ctx.save();ctx.translate(2*originX+96*scale,0);ctx.scale(-1,1);}
   for (const layer of layers) {
-    const image = images.get(layer.file);
+    const registeredPose=layer.held&&binding?heldWeaponPose(layout,layer,frame,dir,motion):null;
+    const image = images.get(registeredPose?.file||layer.file);
     if (!image) continue;
     if (layer.held) {
-      const p = heldWeaponPose(layout, layer, frame, dir, motion);
+      const p = registeredPose || heldWeaponPose(layout, layer, frame, dir, motion);
       if (!p) continue;
       ctx.save();
       ctx.translate(
-        Math.round(left + p.hand[0] * scale),
-        Math.round(top + p.hand[1] * scale),
+        binding?originX+p.hand[0]*scale:Math.round(left + p.hand[0] * scale),
+        binding?originY+p.hand[1]*scale:Math.round(top + p.hand[1] * scale),
       );
       ctx.rotate(p.angle);
       const span = 96 * scale * p.weaponScale;
@@ -144,10 +169,22 @@ export function drawPaperDoll(
         dir * 96,
         96,
         96,
-        Math.round(left),
-        Math.round(top),
+        originX,
+        originY,
         96 * scale,
         96 * scale,
       );
   }
+  if(motion?.debug && binding){
+    const p=layers.find(l=>l.held),pose=p?heldWeaponPose(layout,p,frame,dir,motion):null;
+    const point=(a,color,r)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.arc(originX+a[0]*scale,originY+a[1]*scale,r,0,Math.PI*2);ctx.stroke();};
+    point(binding.ground,"#48e9ee",5);point(binding.hand,"#ff69d5",8);
+    if(pose){
+      const transformed=heldWeaponTransform(pose,originX,originY,scale);
+      const actual=transformed.point(pose.grip);
+      const grip=[(actual[0]-originX)/scale,(actual[1]-originY)/scale];
+      point(grip,"#ffe58e",3);
+    }
+  }
+  if(motion?.flipX)ctx.restore();
 }

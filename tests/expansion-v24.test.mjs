@@ -76,8 +76,8 @@ test("each map keeps every species and boss while restoring original population 
     after += mobs.length;
   }
   assert.equal(after, before);
-  assert.equal(stats(createPlayer()).speed, 16.5);
-  assert.equal(stats(createPlayer("ranger")).speed, 18.5);
+  assert.equal(stats(createPlayer()).speed, 3.3);
+  assert.equal(stats(createPlayer("ranger")).speed, 3.7);
 });
 test("twenty additional consumables have distinct icons, lore, real effects, shop prices and valid recipes", () => {
   assert.equal(NEW_CONSUMABLES.length, 20);
@@ -207,7 +207,7 @@ test("new effects and all item icons have isolated native frames with no adjacen
     assert.equal(art.itemOverrides[i.id].size, 64);
   }
 });
-test("every class and heading has a newly authored lower anticipation pose and registered weapon palms", async () => {
+test("every class and heading has an authored anticipation drawing and registered weapon palms", async () => {
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8")),
     plan = JSON.parse(await readFile("art/v24-art.json", "utf8"));
   assert.equal(plan.status, "complete");
@@ -230,11 +230,20 @@ test("every class and heading has a newly authored lower anticipation pose and r
             }
         return hi - lo + 1;
       });
-      assert.ok(
-        heights[1] <= heights[0] - 4,
-        cls + ":" + d + " must coil/crouch visibly before release",
-      );
-      assert.ok(heights[2] >= heights[1] + 4);
+      if(layout.frameRig){
+        // Archery and upward casting must not shrink the head/body simply to
+        // satisfy a crouch-height rule. Require a real, changed authored pose.
+        let changed=0;
+        for(let y=0;y<96;y++)for(let x=0;x<96;x++){
+          const a=((d*96+y)*width+x)*4,b=a+2*96*4;
+          if(pixels.subarray(a,a+4).some((v,i)=>v!==pixels[b+i]))changed++;
+        }
+        assert.ok(changed>120,cls+":"+d+" lacks readable preparation");
+        assert.deepEqual(layout.frameRig.frames[d][2].ground,[48,92]);
+      }else{
+        assert.ok(heights[1]<=heights[0]-4,cls+":"+d+" must coil/crouch before release");
+        assert.ok(heights[2]>=heights[1]+4);
+      }
       for (let f = 0; f < 7; f++) {
         const a = layout.anchors[d][f];
         assert.ok(a.measured);

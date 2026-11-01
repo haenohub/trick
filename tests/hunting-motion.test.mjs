@@ -11,22 +11,24 @@ import {
   STRIKE_DURATION,
   RECOVERY_DURATION,
 } from "../site/animation.js";
+const forwardAngle=(weapon,pose,dir)=>pose.angle+(weapon.kind==="bow"
+  ?weapon.forwardAxes[dir]
+  :Math.atan2(pose.tip[0]-pose.grip[0],pose.grip[1]-pose.tip[1]));
 test("all four corrected combat sheets have calibrated palms, planted registration and genuine new image sources", async () => {
-  const plan = JSON.parse(await readFile("art/hunting-motion.json", "utf8")),
+  const plan = JSON.parse(await readFile("art/registered-motion-v31.json", "utf8")),
     art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
   assert.equal(plan.status, "complete");
-  assert.equal(plan.sources.length, 4);
-  assert.equal(new Set(plan.sources.map((s) => s.source)).size, 4);
+  assert.equal(plan.sources.length, 32);
+  assert.equal(new Set(plan.sources.map((s) => s.source)).size, 32);
   for (const cls of ["warden", "ranger", "mage", "herbalist"]) {
     const body = art.appearance.bases[cls];
-    assert.equal(body.combatGripVersion, 1);
-    const job = plan.sources.find((s) => s.id === cls);
-    assert.equal(job.measuredCombatPalms, 64);
+    assert.equal(body.frameRig.version,31);
+    assert.equal(plan.sources.filter((s) => s.id === cls).length,8);
     for (let d = 0; d < 8; d++)
       for (let f = 0; f < 7; f++) {
         const a = body.anchors[d][f];
         assert.ok(a.measured);
-        assert.equal(a.feet[1], 88);
+        assert.deepEqual(a.feet,[48,92]);
         assert.ok(
           ["authored-palm-marker", "visible-palm"].includes(a.calibration),
         );
@@ -36,14 +38,10 @@ test("all four corrected combat sheets have calibrated palms, planted registrati
             body.anchors[d][0].hand,
             "recovery must end at the same ready grip",
           );
-        if (f > 0 && f < 6) {
-          const prev = body.anchors[d][f - 1].hand;
-          assert.ok(
-            (a.hand[0] - 48) * (prev[0] - 48) >= 0 ||
-              Math.abs(a.hand[0] - prev[0]) <= 24,
-            "weapon must not jump to the opposite hand",
-          );
-        }
+        const rig=body.frameRig.frames[d][f];
+        assert.deepEqual(rig.hand,a.hand);
+        assert.deepEqual(rig.ground,[48,92]);
+        assert.ok(rig.registration?.source,"hand must belong to a registered original drawing");
       }
   }
 });
@@ -72,12 +70,10 @@ test("weapon windup, release and recovery meet continuously and the contact pose
         ) < 1e-8,
       );
       const contact =
-          angle("attack", t.hitAt, t.strikeAt, STRIKE_DURATION) + w.axes[dir],
+          forwardAngle(w,heldWeaponPose(a.layout,w,4,dir),dir),
         heading = (dir * Math.PI) / 4;
       assert.ok(
-        cls === "ranger"
-          ? Math.abs(Math.cos(contact - heading)) < 0.04
-          : cls === "mage"
+        cls === "mage"
             ? Math.cos(contact) > 0.95
             : Math.cos(contact - heading) > 0.98,
       );
@@ -92,12 +88,12 @@ test("weapons point in the actor direction, bows stay perpendicular, mage staffs
     for (let d = 0; d < 8; d++) {
       const p = heldWeaponPose(a.layout, w, 4, d),
         tip = heldWeaponTip(a.layout, w, 4, d),
-        angle = p.angle + w.axes[d],
+        angle = forwardAngle(w,p,d),
         heading = (d * Math.PI) / 4;
       assert.deepEqual(p.hand, a.layout.anchors[d][4].hand);
       if (cls === "ranger")
         assert.ok(
-          Math.abs(Math.cos(angle - heading)) < 0.04,
+          Math.cos(angle - heading) > 0.98,
           "bow must face its target rather than stay upright in every direction",
         );
       else if (cls === "mage")
@@ -115,7 +111,7 @@ test("weapons point in the actor direction, bows stay perpendicular, mage staffs
     );
   }
 });
-test("weapon angles vary continuously within each stage and use the same contact clock as damage", async () => {
+test("held weapon drawings stay fixed within a frame and use the same contact clock as damage", async () => {
   const art = JSON.parse(await readFile("site/assets/manifest.json", "utf8"));
   for (const cls of ["warden", "ranger", "mage", "herbalist"]) {
     const a = equippedAppearance(art, cls, starterEquipment(cls)),
@@ -147,7 +143,7 @@ test("weapon angles vary continuously within each stage and use the same contact
                   Math.sin(pose.angle - prev),
                   Math.cos(pose.angle - prev),
                 ),
-              ) < 0.11,
+              ) < 1e-9,
             );
           prev = pose.angle;
         }

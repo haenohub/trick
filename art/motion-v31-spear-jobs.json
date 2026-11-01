@@ -1,0 +1,50 @@
+[
+  {
+    "id": "spear2",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spear2.png",
+    "source": "/workspace/generated_images/exec-61d43b9a-a7df-4b93-8b82-2a9f5d461cab.png"
+  },
+  {
+    "id": "antlerweapon",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/antlerweapon.png",
+    "source": "/workspace/generated_images/exec-71f83935-b67c-49bf-8c34-bcb97be9ebae.png"
+  },
+  {
+    "id": "thornweapon",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/thornweapon.png",
+    "source": "/workspace/generated_images/exec-e70fe192-942f-48bf-b81a-eadb889a5d33.png"
+  },
+  {
+    "id": "spearlv5",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spearlv5.png",
+    "source": "/workspace/generated_images/exec-86d5962b-5093-4414-a323-3a7c989261d9.png"
+  },
+  {
+    "id": "spearlv10",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spearlv10.png",
+    "source": "/workspace/generated_images/exec-a0c20b6b-6a20-48fd-aec5-9417aeaa96ec.png"
+  },
+  {
+    "id": "spearlv20",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spearlv20.png",
+    "source": "/workspace/generated_images/exec-4b285994-b134-40da-b2ed-037a91b83a96.png"
+  },
+  {
+    "id": "spearlv25",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spearlv25.png",
+    "source": "/workspace/generated_images/exec-091db588-d734-46b1-bf9f-c962ffb5c7ba.png"
+  },
+  {
+    "id": "spearlv30",
+    "kind": "spear",
+    "ref": "/tmp/weapon-motion-refs/spearlv30.png",
+    "source": "/workspace/generated_images/exec-e8efbe83-0a53-4a27-8ae0-85cd6efff800.png"
+  }
+]
